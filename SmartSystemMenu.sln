@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSystemMenu", "SmartSystemMenu\SmartSystemMenu.csproj", "{CCC625F9-BC33-48E4-9C64-31BEC4163244}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmartSystemMenuHook", "SmartSystemMenuHook\SmartSystemMenuHook.vcxproj", "{3A9E50F5-05CE-4690-90E4-5600F52E0986}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Debug|Win32.ActiveCfg = Debug|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Debug|Win32.Build.0 = Debug|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Debug|x64.ActiveCfg = Debug|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Debug|x86.ActiveCfg = Debug|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Debug|x86.Build.0 = Debug|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Release|Mixed Platforms.Build.0 = Release|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Release|Win32.ActiveCfg = Release|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Release|Win32.Build.0 = Release|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Release|x64.ActiveCfg = Release|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Release|x86.ActiveCfg = Release|x86
+		{CCC625F9-BC33-48E4-9C64-31BEC4163244}.Release|x86.Build.0 = Release|x86
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Debug|Win32.ActiveCfg = Release|x64
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Debug|Win32.Build.0 = Release|x64
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Debug|x64.ActiveCfg = Debug|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Debug|x86.ActiveCfg = Debug|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Release|Win32.ActiveCfg = Release|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Release|Win32.Build.0 = Release|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Release|x64.ActiveCfg = Release|Win32
+		{3A9E50F5-05CE-4690-90E4-5600F52E0986}.Release|x86.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

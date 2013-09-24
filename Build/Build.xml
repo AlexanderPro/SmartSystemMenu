@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SmartSystemMenuProjectPath>..\SmartSystemMenu</SmartSystemMenuProjectPath>
+    <SmartSystemMenuProjectName>SmartSystemMenu</SmartSystemMenuProjectName>
+    <SmartSystemMenuHookProjectPath>..\SmartSystemMenuHook</SmartSystemMenuHookProjectPath>
+    <SmartSystemMenuHookProjectName>SmartSystemMenuHook</SmartSystemMenuHookProjectName>
+    <ApplicationPath>..\Application</ApplicationPath>
+    <ApplicationManifestWin32>Manifest\app32.manifest</ApplicationManifestWin32>
+    <ApplicationManifestWin64>Manifest\app64.manifest</ApplicationManifestWin64>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SmartSystemMenuHookSourceFileWin32 Include="$(SmartSystemMenuHookProjectPath)\Release32\SmartSystemMenuHook.dll" />
+    <SmartSystemMenuHookSourceFileWin64 Include="$(SmartSystemMenuHookProjectPath)\Release64\SmartSystemMenuHook.dll" />
+    <SmartSystemMenuHookDestFileWin32 Include="$(ApplicationPath)\SmartSystemMenuHook.dll" />
+    <SmartSystemMenuHookDestFileWin64 Include="$(ApplicationPath)\SmartSystemMenuHook64.dll" />
+    <SmartSystemMenuSourceFileWin32 Include="$(SmartSystemMenuProjectPath)\bin\x86\Release\SmartSystemMenu.exe" />
+    <SmartSystemMenuSourceFileWin64 Include="$(SmartSystemMenuProjectPath)\bin\x64\Release\SmartSystemMenu.exe" />
+    <SmartSystemMenuDestFileWin32 Include="$(ApplicationPath)\SmartSystemMenu.exe" />
+    <SmartSystemMenuDestFileWin64 Include="$(SmartSystemMenuProjectPath)\SmartSystemMenu64.exe" />
+    <EmptyTextForFile Include="Empty File" />
+  </ItemGroup>
+
+  <Target Name="BuildSolution">
+    <CallTarget Targets="Build_Release_x32_SmartSystemMenuHook" />
+    <CallTarget Targets="Copy_Release_x32_SmartSystemMenuHook" />
+    <CallTarget Targets="Build_Release_x64_SmartSystemMenuHook" />
+    <CallTarget Targets="Copy_Release_x64_SmartSystemMenuHook" />
+    <CallTarget Targets="WriteEmptyTextToEmbeddedResourceInSmartSystemMenu" />
+    <CallTarget Targets="Build_Release_x64_SmartSystemMenu" />
+    <CallTarget Targets="Copy_Release_x64_SmartSystemMenu" />
+    <CallTarget Targets="Build_Release_x32_SmartSystemMenu" />
+    <CallTarget Targets="Copy_Release_x32_SmartSystemMenu" />
+  </Target>
+
+  <Target Name="Build_Release_x32_SmartSystemMenuHook">
+    <Message Text="Build $(SmartSystemMenuHookProjectName) Realese x32" />
+    <MSBuild Projects="$(SmartSystemMenuHookProjectPath)\$(SmartSystemMenuHookProjectName).vcxproj" Targets="Clean;Rebuild" Properties="Configuration=Release;Platform=Win32" />
+    <Message Text="Build Completed $(SmartSystemMenuHookProjectName) Realese x32" />
+  </Target>
+
+  <Target Name="Build_Release_x64_SmartSystemMenuHook">
+    <Message Text="Build $(SmartSystemMenuHookProjectName) Realese x64" />
+    <MSBuild Projects="$(SmartSystemMenuHookProjectPath)\$(SmartSystemMenuHookProjectName).vcxproj" Targets="Clean;Rebuild" Properties="Configuration=Release;Platform=x64" />
+    <Message Text="Build Completed $(SmartSystemMenuHookProjectName) Realese x64" />
+  </Target>
+
+ <Target Name="Build_Release_x32_SmartSystemMenu">
+    <Message Text="Build $(SmartSystemMenuProjectName) Realese x32" />
+    <MSBuild Projects="$(SmartSystemMenuProjectPath)\$(SmartSystemMenuProjectName).csproj" Targets="Clean;Rebuild" Properties="Configuration=Release;Platform=x86;ApplicationManifest=$(ApplicationManifestWin32)" />
+    <Message Text="Build Completed $(SmartSystemMenuProjectName) Realese x32" />
+  </Target>
+
+  <Target Name="Build_Release_x64_SmartSystemMenu">
+    <Message Text="Build $(SmartSystemMenuProjectName) Realese x64" />
+    <MSBuild Projects="$(SmartSystemMenuProjectPath)\$(SmartSystemMenuProjectName).csproj" Targets="Clean;Rebuild" Properties="Configuration=Release;Platform=x64;ApplicationManifest=$(ApplicationManifestWin64)" />
+    <Message Text="Build Completed $(SmartSystemMenuProjectName) Realese x64" />
+  </Target>
+
+  <Target Name="Copy_Release_x32_SmartSystemMenuHook">
+    <Message Text="Copy $(SmartSystemMenuHookProjectName) Realese x32" />
+    <MakeDir Directories="$(ApplicationPath)"/>
+    <Copy SourceFiles="@(SmartSystemMenuHookSourceFileWin32)" DestinationFiles="@(SmartSystemMenuHookDestFileWin32)" />
+    <Message Text="Copy Completed $(SmartSystemMenuHookProjectName) Realese x32" />
+  </Target>
+
+  <Target Name="Copy_Release_x64_SmartSystemMenuHook">
+    <Message Text="Copy $(SmartSystemMenuHookProjectName) Realese x64" />
+    <MakeDir Directories="$(ApplicationPath)"/>
+    <Copy SourceFiles="@(SmartSystemMenuHookSourceFileWin64)" DestinationFiles="@(SmartSystemMenuHookDestFileWin64)" />
+    <Message Text="Copy Completed $(SmartSystemMenuHookProjectName) Realese x64" />
+  </Target>
+
+  <Target Name="Copy_Release_x32_SmartSystemMenu">
+    <Message Text="Copy $(SmartSystemMenuProjectName) Realese x32" />
+    <MakeDir Directories="$(ApplicationPath)"/>
+    <Copy SourceFiles="@(SmartSystemMenuSourceFileWin32)" DestinationFiles="@(SmartSystemMenuDestFileWin32)" />
+    <Message Text="Copy Completed $(SmartSystemMenuProjectName) Realese x32" />
+  </Target>
+
+  <Target Name="Copy_Release_x64_SmartSystemMenu">
+    <Message Text="Copy $(SmartSystemMenuProjectName) Realese x64" />
+    <MakeDir Directories="$(ApplicationPath)"/>
+    <Copy SourceFiles="@(SmartSystemMenuSourceFileWin64)" DestinationFiles="@(SmartSystemMenuDestFileWin64)" />
+    <Message Text="Copy Completed $(SmartSystemMenuProjectName) Realese x64" />
+  </Target>
+
+ <Target Name="WriteEmptyTextToEmbeddedResourceInSmartSystemMenu">
+    <Message Text="Write Empty Embedded Resource $(SmartSystemMenuProjectName)" />
+    <WriteLinesToFile File="@(SmartSystemMenuDestFileWin64)" Lines="@(EmptyTextForFile)" Overwrite="true" />
+    <Message Text="Write Empty Embedded Resource Completed $(SmartSystemMenuProjectName)" />
+  </Target>
+</Project>

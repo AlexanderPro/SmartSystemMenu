@@ -1,0 +1,441 @@
+// SmartSystemMenuHook.cpp : Defines the exported functions for the DLL application.
+//
+
+#include "stdafx.h"
+#include "SmartSystemMenuHook.h"
+
+#pragma data_seg("SHARED")
+HWND hwndMain = NULL;
+
+HHOOK hookCbt = NULL;
+HHOOK hookShell = NULL;
+HHOOK hookKeyboard = NULL;
+HHOOK hookMouse = NULL;
+HHOOK hookKeyboardLL = NULL;
+HHOOK hookMouseLL = NULL;
+HHOOK hookCallWndProc = NULL;
+HHOOK hookGetMsg = NULL;
+#pragma data_seg()
+#pragma comment(linker, "/section:SHARED,RWS")
+
+//
+// Store the application instance of this module to pass to
+// hook initialization. This is set in DLLMain().
+//
+HINSTANCE g_appInstance = NULL;
+
+typedef void (CALLBACK *HookProc)(int code, WPARAM w, LPARAM l);
+
+static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK ShellHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK KeyboardHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK MouseHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK KeyboardLLHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK MouseLLHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK CallWndProcHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lparam);
+
+DLLEXPORT bool __stdcall InitializeCbtHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CBT_REPLACED");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookCbt = SetWindowsHookEx(WH_CBT, (HOOKPROC)CbtHookCallback, g_appInstance, threadID);
+    return hookCbt != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeCbtHook()
+{
+    if (hookCbt != NULL)
+    {
+        UnhookWindowsHookEx(hookCbt);
+    }
+    hookCbt = NULL;
+}
+
+static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code >= 0)
+    {
+        UINT msg = 0;
+
+        if (code == HCBT_ACTIVATE)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_ACTIVATE");
+        else if (code == HCBT_CREATEWND)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_CREATEWND");
+        else if (code == HCBT_DESTROYWND)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
+        else if (code == HCBT_MINMAX)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
+        else if (code == HCBT_MOVESIZE)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
+        else if (code == HCBT_SETFOCUS)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_SETFOCUS");
+        else if (code == HCBT_SYSCOMMAND)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_SYSCOMMAND");
+
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, wparam, lparam);
+        }
+    }
+
+    return CallNextHookEx(hookCbt, code, wparam, lparam);
+}
+
+DLLEXPORT bool __stdcall InitializeShellHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_SHELL_REPLACED");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookShell = SetWindowsHookEx(WH_SHELL, (HOOKPROC)ShellHookCallback, g_appInstance, threadID);
+    return hookShell != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeShellHook()
+{
+    if (hookShell != NULL)
+    {
+        UnhookWindowsHookEx(hookShell);
+    }
+    hookShell = NULL;
+}
+
+static LRESULT CALLBACK ShellHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code >= 0)
+    {
+        UINT msg = 0;
+
+        if (code == HSHELL_ACTIVATESHELLWINDOW)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_ACTIVATESHELLWINDOW");
+        else if (code == HSHELL_GETMINRECT)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_GETMINRECT");
+        else if (code == HSHELL_LANGUAGE)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_LANGUAGE");
+        else if (code == HSHELL_REDRAW)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_REDRAW");
+        else if (code == HSHELL_TASKMAN)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_TASKMAN");
+        else if (code == HSHELL_WINDOWACTIVATED)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWACTIVATED");
+        else if (code == HSHELL_WINDOWCREATED)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWCREATED");
+        else if (code == HSHELL_WINDOWDESTROYED)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWDESTROYED");
+
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, wparam, lparam);
+        }
+    }
+
+    return CallNextHookEx(hookShell, code, wparam, lparam);
+}
+
+DLLEXPORT bool __stdcall InitializeKeyboardHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARD_REPLACED");
+        if (msg != 0)
+        {            
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookKeyboard = SetWindowsHookEx(WH_KEYBOARD, (HOOKPROC)KeyboardHookCallback, g_appInstance, threadID);
+    return hookKeyboard != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeKeyboardHook()
+{
+    if (hookKeyboard != NULL)
+    {
+        UnhookWindowsHookEx(hookKeyboard);
+    }
+    hookKeyboard = NULL;
+}
+
+static LRESULT CALLBACK KeyboardHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code == HC_ACTION)
+    {
+        if((DWORD)lparam & 0x40000000)
+        {
+            UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARD");
+            if (msg != 0)
+            {
+                SendNotifyMessage(hwndMain, msg, wparam, lparam);
+            }
+        }
+    }
+    return CallNextHookEx(hookKeyboard, code, wparam, lparam);
+}
+
+DLLEXPORT bool __stdcall InitializeMouseHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSE_REPLACED");
+        if (msg != 0)
+        {            
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookMouse = SetWindowsHookEx(WH_MOUSE, (HOOKPROC)MouseHookCallback, g_appInstance, threadID);
+    return hookMouse != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeMouseHook()
+{
+    if (hookMouse != NULL)
+    {
+        UnhookWindowsHookEx(hookMouse);
+    }
+    hookMouse = NULL;
+}
+
+static LRESULT CALLBACK MouseHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code >= 0)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSE");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, wparam, lparam);
+        }
+    }
+
+    return CallNextHookEx(hookMouse, code, wparam, lparam);
+}
+
+DLLEXPORT bool __stdcall InitializeKeyboardLLHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARDLL_REPLACED");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookKeyboardLL = SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)KeyboardLLHookCallback, g_appInstance, threadID);
+    return hookKeyboardLL != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeKeyboardLLHook()
+{
+    if (hookKeyboardLL != NULL)
+    {
+        UnhookWindowsHookEx(hookKeyboardLL);
+    }
+    hookKeyboardLL = NULL;
+}
+
+static LRESULT CALLBACK KeyboardLLHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code == HC_ACTION)
+    {
+        KBDLLHOOKSTRUCT* pKb = (KBDLLHOOKSTRUCT*)lparam;
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARDLL");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, wparam, pKb->vkCode);
+        }
+    }
+
+    return CallNextHookEx(hookKeyboardLL, code, wparam, lparam);
+}
+
+DLLEXPORT bool __stdcall InitializeMouseLLHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSELL_REPLACED");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookMouseLL = SetWindowsHookEx(WH_MOUSE_LL, (HOOKPROC)MouseLLHookCallback, g_appInstance, threadID);
+    return hookMouseLL != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeMouseLLHook()
+{
+    if (hookMouseLL != NULL)
+    {
+        UnhookWindowsHookEx(hookMouseLL);
+    }
+    hookMouseLL = NULL;
+}
+
+static LRESULT CALLBACK MouseLLHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code >= 0)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSELL");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, wparam, lparam);
+        }
+    }
+
+    return CallNextHookEx(hookMouseLL, code, wparam, lparam);
+}
+
+DLLEXPORT bool __stdcall InitializeCallWndProcHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_REPLACED");
+        if (msg != 0)
+        {
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookCallWndProc = SetWindowsHookEx(WH_CALLWNDPROC, (HOOKPROC)CallWndProcHookCallback, g_appInstance, threadID);
+    return hookCallWndProc != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeCallWndProcHook()
+{
+    if (hookCallWndProc != NULL)
+    {
+        UnhookWindowsHookEx(hookCallWndProc);
+    }
+    hookCallWndProc = NULL;
+}
+
+static LRESULT CALLBACK CallWndProcHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code >= 0)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC");
+        UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_PARAMS");
+
+        CWPSTRUCT* pCwpStruct = (CWPSTRUCT*)lparam;
+        if (msg != 0 && pCwpStruct->message != msg && pCwpStruct->message != msg2)
+        {
+            SendNotifyMessage(hwndMain, msg, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
+            SendNotifyMessage(hwndMain, msg2, pCwpStruct->wParam, pCwpStruct->lParam);
+        }
+    }
+
+    return CallNextHookEx(hookCallWndProc, code, wparam, lparam);
+}
+
+DLLEXPORT bool __stdcall InitializeGetMsgHook(int threadID, HWND destination)
+{
+    if (g_appInstance == NULL)
+    {
+        return false;
+    }
+
+    if (hwndMain != NULL)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG_REPLACED");
+        if (msg != 0)
+        {            
+            SendNotifyMessage(hwndMain, msg, 0, 0);
+        }
+    }
+
+    hwndMain = destination;
+    hookGetMsg = SetWindowsHookEx(WH_GETMESSAGE, (HOOKPROC)GetMsgHookCallback, g_appInstance, threadID);
+    return hookGetMsg != NULL;
+}
+
+DLLEXPORT void __stdcall UninitializeGetMsgHook()
+{
+    if (hookGetMsg != NULL)
+    {
+        UnhookWindowsHookEx(hookGetMsg);
+    }
+    hookGetMsg = NULL;
+}
+
+static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lparam)
+{
+    if (code >= 0)
+    {
+        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG");
+        UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG_PARAMS");
+
+        MSG* pMsg = (MSG*)lparam;
+        if (msg != 0 && pMsg->message != msg && pMsg->message != msg2 && wparam == PM_REMOVE)
+        {
+            //if(pMsg->message == WM_SYSCOMMAND)
+            //{
+            //    TCHAR buf[256];
+            //    int error = GetLastError();
+            //    wsprintf(buf, L"WM_SYSCOMMAND, WParam = %d, msg = %d, error = %d", wparam, msg, error);
+            //    OutputDebugString(buf);
+            //}
+
+            SendNotifyMessage(hwndMain, msg, (WPARAM)pMsg->hwnd, pMsg->message);
+            SendNotifyMessage(hwndMain, msg2, pMsg->wParam, pMsg->lParam);
+        }
+    }
+
+    return CallNextHookEx(hookGetMsg, code, wparam, lparam);
+}
