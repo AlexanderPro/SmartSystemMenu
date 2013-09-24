@@ -78,7 +78,6 @@
     <Compile Include="App_Code\Common\Extensions\ProcessExtensions.cs" />
     <Compile Include="App_Code\Common\NativeTypes.cs" />
     <Compile Include="App_Code\Common\PlatformUtility.cs" />
-    <Compile Include="App_Code\Common\SingleInstanceApplication.cs" />
     <Compile Include="App_Code\Common\SystemMenu.cs" />
     <Compile Include="App_Code\Common\SystemTrayMenu.cs" />
     <Compile Include="App_Code\Forms\AboutForm.cs">
