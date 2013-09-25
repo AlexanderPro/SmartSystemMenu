@@ -211,14 +211,11 @@ namespace SmartSystemMenu.App_Code.Forms
             {
                 Int32 processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
-                IList<Window> windows = EnumWindows.EnumProcessWindows(processId, new String[] { _shellWindowName });
+                IList<Window> windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new String[] { _shellWindowName });
                 foreach (var window in windows)
                 {
-                    if (!_windows.Any(w => w.Handle == window.Handle) && window.Handle != IntPtr.Zero)
-                    {
-                        window.Menu.Create();
-                        _windows.Add(window);
-                    }
+                    window.Menu.Create();
+                    _windows.Add(window);
                 }
             }
         }
@@ -248,7 +245,6 @@ namespace SmartSystemMenu.App_Code.Forms
             Window window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
             if (window != null)
             {
-                //Window childWindow = _windows.FirstOrDefault(w => w.ParentHandle == window.Handle);
                 if (e.LParam.ToInt64() == NativeMethods.SW_MAXIMIZE)
                 {
                     window.Menu.UncheckSizeMenu();
@@ -257,10 +253,6 @@ namespace SmartSystemMenu.App_Code.Forms
                 {
                     window.MoveToSystemTray();
                 }
-                //if (e.LParam.ToInt64() == NativeMethods.SW_MINIMIZE && childWindow != null && childWindow.Menu.IsSystemTrayMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
-                //{
-                //    childWindow.MoveToSystemTray();
-                //}
             }
         }
 
