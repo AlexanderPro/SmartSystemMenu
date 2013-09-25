@@ -12,7 +12,6 @@ namespace SmartSystemMenu.App_Code.Common
         #region Fields.Private
 
         private IntPtr _handle;
-//        private IntPtr _parentHandle;
         private Boolean _isManaged;
         private Int32 _originalWindowLongExStyle;
         private Int32 _originalWindowWidth;
@@ -32,14 +31,6 @@ namespace SmartSystemMenu.App_Code.Common
                 return _handle;
             }
         }
-
-        //public IntPtr ParentHandle
-        //{
-        //    get
-        //    {
-        //        return _parentHandle;
-        //    }
-        //}
 
         public String WindowText
         {
@@ -146,7 +137,6 @@ namespace SmartSystemMenu.App_Code.Common
             _originalWindowWidth = Size.Width;
             _originalWindowHeight = Size.Height;
             _originalWindowLongExStyle = NativeMethods.GetWindowLong(_handle, NativeMethods.GWL_EXSTYLE);
-            //_parentHandle = NativeMethods.GetWindow(windowHandle, NativeMethods.GW_OWNER);
             _systemMenu = new SystemMenu(windowHandle);
             //_systemMenu.Create();
         }
@@ -210,21 +200,17 @@ namespace SmartSystemMenu.App_Code.Common
             CreateIconInSystemTray();
             NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Minimize);
             NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Hide);
-            //NativeMethods.ShowWindowAsync(_parentHandle, (Int32)WindowShowStyle.Minimize);
-            //NativeMethods.ShowWindowAsync(_parentHandle, (Int32)WindowShowStyle.Hide);
         }
 
         public void MoveToSystemTray()
         {
             CreateIconInSystemTray();
             NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Hide);
-            //NativeMethods.ShowWindowAsync(_parentHandle, (Int32)WindowShowStyle.Hide);
         }
 
         public void ShowNormal()
         {
             NativeMethods.ShowWindow(_handle, (Int32)WindowShowStyle.Normal);
-            //NativeMethods.ShowWindow(_parentHandle, (Int32)WindowShowStyle.Normal);
         }
 
         public static void CloseAllWindowsOfProcess(Int32 processId)
@@ -287,8 +273,6 @@ namespace SmartSystemMenu.App_Code.Common
 
                 NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Show);
                 NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Restore);
-                //NativeMethods.ShowWindowAsync(_parentHandle, (Int32)WindowShowStyle.Show);
-                //NativeMethods.ShowWindowAsync(_parentHandle, (Int32)WindowShowStyle.Restore);
                 NativeMethods.SetForegroundWindow(_handle);
             }
         }
@@ -353,8 +337,6 @@ namespace SmartSystemMenu.App_Code.Common
                 _systemTrayIcon.Visible = false;
                 NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Show);
                 NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Restore);
-                //NativeMethods.ShowWindowAsync(_parentHandle, (Int32)WindowShowStyle.Show);
-                //NativeMethods.ShowWindowAsync(_parentHandle, (Int32)WindowShowStyle.Restore);
                 NativeMethods.SetForegroundWindow(_handle);
             }
         }
