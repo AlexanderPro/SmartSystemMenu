@@ -125,6 +125,15 @@ namespace SmartSystemMenu.App_Code.Common
             }
         }
 
+        public Boolean ExistSystemTrayIcon
+        {
+            get
+            {
+                Boolean exist = _systemTrayIcon != null && _systemTrayIcon.Visible;
+                return exist;
+            }
+        }
+
         #endregion
 
 

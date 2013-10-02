@@ -233,7 +233,7 @@ namespace SmartSystemMenu.App_Code.Forms
                 }
             }
 
-            if (windowIndex != -1 && _windows[windowIndex].IsVisible)
+            if (windowIndex != -1 && !_windows[windowIndex].ExistSystemTrayIcon)
             {
                 _windows[windowIndex].Dispose();
                 _windows.RemoveAt(windowIndex);
