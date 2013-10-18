@@ -23,7 +23,7 @@ namespace SmartSystemMenu.App_Code.Common
             MenuItemAutoStart.Text = "Auto start program";
 
             MenuItemAbout = new ToolStripMenuItem();
-            MenuItemAbout.Name = "miAutoStart";
+            MenuItemAbout.Name = "miAbout";
             MenuItemAbout.Size = new Size(175, 22);
             MenuItemAbout.Text = "About";
 

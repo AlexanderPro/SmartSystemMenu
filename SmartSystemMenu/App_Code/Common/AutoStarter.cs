@@ -57,7 +57,7 @@ namespace SmartSystemMenu.App_Code.Common
             }
         }
 
-        public static Boolean IsAutoStartByRegisetrEnabled(String keyName, String assemblyLocation)
+        public static Boolean IsAutoStartByRegisterEnabled(String keyName, String assemblyLocation)
         {
             RegistryKey key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION);
             if (key == null)
