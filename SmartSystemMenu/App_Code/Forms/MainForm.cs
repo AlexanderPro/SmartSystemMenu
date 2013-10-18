@@ -17,7 +17,6 @@ namespace SmartSystemMenu.App_Code.Forms
     {
         private readonly String _shellWindowName = "Program Manager";
         private IList<Window> _windows;
-        private ShellHook _shellHook;
         private GetMsgHook _getMsgHook;
         private CBTHook _cbtHook;
         private KeyboardHook _keyboardHook;
@@ -67,7 +66,7 @@ namespace SmartSystemMenu.App_Code.Forms
             _systemTrayMenu.MenuItemAutoStart.Click += MenuItemAutoStartClick;
             _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
-            _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisetrEnabled(AssemblyUtility.AssemblyProductName, AssemblyUtility.AssemblyLocation);
+            _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtility.AssemblyProductName, AssemblyUtility.AssemblyLocation);
 #endif
             _windows = EnumWindows.EnumAllWindows(new String[] { _shellWindowName });
             foreach (var window in _windows)
@@ -75,17 +74,13 @@ namespace SmartSystemMenu.App_Code.Forms
                 window.Menu.Create();
             }
 
-            _shellHook = new ShellHook(Handle);
-            _shellHook.WindowActivated += WindowCreated;
-            _shellHook.WindowCreated += WindowCreated;
-            _shellHook.WindowDestroyed += WindowDestroyed;
-            _shellHook.Start();
-
             _getMsgHook = new GetMsgHook(Handle);
             _getMsgHook.GetMsg += WindowGetMsg;
             _getMsgHook.Start();
 
             _cbtHook = new CBTHook(Handle);
+            _cbtHook.CreateWindow += WindowCreated;
+            _cbtHook.DestroyWindow += WindowDestroyed;
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
@@ -98,10 +93,6 @@ namespace SmartSystemMenu.App_Code.Forms
 
         protected override void OnClosed(EventArgs e)
         {
-            if (_shellHook != null)
-            {
-                _shellHook.Stop();
-            }
             if (_getMsgHook != null)
             {
                 _getMsgHook.Stop();
@@ -151,10 +142,6 @@ namespace SmartSystemMenu.App_Code.Forms
             {
                 _cbtHook.ProcessWindowMessage(ref m);
             }
-            if (_shellHook != null)
-            {
-                _shellHook.ProcessWindowMessage(ref m);
-            }
             if (_getMsgHook != null)
             {
                 _getMsgHook.ProcessWindowMessage(ref m);
@@ -170,7 +157,7 @@ namespace SmartSystemMenu.App_Code.Forms
         {
             String keyName = AssemblyUtility.AssemblyProductName;
             String assemblyLocation = AssemblyUtility.AssemblyLocation;
-            Boolean autoStartEnabled = AutoStarter.IsAutoStartByRegisetrEnabled(keyName, assemblyLocation);
+            Boolean autoStartEnabled = AutoStarter.IsAutoStartByRegisterEnabled(keyName, assemblyLocation);
             if (autoStartEnabled)
             {
                 AutoStarter.UnsetAutoStartByRegister(keyName);
@@ -207,7 +194,7 @@ namespace SmartSystemMenu.App_Code.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (!_windows.Any(w => w.Handle == e.Handle) && e.Handle != IntPtr.Zero)
+            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle).Exists && !_windows.Any(w => w.Handle == e.Handle))
             {
                 Int32 processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
