@@ -18,6 +18,7 @@ namespace SmartSystemMenu.App_Code.Forms
         private readonly String _shellWindowName = "Program Manager";
         private IList<Window> _windows;
         private GetMsgHook _getMsgHook;
+        private ShellHook _shellHook;
         private CBTHook _cbtHook;
         private KeyboardHook _keyboardHook;
         private AboutForm _aboutForm;
@@ -51,7 +52,10 @@ namespace SmartSystemMenu.App_Code.Forms
                 String filePath = Path.Combine(directoryName, fileName);
                 try
                 {
-                    AssemblyUtility.ExtractFileFromAssembly(resourceName, filePath);
+                    if (!File.Exists(filePath))
+                    {
+                        AssemblyUtility.ExtractFileFromAssembly(resourceName, filePath);
+                    }
                     _64BitProcess = Process.Start(filePath);
                 }
                 catch
@@ -78,9 +82,14 @@ namespace SmartSystemMenu.App_Code.Forms
             _getMsgHook.GetMsg += WindowGetMsg;
             _getMsgHook.Start();
 
+            _shellHook = new ShellHook(Handle);
+            _shellHook.WindowCreated += WindowCreated;
+            _shellHook.WindowDestroyed += WindowDestroyed;
+            _shellHook.Start();
+
             _cbtHook = new CBTHook(Handle);
-            _cbtHook.CreateWindow += WindowCreated;
-            _cbtHook.DestroyWindow += WindowDestroyed;
+            _cbtHook.WindowCreated += WindowCreated;
+            _cbtHook.WindowDestroyed += WindowDestroyed;
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
@@ -96,6 +105,10 @@ namespace SmartSystemMenu.App_Code.Forms
             if (_getMsgHook != null)
             {
                 _getMsgHook.Stop();
+            }
+            if (_shellHook != null)
+            {
+                _shellHook.Stop();
             }
             if (_cbtHook != null)
             {
@@ -138,6 +151,10 @@ namespace SmartSystemMenu.App_Code.Forms
 
         protected override void WndProc(ref Message m)
         {
+            if (_shellHook != null)
+            {
+                _shellHook.ProcessWindowMessage(ref m);
+            }
             if (_cbtHook != null)
             {
                 _cbtHook.ProcessWindowMessage(ref m);
