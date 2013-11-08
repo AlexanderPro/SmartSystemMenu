@@ -18,9 +18,9 @@ namespace SmartSystemMenu.App_Code.Hooks
         private Int32 msgID_CBT_SysCommand;
 
         public event EventHandler<EventArgs> HookReplaced;
-        public event EventHandler<WindowEventArgs> Activate;
-        public event EventHandler<WindowEventArgs> CreateWindow;
-        public event EventHandler<WindowEventArgs> DestroyWindow;
+        public event EventHandler<WindowEventArgs> WindowActivated;
+        public event EventHandler<WindowEventArgs> WindowCreated;
+        public event EventHandler<WindowEventArgs> WindowDestroyed;
         public event EventHandler<SysCommandEventArgs> MinMax;
         public event EventHandler<WindowEventArgs> MoveSize;
         public event EventHandler<WindowEventArgs> SetFocus;
@@ -68,15 +68,15 @@ namespace SmartSystemMenu.App_Code.Hooks
             }
             else if (m.Msg == msgID_CBT_Activate)
             {
-                RaiseEvent(Activate, new WindowEventArgs(m.WParam));
+                RaiseEvent(WindowActivated, new WindowEventArgs(m.WParam));
             }
             else if (m.Msg == msgID_CBT_CreateWnd)
             {
-                RaiseEvent(CreateWindow, new WindowEventArgs(m.WParam));
+                RaiseEvent(WindowCreated, new WindowEventArgs(m.WParam));
             }
             else if (m.Msg == msgID_CBT_DestroyWnd)
             {
-                RaiseEvent(DestroyWindow, new WindowEventArgs(m.WParam));
+                RaiseEvent(WindowDestroyed, new WindowEventArgs(m.WParam));
             }
             else if (m.Msg == msgID_CBT_MinMax)
             {
