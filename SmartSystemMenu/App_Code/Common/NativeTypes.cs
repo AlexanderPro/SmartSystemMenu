@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace SmartSystemMenu.App_Code.Common
 {
     [StructLayout(LayoutKind.Sequential)]
-    struct RECT
+    struct Rect
     {
         public Int32 Left;
         public Int32 Top;
@@ -42,5 +42,43 @@ namespace SmartSystemMenu.App_Code.Common
         SMTO_BLOCK = 0x0001,
         SMTO_ABORTIFHUNG = 0x0002,
         SMTO_NOTIMEOUTIFNOTHUNG = 0x0008,
+    }
+
+    enum PriorityClass : uint
+    {
+        ABOVE_NORMAL_PRIORITY_CLASS = 0x8000,
+        BELOW_NORMAL_PRIORITY_CLASS = 0x4000,
+        HIGH_PRIORITY_CLASS = 0x80,
+        IDLE_PRIORITY_CLASS = 0x40,
+        NORMAL_PRIORITY_CLASS = 0x20,
+        PROCESS_MODE_BACKGROUND_BEGIN = 0x100000,
+        PROCESS_MODE_BACKGROUND_END = 0x200000,
+        REALTIME_PRIORITY_CLASS = 0x100
+    }
+
+    enum Priority :int
+    {
+        RealTime = 24,
+        High = 13,
+        AboveNormal = 10,
+        Normal = 8,
+        BelowNormal = 6,
+        Idle = 4
+    }
+
+    [StructLayoutAttribute(LayoutKind.Sequential)]
+    struct MenuItemInfo
+    {
+        public UInt32 cbSize;
+        public UInt32 fMask;
+        public UInt32 fType;
+        public UInt32 fState;
+        public UInt32 wID;
+        public IntPtr hSubMenu;
+        public IntPtr hbmpChecked;
+        public IntPtr hbmpUnchecked;
+        public UInt32 dwItemData;
+        public String dwTypeData;
+        public UInt32 cch;
     }
 }

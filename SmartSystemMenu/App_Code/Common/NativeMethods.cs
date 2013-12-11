@@ -58,7 +58,10 @@ namespace SmartSystemMenu.App_Code.Common
         public static extern Int32 GetMenuItemCount(IntPtr hMenu);
 
         [DllImport("user32.dll")]
-        public static extern UInt32 GetMenuState(IntPtr hMenu, Int32 uIDItem, Int32 uFlags);
+        public static extern UInt32 GetMenuState(IntPtr hMenu, Int32 uIdItem, Int32 uFlags);
+
+        [DllImport("User32.dll")]
+        public static extern Boolean SetMenuItemInfo(IntPtr hMenu, Int32 uIdItem, Boolean fByPosition, ref MenuItemInfo lpmii);
 
         [DllImport("user32.dll")]
         public static extern Boolean DrawMenuBar(IntPtr hWnd);
@@ -67,13 +70,22 @@ namespace SmartSystemMenu.App_Code.Common
         public static extern Int32 GetAsyncKeyState(Int32 key);
 
         [DllImport("user32.dll")]
-        public static extern Boolean SetLayeredWindowAttributes(IntPtr hwnd, UInt32 crKey, Byte bAlpha, Int32 dwFlags);
+        public static extern Boolean SetLayeredWindowAttributes(IntPtr hwnd, UInt32 crKey, Byte bAlpha, UInt32 dwFlags);
+
+        [DllImport("user32.dll")]
+        public static extern Boolean GetLayeredWindowAttributes(IntPtr hwnd, out UInt32 crKey, out Byte bAlpha, out UInt32 dwFlags);
 
         [DllImport("user32.dll")]
         public static extern Int32 SetWindowLong(IntPtr handle, Int32 nIndex, Int32 dwNewLong);
 
         [DllImport("user32.dll")]
         public static extern Int32 GetWindowLong(IntPtr handle, Int32 nIndex);
+
+        [DllImport("kernel32.dll")]
+        public static extern Boolean SetPriorityClass(IntPtr hProcess, PriorityClass priorityClass);
+
+        [DllImport("kernel32.dll")]
+        public static extern PriorityClass GetPriorityClass(IntPtr hProcess);
 
         [DllImport("user32.dll")]
         public static extern IntPtr CreateMenu();
@@ -93,11 +105,11 @@ namespace SmartSystemMenu.App_Code.Common
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern Boolean GetWindowRect(IntPtr handle, out RECT lpRect);
+        public static extern Boolean GetWindowRect(IntPtr handle, out Rect lpRect);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern Boolean GetClientRect(IntPtr handle, out RECT lpRect);
+        public static extern Boolean GetClientRect(IntPtr handle, out Rect lpRect);
 
         [DllImport("user32.dll")]
         public static extern Boolean MoveWindow(IntPtr handle, Int32 x, Int32 y, Int32 nWidth, Int32 nHeight, Boolean bRepaint);
@@ -130,6 +142,12 @@ namespace SmartSystemMenu.App_Code.Common
 
         [DllImport("user32.dll")]
         public static extern Boolean SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr OpenProcess(Int32 dwDesiredAccess, Boolean bInheritHandle, Int32 dwProcessId);
+
+        [DllImport("kernel32.dll")]
+        public static extern Boolean CloseHandle(IntPtr hObject);
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern UInt32 GetWindowThreadProcessId(IntPtr hWnd, out Int32 lpdwProcessId);
@@ -166,77 +184,5 @@ namespace SmartSystemMenu.App_Code.Common
         {
             return IntPtr.Size > 4 ? GetClassLongPtr64(hWnd, nIndex) : new IntPtr(GetClassLongPtr32(hWnd, nIndex));
         }
-
-        // Menus
-        public const Int32 MF_UNCHECKED = 0x00000000;
-        public const Int32 MF_STRING = 0x00000000;
-        public const Int32 MF_GRAYED = 0x00000001;
-        public const Int32 MF_DISABLED = 0x00000002;
-        public const Int32 MF_CHECKED = 0x00000008;
-        public const Int32 MF_POPUP = 0x00000010;
-        public const Int32 MF_BYCOMMAND = 0x00000000;
-        public const Int32 MF_BYPOSITION = 0x00000400;
-        public const Int32 MF_SEPARATOR = 0x00000800;
-
-        // GetWindow
-        public const Int32 GW_HWNDFIRST = 0;
-        public const Int32 GW_OWNER = 4;
-        public const Int32 GW_CHILD = 5;
-
-        // LayeredWindowAttributes
-        public const Int32 LWA_COLORKEY = 0x00000001;
-        public const Int32 LWA_ALPHA = 0x00000002;
-
-        // WindowLong
-        public const Int32 GWL_WNDPROC = (-4);
-        public const Int32 GWL_HINSTANCE = (-6);
-        public const Int32 GWL_HWNDPARENT = (-8);
-        public const Int32 GWL_STYLE = (-16);
-        public const Int32 GWL_EXSTYLE = (-20);
-        public const Int32 GWL_USERDATA = (-21);
-        public const Int32 GWL_ID = (-12);
-
-        // WindowStyle
-        public const Int32 WS_EX_LAYERED = 0x00080000;
-
-        // Window Messages
-        public const Int32 WM_CREATE = 0x0001;
-        public const Int32 WM_DESTROY = 0x0002;
-        public const Int32 WM_MOVE = 0x0003;
-        public const Int32 WM_SIZE = 0x0005;
-        public const Int32 WM_ACTIVATE = 0x0006;
-        public const Int32 WM_COMMAND = 0x0111;
-        public const Int32 WM_SYSCOMMAND = 0x0112;
-        public const Int32 WM_MENUCOMMAND = 0x0126;
-        public const Int32 WM_MENUSELECT = 0x011F;
-        public const Int32 WM_GETICON = 0x7F;
-        public const Int32 WM_CLOSE = 0x0010;
-        public const Int32 WM_NULL = 0x0000;
-
-        public const UInt32 SWP_NOSIZE = 0x0001;
-        public const UInt32 SWP_NOMOVE = 0x0002;
-        public const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
-
-        public const Int32 ICON_SMALL = 0;
-        public const Int32 ICON_BIG = 1;
-        public const Int32 ICON_SMALL2 = 2;
-        public const Int32 GCLP_HICON = -14;
-        public const Int32 GCLP_HICONSM = -34;
-        public const String IDI_APPLICATION = "#32512";
-
-        public const Int32 SC_MINIMIZE = 0xF020;
-        public const Int32 SC_MAXIMIZE = 0xF030;
-        public const Int32 SC_RESTORE = 0xF120;
-        public const Int32 SW_MAXIMIZE = 0x3;
-        public const Int32 SW_MINIMIZE = 0x6;
-        public const Int32 SW_Maxim = 0x6;
-
-        public const Int32 MSGFLT_ADD = 0x1;
-
-        public const Int32 HWND_BROADCAST = 0xffff;
-
-        public const Int32 VK_SHIFT = 0x10;
-        public const Int32 VK_CONTROL = 0x11;
-        public const Int32 VK_DOWN = 0x28;
     }
 }

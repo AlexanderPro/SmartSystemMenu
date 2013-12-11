@@ -10,29 +10,25 @@ using SmartSystemMenu.App_Code.Common;
 
 namespace SmartSystemMenu.App_Code.Forms
 {
-    partial class SizeForm : Form
+    partial class TransparencyForm : Form
     {
         private Window _window;
 
-        public SizeForm(Window window)
+        public TransparencyForm(Window window)
         {
             InitializeComponent();
-
             _window = window;
-            numericWidth.Value = _window.Size.Width;
-            numericHeight.Value = _window.Size.Height;
+            numericTransparency.Value = _window.Transparency;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
             try
             {
-                Int32 width = (Int32)numericWidth.Value;
-                Int32 height = (Int32)numericHeight.Value;
-                _window.ShowNormal();
-                _window.SetSize(width, height);
-                _window.Menu.UncheckSizeMenu();
-                _window.Menu.CheckMenuItem(SystemMenu.SC_SIZE_CUSTOM, true);
+                Byte value = (Byte)numericTransparency.Value;
+                _window.SetTrancparency(value);
+                _window.Menu.UncheckTransparencyMenu();
+                _window.Menu.CheckMenuItem(SystemMenu.SC_TRANS_CUSTOM, true);
             }
             catch
             {
@@ -50,7 +46,7 @@ namespace SmartSystemMenu.App_Code.Forms
                 case 13:
                     {
                         ButtonApplyClick(sender, (EventArgs)e);
-                    }break;
+                    } break;
 
                 case 27:
                     {

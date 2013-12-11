@@ -76,15 +76,30 @@
     <Compile Include="App_Code\Common\AutoStarter.cs" />
     <Compile Include="App_Code\Common\EnumWindows.cs" />
     <Compile Include="App_Code\Common\Extensions\ProcessExtensions.cs" />
+    <Compile Include="App_Code\Common\NativeConstants.cs" />
     <Compile Include="App_Code\Common\NativeTypes.cs" />
     <Compile Include="App_Code\Common\PlatformUtility.cs" />
+    <Compile Include="App_Code\Common\ScreenUtility.cs" />
     <Compile Include="App_Code\Common\SystemMenu.cs" />
     <Compile Include="App_Code\Common\SystemTrayMenu.cs" />
+    <Compile Include="App_Code\Common\WindowAlignment.cs" />
     <Compile Include="App_Code\Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="App_Code\Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\Forms\ScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App_Code\Forms\ScreenForm.Designer.cs">
+      <DependentUpon>ScreenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\Forms\PositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App_Code\Forms\PositionForm.Designer.cs">
+      <DependentUpon>PositionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="App_Code\Forms\InfoForm.cs">
       <SubType>Form</SubType>
@@ -106,11 +121,11 @@
     <Compile Include="App_Code\Hooks\NativeHookMethods.cs" />
     <Compile Include="App_Code\Hooks\WindowEventArgs.cs" />
     <Compile Include="App_Code\Hooks\WndProcEventArgs.cs" />
-    <Compile Include="App_Code\Forms\OpacityForm.cs">
+    <Compile Include="App_Code\Forms\TransparencyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\OpacityForm.Designer.cs">
-      <DependentUpon>OpacityForm.cs</DependentUpon>
+    <Compile Include="App_Code\Forms\TransparencyForm.Designer.cs">
+      <DependentUpon>TransparencyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="App_Code\Forms\SizeForm.cs">
       <SubType>Form</SubType>
@@ -137,14 +152,20 @@
     <EmbeddedResource Include="App_Code\Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_Code\Forms\ScreenForm.resx">
+      <DependentUpon>ScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_Code\Forms\PositionForm.resx">
+      <DependentUpon>PositionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_Code\Forms\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App_Code\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\OpacityForm.resx">
-      <DependentUpon>OpacityForm.cs</DependentUpon>
+    <EmbeddedResource Include="App_Code\Forms\TransparencyForm.resx">
+      <DependentUpon>TransparencyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

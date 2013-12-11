@@ -10,29 +10,29 @@ using SmartSystemMenu.App_Code.Common;
 
 namespace SmartSystemMenu.App_Code.Forms
 {
-    partial class SizeForm : Form
+    partial class PositionForm : Form
     {
         private Window _window;
 
-        public SizeForm(Window window)
+        public PositionForm(Window window)
         {
             InitializeComponent();
 
             _window = window;
-            numericWidth.Value = _window.Size.Width;
-            numericHeight.Value = _window.Size.Height;
+            numericLeft.Value = _window.Size.Left;
+            numericTop.Value = _window.Size.Top;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
             try
             {
-                Int32 width = (Int32)numericWidth.Value;
-                Int32 height = (Int32)numericHeight.Value;
+                Int32 left = (Int32)numericLeft.Value;
+                Int32 top = (Int32)numericTop.Value;
                 _window.ShowNormal();
-                _window.SetSize(width, height);
-                _window.Menu.UncheckSizeMenu();
-                _window.Menu.CheckMenuItem(SystemMenu.SC_SIZE_CUSTOM, true);
+                _window.SetPosition(left, top);
+                _window.Menu.UncheckAlignmentMenu();
+                _window.Menu.CheckMenuItem(SystemMenu.SC_ALIGN_CUSTOM, true);
             }
             catch
             {

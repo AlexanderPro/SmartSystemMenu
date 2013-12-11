@@ -29,9 +29,9 @@ namespace SmartSystemMenu.App_Code.Hooks
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_CallWndProc_HookReplaced, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CallWndProc, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CallWndProc_Params, NativeMethods.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_CallWndProc_HookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_CallWndProc, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_CallWndProc_Params, NativeConstants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeCallWndProcHook(0, handle);
         }

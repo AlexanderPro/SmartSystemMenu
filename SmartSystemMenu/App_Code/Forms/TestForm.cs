@@ -17,7 +17,7 @@ namespace SmartSystemMenu.App_Code.Forms
         private Window window = null;
 
         public TestForm()
-        {            
+        {
             InitializeComponent();
         }
 
@@ -43,15 +43,15 @@ namespace SmartSystemMenu.App_Code.Forms
             //Determines the number of items in the system menu
             Int32 menuItemCount = NativeMethods.GetMenuItemCount(menuHandle);
 
-            //The identifier of the new menu item 
+            //The identifier of the new menu item
             Int32 menuItemId = 0x4747;
 
             //Insert a new menu item into the system menu
-            NativeMethods.InsertMenu(menuHandle, menuItemCount, NativeMethods.MF_BYPOSITION, menuItemId, "Menu Item N");
-            
+            NativeMethods.InsertMenu(menuHandle, menuItemCount, NativeConstants.MF_BYPOSITION, menuItemId, "Menu Item N");
+
             //Set break point to check calculator system menu
             //Delete created menu item from the system menu
-            NativeMethods.DeleteMenu(menuHandle, menuItemCount, NativeMethods.MF_BYPOSITION);
+            NativeMethods.DeleteMenu(menuHandle, menuItemCount, NativeConstants.MF_BYPOSITION);
         }
 
         private void ShowInfoClick(object sender, EventArgs e)
