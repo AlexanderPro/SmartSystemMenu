@@ -76,6 +76,16 @@ namespace SmartSystemMenu.App_Code.Forms
             foreach (var window in _windows)
             {
                 window.Menu.Create();
+                Priority priority = window.ProcessPriority;
+                Int32 menuItemId = priority == Priority.RealTime ? SystemMenu.SC_PRIORITY_REAL_TIME :
+                                   priority == Priority.High ? SystemMenu.SC_PRIORITY_HIGH :
+                                   priority == Priority.AboveNormal ? SystemMenu.SC_PRIORITY_ABOVE_NORMAL :
+                                   priority == Priority.Normal ? SystemMenu.SC_PRIORITY_NORMAL :
+                                   priority == Priority.BelowNormal ? SystemMenu.SC_PRIORITY_BELOW_NORMAL :
+                                   priority == Priority.Idle ? SystemMenu.SC_PRIORITY_IDLE : SystemMenu.SC_PRIORITY_NORMAL;
+                window.Menu.CheckMenuItem(menuItemId, true);
+                window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + ScreenUtility.PrimaryScreenId);
+                if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
             }
 
             _getMsgHook = new GetMsgHook(Handle);
@@ -90,6 +100,7 @@ namespace SmartSystemMenu.App_Code.Forms
             _cbtHook = new CBTHook(Handle);
             _cbtHook.WindowCreated += WindowCreated;
             _cbtHook.WindowDestroyed += WindowDestroyed;
+            _cbtHook.MoveSize += WindowMoveSize;
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
@@ -215,10 +226,27 @@ namespace SmartSystemMenu.App_Code.Forms
             {
                 Int32 processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
-                IList<Window> windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new String[] { _shellWindowName });
+                IList<Window> windows = new List<Window>();
+                try
+                {
+                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new String[] { _shellWindowName });
+                }
+                catch
+                {
+                }
                 foreach (var window in windows)
                 {
                     window.Menu.Create();
+                    Priority priority = window.ProcessPriority;
+                    Int32 menuItemId = priority == Priority.RealTime ? SystemMenu.SC_PRIORITY_REAL_TIME :
+                                       priority == Priority.High ? SystemMenu.SC_PRIORITY_HIGH :
+                                       priority == Priority.AboveNormal ? SystemMenu.SC_PRIORITY_ABOVE_NORMAL :
+                                       priority == Priority.Normal ? SystemMenu.SC_PRIORITY_NORMAL :
+                                       priority == Priority.BelowNormal ? SystemMenu.SC_PRIORITY_BELOW_NORMAL :
+                                       priority == Priority.Idle ? SystemMenu.SC_PRIORITY_IDLE : SystemMenu.SC_PRIORITY_NORMAL;
+                    window.Menu.CheckMenuItem(menuItemId, true);
+                    window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + ScreenUtility.PrimaryScreenId);
+                    if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
                     _windows.Add(window);
                 }
             }
@@ -249,24 +277,33 @@ namespace SmartSystemMenu.App_Code.Forms
             Window window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
             if (window != null)
             {
-                if (e.LParam.ToInt64() == NativeMethods.SW_MAXIMIZE)
+                if (e.LParam.ToInt64() == NativeConstants.SW_MAXIMIZE)
                 {
                     window.Menu.UncheckSizeMenu();
                 }
-                if (e.LParam.ToInt64() == NativeMethods.SW_MINIMIZE && window.Menu.IsSystemTrayMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
+                if (e.LParam.ToInt64() == NativeConstants.SW_MINIMIZE && window.Menu.IsMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
                 {
                     window.MoveToSystemTray();
                 }
             }
         }
 
+        private void WindowMoveSize(object sender, WindowEventArgs e)
+        {
+            Window window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
+            if (window != null)
+            {
+                window.SaveDefaultSizePosition();
+            }
+        }
+
         private void WindowKeyboardEvent(object sender, BasicHookEventArgs e)
         {
             Int64 wParam = e.WParam.ToInt64();
-            if (wParam == NativeMethods.VK_DOWN)
+            if (wParam == NativeConstants.VK_DOWN)
             {
-                Int32 controlState = NativeMethods.GetAsyncKeyState(NativeMethods.VK_CONTROL) & 0x8000;
-                Int32 shiftState = NativeMethods.GetAsyncKeyState(NativeMethods.VK_SHIFT) & 0x8000;
+                Int32 controlState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_CONTROL) & 0x8000;
+                Int32 shiftState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_SHIFT) & 0x8000;
                 Boolean controlKey = Convert.ToBoolean(controlState);
                 Boolean shiftKey = Convert.ToBoolean(shiftState);
                 if (controlKey && shiftKey)
@@ -284,15 +321,17 @@ namespace SmartSystemMenu.App_Code.Forms
         private void WindowGetMsg(object sender, WndProcEventArgs e)
         {
             Int64 message = e.Message.ToInt64();
-            if (message == NativeMethods.WM_SYSCOMMAND)
+            if (message == NativeConstants.WM_SYSCOMMAND)
             {
+                //String dbgMessage = String.Format("WM_SYSCOMMAND, Form, Handle = {0}, WParam = {1}", e.Handle, e.WParam);
+                //System.Diagnostics.Trace.WriteLine(dbgMessage);
                 Window window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
                 if (window != null)
                 {
                     Int64 lowOrder = e.WParam.ToInt64() & 0x0000FFFF;
                     switch (lowOrder)
                     {
-                        case NativeMethods.SC_MAXIMIZE:
+                        case NativeConstants.SC_MAXIMIZE:
                             {
                                 window.Menu.UncheckSizeMenu();
                             } break;
@@ -304,8 +343,8 @@ namespace SmartSystemMenu.App_Code.Forms
 
                         case SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY:
                             {
-                                Boolean r = window.Menu.IsSystemTrayMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
-                                window.Menu.CheckOnTopMenuItem(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, !r);
+                                Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, !r);
                             } break;
 
                         case SystemMenu.SC_INFORMATION:
@@ -317,15 +356,30 @@ namespace SmartSystemMenu.App_Code.Forms
 
                         case SystemMenu.SC_TOPMOST:
                             {
-                                Boolean r = window.Menu.IsOnTopMenuItemChecked(SystemMenu.SC_TOPMOST);
-                                window.Menu.CheckOnTopMenuItem(SystemMenu.SC_TOPMOST, !r);
+                                Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, !r);
                                 window.MakeTopMost(!r);
                             } break;
 
-                        case SystemMenu.SC_SIZE_CURRENT:
+                        case SystemMenu.SC_ROLLUP:
+                            {
+                                Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_ROLLUP);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_ROLLUP, !r);
+                                if (!r)
+                                {
+                                    window.RollUp();
+                                }
+                                else
+                                {
+                                    window.UnRollUp();
+                                }
+                            } break;
+
+
+                        case SystemMenu.SC_SIZE_DEFAULT:
                             {
                                 window.Menu.UncheckSizeMenu();
-                                window.Menu.CheckSizeMenuItem(SystemMenu.SC_SIZE_CURRENT, true);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_SIZE_DEFAULT, true);
                                 window.ShowNormal();
                                 window.RestoreSize();
                             } break;
@@ -337,18 +391,39 @@ namespace SmartSystemMenu.App_Code.Forms
                                 Window.ForceForegroundWindow(sizeForm.Handle);
                             } break;
 
-                        case SystemMenu.SC_TRANS_CURRENT:
+                        case SystemMenu.SC_TRANS_DEFAULT:
                             {
                                 window.Menu.UncheckTransparencyMenu();
-                                window.Menu.CheckTransparencyMenuItem(SystemMenu.SC_TRANS_CURRENT, true);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_TRANS_DEFAULT, true);
                                 window.RestoreTransparency();
                             } break;
 
                         case SystemMenu.SC_TRANS_CUSTOM:
                             {
-                                OpacityForm opacityForm = new OpacityForm(window);
+                                TransparencyForm opacityForm = new TransparencyForm(window);
                                 opacityForm.Show();
                                 Window.ForceForegroundWindow(opacityForm.Handle);
+                            } break;
+
+                        case SystemMenu.SC_ALIGN_DEFAULT:
+                            {
+                                window.Menu.UncheckAlignmentMenu();
+                                window.Menu.CheckMenuItem(SystemMenu.SC_ALIGN_DEFAULT, true);
+                                window.RestorePosition();
+                            } break;
+
+                        case SystemMenu.SC_ALIGN_CUSTOM:
+                            {
+                                PositionForm positionForm = new PositionForm(window);
+                                positionForm.Show();
+                                Window.ForceForegroundWindow(positionForm.Handle);
+                            } break;
+
+                        case SystemMenu.SC_ALIGN_MONITOR:
+                            {
+                                ScreenForm screenForm = new ScreenForm(window);
+                                screenForm.Show();
+                                Window.ForceForegroundWindow(screenForm.Handle);
                             } break;
 
                         case SystemMenu.SC_SIZE_640_480: SetSizeMenuItem(window, SystemMenu.SC_SIZE_640_480, 640, 480); break;
@@ -365,35 +440,67 @@ namespace SmartSystemMenu.App_Code.Forms
                         case SystemMenu.SC_SIZE_1600_900: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1600_900, 1600, 900); break;
                         case SystemMenu.SC_SIZE_1680_1050: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1680_1050, 1680, 1050); break;
 
-                        case SystemMenu.SC_TRANS100: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS100, 100); break;
-                        case SystemMenu.SC_TRANS90: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS90, 90); break;
-                        case SystemMenu.SC_TRANS80: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS80, 80); break;
-                        case SystemMenu.SC_TRANS70: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS70, 70); break;
-                        case SystemMenu.SC_TRANS60: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS60, 60); break;
-                        case SystemMenu.SC_TRANS50: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS50, 50); break;
-                        case SystemMenu.SC_TRANS40: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS40, 40); break;
-                        case SystemMenu.SC_TRANS30: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS30, 30); break;
-                        case SystemMenu.SC_TRANS20: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS20, 20); break;
-                        case SystemMenu.SC_TRANS10: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS10, 10); break;
-                        case SystemMenu.SC_TRANS00: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS00, 00); break;
+                        case SystemMenu.SC_TRANS_100: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_100, 100); break;
+                        case SystemMenu.SC_TRANS_90: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_90, 90); break;
+                        case SystemMenu.SC_TRANS_80: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_80, 80); break;
+                        case SystemMenu.SC_TRANS_70: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_70, 70); break;
+                        case SystemMenu.SC_TRANS_60: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_60, 60); break;
+                        case SystemMenu.SC_TRANS_50: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_50, 50); break;
+                        case SystemMenu.SC_TRANS_40: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_40, 40); break;
+                        case SystemMenu.SC_TRANS_30: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_30, 30); break;
+                        case SystemMenu.SC_TRANS_20: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_20, 20); break;
+                        case SystemMenu.SC_TRANS_10: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_10, 10); break;
+                        case SystemMenu.SC_TRANS_00: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_00, 0); break;
+
+                        case SystemMenu.SC_PRIORITY_REAL_TIME: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_REAL_TIME, Priority.RealTime); break;
+                        case SystemMenu.SC_PRIORITY_HIGH: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_HIGH, Priority.High); break;
+                        case SystemMenu.SC_PRIORITY_ABOVE_NORMAL: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_ABOVE_NORMAL, Priority.AboveNormal); break;
+                        case SystemMenu.SC_PRIORITY_NORMAL: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_NORMAL, Priority.Normal); break;
+                        case SystemMenu.SC_PRIORITY_BELOW_NORMAL: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_BELOW_NORMAL, Priority.BelowNormal); break;
+                        case SystemMenu.SC_PRIORITY_IDLE: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_IDLE, Priority.Idle); break;
+
+                        case SystemMenu.SC_ALIGN_TOP_LEFT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_TOP_LEFT, WindowAlignment.TopLeft); break;
+                        case SystemMenu.SC_ALIGN_TOP_CENTER: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_TOP_CENTER, WindowAlignment.TopCenter); break;
+                        case SystemMenu.SC_ALIGN_TOP_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_TOP_RIGHT, WindowAlignment.TopRight); break;
+                        case SystemMenu.SC_ALIGN_MIDDLE_LEFT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_MIDDLE_LEFT, WindowAlignment.MiddleLeft); break;
+                        case SystemMenu.SC_ALIGN_MIDDLE_CENTER: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_MIDDLE_CENTER, WindowAlignment.MiddleCenter); break;
+                        case SystemMenu.SC_ALIGN_MIDDLE_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_MIDDLE_RIGHT, WindowAlignment.MiddleRight); break;
+                        case SystemMenu.SC_ALIGN_BOTTOM_LEFT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_LEFT, WindowAlignment.BottomLeft); break;
+                        case SystemMenu.SC_ALIGN_BOTTOM_CENTER: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_CENTER, WindowAlignment.BottomCenter); break;
+                        case SystemMenu.SC_ALIGN_BOTTOM_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_RIGHT, WindowAlignment.BottomRight); break;
                     }
                 }
             }
         }
 
-        private void SetTransparencyMenuItem(Window window, Int32 itemId, Int32 transparency)
+        private void SetPriorityMenuItem(Window window, Int32 itemId, Priority priority)
         {
-            window.Menu.UncheckTransparencyMenu();
-            window.Menu.CheckTransparencyMenuItem(itemId, true);
-            window.SetTrancparencyByPercent(transparency);
+            window.Menu.UncheckPriorityMenu();
+            window.Menu.CheckMenuItem(itemId, true);
+            window.SetPriority(priority);
+        }
+
+        private void SetAlignmentMenuItem(Window window, Int32 itemId, WindowAlignment alignment)
+        {
+            window.Menu.UncheckAlignmentMenu();
+            window.Menu.CheckMenuItem(itemId, true);
+            window.ShowNormal();
+            window.SetAlignment(alignment);
         }
 
         private void SetSizeMenuItem(Window window, Int32 itemId, Int32 width, Int32 height)
         {
             window.Menu.UncheckSizeMenu();
-            window.Menu.CheckSizeMenuItem(itemId, true);
+            window.Menu.CheckMenuItem(itemId, true);
             window.ShowNormal();
             window.SetSize(width, height);
+        }
+
+        private void SetTransparencyMenuItem(Window window, Int32 itemId, Int32 transparency)
+        {
+            window.Menu.UncheckTransparencyMenu();
+            window.Menu.CheckMenuItem(itemId, true);
+            window.SetTrancparency(transparency);
         }
 
         private void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -405,7 +512,12 @@ namespace SmartSystemMenu.App_Code.Forms
 
         private void OnThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.ToString(), AssemblyUtility.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            String exceptionText = e.Exception.ToString();
+            if (e.Exception is Win32Exception)
+            {
+                exceptionText = String.Format("Win32 Error Code = {0},{1}{2}", ((Win32Exception)e.Exception).ErrorCode, Environment.NewLine, exceptionText);
+            }
+            MessageBox.Show(exceptionText, AssemblyUtility.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

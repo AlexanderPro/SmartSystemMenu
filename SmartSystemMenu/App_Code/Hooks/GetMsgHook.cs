@@ -29,9 +29,9 @@ namespace SmartSystemMenu.App_Code.Hooks
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg_HookReplaced, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg_Params, NativeMethods.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg_HookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg_Params, NativeConstants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeGetMsgHook(0, handle);
         }
@@ -43,8 +43,14 @@ namespace SmartSystemMenu.App_Code.Hooks
 
         public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
         {
+            //String dbgMessage = "";
             if (m.Msg == msgID_GetMsg)
             {
+                //if (m.LParam.ToInt64() == NativeConstants.WM_SYSCOMMAND)
+                //{
+                //    dbgMessage = String.Format("WM_SYSCOMMAND, GetMsg, Handle = {0}", m.WParam);
+                //    System.Diagnostics.Trace.WriteLine(dbgMessage);
+                //}
                 cacheHandle = m.WParam;
                 cacheMessage = m.LParam;
             }
@@ -52,6 +58,11 @@ namespace SmartSystemMenu.App_Code.Hooks
             {
                 if (GetMsg != null && cacheHandle != IntPtr.Zero && cacheMessage != IntPtr.Zero)
                 {
+                    //if (cacheMessage.ToInt64() == NativeConstants.WM_SYSCOMMAND)
+                    //{
+                    //    dbgMessage = String.Format("WM_SYSCOMMAND, GetMsgParams, Handle = {0}, WParam = {1}", cacheHandle, m.WParam);
+                    //    System.Diagnostics.Trace.WriteLine(dbgMessage);
+                    //}
                     RaiseEvent(GetMsg, new WndProcEventArgs(cacheHandle, cacheMessage, m.WParam, m.LParam));
                 }
                 cacheHandle = IntPtr.Zero;

@@ -25,8 +25,8 @@ namespace SmartSystemMenu.App_Code.Hooks
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_Keyboard, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Keyboard_HookReplaced, NativeMethods.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Keyboard, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Keyboard_HookReplaced, NativeConstants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeKeyboardHook(0, handle);
         }

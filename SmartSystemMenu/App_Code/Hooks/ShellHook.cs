@@ -46,15 +46,15 @@ namespace SmartSystemMenu.App_Code.Hooks
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_HookReplaced, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_ActivateShellWindow, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_GetMinRect, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_Language, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_Redraw, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_Taskman, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_WindowActivated, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_WindowCreated, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_WindowDestroyed, NativeMethods.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_HookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_ActivateShellWindow, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_GetMinRect, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_Language, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_Redraw, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_Taskman, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_WindowActivated, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_WindowCreated, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Shell_WindowDestroyed, NativeConstants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeShellHook(0, handle);
         }

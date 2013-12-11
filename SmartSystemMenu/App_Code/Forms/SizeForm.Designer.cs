@@ -105,7 +105,7 @@
             this.MinimizeBox = false;
             this.Name = "SizeForm";
             this.ShowInTaskbar = false;
-            this.Text = "Size";
+            this.Text = "Set Size";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericHeight)).EndInit();

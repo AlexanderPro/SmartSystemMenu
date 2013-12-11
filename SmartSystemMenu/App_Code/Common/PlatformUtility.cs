@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using SmartSystemMenu.App_Code.Common.Extensions;
 
 namespace SmartSystemMenu.App_Code.Common
 {
@@ -15,7 +16,7 @@ namespace SmartSystemMenu.App_Code.Common
                 using (Process p = Process.GetProcessById(pId))
                 {
                     Boolean retVal;
-                    if (!NativeMethods.IsWow64Process(p.Handle, out retVal))
+                    if (!NativeMethods.IsWow64Process(p.GetHandle(), out retVal))
                     {
                         return false;
                     }

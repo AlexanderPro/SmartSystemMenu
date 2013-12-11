@@ -10,24 +10,26 @@ using SmartSystemMenu.App_Code.Common;
 
 namespace SmartSystemMenu.App_Code.Forms
 {
-    partial class OpacityForm : Form
+    partial class ScreenForm : Form
     {
         private Window _window;
 
-        public OpacityForm(Window window)
+        public ScreenForm(Window window)
         {
             InitializeComponent();
-            _window = window;           
+            _window = window;
+            Object[] screenIds = Enumerable.Range(0, Screen.AllScreens.Length).Cast<Object>().ToArray();
+            cmbScreen.Items.AddRange(screenIds);
+            cmbScreen.SelectedItem = window.ScreenId;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
             try
             {
-                Byte value = (Byte)numericOpacity.Value;
-                _window.SetTrancparencyByPercent(value);
-                _window.Menu.UncheckTransparencyMenu();
-                _window.Menu.CheckTransparencyMenuItem(SystemMenu.SC_TRANS_CUSTOM, true);
+                Int32 screenId = Int32.Parse(cmbScreen.SelectedItem.ToString());
+                _window.ScreenId = screenId;
+                _window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + screenId);
             }
             catch
             {

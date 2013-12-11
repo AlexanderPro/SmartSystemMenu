@@ -38,5 +38,12 @@ namespace SmartSystemMenu.App_Code.Common.Extensions
             }
             return mainThreadId;
         }
+
+        public static IntPtr GetHandle(this Process currentProcess)
+        {
+            IntPtr handle = Environment.OSVersion.Version.Major >= 6 ? NativeMethods.OpenProcess(NativeConstants.PROCESS_QUERY_LIMITED_INFORMATION | NativeConstants.PROCESS_SET_INFORMATION, false, currentProcess.Id) :
+                                                                       NativeMethods.OpenProcess(NativeConstants.PROCESS_QUERY_INFORMATION | NativeConstants.PROCESS_SET_INFORMATION, false, currentProcess.Id);
+            return handle;
+        }
     }
 }

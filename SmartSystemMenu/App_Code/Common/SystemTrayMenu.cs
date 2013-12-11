@@ -16,7 +16,7 @@ namespace SmartSystemMenu.App_Code.Common
         public NotifyIcon Icon { get; private set; }
 
         public SystemTrayMenu()
-        {            
+        {
             MenuItemAutoStart = new ToolStripMenuItem();
             MenuItemAutoStart.Name = "miAutoStart";
             MenuItemAutoStart.Size = new Size(175, 22);

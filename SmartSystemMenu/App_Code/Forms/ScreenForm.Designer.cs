@@ -1,6 +1,6 @@
 ﻿namespace SmartSystemMenu.App_Code.Forms
 {
-    partial class OpacityForm
+    partial class ScreenForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.btnApply = new System.Windows.Forms.Button();
-            this.numericOpacity = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.numericOpacity)).BeginInit();
+            this.cmbScreen = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnApply
@@ -43,34 +42,30 @@
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
-            // numericOpacity
+            // cmbScreen
             // 
-            this.numericOpacity.Location = new System.Drawing.Point(12, 12);
-            this.numericOpacity.Name = "numericOpacity";
-            this.numericOpacity.Size = new System.Drawing.Size(72, 20);
-            this.numericOpacity.TabIndex = 0;
-            this.numericOpacity.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            this.cmbScreen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbScreen.FormattingEnabled = true;
+            this.cmbScreen.Location = new System.Drawing.Point(13, 12);
+            this.cmbScreen.Name = "cmbScreen";
+            this.cmbScreen.Size = new System.Drawing.Size(70, 21);
+            this.cmbScreen.TabIndex = 0;
             // 
-            // OpacityForm
+            // ScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(203, 47);
-            this.Controls.Add(this.numericOpacity);
+            this.Controls.Add(this.cmbScreen);
             this.Controls.Add(this.btnApply);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "OpacityForm";
+            this.Name = "ScreenForm";
             this.ShowInTaskbar = false;
-            this.Text = "Opacity";
+            this.Text = "Select Monitor";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.numericOpacity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -78,6 +73,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.NumericUpDown numericOpacity;
+        private System.Windows.Forms.ComboBox cmbScreen;
     }
 }

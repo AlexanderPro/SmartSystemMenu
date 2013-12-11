@@ -55,8 +55,8 @@ namespace SmartSystemMenu.App_Code.Hooks
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_MouseLL, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_MouseLL_HookReplaced, NativeMethods.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_MouseLL, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_MouseLL_HookReplaced, NativeConstants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeMouseLLHook(0, handle);
         }

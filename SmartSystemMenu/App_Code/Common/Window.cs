@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Drawing;
+using System.Diagnostics;
+using SmartSystemMenu.App_Code.Common.Extensions;
 
 namespace SmartSystemMenu.App_Code.Common
 {
@@ -13,9 +15,12 @@ namespace SmartSystemMenu.App_Code.Common
 
         private IntPtr _handle;
         private Boolean _isManaged;
-        private Int32 _originalWindowLongExStyle;
-        private Int32 _originalWindowWidth;
-        private Int32 _originalWindowHeight;
+        private Int32 _defaultTransparency;
+        private Int32 _defaultWidth;
+        private Int32 _defaultHeight;
+        private Int32 _defaultLeft;
+        private Int32 _defaultTop;
+        private Int32 _beforeRollupHeight;
         private NotifyIcon _systemTrayIcon;
         private SystemMenu _systemMenu;
 
@@ -56,26 +61,26 @@ namespace SmartSystemMenu.App_Code.Common
         {
             get
             {
-                Int32 style = NativeMethods.GetWindowLong(_handle, NativeMethods.GWL_STYLE);
+                Int32 style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_STYLE);
                 return style;
             }
         }
 
-        public RECT Size
+        public Rect Size
         {
             get
             {
-                RECT size;
+                Rect size;
                 NativeMethods.GetWindowRect(_handle, out size);
                 return size;
             }
         }
 
-        public RECT ClientSize
+        public Rect ClientSize
         {
             get
             {
-                RECT size;
+                Rect size;
                 NativeMethods.GetClientRect(_handle, out size);
                 return size;
             }
@@ -101,6 +106,27 @@ namespace SmartSystemMenu.App_Code.Common
             }
         }
 
+        public Priority ProcessPriority
+        {
+            get
+            {
+                PriorityClass priorityClass = NativeMethods.GetPriorityClass(Process.GetProcessById(ProcessId).GetHandle());
+
+                switch (priorityClass)
+                {
+                    case PriorityClass.REALTIME_PRIORITY_CLASS: return Priority.RealTime;
+                    case PriorityClass.HIGH_PRIORITY_CLASS: return Priority.High;
+                    case PriorityClass.ABOVE_NORMAL_PRIORITY_CLASS: return Priority.AboveNormal;
+                    case PriorityClass.NORMAL_PRIORITY_CLASS: return Priority.Normal;
+                    case PriorityClass.BELOW_NORMAL_PRIORITY_CLASS: return Priority.BelowNormal;
+                    case PriorityClass.IDLE_PRIORITY_CLASS: return Priority.Idle;
+                    default: return Priority.Normal;
+                }
+            }
+        }
+
+        public Int32 ScreenId { get; set; }
+
         public Boolean IsVisible
         {
             get
@@ -109,11 +135,37 @@ namespace SmartSystemMenu.App_Code.Common
             }
         }
 
-        public IntPtr GetOwner
+        public Int32 Transparency
         {
             get
             {
-                return NativeMethods.GetWindow(_handle, NativeMethods.GW_OWNER);
+                Int32 style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_EXSTYLE);
+                Boolean isLayeredWindow = (style & NativeConstants.WS_EX_LAYERED) == NativeConstants.WS_EX_LAYERED;
+                if (!isLayeredWindow) return 0;
+                UInt32 key;
+                Byte alpha;
+                UInt32 flags;
+                NativeMethods.GetLayeredWindowAttributes(_handle, out key, out alpha, out flags);
+                Int32 transparency = 100 - (Int32)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
+                return transparency;
+            }
+        }
+
+        public Boolean AlwaysOnTop
+        {
+            get
+            {
+                Int32 style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_EXSTYLE);
+                Boolean isAlwaysOnTop = (style & NativeConstants.WS_EX_TOPMOST) == NativeConstants.WS_EX_TOPMOST;
+                return isAlwaysOnTop;
+            }
+        }
+
+        public IntPtr Owner
+        {
+            get
+            {
+                return NativeMethods.GetWindow(_handle, NativeConstants.GW_OWNER);
             }
         }
 
@@ -143,10 +195,15 @@ namespace SmartSystemMenu.App_Code.Common
         {
             _handle = windowHandle;
             _isManaged = true;
-            _originalWindowWidth = Size.Width;
-            _originalWindowHeight = Size.Height;
-            _originalWindowLongExStyle = NativeMethods.GetWindowLong(_handle, NativeMethods.GWL_EXSTYLE);
+            _defaultWidth = Size.Width;
+            _defaultHeight = Size.Height;
+            _defaultLeft = Size.Left;
+            _defaultTop = Size.Top;
+            _beforeRollupHeight = Size.Height;
+            _defaultTransparency = Transparency;
             _systemMenu = new SystemMenu(windowHandle);
+            ScreenId = ScreenUtility.PrimaryScreenId;
+
             //_systemMenu.Create();
         }
 
@@ -172,19 +229,15 @@ namespace SmartSystemMenu.App_Code.Common
             return WindowText;
         }
 
-        public void SetTransparency(Int32 transparecy)
+        public void SetTrancparency(Int32 percent)
         {
-            SetTransparency(_handle, (Byte)transparecy);
-        }
-
-        public void SetTrancparencyByPercent(Int32 percent)
-        {
-            SetTransparency(_handle, (Byte)(255 * percent / 100));
+            Byte opacity = (Byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
+            SetOpacity(_handle, opacity);
         }
 
         public void RestoreTransparency()
         {
-            NativeMethods.SetWindowLong(_handle, NativeMethods.GWL_EXSTYLE, _originalWindowLongExStyle);
+            SetTrancparency(_defaultTransparency);
         }
 
         public void SetSize(Int32 width, Int32 height)
@@ -194,14 +247,114 @@ namespace SmartSystemMenu.App_Code.Common
 
         public void RestoreSize()
         {
-            NativeMethods.MoveWindow(_handle, Size.Left, Size.Top, _originalWindowWidth, _originalWindowHeight, true);
+            NativeMethods.MoveWindow(_handle, Size.Left, Size.Top, _defaultWidth, _defaultHeight, true);
+        }
+
+        public void SetPosition(Int32 left, Int32 top)
+        {
+            NativeMethods.MoveWindow(_handle, left, top, Size.Width, Size.Height, true);
+        }
+
+        public void RestorePosition()
+        {
+            NativeMethods.MoveWindow(_handle, _defaultLeft, _defaultTop, Size.Width, Size.Height, true);
+        }
+
+        public void SaveDefaultSizePosition()
+        {
+            _defaultLeft = Size.Left;
+            _defaultTop = Size.Top;
+            _defaultWidth = Size.Width;
+            _defaultHeight = Size.Height;
+        }
+
+        public void SetAlignment(WindowAlignment alignment)
+        {
+            Int32 x, y;
+            Rectangle screen = ScreenId < Screen.AllScreens.Length ? Screen.AllScreens[ScreenId].WorkingArea : Screen.PrimaryScreen.WorkingArea;
+            Rect window = Size;
+
+            switch (alignment)
+            {
+                case WindowAlignment.TopLeft:
+                    {
+                        x = screen.X;
+                        y = screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.TopCenter:
+                    {
+                        x = ((screen.Width - window.Width) / 2) + screen.X;
+                        y = screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.TopRight:
+                    {
+                        x = screen.Width - window.Width + screen.X;
+                        y = screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.MiddleLeft:
+                    {
+                        x = screen.X;
+                        y = ((screen.Height - window.Height) / 2) + screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.MiddleCenter:
+                    {
+                        x = ((screen.Width - window.Width) / 2) + screen.X;
+                        y = ((screen.Height - window.Height) / 2) + screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.MiddleRight:
+                    {
+                        x = screen.Width - window.Width + screen.X;
+                        y = ((screen.Height - window.Height) / 2) + screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.BottomLeft:
+                    {
+                        x = screen.X;
+                        y = screen.Height - window.Height + screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.BottomCenter:
+                    {
+                        x = ((screen.Width - window.Width) / 2) + screen.X;
+                        y = screen.Height - window.Height + screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+
+                case WindowAlignment.BottomRight:
+                    {
+                        x = screen.Width - window.Width + screen.X;
+                        y = screen.Height - window.Height + screen.Y;
+                        SetPosition(x, y);
+                    }
+                    break;
+            }
         }
 
         public void MakeTopMost(Boolean topMost)
         {
             IntPtr handleTopMost = (IntPtr)(-1);
             IntPtr handleNotTopMost = (IntPtr)(-2);
-            NativeMethods.SetWindowPos(_handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, NativeMethods.TOPMOST_FLAGS);
+            NativeMethods.SetWindowPos(_handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, NativeConstants.TOPMOST_FLAGS);
         }
 
         public void MinimizeToSystemTray()
@@ -222,26 +375,42 @@ namespace SmartSystemMenu.App_Code.Common
             NativeMethods.ShowWindow(_handle, (Int32)WindowShowStyle.Normal);
         }
 
+        public void RollUp()
+        {
+            _beforeRollupHeight = Size.Height;
+            SetSize(Size.Width, 0);
+        }
+
+        public void UnRollUp()
+        {
+            SetSize(Size.Width, _beforeRollupHeight);
+        }
+
+        public void SetPriority(Priority priority)
+        {
+            PriorityClass priorityClass = priority == Priority.RealTime ? PriorityClass.REALTIME_PRIORITY_CLASS:
+                                          priority == Priority.High ? PriorityClass.HIGH_PRIORITY_CLASS:
+                                          priority == Priority.AboveNormal ? PriorityClass.ABOVE_NORMAL_PRIORITY_CLASS:
+                                          priority == Priority.Normal ? PriorityClass.NORMAL_PRIORITY_CLASS:
+                                          priority == Priority.BelowNormal ? PriorityClass.BELOW_NORMAL_PRIORITY_CLASS:
+                                          priority == Priority.Idle ? PriorityClass.IDLE_PRIORITY_CLASS: PriorityClass.NORMAL_PRIORITY_CLASS;
+            NativeMethods.SetPriorityClass(Process.GetProcessById(ProcessId).GetHandle(), priorityClass);
+        }
+
         public static void CloseAllWindowsOfProcess(Int32 processId)
         {
             NativeMethods.EnumWindowDelegate d = delegate(IntPtr hWnd, Int32 lParam)
             {
-                Int32 pid;
-                NativeMethods.GetWindowThreadProcessId(hWnd, out pid);
-                if ((Int32)pid == processId)
+                Int32 pId;
+                NativeMethods.GetWindowThreadProcessId(hWnd, out pId);
+                if ((Int32)pId == processId)
                 {
-                    NativeMethods.PostMessage(hWnd, NativeMethods.WM_CLOSE, 0, 0);
+                    NativeMethods.PostMessage(hWnd, NativeConstants.WM_CLOSE, 0, 0);
                 }
                 return true;
             };
 
             NativeMethods.EnumWindows(d, 0);
-        }
-
-        public static void SetTransparency(IntPtr handle, Byte transparecy)
-        {
-            NativeMethods.SetWindowLong(handle, NativeMethods.GWL_EXSTYLE, NativeMethods.GetWindowLong(handle, NativeMethods.GWL_EXSTYLE) | NativeMethods.WS_EX_LAYERED);
-            NativeMethods.SetLayeredWindowAttributes(handle, 0, transparecy, NativeMethods.LWA_ALPHA);
         }
 
         public static void ForceForegroundWindow(IntPtr handle)
@@ -266,13 +435,19 @@ namespace SmartSystemMenu.App_Code.Common
         public static void ForceAllMessageLoopsToWakeUp()
         {
             UInt32 result;
-            NativeMethods.SendMessageTimeout((IntPtr)NativeMethods.HWND_BROADCAST, NativeMethods.WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
+            NativeMethods.SendMessageTimeout((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
         }
 
         #endregion
 
 
         #region Methods.Private
+
+        private void SetOpacity(IntPtr handle, Byte opacity)
+        {
+            NativeMethods.SetWindowLong(handle, NativeConstants.GWL_EXSTYLE, NativeMethods.GetWindowLong(handle, NativeConstants.GWL_EXSTYLE) | NativeConstants.WS_EX_LAYERED);
+            NativeMethods.SetLayeredWindowAttributes(handle, 0, opacity, NativeConstants.LWA_ALPHA);
+        }
 
         private void RestoreFromSystemTray()
         {
@@ -292,39 +467,39 @@ namespace SmartSystemMenu.App_Code.Common
             try
             {
                 UInt32 result;
-                NativeMethods.SendMessageTimeout(_handle, NativeMethods.WM_GETICON, NativeMethods.ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
+                NativeMethods.SendMessageTimeout(_handle, NativeConstants.WM_GETICON, NativeConstants.ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
                 icon = new IntPtr(result);
 
                 if (icon == IntPtr.Zero)
                 {
-                    NativeMethods.SendMessageTimeout(_handle, NativeMethods.WM_GETICON, NativeMethods.ICON_SMALL, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
+                    NativeMethods.SendMessageTimeout(_handle, NativeConstants.WM_GETICON, NativeConstants.ICON_SMALL, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
                     icon = new IntPtr(result);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    NativeMethods.SendMessageTimeout(_handle, NativeMethods.WM_GETICON, NativeMethods.ICON_BIG, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
+                    NativeMethods.SendMessageTimeout(_handle, NativeConstants.WM_GETICON, NativeConstants.ICON_BIG, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
                     icon = new IntPtr(result);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    icon = NativeMethods.GetClassLongPtr(_handle, NativeMethods.GCLP_HICONSM);
+                    icon = NativeMethods.GetClassLongPtr(_handle, NativeConstants.GCLP_HICONSM);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    icon = NativeMethods.GetClassLongPtr(_handle, NativeMethods.GCLP_HICON);
+                    icon = NativeMethods.GetClassLongPtr(_handle, NativeConstants.GCLP_HICON);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    icon = NativeMethods.LoadIcon(IntPtr.Zero, NativeMethods.IDI_APPLICATION);
+                    icon = NativeMethods.LoadIcon(IntPtr.Zero, NativeConstants.IDI_APPLICATION);
                 }
             }
             catch
             {
-                icon = NativeMethods.LoadIcon(IntPtr.Zero, NativeMethods.IDI_APPLICATION);
+                icon = NativeMethods.LoadIcon(IntPtr.Zero, NativeConstants.IDI_APPLICATION);
             }
             return Icon.FromHandle(icon);
         }

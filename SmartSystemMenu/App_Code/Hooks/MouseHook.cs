@@ -25,12 +25,12 @@ namespace SmartSystemMenu.App_Code.Hooks
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_Mouse, NativeMethods.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Mouse_HookReplaced, NativeMethods.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Mouse, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(msgID_Mouse_HookReplaced, NativeConstants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeMouseHook(0, handle);
         }
-        
+
         protected override void OnStop()
         {
             NativeHookMethods.UninitializeMouseHook();

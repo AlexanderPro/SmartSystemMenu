@@ -4,9 +4,8 @@
 #include "stdafx.h"
 #include "SmartSystemMenuHook.h"
 
-#pragma data_seg("SHARED")
-HWND hwndMain = NULL;
-
+#pragma data_seg(".Shared")
+HWND  hwndMain = NULL;
 HHOOK hookCbt = NULL;
 HHOOK hookShell = NULL;
 HHOOK hookKeyboard = NULL;
@@ -16,7 +15,7 @@ HHOOK hookMouseLL = NULL;
 HHOOK hookCallWndProc = NULL;
 HHOOK hookGetMsg = NULL;
 #pragma data_seg()
-#pragma comment(linker, "/section:SHARED,RWS")
+#pragma comment(linker, "/section:.Shared,rws")
 
 //
 // Store the application instance of this module to pass to
@@ -424,16 +423,15 @@ static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lpara
         MSG* pMsg = (MSG*)lparam;
         if (msg != 0 && pMsg->message != msg && pMsg->message != msg2 && wparam == PM_REMOVE)
         {
-            //if(pMsg->message == WM_SYSCOMMAND)
-            //{
-            //    TCHAR buf[256];
-            //    int error = GetLastError();
-            //    wsprintf(buf, L"WM_SYSCOMMAND, WParam = %d, msg = %d, error = %d", wparam, msg, error);
-            //    OutputDebugString(buf);
-            //}
-
-            SendNotifyMessage(hwndMain, msg, (WPARAM)pMsg->hwnd, pMsg->message);
-            SendNotifyMessage(hwndMain, msg2, pMsg->wParam, pMsg->lParam);
+            if(pMsg->message == WM_SYSCOMMAND)
+            {
+                //TCHAR buf[256];
+                //int error = GetLastError();
+                //wsprintf(buf, L"WM_SYSCOMMAND, Hook, WParam = %d", pMsg->wParam);
+                //OutputDebugString(buf);
+                SendNotifyMessage(hwndMain, msg, (WPARAM)pMsg->hwnd, pMsg->message);
+                SendNotifyMessage(hwndMain, msg2, pMsg->wParam, pMsg->lParam);
+            }
         }
     }
 
