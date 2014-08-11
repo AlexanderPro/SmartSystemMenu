@@ -39,12 +39,9 @@ namespace SmartSystemMenu.App_Code.Forms
 
         private void FormKeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyValue)
+            if (e.KeyValue == 27)
             {
-                case 27:
-                    {
-                        Close();
-                    } break;
+                Close();
             }
         }
     }

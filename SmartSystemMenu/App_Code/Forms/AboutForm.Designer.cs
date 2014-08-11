@@ -35,27 +35,27 @@
             this.pbImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // lblProductName
-            //
+            // 
             this.lblProductName.AutoSize = true;
             this.lblProductName.Location = new System.Drawing.Point(58, 21);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(75, 13);
             this.lblProductName.TabIndex = 0;
             this.lblProductName.Text = "Product Name";
-            //
+            // 
             // lblCopyright
-            //
+            // 
             this.lblCopyright.AutoSize = true;
             this.lblCopyright.Location = new System.Drawing.Point(58, 43);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(51, 13);
             this.lblCopyright.TabIndex = 1;
             this.lblCopyright.Text = "Copyright";
-            //
+            // 
             // linkUrl
-            //
+            // 
             this.linkUrl.AutoSize = true;
             this.linkUrl.Location = new System.Drawing.Point(58, 66);
             this.linkUrl.Name = "linkUrl";
@@ -64,9 +64,9 @@
             this.linkUrl.TabStop = true;
             this.linkUrl.Text = "URL";
             this.linkUrl.Click += new System.EventHandler(this.LinkClick);
-            //
+            // 
             // btnOk
-            //
+            // 
             this.btnOk.Location = new System.Drawing.Point(300, 16);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
@@ -74,9 +74,9 @@
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.CloseClick);
-            //
+            // 
             // pbImage
-            //
+            // 
             this.pbImage.BackgroundImage = global::SmartSystemMenu.Properties.Resources.SmartSystemMenuImage;
             this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbImage.InitialImage = null;
@@ -85,9 +85,9 @@
             this.pbImage.Size = new System.Drawing.Size(48, 37);
             this.pbImage.TabIndex = 4;
             this.pbImage.TabStop = false;
-            //
+            // 
             // AboutForm
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 102);
@@ -102,6 +102,7 @@
             this.MinimizeBox = false;
             this.Name = "AboutForm";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();

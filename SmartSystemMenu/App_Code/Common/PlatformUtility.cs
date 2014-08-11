@@ -7,7 +7,7 @@ using SmartSystemMenu.App_Code.Common.Extensions;
 
 namespace SmartSystemMenu.App_Code.Common
 {
-    class PlatformUtility
+    static class PlatformUtility
     {
         public static Boolean IsWow64Process(Int32 pId)
         {

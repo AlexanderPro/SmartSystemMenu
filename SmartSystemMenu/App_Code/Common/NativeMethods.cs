@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace SmartSystemMenu.App_Code.Common
 {
-    class NativeMethods
+    static class NativeMethods
     {
         public delegate Boolean EnumWindowDelegate(IntPtr hwnd, Int32 lParam);
 

@@ -64,6 +64,7 @@
             this.MinimizeBox = false;
             this.Name = "ScreenForm";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Monitor";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             this.ResumeLayout(false);
