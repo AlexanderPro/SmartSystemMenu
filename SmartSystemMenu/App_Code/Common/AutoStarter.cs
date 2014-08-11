@@ -60,16 +60,11 @@ namespace SmartSystemMenu.App_Code.Common
         public static Boolean IsAutoStartByRegisterEnabled(String keyName, String assemblyLocation)
         {
             RegistryKey key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION);
-            if (key == null)
-            {
-                return false;
-            }
+            if (key == null) return false;
             String value = (String)key.GetValue(keyName);
-            if (String.IsNullOrEmpty(value))
-            {
-                return false;
-            }
-            return (value == assemblyLocation);
+            if (String.IsNullOrEmpty(value)) return false;
+            Boolean result = (value == assemblyLocation);
+            return result;
         }
     }
 }

@@ -75,11 +75,11 @@
     <Compile Include="App_Code\Common\AssemblyUtility.cs" />
     <Compile Include="App_Code\Common\AutoStarter.cs" />
     <Compile Include="App_Code\Common\EnumWindows.cs" />
+    <Compile Include="App_Code\Common\Extensions\PriorityExtensions.cs" />
     <Compile Include="App_Code\Common\Extensions\ProcessExtensions.cs" />
     <Compile Include="App_Code\Common\NativeConstants.cs" />
     <Compile Include="App_Code\Common\NativeTypes.cs" />
     <Compile Include="App_Code\Common\PlatformUtility.cs" />
-    <Compile Include="App_Code\Common\ScreenUtility.cs" />
     <Compile Include="App_Code\Common\SystemMenu.cs" />
     <Compile Include="App_Code\Common\SystemTrayMenu.cs" />
     <Compile Include="App_Code\Common\WindowAlignment.cs" />
@@ -141,12 +141,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App_Code\Forms\TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="App_Code\Forms\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="App_Code\Common\NativeMethods.cs" />
     <Compile Include="App_Code\Common\Window.cs" />
     <EmbeddedResource Include="App_Code\Forms\AboutForm.resx">
@@ -179,9 +173,6 @@
     </Compile>
     <EmbeddedResource Include="App_Code\Forms\SizeForm.resx">
       <DependentUpon>SizeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Manifest\app32.manifest" />
     <None Include="Manifest\app64.manifest" />

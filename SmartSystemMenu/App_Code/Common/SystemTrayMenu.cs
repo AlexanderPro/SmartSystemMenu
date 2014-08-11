@@ -5,7 +5,6 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace SmartSystemMenu.App_Code.Common
 {
     class SystemTrayMenu

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using SmartSystemMenu.App_Code.Common;
+using SmartSystemMenu.App_Code.Common.Extensions;
 using SmartSystemMenu.App_Code.Hooks;
 
 namespace SmartSystemMenu.App_Code.Forms
@@ -16,7 +17,7 @@ namespace SmartSystemMenu.App_Code.Forms
     partial class MainForm : Form
     {
         private readonly String _shellWindowName = "Program Manager";
-        private IList<Window> _windows;
+        private List<Window> _windows;
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
         private CBTHook _cbtHook;
@@ -33,10 +34,6 @@ namespace SmartSystemMenu.App_Code.Forms
 
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
-
-            FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            ShowInTaskbar = false;
-            Opacity = 0;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -72,19 +69,13 @@ namespace SmartSystemMenu.App_Code.Forms
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtility.AssemblyProductName, AssemblyUtility.AssemblyLocation);
 #endif
-            _windows = EnumWindows.EnumAllWindows(new String[] { _shellWindowName });
+            _windows = EnumWindows.EnumAllWindows(new String[] { _shellWindowName }).ToList();
             foreach (var window in _windows)
             {
                 window.Menu.Create();
-                Priority priority = window.ProcessPriority;
-                Int32 menuItemId = priority == Priority.RealTime ? SystemMenu.SC_PRIORITY_REAL_TIME :
-                                   priority == Priority.High ? SystemMenu.SC_PRIORITY_HIGH :
-                                   priority == Priority.AboveNormal ? SystemMenu.SC_PRIORITY_ABOVE_NORMAL :
-                                   priority == Priority.Normal ? SystemMenu.SC_PRIORITY_NORMAL :
-                                   priority == Priority.BelowNormal ? SystemMenu.SC_PRIORITY_BELOW_NORMAL :
-                                   priority == Priority.Idle ? SystemMenu.SC_PRIORITY_IDLE : SystemMenu.SC_PRIORITY_NORMAL;
+                Int32 menuItemId = window.ProcessPriority.GetMenuItemId();
                 window.Menu.CheckMenuItem(menuItemId, true);
-                window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + ScreenUtility.PrimaryScreenId);
+                window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + Screen.AllScreens.ToList().FindIndex(s => s.Primary));
                 if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
             }
 
@@ -237,15 +228,9 @@ namespace SmartSystemMenu.App_Code.Forms
                 foreach (var window in windows)
                 {
                     window.Menu.Create();
-                    Priority priority = window.ProcessPriority;
-                    Int32 menuItemId = priority == Priority.RealTime ? SystemMenu.SC_PRIORITY_REAL_TIME :
-                                       priority == Priority.High ? SystemMenu.SC_PRIORITY_HIGH :
-                                       priority == Priority.AboveNormal ? SystemMenu.SC_PRIORITY_ABOVE_NORMAL :
-                                       priority == Priority.Normal ? SystemMenu.SC_PRIORITY_NORMAL :
-                                       priority == Priority.BelowNormal ? SystemMenu.SC_PRIORITY_BELOW_NORMAL :
-                                       priority == Priority.Idle ? SystemMenu.SC_PRIORITY_IDLE : SystemMenu.SC_PRIORITY_NORMAL;
+                    Int32 menuItemId = window.ProcessPriority.GetMenuItemId();
                     window.Menu.CheckMenuItem(menuItemId, true);
-                    window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + ScreenUtility.PrimaryScreenId);
+                    window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + Screen.AllScreens.ToList().FindIndex(s => s.Primary));
                     if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
                     _windows.Add(window);
                 }
@@ -254,17 +239,7 @@ namespace SmartSystemMenu.App_Code.Forms
 
         private void WindowDestroyed(object sender, WindowEventArgs e)
         {
-            Int32 windowIndex = -1;
-
-            for (Int32 i = 0; i < _windows.Count; ++i)
-            {
-                if (_windows[i].Handle == e.Handle)
-                {
-                    windowIndex = i;
-                    break;
-                }
-            }
-
+            Int32 windowIndex = _windows.FindIndex(w => w.Handle == e.Handle);
             if (windowIndex != -1 && !_windows[windowIndex].ExistSystemTrayIcon)
             {
                 _windows[windowIndex].Dispose();

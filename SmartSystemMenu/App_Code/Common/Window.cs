@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
@@ -43,7 +44,8 @@ namespace SmartSystemMenu.App_Code.Common
             {
                 StringBuilder sb = new StringBuilder(1024);
                 NativeMethods.GetWindowText(_handle, sb, sb.Capacity);
-                return sb.ToString().Trim();
+                String windowText = sb.ToString().Trim();
+                return windowText;
             }
         }
 
@@ -53,7 +55,8 @@ namespace SmartSystemMenu.App_Code.Common
             {
                 StringBuilder sb = new StringBuilder(1024);
                 NativeMethods.GetClassName(_handle, sb, sb.Capacity);
-                return sb.ToString().Trim();
+                String className = sb.ToString().Trim();
+                return className;
             }
         }
 
@@ -131,7 +134,8 @@ namespace SmartSystemMenu.App_Code.Common
         {
             get
             {
-                return NativeMethods.IsWindowVisible(_handle);
+                Boolean isVisible = NativeMethods.IsWindowVisible(_handle);
+                return isVisible;
             }
         }
 
@@ -165,7 +169,8 @@ namespace SmartSystemMenu.App_Code.Common
         {
             get
             {
-                return NativeMethods.GetWindow(_handle, NativeConstants.GW_OWNER);
+                IntPtr owner = NativeMethods.GetWindow(_handle, NativeConstants.GW_OWNER);
+                return owner;
             }
         }
 
@@ -202,7 +207,7 @@ namespace SmartSystemMenu.App_Code.Common
             _beforeRollupHeight = Size.Height;
             _defaultTransparency = Transparency;
             _systemMenu = new SystemMenu(windowHandle);
-            ScreenId = ScreenUtility.PrimaryScreenId;
+            ScreenId = Screen.AllScreens.ToList().FindIndex(s => s.Primary);
 
             //_systemMenu.Create();
         }
@@ -388,13 +393,9 @@ namespace SmartSystemMenu.App_Code.Common
 
         public void SetPriority(Priority priority)
         {
-            PriorityClass priorityClass = priority == Priority.RealTime ? PriorityClass.REALTIME_PRIORITY_CLASS:
-                                          priority == Priority.High ? PriorityClass.HIGH_PRIORITY_CLASS:
-                                          priority == Priority.AboveNormal ? PriorityClass.ABOVE_NORMAL_PRIORITY_CLASS:
-                                          priority == Priority.Normal ? PriorityClass.NORMAL_PRIORITY_CLASS:
-                                          priority == Priority.BelowNormal ? PriorityClass.BELOW_NORMAL_PRIORITY_CLASS:
-                                          priority == Priority.Idle ? PriorityClass.IDLE_PRIORITY_CLASS: PriorityClass.NORMAL_PRIORITY_CLASS;
-            NativeMethods.SetPriorityClass(Process.GetProcessById(ProcessId).GetHandle(), priorityClass);
+            IntPtr processHandle = Process.GetProcessById(ProcessId).GetHandle();
+            PriorityClass priorityClass = priority.GetPriorityClass();
+            NativeMethods.SetPriorityClass(processHandle, priorityClass);
         }
 
         public static void CloseAllWindowsOfProcess(Int32 processId)
