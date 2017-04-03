@@ -72,93 +72,93 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\Common\AssemblyUtility.cs" />
-    <Compile Include="App_Code\Common\AutoStarter.cs" />
-    <Compile Include="App_Code\Common\EnumWindows.cs" />
-    <Compile Include="App_Code\Common\Extensions\PriorityExtensions.cs" />
-    <Compile Include="App_Code\Common\Extensions\ProcessExtensions.cs" />
-    <Compile Include="App_Code\Common\NativeConstants.cs" />
-    <Compile Include="App_Code\Common\NativeTypes.cs" />
-    <Compile Include="App_Code\Common\PlatformUtility.cs" />
-    <Compile Include="App_Code\Common\SystemMenu.cs" />
-    <Compile Include="App_Code\Common\SystemTrayMenu.cs" />
-    <Compile Include="App_Code\Common\WindowAlignment.cs" />
-    <Compile Include="App_Code\Forms\AboutForm.cs">
+    <Compile Include="Code\Common\AssemblyUtility.cs" />
+    <Compile Include="Code\Common\AutoStarter.cs" />
+    <Compile Include="Code\Common\EnumWindows.cs" />
+    <Compile Include="Code\Common\Extensions\PriorityExtensions.cs" />
+    <Compile Include="Code\Common\Extensions\ProcessExtensions.cs" />
+    <Compile Include="Code\Common\NativeConstants.cs" />
+    <Compile Include="Code\Common\NativeTypes.cs" />
+    <Compile Include="Code\Common\PlatformUtility.cs" />
+    <Compile Include="Code\Common\SystemMenu.cs" />
+    <Compile Include="Code\Common\SystemTrayMenu.cs" />
+    <Compile Include="Code\Common\WindowAlignment.cs" />
+    <Compile Include="Code\Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\AboutForm.Designer.cs">
+    <Compile Include="Code\Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\ScreenForm.cs">
+    <Compile Include="Code\Forms\ScreenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\ScreenForm.Designer.cs">
+    <Compile Include="Code\Forms\ScreenForm.Designer.cs">
       <DependentUpon>ScreenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\PositionForm.cs">
+    <Compile Include="Code\Forms\PositionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\PositionForm.Designer.cs">
+    <Compile Include="Code\Forms\PositionForm.Designer.cs">
       <DependentUpon>PositionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\InfoForm.cs">
+    <Compile Include="Code\Forms\InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\InfoForm.Designer.cs">
+    <Compile Include="Code\Forms\InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Hooks\BasicHookEventArgs.cs" />
-    <Compile Include="App_Code\Hooks\CallWndProcHook.cs" />
-    <Compile Include="App_Code\Hooks\CBTHook.cs" />
-    <Compile Include="App_Code\Hooks\GetMsgHook.cs" />
-    <Compile Include="App_Code\Hooks\Hook.cs" />
-    <Compile Include="App_Code\Hooks\KeyboardHook.cs" />
-    <Compile Include="App_Code\Hooks\KeyboardLLHook.cs" />
-    <Compile Include="App_Code\Hooks\MouseHook.cs" />
-    <Compile Include="App_Code\Hooks\MouseLLHook.cs" />
-    <Compile Include="App_Code\Hooks\ShellHook.cs" />
-    <Compile Include="App_Code\Hooks\SysCommandEventArgs.cs" />
-    <Compile Include="App_Code\Hooks\NativeHookMethods.cs" />
-    <Compile Include="App_Code\Hooks\WindowEventArgs.cs" />
-    <Compile Include="App_Code\Hooks\WndProcEventArgs.cs" />
-    <Compile Include="App_Code\Forms\TransparencyForm.cs">
+    <Compile Include="Code\Hooks\BasicHookEventArgs.cs" />
+    <Compile Include="Code\Hooks\CallWndProcHook.cs" />
+    <Compile Include="Code\Hooks\CBTHook.cs" />
+    <Compile Include="Code\Hooks\GetMsgHook.cs" />
+    <Compile Include="Code\Hooks\Hook.cs" />
+    <Compile Include="Code\Hooks\KeyboardHook.cs" />
+    <Compile Include="Code\Hooks\KeyboardLLHook.cs" />
+    <Compile Include="Code\Hooks\MouseHook.cs" />
+    <Compile Include="Code\Hooks\MouseLLHook.cs" />
+    <Compile Include="Code\Hooks\ShellHook.cs" />
+    <Compile Include="Code\Hooks\SysCommandEventArgs.cs" />
+    <Compile Include="Code\Hooks\NativeHookMethods.cs" />
+    <Compile Include="Code\Hooks\WindowEventArgs.cs" />
+    <Compile Include="Code\Hooks\WndProcEventArgs.cs" />
+    <Compile Include="Code\Forms\TransparencyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\TransparencyForm.Designer.cs">
+    <Compile Include="Code\Forms\TransparencyForm.Designer.cs">
       <DependentUpon>TransparencyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\SizeForm.cs">
+    <Compile Include="Code\Forms\SizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\SizeForm.Designer.cs">
+    <Compile Include="Code\Forms\SizeForm.Designer.cs">
       <DependentUpon>SizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\MainForm.cs">
+    <Compile Include="Code\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\MainForm.Designer.cs">
+    <Compile Include="Code\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App_Code\Common\NativeMethods.cs" />
-    <Compile Include="App_Code\Common\Window.cs" />
-    <EmbeddedResource Include="App_Code\Forms\AboutForm.resx">
+    <Compile Include="Code\Common\NativeMethods.cs" />
+    <Compile Include="Code\Common\Window.cs" />
+    <EmbeddedResource Include="Code\Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\ScreenForm.resx">
+    <EmbeddedResource Include="Code\Forms\ScreenForm.resx">
       <DependentUpon>ScreenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\PositionForm.resx">
+    <EmbeddedResource Include="Code\Forms\PositionForm.resx">
       <DependentUpon>PositionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\InfoForm.resx">
+    <EmbeddedResource Include="Code\Forms\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\MainForm.resx">
+    <EmbeddedResource Include="Code\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\TransparencyForm.resx">
+    <EmbeddedResource Include="Code\Forms\TransparencyForm.resx">
       <DependentUpon>TransparencyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -171,7 +171,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="App_Code\Forms\SizeForm.resx">
+    <EmbeddedResource Include="Code\Forms\SizeForm.resx">
       <DependentUpon>SizeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Manifest\app32.manifest" />
