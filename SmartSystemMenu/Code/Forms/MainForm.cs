@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
@@ -95,9 +93,9 @@ namespace SmartSystemMenu.Code.Forms
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
-            _keyboardHook = new KeyboardHook(Handle);
-            _keyboardHook.KeyboardEvent += WindowKeyboardEvent;
-            _keyboardHook.Start();
+            //_keyboardHook = new KeyboardHook(Handle);
+            //_keyboardHook.KeyboardEvent += WindowKeyboardEvent;
+            //_keyboardHook.Start();
 
             Hide();
         }
