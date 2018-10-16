@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using SmartSystemMenu.Code.Common;
 
@@ -19,7 +13,7 @@ namespace SmartSystemMenu.Code.Forms
             InitializeComponent();
             Text = "About " + AssemblyUtility.AssemblyProductName;
             lblProductName.Text = String.Format("{0} v{1}", AssemblyUtility.AssemblyProductName, AssemblyUtility.AssemblyVersion);
-            lblCopyright.Text = AssemblyUtility.AssemblyCopyright + " " + AssemblyUtility.AssemblyCompany;
+            lblCopyright.Text = String.Format("{0}-{1} {2}", AssemblyUtility.AssemblyCopyright, DateTime.Now.Year, AssemblyUtility.AssemblyCompany);
             linkUrl.Text = URL;
         }
 
@@ -35,7 +29,7 @@ namespace SmartSystemMenu.Code.Forms
 
         private void KeyDownClick(object sender, KeyEventArgs e)
         {
-            CloseClick(sender, (EventArgs)e);
+            CloseClick(sender, e);
         }
     }
 }
