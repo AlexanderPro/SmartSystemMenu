@@ -10,10 +10,14 @@
 
 [Dd]ebug/
 [Rr]elease/
+[Rr]elease32/
+[Rr]elease64/
 x64/
 build/
 [Bb]in/
 [Oo]bj/
+.vs/
+Application/
 
 #NuGet
 packages/
