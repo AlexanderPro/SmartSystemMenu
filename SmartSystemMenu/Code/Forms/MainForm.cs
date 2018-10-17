@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Drawing.Imaging;
 using SmartSystemMenu.Code.Common;
 using SmartSystemMenu.Code.Common.Extensions;
 using SmartSystemMenu.Code.Hooks;
@@ -93,8 +94,8 @@ namespace SmartSystemMenu.Code.Forms
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
-            //_keyboardHook = new KeyboardHook(Handle);
-            //_keyboardHook.KeyboardEvent += WindowKeyboardEvent;
+            _keyboardHook = new KeyboardHook(Handle);
+            _keyboardHook.KeyboardEvent += WindowKeyboardEvent;
             //_keyboardHook.Start();
 
             Hide();
@@ -307,32 +308,62 @@ namespace SmartSystemMenu.Code.Forms
                         case NativeConstants.SC_MAXIMIZE:
                             {
                                 window.Menu.UncheckSizeMenu();
-                            } break;
+                            }
+                            break;
 
                         case SystemMenu.SC_MINIMIZE_TO_SYSTEMTRAY:
                             {
                                 window.MinimizeToSystemTray();
-                            } break;
+                            }
+                            break;
 
                         case SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY:
                             {
                                 Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
                                 window.Menu.CheckMenuItem(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, !r);
-                            } break;
+                            }
+                            break;
 
                         case SystemMenu.SC_INFORMATION:
                             {
-                                InfoForm infoForm = new InfoForm(window);
-                                infoForm.Show();
-                                Window.ForceForegroundWindow(infoForm.Handle);
-                            } break;
+                                var infoForm = new InfoForm(window);
+                                infoForm.Show(window.Win32Window);
+                            }
+                            break;
+
+                        case SystemMenu.SC_SAVE_SCREEN_SHOT:
+                            {
+                                var bitmap = window.PrintWindow();
+                                var dialog = new SaveFileDialog
+                                {
+                                    OverwritePrompt = true,
+                                    ValidateNames = true,
+                                    Title = "Save Window Screenshot",
+                                    FileName = "WindowScreenshot",
+                                    DefaultExt = "bmp",
+                                    RestoreDirectory = false,
+                                    Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|Tiff Image (.tiff)|*.tiff|Wmf Image (.wmf)|*.wmf"
+                                };
+                                if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
+                                {
+                                    var fileExtension = Path.GetExtension(dialog.FileName).ToLower();
+                                    var imageFormat = fileExtension == ".bmp" ? ImageFormat.Bmp :
+                                        fileExtension == ".gif" ? ImageFormat.Gif :
+                                        fileExtension == ".jpeg" ? ImageFormat.Jpeg :
+                                        fileExtension == ".png" ? ImageFormat.Png :
+                                        fileExtension == ".tiff" ? ImageFormat.Tiff : ImageFormat.Wmf;
+                                    bitmap.Save(dialog.FileName, imageFormat);
+                                }
+                            }
+                            break;
 
                         case SystemMenu.SC_TOPMOST:
                             {
                                 Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
                                 window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, !r);
                                 window.MakeTopMost(!r);
-                            } break;
+                            }
+                            break;
 
                         case SystemMenu.SC_ROLLUP:
                             {
@@ -346,7 +377,8 @@ namespace SmartSystemMenu.Code.Forms
                                 {
                                     window.UnRollUp();
                                 }
-                            } break;
+                            }
+                            break;
 
 
                         case SystemMenu.SC_SIZE_DEFAULT:
@@ -355,49 +387,52 @@ namespace SmartSystemMenu.Code.Forms
                                 window.Menu.CheckMenuItem(SystemMenu.SC_SIZE_DEFAULT, true);
                                 window.ShowNormal();
                                 window.RestoreSize();
-                            } break;
+                            }
+                            break;
 
                         case SystemMenu.SC_SIZE_CUSTOM:
                             {
-                                SizeForm sizeForm = new SizeForm(window);
-                                sizeForm.Show();
-                                Window.ForceForegroundWindow(sizeForm.Handle);
-                            } break;
+                                var sizeForm = new SizeForm(window);
+                                sizeForm.Show(window.Win32Window);
+                            }
+                            break;
 
                         case SystemMenu.SC_TRANS_DEFAULT:
                             {
                                 window.Menu.UncheckTransparencyMenu();
                                 window.Menu.CheckMenuItem(SystemMenu.SC_TRANS_DEFAULT, true);
                                 window.RestoreTransparency();
-                            } break;
+                            }
+                            break;
 
                         case SystemMenu.SC_TRANS_CUSTOM:
                             {
-                                TransparencyForm opacityForm = new TransparencyForm(window);
-                                opacityForm.Show();
-                                Window.ForceForegroundWindow(opacityForm.Handle);
-                            } break;
+                                var opacityForm = new TransparencyForm(window);
+                                opacityForm.Show(window.Win32Window);
+                            }
+                            break;
 
                         case SystemMenu.SC_ALIGN_DEFAULT:
                             {
                                 window.Menu.UncheckAlignmentMenu();
                                 window.Menu.CheckMenuItem(SystemMenu.SC_ALIGN_DEFAULT, true);
                                 window.RestorePosition();
-                            } break;
+                            }
+                            break;
 
                         case SystemMenu.SC_ALIGN_CUSTOM:
                             {
-                                PositionForm positionForm = new PositionForm(window);
-                                positionForm.Show();
-                                Window.ForceForegroundWindow(positionForm.Handle);
-                            } break;
+                                var positionForm = new PositionForm(window);
+                                positionForm.Show(window.Win32Window);
+                            }
+                            break;
 
                         case SystemMenu.SC_ALIGN_MONITOR:
                             {
-                                ScreenForm screenForm = new ScreenForm(window);
-                                screenForm.Show();
-                                Window.ForceForegroundWindow(screenForm.Handle);
-                            } break;
+                                var screenForm = new ScreenForm(window);
+                                screenForm.Show(window.Win32Window);
+                            }
+                            break;
 
                         case SystemMenu.SC_SIZE_640_480: SetSizeMenuItem(window, SystemMenu.SC_SIZE_640_480, 640, 480); break;
                         case SystemMenu.SC_SIZE_720_480: SetSizeMenuItem(window, SystemMenu.SC_SIZE_720_480, 720, 480); break;

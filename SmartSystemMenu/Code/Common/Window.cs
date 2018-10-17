@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Diagnostics;
 using SmartSystemMenu.Code.Common.Extensions;
 
@@ -188,6 +189,14 @@ namespace SmartSystemMenu.Code.Common
             {
                 Boolean exist = _systemTrayIcon != null && _systemTrayIcon.Visible;
                 return exist;
+            }
+        }
+
+        public IWin32Window Win32Window
+        {
+            get
+            {
+                return new Win32WindowWrapper(Handle);
             }
         }
 
@@ -396,6 +405,20 @@ namespace SmartSystemMenu.Code.Common
             IntPtr processHandle = Process.GetProcessById(ProcessId).GetHandle();
             PriorityClass priorityClass = priority.GetPriorityClass();
             NativeMethods.SetPriorityClass(processHandle, priorityClass);
+        }
+
+        public Bitmap PrintWindow()
+        {
+            Rect rect;
+            NativeMethods.GetWindowRect(Handle, out rect);
+            var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
+            using (var graphics = Graphics.FromImage(bitmap))
+            {
+                var hdc = graphics.GetHdc();
+                NativeMethods.PrintWindow(Handle, hdc, 0);
+                graphics.ReleaseHdc(hdc);
+            }
+            return bitmap;
         }
 
         public static void CloseAllWindowsOfProcess(Int32 processId)

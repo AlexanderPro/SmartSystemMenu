@@ -82,6 +82,7 @@
     <Compile Include="Code\Common\PlatformUtility.cs" />
     <Compile Include="Code\Common\SystemMenu.cs" />
     <Compile Include="Code\Common\SystemTrayMenu.cs" />
+    <Compile Include="Code\Common\Win32WindowWrapper.cs" />
     <Compile Include="Code\Common\WindowAlignment.cs" />
     <Compile Include="Code\Forms\AboutForm.cs">
       <SubType>Form</SubType>

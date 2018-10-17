@@ -109,6 +109,10 @@ namespace SmartSystemMenu.Code.Common
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern Boolean PrintWindow(IntPtr handle, IntPtr hdc, Int32 nFlags);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
         public static extern Boolean GetClientRect(IntPtr handle, out Rect lpRect);
 
         [DllImport("user32.dll")]
