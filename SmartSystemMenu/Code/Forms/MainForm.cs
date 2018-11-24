@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Text;
 using SmartSystemMenu.Code.Common;
 using SmartSystemMenu.Code.Common.Extensions;
 using SmartSystemMenu.Code.Hooks;
@@ -15,18 +16,47 @@ namespace SmartSystemMenu.Code.Forms
 {
     partial class MainForm : Form
     {
-        private readonly String _shellWindowName = "Program Manager";
+        private const String SHELL_WINDOW_NAME = "Program Manager";
         private List<Window> _windows;
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
         private CBTHook _cbtHook;
         private KeyboardHook _keyboardHook;
         private AboutForm _aboutForm;
+        private List<String> _processExclusions;
 
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
         private Process _64BitProcess;
 #endif
+
+        private List<String> ProcessExclusions
+        {
+            get
+            {
+                if (_processExclusions != null)
+                {
+                    return _processExclusions;
+                }
+
+                var proceesExclusionsFileName = Path.Combine(AssemblyUtility.AssemblyDirectory, "SmartSystemMenuProcessExclusions.txt");
+                if (File.Exists(proceesExclusionsFileName))
+                {
+                    _processExclusions = File
+                        .ReadAllLines(proceesExclusionsFileName, Encoding.UTF8)
+                        .Select(x => x.Trim().ToLower())
+                        .Where(x => !String.IsNullOrEmpty(x))
+                        .ToList();
+                }
+                else
+                {
+                    _processExclusions = new List<String>();
+                }
+
+                return _processExclusions;
+            }
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -68,9 +98,14 @@ namespace SmartSystemMenu.Code.Forms
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtility.AssemblyProductName, AssemblyUtility.AssemblyLocation);
 #endif
-            _windows = EnumWindows.EnumAllWindows(new String[] { _shellWindowName }).ToList();
+            _windows = EnumWindows.EnumAllWindows(new String[] { SHELL_WINDOW_NAME }).ToList();
             foreach (var window in _windows)
             {
+                var processName = Path.GetFileName(window.Process.MainModule.FileName);
+                if (ProcessExclusions.Contains(processName.ToLower()))
+                {
+                    continue;
+                }
                 window.Menu.Create();
                 Int32 menuItemId = window.ProcessPriority.GetMenuItemId();
                 window.Menu.CheckMenuItem(menuItemId, true);
@@ -219,13 +254,18 @@ namespace SmartSystemMenu.Code.Forms
                 IList<Window> windows = new List<Window>();
                 try
                 {
-                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new String[] { _shellWindowName });
+                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new String[] { SHELL_WINDOW_NAME });
                 }
                 catch
                 {
                 }
                 foreach (var window in windows)
                 {
+                    var processName = Path.GetFileName(window.Process.MainModule.FileName);
+                    if (ProcessExclusions.Contains(processName.ToLower()))
+                    {
+                        continue;
+                    }
                     window.Menu.Create();
                     Int32 menuItemId = window.ProcessPriority.GetMenuItemId();
                     window.Menu.CheckMenuItem(menuItemId, true);

@@ -190,6 +190,9 @@
   <ItemGroup>
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
     <None Include="SmartSystemMenu.bmp" />
+    <Content Include="SmartSystemMenuProcessExclusions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SmartSystemMenu.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

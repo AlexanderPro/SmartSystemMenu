@@ -1,0 +1,3 @@
+discord.exe
+slack.exe
+some_other_process_name.exe

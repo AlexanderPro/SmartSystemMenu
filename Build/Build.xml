@@ -19,6 +19,8 @@
     <SmartSystemMenuSourceFileWin64 Include="$(SmartSystemMenuProjectPath)\bin\x64\Release\SmartSystemMenu.exe" />
     <SmartSystemMenuDestFileWin32 Include="$(ApplicationPath)\SmartSystemMenu.exe" />
     <SmartSystemMenuDestFileWin64 Include="$(SmartSystemMenuProjectPath)\SmartSystemMenu64.exe" />
+    <SmartSystemMenuProcessExclusionsSourceFile Include="$(SmartSystemMenuProjectPath)\SmartSystemMenuProcessExclusions.txt" />
+    <SmartSystemMenuProcessExclusionsDestFile Include="$(ApplicationPath)\SmartSystemMenuProcessExclusions.txt" />
     <EmptyTextForFile Include="Empty File" />
   </ItemGroup>
 
@@ -32,6 +34,7 @@
     <CallTarget Targets="Copy_Release_x64_SmartSystemMenu" />
     <CallTarget Targets="Build_Release_x32_SmartSystemMenu" />
     <CallTarget Targets="Copy_Release_x32_SmartSystemMenu" />
+    <CallTarget Targets="CopySmartSystemMenuProcessExclusionsFile" />
   </Target>
 
   <Target Name="Build_Release_x32_SmartSystemMenuHook">
@@ -86,9 +89,14 @@
     <Message Text="Copy Completed $(SmartSystemMenuProjectName) Realese x64" />
   </Target>
 
- <Target Name="WriteEmptyTextToEmbeddedResourceInSmartSystemMenu">
+  <Target Name="WriteEmptyTextToEmbeddedResourceInSmartSystemMenu">
     <Message Text="Write Empty Embedded Resource $(SmartSystemMenuProjectName)" />
     <WriteLinesToFile File="@(SmartSystemMenuDestFileWin64)" Lines="@(EmptyTextForFile)" Overwrite="true" />
     <Message Text="Write Empty Embedded Resource Completed $(SmartSystemMenuProjectName)" />
+  </Target>
+
+  <Target Name="CopySmartSystemMenuProcessExclusionsFile">
+    <Message Text="Copy $(SmartSystemMenuProcessExclusionsSourceFile) to $(SmartSystemMenuProjectName)" />
+    <Copy SourceFiles="@(SmartSystemMenuProcessExclusionsSourceFile)" DestinationFiles="@(SmartSystemMenuProcessExclusionsDestFile)" />
   </Target>
 </Project>

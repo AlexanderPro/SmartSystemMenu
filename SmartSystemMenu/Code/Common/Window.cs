@@ -100,6 +100,14 @@ namespace SmartSystemMenu.Code.Common
             }
         }
 
+        public Process Process
+        {
+            get
+            {
+                return Process.GetProcessById(ProcessId);
+            }
+        }
+
         public UInt32 ThreadId
         {
             get
