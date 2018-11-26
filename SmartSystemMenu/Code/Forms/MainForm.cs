@@ -261,10 +261,16 @@ namespace SmartSystemMenu.Code.Forms
                 }
                 foreach (var window in windows)
                 {
-                    var processName = Path.GetFileName(window.Process.MainModule.FileName);
-                    if (ProcessExclusions.Contains(processName.ToLower()))
+                    try
                     {
-                        continue;
+                        var processName = Path.GetFileName(window.Process.MainModule.FileName);
+                        if (ProcessExclusions.Contains(processName.ToLower()))
+                        {
+                            continue;
+                        }
+                    }
+                    catch
+                    {
                     }
                     window.Menu.Create();
                     Int32 menuItemId = window.ProcessPriority.GetMenuItemId();
