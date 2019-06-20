@@ -9,90 +9,90 @@ namespace SmartSystemMenu
 {
     static class AssemblyUtils
     {
-        public static String AssemblyLocation
+        public static string AssemblyLocation
         {
             get
             {
-                String location = Assembly.GetExecutingAssembly().Location;
+                string location = Assembly.GetExecutingAssembly().Location;
                 return location;
             }
         }
 
-        public static String AssemblyDirectory
+        public static string AssemblyDirectory
         {
             get
             {
-                String directory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string directory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                 return directory;
             }
         }
 
-        public static String AssemblyTitle
+        public static string AssemblyTitle
         {
             get
             {
                 Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
-                String title = ((AssemblyTitleAttribute)attributes[0]).Title;
+                string title = ((AssemblyTitleAttribute)attributes[0]).Title;
                 return title;
             }
         }
 
-        public static String AssemblyProductName
+        public static string AssemblyProductName
         {
             get
             {
                 Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
-                String productName = ((AssemblyProductAttribute)attributes[0]).Product;
+                string productName = ((AssemblyProductAttribute)attributes[0]).Product;
                 return productName;
             }
         }
 
-        public static String AssemblyCopyright
+        public static string AssemblyCopyright
         {
             get
             {
                 Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
-                String copyright = ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+                string copyright = ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
                 return copyright;
             }
         }
 
-        public static String AssemblyCompany
+        public static string AssemblyCompany
         {
             get
             {
                 Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return String.Empty;
+                    return string.Empty;
                 }
-                String company = ((AssemblyCompanyAttribute)attributes[0]).Company;
+                string company = ((AssemblyCompanyAttribute)attributes[0]).Company;
                 return company;
             }
         }
 
-        public static String AssemblyVersion
+        public static string AssemblyVersion
         {
             get
             {
-                String version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 return version;
             }
         }
 
-        public static void ExtractFileFromAssembly(String resourceName, String path)
+        public static void ExtractFileFromAssembly(string resourceName, string path)
         {
             Assembly currentAssembly = Assembly.GetExecutingAssembly();
             FileStream outputFileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);

@@ -7,10 +7,10 @@ namespace SmartSystemMenu.Hooks
 {
     abstract class Hook
     {
-        protected Boolean isActive = false;
+        protected bool isActive = false;
         protected IntPtr handle;
 
-        public Boolean IsActive
+        public bool IsActive
         {
             get { return isActive; }
         }

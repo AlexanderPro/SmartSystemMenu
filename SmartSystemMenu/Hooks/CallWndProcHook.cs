@@ -8,9 +8,9 @@ namespace SmartSystemMenu.Hooks
 {
     class CallWndProcHook : Hook
     {
-        private Int32 msgID_CallWndProc;
-        private Int32 msgID_CallWndProc_Params;
-        private Int32 msgID_CallWndProc_HookReplaced;
+        private int msgID_CallWndProc;
+        private int msgID_CallWndProc_Params;
+        private int msgID_CallWndProc_HookReplaced;
         private IntPtr cacheHandle;
         private IntPtr cacheMessage;
 

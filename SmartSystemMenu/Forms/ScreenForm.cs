@@ -27,7 +27,7 @@ namespace SmartSystemMenu.Forms
         {
             try
             {
-                Int32 screenId = Int32.Parse(cmbScreen.SelectedItem.ToString());
+                int screenId = int.Parse(cmbScreen.SelectedItem.ToString());
                 _window.ScreenId = screenId;
                 _window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + screenId);
             }

@@ -9,13 +9,13 @@ namespace SmartSystemMenu
 {
     static class PlatformUtils
     {
-        public static Boolean IsWow64Process(Int32 pId)
+        public static bool IsWow64Process(int pId)
         {
             if ((Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor >= 1) || Environment.OSVersion.Version.Major >= 6)
             {
                 using (Process p = Process.GetProcessById(pId))
                 {
-                    Boolean retVal;
+                    bool retVal;
                     if (!NativeMethods.IsWow64Process(p.GetHandle(), out retVal))
                     {
                         return false;

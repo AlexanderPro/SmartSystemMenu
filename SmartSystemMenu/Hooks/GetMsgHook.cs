@@ -8,9 +8,9 @@ namespace SmartSystemMenu.Hooks
 {
     class GetMsgHook : Hook
     {
-        private Int32 msgID_GetMsg;
-        private Int32 msgID_GetMsg_Params;
-        private Int32 msgID_GetMsg_HookReplaced;
+        private int msgID_GetMsg;
+        private int msgID_GetMsg_Params;
+        private int msgID_GetMsg_HookReplaced;
         private IntPtr cacheHandle;
         private IntPtr cacheMessage;
 
@@ -43,12 +43,12 @@ namespace SmartSystemMenu.Hooks
 
         public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
         {
-            //String dbgMessage = "";
+            //string dbgMessage = "";
             if (m.Msg == msgID_GetMsg)
             {
                 //if (m.LParam.ToInt64() == NativeConstants.WM_SYSCOMMAND)
                 //{
-                //    dbgMessage = String.Format("WM_SYSCOMMAND, GetMsg, Handle = {0}", m.WParam);
+                //    dbgMessage = string.Format("WM_SYSCOMMAND, GetMsg, Handle = {0}", m.WParam);
                 //    System.Diagnostics.Trace.WriteLine(dbgMessage);
                 //}
                 cacheHandle = m.WParam;
@@ -60,7 +60,7 @@ namespace SmartSystemMenu.Hooks
                 {
                     //if (cacheMessage.ToInt64() == NativeConstants.WM_SYSCOMMAND)
                     //{
-                    //    dbgMessage = String.Format("WM_SYSCOMMAND, GetMsgParams, Handle = {0}, WParam = {1}", cacheHandle, m.WParam);
+                    //    dbgMessage = string.Format("WM_SYSCOMMAND, GetMsgParams, Handle = {0}, WParam = {1}", cacheHandle, m.WParam);
                     //    System.Diagnostics.Trace.WriteLine(dbgMessage);
                     //}
                     RaiseEvent(GetMsg, new WndProcEventArgs(cacheHandle, cacheMessage, m.WParam, m.LParam));

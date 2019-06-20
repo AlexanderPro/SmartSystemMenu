@@ -23,12 +23,12 @@ namespace SmartSystemMenu
 
         public IntPtr WindowHandle { get; private set; }
 
-        public Boolean Exists
+        public bool Exists
         {
             get
             {
                 IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-                Boolean existsWindowMenu = windowMenuHandle != IntPtr.Zero;
+                bool existsWindowMenu = windowMenuHandle != IntPtr.Zero;
                 return existsWindowMenu;
             }
         }
@@ -38,58 +38,58 @@ namespace SmartSystemMenu
 
         #region Constants.Public
 
-        public const Int32 SC_TRANS_100 = 0x4740;
-        public const Int32 SC_TRANS_90 = 0x4742;
-        public const Int32 SC_TRANS_80 = 0x4744;
-        public const Int32 SC_TRANS_70 = 0x4746;
-        public const Int32 SC_TRANS_60 = 0x4748;
-        public const Int32 SC_TRANS_50 = 0x4750;
-        public const Int32 SC_TRANS_40 = 0x4752;
-        public const Int32 SC_TRANS_30 = 0x4754;
-        public const Int32 SC_TRANS_20 = 0x4756;
-        public const Int32 SC_TRANS_10 = 0x4758;
-        public const Int32 SC_TRANS_00 = 0x4760;
-        public const Int32 SC_TRANS_CUSTOM = 0x4761;
-        public const Int32 SC_TRANS_DEFAULT = 0x4762;
-        public const Int32 SC_TOPMOST = 0x4763;
-        public const Int32 SC_SIZE_640_480 = 0x4765;
-        public const Int32 SC_SIZE_720_480 = 0x4766;
-        public const Int32 SC_SIZE_720_576 = 0x4767;
-        public const Int32 SC_SIZE_800_600 = 0x4768;
-        public const Int32 SC_SIZE_1024_768 = 0x4769;
-        public const Int32 SC_SIZE_1152_864 = 0x4770;
-        public const Int32 SC_SIZE_1280_768 = 0x4771;
-        public const Int32 SC_SIZE_1280_800 = 0x4772;
-        public const Int32 SC_SIZE_1280_960 = 0x4773;
-        public const Int32 SC_SIZE_1280_1024 = 0x4774;
-        public const Int32 SC_SIZE_1440_900 = 0x4775;
-        public const Int32 SC_SIZE_1600_900 = 0x4776;
-        public const Int32 SC_SIZE_1680_1050 = 0x4777;
-        public const Int32 SC_SIZE_DEFAULT = 0x4778;
-        public const Int32 SC_SIZE_CUSTOM = 0x4779;
-        public const Int32 SC_MINIMIZE_TO_SYSTEMTRAY = 0x4780;
-        public const Int32 SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY = 0x4781;
-        public const Int32 SC_INFORMATION = 0x4782;
-        public const Int32 SC_ROLLUP = 0x4783;
-        public const Int32 SC_PRIORITY_REAL_TIME = 0x4784;
-        public const Int32 SC_PRIORITY_HIGH = 0x4785;
-        public const Int32 SC_PRIORITY_ABOVE_NORMAL = 0x4786;
-        public const Int32 SC_PRIORITY_NORMAL = 0x4787;
-        public const Int32 SC_PRIORITY_BELOW_NORMAL = 0x4788;
-        public const Int32 SC_PRIORITY_IDLE = 0x4789;
-        public const Int32 SC_ALIGN_TOP_LEFT = 0x4790;
-        public const Int32 SC_ALIGN_TOP_CENTER = 0x4791;
-        public const Int32 SC_ALIGN_TOP_RIGHT = 0x4792;
-        public const Int32 SC_ALIGN_MIDDLE_LEFT = 0x4793;
-        public const Int32 SC_ALIGN_MIDDLE_CENTER = 0x4794;
-        public const Int32 SC_ALIGN_MIDDLE_RIGHT = 0x4795;
-        public const Int32 SC_ALIGN_BOTTOM_LEFT = 0x4796;
-        public const Int32 SC_ALIGN_BOTTOM_CENTER = 0x4797;
-        public const Int32 SC_ALIGN_BOTTOM_RIGHT = 0x4798;
-        public const Int32 SC_ALIGN_DEFAULT = 0x4799;
-        public const Int32 SC_ALIGN_CUSTOM = 0x4800;
-        public const Int32 SC_ALIGN_MONITOR = 0x4801;
-        public const Int32 SC_SAVE_SCREEN_SHOT = 0x4802;
+        public const int SC_TRANS_100 = 0x4740;
+        public const int SC_TRANS_90 = 0x4742;
+        public const int SC_TRANS_80 = 0x4744;
+        public const int SC_TRANS_70 = 0x4746;
+        public const int SC_TRANS_60 = 0x4748;
+        public const int SC_TRANS_50 = 0x4750;
+        public const int SC_TRANS_40 = 0x4752;
+        public const int SC_TRANS_30 = 0x4754;
+        public const int SC_TRANS_20 = 0x4756;
+        public const int SC_TRANS_10 = 0x4758;
+        public const int SC_TRANS_00 = 0x4760;
+        public const int SC_TRANS_CUSTOM = 0x4761;
+        public const int SC_TRANS_DEFAULT = 0x4762;
+        public const int SC_TOPMOST = 0x4763;
+        public const int SC_SIZE_640_480 = 0x4765;
+        public const int SC_SIZE_720_480 = 0x4766;
+        public const int SC_SIZE_720_576 = 0x4767;
+        public const int SC_SIZE_800_600 = 0x4768;
+        public const int SC_SIZE_1024_768 = 0x4769;
+        public const int SC_SIZE_1152_864 = 0x4770;
+        public const int SC_SIZE_1280_768 = 0x4771;
+        public const int SC_SIZE_1280_800 = 0x4772;
+        public const int SC_SIZE_1280_960 = 0x4773;
+        public const int SC_SIZE_1280_1024 = 0x4774;
+        public const int SC_SIZE_1440_900 = 0x4775;
+        public const int SC_SIZE_1600_900 = 0x4776;
+        public const int SC_SIZE_1680_1050 = 0x4777;
+        public const int SC_SIZE_DEFAULT = 0x4778;
+        public const int SC_SIZE_CUSTOM = 0x4779;
+        public const int SC_MINIMIZE_TO_SYSTEMTRAY = 0x4780;
+        public const int SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY = 0x4781;
+        public const int SC_INFORMATION = 0x4782;
+        public const int SC_ROLLUP = 0x4783;
+        public const int SC_PRIORITY_REAL_TIME = 0x4784;
+        public const int SC_PRIORITY_HIGH = 0x4785;
+        public const int SC_PRIORITY_ABOVE_NORMAL = 0x4786;
+        public const int SC_PRIORITY_NORMAL = 0x4787;
+        public const int SC_PRIORITY_BELOW_NORMAL = 0x4788;
+        public const int SC_PRIORITY_IDLE = 0x4789;
+        public const int SC_ALIGN_TOP_LEFT = 0x4790;
+        public const int SC_ALIGN_TOP_CENTER = 0x4791;
+        public const int SC_ALIGN_TOP_RIGHT = 0x4792;
+        public const int SC_ALIGN_MIDDLE_LEFT = 0x4793;
+        public const int SC_ALIGN_MIDDLE_CENTER = 0x4794;
+        public const int SC_ALIGN_MIDDLE_RIGHT = 0x4795;
+        public const int SC_ALIGN_BOTTOM_LEFT = 0x4796;
+        public const int SC_ALIGN_BOTTOM_CENTER = 0x4797;
+        public const int SC_ALIGN_BOTTOM_RIGHT = 0x4798;
+        public const int SC_ALIGN_DEFAULT = 0x4799;
+        public const int SC_ALIGN_CUSTOM = 0x4800;
+        public const int SC_ALIGN_MONITOR = 0x4801;
+        public const int SC_SAVE_SCREEN_SHOT = 0x4802;
 
         #endregion
 
@@ -104,7 +104,7 @@ namespace SmartSystemMenu
         public void Create()
         {
             IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            Int32 index = NativeMethods.GetMenuItemCount(windowMenuHandle);
+            int index = NativeMethods.GetMenuItemCount(windowMenuHandle);
 
             NativeMethods.InsertMenu(windowMenuHandle, index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, IntPtr.Zero, "");
             NativeMethods.InsertMenu(windowMenuHandle, index + 1, NativeConstants.MF_BYPOSITION, SC_INFORMATION, "Information");
@@ -185,7 +185,7 @@ namespace SmartSystemMenu
         public void Destroy()
         {
             IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            Int32 Index = NativeMethods.GetMenuItemCount(windowMenuHandle);
+            int Index = NativeMethods.GetMenuItemCount(windowMenuHandle);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 1, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 2, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 3, NativeConstants.MF_BYPOSITION);
@@ -202,7 +202,7 @@ namespace SmartSystemMenu
             NativeMethods.GetSystemMenu(WindowHandle, true);
         }
 
-        public void SetMenuItemText(Int32 id, String text)
+        public void SetMenuItemText(int id, string text)
         {
             MenuItemInfo info = new MenuItemInfo();
             info.cbSize = (UInt32)Marshal.SizeOf(info);
@@ -214,17 +214,17 @@ namespace SmartSystemMenu
             NativeMethods.SetMenuItemInfo(windowMenuHandle, id, false, ref info);
         }
 
-        public void CheckMenuItem(Int32 id, Boolean check)
+        public void CheckMenuItem(int id, bool check)
         {
             IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             NativeMethods.CheckMenuItem(windowMenuHandle, id, check ? NativeConstants.MF_CHECKED : NativeConstants.MF_UNCHECKED);
         }
 
-        public Boolean IsMenuItemChecked(Int32 id)
+        public bool IsMenuItemChecked(int id)
         {
             IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             UInt32 flags = NativeMethods.GetMenuState(windowMenuHandle, id, NativeConstants.MF_BYCOMMAND);
-            Boolean isChecked = (flags & NativeConstants.MF_CHECKED) != 0;
+            bool isChecked = (flags & NativeConstants.MF_CHECKED) != 0;
             return isChecked;
         }
 

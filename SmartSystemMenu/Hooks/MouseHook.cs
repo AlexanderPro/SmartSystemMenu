@@ -8,8 +8,8 @@ namespace SmartSystemMenu.Hooks
 {
     class MouseHook : Hook
     {
-        private Int32 msgID_Mouse;
-        private Int32 msgID_Mouse_HookReplaced;
+        private int msgID_Mouse;
+        private int msgID_Mouse_HookReplaced;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<BasicHookEventArgs> MouseEvent;

@@ -10,20 +10,20 @@ namespace SmartSystemMenu.Hooks
 {
     class MouseLLHook : Hook
     {
-        private Int32 msgID_MouseLL;
-        private Int32 msgID_MouseLL_HookReplaced;
+        private int msgID_MouseLL;
+        private int msgID_MouseLL_HookReplaced;
 
-        private const Int32 WM_MOUSEMOVE = 0x0200;
-        private const Int32 WM_LBUTTONDOWN = 0x0201;
-        private const Int32 WM_LBUTTONUP = 0x0202;
-        private const Int32 WM_LBUTTONDBLCLK = 0x0203;
-        private const Int32 WM_RBUTTONDOWN = 0x0204;
-        private const Int32 WM_RBUTTONUP = 0x0205;
-        private const Int32 WM_RBUTTONDBLCLK = 0x0206;
-        private const Int32 WM_MBUTTONDOWN = 0x0207;
-        private const Int32 WM_MBUTTONUP = 0x0208;
-        private const Int32 WM_MBUTTONDBLCLK = 0x0209;
-        private const Int32 WM_MOUSEWHEEL = 0x020A;
+        private const int WM_MOUSEMOVE = 0x0200;
+        private const int WM_LBUTTONDOWN = 0x0201;
+        private const int WM_LBUTTONUP = 0x0202;
+        private const int WM_LBUTTONDBLCLK = 0x0203;
+        private const int WM_RBUTTONDOWN = 0x0204;
+        private const int WM_RBUTTONUP = 0x0205;
+        private const int WM_RBUTTONDBLCLK = 0x0206;
+        private const int WM_MBUTTONDOWN = 0x0207;
+        private const int WM_MBUTTONUP = 0x0208;
+        private const int WM_MBUTTONDBLCLK = 0x0209;
+        private const int WM_MOUSEWHEEL = 0x020A;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<BasicHookEventArgs> MouseLLEvent;
@@ -36,9 +36,9 @@ namespace SmartSystemMenu.Hooks
             #pragma warning disable 0649
 
             public System.Drawing.Point pt;
-            public Int32 mouseData;
-            public Int32 flags;
-            public Int32 time;
+            public int mouseData;
+            public int flags;
+            public int time;
             public IntPtr dwExtraInfo;
 
             #pragma warning restore 0649

@@ -7,13 +7,13 @@ namespace SmartSystemMenu
     [StructLayout(LayoutKind.Sequential)]
     struct Rect
     {
-        public Int32 Left;
-        public Int32 Top;
-        public Int32 Right;
-        public Int32 Bottom;
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
 
-        public Int32 Width { get { return Right - Left; } }
-        public Int32 Height { get { return Bottom - Top; } }
+        public int Width { get { return Right - Left; } }
+        public int Height { get { return Bottom - Top; } }
     }
 
     enum WindowShowStyle : uint
@@ -78,7 +78,7 @@ namespace SmartSystemMenu
         public IntPtr hbmpChecked;
         public IntPtr hbmpUnchecked;
         public UInt32 dwItemData;
-        public String dwTypeData;
+        public string dwTypeData;
         public UInt32 cch;
     }
 }

@@ -10,22 +10,22 @@ namespace SmartSystemMenu
 {
     static class EnumWindows
     {
-        private static String[] _filterTitles;
+        private static string[] _filterTitles;
         private static IntPtr[] _filterHandles;
         private static IList<Window> _windows;
 
-        public static IList<Window> EnumAllWindows(params String[] filterTitles)
+        public static IList<Window> EnumAllWindows(params string[] filterTitles)
         {
-            _filterTitles = filterTitles ?? new String[0];
+            _filterTitles = filterTitles ?? new string[0];
             _filterHandles = new IntPtr[0];
             _windows = new List<Window>();
             NativeMethods.EnumWindows(EnumWindowCallback, 0);
             return _windows;
         }
 
-        public static IList<Window> EnumProcessWindows(Int32 processId, IntPtr[] filterHandles, params String[] filterTitles)
+        public static IList<Window> EnumProcessWindows(int processId, IntPtr[] filterHandles, params string[] filterTitles)
         {
-            _filterTitles = filterTitles ?? new String[0];
+            _filterTitles = filterTitles ?? new string[0];
             _filterHandles = filterHandles ?? new IntPtr[0];
             _windows = new List<Window>();
             foreach (ProcessThread thread in Process.GetProcessById(processId).Threads)
@@ -35,13 +35,13 @@ namespace SmartSystemMenu
             return _windows;
         }
 
-        private static Boolean EnumWindowCallback(IntPtr hwnd, Int32 lParam)
+        private static bool EnumWindowCallback(IntPtr hwnd, int lParam)
         {
             if (_filterHandles.Any(h => h == hwnd)) return true;
             if (_windows.Any(w => w.Handle == hwnd)) return true;
 
-            Int32 pid;
-            Boolean isAdd;
+            int pid;
+            bool isAdd;
             NativeMethods.GetWindowThreadProcessId(hwnd, out pid);
 
 #if WIN32

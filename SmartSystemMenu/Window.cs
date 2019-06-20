@@ -16,13 +16,13 @@ namespace SmartSystemMenu
         #region Fields.Private
 
         private IntPtr _handle;
-        private Boolean _isManaged;
-        private Int32 _defaultTransparency;
-        private Int32 _defaultWidth;
-        private Int32 _defaultHeight;
-        private Int32 _defaultLeft;
-        private Int32 _defaultTop;
-        private Int32 _beforeRollupHeight;
+        private bool _isManaged;
+        private int _defaultTransparency;
+        private int _defaultWidth;
+        private int _defaultHeight;
+        private int _defaultLeft;
+        private int _defaultTop;
+        private int _beforeRollupHeight;
         private NotifyIcon _systemTrayIcon;
         private SystemMenu _systemMenu;
 
@@ -39,33 +39,33 @@ namespace SmartSystemMenu
             }
         }
 
-        public String WindowText
+        public string WindowText
         {
             get
             {
                 StringBuilder sb = new StringBuilder(1024);
                 NativeMethods.GetWindowText(_handle, sb, sb.Capacity);
-                String windowText = sb.ToString().Trim();
+                string windowText = sb.ToString().Trim();
                 return windowText;
             }
         }
 
-        public String ClassName
+        public string ClassName
         {
             get
             {
                 StringBuilder sb = new StringBuilder(1024);
                 NativeMethods.GetClassName(_handle, sb, sb.Capacity);
-                String className = sb.ToString().Trim();
+                string className = sb.ToString().Trim();
                 return className;
             }
         }
 
-        public Int32 Style
+        public int Style
         {
             get
             {
-                Int32 style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_STYLE);
+                int style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_STYLE);
                 return style;
             }
         }
@@ -90,11 +90,11 @@ namespace SmartSystemMenu
             }
         }
 
-        public Int32 ProcessId
+        public int ProcessId
         {
             get
             {
-                Int32 processId;
+                int processId;
                 NativeMethods.GetWindowThreadProcessId(_handle, out processId);
                 return processId;
             }
@@ -112,7 +112,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                Int32 processId;
+                int processId;
                 UInt32 threadId = NativeMethods.GetWindowThreadProcessId(_handle, out processId);
                 return threadId;
             }
@@ -137,39 +137,39 @@ namespace SmartSystemMenu
             }
         }
 
-        public Int32 ScreenId { get; set; }
+        public int ScreenId { get; set; }
 
-        public Boolean IsVisible
+        public bool IsVisible
         {
             get
             {
-                Boolean isVisible = NativeMethods.IsWindowVisible(_handle);
+                bool isVisible = NativeMethods.IsWindowVisible(_handle);
                 return isVisible;
             }
         }
 
-        public Int32 Transparency
+        public int Transparency
         {
             get
             {
-                Int32 style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_EXSTYLE);
-                Boolean isLayeredWindow = (style & NativeConstants.WS_EX_LAYERED) == NativeConstants.WS_EX_LAYERED;
+                int style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_EXSTYLE);
+                bool isLayeredWindow = (style & NativeConstants.WS_EX_LAYERED) == NativeConstants.WS_EX_LAYERED;
                 if (!isLayeredWindow) return 0;
                 UInt32 key;
                 Byte alpha;
                 UInt32 flags;
                 NativeMethods.GetLayeredWindowAttributes(_handle, out key, out alpha, out flags);
-                Int32 transparency = 100 - (Int32)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
+                int transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
                 return transparency;
             }
         }
 
-        public Boolean AlwaysOnTop
+        public bool AlwaysOnTop
         {
             get
             {
-                Int32 style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_EXSTYLE);
-                Boolean isAlwaysOnTop = (style & NativeConstants.WS_EX_TOPMOST) == NativeConstants.WS_EX_TOPMOST;
+                int style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_EXSTYLE);
+                bool isAlwaysOnTop = (style & NativeConstants.WS_EX_TOPMOST) == NativeConstants.WS_EX_TOPMOST;
                 return isAlwaysOnTop;
             }
         }
@@ -191,11 +191,11 @@ namespace SmartSystemMenu
             }
         }
 
-        public Boolean ExistSystemTrayIcon
+        public bool ExistSystemTrayIcon
         {
             get
             {
-                Boolean exist = _systemTrayIcon != null && _systemTrayIcon.Visible;
+                bool exist = _systemTrayIcon != null && _systemTrayIcon.Visible;
                 return exist;
             }
         }
@@ -246,12 +246,12 @@ namespace SmartSystemMenu
             _isManaged = false;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return WindowText;
         }
 
-        public void SetTrancparency(Int32 percent)
+        public void SetTrancparency(int percent)
         {
             Byte opacity = (Byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
             SetOpacity(_handle, opacity);
@@ -262,7 +262,7 @@ namespace SmartSystemMenu
             SetTrancparency(_defaultTransparency);
         }
 
-        public void SetSize(Int32 width, Int32 height)
+        public void SetSize(int width, int height)
         {
             NativeMethods.MoveWindow(_handle, Size.Left, Size.Top, width, height, true);
         }
@@ -272,7 +272,7 @@ namespace SmartSystemMenu
             NativeMethods.MoveWindow(_handle, Size.Left, Size.Top, _defaultWidth, _defaultHeight, true);
         }
 
-        public void SetPosition(Int32 left, Int32 top)
+        public void SetPosition(int left, int top)
         {
             NativeMethods.MoveWindow(_handle, left, top, Size.Width, Size.Height, true);
         }
@@ -292,7 +292,7 @@ namespace SmartSystemMenu
 
         public void SetAlignment(WindowAlignment alignment)
         {
-            Int32 x, y;
+            int x, y;
             Rectangle screen = ScreenId < Screen.AllScreens.Length ? Screen.AllScreens[ScreenId].WorkingArea : Screen.PrimaryScreen.WorkingArea;
             Rect window = Size;
 
@@ -372,7 +372,7 @@ namespace SmartSystemMenu
             }
         }
 
-        public void MakeTopMost(Boolean topMost)
+        public void MakeTopMost(bool topMost)
         {
             IntPtr handleTopMost = (IntPtr)(-1);
             IntPtr handleNotTopMost = (IntPtr)(-2);
@@ -382,19 +382,19 @@ namespace SmartSystemMenu
         public void MinimizeToSystemTray()
         {
             CreateIconInSystemTray();
-            NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Minimize);
-            NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Hide);
+            NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Minimize);
+            NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Hide);
         }
 
         public void MoveToSystemTray()
         {
             CreateIconInSystemTray();
-            NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Hide);
+            NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Hide);
         }
 
         public void ShowNormal()
         {
-            NativeMethods.ShowWindow(_handle, (Int32)WindowShowStyle.Normal);
+            NativeMethods.ShowWindow(_handle, (int)WindowShowStyle.Normal);
         }
 
         public void RollUp()
@@ -429,13 +429,13 @@ namespace SmartSystemMenu
             return bitmap;
         }
 
-        public static void CloseAllWindowsOfProcess(Int32 processId)
+        public static void CloseAllWindowsOfProcess(int processId)
         {
-            NativeMethods.EnumWindowDelegate d = delegate(IntPtr hWnd, Int32 lParam)
+            NativeMethods.EnumWindowDelegate d = delegate(IntPtr hWnd, int lParam)
             {
-                Int32 pId;
+                int pId;
                 NativeMethods.GetWindowThreadProcessId(hWnd, out pId);
-                if ((Int32)pId == processId)
+                if ((int)pId == processId)
                 {
                     NativeMethods.PostMessage(hWnd, NativeConstants.WM_CLOSE, 0, 0);
                 }
@@ -454,13 +454,13 @@ namespace SmartSystemMenu
             {
                 NativeMethods.AttachThreadInput(foreThread, appThread, true);
                 NativeMethods.BringWindowToTop(handle);
-                NativeMethods.ShowWindow(handle, (Int32)WindowShowStyle.Show);
+                NativeMethods.ShowWindow(handle, (int)WindowShowStyle.Show);
                 NativeMethods.AttachThreadInput(foreThread, appThread, false);
             }
             else
             {
                 NativeMethods.BringWindowToTop(handle);
-                NativeMethods.ShowWindow(handle, (Int32)WindowShowStyle.Show);
+                NativeMethods.ShowWindow(handle, (int)WindowShowStyle.Show);
             }
         }
 
@@ -487,8 +487,8 @@ namespace SmartSystemMenu
             {
                 _systemTrayIcon.Visible = false;
 
-                NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Show);
-                NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Restore);
+                NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Show);
+                NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Restore);
                 NativeMethods.SetForegroundWindow(_handle);
             }
         }
@@ -551,8 +551,8 @@ namespace SmartSystemMenu
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 _systemTrayIcon.Visible = false;
-                NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Show);
-                NativeMethods.ShowWindowAsync(_handle, (Int32)WindowShowStyle.Restore);
+                NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Show);
+                NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Restore);
                 NativeMethods.SetForegroundWindow(_handle);
             }
         }

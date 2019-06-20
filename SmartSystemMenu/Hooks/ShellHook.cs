@@ -8,15 +8,15 @@ namespace SmartSystemMenu.Hooks
 {
     class ShellHook : Hook
     {
-        private Int32 msgID_Shell_ActivateShellWindow;
-        private Int32 msgID_Shell_GetMinRect;
-        private Int32 msgID_Shell_Language;
-        private Int32 msgID_Shell_Redraw;
-        private Int32 msgID_Shell_Taskman;
-        private Int32 msgID_Shell_HookReplaced;
-        private Int32 msgID_Shell_WindowActivated;
-        private Int32 msgID_Shell_WindowCreated;
-        private Int32 msgID_Shell_WindowDestroyed;
+        private int msgID_Shell_ActivateShellWindow;
+        private int msgID_Shell_GetMinRect;
+        private int msgID_Shell_Language;
+        private int msgID_Shell_Redraw;
+        private int msgID_Shell_Taskman;
+        private int msgID_Shell_HookReplaced;
+        private int msgID_Shell_WindowActivated;
+        private int msgID_Shell_WindowCreated;
+        private int msgID_Shell_WindowDestroyed;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<EventArgs> ActivateShellWindow;

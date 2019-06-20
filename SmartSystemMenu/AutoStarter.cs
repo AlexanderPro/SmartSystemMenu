@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 using Microsoft.Win32;
 
@@ -9,26 +6,30 @@ namespace SmartSystemMenu
 {
     static class AutoStarter
     {
-        private const String RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
+        private const string RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
 
-        public static void SetAutoStartByRegister(String keyName, String assemblyLocation)
+        public static void SetAutoStartByRegister(string keyName, string assemblyLocation)
         {
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
-            key.SetValue(keyName, assemblyLocation);
+            using (var key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION))
+            {
+                key.SetValue(keyName, assemblyLocation);
+            }
         }
 
-        public static void UnsetAutoStartByRegister(String keyName)
+        public static void UnsetAutoStartByRegister(string keyName)
         {
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
-            key.DeleteValue(keyName);
+            using (var key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION))
+            {
+                key.DeleteValue(keyName);
+            }
         }
 
-        public static void SetAutoStartByScheduler(String keyName, String assemblyLocation)
+        public static void SetAutoStartByScheduler(string keyName, string assemblyLocation)
         {
-            String fileName = "schtasks.exe";
-            String arguments = "/create /sc onlogon /tn \"{0}\" /rl highest /tr \"{1}\"";
-            arguments = String.Format(arguments, keyName, assemblyLocation);
-            Process scheduleProcess = new Process();
+            var fileName = "schtasks.exe";
+            var arguments = "/create /sc onlogon /tn \"{0}\" /rl highest /tr \"{1}\"";
+            arguments = string.Format(arguments, keyName, assemblyLocation);
+            var scheduleProcess = new Process();
             scheduleProcess.StartInfo.CreateNoWindow = true;
             scheduleProcess.StartInfo.UseShellExecute = false;
             scheduleProcess.StartInfo.FileName = fileName;
@@ -40,12 +41,12 @@ namespace SmartSystemMenu
             }
         }
 
-        public static void UnsetAutoStartByScheduler(String keyName)
+        public static void UnsetAutoStartByScheduler(string keyName)
         {
-            String fileName = "schtasks.exe";
-            String arguments = "/delete /tn \"{0}\" /f";
-            arguments = String.Format(arguments, keyName);
-            Process scheduleProcess = new Process();
+            string fileName = "schtasks.exe";
+            string arguments = "/delete /tn \"{0}\" /f";
+            arguments = string.Format(arguments, keyName);
+            var scheduleProcess = new Process();
             scheduleProcess.StartInfo.CreateNoWindow = true;
             scheduleProcess.StartInfo.UseShellExecute = false;
             scheduleProcess.StartInfo.FileName = fileName;
@@ -57,14 +58,16 @@ namespace SmartSystemMenu
             }
         }
 
-        public static Boolean IsAutoStartByRegisterEnabled(String keyName, String assemblyLocation)
+        public static bool IsAutoStartByRegisterEnabled(string keyName, string assemblyLocation)
         {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION);
-            if (key == null) return false;
-            String value = (String)key.GetValue(keyName);
-            if (String.IsNullOrEmpty(value)) return false;
-            Boolean result = (value == assemblyLocation);
-            return result;
+            using (var key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION))
+            {
+                if (key == null) return false;
+                string value = (string)key.GetValue(keyName);
+                if (string.IsNullOrEmpty(value)) return false;
+                var result = (value == assemblyLocation);
+                return result;
+            }
         }
     }
 }

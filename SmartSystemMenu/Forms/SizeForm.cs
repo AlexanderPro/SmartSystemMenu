@@ -27,8 +27,8 @@ namespace SmartSystemMenu.Forms
         {
             try
             {
-                Int32 width = (Int32)numericWidth.Value;
-                Int32 height = (Int32)numericHeight.Value;
+                int width = (int)numericWidth.Value;
+                int height = (int)numericHeight.Value;
                 _window.ShowNormal();
                 _window.SetSize(width, height);
                 _window.Menu.UncheckSizeMenu();

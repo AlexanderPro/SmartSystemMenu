@@ -8,14 +8,14 @@ namespace SmartSystemMenu.Hooks
 {
     class CBTHook : Hook
     {
-        private Int32 msgID_CBT_HookReplaced;
-        private Int32 msgID_CBT_Activate;
-        private Int32 msgID_CBT_CreateWnd;
-        private Int32 msgID_CBT_DestroyWnd;
-        private Int32 msgID_CBT_MinMax;
-        private Int32 msgID_CBT_MoveSize;
-        private Int32 msgID_CBT_SetFocus;
-        private Int32 msgID_CBT_SysCommand;
+        private int msgID_CBT_HookReplaced;
+        private int msgID_CBT_Activate;
+        private int msgID_CBT_CreateWnd;
+        private int msgID_CBT_DestroyWnd;
+        private int msgID_CBT_MinMax;
+        private int msgID_CBT_MoveSize;
+        private int msgID_CBT_SetFocus;
+        private int msgID_CBT_SysCommand;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<WindowEventArgs> WindowActivated;

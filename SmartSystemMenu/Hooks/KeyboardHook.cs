@@ -8,8 +8,8 @@ namespace SmartSystemMenu.Hooks
 {
     class KeyboardHook : Hook
     {
-        private Int32 msgID_Keyboard;
-        private Int32 msgID_Keyboard_HookReplaced;
+        private int msgID_Keyboard;
+        private int msgID_Keyboard_HookReplaced;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<BasicHookEventArgs> KeyboardEvent;

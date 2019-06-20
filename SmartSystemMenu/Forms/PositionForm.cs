@@ -21,8 +21,8 @@ namespace SmartSystemMenu.Forms
         {
             try
             {
-                Int32 left = (Int32)numericLeft.Value;
-                Int32 top = (Int32)numericTop.Value;
+                int left = (int)numericLeft.Value;
+                int top = (int)numericTop.Value;
                 _window.ShowNormal();
                 _window.SetPosition(left, top);
                 _window.Menu.UncheckAlignmentMenu();

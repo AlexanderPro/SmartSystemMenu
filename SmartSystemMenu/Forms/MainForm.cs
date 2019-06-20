@@ -16,21 +16,21 @@ namespace SmartSystemMenu.Forms
 {
     partial class MainForm : Form
     {
-        private const String SHELL_WINDOW_NAME = "Program Manager";
+        private const string SHELL_WINDOW_NAME = "Program Manager";
         private List<Window> _windows;
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
         private CBTHook _cbtHook;
         private KeyboardHook _keyboardHook;
         private AboutForm _aboutForm;
-        private List<String> _processExclusions;
+        private List<string> _processExclusions;
 
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
         private Process _64BitProcess;
 #endif
 
-        private List<String> ProcessExclusions
+        private List<string> ProcessExclusions
         {
             get
             {
@@ -45,12 +45,12 @@ namespace SmartSystemMenu.Forms
                     _processExclusions = File
                         .ReadAllLines(proceesExclusionsFileName, Encoding.UTF8)
                         .Select(x => x.Trim().ToLower())
-                        .Where(x => !String.IsNullOrEmpty(x))
+                        .Where(x => !string.IsNullOrEmpty(x))
                         .ToList();
                 }
                 else
                 {
-                    _processExclusions = new List<String>();
+                    _processExclusions = new List<string>();
                 }
 
                 return _processExclusions;
@@ -72,10 +72,10 @@ namespace SmartSystemMenu.Forms
 #if WIN32
             if (Environment.Is64BitOperatingSystem)
             {
-                String resourceName = "SmartSystemMenu.SmartSystemMenu64.exe";
-                String fileName = "SmartSystemMenu64.exe";
-                String directoryName = Path.GetDirectoryName(AssemblyUtils.AssemblyLocation);
-                String filePath = Path.Combine(directoryName, fileName);
+                string resourceName = "SmartSystemMenu.SmartSystemMenu64.exe";
+                string fileName = "SmartSystemMenu64.exe";
+                string directoryName = Path.GetDirectoryName(AssemblyUtils.AssemblyLocation);
+                string filePath = Path.Combine(directoryName, fileName);
                 try
                 {
                     if (!File.Exists(filePath))
@@ -86,7 +86,7 @@ namespace SmartSystemMenu.Forms
                 }
                 catch
                 {
-                    String message = String.Format("Failed to load {0} process!", fileName);
+                    string message = string.Format("Failed to load {0} process!", fileName);
                     MessageBox.Show(message, AssemblyUtils.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Close();
                     return;
@@ -98,7 +98,7 @@ namespace SmartSystemMenu.Forms
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
 #endif
-            _windows = EnumWindows.EnumAllWindows(new String[] { SHELL_WINDOW_NAME }).ToList();
+            _windows = EnumWindows.EnumAllWindows(new string[] { SHELL_WINDOW_NAME }).ToList();
             foreach (var window in _windows)
             {
                 var processName = Path.GetFileName(window.Process.MainModule.FileName);
@@ -107,7 +107,7 @@ namespace SmartSystemMenu.Forms
                     continue;
                 }
                 window.Menu.Create();
-                Int32 menuItemId = window.ProcessPriority.GetMenuItemId();
+                int menuItemId = window.ProcessPriority.GetMenuItemId();
                 window.Menu.CheckMenuItem(menuItemId, true);
                 window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + Screen.AllScreens.ToList().FindIndex(s => s.Primary));
                 if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
@@ -208,9 +208,9 @@ namespace SmartSystemMenu.Forms
 
         private void MenuItemAutoStartClick(object sender, EventArgs e)
         {
-            String keyName = AssemblyUtils.AssemblyProductName;
-            String assemblyLocation = AssemblyUtils.AssemblyLocation;
-            Boolean autoStartEnabled = AutoStarter.IsAutoStartByRegisterEnabled(keyName, assemblyLocation);
+            string keyName = AssemblyUtils.AssemblyProductName;
+            string assemblyLocation = AssemblyUtils.AssemblyLocation;
+            bool autoStartEnabled = AutoStarter.IsAutoStartByRegisterEnabled(keyName, assemblyLocation);
             if (autoStartEnabled)
             {
                 AutoStarter.UnsetAutoStartByRegister(keyName);
@@ -249,12 +249,12 @@ namespace SmartSystemMenu.Forms
         {
             if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle).Exists && !_windows.Any(w => w.Handle == e.Handle))
             {
-                Int32 processId;
+                int processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
                 IList<Window> windows = new List<Window>();
                 try
                 {
-                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new String[] { SHELL_WINDOW_NAME });
+                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new string[] { SHELL_WINDOW_NAME });
                 }
                 catch
                 {
@@ -273,7 +273,7 @@ namespace SmartSystemMenu.Forms
                     {
                     }
                     window.Menu.Create();
-                    Int32 menuItemId = window.ProcessPriority.GetMenuItemId();
+                    int menuItemId = window.ProcessPriority.GetMenuItemId();
                     window.Menu.CheckMenuItem(menuItemId, true);
                     window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + Screen.AllScreens.ToList().FindIndex(s => s.Primary));
                     if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
@@ -284,7 +284,7 @@ namespace SmartSystemMenu.Forms
 
         private void WindowDestroyed(object sender, WindowEventArgs e)
         {
-            Int32 windowIndex = _windows.FindIndex(w => w.Handle == e.Handle);
+            int windowIndex = _windows.FindIndex(w => w.Handle == e.Handle);
             if (windowIndex != -1 && !_windows[windowIndex].ExistSystemTrayIcon)
             {
                 _windows[windowIndex].Dispose();
@@ -319,13 +319,13 @@ namespace SmartSystemMenu.Forms
 
         private void WindowKeyboardEvent(object sender, BasicHookEventArgs e)
         {
-            Int64 wParam = e.WParam.ToInt64();
+            long wParam = e.WParam.ToInt64();
             if (wParam == NativeConstants.VK_DOWN)
             {
-                Int32 controlState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_CONTROL) & 0x8000;
-                Int32 shiftState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_SHIFT) & 0x8000;
-                Boolean controlKey = Convert.ToBoolean(controlState);
-                Boolean shiftKey = Convert.ToBoolean(shiftState);
+                int controlState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_CONTROL) & 0x8000;
+                int shiftState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_SHIFT) & 0x8000;
+                bool controlKey = Convert.ToBoolean(controlState);
+                bool shiftKey = Convert.ToBoolean(shiftState);
                 if (controlKey && shiftKey)
                 {
                     IntPtr handle = NativeMethods.GetForegroundWindow();
@@ -340,15 +340,15 @@ namespace SmartSystemMenu.Forms
 
         private void WindowGetMsg(object sender, WndProcEventArgs e)
         {
-            Int64 message = e.Message.ToInt64();
+            long message = e.Message.ToInt64();
             if (message == NativeConstants.WM_SYSCOMMAND)
             {
-                //String dbgMessage = String.Format("WM_SYSCOMMAND, Form, Handle = {0}, WParam = {1}", e.Handle, e.WParam);
+                //string dbgMessage = string.Format("WM_SYSCOMMAND, Form, Handle = {0}, WParam = {1}", e.Handle, e.WParam);
                 //System.Diagnostics.Trace.WriteLine(dbgMessage);
                 Window window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
                 if (window != null)
                 {
-                    Int64 lowOrder = e.WParam.ToInt64() & 0x0000FFFF;
+                    long lowOrder = e.WParam.ToInt64() & 0x0000FFFF;
                     switch (lowOrder)
                     {
                         case NativeConstants.SC_MAXIMIZE:
@@ -365,7 +365,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY:
                             {
-                                Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
+                                bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
                                 window.Menu.CheckMenuItem(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, !r);
                             }
                             break;
@@ -405,7 +405,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_TOPMOST:
                             {
-                                Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
+                                bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
                                 window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, !r);
                                 window.MakeTopMost(!r);
                             }
@@ -413,7 +413,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_ROLLUP:
                             {
-                                Boolean r = window.Menu.IsMenuItemChecked(SystemMenu.SC_ROLLUP);
+                                bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_ROLLUP);
                                 window.Menu.CheckMenuItem(SystemMenu.SC_ROLLUP, !r);
                                 if (!r)
                                 {
@@ -527,14 +527,14 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void SetPriorityMenuItem(Window window, Int32 itemId, Priority priority)
+        private void SetPriorityMenuItem(Window window, int itemId, Priority priority)
         {
             window.Menu.UncheckPriorityMenu();
             window.Menu.CheckMenuItem(itemId, true);
             window.SetPriority(priority);
         }
 
-        private void SetAlignmentMenuItem(Window window, Int32 itemId, WindowAlignment alignment)
+        private void SetAlignmentMenuItem(Window window, int itemId, WindowAlignment alignment)
         {
             window.Menu.UncheckAlignmentMenu();
             window.Menu.CheckMenuItem(itemId, true);
@@ -542,7 +542,7 @@ namespace SmartSystemMenu.Forms
             window.SetAlignment(alignment);
         }
 
-        private void SetSizeMenuItem(Window window, Int32 itemId, Int32 width, Int32 height)
+        private void SetSizeMenuItem(Window window, int itemId, int width, int height)
         {
             window.Menu.UncheckSizeMenu();
             window.Menu.CheckMenuItem(itemId, true);
@@ -550,7 +550,7 @@ namespace SmartSystemMenu.Forms
             window.SetSize(width, height);
         }
 
-        private void SetTransparencyMenuItem(Window window, Int32 itemId, Int32 transparency)
+        private void SetTransparencyMenuItem(Window window, int itemId, int transparency)
         {
             window.Menu.UncheckTransparencyMenu();
             window.Menu.CheckMenuItem(itemId, true);
@@ -566,10 +566,10 @@ namespace SmartSystemMenu.Forms
 
         private void OnThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            String exceptionText = e.Exception.ToString();
+            string exceptionText = e.Exception.ToString();
             if (e.Exception is Win32Exception)
             {
-                exceptionText = String.Format("Win32 Error Code = {0},{1}{2}", ((Win32Exception)e.Exception).ErrorCode, Environment.NewLine, exceptionText);
+                exceptionText = string.Format("Win32 Error Code = {0},{1}{2}", ((Win32Exception)e.Exception).ErrorCode, Environment.NewLine, exceptionText);
             }
             MessageBox.Show(exceptionText, AssemblyUtils.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
