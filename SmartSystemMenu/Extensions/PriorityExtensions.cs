@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SmartSystemMenu.Extensions
+﻿namespace SmartSystemMenu.Extensions
 {
     static class PriorityExtensions
     {

@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Text;
-using SmartSystemMenu;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Hooks;
 

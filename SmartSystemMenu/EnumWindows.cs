@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
 
 namespace SmartSystemMenu
@@ -47,7 +44,7 @@ namespace SmartSystemMenu
 #if WIN32
             isAdd = !Environment.Is64BitOperatingSystem || PlatformUtils.IsWow64Process(pid);
 #else
-            isAdd = Environment.Is64BitOperatingSystem && !PlatformUtility.IsWow64Process(pid);
+            isAdd = Environment.Is64BitOperatingSystem && !PlatformUtils.IsWow64Process(pid);
 #endif
 
             if (!isAdd) return true;

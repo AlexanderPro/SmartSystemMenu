@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using SmartSystemMenu;
 
 namespace SmartSystemMenu.Forms
 {

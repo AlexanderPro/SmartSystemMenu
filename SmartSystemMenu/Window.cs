@@ -2,8 +2,6 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading;
-using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
