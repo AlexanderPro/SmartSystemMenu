@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
-using SmartSystemMenu.Code.Forms;
-using SmartSystemMenu.Code.Common;
-using SmartSystemMenu.Code.Common.Extensions;
+using SmartSystemMenu.Forms;
+using SmartSystemMenu;
+using SmartSystemMenu.Extensions;
 
 namespace SmartSystemMenu
 {
