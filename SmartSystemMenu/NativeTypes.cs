@@ -69,16 +69,48 @@ namespace SmartSystemMenu
     [StructLayoutAttribute(LayoutKind.Sequential)]
     struct MenuItemInfo
     {
-        public UInt32 cbSize;
-        public UInt32 fMask;
-        public UInt32 fType;
-        public UInt32 fState;
-        public UInt32 wID;
+        public uint cbSize;
+        public uint fMask;
+        public uint fType;
+        public uint fState;
+        public uint wID;
         public IntPtr hSubMenu;
         public IntPtr hbmpChecked;
         public IntPtr hbmpUnchecked;
-        public UInt32 dwItemData;
+        public uint dwItemData;
         public string dwTypeData;
-        public UInt32 cch;
+        public uint cch;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct Coord
+    {
+        public short X;
+        public short Y;
+
+        public Coord(short x, short y)
+        {
+            X = x;
+            Y = y;
+        }
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct SmallRect
+    {
+        public short Left;
+        public short Top;
+        public short Right;
+        public short Bottom;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct ConsoleScreenBufferInfo
+    {
+        public Coord dwSize;
+        public Coord dwCursorPosition;
+        public ushort wAttributes;
+        public SmallRect srWindow;
+        public Coord dwMaximumWindowSize;
     }
 }

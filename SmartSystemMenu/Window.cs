@@ -5,6 +5,9 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.ComponentModel;
+using System.Windows.Automation;
 using SmartSystemMenu.Extensions;
 
 namespace SmartSystemMenu
@@ -106,12 +109,12 @@ namespace SmartSystemMenu
             }
         }
 
-        public UInt32 ThreadId
+        public uint ThreadId
         {
             get
             {
                 int processId;
-                UInt32 threadId = NativeMethods.GetWindowThreadProcessId(_handle, out processId);
+                uint threadId = NativeMethods.GetWindowThreadProcessId(_handle, out processId);
                 return threadId;
             }
         }
@@ -153,9 +156,9 @@ namespace SmartSystemMenu
                 int style = NativeMethods.GetWindowLong(_handle, NativeConstants.GWL_EXSTYLE);
                 bool isLayeredWindow = (style & NativeConstants.WS_EX_LAYERED) == NativeConstants.WS_EX_LAYERED;
                 if (!isLayeredWindow) return 0;
-                UInt32 key;
+                uint key;
                 Byte alpha;
-                UInt32 flags;
+                uint flags;
                 NativeMethods.GetLayeredWindowAttributes(_handle, out key, out alpha, out flags);
                 int transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
                 return transparency;
@@ -251,7 +254,7 @@ namespace SmartSystemMenu
 
         public void SetTrancparency(int percent)
         {
-            Byte opacity = (Byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
+            var opacity = (byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
             SetOpacity(_handle, opacity);
         }
 
@@ -427,9 +430,16 @@ namespace SmartSystemMenu
             return bitmap;
         }
 
+        public string ExtractText()
+        {
+            var text = ExtractTextFromConsole();
+            text = text ?? ExtractTextFromWindow();
+            return text;
+        }
+
         public static void CloseAllWindowsOfProcess(int processId)
         {
-            NativeMethods.EnumWindowDelegate d = delegate(IntPtr hWnd, int lParam)
+            NativeMethods.EnumWindowDelegate d = delegate (IntPtr hWnd, int lParam)
             {
                 int pId;
                 NativeMethods.GetWindowThreadProcessId(hWnd, out pId);
@@ -446,8 +456,8 @@ namespace SmartSystemMenu
         public static void ForceForegroundWindow(IntPtr handle)
         {
             IntPtr foreHandle = NativeMethods.GetForegroundWindow();
-            UInt32 foreThread = NativeMethods.GetWindowThreadProcessId(foreHandle, IntPtr.Zero);
-            UInt32 appThread = NativeMethods.GetCurrentThreadId();
+            uint foreThread = NativeMethods.GetWindowThreadProcessId(foreHandle, IntPtr.Zero);
+            uint appThread = NativeMethods.GetCurrentThreadId();
             if (foreThread != appThread)
             {
                 NativeMethods.AttachThreadInput(foreThread, appThread, true);
@@ -464,7 +474,7 @@ namespace SmartSystemMenu
 
         public static void ForceAllMessageLoopsToWakeUp()
         {
-            UInt32 result;
+            uint result;
             NativeMethods.SendMessageTimeout((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
         }
 
@@ -496,7 +506,7 @@ namespace SmartSystemMenu
             IntPtr icon;
             try
             {
-                UInt32 result;
+                uint result;
                 NativeMethods.SendMessageTimeout(_handle, NativeConstants.WM_GETICON, NativeConstants.ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
                 icon = new IntPtr(result);
 
@@ -552,6 +562,90 @@ namespace SmartSystemMenu
                 NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Show);
                 NativeMethods.ShowWindowAsync(_handle, (int)WindowShowStyle.Restore);
                 NativeMethods.SetForegroundWindow(_handle);
+            }
+        }
+
+        private string ExtractTextFromConsole()
+        {
+            try
+            {
+                NativeMethods.FreeConsole();
+                var result = NativeMethods.AttachConsole(ProcessId);
+                if (!result)
+                {
+                    var error = Marshal.GetLastWin32Error();
+                    throw new Win32Exception(error);
+                }
+                var handle = NativeMethods.GetStdHandle(NativeConstants.STD_OUTPUT_HANDLE);
+                if (handle == IntPtr.Zero)
+                {
+                    var error = Marshal.GetLastWin32Error();
+                    throw new Win32Exception(error);
+                }
+                ConsoleScreenBufferInfo binfo;
+                result = NativeMethods.GetConsoleScreenBufferInfo(handle, out binfo);
+                if (!result)
+                {
+                    var error = Marshal.GetLastWin32Error();
+                    throw new Win32Exception(error);
+                }
+
+                var buffer = new char[binfo.srWindow.Right];
+                var textBuilder = new StringBuilder();
+                for (var i = 0; i < binfo.dwSize.Y; i++)
+                {
+                    uint numberOfCharsRead;
+                    if (NativeMethods.ReadConsoleOutputCharacter(handle, buffer, (uint)buffer.Length, new Coord(0, (short)i), out numberOfCharsRead))
+                    {
+                        textBuilder.AppendLine(new string(buffer));
+                    }
+                }
+
+                var text = textBuilder.ToString().TrimEnd();
+                return text;
+            }
+            catch
+            {
+                NativeMethods.FreeConsole();
+                return null;
+            }
+        }
+
+        private string ExtractTextFromWindow()
+        {
+            try
+            {
+                var builder = new StringBuilder();
+                foreach (AutomationElement window in AutomationElement.FromHandle(_handle).FindAll(TreeScope.Descendants, Condition.TrueCondition))
+                {
+                    try
+                    {
+                        if (window.Current.IsEnabled && !string.IsNullOrEmpty(window.Current.Name))
+                        {
+                            builder.AppendLine(window.Current.Name).AppendLine();
+
+                            object pattern;
+                            if (!string.IsNullOrEmpty(window.Current.ClassName) && window.TryGetCurrentPattern(TextPattern.Pattern, out pattern) && pattern is TextPattern)
+                            {
+                                var text = ((TextPattern)pattern).DocumentRange.GetText(-1);
+                                if (!string.IsNullOrEmpty(text))
+                                {
+                                    builder.AppendLine(text).AppendLine();
+                                }
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                }
+
+                return builder.ToString();
+            }
+            catch
+            {
+                return null;
             }
         }
 

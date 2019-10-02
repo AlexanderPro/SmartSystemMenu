@@ -402,6 +402,16 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case SystemMenu.SC_COPY_TEXT_TO_CLIPBOARD:
+                            {
+                                var text = window.ExtractText();
+                                if (text != null)
+                                {
+                                    Clipboard.SetText(text);
+                                }
+                            }
+                            break;
+
                         case SystemMenu.SC_TOPMOST:
                             {
                                 bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);

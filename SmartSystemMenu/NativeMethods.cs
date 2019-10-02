@@ -58,7 +58,7 @@ namespace SmartSystemMenu
         public static extern int GetMenuItemCount(IntPtr hMenu);
 
         [DllImport("user32.dll")]
-        public static extern UInt32 GetMenuState(IntPtr hMenu, int uIdItem, int uFlags);
+        public static extern uint GetMenuState(IntPtr hMenu, int uIdItem, int uFlags);
 
         [DllImport("User32.dll")]
         public static extern bool SetMenuItemInfo(IntPtr hMenu, int uIdItem, bool fByPosition, ref MenuItemInfo lpmii);
@@ -70,10 +70,10 @@ namespace SmartSystemMenu
         public static extern int GetAsyncKeyState(int key);
 
         [DllImport("user32.dll")]
-        public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, UInt32 crKey, Byte bAlpha, UInt32 dwFlags);
+        public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, Byte bAlpha, uint dwFlags);
 
         [DllImport("user32.dll")]
-        public static extern bool GetLayeredWindowAttributes(IntPtr hwnd, out UInt32 crKey, out Byte bAlpha, out UInt32 dwFlags);
+        public static extern bool GetLayeredWindowAttributes(IntPtr hwnd, out uint crKey, out Byte bAlpha, out uint dwFlags);
 
         [DllImport("user32.dll")]
         public static extern int SetWindowLong(IntPtr handle, int nIndex, int dwNewLong);
@@ -101,7 +101,7 @@ namespace SmartSystemMenu
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetWindowPos(IntPtr handle, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, UInt32 uFlags);
+        public static extern bool SetWindowPos(IntPtr handle, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -122,16 +122,16 @@ namespace SmartSystemMenu
         public static extern bool ChangeWindowMessageFilter(int msg, int flag);
 
         [DllImport("user32.dll")]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, UInt32 wParam, UInt32 lParam);
+        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, uint wParam, uint lParam);
 
         [DllImport("user32.dll")]
-        public static extern IntPtr PostMessage(IntPtr hWnd, int msg, UInt32 wParam, UInt32 lParam);
+        public static extern IntPtr PostMessage(IntPtr hWnd, int msg, uint wParam, uint lParam);
 
         [DllImport("user32.dll")]
         public static extern IntPtr PostMessage(IntPtr hWnd, int msg, UInt64 wParam, UInt64 lParam);
 
         [DllImport("user32.dll")]
-        public static extern int SendMessageTimeout(IntPtr handle, int uMsg, UInt32 wParam, UInt32 lParam, SendMessageTimeoutFlags fuFlags, int uTimeout, out UInt32 lpdwResult);
+        public static extern int SendMessageTimeout(IntPtr handle, int uMsg, uint wParam, uint lParam, SendMessageTimeoutFlags fuFlags, int uTimeout, out uint lpdwResult);
 
         [DllImport("user32.dll")]
         public static extern IntPtr LoadIcon(IntPtr hInstance, string lpIconName);
@@ -154,19 +154,19 @@ namespace SmartSystemMenu
         public static extern bool CloseHandle(IntPtr hObject);
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern UInt32 GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern UInt32 GetWindowThreadProcessId(IntPtr hWnd, IntPtr processId);
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr processId);
 
         [DllImport("kernel32.dll")]
-        public static extern UInt32 GetCurrentThreadId();
+        public static extern uint GetCurrentThreadId();
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll")]
-        public static extern bool AttachThreadInput(UInt32 idAttach, UInt32 idAttachTo, bool fAttach);
+        public static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
 
         [DllImport("user32.dll")]
         public static extern bool BringWindowToTop(IntPtr hWnd);
@@ -176,13 +176,31 @@ namespace SmartSystemMenu
         public static extern bool IsWow64Process(IntPtr hProcess, out bool wow64Process);
 
         [DllImport("user32.dll", EntryPoint = "GetClassLong")]
-        public static extern UInt32 GetClassLongPtr32(IntPtr hWnd, int nIndex);
+        public static extern uint GetClassLongPtr32(IntPtr hWnd, int nIndex);
 
         [DllImport("user32.dll", EntryPoint = "GetClassLongPtr")]
         public static extern IntPtr GetClassLongPtr64(IntPtr hWnd, int nIndex);
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetThreadDesktop(int threadId);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool AttachConsole(int processID);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern uint GetConsoleOutputCP();
+
+        [DllImport("kernel32.dll")]
+        public static extern bool FreeConsole();
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern bool ReadConsoleOutputCharacter(IntPtr hConsoleOutput, [Out] char[] lpCharacter, uint nLength, Coord dwReadCoord, out uint lpNumberOfCharsRead);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool GetConsoleScreenBufferInfo(IntPtr hConsoleOutput, out ConsoleScreenBufferInfo lpConsoleScreenBufferInfo);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern IntPtr GetStdHandle(int nStdHandle);
 
         public static IntPtr GetClassLongPtr(IntPtr hWnd, int nIndex)
         {
