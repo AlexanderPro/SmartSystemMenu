@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
             this.linkUrl = new System.Windows.Forms.LinkLabel();
@@ -39,7 +40,7 @@
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(58, 21);
+            this.lblProductName.Location = new System.Drawing.Point(114, 30);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(75, 13);
             this.lblProductName.TabIndex = 0;
@@ -48,7 +49,7 @@
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(58, 43);
+            this.lblCopyright.Location = new System.Drawing.Point(114, 52);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(51, 13);
             this.lblCopyright.TabIndex = 1;
@@ -57,7 +58,7 @@
             // linkUrl
             // 
             this.linkUrl.AutoSize = true;
-            this.linkUrl.Location = new System.Drawing.Point(58, 66);
+            this.linkUrl.Location = new System.Drawing.Point(114, 75);
             this.linkUrl.Name = "linkUrl";
             this.linkUrl.Size = new System.Drawing.Size(29, 13);
             this.linkUrl.TabIndex = 2;
@@ -67,9 +68,9 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(300, 16);
+            this.btnOk.Location = new System.Drawing.Point(358, 30);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.Size = new System.Drawing.Size(86, 30);
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -77,12 +78,11 @@
             // 
             // pbImage
             // 
-            this.pbImage.BackgroundImage = global::SmartSystemMenu.Properties.Resources.SmartSystemMenuImage;
-            this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbImage.BackgroundImage")));
             this.pbImage.InitialImage = null;
             this.pbImage.Location = new System.Drawing.Point(4, 21);
             this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(48, 37);
+            this.pbImage.Size = new System.Drawing.Size(104, 101);
             this.pbImage.TabIndex = 4;
             this.pbImage.TabStop = false;
             // 
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 102);
+            this.ClientSize = new System.Drawing.Size(456, 140);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.linkUrl);

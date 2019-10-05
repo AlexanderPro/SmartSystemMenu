@@ -193,7 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
-    <None Include="SmartSystemMenu.bmp" />
+    <Content Include="SmartSystemMenu.png" />
     <Content Include="SmartSystemMenuProcessExclusions.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

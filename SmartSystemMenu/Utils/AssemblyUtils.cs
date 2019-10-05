@@ -89,6 +89,15 @@ namespace SmartSystemMenu
             }
         }
 
+        public static string AssemblyProductVersion
+        {
+            get
+            {
+                var version = Assembly.GetExecutingAssembly().GetName().Version;
+                return string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
+            }
+        }
+
         public static void ExtractFileFromAssembly(string resourceName, string path)
         {
             Assembly currentAssembly = Assembly.GetExecutingAssembly();
