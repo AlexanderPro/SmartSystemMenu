@@ -1,3 +1,5 @@
 discord.exe
 slack.exe
-some_other_process_name.exe
+dllhost.exe
+sihost.exe
+explorer.exe
