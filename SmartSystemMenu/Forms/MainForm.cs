@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Text;
+using System.Threading;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Hooks;
 
@@ -98,13 +98,24 @@ namespace SmartSystemMenu.Forms
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
 #endif
             _windows = EnumWindows.EnumAllWindows(new string[] { SHELL_WINDOW_NAME }).ToList();
+
             foreach (var window in _windows)
             {
-                var processName = Path.GetFileName(window.Process.MainModule.FileName);
-                if (ProcessExclusions.Contains(processName.ToLower()))
+                var processName = "";
+
+                try
+                {
+                    processName = Path.GetFileName(window.Process.GetMainModuleFileName());
+                }
+                catch
+                {
+                }
+
+                if (string.IsNullOrEmpty(processName) || ProcessExclusions.Contains(processName.ToLower()))
                 {
                     continue;
                 }
+
                 window.Menu.Create();
                 int menuItemId = window.ProcessPriority.GetMenuItemId();
                 window.Menu.CheckMenuItem(menuItemId, true);
@@ -258,19 +269,24 @@ namespace SmartSystemMenu.Forms
                 catch
                 {
                 }
+
                 foreach (var window in windows)
                 {
+                    var processName = "";
+
                     try
                     {
-                        var processName = Path.GetFileName(window.Process.MainModule.FileName);
-                        if (ProcessExclusions.Contains(processName.ToLower()))
-                        {
-                            continue;
-                        }
+                        processName = Path.GetFileName(window.Process.GetMainModuleFileName());
                     }
                     catch
                     {
                     }
+
+                    if (string.IsNullOrEmpty(processName) || ProcessExclusions.Contains(processName.ToLower()))
+                    {
+                        continue;
+                    }
+
                     window.Menu.Create();
                     int menuItemId = window.ProcessPriority.GetMenuItemId();
                     window.Menu.CheckMenuItem(menuItemId, true);
@@ -568,19 +584,14 @@ namespace SmartSystemMenu.Forms
 
         private void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Exception ex = e.ExceptionObject as Exception;
+            var ex = e.ExceptionObject as Exception;
             ex = ex ?? new Exception("OnCurrentDomainUnhandledException");
-            OnThreadException(sender, new System.Threading.ThreadExceptionEventArgs(ex));
+            OnThreadException(sender, new ThreadExceptionEventArgs(ex));
         }
 
-        private void OnThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private void OnThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            string exceptionText = e.Exception.ToString();
-            if (e.Exception is Win32Exception)
-            {
-                exceptionText = string.Format("Win32 Error Code = {0},{1}{2}", ((Win32Exception)e.Exception).ErrorCode, Environment.NewLine, exceptionText);
-            }
-            MessageBox.Show(exceptionText, AssemblyUtils.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(e.Exception.ToString(), AssemblyUtils.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
