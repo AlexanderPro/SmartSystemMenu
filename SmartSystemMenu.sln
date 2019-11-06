@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSystemMenu", "SmartSystemMenu\SmartSystemMenu.csproj", "{CCC625F9-BC33-48E4-9C64-31BEC4163244}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmartSystemMenuHook", "SmartSystemMenuHook\SmartSystemMenuHook.vcxproj", "{3A9E50F5-05CE-4690-90E4-5600F52E0986}"
@@ -46,5 +48,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0BC1504-B8B5-4C73-A997-70E08CFAFF9E}
 	EndGlobalSection
 EndGlobal
