@@ -1,4 +1,4 @@
-SmartSystemMenu
+![SmartSystemMenu](https://user-images.githubusercontent.com/8102586/68280906-8e86b800-0087-11ea-9762-f9eb028bb8fe.png) SmartSystemMenu
 =============
 
 SmartSystemMenu extends system menu of all windows in the system. It appends next custom items to menu:
