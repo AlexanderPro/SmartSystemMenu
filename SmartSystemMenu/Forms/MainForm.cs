@@ -428,6 +428,19 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case SystemMenu.SC_OPEN_FILE_IN_EXPLORER:
+                            {
+                                try
+                                {
+                                    var process = Process.Start("explorer.exe", "/select, " + window.Process.GetMainModuleFileName());
+                                    Window.ForceForegroundWindow(process.MainWindowHandle);
+                                }
+                                catch
+                                {
+                                }
+                            }
+                            break;
+
                         case SystemMenu.SC_TOPMOST:
                             {
                                 bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
