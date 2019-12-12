@@ -403,7 +403,7 @@ namespace SmartSystemMenu.Forms
                                     FileName = "WindowScreenshot",
                                     DefaultExt = "bmp",
                                     RestoreDirectory = false,
-                                    Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|Tiff Image (.tiff)|*.tiff|Wmf Image (.wmf)|*.wmf"
+                                    Filter = "Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf"
                                 };
                                 if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
                                 {
