@@ -107,7 +107,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(windowMenuHandle, index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, IntPtr.Zero, "");
             NativeMethods.InsertMenu(windowMenuHandle, index + 1, NativeConstants.MF_BYPOSITION, SC_INFORMATION, "Information");
             NativeMethods.InsertMenu(windowMenuHandle, index + 2, NativeConstants.MF_BYPOSITION, SC_TOPMOST, "Always On Top");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 3, NativeConstants.MF_BYPOSITION, SC_SAVE_SCREEN_SHOT, "Save Window Screenshot");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 3, NativeConstants.MF_BYPOSITION, SC_SAVE_SCREEN_SHOT, "Save Screenshot");
             NativeMethods.InsertMenu(windowMenuHandle, index + 4, NativeConstants.MF_BYPOSITION, SC_COPY_TEXT_TO_CLIPBOARD, "Copy Text To Clipboard");
 
             _sizeMenuHandle = NativeMethods.CreateMenu();
