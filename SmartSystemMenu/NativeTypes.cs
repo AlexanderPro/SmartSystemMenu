@@ -113,4 +113,52 @@ namespace SmartSystemMenu
         public SmallRect srWindow;
         public Coord dwMaximumWindowSize;
     }
+
+    [Flags]
+    enum DWM_BB
+    {
+        Enable = 1,
+        BlurRegion = 2,
+        TransitionMaximized = 4
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct DWM_BLURBEHIND
+    {
+        public DWM_BB dwFlags;
+        public bool fEnable;
+        public IntPtr hRgnBlur;
+        public bool fTransitionOnMaximized;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct WindowCompositionAttributeData
+    {
+        public WindowCompositionAttribute Attribute;
+        public IntPtr Data;
+        public int SizeOfData;
+    }
+
+    enum WindowCompositionAttribute
+    {
+        WCA_ACCENT_POLICY = 19
+    }
+
+    enum AccentState
+    {
+        ACCENT_DISABLED = 0,
+        ACCENT_ENABLE_GRADIENT = 1,
+        ACCENT_ENABLE_TRANSPARENTGRADIENT = 2,
+        ACCENT_ENABLE_BLURBEHIND = 3,
+        ACCENT_INVALID_STATE = 4
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct AccentPolicy
+    {
+        public AccentState AccentState;
+        public int AccentFlags;
+        public int GradientColor;
+        public int AnimationId;
+    }
 }

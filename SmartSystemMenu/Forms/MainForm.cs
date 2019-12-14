@@ -140,7 +140,7 @@ namespace SmartSystemMenu.Forms
             _cbtHook.Start();
 
             _keyboardHook = new KeyboardHook(Handle);
-            _keyboardHook.KeyboardEvent += WindowKeyboardEvent;
+            //_keyboardHook.KeyboardEvent += WindowKeyboardEvent;
             //_keyboardHook.Start();
 
             Hide();
@@ -209,18 +209,22 @@ namespace SmartSystemMenu.Forms
             {
                 _shellHook.ProcessWindowMessage(ref m);
             }
+
             if (_cbtHook != null)
             {
                 _cbtHook.ProcessWindowMessage(ref m);
             }
+
             if (_getMsgHook != null)
             {
                 _getMsgHook.ProcessWindowMessage(ref m);
             }
+
             if (_keyboardHook != null)
             {
                 _keyboardHook.ProcessWindowMessage(ref m);
             }
+
             base.WndProc(ref m);
         }
 
@@ -485,17 +489,34 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_TOPMOST:
                             {
-                                bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
-                                window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, !r);
-                                window.MakeTopMost(!r);
+                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, !isChecked);
+                                window.MakeTopMost(!isChecked);
+                            }
+                            break;
+
+                        case SystemMenu.SC_AERO_GLASS:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_AERO_GLASS);
+                                var version = Environment.OSVersion.Version;
+                                if (version.Major == 6 && (version.Minor == 0 || version.Minor == 1))
+                                {
+                                    window.AeroGlassForVistaAndSeven(!isChecked);
+                                    window.Menu.CheckMenuItem(SystemMenu.SC_AERO_GLASS, !isChecked);
+                                }
+                                else if (version.Major >= 6)
+                                {
+                                    window.AeroGlassForEightAndHigher(!isChecked);
+                                    window.Menu.CheckMenuItem(SystemMenu.SC_AERO_GLASS, !isChecked);
+                                }
                             }
                             break;
 
                         case SystemMenu.SC_ROLLUP:
                             {
-                                bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_ROLLUP);
-                                window.Menu.CheckMenuItem(SystemMenu.SC_ROLLUP, !r);
-                                if (!r)
+                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_ROLLUP);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_ROLLUP, !isChecked);
+                                if (!isChecked)
                                 {
                                     window.RollUp();
                                 }

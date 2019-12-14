@@ -437,6 +437,39 @@ namespace SmartSystemMenu
             return text;
         }
 
+        public void AeroGlassForVistaAndSeven(bool enable)
+        {
+            var blurBehind = new DWM_BLURBEHIND()
+            {
+                dwFlags = DWM_BB.Enable,
+                fEnable = enable,
+                hRgnBlur = IntPtr.Zero,
+                fTransitionOnMaximized = false
+            };
+            NativeMethods.DwmEnableBlurBehindWindow(Handle, ref blurBehind);
+        }
+
+        public void AeroGlassForEightAndHigher(bool enable)
+        {
+            var accent = new AccentPolicy();
+            var accentStructSize = Marshal.SizeOf(accent);
+            accent.AccentState = enable ? AccentState.ACCENT_ENABLE_BLURBEHIND : AccentState.ACCENT_DISABLED;
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            try
+            {
+                Marshal.StructureToPtr(accent, accentPtr, false);
+                var data = new WindowCompositionAttributeData();
+                data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+                data.SizeOfData = accentStructSize;
+                data.Data = accentPtr;
+                NativeMethods.SetWindowCompositionAttribute(Handle, ref data);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(accentPtr);
+            }
+        }
+
         public static void ForceForegroundWindow(IntPtr handle)
         {
             IntPtr foreHandle = NativeMethods.GetForegroundWindow();
