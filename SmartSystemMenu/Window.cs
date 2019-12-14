@@ -44,9 +44,9 @@ namespace SmartSystemMenu
         {
             get
             {
-                StringBuilder sb = new StringBuilder(1024);
-                NativeMethods.GetWindowText(_handle, sb, sb.Capacity);
-                string windowText = sb.ToString().Trim();
+                var builder = new StringBuilder(1024);
+                NativeMethods.GetWindowText(_handle, builder, builder.Capacity);
+                var windowText = builder.ToString().Trim();
                 return windowText;
             }
         }
@@ -55,9 +55,9 @@ namespace SmartSystemMenu
         {
             get
             {
-                StringBuilder sb = new StringBuilder(1024);
-                NativeMethods.GetClassName(_handle, sb, sb.Capacity);
-                string className = sb.ToString().Trim();
+                var builder = new StringBuilder(1024);
+                NativeMethods.GetClassName(_handle, builder, builder.Capacity);
+                var className = builder.ToString().Trim();
                 return className;
             }
         }
@@ -435,22 +435,6 @@ namespace SmartSystemMenu
             var text = ExtractTextFromConsole();
             text = text ?? ExtractTextFromWindow();
             return text;
-        }
-
-        public static void CloseAllWindowsOfProcess(int processId)
-        {
-            NativeMethods.EnumWindowDelegate d = delegate (IntPtr hWnd, int lParam)
-            {
-                int pId;
-                NativeMethods.GetWindowThreadProcessId(hWnd, out pId);
-                if ((int)pId == processId)
-                {
-                    NativeMethods.PostMessage(hWnd, NativeConstants.WM_CLOSE, 0, 0);
-                }
-                return true;
-            };
-
-            NativeMethods.EnumWindows(d, 0);
         }
 
         public static void ForceForegroundWindow(IntPtr handle)

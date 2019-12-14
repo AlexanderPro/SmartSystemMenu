@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace SmartSystemMenu.Extensions
 {
@@ -56,6 +57,16 @@ namespace SmartSystemMenu.Extensions
                 var bufferLength = (uint)fileNameBuilder.Capacity + 1;
                 return NativeMethods.QueryFullProcessImageName(process.Handle, 0, fileNameBuilder, ref bufferLength) ? fileNameBuilder.ToString() : null;
             }
+        }
+
+        public static IList<IntPtr> GetWindowHandles(this Process process)
+        {
+            var handles = new List<IntPtr>();
+            foreach (ProcessThread thread in process.Threads)
+            {
+                NativeMethods.EnumThreadWindows(thread.Id, (hwnd, lParam) => { handles.Add(hwnd); return true; }, 0);
+            }
+            return handles;
         }
     }
 }

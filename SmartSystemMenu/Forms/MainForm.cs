@@ -152,14 +152,17 @@ namespace SmartSystemMenu.Forms
             {
                 _getMsgHook.Stop();
             }
+
             if (_shellHook != null)
             {
                 _shellHook.Stop();
             }
+
             if (_cbtHook != null)
             {
                 _cbtHook.Stop();
             }
+
             if (_windows != null)
             {
                 foreach (Window window in _windows)
@@ -178,11 +181,16 @@ namespace SmartSystemMenu.Forms
 
             if (Environment.Is64BitOperatingSystem && _64BitProcess != null && !_64BitProcess.HasExited)
             {
-                Window.CloseAllWindowsOfProcess(_64BitProcess.Id);
+                foreach (var handle in _64BitProcess.GetWindowHandles())
+                {
+                    NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                }
+
                 if (!_64BitProcess.WaitForExit(5000))
                 {
                     _64BitProcess.Kill();
                 }
+
                 try
                 {
                     File.Delete(_64BitProcess.StartInfo.FileName);
@@ -437,6 +445,40 @@ namespace SmartSystemMenu.Forms
                                 }
                                 catch
                                 {
+                                }
+                            }
+                            break;
+
+                        case SystemMenu.SC_CLOSE_OTHER_WINDOWS:
+                            {
+                                foreach (var process in Process.GetProcesses())
+                                {
+                                    try
+                                    {
+                                        if (process.MainWindowHandle != IntPtr.Zero && process.MainWindowHandle != Handle && process.MainWindowHandle != window.Handle)
+                                        {
+                                            if (process.ProcessName.ToLower() == "explorer")
+                                            {
+                                                foreach (var handle in process.GetWindowHandles().Where(x => x != window.Handle).ToList())
+                                                {
+                                                    var builder = new StringBuilder(1024);
+                                                    NativeMethods.GetClassName(handle, builder, builder.Capacity);
+                                                    var className = builder.ToString().Trim();
+                                                    if (className == "CabinetWClass" || className == "ExplorerWClass")
+                                                    {
+                                                        NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                NativeMethods.PostMessage(process.MainWindowHandle, NativeConstants.WM_CLOSE, 0, 0);
+                                            }
+                                        }
+                                    }
+                                    catch
+                                    {
+                                    }
                                 }
                             }
                             break;
