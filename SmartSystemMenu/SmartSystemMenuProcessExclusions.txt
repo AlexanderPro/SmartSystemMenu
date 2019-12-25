@@ -3,3 +3,5 @@ slack.exe
 dllhost.exe
 sihost.exe
 explorer.exe
+chrome.exe
+code.exe
