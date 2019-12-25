@@ -453,6 +453,7 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case SystemMenu.SC_MINIMIZE_OTHER_WINDOWS:
                         case SystemMenu.SC_CLOSE_OTHER_WINDOWS:
                             {
                                 foreach (var process in Process.GetProcesses())
@@ -470,13 +471,27 @@ namespace SmartSystemMenu.Forms
                                                     var className = builder.ToString().Trim();
                                                     if (className == "CabinetWClass" || className == "ExplorerWClass")
                                                     {
-                                                        NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                                                        if (lowOrder == SystemMenu.SC_CLOSE_OTHER_WINDOWS)
+                                                        {
+                                                            NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                                                        }
+                                                        else
+                                                        {
+                                                            NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, NativeConstants.SC_MINIMIZE, 0);
+                                                        }
                                                     }
                                                 }
                                             }
                                             else
                                             {
-                                                NativeMethods.PostMessage(process.MainWindowHandle, NativeConstants.WM_CLOSE, 0, 0);
+                                                if (lowOrder == SystemMenu.SC_CLOSE_OTHER_WINDOWS)
+                                                {
+                                                    NativeMethods.PostMessage(process.MainWindowHandle, NativeConstants.WM_CLOSE, 0, 0);
+                                                }
+                                                else
+                                                {
+                                                    NativeMethods.PostMessage(process.MainWindowHandle, NativeConstants.WM_SYSCOMMAND, NativeConstants.SC_MINIMIZE, 0);
+                                                }
                                             }
                                         }
                                     }

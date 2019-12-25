@@ -12,6 +12,7 @@ namespace SmartSystemMenu
         private IntPtr _sizeMenuHandle;
         private IntPtr _transparencyMenuHandle;
         private IntPtr _systemTrayMenuHandle;
+        private IntPtr _otherWindowsHandle;
 
         #endregion
 
@@ -90,7 +91,8 @@ namespace SmartSystemMenu
         public const int SC_COPY_TEXT_TO_CLIPBOARD = 0x4803;
         public const int SC_OPEN_FILE_IN_EXPLORER = 0x4804;
         public const int SC_CLOSE_OTHER_WINDOWS = 0x4805;
-        public const int SC_AERO_GLASS = 0x4806;
+        public const int SC_MINIMIZE_OTHER_WINDOWS = 0x4806;
+        public const int SC_AERO_GLASS = 0x4807;
 
         #endregion
 
@@ -104,8 +106,8 @@ namespace SmartSystemMenu
 
         public void Create()
         {
-            IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            int index = NativeMethods.GetMenuItemCount(windowMenuHandle);
+            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var index = NativeMethods.GetMenuItemCount(windowMenuHandle);
 
             NativeMethods.InsertMenu(windowMenuHandle, index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, IntPtr.Zero, "");
             NativeMethods.InsertMenu(windowMenuHandle, index + 1, NativeConstants.MF_BYPOSITION, SC_INFORMATION, "Information");
@@ -114,7 +116,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(windowMenuHandle, index + 4, NativeConstants.MF_BYPOSITION, SC_SAVE_SCREEN_SHOT, "Save Screenshot");
             NativeMethods.InsertMenu(windowMenuHandle, index + 5, NativeConstants.MF_BYPOSITION, SC_OPEN_FILE_IN_EXPLORER, "Open File In Explorer");
             NativeMethods.InsertMenu(windowMenuHandle, index + 6, NativeConstants.MF_BYPOSITION, SC_COPY_TEXT_TO_CLIPBOARD, "Copy Text To Clipboard");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 7, NativeConstants.MF_BYPOSITION, SC_CLOSE_OTHER_WINDOWS, "Close Other Windows");
+
             _sizeMenuHandle = NativeMethods.CreateMenu();
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_640_480, "640x480");
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_720_480, "720x480");
@@ -133,7 +135,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_DEFAULT, "Default");
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_CUSTOM, "Custom...");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 8, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _sizeMenuHandle, "Resize");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 7, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _sizeMenuHandle, "Resize");
 
             _alignmentMenuHandle = NativeMethods.CreateMenu();
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MONITOR, "Monitor");
@@ -151,7 +153,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_DEFAULT, "Default");
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_CUSTOM, "Custom...");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 9, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _alignmentMenuHandle, "Alignment");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 8, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _alignmentMenuHandle, "Alignment");
 
             _transparencyMenuHandle = NativeMethods.CreateMenu();
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_00, "0% (opaque)");
@@ -169,7 +171,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_DEFAULT, "Default");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_CUSTOM, "Custom...");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 10, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _transparencyMenuHandle, "Transparency");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 9, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _transparencyMenuHandle, "Transparency");
 
             _priorityMenuHandle = NativeMethods.CreateMenu();
             NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_REAL_TIME, "Real Time: 24");
@@ -178,18 +180,23 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_NORMAL, "Normal: 8");
             NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_BELOW_NORMAL, "Below Normal: 6");
             NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_IDLE, "Idle: 4");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 11, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _priorityMenuHandle, "Priority");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 10, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _priorityMenuHandle, "Priority");
+
+            _otherWindowsHandle = NativeMethods.CreateMenu();
+            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_OTHER_WINDOWS, "Minimize");
+            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, SC_CLOSE_OTHER_WINDOWS, "Close");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 11, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _otherWindowsHandle, "Other Windows");
 
             _systemTrayMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_TO_SYSTEMTRAY, "&Mimimize To Tray");
-            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, "Mimimize To Tray Always");
+            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_TO_SYSTEMTRAY, "Minimize To Tray");
+            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, "Minimize To Tray Always");
             NativeMethods.InsertMenu(windowMenuHandle, index + 12, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _systemTrayMenuHandle, "System Tray");
         }
 
         public void Destroy()
         {
-            IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            int Index = NativeMethods.GetMenuItemCount(windowMenuHandle);
+            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var Index = NativeMethods.GetMenuItemCount(windowMenuHandle);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 1, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 2, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 3, NativeConstants.MF_BYPOSITION);
@@ -198,37 +205,42 @@ namespace SmartSystemMenu
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 6, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 7, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 8, NativeConstants.MF_BYPOSITION);
+            NativeMethods.DeleteMenu(windowMenuHandle, Index - 9, NativeConstants.MF_BYPOSITION);
+            NativeMethods.DeleteMenu(windowMenuHandle, Index - 10, NativeConstants.MF_BYPOSITION);
+            NativeMethods.DeleteMenu(windowMenuHandle, Index - 11, NativeConstants.MF_BYPOSITION);
+            NativeMethods.DeleteMenu(windowMenuHandle, Index - 12, NativeConstants.MF_BYPOSITION);
             NativeMethods.DestroyMenu(_priorityMenuHandle);
             NativeMethods.DestroyMenu(_alignmentMenuHandle);
             NativeMethods.DestroyMenu(_sizeMenuHandle);
             NativeMethods.DestroyMenu(_transparencyMenuHandle);
+            NativeMethods.DestroyMenu(_otherWindowsHandle);
             NativeMethods.DestroyMenu(_systemTrayMenuHandle);
             NativeMethods.GetSystemMenu(WindowHandle, true);
         }
 
         public void SetMenuItemText(int id, string text)
         {
-            MenuItemInfo info = new MenuItemInfo();
+            var info = new MenuItemInfo();
             info.cbSize = (UInt32)Marshal.SizeOf(info);
             info.fMask = NativeConstants.MIIM_TYPE;
             info.fType = NativeConstants.MFT_STRING;
             info.dwTypeData = text;
             info.cch = (UInt32)text.Length;
-            IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             NativeMethods.SetMenuItemInfo(windowMenuHandle, id, false, ref info);
         }
 
         public void CheckMenuItem(int id, bool check)
         {
-            IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             NativeMethods.CheckMenuItem(windowMenuHandle, id, check ? NativeConstants.MF_CHECKED : NativeConstants.MF_UNCHECKED);
         }
 
         public bool IsMenuItemChecked(int id)
         {
-            IntPtr windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            UInt32 flags = NativeMethods.GetMenuState(windowMenuHandle, id, NativeConstants.MF_BYCOMMAND);
-            bool isChecked = (flags & NativeConstants.MF_CHECKED) != 0;
+            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var flags = NativeMethods.GetMenuState(windowMenuHandle, id, NativeConstants.MF_BYCOMMAND);
+            var isChecked = (flags & NativeConstants.MF_CHECKED) != 0;
             return isChecked;
         }
 
