@@ -377,7 +377,12 @@ namespace SmartSystemMenu
         {
             IntPtr handleTopMost = (IntPtr)(-1);
             IntPtr handleNotTopMost = (IntPtr)(-2);
-            NativeMethods.SetWindowPos(_handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, NativeConstants.TOPMOST_FLAGS);
+            NativeMethods.SetWindowPos(_handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
+        }
+
+        public void SendToBottom()
+        {
+            NativeMethods.SetWindowPos(_handle, new IntPtr(1) , 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
         }
 
         public void MinimizeToSystemTray()

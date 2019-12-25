@@ -510,6 +510,12 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case SystemMenu.SC_SEND_TO_BOTTOM:
+                            {
+                                window.SendToBottom();
+                            }
+                            break;
+
                         case SystemMenu.SC_AERO_GLASS:
                             {
                                 var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_AERO_GLASS);

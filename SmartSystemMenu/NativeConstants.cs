@@ -51,9 +51,10 @@ namespace SmartSystemMenu
         public const int WM_CLOSE = 0x0010;
         public const int WM_NULL = 0x0000;
 
-        public const UInt32 SWP_NOSIZE = 0x0001;
-        public const UInt32 SWP_NOMOVE = 0x0002;
-        public const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
+        // SetWindowPos
+        public const uint SWP_NOSIZE = 0x0001;
+        public const uint SWP_NOMOVE = 0x0002;
+        public const uint SWP_NOACTIVATE = 0x0010;
 
         public const int ICON_SMALL = 0;
         public const int ICON_BIG = 1;
