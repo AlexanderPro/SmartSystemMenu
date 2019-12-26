@@ -540,6 +540,22 @@ namespace SmartSystemMenu.Forms
                                 if (!isChecked)
                                 {
                                     window.RollUp();
+                                    window.Menu.UncheckMenuItems(
+                                    SystemMenu.SC_SIZE_640_480,
+                                    SystemMenu.SC_SIZE_720_480,
+                                    SystemMenu.SC_SIZE_720_576,
+                                    SystemMenu.SC_SIZE_800_600,
+                                    SystemMenu.SC_SIZE_1024_768,
+                                    SystemMenu.SC_SIZE_1152_864,
+                                    SystemMenu.SC_SIZE_1280_768,
+                                    SystemMenu.SC_SIZE_1280_800,
+                                    SystemMenu.SC_SIZE_1280_960,
+                                    SystemMenu.SC_SIZE_1280_1024,
+                                    SystemMenu.SC_SIZE_1440_900,
+                                    SystemMenu.SC_SIZE_1600_900,
+                                    SystemMenu.SC_SIZE_1680_1050,
+                                    SystemMenu.SC_SIZE_DEFAULT,
+                                    SystemMenu.SC_SIZE_CUSTOM);
                                 }
                                 else
                                 {
@@ -555,6 +571,7 @@ namespace SmartSystemMenu.Forms
                                 window.Menu.CheckMenuItem(SystemMenu.SC_SIZE_DEFAULT, true);
                                 window.ShowNormal();
                                 window.RestoreSize();
+                                window.Menu.UncheckMenuItems(SystemMenu.SC_ROLLUP);
                             }
                             break;
 
@@ -670,6 +687,7 @@ namespace SmartSystemMenu.Forms
             window.Menu.CheckMenuItem(itemId, true);
             window.ShowNormal();
             window.SetSize(width, height);
+            window.Menu.UncheckMenuItems(SystemMenu.SC_ROLLUP);
         }
 
         private void SetTransparencyMenuItem(Window window, int itemId, int transparency)

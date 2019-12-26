@@ -33,6 +33,7 @@ namespace SmartSystemMenu.Forms
                 _window.SetSize(width, height);
                 _window.Menu.UncheckSizeMenu();
                 _window.Menu.CheckMenuItem(SystemMenu.SC_SIZE_CUSTOM, true);
+                _window.Menu.UncheckMenuItems(SystemMenu.SC_ROLLUP);
             }
             catch
             {

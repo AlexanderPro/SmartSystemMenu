@@ -406,7 +406,7 @@ namespace SmartSystemMenu
         public void RollUp()
         {
             _beforeRollupHeight = Size.Height;
-            SetSize(Size.Width, 0);
+            SetSize(Size.Width, SystemInformation.CaptionHeight);
         }
 
         public void UnRollUp()
