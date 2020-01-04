@@ -6,8 +6,8 @@ namespace SmartSystemMenu.Hooks
 {
     class MouseLLHook : Hook
     {
-        private int msgID_MouseLL;
-        private int msgID_MouseLL_HookReplaced;
+        private int _msgIdMouseLL;
+        private int _msgIdMouseLLHookReplaced;
 
         private const int WM_MOUSEMOVE = 0x0200;
         private const int WM_LBUTTONDOWN = 0x0201;
@@ -40,21 +40,21 @@ namespace SmartSystemMenu.Hooks
             #pragma warning restore 0649
         };
 
-        public MouseLLHook(IntPtr handle) : base(handle)
+        public MouseLLHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
         {
         }
 
         protected override void OnStart()
         {
-            msgID_MouseLL = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL");
-            msgID_MouseLL_HookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL_REPLACED");
+            _msgIdMouseLL = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL");
+            _msgIdMouseLLHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL_REPLACED");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_MouseLL, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_MouseLL_HookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdMouseLL, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdMouseLLHookReplaced, NativeConstants.MSGFLT_ADD);
             }
-            NativeHookMethods.InitializeMouseLLHook(0, handle);
+            NativeHookMethods.InitializeMouseLLHook(0, _handle, _dragByMouseMenuItem);
         }
 
         protected override void OnStop()
@@ -62,35 +62,35 @@ namespace SmartSystemMenu.Hooks
             NativeHookMethods.UninitializeMouseLLHook();
         }
 
-        public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
+        public override void ProcessWindowMessage(ref Message m)
         {
-            if (m.Msg == msgID_MouseLL)
+            if (m.Msg == _msgIdMouseLL)
             {
                 RaiseEvent(MouseLLEvent, new BasicHookEventArgs(m.WParam, m.LParam));
 
-                MSLLHOOKSTRUCT M = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(m.LParam, typeof(MSLLHOOKSTRUCT));
+                var msl = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(m.LParam, typeof(MSLLHOOKSTRUCT));
                 if (m.WParam.ToInt64() == WM_MOUSEMOVE)
                 {
-                    RaiseEvent(MouseMove, new MouseEventArgs(MouseButtons.None, 0, M.pt.X, M.pt.Y, 0));
+                    RaiseEvent(MouseMove, new MouseEventArgs(MouseButtons.None, 0, msl.pt.X, msl.pt.Y, 0));
                 }
                 else if (m.WParam.ToInt64() == WM_LBUTTONDOWN)
                 {
-                    RaiseEvent(MouseDown, new MouseEventArgs(MouseButtons.Left, 0, M.pt.X, M.pt.Y, 0));
+                    RaiseEvent(MouseDown, new MouseEventArgs(MouseButtons.Left, 0, msl.pt.X, msl.pt.Y, 0));
                 }
                 else if (m.WParam.ToInt64() == WM_RBUTTONDOWN)
                 {
-                    RaiseEvent(MouseDown, new MouseEventArgs(MouseButtons.Right, 0, M.pt.X, M.pt.Y, 0));
+                    RaiseEvent(MouseDown, new MouseEventArgs(MouseButtons.Right, 0, msl.pt.X, msl.pt.Y, 0));
                 }
                 else if (m.WParam.ToInt64() == WM_LBUTTONUP)
                 {
-                    RaiseEvent(MouseUp, new MouseEventArgs(MouseButtons.Left, 0, M.pt.X, M.pt.Y, 0));
+                    RaiseEvent(MouseUp, new MouseEventArgs(MouseButtons.Left, 0, msl.pt.X, msl.pt.Y, 0));
                 }
                 else if (m.WParam.ToInt64() == WM_RBUTTONUP)
                 {
-                    RaiseEvent(MouseUp, new MouseEventArgs(MouseButtons.Right, 0, M.pt.X, M.pt.Y, 0));
+                    RaiseEvent(MouseUp, new MouseEventArgs(MouseButtons.Right, 0, msl.pt.X, msl.pt.Y, 0));
                 }
             }
-            else if (m.Msg == msgID_MouseLL_HookReplaced)
+            else if (m.Msg == _msgIdMouseLLHookReplaced)
             {
                 RaiseEvent(HookReplaced, EventArgs.Empty);
             }

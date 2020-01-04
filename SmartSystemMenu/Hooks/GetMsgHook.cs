@@ -4,32 +4,32 @@ namespace SmartSystemMenu.Hooks
 {
     class GetMsgHook : Hook
     {
-        private int msgID_GetMsg;
-        private int msgID_GetMsg_Params;
-        private int msgID_GetMsg_HookReplaced;
-        private IntPtr cacheHandle;
-        private IntPtr cacheMessage;
+        private int _msgIdGetMsg;
+        private int _msgIdGetMsgParams;
+        private int _msgIdGetMsgHookReplaced;
+        private IntPtr _cacheHandle;
+        private IntPtr _cacheMessage;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<WndProcEventArgs> GetMsg;
 
-        public GetMsgHook(IntPtr handle) : base(handle)
+        public GetMsgHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
         {
         }
 
         protected override void OnStart()
         {
-            msgID_GetMsg_HookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG_REPLACED");
-            msgID_GetMsg = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG");
-            msgID_GetMsg_Params = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG_PARAMS");
+            _msgIdGetMsgHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG_REPLACED");
+            _msgIdGetMsg = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG");
+            _msgIdGetMsgParams = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG_PARAMS");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg_HookReplaced, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_GetMsg_Params, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdGetMsgHookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdGetMsg, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdGetMsgParams, NativeConstants.MSGFLT_ADD);
             }
-            NativeHookMethods.InitializeGetMsgHook(0, handle);
+            NativeHookMethods.InitializeGetMsgHook(0, _handle, _dragByMouseMenuItem);
         }
 
         protected override void OnStop()
@@ -40,31 +40,31 @@ namespace SmartSystemMenu.Hooks
         public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
         {
             //string dbgMessage = "";
-            if (m.Msg == msgID_GetMsg)
+            if (m.Msg == _msgIdGetMsg)
             {
                 //if (m.LParam.ToInt64() == NativeConstants.WM_SYSCOMMAND)
                 //{
                 //    dbgMessage = string.Format("WM_SYSCOMMAND, GetMsg, Handle = {0}", m.WParam);
                 //    System.Diagnostics.Trace.WriteLine(dbgMessage);
                 //}
-                cacheHandle = m.WParam;
-                cacheMessage = m.LParam;
+                _cacheHandle = m.WParam;
+                _cacheMessage = m.LParam;
             }
-            else if (m.Msg == msgID_GetMsg_Params)
+            else if (m.Msg == _msgIdGetMsgParams)
             {
-                if (GetMsg != null && cacheHandle != IntPtr.Zero && cacheMessage != IntPtr.Zero)
+                if (GetMsg != null && _cacheHandle != IntPtr.Zero && _cacheMessage != IntPtr.Zero)
                 {
                     //if (cacheMessage.ToInt64() == NativeConstants.WM_SYSCOMMAND)
                     //{
                     //    dbgMessage = string.Format("WM_SYSCOMMAND, GetMsgParams, Handle = {0}, WParam = {1}", cacheHandle, m.WParam);
                     //    System.Diagnostics.Trace.WriteLine(dbgMessage);
                     //}
-                    RaiseEvent(GetMsg, new WndProcEventArgs(cacheHandle, cacheMessage, m.WParam, m.LParam));
+                    RaiseEvent(GetMsg, new WndProcEventArgs(_cacheHandle, _cacheMessage, m.WParam, m.LParam));
                 }
-                cacheHandle = IntPtr.Zero;
-                cacheMessage = IntPtr.Zero;
+                _cacheHandle = IntPtr.Zero;
+                _cacheMessage = IntPtr.Zero;
             }
-            else if (m.Msg == msgID_GetMsg_HookReplaced)
+            else if (m.Msg == _msgIdGetMsgHookReplaced)
             {
                   RaiseEvent(HookReplaced, EventArgs.Empty);
             }

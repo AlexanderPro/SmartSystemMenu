@@ -4,14 +4,14 @@ namespace SmartSystemMenu.Hooks
 {
     class CBTHook : Hook
     {
-        private int msgID_CBT_HookReplaced;
-        private int msgID_CBT_Activate;
-        private int msgID_CBT_CreateWnd;
-        private int msgID_CBT_DestroyWnd;
-        private int msgID_CBT_MinMax;
-        private int msgID_CBT_MoveSize;
-        private int msgID_CBT_SetFocus;
-        private int msgID_CBT_SysCommand;
+        private int _msgIdCbtHookReplaced;
+        private int _msgIdCbtActivate;
+        private int _msgIdCbtCreateWnd;
+        private int _msgIdCbtDestroyWnd;
+        private int _msgIdCbtMinMax;
+        private int _msgIdCbtMoveSize;
+        private int _msgIdCbtSetFocus;
+        private int _msgIdCbtSysCommand;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<WindowEventArgs> WindowActivated;
@@ -22,33 +22,33 @@ namespace SmartSystemMenu.Hooks
         public event EventHandler<WindowEventArgs> SetFocus;
         public event EventHandler<SysCommandEventArgs> SysCommand;
 
-        public CBTHook(IntPtr handle) : base(handle)
+        public CBTHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
         {
         }
 
         protected override void OnStart()
         {
-            msgID_CBT_HookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_CBT_REPLACED");
-            msgID_CBT_Activate = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_ACTIVATE");
-            msgID_CBT_CreateWnd = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_CREATEWND");
-            msgID_CBT_DestroyWnd = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
-            msgID_CBT_MinMax = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
-            msgID_CBT_MoveSize = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
-            msgID_CBT_SetFocus = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_SETFOCUS");
-            msgID_CBT_SysCommand = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_SYSCOMMAND");
+            _msgIdCbtHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_CBT_REPLACED");
+            _msgIdCbtActivate = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_ACTIVATE");
+            _msgIdCbtCreateWnd = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_CREATEWND");
+            _msgIdCbtDestroyWnd = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
+            _msgIdCbtMinMax = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
+            _msgIdCbtMoveSize = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
+            _msgIdCbtSetFocus = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_SETFOCUS");
+            _msgIdCbtSysCommand = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_SYSCOMMAND");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_HookReplaced, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_Activate, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_CreateWnd, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_DestroyWnd, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_MinMax, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_MoveSize, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_SetFocus, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_CBT_SysCommand, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtHookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtActivate, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtCreateWnd, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtDestroyWnd, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtMinMax, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtMoveSize, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtSetFocus, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtSysCommand, NativeConstants.MSGFLT_ADD);
             }
-            NativeHookMethods.InitializeCbtHook(0, handle);
+            NativeHookMethods.InitializeCbtHook(0, _handle, _dragByMouseMenuItem);
         }
 
         protected override void OnStop()
@@ -58,35 +58,35 @@ namespace SmartSystemMenu.Hooks
 
         public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
         {
-            if (m.Msg == msgID_CBT_HookReplaced)
+            if (m.Msg == _msgIdCbtHookReplaced)
             {
                 RaiseEvent(HookReplaced, EventArgs.Empty);
             }
-            else if (m.Msg == msgID_CBT_Activate)
+            else if (m.Msg == _msgIdCbtActivate)
             {
                 RaiseEvent(WindowActivated, new WindowEventArgs(m.WParam));
             }
-            else if (m.Msg == msgID_CBT_CreateWnd)
+            else if (m.Msg == _msgIdCbtCreateWnd)
             {
                 RaiseEvent(WindowCreated, new WindowEventArgs(m.WParam));
             }
-            else if (m.Msg == msgID_CBT_DestroyWnd)
+            else if (m.Msg == _msgIdCbtDestroyWnd)
             {
                 RaiseEvent(WindowDestroyed, new WindowEventArgs(m.WParam));
             }
-            else if (m.Msg == msgID_CBT_MinMax)
+            else if (m.Msg == _msgIdCbtMinMax)
             {
                 RaiseEvent(MinMax, new SysCommandEventArgs(m.WParam, m.LParam));
             }
-            else if (m.Msg == msgID_CBT_MoveSize)
+            else if (m.Msg == _msgIdCbtMoveSize)
             {
                 RaiseEvent(MoveSize, new WindowEventArgs(m.WParam));
             }
-            else if (m.Msg == msgID_CBT_SetFocus)
+            else if (m.Msg == _msgIdCbtSetFocus)
             {
                 RaiseEvent(SetFocus, new WindowEventArgs(m.WParam));
             }
-            else if (m.Msg == msgID_CBT_SysCommand)
+            else if (m.Msg == _msgIdCbtSysCommand)
             {
                 RaiseEvent(SysCommand, new SysCommandEventArgs(m.WParam, m.LParam));
             }

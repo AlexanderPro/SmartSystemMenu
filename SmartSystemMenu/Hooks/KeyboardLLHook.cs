@@ -4,27 +4,27 @@ namespace SmartSystemMenu.Hooks
 {
     class KeyboardLLHook : Hook
     {
-        private int msgID_KeyboardLL;
-        private int msgID_KeyboardLL_HookReplaced;
+        private int _msgIdKeyboardLL;
+        private int _msgIdKeyboardLLHookReplaced;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<BasicHookEventArgs> KeyboardLLEvent;
 
-        public KeyboardLLHook(IntPtr handle) : base(handle)
+        public KeyboardLLHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
         {
         }
 
         protected override void OnStart()
         {
-            msgID_KeyboardLL = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARDLL");
-            msgID_KeyboardLL_HookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARDLL_REPLACED");
+            _msgIdKeyboardLL = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARDLL");
+            _msgIdKeyboardLLHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARDLL_REPLACED");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_KeyboardLL, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_KeyboardLL_HookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdKeyboardLL, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdKeyboardLLHookReplaced, NativeConstants.MSGFLT_ADD);
             }
-            NativeHookMethods.InitializeKeyboardLLHook(0, handle);
+            NativeHookMethods.InitializeKeyboardLLHook(0, _handle, _dragByMouseMenuItem);
         }
 
         protected override void OnStop()
@@ -34,11 +34,11 @@ namespace SmartSystemMenu.Hooks
 
         public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
         {
-            if (m.Msg == msgID_KeyboardLL)
+            if (m.Msg == _msgIdKeyboardLL)
             {
                 RaiseEvent(KeyboardLLEvent, new BasicHookEventArgs(m.WParam, m.LParam));
             }
-            else if (m.Msg == msgID_KeyboardLL_HookReplaced)
+            else if (m.Msg == _msgIdKeyboardLLHookReplaced)
             {
                 RaiseEvent(HookReplaced, EventArgs.Empty);
             }

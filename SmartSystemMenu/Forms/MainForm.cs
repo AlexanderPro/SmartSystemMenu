@@ -20,7 +20,7 @@ namespace SmartSystemMenu.Forms
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
         private CBTHook _cbtHook;
-        private KeyboardHook _keyboardHook;
+        private MouseHook _mouseHook;
         private AboutForm _aboutForm;
         private List<string> _processExclusions;
 
@@ -123,25 +123,24 @@ namespace SmartSystemMenu.Forms
                 if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
             }
 
-            _getMsgHook = new GetMsgHook(Handle);
+            _getMsgHook = new GetMsgHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
             _getMsgHook.GetMsg += WindowGetMsg;
             _getMsgHook.Start();
 
-            _shellHook = new ShellHook(Handle);
+            _shellHook = new ShellHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
             _shellHook.WindowCreated += WindowCreated;
             _shellHook.WindowDestroyed += WindowDestroyed;
             _shellHook.Start();
 
-            _cbtHook = new CBTHook(Handle);
+            _cbtHook = new CBTHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
             _cbtHook.WindowCreated += WindowCreated;
             _cbtHook.WindowDestroyed += WindowDestroyed;
             _cbtHook.MoveSize += WindowMoveSize;
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
-            _keyboardHook = new KeyboardHook(Handle);
-            //_keyboardHook.KeyboardEvent += WindowKeyboardEvent;
-            //_keyboardHook.Start();
+            _mouseHook = new MouseHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
+            _mouseHook.Start();
 
             Hide();
         }
@@ -218,11 +217,6 @@ namespace SmartSystemMenu.Forms
             if (_getMsgHook != null)
             {
                 _getMsgHook.ProcessWindowMessage(ref m);
-            }
-
-            if (_keyboardHook != null)
-            {
-                _keyboardHook.ProcessWindowMessage(ref m);
             }
 
             base.WndProc(ref m);
@@ -437,6 +431,13 @@ namespace SmartSystemMenu.Forms
                                 {
                                     Clipboard.SetText(text);
                                 }
+                            }
+                            break;
+
+                        case SystemMenu.SC_DRAG_BY_MOUSE:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_DRAG_BY_MOUSE);
+                                window.Menu.CheckMenuItem(SystemMenu.SC_DRAG_BY_MOUSE, !isChecked);
                             }
                             break;
 

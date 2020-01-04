@@ -4,27 +4,27 @@ namespace SmartSystemMenu.Hooks
 {
     class MouseHook : Hook
     {
-        private int msgID_Mouse;
-        private int msgID_Mouse_HookReplaced;
+        private int _msgIdMouse;
+        private int _msgIdMouseHookReplaced;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<BasicHookEventArgs> MouseEvent;
 
-        public MouseHook(IntPtr handle) : base(handle)
+        public MouseHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
         {
         }
 
         protected override void OnStart()
         {
-            msgID_Mouse = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE");
-            msgID_Mouse_HookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE_REPLACED");
+            _msgIdMouse = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE");
+            _msgIdMouseHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE_REPLACED");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(msgID_Mouse, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(msgID_Mouse_HookReplaced, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdMouse, NativeConstants.MSGFLT_ADD);
+                NativeMethods.ChangeWindowMessageFilter(_msgIdMouseHookReplaced, NativeConstants.MSGFLT_ADD);
             }
-            NativeHookMethods.InitializeMouseHook(0, handle);
+            NativeHookMethods.InitializeMouseHook(0, _handle, _dragByMouseMenuItem);
         }
 
         protected override void OnStop()
@@ -34,11 +34,11 @@ namespace SmartSystemMenu.Hooks
 
         public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
         {
-            if (m.Msg == msgID_Mouse)
+            if (m.Msg == _msgIdMouse)
             {
                 RaiseEvent(MouseEvent, new BasicHookEventArgs(m.WParam, m.LParam));
             }
-            else if (m.Msg == msgID_Mouse_HookReplaced)
+            else if (m.Msg == _msgIdMouseHookReplaced)
             {
                 RaiseEvent(HookReplaced, EventArgs.Empty);
             }

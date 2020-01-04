@@ -4,34 +4,36 @@ namespace SmartSystemMenu.Hooks
 {
     abstract class Hook
     {
-        protected bool isActive = false;
-        protected IntPtr handle;
+        protected bool _isActive = false;
+        protected IntPtr _handle;
+        protected int _dragByMouseMenuItem;
 
         public bool IsActive
         {
-            get { return isActive; }
+            get { return _isActive; }
         }
 
-        public Hook(IntPtr windowHandle)
+        public Hook(IntPtr windowHandle, int dragByMouseMenuItem)
         {
-            handle = windowHandle;
+            _handle = windowHandle;
+            _dragByMouseMenuItem = dragByMouseMenuItem;
         }
 
         public void Start()
         {
-            if (!isActive)
+            if (!_isActive)
             {
-                isActive = true;
+                _isActive = true;
                 OnStart();
             }
         }
 
         public void Stop()
         {
-            if (isActive)
+            if (_isActive)
             {
                 OnStop();
-                isActive = false;
+                _isActive = false;
             }
         }
 
