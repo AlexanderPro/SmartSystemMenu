@@ -4,23 +4,26 @@
 SmartSystemMenu extends system menu of all windows in the system. It appends next custom items to menu:
 
 * **Information.** Shows a dialog with information of the current window and process: the window handle, the window caption, the window style, the window class, the process name, the process id, the path to the process.
+* **Roll Up.** Allows to roll up and down the current window.
 * **Aero Glass.** Allows to add the "Aero Glass" blur to the current window. (Windows Vista and higher. Mostly for console windows.)
 * **Always On Top.** Allows the current window to stay on top of all other windows.
+* **Send To Bottom.** Allows to send to bottom the current window.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
 * **Copy Text To Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard.
-* **Close Other Windows.** Allows to close all windows in the system except the current.
+* **Drag By Mouse.** Allows to drag by mouse the current window.
 * **Resize.** Allows to change the size of the current window.
 * **Alignment.** Allows the current window to be aligned with any of the 9 positions on the desktop.
 * **Transparency.** Allows to change the transparency of the current window.
 * **Priority.** Allows to change the current window's program priority.
 * **System Tray.** Allows to minimize the current window to the system tray.
+* **Other Windows.** Allows to close and minimize all windows in the system except the current.
 
 Screenshots
 ------------------
 
-![alt tag](https://user-images.githubusercontent.com/8102586/70864525-ea384100-1f63-11ea-915b-fe893d76cc5e.png)
-![alt tag](https://user-images.githubusercontent.com/8102586/70864347-0d61f100-1f62-11ea-9e68-ad2f38e145f3.png)
+![alt tag](https://user-images.githubusercontent.com/8102586/71778301-2425c180-2fbd-11ea-8a4e-94815c3878b9.png)
+![alt tag](https://user-images.githubusercontent.com/8102586/71778303-26881b80-2fbd-11ea-964f-7831259d94d2.png)
 
 Requirements
 --------------------
