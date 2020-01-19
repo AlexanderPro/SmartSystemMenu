@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Hooks;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -22,39 +23,12 @@ namespace SmartSystemMenu.Forms
         private CBTHook _cbtHook;
         private MouseHook _mouseHook;
         private AboutForm _aboutForm;
-        private List<string> _processExclusions;
+        private SmartSystemMenuSettings _settings;
 
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
         private Process _64BitProcess;
 #endif
-
-        private List<string> ProcessExclusions
-        {
-            get
-            {
-                if (_processExclusions != null)
-                {
-                    return _processExclusions;
-                }
-
-                var proceesExclusionsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenuProcessExclusions.txt");
-                if (File.Exists(proceesExclusionsFileName))
-                {
-                    _processExclusions = File
-                        .ReadAllLines(proceesExclusionsFileName, Encoding.UTF8)
-                        .Select(x => x.Trim().ToLower())
-                        .Where(x => !string.IsNullOrEmpty(x))
-                        .ToList();
-                }
-                else
-                {
-                    _processExclusions = new List<string>();
-                }
-
-                return _processExclusions;
-            }
-        }
 
         public MainForm()
         {
@@ -68,6 +42,12 @@ namespace SmartSystemMenu.Forms
         {
             base.OnLoad(e);
 
+            _settings = new SmartSystemMenuSettings();
+            var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
+            if (File.Exists(settingsFileName))
+            {
+                _settings = SmartSystemMenuSettings.Read(settingsFileName);
+            }
 #if WIN32
             if (Environment.Is64BitOperatingSystem)
             {
@@ -111,7 +91,7 @@ namespace SmartSystemMenu.Forms
                 {
                 }
 
-                if (string.IsNullOrEmpty(processName) || ProcessExclusions.Contains(processName.ToLower()))
+                if (string.IsNullOrEmpty(processName) || _settings.ProcessExclusions.Contains(processName.ToLower()))
                 {
                     continue;
                 }
@@ -288,7 +268,7 @@ namespace SmartSystemMenu.Forms
                     {
                     }
 
-                    if (string.IsNullOrEmpty(processName) || ProcessExclusions.Contains(processName.ToLower()))
+                    if (string.IsNullOrEmpty(processName) || _settings.ProcessExclusions.Contains(processName.ToLower()))
                     {
                         continue;
                     }

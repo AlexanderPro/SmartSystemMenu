@@ -1,5 +1,6 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
+#include "tinyxml2.h"
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -7,40 +8,26 @@
 
 extern HINSTANCE g_appInstance;
 
-bool array_contains(const std::string &value, const std::vector<std::string> &array)
+using namespace tinyxml2;
+using namespace std;
+
+bool array_contains(const string &value, const vector<string> &array)
 {
-	return std::find(array.begin(), array.end(), value) != array.end();
+	return find(array.begin(), array.end(), value) != array.end();
 }
 
-std::string get_file_name(const std::string &path)
+string get_file_name(const string &path)
 {
-	std::size_t index = path.find_last_of("/\\");
-	std::string fileName = path.substr(index + 1);
+	size_t index = path.find_last_of("/\\");
+	string fileName = path.substr(index + 1);
 	return fileName;
 }
 
-std::string get_directory_name(const std::string &path)
+string get_directory_name(const string &path)
 {
-	std::size_t index = path.find_last_of("/\\");
-	std::string directoryName = path.substr(0, index);
+	size_t index = path.find_last_of("/\\");
+	string directoryName = path.substr(0, index);
 	return directoryName;
-}
-
-std::vector<std::string> read_process_exclusions(const std::string &path)
-{
-	std::vector<std::string> result{};
-	std::string str;
-	std::ifstream file(path.c_str());
-	if (!file.good())
-	{
-		return result;
-	}
-	while (std::getline(file, str))
-	{
-		std::transform(str.begin(), str.end(), str.begin(), ::tolower);
-		result.push_back(str);
-	}
-	return result;
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
@@ -52,22 +39,53 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 		{
 			g_appInstance = hModule;
 		}
-		WCHAR exePath[MAX_PATH], dllPath[MAX_PATH];
-		if (GetModuleFileName(NULL, exePath, sizeof(exePath)) != 0 && GetModuleFileName(hModule, dllPath, sizeof(dllPath)) != 0)
+
+		try
 		{
-			std::wstring dllTempPath(&dllPath[0]);
-			std::string dllFileName(dllTempPath.begin(), dllTempPath.end());
-			std::string dllDirectoryName = get_directory_name(dllFileName);
-			std::string exclusionsFileName = dllDirectoryName + "\\SmartSystemMenuProcessExclusions.txt";
-			std::vector<std::string> excludedProcessNames = read_process_exclusions(exclusionsFileName);
-			std::wstring exeTempPath(&exePath[0]);
-			std::string exeFileName(exeTempPath.begin(), exeTempPath.end());
-			exeFileName = get_file_name(exeFileName);
-			std::transform(exeFileName.begin(), exeFileName.end(), exeFileName.begin(), ::tolower);
-			if (array_contains(exeFileName, excludedProcessNames))
+			WCHAR exePath[MAX_PATH], dllPath[MAX_PATH];
+			if (GetModuleFileName(NULL, exePath, sizeof(exePath)) != 0 && GetModuleFileName(hModule, dllPath, sizeof(dllPath)) != 0)
 			{
-				return FALSE;
+				wstring dllTempPath(&dllPath[0]);
+				string dllFileName(dllTempPath.begin(), dllTempPath.end());
+				string dllDirectoryName = get_directory_name(dllFileName);
+				string exclusionsFileName = dllDirectoryName + "\\SmartSystemMenu.xml";
+				
+				XMLDocument doc;
+				doc.LoadFile(exclusionsFileName.c_str());
+				vector<string> processNames{};
+				XMLElement* element = doc.FirstChildElement("smartSystemMenu");
+				if (element)
+				{
+					element = element->FirstChildElement("processExclusions");
+					if (element)
+					{
+						element = element->FirstChildElement("processName");
+						while (element)
+						{
+							const char* value = element->GetText();
+							string processName = value;
+							transform(processName.begin(), processName.end(), processName.begin(), ::tolower);
+							processNames.push_back(processName);
+							element = element->NextSiblingElement("processName");
+						}
+					}
+				}
+
+				wstring exeTempPath(&exePath[0]);
+				string exeFileName(exeTempPath.begin(), exeTempPath.end());
+				exeFileName = get_file_name(exeFileName);
+				transform(exeFileName.begin(), exeFileName.end(), exeFileName.begin(), ::tolower);
+				if (array_contains(exeFileName, processNames))
+				{
+					return FALSE;
+				}
 			}
+		}
+		catch (...)
+		{
+			TCHAR buf[255];
+			wsprintf(buf, L"SmartSystemMenu exception");
+			OutputDebugString(buf);
 		}
 		break;
 

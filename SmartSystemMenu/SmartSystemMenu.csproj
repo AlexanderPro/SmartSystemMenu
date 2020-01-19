@@ -76,6 +76,7 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings\SmartSystemMenuSettings.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="AutoStarter.cs" />
     <Compile Include="EnumWindows.cs" />
@@ -194,8 +195,8 @@
   <ItemGroup>
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
     <Content Include="SmartSystemMenu.png" />
-    <Content Include="SmartSystemMenuProcessExclusions.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="SmartSystemMenu.xml">
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="SmartSystemMenu.ico" />
   </ItemGroup>

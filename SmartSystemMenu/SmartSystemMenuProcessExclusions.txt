@@ -1,6 +1,0 @@
-discord.exe
-slack.exe
-dllhost.exe
-sihost.exe
-chrome.exe
-code.exe

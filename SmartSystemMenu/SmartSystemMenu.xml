@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<smartSystemMenu>
+  <processExclusions>
+    <processName>discord.exe</processName>
+    <processName>slack.exe</processName>
+    <processName>dllhost.exe</processName>
+    <processName>sihost.exe</processName>
+    <processName>chrome.exe</processName>
+    <processName>code.exe</processName>
+  </processExclusions>
+</smartSystemMenu>
