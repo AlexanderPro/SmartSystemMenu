@@ -8,4 +8,13 @@
     <processName>chrome.exe</processName>
     <processName>code.exe</processName>
   </processExclusions>
+  <menuItems>
+    <startProgramItem>
+      <item title="Notepad" fileName="notepad.exe" arguments="" />
+      <item title="Calculator" fileName="calc.exe" arguments="" />
+      <item title="Paint" fileName="mspaint.exe" arguments="" />
+      <item title="Explorer" fileName="explorer.exe" arguments="" />
+      <item title="Registry" fileName="regedit.exe" arguments="" />
+    </startProgramItem>
+  </menuItems>
 </smartSystemMenu>

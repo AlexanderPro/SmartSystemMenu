@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu
 {
@@ -10,21 +11,24 @@ namespace SmartSystemMenu
         private static string[] _filterTitles;
         private static IntPtr[] _filterHandles;
         private static IList<Window> _windows;
+        private static MenuItems _menuItems;
 
-        public static IList<Window> EnumAllWindows(params string[] filterTitles)
+        public static IList<Window> EnumAllWindows(MenuItems menuItems, params string[] filterTitles)
         {
             _filterTitles = filterTitles ?? new string[0];
             _filterHandles = new IntPtr[0];
             _windows = new List<Window>();
+            _menuItems = menuItems;
             NativeMethods.EnumWindows(EnumWindowCallback, 0);
             return _windows;
         }
 
-        public static IList<Window> EnumProcessWindows(int processId, IntPtr[] filterHandles, params string[] filterTitles)
+        public static IList<Window> EnumProcessWindows(int processId, IntPtr[] filterHandles, MenuItems menuItems, params string[] filterTitles)
         {
             _filterTitles = filterTitles ?? new string[0];
             _filterHandles = filterHandles ?? new IntPtr[0];
             _windows = new List<Window>();
+            _menuItems = menuItems;
             foreach (ProcessThread thread in Process.GetProcessById(processId).Threads)
             {
                 NativeMethods.EnumThreadWindows(thread.Id, EnumWindowCallback, 0);
@@ -49,7 +53,7 @@ namespace SmartSystemMenu
 
             if (!isAdd) return true;
 
-            var window = new Window(hwnd);
+            var window = new Window(hwnd, _menuItems);
 
             if (!window.Menu.Exists)
             {

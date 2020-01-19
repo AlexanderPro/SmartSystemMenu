@@ -76,6 +76,8 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings\MenuItems.cs" />
+    <Compile Include="Settings\StartProgramItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="AutoStarter.cs" />

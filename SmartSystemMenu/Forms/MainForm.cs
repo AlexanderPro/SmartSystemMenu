@@ -34,6 +34,7 @@ namespace SmartSystemMenu.Forms
         {
             InitializeComponent();
 
+            _settings = new SmartSystemMenuSettings();
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
         }
@@ -42,7 +43,6 @@ namespace SmartSystemMenu.Forms
         {
             base.OnLoad(e);
 
-            _settings = new SmartSystemMenuSettings();
             var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
             if (File.Exists(settingsFileName))
             {
@@ -77,7 +77,7 @@ namespace SmartSystemMenu.Forms
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
 #endif
-            _windows = EnumWindows.EnumAllWindows(new string[] { SHELL_WINDOW_NAME }).ToList();
+            _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, new string[] { SHELL_WINDOW_NAME }).ToList();
 
             foreach (var window in _windows)
             {
@@ -243,14 +243,14 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle).Exists && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems).Exists && !_windows.Any(w => w.Handle == e.Handle))
             {
                 int processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
                 IList<Window> windows = new List<Window>();
                 try
                 {
-                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), new string[] { SHELL_WINDOW_NAME });
+                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, new string[] { SHELL_WINDOW_NAME });
                 }
                 catch
                 {
@@ -642,6 +642,19 @@ namespace SmartSystemMenu.Forms
                         case SystemMenu.SC_ALIGN_BOTTOM_LEFT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_LEFT, WindowAlignment.BottomLeft); break;
                         case SystemMenu.SC_ALIGN_BOTTOM_CENTER: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_CENTER, WindowAlignment.BottomCenter); break;
                         case SystemMenu.SC_ALIGN_BOTTOM_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_RIGHT, WindowAlignment.BottomRight); break;
+                    }
+
+                    for (int i = 0; i < _settings.MenuItems.StartProgramItems.Count; i++)
+                    {
+                        if (lowOrder - SystemMenu.SC_START_PROGRAM == i)
+                        {
+                            var processStartInfo = new ProcessStartInfo();
+                            processStartInfo.FileName = _settings.MenuItems.StartProgramItems[i].FileName;
+                            processStartInfo.WorkingDirectory = Path.GetDirectoryName(_settings.MenuItems.StartProgramItems[i].FileName);
+                            processStartInfo.Arguments = _settings.MenuItems.StartProgramItems[i].Arguments;
+                            Process.Start(processStartInfo);
+                            break;
+                        }
                     }
                 }
             }
