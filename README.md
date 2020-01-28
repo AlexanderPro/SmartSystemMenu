@@ -18,12 +18,13 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Priority.** Allows to change the current window's program priority.
 * **System Tray.** Allows to minimize the current window to the system tray.
 * **Other Windows.** Allows to close and minimize all windows in the system except the current.
+* **Start Program.** Allows to start programs which is in the settings.
 
 Screenshots
 ------------------
 
-![alt tag](https://user-images.githubusercontent.com/8102586/71778301-2425c180-2fbd-11ea-8a4e-94815c3878b9.png)
-![alt tag](https://user-images.githubusercontent.com/8102586/71778303-26881b80-2fbd-11ea-964f-7831259d94d2.png)
+![alt tag](https://user-images.githubusercontent.com/8102586/73280166-33d0a880-41ff-11ea-9404-cbe6664c57a5.png)
+![alt tag](https://user-images.githubusercontent.com/8102586/73280175-37642f80-41ff-11ea-940b-dedb65023624.png)
 
 Requirements
 --------------------
