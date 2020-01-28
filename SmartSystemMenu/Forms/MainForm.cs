@@ -23,6 +23,7 @@ namespace SmartSystemMenu.Forms
         private CBTHook _cbtHook;
         private MouseHook _mouseHook;
         private AboutForm _aboutForm;
+        private SettingsForm _settingsForm;
         private SmartSystemMenuSettings _settings;
 
 #if WIN32
@@ -73,6 +74,7 @@ namespace SmartSystemMenu.Forms
             }
             _systemTrayMenu = new SystemTrayMenu();
             _systemTrayMenu.MenuItemAutoStart.Click += MenuItemAutoStartClick;
+            _systemTrayMenu.MenuItemSettings.Click += MenuItemSettingsClick;
             _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
@@ -234,6 +236,18 @@ namespace SmartSystemMenu.Forms
             }
             _aboutForm.Show();
             _aboutForm.Activate();
+        }
+
+        private void MenuItemSettingsClick(object sender, EventArgs e)
+        {
+            if (_settingsForm == null || _settingsForm.IsDisposed || !_settingsForm.IsHandleCreated)
+            {
+                _settingsForm = new SettingsForm(_settings);
+                _settingsForm.OkClick += (object s, SmartSystemMenuSettingsEventArgs ea) => { _settings = ea.Settings; };
+            }
+
+            _settingsForm.Show();
+            _settingsForm.Activate();
         }
 
         private void MenuItemExitClick(object sender, EventArgs e)

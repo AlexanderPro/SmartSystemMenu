@@ -76,6 +76,24 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\StartProgramForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StartProgramForm.Designer.cs">
+      <DependentUpon>StartProgramForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProcessExclusionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProcessExclusionForm.Designer.cs">
+      <DependentUpon>ProcessExclusionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings\MenuItems.cs" />
     <Compile Include="Settings\StartProgramItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
@@ -154,6 +172,12 @@
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StartProgramForm.resx">
+      <DependentUpon>StartProgramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProcessExclusionForm.resx">
+      <DependentUpon>ProcessExclusionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ScreenForm.resx">
       <DependentUpon>ScreenForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TransparencyForm.resx">
       <DependentUpon>TransparencyForm.cs</DependentUpon>
@@ -196,9 +223,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
+    <Content Include="ArrowDown.png" />
+    <Content Include="ArrowUp.png" />
     <Content Include="SmartSystemMenu.png" />
     <Content Include="SmartSystemMenu.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SmartSystemMenu.ico" />
   </ItemGroup>
