@@ -56,6 +56,11 @@ namespace SmartSystemMenu
         public const uint SWP_NOMOVE = 0x0002;
         public const uint SWP_NOACTIVATE = 0x0010;
 
+        // MonitorFromWindow
+        public const uint MONITOR_DEFAULTTONULL = 0;
+        public const uint MONITOR_DEFAULTTOPRIMARY = 1;
+        public const uint MONITOR_DEFAULTTONEAREST = 2;
+
         public const int ICON_SMALL = 0;
         public const int ICON_BIG = 1;
         public const int ICON_SMALL2 = 2;

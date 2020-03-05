@@ -101,7 +101,6 @@ namespace SmartSystemMenu.Forms
                 window.Menu.Create();
                 int menuItemId = window.ProcessPriority.GetMenuItemId();
                 window.Menu.CheckMenuItem(menuItemId, true);
-                window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + Screen.AllScreens.ToList().FindIndex(s => s.Primary));
                 if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
             }
 
@@ -290,7 +289,6 @@ namespace SmartSystemMenu.Forms
                     window.Menu.Create();
                     int menuItemId = window.ProcessPriority.GetMenuItemId();
                     window.Menu.CheckMenuItem(menuItemId, true);
-                    window.Menu.SetMenuItemText(SystemMenu.SC_ALIGN_MONITOR, "Select Monitor: " + Screen.AllScreens.ToList().FindIndex(s => s.Primary));
                     if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
                     _windows.Add(window);
                 }
@@ -604,13 +602,6 @@ namespace SmartSystemMenu.Forms
                             {
                                 var positionForm = new PositionForm(window);
                                 positionForm.Show(window.Win32Window);
-                            }
-                            break;
-
-                        case SystemMenu.SC_ALIGN_MONITOR:
-                            {
-                                var screenForm = new ScreenForm(window);
-                                screenForm.Show(window.Win32Window);
                             }
                             break;
 

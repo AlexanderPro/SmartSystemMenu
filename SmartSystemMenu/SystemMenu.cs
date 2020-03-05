@@ -90,7 +90,6 @@ namespace SmartSystemMenu
         public const int SC_ALIGN_BOTTOM_RIGHT = 0x4798;
         public const int SC_ALIGN_DEFAULT = 0x4799;
         public const int SC_ALIGN_CUSTOM = 0x4800;
-        public const int SC_ALIGN_MONITOR = 0x4801;
         public const int SC_SAVE_SCREEN_SHOT = 0x4802;
         public const int SC_COPY_TEXT_TO_CLIPBOARD = 0x4803;
         public const int SC_OPEN_FILE_IN_EXPLORER = 0x4804;
@@ -156,8 +155,6 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(windowMenuHandle, index + 10, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _sizeMenuHandle, "Resize");
 
             _alignmentMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MONITOR, "Monitor");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_LEFT, "top-left");
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_CENTER, "top-center");
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_RIGHT, "top-right");

@@ -12,8 +12,8 @@ namespace SmartSystemMenu.Forms
             InitializeComponent();
 
             _window = window;
-            numericLeft.Value = _window.Size.Left;
-            numericTop.Value = _window.Size.Top;
+            numericLeft.Value = _window.SizeOnMonitor.Left;
+            numericTop.Value = _window.SizeOnMonitor.Top;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)

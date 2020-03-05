@@ -86,6 +86,26 @@ namespace SmartSystemMenu
             }
         }
 
+        public Rect SizeOnMonitor
+        {
+            get
+            {
+                var monitorHandle = NativeMethods.MonitorFromWindow(Handle, NativeConstants.MONITOR_DEFAULTTONEAREST);
+                var monitorInfo = new MonitorInfo();
+                monitorInfo.Init();
+                NativeMethods.GetMonitorInfo(monitorHandle, ref monitorInfo);
+
+                var size = new Rect()
+                {
+                    Left = Size.Left - monitorInfo.rcWork.Left,
+                    Right = Size.Right - monitorInfo.rcWork.Right,
+                    Top = Size.Top - monitorInfo.rcWork.Top,
+                    Bottom = Size.Bottom - monitorInfo.rcWork.Bottom
+                };
+                return size;
+            }
+        }
+
         public int ProcessId
         {
             get
@@ -262,7 +282,11 @@ namespace SmartSystemMenu
 
         public void SetPosition(int left, int top)
         {
-            NativeMethods.MoveWindow(Handle, left, top, Size.Width, Size.Height, true);
+            var monitorHandle = NativeMethods.MonitorFromWindow(Handle, NativeConstants.MONITOR_DEFAULTTONEAREST);
+            var monitorInfo = new MonitorInfo();
+            monitorInfo.Init();
+            NativeMethods.GetMonitorInfo(monitorHandle, ref monitorInfo);
+            NativeMethods.MoveWindow(Handle, monitorInfo.rcWork.Left + left, monitorInfo.rcWork.Top + top, Size.Width, Size.Height, true);
         }
 
         public void RestorePosition()
@@ -369,7 +393,7 @@ namespace SmartSystemMenu
 
         public void SendToBottom()
         {
-            NativeMethods.SetWindowPos(Handle, new IntPtr(1) , 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
+            NativeMethods.SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
         }
 
         public void MinimizeToSystemTray()

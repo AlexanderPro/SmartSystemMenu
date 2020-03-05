@@ -215,5 +215,11 @@ namespace SmartSystemMenu
         {
             return IntPtr.Size > 4 ? GetClassLongPtr64(hWnd, nIndex) : new IntPtr(GetClassLongPtr32(hWnd, nIndex));
         }
+
+        [DllImport("user32")]
+        public static extern bool GetMonitorInfo(IntPtr hMonitor, ref MonitorInfo info);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr MonitorFromWindow(IntPtr hwnd, uint dwFlags);
     }
 }
