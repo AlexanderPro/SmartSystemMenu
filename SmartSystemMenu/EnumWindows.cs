@@ -46,9 +46,9 @@ namespace SmartSystemMenu
             NativeMethods.GetWindowThreadProcessId(hwnd, out pid);
 
 #if WIN32
-            isAdd = !Environment.Is64BitOperatingSystem || PlatformUtils.IsWow64Process(pid);
+            isAdd = !Environment.Is64BitOperatingSystem || SystemUtils.IsWow64Process(pid);
 #else
-            isAdd = Environment.Is64BitOperatingSystem && !PlatformUtils.IsWow64Process(pid);
+            isAdd = Environment.Is64BitOperatingSystem && !SystemUtils.IsWow64Process(pid);
 #endif
 
             if (!isAdd) return true;

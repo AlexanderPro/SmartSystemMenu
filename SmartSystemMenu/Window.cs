@@ -486,6 +486,33 @@ namespace SmartSystemMenu
             }
         }
 
+        public void MoveToMonitor(IntPtr monitorHandle)
+        {
+            var currentMonitorHandle = NativeMethods.MonitorFromWindow(Handle, NativeConstants.MONITOR_DEFAULTTONEAREST);
+            if (currentMonitorHandle != monitorHandle)
+            {
+                var currentMonitorInfo = new MonitorInfo();
+                currentMonitorInfo.Init();
+                NativeMethods.GetMonitorInfo(currentMonitorHandle, ref currentMonitorInfo);
+
+                var newMonitorInfo = new MonitorInfo();
+                newMonitorInfo.Init();
+                NativeMethods.GetMonitorInfo(monitorHandle, ref newMonitorInfo);
+                NativeMethods.GetWindowRect(Handle, out Rect windowRect);
+
+                var left = newMonitorInfo.rcWork.Left + windowRect.Left - currentMonitorInfo.rcWork.Left;
+                var top = newMonitorInfo.rcWork.Top + windowRect.Top - currentMonitorInfo.rcWork.Top;
+                if (windowRect.Left - currentMonitorInfo.rcWork.Left > newMonitorInfo.rcWork.Width || windowRect.Top - currentMonitorInfo.rcWork.Top > newMonitorInfo.rcWork.Height)
+                {
+                    left = newMonitorInfo.rcWork.Left;
+                    top = newMonitorInfo.rcWork.Top;
+                }
+
+                NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
+            }
+        }
+
+
         public static void ForceForegroundWindow(IntPtr handle)
         {
             IntPtr foreHandle = NativeMethods.GetForegroundWindow();

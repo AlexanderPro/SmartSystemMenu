@@ -8,12 +8,18 @@ namespace SmartSystemMenu
     {
         public delegate bool EnumWindowDelegate(IntPtr hwnd, int lParam);
 
+        public delegate bool EnumMonitorProc(IntPtr hMonitor, IntPtr hdcMonitor, ref Rect rcMonitor, IntPtr data);
+
         [DllImport("user32.dll")]
         public static extern int EnumWindows(EnumWindowDelegate enumFunc, int lParam);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool EnumThreadWindows(int threadId, EnumWindowDelegate enumFunc, int lParam);
+
+        [DllImport("user32")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool EnumDisplayMonitors(IntPtr hDC, IntPtr clipRect, EnumMonitorProc proc, IntPtr data);
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindow(IntPtr handle, int uCmd);

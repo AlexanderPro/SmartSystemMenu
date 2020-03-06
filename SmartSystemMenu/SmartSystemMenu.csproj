@@ -104,7 +104,7 @@
     <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="NativeConstants.cs" />
     <Compile Include="NativeTypes.cs" />
-    <Compile Include="Utils\PlatformUtils.cs" />
+    <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="SystemMenu.cs" />
     <Compile Include="SystemTrayMenu.cs" />
     <Compile Include="Win32WindowWrapper.cs" />

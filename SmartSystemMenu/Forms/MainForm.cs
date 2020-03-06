@@ -649,6 +649,13 @@ namespace SmartSystemMenu.Forms
                         case SystemMenu.SC_ALIGN_BOTTOM_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_RIGHT, WindowAlignment.BottomRight); break;
                     }
 
+                    var moveToSubMenuItem = (int)lowOrder - SystemMenu.SC_MOVE_TO;
+                    if (window.Menu.MoveToMenuItems.ContainsKey(moveToSubMenuItem))
+                    {
+                        var monitorHandle = window.Menu.MoveToMenuItems[moveToSubMenuItem];
+                        window.MoveToMonitor(monitorHandle);
+                    }
+
                     for (int i = 0; i < _settings.MenuItems.StartProgramItems.Count; i++)
                     {
                         if (lowOrder - SystemMenu.SC_START_PROGRAM == i)
