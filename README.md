@@ -13,6 +13,7 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Copy Text To Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard.
 * **Drag By Mouse.** Allows to drag by mouse the current window.
 * **Resize.** Allows to change the size of the current window.
+* **Move To.** Allows to move the current window to another monitor.
 * **Alignment.** Allows the current window to be aligned with any of the 9 positions on the desktop.
 * **Transparency.** Allows to change the transparency of the current window.
 * **Priority.** Allows to change the current window's program priority.
@@ -23,8 +24,8 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 Screenshots
 ------------------
 
-![alt tag](https://user-images.githubusercontent.com/8102586/73280166-33d0a880-41ff-11ea-9404-cbe6664c57a5.png)
-![alt tag](https://user-images.githubusercontent.com/8102586/73280175-37642f80-41ff-11ea-940b-dedb65023624.png)
+![alt tag](https://user-images.githubusercontent.com/8102586/76205093-9f4c6380-620a-11ea-81e8-cbc6037c0751.png)
+![alt tag](https://user-images.githubusercontent.com/8102586/76205104-a2dfea80-620a-11ea-8fcd-2a7dccaaf139.png)
 
 Requirements
 --------------------
