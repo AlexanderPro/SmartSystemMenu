@@ -19,7 +19,7 @@ namespace SmartSystemMenu
         private IntPtr _startProgramsHandle;
         private IntPtr _moveToMenuHandle;
         private readonly MenuItems _menuItems;
-
+        private bool _wasOriginalBefore;
         #endregion
 
 
@@ -44,6 +44,7 @@ namespace SmartSystemMenu
 
         #region Constants.Public
 
+        public const int SC_CLOSE = 0xF060;
         public const int SC_TRANS_100 = 0x4740;
         public const int SC_TRANS_90 = 0x4742;
         public const int SC_TRANS_80 = 0x4744;
@@ -129,6 +130,7 @@ namespace SmartSystemMenu
         {
             var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             var index = NativeMethods.GetMenuItemCount(windowMenuHandle);
+            _wasOriginalBefore = index > 0 && NativeMethods.GetMenuItemID(windowMenuHandle, index - 1) == SC_CLOSE;
 
             NativeMethods.InsertMenu(windowMenuHandle, index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, IntPtr.Zero, "");
             NativeMethods.InsertMenu(windowMenuHandle, index + 1, NativeConstants.MF_BYPOSITION, SC_INFORMATION, "Information");
@@ -222,15 +224,12 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, SC_CLOSE_OTHER_WINDOWS, "Close");
             NativeMethods.InsertMenu(windowMenuHandle, index + 16, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _otherWindowsHandle, "Other Windows");
 
-            if (_menuItems.StartProgramItems.Any())
+            _startProgramsHandle = NativeMethods.CreateMenu();
+            for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
             {
-                _startProgramsHandle = NativeMethods.CreateMenu();
-                for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
-                {
-                    NativeMethods.InsertMenu(_startProgramsHandle, -1, NativeConstants.MF_BYPOSITION, SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
-                }
-                NativeMethods.InsertMenu(windowMenuHandle, index + 17, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _startProgramsHandle, "Start Program");
+                NativeMethods.InsertMenu(_startProgramsHandle, -1, NativeConstants.MF_BYPOSITION, SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
             }
+            NativeMethods.InsertMenu(windowMenuHandle, index + 17, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _startProgramsHandle, "Start Program");
         }
 
         public void Destroy()
@@ -253,6 +252,8 @@ namespace SmartSystemMenu
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 14, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 15, NativeConstants.MF_BYPOSITION);
             NativeMethods.DeleteMenu(windowMenuHandle, Index - 16, NativeConstants.MF_BYPOSITION);
+            NativeMethods.DeleteMenu(windowMenuHandle, Index - 17, NativeConstants.MF_BYPOSITION);
+            NativeMethods.DeleteMenu(windowMenuHandle, Index - 18, NativeConstants.MF_BYPOSITION);
             NativeMethods.DestroyMenu(_priorityMenuHandle);
             NativeMethods.DestroyMenu(_alignmentMenuHandle);
             NativeMethods.DestroyMenu(_moveToMenuHandle);
@@ -260,12 +261,11 @@ namespace SmartSystemMenu
             NativeMethods.DestroyMenu(_transparencyMenuHandle);
             NativeMethods.DestroyMenu(_otherWindowsHandle);
             NativeMethods.DestroyMenu(_systemTrayMenuHandle);
-            if (_menuItems.StartProgramItems.Any())
+            NativeMethods.DestroyMenu(_startProgramsHandle);
+            if (_wasOriginalBefore)
             {
-                NativeMethods.DeleteMenu(windowMenuHandle, Index - 17, NativeConstants.MF_BYPOSITION);
-                NativeMethods.DestroyMenu(_startProgramsHandle);
+                NativeMethods.GetSystemMenu(WindowHandle, true);
             }
-            NativeMethods.GetSystemMenu(WindowHandle, true);
         }
 
         public void SetMenuItemText(int id, string text)

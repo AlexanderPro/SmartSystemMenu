@@ -70,7 +70,7 @@ namespace SmartSystemMenu
         public static extern bool SetMenuItemInfo(IntPtr hMenu, int uIdItem, bool fByPosition, ref MenuItemInfo lpmii);
 
         [DllImport("user32.dll")]
-        public static extern bool DrawMenuBar(IntPtr hWnd);
+        public static extern int GetMenuItemID(IntPtr hMenu, int uPosition);
 
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(int key);
