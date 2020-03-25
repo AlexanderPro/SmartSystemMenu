@@ -14,10 +14,13 @@ namespace SmartSystemMenu.Settings
 
         public MenuItems MenuItems { get; set; }
 
+        public MenuLanguage MenuLanguage { get; set; }
+
         public SmartSystemMenuSettings()
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
+            MenuLanguage = new MenuLanguage();
         }
 
         public object Clone()
@@ -32,6 +35,11 @@ namespace SmartSystemMenu.Settings
             foreach (var menuItem in MenuItems.StartProgramItems)
             {
                 settings.MenuItems.StartProgramItems.Add(new StartProgramItem { Title = menuItem.Title, FileName = menuItem.FileName, Arguments = menuItem.Arguments });
+            }
+
+            foreach (var menuTitleStringItem in MenuLanguage.MenuTitleString)
+            {
+                settings.MenuLanguage.MenuTitleString.Add(new MenuTitleString { Title = menuTitleStringItem.Title, StringValue = menuTitleStringItem.StringValue });
             }
 
             return settings;
@@ -127,6 +135,15 @@ namespace SmartSystemMenu.Settings
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
                     FileName = x.Attribute("fileName") != null ? x.Attribute("fileName").Value : "",
                     Arguments = x.Attribute("arguments") != null ? x.Attribute("arguments").Value : "",
+                })
+                .ToList();
+
+            settings.MenuLanguage.MenuTitleString = document
+                .XPathSelectElements("/smartSystemMenu/menuLanguage/menuTitleString/cn/stringItem")
+                .Select(x => new MenuTitleString
+                {
+                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
+                    StringValue = x.Attribute("stringValue") != null ? x.Attribute("stringValue").Value : "",
                 })
                 .ToList();
 

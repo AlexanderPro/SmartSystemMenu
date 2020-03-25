@@ -79,7 +79,7 @@ namespace SmartSystemMenu.Forms
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
 #endif
-            _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, new string[] { SHELL_WINDOW_NAME }).ToList();
+            _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, _settings.MenuLanguage, new string[] { SHELL_WINDOW_NAME }).ToList();
 
             foreach (var window in _windows)
             {
@@ -256,14 +256,14 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems).Exists && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems, _settings.MenuLanguage).Exists && !_windows.Any(w => w.Handle == e.Handle))
             {
                 int processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
                 IList<Window> windows = new List<Window>();
                 try
                 {
-                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, new string[] { SHELL_WINDOW_NAME });
+                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, _settings.MenuLanguage, new string[] { SHELL_WINDOW_NAME });
                 }
                 catch
                 {

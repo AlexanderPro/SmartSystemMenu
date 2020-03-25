@@ -94,7 +94,9 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\MenuLanguage.cs" />
     <Compile Include="Settings\MenuItems.cs" />
+    <Compile Include="Settings\MenuTitleString.cs" />
     <Compile Include="Settings\StartProgramItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />

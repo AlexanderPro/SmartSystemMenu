@@ -1,5 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <smartSystemMenu>
+  <!-- Add language string -->
+	<menuLanguage>
+		<menuTitleString>
+			<en>
+				<stringItem title="information" stringValue="Information" />
+				<stringItem title="roll_up" stringValue="Roll Up" />
+				<stringItem title="aero_glass" stringValue="Aero Glass" />
+				<stringItem title="always_on_top" stringValue="Always On Top" />
+				<stringItem title="send_to_bottom" stringValue="Send To Bottom" />
+				<stringItem title="save_screenshot" stringValue="Save Screenshot" />
+				<stringItem title="open_file_in_explorer" stringValue="Open File In Explorer" />
+				<stringItem title="copy_text_to_clipboard" stringValue="Copy Text To ClipBoard" />
+				<stringItem title="drag_by_mouse" stringValue="Drag By Mouse" />
+				<stringItem title="size" stringValue="Resize" />
+				<stringItem title="size_default" stringValue="Default" />
+				<stringItem title="size_custom" stringValue="Custom..." />
+				<stringItem title="move_to" stringValue="Move To" />
+				<stringItem title="monitor" stringValue="Monitor " />
+				<stringItem title="alignment" stringValue="Alignment" />
+				<stringItem title="align_top_left" stringValue="top-left" />
+				<stringItem title="align_top_center" stringValue="top-center" />
+				<stringItem title="align_top_right" stringValue="top-right" />
+				<stringItem title="align_middle_left" stringValue="middle-left" />
+				<stringItem title="align_middle_center" stringValue="middle-center" />
+				<stringItem title="align_middle_right" stringValue="middle-right" />
+				<stringItem title="align_bottom_left" stringValue="bottom-left" />
+				<stringItem title="align_bottom_center" stringValue="bottom-center" />
+				<stringItem title="align_bottom_right" stringValue="bottom-right" />
+				<stringItem title="align_default" stringValue="Default" />
+				<stringItem title="align_custom" stringValue="Custom..." />
+				<stringItem title="transparency" stringValue="Transparency" />
+				<stringItem title="trans_opaque" stringValue=" (opaque)" />
+				<stringItem title="trans_invisible" stringValue=" (invisible)" />
+				<stringItem title="trans_default" stringValue="Default" />
+				<stringItem title="trans_custom" stringValue="Custom..." />
+				<stringItem title="priority" stringValue="Priority" />
+				<stringItem title="priority_real_time" stringValue="Real Time: 24" />
+				<stringItem title="priority_high" stringValue="High: 13" />
+				<stringItem title="priority_above_normal" stringValue="Above Normal: 10" />
+				<stringItem title="priority_normal" stringValue="Normal: 8" />
+				<stringItem title="priority_below_normal" stringValue="Below Normal: 6" />
+				<stringItem title="priority_idle" stringValue="Idle: 4" />
+				<stringItem title="system_tray" stringValue="System Tray" />
+				<stringItem title="minimize_to_systemtray" stringValue="Minimize To Tray" />
+				<stringItem title="minimize_always_to_systemtray" stringValue="Minimize To Tray Always" />
+				<stringItem title="other_windows" stringValue="Other Windows" />
+				<stringItem title="minimize_other_windows" stringValue="Minimize" />
+				<stringItem title="close_other_windows" stringValue="Close" />
+				<stringItem title="start_program" stringValue="Start Program" />
+			</en>
+			<cn>
+				<stringItem title="information" stringValue="信息" />
+				<stringItem title="roll_up" stringValue="卷起" />
+				<stringItem title="aero_glass" stringValue="玻璃效果" />
+				<stringItem title="always_on_top" stringValue="始终在最前面" />
+				<stringItem title="send_to_bottom" stringValue="移至最底层" />
+				<stringItem title="save_screenshot" stringValue="保存窗口截图" />
+				<stringItem title="open_file_in_explorer" stringValue="在资源管理器中打开文件" />
+				<stringItem title="copy_text_to_clipboard" stringValue="将文本复制到剪贴板" />
+				<stringItem title="drag_by_mouse" stringValue="通过鼠标拖动" />
+				<stringItem title="size" stringValue="调整窗口大小" />
+				<stringItem title="size_default" stringValue="默认" />
+				<stringItem title="size_custom" stringValue="自定义..." />
+				<stringItem title="move_to" stringValue="移动到" />
+				<stringItem title="monitor" stringValue="显示器 " />
+				<stringItem title="alignment" stringValue="对齐" />
+				<stringItem title="align_top_left" stringValue="左上角" />
+				<stringItem title="align_top_center" stringValue="顶部中心" />
+				<stringItem title="align_top_right" stringValue="右上角" />
+				<stringItem title="align_middle_left" stringValue="中间左侧" />
+				<stringItem title="align_middle_center" stringValue="正中央" />
+				<stringItem title="align_middle_right" stringValue="中间右侧" />
+				<stringItem title="align_bottom_left" stringValue="左下角" />
+				<stringItem title="align_bottom_center" stringValue="底部中心" />
+				<stringItem title="align_bottom_right" stringValue="右下角" />
+				<stringItem title="align_default" stringValue="默认" />
+				<stringItem title="align_custom" stringValue="自定义..." />
+				<stringItem title="transparency" stringValue="透明度" />
+				<stringItem title="trans_opaque" stringValue=" (不透明)" />
+				<stringItem title="trans_invisible" stringValue=" (不可见)" />
+				<stringItem title="trans_default" stringValue="默认" />
+				<stringItem title="trans_custom" stringValue="自定义..." />
+				<stringItem title="priority" stringValue="优先级" />
+				<stringItem title="priority_real_time" stringValue="实时: 24" />
+				<stringItem title="priority_high" stringValue="高: 13" />
+				<stringItem title="priority_above_normal" stringValue="高于标准: 10" />
+				<stringItem title="priority_normal" stringValue="标准: 8" />
+				<stringItem title="priority_below_normal" stringValue="低于标准: 6" />
+				<stringItem title="priority_idle" stringValue="空闲: 4" />
+				<stringItem title="system_tray" stringValue="系统托盘" />
+				<stringItem title="minimize_to_systemtray" stringValue="最小化到托盘" />
+				<stringItem title="minimize_always_to_systemtray" stringValue="始终最小化到托盘" />
+				<stringItem title="other_windows" stringValue="其他窗口" />
+				<stringItem title="minimize_other_windows" stringValue="最小化" />
+				<stringItem title="close_other_windows" stringValue="关闭" />
+				<stringItem title="start_program" stringValue="启动程序" />
+			</cn>
+		</menuTitleString>
+	</menuLanguage>
   <processExclusions>
     <processName>discord.exe</processName>
     <processName>slack.exe</processName>
