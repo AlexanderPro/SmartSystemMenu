@@ -385,7 +385,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_INFORMATION:
                             {
-                                var infoForm = new InfoForm(window);
+                                var infoForm = new InfoForm(window, _settings);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;

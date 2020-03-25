@@ -1,4 +1,6 @@
-﻿namespace SmartSystemMenu.Forms
+﻿using SmartSystemMenu.Settings;
+
+namespace SmartSystemMenu.Forms
 {
     partial class InfoForm
     {
@@ -6,6 +8,11 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Add language string.
+        /// </summary>
+        private MenuLanguage _menuLanguage;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,8 +33,10 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(MenuLanguage menuLanguage)
         {
+            _menuLanguage = menuLanguage;
+
             this.tabInfo = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.txtClassValue = new System.Windows.Forms.TextBox();
@@ -82,7 +91,7 @@
             this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
             this.tabGeneral.Size = new System.Drawing.Size(380, 190);
             this.tabGeneral.TabIndex = 0;
-            this.tabGeneral.Text = "General";
+            this.tabGeneral.Text = _menuLanguage.GetStringValue("tab_general");
             this.tabGeneral.UseVisualStyleBackColor = true;
             // 
             // txtClassValue
@@ -131,7 +140,7 @@
             this.lblRectangle.Name = "lblRectangle";
             this.lblRectangle.Size = new System.Drawing.Size(59, 13);
             this.lblRectangle.TabIndex = 8;
-            this.lblRectangle.Text = "Rectangle:";
+            this.lblRectangle.Text = _menuLanguage.GetStringValue("lbl_rectangle");
             // 
             // lblStyle
             // 
@@ -140,7 +149,7 @@
             this.lblStyle.Name = "lblStyle";
             this.lblStyle.Size = new System.Drawing.Size(33, 13);
             this.lblStyle.TabIndex = 6;
-            this.lblStyle.Text = "Style:";
+            this.lblStyle.Text = _menuLanguage.GetStringValue("lbl_style");
             // 
             // lblClass
             // 
@@ -149,7 +158,7 @@
             this.lblClass.Name = "lblClass";
             this.lblClass.Size = new System.Drawing.Size(35, 13);
             this.lblClass.TabIndex = 4;
-            this.lblClass.Text = "Class:";
+            this.lblClass.Text = _menuLanguage.GetStringValue("lbl_class");
             // 
             // lblCaption
             // 
@@ -158,7 +167,7 @@
             this.lblCaption.Name = "lblCaption";
             this.lblCaption.Size = new System.Drawing.Size(46, 13);
             this.lblCaption.TabIndex = 2;
-            this.lblCaption.Text = "Caption:";
+            this.lblCaption.Text = _menuLanguage.GetStringValue("lbl_caption");
             // 
             // lblHandle
             // 
@@ -167,7 +176,7 @@
             this.lblHandle.Name = "lblHandle";
             this.lblHandle.Size = new System.Drawing.Size(44, 13);
             this.lblHandle.TabIndex = 0;
-            this.lblHandle.Text = "Handle:";
+            this.lblHandle.Text = _menuLanguage.GetStringValue("lbl_handle");
             // 
             // tabProcess
             // 
@@ -184,7 +193,7 @@
             this.tabProcess.Padding = new System.Windows.Forms.Padding(3);
             this.tabProcess.Size = new System.Drawing.Size(380, 190);
             this.tabProcess.TabIndex = 1;
-            this.tabProcess.Text = "Process";
+            this.tabProcess.Text = _menuLanguage.GetStringValue("tab_process");
             this.tabProcess.UseVisualStyleBackColor = true;
             // 
             // lblThreadIdValue
@@ -203,7 +212,7 @@
             this.lblThreadId.Name = "lblThreadId";
             this.lblThreadId.Size = new System.Drawing.Size(56, 13);
             this.lblThreadId.TabIndex = 6;
-            this.lblThreadId.Text = "Thread Id:";
+            this.lblThreadId.Text = _menuLanguage.GetStringValue("lbl_thread_id");
             // 
             // lblProcessIdValue
             // 
@@ -221,7 +230,7 @@
             this.lblProcessId.Name = "lblProcessId";
             this.lblProcessId.Size = new System.Drawing.Size(60, 13);
             this.lblProcessId.TabIndex = 4;
-            this.lblProcessId.Text = "Process Id:";
+            this.lblProcessId.Text = _menuLanguage.GetStringValue("lbl_process_id");
             // 
             // txtModulePathValue
             // 
@@ -237,7 +246,7 @@
             this.lblModulePath.Name = "lblModulePath";
             this.lblModulePath.Size = new System.Drawing.Size(70, 13);
             this.lblModulePath.TabIndex = 2;
-            this.lblModulePath.Text = "Module Path:";
+            this.lblModulePath.Text = _menuLanguage.GetStringValue("lbl_module_path");
             // 
             // txtModuleNameValue
             // 
@@ -253,7 +262,7 @@
             this.lblModuleName.Name = "lblModuleName";
             this.lblModuleName.Size = new System.Drawing.Size(76, 13);
             this.lblModuleName.TabIndex = 0;
-            this.lblModuleName.Text = "Module Name:";
+            this.lblModuleName.Text = _menuLanguage.GetStringValue("lbl_module_name");
             // 
             // InfoForm
             // 
@@ -267,7 +276,7 @@
             this.MinimizeBox = false;
             this.Name = "InfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Information";
+            this.Text = _menuLanguage.GetStringValue("information");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             this.tabInfo.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);

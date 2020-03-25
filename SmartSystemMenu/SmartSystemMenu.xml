@@ -49,6 +49,17 @@
 				<stringItem title="minimize_other_windows" stringValue="Minimize" />
 				<stringItem title="close_other_windows" stringValue="Close" />
 				<stringItem title="start_program" stringValue="Start Program" />
+				<stringItem title="tab_general" stringValue="General" />
+				<stringItem title="lbl_handle" stringValue="Handle:" />
+				<stringItem title="lbl_caption" stringValue="Caption:" />
+				<stringItem title="lbl_class" stringValue="Class:" />
+				<stringItem title="lbl_style" stringValue="Style:" />
+				<stringItem title="lbl_rectangle" stringValue="Rectangle:" />
+				<stringItem title="tab_process" stringValue="Process" />
+				<stringItem title="lbl_module_name" stringValue="Module Name:" />
+				<stringItem title="lbl_module_path" stringValue="Module Path:" />
+				<stringItem title="lbl_process_id" stringValue="Process Id:" />
+				<stringItem title="lbl_thread_id" stringValue="Thread Id:" />
 			</en>
 			<cn>
 				<stringItem title="information" stringValue="信息" />
@@ -96,6 +107,17 @@
 				<stringItem title="minimize_other_windows" stringValue="最小化" />
 				<stringItem title="close_other_windows" stringValue="关闭" />
 				<stringItem title="start_program" stringValue="启动程序" />
+				<stringItem title="tab_general" stringValue="常规" />
+				<stringItem title="lbl_handle" stringValue="句柄:" />
+				<stringItem title="lbl_caption" stringValue="标题:" />
+				<stringItem title="lbl_class" stringValue="类:" />
+				<stringItem title="lbl_style" stringValue="风格:" />
+				<stringItem title="lbl_rectangle" stringValue="绘制矩形:" />
+				<stringItem title="tab_process" stringValue="程序" />
+				<stringItem title="lbl_module_name" stringValue="模块名称:" />
+				<stringItem title="lbl_module_path" stringValue="模块路径:" />
+				<stringItem title="lbl_process_id" stringValue="进程 ID:" />
+				<stringItem title="lbl_thread_id" stringValue="线程 ID:" />
 			</cn>
 		</menuTitleString>
 	</menuLanguage>
