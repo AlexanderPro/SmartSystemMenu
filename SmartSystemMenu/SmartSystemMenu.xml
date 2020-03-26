@@ -60,6 +60,20 @@
 				<stringItem title="lbl_module_path" stringValue="Module Path:" />
 				<stringItem title="lbl_process_id" stringValue="Process Id:" />
 				<stringItem title="lbl_thread_id" stringValue="Thread Id:" />
+				<stringItem title="save_screenshot_title" stringValue="Save Window Screenshot" />
+				<stringItem title="save_screenshot_filename" stringValue="WindowScreenshot" />
+				<stringItem title="save_screenshot_default_ext" stringValue="bmp" />
+				<stringItem title="save_screenshot_filter" stringValue="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+				<stringItem title="size_form" stringValue="Set Size" />
+				<stringItem title="size_btn_apply" stringValue="Apply" />
+				<stringItem title="lbl_height" stringValue="Height:" />
+				<stringItem title="lbl_width" stringValue="Width:" />
+				<stringItem title="trans_form" stringValue="Set Transparency" />
+				<stringItem title="trans_btn_apply" stringValue="Apply" />
+				<stringItem title="align_form" stringValue="Set Position" />
+				<stringItem title="align_btn_apply" stringValue="Apply" />
+				<stringItem title="lbl_top" stringValue="Top:" />
+				<stringItem title="lbl_left" stringValue="Left:" />
 			</en>
 			<cn>
 				<stringItem title="information" stringValue="信息" />
@@ -118,6 +132,20 @@
 				<stringItem title="lbl_module_path" stringValue="模块路径:" />
 				<stringItem title="lbl_process_id" stringValue="进程 ID:" />
 				<stringItem title="lbl_thread_id" stringValue="线程 ID:" />
+				<stringItem title="save_screenshot_title" stringValue="保存窗口截图" />
+				<stringItem title="save_screenshot_filename" stringValue="WindowScreenshot" />
+				<stringItem title="save_screenshot_default_ext" stringValue="bmp" />
+				<stringItem title="save_screenshot_filter" stringValue="位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf" />
+				<stringItem title="size_form" stringValue="设置尺寸" />
+				<stringItem title="size_btn_apply" stringValue="应用" />
+				<stringItem title="lbl_height" stringValue="高度:" />
+				<stringItem title="lbl_width" stringValue="宽度:" />
+				<stringItem title="trans_form" stringValue="设置透明度" />
+				<stringItem title="trans_btn_apply" stringValue="应用" />
+				<stringItem title="align_form" stringValue="设置位置" />
+				<stringItem title="align_btn_apply" stringValue="应用" />
+				<stringItem title="lbl_top" stringValue="顶部:" />
+				<stringItem title="lbl_left" stringValue="左侧:" />
 			</cn>
 		</menuTitleString>
 	</menuLanguage>

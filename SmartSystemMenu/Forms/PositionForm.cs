@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -7,9 +8,9 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public PositionForm(Window window)
+        public PositionForm(Window window, SmartSystemMenuSettings _settins)
         {
-            InitializeComponent();
+            InitializeComponent(_settins.MenuLanguage);
 
             _window = window;
             numericLeft.Value = _window.SizeOnMonitor.Left;

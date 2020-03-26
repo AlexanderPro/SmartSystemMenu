@@ -397,11 +397,11 @@ namespace SmartSystemMenu.Forms
                                 {
                                     OverwritePrompt = true,
                                     ValidateNames = true,
-                                    Title = "Save Window Screenshot",
-                                    FileName = "WindowScreenshot",
-                                    DefaultExt = "bmp",
+                                    Title = _settings.MenuLanguage.GetStringValue("save_screenshot_title"),
+                                    FileName = _settings.MenuLanguage.GetStringValue("save_screenshot_filename"),
+                                    DefaultExt = _settings.MenuLanguage.GetStringValue("save_screenshot_default_ext"),
                                     RestoreDirectory = false,
-                                    Filter = "Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf"
+                                    Filter = _settings.MenuLanguage.GetStringValue("save_screenshot_filter")
                                 };
                                 if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
                                 {
@@ -570,7 +570,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_SIZE_CUSTOM:
                             {
-                                var sizeForm = new SizeForm(window);
+                                var sizeForm = new SizeForm(window, _settings);
                                 sizeForm.Show(window.Win32Window);
                             }
                             break;
@@ -585,7 +585,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_TRANS_CUSTOM:
                             {
-                                var opacityForm = new TransparencyForm(window);
+                                var opacityForm = new TransparencyForm(window, _settings);
                                 opacityForm.Show(window.Win32Window);
                             }
                             break;
@@ -600,7 +600,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_ALIGN_CUSTOM:
                             {
-                                var positionForm = new PositionForm(window);
+                                var positionForm = new PositionForm(window, _settings);
                                 positionForm.Show(window.Win32Window);
                             }
                             break;

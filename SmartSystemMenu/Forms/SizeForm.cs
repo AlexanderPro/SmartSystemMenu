@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -7,9 +8,9 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public SizeForm(Window window)
+        public SizeForm(Window window, SmartSystemMenuSettings _settings)
         {
-            InitializeComponent();
+            InitializeComponent(_settings.MenuLanguage);
 
             _window = window;
             numericWidth.Value = _window.Size.Width;
