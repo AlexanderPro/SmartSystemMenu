@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -12,8 +13,9 @@ namespace SmartSystemMenu.Forms
 
         public string Arguments { get; private set; }
 
-        public StartProgramForm(string title, string processName, string arguments)
+        public StartProgramForm(string title, string processName, string arguments, MenuLanguage menuLanguage)
         {
+            _menuLanguage = menuLanguage;
             InitializeComponent();
             txtTitle.Text = title;
             txtFileName.Text = processName;
@@ -33,7 +35,7 @@ namespace SmartSystemMenu.Forms
             var dialog = new OpenFileDialog()
             {
                 RestoreDirectory = true,
-                Filter = "Executables (*.exe)|*.exe|All files (*.*)|*.*"
+                Filter = _menuLanguage.GetStringValue("start_program_browse_file_filter")
             };
 
             if (File.Exists(txtFileName.Text))

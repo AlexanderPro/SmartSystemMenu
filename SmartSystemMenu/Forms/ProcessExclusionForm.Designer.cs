@@ -1,4 +1,6 @@
-﻿namespace SmartSystemMenu.Forms
+﻿using SmartSystemMenu.Settings;
+
+namespace SmartSystemMenu.Forms
 {
     partial class ProcessExclusionForm
     {
@@ -6,6 +8,11 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Add MenuLanguage Class member.
+        /// </summary>
+        private MenuLanguage _menuLanguage;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -49,7 +56,7 @@
             this.lblFileName.Name = "lblFileName";
             this.lblFileName.Size = new System.Drawing.Size(57, 13);
             this.lblFileName.TabIndex = 0;
-            this.lblFileName.Text = "File Name:";
+            this.lblFileName.Text = _menuLanguage.GetStringValue("process_lbl_file_name");
             // 
             // btnApply
             // 
@@ -57,7 +64,7 @@
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(75, 23);
             this.btnApply.TabIndex = 2;
-            this.btnApply.Text = "Ok";
+            this.btnApply.Text = _menuLanguage.GetStringValue("process_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -67,7 +74,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = _menuLanguage.GetStringValue("process_btn_cancel");
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
@@ -99,7 +106,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Process Exclusions";
+            this.Text = _menuLanguage.GetStringValue("process_name_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.ResumeLayout(false);
             this.PerformLayout();

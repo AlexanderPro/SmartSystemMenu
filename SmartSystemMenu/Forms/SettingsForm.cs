@@ -10,11 +10,17 @@ namespace SmartSystemMenu.Forms
     {
         private SmartSystemMenuSettings _settings;
 
+        /// <summary>
+        /// Add MenuLanguage Class member.
+        /// </summary>
+        private MenuLanguage _menuLanguage;
+
         public event EventHandler<SmartSystemMenuSettingsEventArgs> OkClick;
 
         public SettingsForm(SmartSystemMenuSettings settings)
         {
-            InitializeComponent(settings.MenuLanguage);
+            _menuLanguage = settings.MenuLanguage;
+            InitializeComponent();
 
             try
             {
@@ -36,8 +42,8 @@ namespace SmartSystemMenu.Forms
                 var index = gvProcessExclusions.Rows.Add();
                 var row = gvProcessExclusions.Rows[index];
                 row.Cells[0].Value = processExclusion;
-                row.Cells[1].ToolTipText = "Edit";
-                row.Cells[2].ToolTipText = "Delete";
+                row.Cells[1].ToolTipText = _menuLanguage.GetStringValue("clm_process_exclusion_edit");
+                row.Cells[2].ToolTipText = _menuLanguage.GetStringValue("clm_process_exclusion_delete");
             }
 
             foreach (var item in settings.MenuItems.StartProgramItems)
@@ -47,8 +53,8 @@ namespace SmartSystemMenu.Forms
                 row.Cells[0].Value = item.Title;
                 row.Cells[1].Value = item.FileName;
                 row.Cells[2].Value = item.Arguments;
-                row.Cells[3].ToolTipText = "Edit";
-                row.Cells[4].ToolTipText = "Delete";
+                row.Cells[3].ToolTipText = _menuLanguage.GetStringValue("clm_start_program_edit");
+                row.Cells[4].ToolTipText = _menuLanguage.GetStringValue("clm_start_program_delete");
             }
         }
 
@@ -61,7 +67,7 @@ namespace SmartSystemMenu.Forms
                 if (e.ColumnIndex == 1)
                 {
                     var cell = grid.Rows[e.RowIndex].Cells[0];
-                    var dialog = new ProcessExclusionForm(cell.Value.ToString());
+                    var dialog = new ProcessExclusionForm(cell.Value.ToString(), _menuLanguage);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         cell.Value = dialog.ProcessName;
@@ -87,7 +93,7 @@ namespace SmartSystemMenu.Forms
                     var cellFileName = grid.Rows[e.RowIndex].Cells[1];
                     var cellArguments = grid.Rows[e.RowIndex].Cells[2];
 
-                    var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString());
+                    var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _menuLanguage);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         cellTitle.Value = dialog.Title;
@@ -109,7 +115,7 @@ namespace SmartSystemMenu.Forms
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
                 var cell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                var dialog = new ProcessExclusionForm(cell.Value.ToString());
+                var dialog = new ProcessExclusionForm(cell.Value.ToString(), _menuLanguage);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     cell.Value = dialog.ProcessName;
@@ -126,7 +132,7 @@ namespace SmartSystemMenu.Forms
                 var cellFileName = grid.Rows[e.RowIndex].Cells[1];
                 var cellArguments = grid.Rows[e.RowIndex].Cells[2];
 
-                var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString());
+                var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _menuLanguage);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     cellTitle.Value = dialog.Title;
@@ -138,20 +144,20 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonAddProcessExclusionClick(object sender, EventArgs e)
         {
-            var dialog = new ProcessExclusionForm("");
+            var dialog = new ProcessExclusionForm("", _menuLanguage);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvProcessExclusions.Rows.Add();
                 var row = gvProcessExclusions.Rows[index];
                 row.Cells[0].Value = dialog.ProcessName;
-                row.Cells[1].ToolTipText = "Edit";
-                row.Cells[2].ToolTipText = "Delete";
+                row.Cells[1].ToolTipText = _menuLanguage.GetStringValue("clm_process_exclusion_edit");
+                row.Cells[2].ToolTipText = _menuLanguage.GetStringValue("clm_process_exclusion_delete");
             }
         }
 
         private void ButtonAddStartProgramClick(object sender, EventArgs e)
         {
-            var dialog = new StartProgramForm("", "", "");
+            var dialog = new StartProgramForm("", "", "", _menuLanguage);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvStartProgram.Rows.Add();
@@ -159,8 +165,8 @@ namespace SmartSystemMenu.Forms
                 row.Cells[0].Value = dialog.Title;
                 row.Cells[1].Value = dialog.FileName;
                 row.Cells[2].Value = dialog.Arguments;
-                row.Cells[3].ToolTipText = "Edit";
-                row.Cells[4].ToolTipText = "Delete";
+                row.Cells[3].ToolTipText = _menuLanguage.GetStringValue("clm_start_program_edit");
+                row.Cells[4].ToolTipText = _menuLanguage.GetStringValue("clm_start_program_delete");
             }
         }
 
@@ -210,7 +216,7 @@ namespace SmartSystemMenu.Forms
 
             if (!settings.Equals(_settings))
             {
-                MessageBox.Show("You should restart the application manually to apply the settings.", "Attention", MessageBoxButtons.OK);
+                MessageBox.Show(_settings.MenuLanguage.GetStringValue("message_box_attention_content"), _settings.MenuLanguage.GetStringValue("message_box_attention_title"), MessageBoxButtons.OK);
 
                 try
                 {

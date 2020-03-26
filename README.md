@@ -1,57 +1,64 @@
 ![SmartSystemMenu](https://user-images.githubusercontent.com/8102586/68280906-8e86b800-0087-11ea-9762-f9eb028bb8fe.png) SmartSystemMenu
 =============
 
-SmartSystemMenu extends system menu of all windows in the system. It appends next custom items to menu:
+> 原项目地址: [AlexanderPro/SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu)
+>
+> 此项目仅是添加了对简体中文的支持。
 
-* **Information.** Shows a dialog with information of the current window and process: the window handle, the window caption, the window style, the window class, the process name, the process id, the path to the process.
-* **Roll Up.** Allows to roll up and down the current window.
-* **Aero Glass.** Allows to add the "Aero Glass" blur to the current window. (Windows Vista and higher. Mostly for console windows.)
-* **Always On Top.** Allows the current window to stay on top of all other windows.
-* **Send To Bottom.** Allows to send to bottom the current window.
-* **Save Screenshot.** Allows to save the current window screenshot in a file.
-* **Open File In Explorer.** Allows to open a process file in a File Explorer.
-* **Copy Text To Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard.
-* **Drag By Mouse.** Allows to drag by mouse the current window.
-* **Resize.** Allows to change the size of the current window.
-* **Move To.** Allows to move the current window to another monitor.
-* **Alignment.** Allows the current window to be aligned with any of the 9 positions on the desktop.
-* **Transparency.** Allows to change the transparency of the current window.
-* **Priority.** Allows to change the current window's program priority.
-* **System Tray.** Allows to minimize the current window to the system tray.
-* **Other Windows.** Allows to close and minimize all windows in the system except the current.
-* **Start Program.** Allows to start programs which is in the settings.
+SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面的自定义项目追加到菜单:
 
-Screenshots
+* **信息.** 显示一个对话框，其中包含当前窗口和进程的信息：窗口句柄、窗口标题、窗口风格、窗口类、进程名称、进程ID、进程路径。
+* **卷起.** 允许将当前窗口向上卷起。
+* **毛玻璃效果.** 允许将 "毛玻璃效果" 模糊添加到当前窗口。(Windows Vista 及更高版本。主要用于控制台窗口。)
+* **始终在最前面.** 允许当前窗口位于所有其他窗口之上。
+* **移至最底层.** 允许将当前窗口发送到底部。
+* **保存窗口截图.** 允许将当前窗口的屏幕截图保存到文件中。
+* **在资源管理器中打开文件.** 允许在文件资源管理器中打开进程文件。
+* **将文本复制到剪贴板.** 允许复制所有窗口文本 (包括控制台、MS Office 产品等) 到剪贴板中。
+* **通过鼠标拖动.** 允许通过鼠标拖动当前窗口。
+* **调整窗口大小.** 允许更改当前窗口的大小。
+* **移动到.** 允许将当前窗口移动到另一个显示器。
+* **对齐.** 允许当前窗口与桌面上的9个位置中的任何一个对齐。
+* **透明度.** 允许更改当前窗口的透明度。
+* **优先级.** 允许更改当前窗口的程序优先级。
+* **系统托盘.** 允许将当前窗口最小化到系统托盘。
+* **其他窗口.** 允许关闭和最小化系统中除当前窗口之外的所有窗口。
+* **启动程序.** 允许启动设置中的程序。
+
+截图
 ------------------
 
-![alt tag](https://user-images.githubusercontent.com/8102586/76205093-9f4c6380-620a-11ea-81e8-cbc6037c0751.png)
-![alt tag](https://user-images.githubusercontent.com/8102586/76205104-a2dfea80-620a-11ea-8fcd-2a7dccaaf139.png)
+![Resize](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/Resize.png)
 
-Requirements
+![Trans](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/Trans.png)
+
+要求
 --------------------
 
-* OS Windows XP SP3 and later. Supports x86 and x64 systems.
+* OS Windows XP SP3 及更高版本。 支持 x86 和 x64 系统。
 * .NET Framework 4.0
 
-Files
+程序文件
 --------------------
 
 * SmartSystemMenu.exe
-* SmartSystemMenu64.exe (located in resources of SmartSystemMenu.exe module)
+* SmartSystemMenu64.exe (位于 SmartSystemMenu.exe 模块的资源中)
 * SmartSystemMenuHook.dll
 * SmartSystemMenuHook64.dll
 
-Files
+此程序具有用于 x86 进程的 SmartSystemMenu.exe 和 SmartSystemMenuHook.dll 模块，用于 x64 进程的 SmartSystemMenu64.exe 和 SmartSystemMenuHook64.dll 模块。当您运行 SmartSystemMenu.exe 时，它还会运行 SmartSystemMenu64.exe。 这两个可执行模块将挂钩 (SmartSystemMenuHook.dll 和 SmartSystemMenuHook64.dll) 加载到所有进程。 当您在系统菜单中选择一项时，挂钩会向可执行模块发送一条消息。之后，模块执行选定的操作：更改窗口的透明度、更改窗口的大小等等。
+
+局限性
 --------------------
 
-This program has SmartSystemMenu.exe and SmartSystemMenuHook.dll modules for x86 processes, SmartSystemMenu64.exe and SmartSystemMenuHook64.dll modules for x64 processes. When you run SmartSystemMenu.exe, it also runs SmartSystemMenu64.exe. These two executable modules load hooks (SmartSystemMenuHook.dll and SmartSystemMenuHook64.dll) to all processes. When you select an item in the system menu, the hook sends a message to the executable module. After that, the module performs the selected action: changes the transparency of the window, changes the size of the window, etc.
+此工具无法在系统菜单由其自己的进程管理的窗口上正常工作，例如 IE9 及更高版本、Chrome 29 及更高版本等。此外，该工具不能与 Delphi 进程的窗口一起正常工作，因为 Delphi 窗口有一个父 TApplication 窗口。
 
-Limitations
+提示
 --------------------
 
-This tool can't work properly with a window whose system menu is managed by its own process, for example IE9 and later, Chrome 29 and later, etc. Also the tool doesn't work correctly with windows of delphi processes, because delphi window has a parent TApplication window.
+运行 SmartSystemMenu.exe 进程。如果您的操作系统启用了 UAC，系统将显示 UAC 对话框。您不必担心，因为程序需要提升权限。程序执行后，在所有窗口的所有系统菜单中都可以看到自定义项目。
 
-Tips
---------------------
+## 中文版本使用方法
 
-Run SmartSystemMenu.exe process. If your OS has enabled UAC, the system will display a UAC dialog. You do not need to worry because the program needs elevated privileges. After the program has been executed, in all system menus of all windows you can see custom items.
+运行 SmartSystemMenu.exe 时，会自动检测系统语言环境，若为简体中文或繁体中文，自动应用简体中文语言。
+

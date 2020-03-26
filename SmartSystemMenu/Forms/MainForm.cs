@@ -45,9 +45,10 @@ namespace SmartSystemMenu.Forms
             base.OnLoad(e);
 
             var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
-            if (File.Exists(settingsFileName))
+            var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
+            if (File.Exists(settingsFileName) && File.Exists(languageFileName))
             {
-                _settings = SmartSystemMenuSettings.Read(settingsFileName);
+                _settings = SmartSystemMenuSettings.Read(settingsFileName, languageFileName);
             }
 #if WIN32
             if (Environment.Is64BitOperatingSystem)

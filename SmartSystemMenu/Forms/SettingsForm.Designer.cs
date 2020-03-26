@@ -28,8 +28,7 @@ namespace SmartSystemMenu.Forms
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        /// <param name="menuLanguage">Contains language strings.</param>
-        private void InitializeComponent(MenuLanguage menuLanguage)
+        private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             this.tabMain = new System.Windows.Forms.TabControl();
@@ -84,7 +83,7 @@ namespace SmartSystemMenu.Forms
             this.tabpGeneral.Padding = new System.Windows.Forms.Padding(3);
             this.tabpGeneral.Size = new System.Drawing.Size(513, 390);
             this.tabpGeneral.TabIndex = 0;
-            this.tabpGeneral.Text = menuLanguage.GetStringValue("tab_settings_general");
+            this.tabpGeneral.Text = _menuLanguage.GetStringValue("tab_settings_general");
             this.tabpGeneral.UseVisualStyleBackColor = true;
             // 
             // grpbProcessExclusions
@@ -98,7 +97,7 @@ namespace SmartSystemMenu.Forms
             this.grpbProcessExclusions.Size = new System.Drawing.Size(497, 368);
             this.grpbProcessExclusions.TabIndex = 0;
             this.grpbProcessExclusions.TabStop = false;
-            this.grpbProcessExclusions.Text = menuLanguage.GetStringValue("grpb_process_exclusions");
+            this.grpbProcessExclusions.Text = _menuLanguage.GetStringValue("grpb_process_exclusions");
             // 
             // btnProcessExclusionDown
             // 
@@ -107,7 +106,7 @@ namespace SmartSystemMenu.Forms
             this.btnProcessExclusionDown.Name = "btnProcessExclusionDown";
             this.btnProcessExclusionDown.Size = new System.Drawing.Size(31, 23);
             this.btnProcessExclusionDown.TabIndex = 2;
-            this.toolTipAddProcessName.SetToolTip(this.btnProcessExclusionDown, menuLanguage.GetStringValue("btn_process_exclusion_down"));
+            this.toolTipAddProcessName.SetToolTip(this.btnProcessExclusionDown, _menuLanguage.GetStringValue("btn_process_exclusion_down"));
             this.btnProcessExclusionDown.UseVisualStyleBackColor = true;
             this.btnProcessExclusionDown.Click += new System.EventHandler(this.ButtonArrowDownClick);
             // 
@@ -118,7 +117,7 @@ namespace SmartSystemMenu.Forms
             this.btnProcessExclusionUp.Name = "btnProcessExclusionUp";
             this.btnProcessExclusionUp.Size = new System.Drawing.Size(31, 23);
             this.btnProcessExclusionUp.TabIndex = 1;
-            this.toolTipAddProcessName.SetToolTip(this.btnProcessExclusionUp, menuLanguage.GetStringValue("btn_process_exclusion_up"));
+            this.toolTipAddProcessName.SetToolTip(this.btnProcessExclusionUp, _menuLanguage.GetStringValue("btn_process_exclusion_up"));
             this.btnProcessExclusionUp.UseVisualStyleBackColor = true;
             this.btnProcessExclusionUp.Click += new System.EventHandler(this.ButtonArrowUpClick);
             // 
@@ -129,7 +128,7 @@ namespace SmartSystemMenu.Forms
             this.btnAddProcessExclusion.Size = new System.Drawing.Size(31, 23);
             this.btnAddProcessExclusion.TabIndex = 3;
             this.btnAddProcessExclusion.Text = "+";
-            this.toolTipAddProcessName.SetToolTip(this.btnAddProcessExclusion, menuLanguage.GetStringValue("btn_add_process_exclusion"));
+            this.toolTipAddProcessName.SetToolTip(this.btnAddProcessExclusion, _menuLanguage.GetStringValue("btn_add_process_exclusion"));
             this.btnAddProcessExclusion.UseVisualStyleBackColor = true;
             this.btnAddProcessExclusion.Click += new System.EventHandler(this.ButtonAddProcessExclusionClick);
             // 
@@ -162,7 +161,7 @@ namespace SmartSystemMenu.Forms
             // clmProcessExclusionName
             // 
             this.clmProcessExclusionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmProcessExclusionName.HeaderText = menuLanguage.GetStringValue("clm_process_exclusion_name");
+            this.clmProcessExclusionName.HeaderText = _menuLanguage.GetStringValue("clm_process_exclusion_name");
             this.clmProcessExclusionName.Name = "clmProcessExclusionName";
             this.clmProcessExclusionName.ReadOnly = true;
             this.clmProcessExclusionName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -174,7 +173,7 @@ namespace SmartSystemMenu.Forms
             this.clmProcessExclusionEdit.Name = "clmProcessExclusionEdit";
             this.clmProcessExclusionEdit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmProcessExclusionEdit.Text = "...";
-            this.clmProcessExclusionEdit.ToolTipText = menuLanguage.GetStringValue("clm_process_exclusion_edit");
+            this.clmProcessExclusionEdit.ToolTipText = _menuLanguage.GetStringValue("clm_process_exclusion_edit");
             this.clmProcessExclusionEdit.UseColumnTextForButtonValue = true;
             this.clmProcessExclusionEdit.Width = 30;
             // 
@@ -184,7 +183,7 @@ namespace SmartSystemMenu.Forms
             this.clmProcessExcusionDelete.Name = "clmProcessExcusionDelete";
             this.clmProcessExcusionDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmProcessExcusionDelete.Text = "-";
-            this.clmProcessExcusionDelete.ToolTipText = menuLanguage.GetStringValue("clm_process_exclusion_delete");
+            this.clmProcessExcusionDelete.ToolTipText = _menuLanguage.GetStringValue("clm_process_exclusion_delete");
             this.clmProcessExcusionDelete.UseColumnTextForButtonValue = true;
             this.clmProcessExcusionDelete.Width = 30;
             // 
@@ -196,7 +195,7 @@ namespace SmartSystemMenu.Forms
             this.tabpMenu.Padding = new System.Windows.Forms.Padding(3);
             this.tabpMenu.Size = new System.Drawing.Size(513, 390);
             this.tabpMenu.TabIndex = 1;
-            this.tabpMenu.Text = menuLanguage.GetStringValue("tab_settings_menu");
+            this.tabpMenu.Text = _menuLanguage.GetStringValue("tab_settings_menu");
             this.tabpMenu.UseVisualStyleBackColor = true;
             // 
             // grpbStartProgram
@@ -210,7 +209,7 @@ namespace SmartSystemMenu.Forms
             this.grpbStartProgram.Size = new System.Drawing.Size(497, 368);
             this.grpbStartProgram.TabIndex = 0;
             this.grpbStartProgram.TabStop = false;
-            this.grpbStartProgram.Text = menuLanguage.GetStringValue("grpb_start_program");
+            this.grpbStartProgram.Text = _menuLanguage.GetStringValue("grpb_start_program");
             // 
             // btnAddStartProgram
             // 
@@ -219,7 +218,7 @@ namespace SmartSystemMenu.Forms
             this.btnAddStartProgram.Size = new System.Drawing.Size(31, 23);
             this.btnAddStartProgram.TabIndex = 3;
             this.btnAddStartProgram.Text = "+";
-            this.toolTipAddProcessName.SetToolTip(this.btnAddStartProgram, menuLanguage.GetStringValue("btn_add_start_program"));
+            this.toolTipAddProcessName.SetToolTip(this.btnAddStartProgram, _menuLanguage.GetStringValue("btn_add_start_program"));
             this.btnAddStartProgram.UseVisualStyleBackColor = true;
             this.btnAddStartProgram.Click += new System.EventHandler(this.ButtonAddStartProgramClick);
             // 
@@ -253,7 +252,7 @@ namespace SmartSystemMenu.Forms
             // 
             // clmStartProgramTitle
             // 
-            this.clmStartProgramTitle.HeaderText = menuLanguage.GetStringValue("clm_start_program_title");
+            this.clmStartProgramTitle.HeaderText = _menuLanguage.GetStringValue("clm_start_program_title");
             this.clmStartProgramTitle.Name = "clmStartProgramTitle";
             this.clmStartProgramTitle.ReadOnly = true;
             this.clmStartProgramTitle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -262,7 +261,7 @@ namespace SmartSystemMenu.Forms
             // clmStartProgramPath
             // 
             this.clmStartProgramPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmStartProgramPath.HeaderText = menuLanguage.GetStringValue("clm_start_program_path");
+            this.clmStartProgramPath.HeaderText = _menuLanguage.GetStringValue("clm_start_program_path");
             this.clmStartProgramPath.Name = "clmStartProgramPath";
             this.clmStartProgramPath.ReadOnly = true;
             this.clmStartProgramPath.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -270,7 +269,7 @@ namespace SmartSystemMenu.Forms
             // 
             // clmStartProgramArguments
             // 
-            this.clmStartProgramArguments.HeaderText = menuLanguage.GetStringValue("clm_start_program_arguments");
+            this.clmStartProgramArguments.HeaderText = _menuLanguage.GetStringValue("clm_start_program_arguments");
             this.clmStartProgramArguments.Name = "clmStartProgramArguments";
             this.clmStartProgramArguments.ReadOnly = true;
             this.clmStartProgramArguments.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -283,7 +282,7 @@ namespace SmartSystemMenu.Forms
             this.clmStartProgramEdit.Name = "clmStartProgramEdit";
             this.clmStartProgramEdit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmStartProgramEdit.Text = "...";
-            this.clmStartProgramEdit.ToolTipText = menuLanguage.GetStringValue("clm_start_program_edit");
+            this.clmStartProgramEdit.ToolTipText = _menuLanguage.GetStringValue("clm_start_program_edit");
             this.clmStartProgramEdit.UseColumnTextForButtonValue = true;
             this.clmStartProgramEdit.Width = 30;
             // 
@@ -293,7 +292,7 @@ namespace SmartSystemMenu.Forms
             this.clmStartProgramDelete.Name = "clmStartProgramDelete";
             this.clmStartProgramDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmStartProgramDelete.Text = "-";
-            this.clmStartProgramDelete.ToolTipText = menuLanguage.GetStringValue("clm_start_program_delete");
+            this.clmStartProgramDelete.ToolTipText = _menuLanguage.GetStringValue("clm_start_program_delete");
             this.clmStartProgramDelete.UseColumnTextForButtonValue = true;
             this.clmStartProgramDelete.Width = 30;
             // 
@@ -303,7 +302,7 @@ namespace SmartSystemMenu.Forms
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(81, 35);
             this.btnApply.TabIndex = 1;
-            this.btnApply.Text = menuLanguage.GetStringValue("settings_btn_apply");
+            this.btnApply.Text = _menuLanguage.GetStringValue("settings_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -313,7 +312,7 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 35);
             this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = menuLanguage.GetStringValue("settings_btn_cancel");
+            this.btnCancel.Text = _menuLanguage.GetStringValue("settings_btn_cancel");
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
@@ -324,7 +323,7 @@ namespace SmartSystemMenu.Forms
             this.btnStartProgramDown.Name = "btnStartProgramDown";
             this.btnStartProgramDown.Size = new System.Drawing.Size(31, 23);
             this.btnStartProgramDown.TabIndex = 2;
-            this.toolTipAddProcessName.SetToolTip(this.btnStartProgramDown, menuLanguage.GetStringValue("btn_start_program_down"));
+            this.toolTipAddProcessName.SetToolTip(this.btnStartProgramDown, _menuLanguage.GetStringValue("btn_start_program_down"));
             this.btnStartProgramDown.UseVisualStyleBackColor = true;
             this.btnStartProgramDown.Click += new System.EventHandler(this.ButtonArrowDownClick);
             // 
@@ -335,7 +334,7 @@ namespace SmartSystemMenu.Forms
             this.btnStartProgramUp.Name = "btnStartProgramUp";
             this.btnStartProgramUp.Size = new System.Drawing.Size(31, 23);
             this.btnStartProgramUp.TabIndex = 1;
-            this.toolTipAddProcessName.SetToolTip(this.btnStartProgramUp, menuLanguage.GetStringValue("btn_start_program_up"));
+            this.toolTipAddProcessName.SetToolTip(this.btnStartProgramUp, _menuLanguage.GetStringValue("btn_start_program_up"));
             this.btnStartProgramUp.UseVisualStyleBackColor = true;
             this.btnStartProgramUp.Click += new System.EventHandler(this.ButtonArrowUpClick);
             // 
@@ -353,7 +352,7 @@ namespace SmartSystemMenu.Forms
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = menuLanguage.GetStringValue("settings_form");
+            this.Text = _menuLanguage.GetStringValue("settings_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.tabMain.ResumeLayout(false);
             this.tabpGeneral.ResumeLayout(false);

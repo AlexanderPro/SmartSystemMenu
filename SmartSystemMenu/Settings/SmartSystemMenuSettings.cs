@@ -118,10 +118,12 @@ namespace SmartSystemMenu.Settings
             return hashCode;
         }
 
-        public static SmartSystemMenuSettings Read(string fileName)
+        public static SmartSystemMenuSettings Read(string fileName, string languageFileName)
         {
             var settings = new SmartSystemMenuSettings();
             var document = XDocument.Load(fileName);
+            var languageDocument = XDocument.Load(languageFileName);
+            string readLanguage = "/menuLanguage/menuTitleString/en/stringItem";
 
             settings.ProcessExclusions = document
                 .XPathSelectElements("/smartSystemMenu/processExclusions/processName")
@@ -138,8 +140,12 @@ namespace SmartSystemMenu.Settings
                 })
                 .ToList();
 
-            settings.MenuLanguage.MenuTitleString = document
-                .XPathSelectElements("/smartSystemMenu/menuLanguage/menuTitleString/cn/stringItem")
+            if ((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN") || (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            {
+                readLanguage = "/menuLanguage/menuTitleString/cn/stringItem";
+            }
+            settings.MenuLanguage.MenuTitleString = languageDocument
+                .XPathSelectElements(readLanguage)
                 .Select(x => new MenuTitleString
                 {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",

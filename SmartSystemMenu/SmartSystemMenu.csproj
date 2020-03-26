@@ -218,6 +218,7 @@
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
     <Content Include="ArrowDown.png" />
     <Content Include="ArrowUp.png" />
+    <Content Include="Language.xml" />
     <Content Include="SmartSystemMenu.png" />
     <Content Include="SmartSystemMenu.xml">
       <SubType>Designer</SubType>
