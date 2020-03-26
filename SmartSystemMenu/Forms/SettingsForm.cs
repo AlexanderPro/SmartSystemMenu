@@ -14,7 +14,7 @@ namespace SmartSystemMenu.Forms
 
         public SettingsForm(SmartSystemMenuSettings settings)
         {
-            InitializeComponent();
+            InitializeComponent(settings.MenuLanguage);
 
             try
             {

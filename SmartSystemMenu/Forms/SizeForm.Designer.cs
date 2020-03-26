@@ -10,11 +10,6 @@ namespace SmartSystemMenu.Forms
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Add language stirng.
-        /// </summary>
-        private MenuLanguage _menuLanguage;
-
-        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -33,10 +28,9 @@ namespace SmartSystemMenu.Forms
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        /// <param name="menuLanguage">Contains language strings.</param>
         private void InitializeComponent(MenuLanguage menuLanguage)
         {
-            _menuLanguage = menuLanguage;
-
             this.numericWidth = new System.Windows.Forms.NumericUpDown();
             this.lblWidth = new System.Windows.Forms.Label();
             this.lblHeight = new System.Windows.Forms.Label();
@@ -65,7 +59,7 @@ namespace SmartSystemMenu.Forms
             this.lblWidth.Name = "lblWidth";
             this.lblWidth.Size = new System.Drawing.Size(38, 13);
             this.lblWidth.TabIndex = 0;
-            this.lblWidth.Text = _menuLanguage.GetStringValue("lbl_width");
+            this.lblWidth.Text = menuLanguage.GetStringValue("lbl_width");
             // 
             // lblHeight
             // 
@@ -74,7 +68,7 @@ namespace SmartSystemMenu.Forms
             this.lblHeight.Name = "lblHeight";
             this.lblHeight.Size = new System.Drawing.Size(41, 13);
             this.lblHeight.TabIndex = 2;
-            this.lblHeight.Text = _menuLanguage.GetStringValue("lbl_height");
+            this.lblHeight.Text = menuLanguage.GetStringValue("lbl_height");
             // 
             // numericHeight
             // 
@@ -94,7 +88,7 @@ namespace SmartSystemMenu.Forms
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
             this.btnApply.TabIndex = 4;
-            this.btnApply.Text = _menuLanguage.GetStringValue("size_btn_apply");
+            this.btnApply.Text = menuLanguage.GetStringValue("size_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -114,7 +108,7 @@ namespace SmartSystemMenu.Forms
             this.MinimizeBox = false;
             this.Name = "SizeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = _menuLanguage.GetStringValue("size_form");
+            this.Text = menuLanguage.GetStringValue("size_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericHeight)).EndInit();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -7,10 +8,10 @@ namespace SmartSystemMenu.Forms
     {
         private const string URL = "https://github.com/AlexanderPro/SmartSystemMenu";
 
-        public AboutForm()
+        public AboutForm(MenuLanguage menuLanguage)
         {
-            InitializeComponent();
-            Text = "About " + AssemblyUtils.AssemblyProductName;
+            InitializeComponent(menuLanguage);
+            Text = menuLanguage.GetStringValue("about_form") + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyProductVersion);
             lblCopyright.Text = string.Format("{0}-{1} {2}", AssemblyUtils.AssemblyCopyright, DateTime.Now.Year, AssemblyUtils.AssemblyCompany);
             linkUrl.Text = URL;

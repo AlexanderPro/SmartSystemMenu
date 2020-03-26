@@ -9,10 +9,10 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public InfoForm(Window window, SmartSystemMenuSettings _sttings)
+        public InfoForm(Window window, MenuLanguage menuLanguage)
         {
             _window = window;
-            InitializeComponent(_sttings.MenuLanguage);
+            InitializeComponent(menuLanguage);
             InitializeControls();
         }
 

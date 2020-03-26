@@ -72,7 +72,7 @@ namespace SmartSystemMenu.Forms
                     return;
                 }
             }
-            _systemTrayMenu = new SystemTrayMenu();
+            _systemTrayMenu = new SystemTrayMenu(_settings.MenuLanguage);
             _systemTrayMenu.MenuItemAutoStart.Click += MenuItemAutoStartClick;
             _systemTrayMenu.MenuItemSettings.Click += MenuItemSettingsClick;
             _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;
@@ -231,7 +231,7 @@ namespace SmartSystemMenu.Forms
         {
             if (_aboutForm == null || _aboutForm.IsDisposed || !_aboutForm.IsHandleCreated)
             {
-                _aboutForm = new AboutForm();
+                _aboutForm = new AboutForm(_settings.MenuLanguage);
             }
             _aboutForm.Show();
             _aboutForm.Activate();
@@ -385,7 +385,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_INFORMATION:
                             {
-                                var infoForm = new InfoForm(window, _settings);
+                                var infoForm = new InfoForm(window, _settings.MenuLanguage);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;
@@ -570,7 +570,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_SIZE_CUSTOM:
                             {
-                                var sizeForm = new SizeForm(window, _settings);
+                                var sizeForm = new SizeForm(window, _settings.MenuLanguage);
                                 sizeForm.Show(window.Win32Window);
                             }
                             break;
@@ -585,7 +585,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_TRANS_CUSTOM:
                             {
-                                var opacityForm = new TransparencyForm(window, _settings);
+                                var opacityForm = new TransparencyForm(window, _settings.MenuLanguage);
                                 opacityForm.Show(window.Win32Window);
                             }
                             break;
@@ -600,7 +600,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_ALIGN_CUSTOM:
                             {
-                                var positionForm = new PositionForm(window, _settings);
+                                var positionForm = new PositionForm(window, _settings.MenuLanguage);
                                 positionForm.Show(window.Win32Window);
                             }
                             break;

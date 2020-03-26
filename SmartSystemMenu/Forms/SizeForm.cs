@@ -8,9 +8,9 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public SizeForm(Window window, SmartSystemMenuSettings _settings)
+        public SizeForm(Window window, MenuLanguage menuLanguage)
         {
-            InitializeComponent(_settings.MenuLanguage);
+            InitializeComponent(menuLanguage);
 
             _window = window;
             numericWidth.Value = _window.Size.Width;

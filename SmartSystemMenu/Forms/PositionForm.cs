@@ -8,9 +8,9 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public PositionForm(Window window, SmartSystemMenuSettings _settins)
+        public PositionForm(Window window, MenuLanguage menuLanguage)
         {
-            InitializeComponent(_settins.MenuLanguage);
+            InitializeComponent(menuLanguage);
 
             _window = window;
             numericLeft.Value = _window.SizeOnMonitor.Left;

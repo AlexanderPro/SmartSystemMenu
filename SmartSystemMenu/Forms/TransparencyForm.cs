@@ -8,9 +8,9 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public TransparencyForm(Window window, SmartSystemMenuSettings _settings)
+        public TransparencyForm(Window window, MenuLanguage menuLanguage)
         {
-            InitializeComponent(_settings.MenuLanguage);
+            InitializeComponent(menuLanguage);
             _window = window;
             numericTransparency.Value = _window.Transparency;
         }

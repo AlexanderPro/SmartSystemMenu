@@ -74,6 +74,33 @@
 				<stringItem title="align_btn_apply" stringValue="Apply" />
 				<stringItem title="lbl_top" stringValue="Top:" />
 				<stringItem title="lbl_left" stringValue="Left:" />
+				<stringItem title="mi_auto_start" stringValue="Auto start program" />
+				<stringItem title="mi_settings" stringValue="Settings..." />
+				<stringItem title="mi_about" stringValue="About" />
+				<stringItem title="mi_exit" stringValue="Exit" />
+				<stringItem title="about_form" stringValue="About " />
+				<stringItem title="about_btn_ok" stringValue="Ok" />
+				<stringItem title="settings_form" stringValue="Settngs" />
+				<stringItem title="tab_settings_general" stringValue="General" />
+				<stringItem title="grpb_process_exclusions" stringValue="Process Exclusions" />
+				<stringItem title="clm_process_exclusion_name" stringValue="File Name" />
+				<stringItem title="clm_process_exclusion_edit" stringValue="Edit" />
+				<stringItem title="clm_process_exclusion_delete" stringValue="Delete" />
+				<stringItem title="btn_process_exclusion_up" stringValue="Move Up Process" />
+				<stringItem title="btn_process_exclusion_down" stringValue="Move Down Process" />
+				<stringItem title="btn_add_process_exclusion" stringValue="Add Process Name" />
+				<stringItem title="tab_settings_menu" stringValue="Menu" />
+				<stringItem title="grpb_start_program" stringValue="Start Program Menu Items" />
+				<stringItem title="clm_start_program_title" stringValue="Title" />
+				<stringItem title="clm_start_program_path" stringValue="File Name" />
+				<stringItem title="clm_start_program_arguments" stringValue="Arguments" />
+				<stringItem title="clm_start_program_edit" stringValue="Edit" />
+				<stringItem title="clm_start_program_delete" stringValue="Delete" />
+				<stringItem title="btn_start_program_up" stringValue="Move Up Program" />
+				<stringItem title="btn_start_program_down" stringValue="Move Down Program" />
+				<stringItem title="btn_add_start_program" stringValue="Add Start Program" />
+				<stringItem title="settings_btn_apply" stringValue="Ok" />
+				<stringItem title="settings_btn_cancel" stringValue="Cancel" />
 			</en>
 			<cn>
 				<stringItem title="information" stringValue="信息" />
@@ -146,6 +173,33 @@
 				<stringItem title="align_btn_apply" stringValue="应用" />
 				<stringItem title="lbl_top" stringValue="顶部:" />
 				<stringItem title="lbl_left" stringValue="左侧:" />
+				<stringItem title="mi_auto_start" stringValue="自动启动程序" />
+				<stringItem title="mi_settings" stringValue="设置..." />
+				<stringItem title="mi_about" stringValue="关于" />
+				<stringItem title="mi_exit" stringValue="退出" />
+				<stringItem title="about_form" stringValue="关于 " />
+				<stringItem title="about_btn_ok" stringValue="确定" />
+				<stringItem title="settings_form" stringValue="设置" />
+				<stringItem title="tab_settings_general" stringValue="常规" />
+				<stringItem title="grpb_process_exclusions" stringValue="进程排除" />
+				<stringItem title="clm_process_exclusion_name" stringValue="文件名称" />
+				<stringItem title="clm_process_exclusion_edit" stringValue="编辑" />
+				<stringItem title="clm_process_exclusion_delete" stringValue="删除" />
+				<stringItem title="btn_process_exclusion_up" stringValue="将进程上移" />
+				<stringItem title="btn_process_exclusion_down" stringValue="将进程下移" />
+				<stringItem title="btn_add_process_exclusion" stringValue="添加进程名称" />
+				<stringItem title="tab_settings_menu" stringValue="菜单" />
+				<stringItem title="grpb_start_program" stringValue="启动程序菜单项" />
+				<stringItem title="clm_start_program_title" stringValue="标题" />
+				<stringItem title="clm_start_program_path" stringValue="文件名称" />
+				<stringItem title="clm_start_program_arguments" stringValue="参数" />
+				<stringItem title="clm_start_program_edit" stringValue="编辑" />
+				<stringItem title="clm_start_program_delete" stringValue="删除" />
+				<stringItem title="btn_start_program_up" stringValue="将程序上移" />
+				<stringItem title="btn_start_program_down" stringValue="将程序下移" />
+				<stringItem title="btn_add_start_program" stringValue="添加启动程序" />
+				<stringItem title="settings_btn_apply" stringValue="确定" />
+				<stringItem title="settings_btn_cancel" stringValue="取消" />
 			</cn>
 		</menuTitleString>
 	</menuLanguage>
