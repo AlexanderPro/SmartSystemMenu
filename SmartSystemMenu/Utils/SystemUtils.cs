@@ -11,20 +11,18 @@ namespace SmartSystemMenu
         {
             if ((Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor >= 1) || Environment.OSVersion.Version.Major >= 6)
             {
-                using (Process p = Process.GetProcessById(pId))
+                var process = GetProcessByIdSafely(pId);
+                if (process != null)
                 {
                     bool retVal;
-                    if (!NativeMethods.IsWow64Process(p.GetHandle(), out retVal))
+                    if (!NativeMethods.IsWow64Process(process.GetHandle(), out retVal))
                     {
                         return false;
                     }
                     return retVal;
                 }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public static IList<IntPtr> GetMonitors()
@@ -36,6 +34,18 @@ namespace SmartSystemMenu
                 return true;
             }, IntPtr.Zero);
             return monitors;
+        }
+
+        public static Process GetProcessByIdSafely(int processId)
+        {
+            try
+            {
+                return Process.GetProcessById(processId);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
