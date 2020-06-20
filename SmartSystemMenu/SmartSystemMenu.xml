@@ -17,4 +17,5 @@
       <item title="Registry" fileName="regedit.exe" arguments="" />
     </startProgramItem>
   </menuItems>
+  <systemTrayIcon show="true" />
 </smartSystemMenu>

@@ -12,12 +12,15 @@ namespace SmartSystemMenu.Settings
     {
         public IList<string> ProcessExclusions { get; private set; }
 
-        public MenuItems MenuItems { get; set; }
+        public MenuItems MenuItems { get; private set; }
+
+        public bool ShowSystemTrayIcon { get; private set; }
 
         public SmartSystemMenuSettings()
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
+            ShowSystemTrayIcon = true;
         }
 
         public object Clone()
@@ -129,6 +132,12 @@ namespace SmartSystemMenu.Settings
                     Arguments = x.Attribute("arguments") != null ? x.Attribute("arguments").Value : "",
                 })
                 .ToList();
+
+            var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
+            if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
+            {
+                settings.ShowSystemTrayIcon = false;
+            }
 
             return settings;
         }
