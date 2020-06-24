@@ -437,8 +437,7 @@ namespace SmartSystemMenu.Forms
                             {
                                 try
                                 {
-                                    var process = Process.Start("explorer.exe", "/select, " + window.Process.GetMainModuleFileName());
-                                    Window.ForceForegroundWindow(process.MainWindowHandle);
+                                    SystemUtils.RunAsDesktopUser("explorer.exe", "/select, " + window.Process.GetMainModuleFileName());
                                 }
                                 catch
                                 {
@@ -660,11 +659,13 @@ namespace SmartSystemMenu.Forms
                     {
                         if (lowOrder - SystemMenu.SC_START_PROGRAM == i)
                         {
-                            var processStartInfo = new ProcessStartInfo();
-                            processStartInfo.FileName = _settings.MenuItems.StartProgramItems[i].FileName;
-                            processStartInfo.WorkingDirectory = Path.GetDirectoryName(_settings.MenuItems.StartProgramItems[i].FileName);
-                            processStartInfo.Arguments = _settings.MenuItems.StartProgramItems[i].Arguments;
-                            Process.Start(processStartInfo);
+                            try
+                            {
+                                SystemUtils.RunAsDesktopUser(_settings.MenuItems.StartProgramItems[i].FileName, _settings.MenuItems.StartProgramItems[i].Arguments);
+                            }
+                            catch
+                            {
+                            }
                             break;
                         }
                     }
