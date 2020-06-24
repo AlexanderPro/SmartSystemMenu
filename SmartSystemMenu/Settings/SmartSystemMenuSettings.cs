@@ -151,7 +151,10 @@ namespace SmartSystemMenu.Settings
                                      new XElement("startProgramItem", settings.MenuItems.StartProgramItems.Select(x => new XElement("item", 
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
-                                         new XAttribute("arguments", x.Arguments)))))));
+                                         new XAttribute("arguments", x.Arguments))))),
+                                 new XElement("systemTrayIcon",
+                                     new XAttribute("show", settings.ShowSystemTrayIcon.ToString().ToLower())
+                                 )));
             Save(fileName, document);
         }
 
