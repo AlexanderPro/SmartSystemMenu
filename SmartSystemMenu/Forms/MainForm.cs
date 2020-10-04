@@ -73,11 +73,8 @@ namespace SmartSystemMenu.Forms
                     return;
                 }
             }
-<<<<<<< HEAD
-            _systemTrayMenu = new SystemTrayMenu(_settings.ShowSystemTrayIcon);
-=======
-            _systemTrayMenu = new SystemTrayMenu(_settings.MenuLanguage);
->>>>>>> add_language_string
+
+            _systemTrayMenu = new SystemTrayMenu(_settings.ShowSystemTrayIcon, _settings.MenuLanguage);
             _systemTrayMenu.MenuItemAutoStart.Click += MenuItemAutoStartClick;
             _systemTrayMenu.MenuItemSettings.Click += MenuItemSettingsClick;
             _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;

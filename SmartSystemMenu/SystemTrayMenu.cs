@@ -16,11 +16,7 @@ namespace SmartSystemMenu
 
         public NotifyIcon Icon { get; private set; }
 
-<<<<<<< HEAD
-        public SystemTrayMenu(bool showIcon)
-=======
-        public SystemTrayMenu(MenuLanguage menuLanguage)
->>>>>>> add_language_string
+        public SystemTrayMenu(bool showIcon, MenuLanguage menuLanguage)
         {
             MenuItemAutoStart = new ToolStripMenuItem();
             MenuItemAutoStart.Name = "miAutoStart";

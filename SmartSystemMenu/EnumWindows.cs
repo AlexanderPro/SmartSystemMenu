@@ -31,13 +31,9 @@ namespace SmartSystemMenu
             _filterHandles = filterHandles ?? new IntPtr[0];
             _windows = new List<Window>();
             _menuItems = menuItems;
-<<<<<<< HEAD
+            _menuLanguage = menuLanguage;
             var process = SystemUtils.GetProcessByIdSafely(processId);
             if (process != null)
-=======
-            _menuLanguage = menuLanguage;
-            foreach (ProcessThread thread in Process.GetProcessById(processId).Threads)
->>>>>>> add_language_string
             {
                 foreach (ProcessThread thread in process.Threads)
                 {

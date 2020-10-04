@@ -22,11 +22,8 @@ namespace SmartSystemMenu.Settings
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
-<<<<<<< HEAD
             ShowSystemTrayIcon = true;
-=======
             MenuLanguage = new MenuLanguage();
->>>>>>> add_language_string
         }
 
         public object Clone()
@@ -146,13 +143,12 @@ namespace SmartSystemMenu.Settings
                 })
                 .ToList();
 
-<<<<<<< HEAD
             var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
             if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
             {
                 settings.ShowSystemTrayIcon = false;
             }
-=======
+
             if ((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN") || (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
             {
                 readLanguage = "/menuLanguage/menuTitleString/cn/stringItem";
@@ -165,7 +161,6 @@ namespace SmartSystemMenu.Settings
                     StringValue = x.Attribute("stringValue") != null ? x.Attribute("stringValue").Value : "",
                 })
                 .ToList();
->>>>>>> add_language_string
 
             return settings;
         }
