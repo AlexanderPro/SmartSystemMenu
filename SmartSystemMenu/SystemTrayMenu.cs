@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu
 {
@@ -15,23 +16,27 @@ namespace SmartSystemMenu
 
         public NotifyIcon Icon { get; private set; }
 
+<<<<<<< HEAD
         public SystemTrayMenu(bool showIcon)
+=======
+        public SystemTrayMenu(MenuLanguage menuLanguage)
+>>>>>>> add_language_string
         {
             MenuItemAutoStart = new ToolStripMenuItem();
             MenuItemAutoStart.Name = "miAutoStart";
             MenuItemAutoStart.Size = new Size(175, 22);
-            MenuItemAutoStart.Text = "Auto start program";
+            MenuItemAutoStart.Text = menuLanguage.GetStringValue("mi_auto_start");
 
             MenuItemSettings = new ToolStripMenuItem();
             MenuItemSettings.Name = "miSettings";
             MenuItemSettings.Size = new Size(175, 22);
             MenuItemSettings.Font = new Font(MenuItemSettings.Font.Name, MenuItemSettings.Font.Size, FontStyle.Bold);
-            MenuItemSettings.Text = "Settings...";
+            MenuItemSettings.Text = menuLanguage.GetStringValue("mi_settings");
 
             MenuItemAbout = new ToolStripMenuItem();
             MenuItemAbout.Name = "miAbout";
             MenuItemAbout.Size = new Size(175, 22);
-            MenuItemAbout.Text = "About";
+            MenuItemAbout.Text = menuLanguage.GetStringValue("mi_about");
 
             var menuItemSeparator1 = new ToolStripSeparator();
             menuItemSeparator1.Name = "miSeparator1";
@@ -44,7 +49,7 @@ namespace SmartSystemMenu
             MenuItemExit = new ToolStripMenuItem();
             MenuItemExit.Name = "miExit";
             MenuItemExit.Size = new Size(175, 22);
-            MenuItemExit.Text = "Exit";
+            MenuItemExit.Text = menuLanguage.GetStringValue("mi_exit");
 
             var components = new System.ComponentModel.Container();
             var systemTrayMenu = new ContextMenuStrip(components);

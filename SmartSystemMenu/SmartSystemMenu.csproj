@@ -94,7 +94,9 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\MenuLanguage.cs" />
     <Compile Include="Settings\MenuItems.cs" />
+    <Compile Include="Settings\MenuTitleString.cs" />
     <Compile Include="Settings\StartProgramItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
@@ -216,6 +218,9 @@
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
     <Content Include="ArrowDown.png" />
     <Content Include="ArrowUp.png" />
+    <Content Include="Language.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="SmartSystemMenu.png" />
     <Content Include="SmartSystemMenu.xml">
       <SubType>Designer</SubType>

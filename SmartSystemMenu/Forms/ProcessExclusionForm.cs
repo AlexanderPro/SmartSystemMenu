@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -8,8 +9,9 @@ namespace SmartSystemMenu.Forms
     {
         public string ProcessName { get; private set; }
 
-        public ProcessExclusionForm(string processName)
+        public ProcessExclusionForm(string processName, MenuLanguage menuLanguage)
         {
+            _menuLanguage = menuLanguage;
             InitializeComponent();
             txtFileName.Text = processName;
         }
@@ -27,7 +29,7 @@ namespace SmartSystemMenu.Forms
             var dialog = new OpenFileDialog()
             {
                 RestoreDirectory = false,
-                Filter = "Executables (*.exe)|*.exe|All files (*.*)|*.*"
+                Filter = _menuLanguage.GetStringValue("process_browse_file_filter")
             };
 
             if (dialog.ShowDialog() == DialogResult.OK)

@@ -6,7 +6,7 @@ using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu
 {
-    class SystemMenu
+   class SystemMenu
     {
         #region Fields.Private
 
@@ -19,6 +19,7 @@ namespace SmartSystemMenu
         private IntPtr _startProgramsHandle;
         private IntPtr _moveToMenuHandle;
         private readonly MenuItems _menuItems;
+        private readonly MenuLanguage _menuLanguage;
         private bool _wasOriginalBefore;
         #endregion
 
@@ -111,7 +112,7 @@ namespace SmartSystemMenu
 
         #region Methods.Public
 
-        public SystemMenu(IntPtr windowHandle, MenuItems menuItems)
+        public SystemMenu(IntPtr windowHandle, MenuItems menuItems, MenuLanguage menuLanguage)
         {
             _priorityMenuHandle = IntPtr.Zero;
             _alignmentMenuHandle = IntPtr.Zero;
@@ -122,6 +123,7 @@ namespace SmartSystemMenu
             _startProgramsHandle = IntPtr.Zero;
             _moveToMenuHandle = IntPtr.Zero;
             _menuItems = menuItems;
+            _menuLanguage = menuLanguage;
             WindowHandle = windowHandle;
             MoveToMenuItems = SystemUtils.GetMonitors().Select((x, i) => new KeyValuePair<int, IntPtr>(i + 1, x)).ToDictionary(x => x.Key, y => y.Value);
         }
@@ -133,15 +135,15 @@ namespace SmartSystemMenu
             _wasOriginalBefore = index > 0 && NativeMethods.GetMenuItemID(windowMenuHandle, index - 1) == SC_CLOSE;
 
             NativeMethods.InsertMenu(windowMenuHandle, index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, IntPtr.Zero, "");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 1, NativeConstants.MF_BYPOSITION, SC_INFORMATION, "Information");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 2, NativeConstants.MF_BYPOSITION, SC_ROLLUP, "Roll Up");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 3, NativeConstants.MF_BYPOSITION, SC_AERO_GLASS, "Aero Glass");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 4, NativeConstants.MF_BYPOSITION, SC_TOPMOST, "Always On Top");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 5, NativeConstants.MF_BYPOSITION, SC_SEND_TO_BOTTOM, "Send To Bottom");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 6, NativeConstants.MF_BYPOSITION, SC_SAVE_SCREEN_SHOT, "Save Screenshot");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 7, NativeConstants.MF_BYPOSITION, SC_OPEN_FILE_IN_EXPLORER, "Open File In Explorer");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 8, NativeConstants.MF_BYPOSITION, SC_COPY_TEXT_TO_CLIPBOARD, "Copy Text To Clipboard");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 9, NativeConstants.MF_BYPOSITION, SC_DRAG_BY_MOUSE, "Drag By Mouse");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 1, NativeConstants.MF_BYPOSITION, SC_INFORMATION, _menuLanguage.GetStringValue("information"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 2, NativeConstants.MF_BYPOSITION, SC_ROLLUP, _menuLanguage.GetStringValue("roll_up"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 3, NativeConstants.MF_BYPOSITION, SC_AERO_GLASS, _menuLanguage.GetStringValue("aero_glass"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 4, NativeConstants.MF_BYPOSITION, SC_TOPMOST, _menuLanguage.GetStringValue("always_on_top"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 5, NativeConstants.MF_BYPOSITION, SC_SEND_TO_BOTTOM, _menuLanguage.GetStringValue("send_to_bottom"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 6, NativeConstants.MF_BYPOSITION, SC_SAVE_SCREEN_SHOT, _menuLanguage.GetStringValue("save_screenshot"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 7, NativeConstants.MF_BYPOSITION, SC_OPEN_FILE_IN_EXPLORER, _menuLanguage.GetStringValue("open_file_in_explorer"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 8, NativeConstants.MF_BYPOSITION, SC_COPY_TEXT_TO_CLIPBOARD, _menuLanguage.GetStringValue("copy_text_to_clipboard"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 9, NativeConstants.MF_BYPOSITION, SC_DRAG_BY_MOUSE, _menuLanguage.GetStringValue("drag_by_mouse"));
 
             _sizeMenuHandle = NativeMethods.CreateMenu();
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_640_480, "640x480");
@@ -158,37 +160,37 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_1600_900, "1600x900");
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_1680_1050, "1680x1050");
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_DEFAULT, "Default");
+            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_DEFAULT, _menuLanguage.GetStringValue("size_default"));
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_CUSTOM, "Custom...");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 10, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _sizeMenuHandle, "Resize");
+            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_SIZE_CUSTOM, _menuLanguage.GetStringValue("size_custom"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 10, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _sizeMenuHandle, _menuLanguage.GetStringValue("size"));
 
             _moveToMenuHandle = NativeMethods.CreateMenu();
             foreach (var item in MoveToMenuItems)
             {
-                NativeMethods.InsertMenu(_moveToMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MOVE_TO + item.Key, "Monitor " + item.Key);
+                NativeMethods.InsertMenu(_moveToMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MOVE_TO + item.Key, _menuLanguage.GetStringValue("monitor") + item.Key);
             }
 
-            NativeMethods.InsertMenu(windowMenuHandle, index + 11, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _moveToMenuHandle, "Move To");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 11, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _moveToMenuHandle, _menuLanguage.GetStringValue("move_to"));
 
             _alignmentMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_LEFT, "top-left");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_CENTER, "top-center");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_RIGHT, "top-right");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MIDDLE_LEFT, "middle-left");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MIDDLE_CENTER, "middle-center");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MIDDLE_RIGHT, "middle-right");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_BOTTOM_LEFT, "bottom-left");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_BOTTOM_CENTER, "bottom-center");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_BOTTOM_RIGHT, "bottom-right");
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_LEFT, _menuLanguage.GetStringValue("align_top_left"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_CENTER, _menuLanguage.GetStringValue("align_top_center"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_TOP_RIGHT, _menuLanguage.GetStringValue("align_top_right"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MIDDLE_LEFT, _menuLanguage.GetStringValue("align_middle_left"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MIDDLE_CENTER, _menuLanguage.GetStringValue("align_middle_center"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_MIDDLE_RIGHT, _menuLanguage.GetStringValue("align_middle_right"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_BOTTOM_LEFT, _menuLanguage.GetStringValue("align_bottom_left"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_BOTTOM_CENTER, _menuLanguage.GetStringValue("align_bottom_center"));
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_BOTTOM_RIGHT, _menuLanguage.GetStringValue("align_bottom_right"));
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_DEFAULT, "Default");
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_DEFAULT, _menuLanguage.GetStringValue("align_default"));
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_CUSTOM, "Custom...");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 12, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _alignmentMenuHandle, "Alignment");
+            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_ALIGN_CUSTOM, _menuLanguage.GetStringValue("align_custom"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 12, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _alignmentMenuHandle, _menuLanguage.GetStringValue("alignment"));
 
             _transparencyMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_00, "0% (opaque)");
+            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_00, "0%" + _menuLanguage.GetStringValue("trans_opaque"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_10, "10%");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_20, "20%");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_30, "30%");
@@ -198,38 +200,38 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_70, "70%");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_80, "80%");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_90, "90%");
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_100, "100% (invisible)");
+            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_100, "100%" + _menuLanguage.GetStringValue("trans_invisible"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_DEFAULT, "Default");
+            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_DEFAULT, _menuLanguage.GetStringValue("trans_default"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_CUSTOM, "Custom...");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 13, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _transparencyMenuHandle, "Transparency");
+            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_TRANS_CUSTOM, _menuLanguage.GetStringValue("trans_custom"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 13, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _transparencyMenuHandle, _menuLanguage.GetStringValue("transparency"));
 
             _priorityMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_REAL_TIME, "Real Time: 24");
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_HIGH, "High: 13");
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_ABOVE_NORMAL, "Above Normal: 10");
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_NORMAL, "Normal: 8");
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_BELOW_NORMAL, "Below Normal: 6");
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_IDLE, "Idle: 4");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 14, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _priorityMenuHandle, "Priority");
+            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_REAL_TIME, _menuLanguage.GetStringValue("priority_real_time"));
+            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_HIGH, _menuLanguage.GetStringValue("priority_high"));
+            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_ABOVE_NORMAL, _menuLanguage.GetStringValue("priority_above_normal"));
+            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_NORMAL, _menuLanguage.GetStringValue("priority_normal"));
+            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_BELOW_NORMAL, _menuLanguage.GetStringValue("priority_below_normal"));
+            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_PRIORITY_IDLE, _menuLanguage.GetStringValue("priority_idle"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 14, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _priorityMenuHandle, _menuLanguage.GetStringValue("priority"));
 
             _systemTrayMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_TO_SYSTEMTRAY, "Minimize To Tray");
-            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, "Minimize To Tray Always");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 15, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _systemTrayMenuHandle, "System Tray");
+            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_TO_SYSTEMTRAY, _menuLanguage.GetStringValue("minimize_to_systemtray"));
+            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, _menuLanguage.GetStringValue("minimize_always_to_systemtray"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 15, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _systemTrayMenuHandle, _menuLanguage.GetStringValue("system_tray"));
 
             _otherWindowsHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_OTHER_WINDOWS, "Minimize");
-            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, SC_CLOSE_OTHER_WINDOWS, "Close");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 16, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _otherWindowsHandle, "Other Windows");
+            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, SC_MINIMIZE_OTHER_WINDOWS, _menuLanguage.GetStringValue("minimize_other_windows"));
+            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, SC_CLOSE_OTHER_WINDOWS, _menuLanguage.GetStringValue("close_other_windows"));
+            NativeMethods.InsertMenu(windowMenuHandle, index + 16, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _otherWindowsHandle, _menuLanguage.GetStringValue("other_windows"));
 
             _startProgramsHandle = NativeMethods.CreateMenu();
             for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
             {
                 NativeMethods.InsertMenu(_startProgramsHandle, -1, NativeConstants.MF_BYPOSITION, SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
             }
-            NativeMethods.InsertMenu(windowMenuHandle, index + 17, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _startProgramsHandle, "Start Program");
+            NativeMethods.InsertMenu(windowMenuHandle, index + 17, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _startProgramsHandle, _menuLanguage.GetStringValue("start_program"));
         }
 
         public void Destroy()

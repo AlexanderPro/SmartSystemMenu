@@ -16,11 +16,17 @@ namespace SmartSystemMenu.Settings
 
         public bool ShowSystemTrayIcon { get; private set; }
 
+        public MenuLanguage MenuLanguage { get; set; }
+
         public SmartSystemMenuSettings()
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
+<<<<<<< HEAD
             ShowSystemTrayIcon = true;
+=======
+            MenuLanguage = new MenuLanguage();
+>>>>>>> add_language_string
         }
 
         public object Clone()
@@ -35,6 +41,11 @@ namespace SmartSystemMenu.Settings
             foreach (var menuItem in MenuItems.StartProgramItems)
             {
                 settings.MenuItems.StartProgramItems.Add(new StartProgramItem { Title = menuItem.Title, FileName = menuItem.FileName, Arguments = menuItem.Arguments });
+            }
+
+            foreach (var menuTitleStringItem in MenuLanguage.MenuTitleString)
+            {
+                settings.MenuLanguage.MenuTitleString.Add(new MenuTitleString { Title = menuTitleStringItem.Title, StringValue = menuTitleStringItem.StringValue });
             }
 
             return settings;
@@ -113,10 +124,12 @@ namespace SmartSystemMenu.Settings
             return hashCode;
         }
 
-        public static SmartSystemMenuSettings Read(string fileName)
+        public static SmartSystemMenuSettings Read(string fileName, string languageFileName)
         {
             var settings = new SmartSystemMenuSettings();
             var document = XDocument.Load(fileName);
+            var languageDocument = XDocument.Load(languageFileName);
+            string readLanguage = "/menuLanguage/menuTitleString/en/stringItem";
 
             settings.ProcessExclusions = document
                 .XPathSelectElements("/smartSystemMenu/processExclusions/processName")
@@ -133,11 +146,26 @@ namespace SmartSystemMenu.Settings
                 })
                 .ToList();
 
+<<<<<<< HEAD
             var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
             if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
             {
                 settings.ShowSystemTrayIcon = false;
             }
+=======
+            if ((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN") || (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            {
+                readLanguage = "/menuLanguage/menuTitleString/cn/stringItem";
+            }
+            settings.MenuLanguage.MenuTitleString = languageDocument
+                .XPathSelectElements(readLanguage)
+                .Select(x => new MenuTitleString
+                {
+                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
+                    StringValue = x.Attribute("stringValue") != null ? x.Attribute("stringValue").Value : "",
+                })
+                .ToList();
+>>>>>>> add_language_string
 
             return settings;
         }

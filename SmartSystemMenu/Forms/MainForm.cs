@@ -45,9 +45,10 @@ namespace SmartSystemMenu.Forms
             base.OnLoad(e);
 
             var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
-            if (File.Exists(settingsFileName))
+            var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
+            if (File.Exists(settingsFileName) && File.Exists(languageFileName))
             {
-                _settings = SmartSystemMenuSettings.Read(settingsFileName);
+                _settings = SmartSystemMenuSettings.Read(settingsFileName, languageFileName);
             }
 #if WIN32
             if (Environment.Is64BitOperatingSystem)
@@ -72,14 +73,18 @@ namespace SmartSystemMenu.Forms
                     return;
                 }
             }
+<<<<<<< HEAD
             _systemTrayMenu = new SystemTrayMenu(_settings.ShowSystemTrayIcon);
+=======
+            _systemTrayMenu = new SystemTrayMenu(_settings.MenuLanguage);
+>>>>>>> add_language_string
             _systemTrayMenu.MenuItemAutoStart.Click += MenuItemAutoStartClick;
             _systemTrayMenu.MenuItemSettings.Click += MenuItemSettingsClick;
             _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
 #endif
-            _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, new string[] { SHELL_WINDOW_NAME }).ToList();
+            _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, _settings.MenuLanguage, new string[] { SHELL_WINDOW_NAME }).ToList();
 
             foreach (var window in _windows)
             {
@@ -231,7 +236,7 @@ namespace SmartSystemMenu.Forms
         {
             if (_aboutForm == null || _aboutForm.IsDisposed || !_aboutForm.IsHandleCreated)
             {
-                _aboutForm = new AboutForm();
+                _aboutForm = new AboutForm(_settings.MenuLanguage);
             }
             _aboutForm.Show();
             _aboutForm.Activate();
@@ -256,14 +261,14 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems).Exists && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems, _settings.MenuLanguage).Exists && !_windows.Any(w => w.Handle == e.Handle))
             {
                 int processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
                 IList<Window> windows = new List<Window>();
                 try
                 {
-                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, new string[] { SHELL_WINDOW_NAME });
+                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, _settings.MenuLanguage, new string[] { SHELL_WINDOW_NAME });
                 }
                 catch
                 {
@@ -385,7 +390,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_INFORMATION:
                             {
-                                var infoForm = new InfoForm(window);
+                                var infoForm = new InfoForm(window, _settings.MenuLanguage);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;
@@ -397,11 +402,11 @@ namespace SmartSystemMenu.Forms
                                 {
                                     OverwritePrompt = true,
                                     ValidateNames = true,
-                                    Title = "Save Window Screenshot",
-                                    FileName = "WindowScreenshot",
-                                    DefaultExt = "bmp",
+                                    Title = _settings.MenuLanguage.GetStringValue("save_screenshot_title"),
+                                    FileName = _settings.MenuLanguage.GetStringValue("save_screenshot_filename"),
+                                    DefaultExt = _settings.MenuLanguage.GetStringValue("save_screenshot_default_ext"),
                                     RestoreDirectory = false,
-                                    Filter = "Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf"
+                                    Filter = _settings.MenuLanguage.GetStringValue("save_screenshot_filter")
                                 };
                                 if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
                                 {
@@ -569,7 +574,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_SIZE_CUSTOM:
                             {
-                                var sizeForm = new SizeForm(window);
+                                var sizeForm = new SizeForm(window, _settings.MenuLanguage);
                                 sizeForm.Show(window.Win32Window);
                             }
                             break;
@@ -584,7 +589,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_TRANS_CUSTOM:
                             {
-                                var opacityForm = new TransparencyForm(window);
+                                var opacityForm = new TransparencyForm(window, _settings.MenuLanguage);
                                 opacityForm.Show(window.Win32Window);
                             }
                             break;
@@ -599,7 +604,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_ALIGN_CUSTOM:
                             {
-                                var positionForm = new PositionForm(window);
+                                var positionForm = new PositionForm(window, _settings.MenuLanguage);
                                 positionForm.Show(window.Win32Window);
                             }
                             break;
