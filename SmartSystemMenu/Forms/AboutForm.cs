@@ -23,7 +23,13 @@ namespace SmartSystemMenu.Forms
 
         private void LinkClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(URL);
+            try
+            {
+                SystemUtils.RunAsDesktopUser(SystemUtils.GetDefaultBrowserModuleName(), URL);
+            }
+            catch
+            {
+            }
         }
 
         private void KeyDownClick(object sender, KeyEventArgs e)

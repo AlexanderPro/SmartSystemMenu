@@ -24,9 +24,12 @@ namespace SmartSystemMenu.Forms
             lblRectangleValue.Text = string.Format("({0},{1}) - ({2},{3})  -  {4}x{5}", _window.Size.Left, _window.Size.Top, _window.Size.Right, _window.Size.Bottom, _window.Size.Width, _window.Size.Height);
             lblProcessIdValue.Text = string.Format("{0:X8} ({0})", _window.ProcessId);
             lblThreadIdValue.Text = string.Format("{0:X8} ({0})", _window.ThreadId);
-            var process = Process.GetProcessById(_window.ProcessId);
-            txtModuleNameValue.Text = Path.GetFileName(process.MainModule.FileName);
-            txtModulePathValue.Text = process.MainModule.FileName;
+            var process = SystemUtils.GetProcessByIdSafely(_window.ProcessId);
+            if (process != null)
+            {
+                txtModuleNameValue.Text = Path.GetFileName(process.MainModule.FileName);
+                txtModulePathValue.Text = process.MainModule.FileName;
+            }
         }
 
         private void FormKeyDown(object sender, KeyEventArgs e)

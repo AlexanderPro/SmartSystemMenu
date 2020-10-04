@@ -120,7 +120,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                return Process.GetProcessById(ProcessId);
+                return SystemUtils.GetProcessByIdSafely(ProcessId);
             }
         }
 
@@ -138,8 +138,13 @@ namespace SmartSystemMenu
         {
             get
             {
-                PriorityClass priorityClass = NativeMethods.GetPriorityClass(Process.GetProcessById(ProcessId).GetHandle());
+                var process = Process;
+                if (process == null)
+                {
+                    return Priority.Normal;
+                }
 
+                var priorityClass = NativeMethods.GetPriorityClass(process.GetHandle());
                 switch (priorityClass)
                 {
                     case PriorityClass.REALTIME_PRIORITY_CLASS: return Priority.RealTime;
@@ -427,9 +432,11 @@ namespace SmartSystemMenu
 
         public void SetPriority(Priority priority)
         {
-            IntPtr processHandle = Process.GetProcessById(ProcessId).GetHandle();
-            PriorityClass priorityClass = priority.GetPriorityClass();
-            NativeMethods.SetPriorityClass(processHandle, priorityClass);
+            var process = Process;
+            if (process != null)
+            {
+                NativeMethods.SetPriorityClass(process.GetHandle(), priority.GetPriorityClass());
+            }
         }
 
         public Bitmap PrintWindow()
@@ -511,7 +518,6 @@ namespace SmartSystemMenu
                 NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
             }
         }
-
 
         public static void ForceForegroundWindow(IntPtr handle)
         {

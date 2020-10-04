@@ -15,7 +15,7 @@ namespace SmartSystemMenu
 
         public NotifyIcon Icon { get; private set; }
 
-        public SystemTrayMenu()
+        public SystemTrayMenu(bool showIcon)
         {
             MenuItemAutoStart = new ToolStripMenuItem();
             MenuItemAutoStart.Name = "miAutoStart";
@@ -56,7 +56,7 @@ namespace SmartSystemMenu
             Icon.ContextMenuStrip = systemTrayMenu;
             Icon.Icon = Properties.Resources.SmartSystemMenu;
             Icon.Text = AssemblyUtils.AssemblyTitle;
-            Icon.Visible = true;
+            Icon.Visible = showIcon;
         }
     }
 }

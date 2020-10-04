@@ -12,12 +12,15 @@ namespace SmartSystemMenu.Settings
     {
         public IList<string> ProcessExclusions { get; private set; }
 
-        public MenuItems MenuItems { get; set; }
+        public MenuItems MenuItems { get; private set; }
+
+        public bool ShowSystemTrayIcon { get; private set; }
 
         public SmartSystemMenuSettings()
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
+            ShowSystemTrayIcon = true;
         }
 
         public object Clone()
@@ -130,6 +133,12 @@ namespace SmartSystemMenu.Settings
                 })
                 .ToList();
 
+            var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
+            if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
+            {
+                settings.ShowSystemTrayIcon = false;
+            }
+
             return settings;
         }
 
@@ -142,7 +151,10 @@ namespace SmartSystemMenu.Settings
                                      new XElement("startProgramItem", settings.MenuItems.StartProgramItems.Select(x => new XElement("item", 
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
-                                         new XAttribute("arguments", x.Arguments)))))));
+                                         new XAttribute("arguments", x.Arguments))))),
+                                 new XElement("systemTrayIcon",
+                                     new XAttribute("show", settings.ShowSystemTrayIcon.ToString().ToLower())
+                                 )));
             Save(fileName, document);
         }
 

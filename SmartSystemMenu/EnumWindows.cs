@@ -29,9 +29,13 @@ namespace SmartSystemMenu
             _filterHandles = filterHandles ?? new IntPtr[0];
             _windows = new List<Window>();
             _menuItems = menuItems;
-            foreach (ProcessThread thread in Process.GetProcessById(processId).Threads)
+            var process = SystemUtils.GetProcessByIdSafely(processId);
+            if (process != null)
             {
-                NativeMethods.EnumThreadWindows(thread.Id, EnumWindowCallback, 0);
+                foreach (ProcessThread thread in process.Threads)
+                {
+                    NativeMethods.EnumThreadWindows(thread.Id, EnumWindowCallback, 0);
+                }
             }
             return _windows;
         }
