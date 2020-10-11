@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace SmartSystemMenu
+namespace SmartSystemMenu.Native
 {
     [StructLayout(LayoutKind.Sequential)]
     struct Rect

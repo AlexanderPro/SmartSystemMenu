@@ -16,14 +16,14 @@ namespace SmartSystemMenu.Settings
 
         public bool ShowSystemTrayIcon { get; private set; }
 
-        public MenuLanguage MenuLanguage { get; set; }
+        public LanguageSettings LanguageSettings { get; set; }
 
         public SmartSystemMenuSettings()
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
             ShowSystemTrayIcon = true;
-            MenuLanguage = new MenuLanguage();
+            LanguageSettings = new LanguageSettings();
         }
 
         public object Clone()
@@ -40,9 +40,9 @@ namespace SmartSystemMenu.Settings
                 settings.MenuItems.StartProgramItems.Add(new StartProgramItem { Title = menuItem.Title, FileName = menuItem.FileName, Arguments = menuItem.Arguments });
             }
 
-            foreach (var menuTitleStringItem in MenuLanguage.MenuTitleString)
+            foreach (var languageItem in LanguageSettings.Items)
             {
-                settings.MenuLanguage.MenuTitleString.Add(new MenuTitleString { Title = menuTitleStringItem.Title, StringValue = menuTitleStringItem.StringValue });
+                settings.LanguageSettings.Items.Add(new LanguageItem { Name = languageItem.Name, Value = languageItem.Value });
             }
 
             return settings;
@@ -126,7 +126,7 @@ namespace SmartSystemMenu.Settings
             var settings = new SmartSystemMenuSettings();
             var document = XDocument.Load(fileName);
             var languageDocument = XDocument.Load(languageFileName);
-            string readLanguage = "/menuLanguage/menuTitleString/en/stringItem";
+            var languageItemPath = "/language/items/en/item";
 
             settings.ProcessExclusions = document
                 .XPathSelectElements("/smartSystemMenu/processExclusions/processName")
@@ -151,14 +151,14 @@ namespace SmartSystemMenu.Settings
 
             if ((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN") || (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
             {
-                readLanguage = "/menuLanguage/menuTitleString/cn/stringItem";
+                languageItemPath = "/language/items/cn/item";
             }
-            settings.MenuLanguage.MenuTitleString = languageDocument
-                .XPathSelectElements(readLanguage)
-                .Select(x => new MenuTitleString
+            settings.LanguageSettings.Items = languageDocument
+                .XPathSelectElements(languageItemPath)
+                .Select(x => new LanguageItem
                 {
-                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
-                    StringValue = x.Attribute("stringValue") != null ? x.Attribute("stringValue").Value : "",
+                    Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
+                    Value = x.Attribute("value") != null ? x.Attribute("value").Value : "",
                 })
                 .ToList();
 

@@ -1,231 +1,231 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<menuLanguage>
-	<menuTitleString>
-		<en>
-			<stringItem title="information" stringValue="Information" />
-			<stringItem title="roll_up" stringValue="Roll Up" />
-			<stringItem title="aero_glass" stringValue="Aero Glass" />
-			<stringItem title="always_on_top" stringValue="Always On Top" />
-			<stringItem title="send_to_bottom" stringValue="Send To Bottom" />
-			<stringItem title="save_screenshot" stringValue="Save Screenshot" />
-			<stringItem title="open_file_in_explorer" stringValue="Open File In Explorer" />
-			<stringItem title="copy_text_to_clipboard" stringValue="Copy Text To ClipBoard" />
-			<stringItem title="drag_by_mouse" stringValue="Drag By Mouse" />
-			<stringItem title="size" stringValue="Resize" />
-			<stringItem title="size_default" stringValue="Default" />
-			<stringItem title="size_custom" stringValue="Custom..." />
-			<stringItem title="move_to" stringValue="Move To" />
-			<stringItem title="monitor" stringValue="Monitor " />
-			<stringItem title="alignment" stringValue="Alignment" />
-			<stringItem title="align_top_left" stringValue="top-left" />
-			<stringItem title="align_top_center" stringValue="top-center" />
-			<stringItem title="align_top_right" stringValue="top-right" />
-			<stringItem title="align_middle_left" stringValue="middle-left" />
-			<stringItem title="align_middle_center" stringValue="middle-center" />
-			<stringItem title="align_middle_right" stringValue="middle-right" />
-			<stringItem title="align_bottom_left" stringValue="bottom-left" />
-			<stringItem title="align_bottom_center" stringValue="bottom-center" />
-			<stringItem title="align_bottom_right" stringValue="bottom-right" />
-			<stringItem title="align_default" stringValue="Default" />
-			<stringItem title="align_custom" stringValue="Custom..." />
-			<stringItem title="transparency" stringValue="Transparency" />
-			<stringItem title="trans_opaque" stringValue=" (opaque)" />
-			<stringItem title="trans_invisible" stringValue=" (invisible)" />
-			<stringItem title="trans_default" stringValue="Default" />
-			<stringItem title="trans_custom" stringValue="Custom..." />
-			<stringItem title="priority" stringValue="Priority" />
-			<stringItem title="priority_real_time" stringValue="Real Time: 24" />
-			<stringItem title="priority_high" stringValue="High: 13" />
-			<stringItem title="priority_above_normal" stringValue="Above Normal: 10" />
-			<stringItem title="priority_normal" stringValue="Normal: 8" />
-			<stringItem title="priority_below_normal" stringValue="Below Normal: 6" />
-			<stringItem title="priority_idle" stringValue="Idle: 4" />
-			<stringItem title="system_tray" stringValue="System Tray" />
-			<stringItem title="minimize_to_systemtray" stringValue="Minimize To Tray" />
-			<stringItem title="minimize_always_to_systemtray" stringValue="Minimize To Tray Always" />
-			<stringItem title="other_windows" stringValue="Other Windows" />
-			<stringItem title="minimize_other_windows" stringValue="Minimize" />
-			<stringItem title="close_other_windows" stringValue="Close" />
-			<stringItem title="start_program" stringValue="Start Program" />
-			<stringItem title="tab_general" stringValue="General" />
-			<stringItem title="lbl_handle" stringValue="Handle:" />
-			<stringItem title="lbl_caption" stringValue="Caption:" />
-			<stringItem title="lbl_class" stringValue="Class:" />
-			<stringItem title="lbl_style" stringValue="Style:" />
-			<stringItem title="lbl_rectangle" stringValue="Rectangle:" />
-			<stringItem title="tab_process" stringValue="Process" />
-			<stringItem title="lbl_module_name" stringValue="Module Name:" />
-			<stringItem title="lbl_module_path" stringValue="Module Path:" />
-			<stringItem title="lbl_process_id" stringValue="Process Id:" />
-			<stringItem title="lbl_thread_id" stringValue="Thread Id:" />
-			<stringItem title="save_screenshot_title" stringValue="Save Window Screenshot" />
-			<stringItem title="save_screenshot_filename" stringValue="WindowScreenshot" />
-			<stringItem title="save_screenshot_default_ext" stringValue="bmp" />
-			<stringItem title="save_screenshot_filter" stringValue="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
-			<stringItem title="size_form" stringValue="Set Size" />
-			<stringItem title="size_btn_apply" stringValue="Apply" />
-			<stringItem title="lbl_height" stringValue="Height:" />
-			<stringItem title="lbl_width" stringValue="Width:" />
-			<stringItem title="trans_form" stringValue="Set Transparency" />
-			<stringItem title="trans_btn_apply" stringValue="Apply" />
-			<stringItem title="align_form" stringValue="Set Position" />
-			<stringItem title="align_btn_apply" stringValue="Apply" />
-			<stringItem title="lbl_top" stringValue="Top:" />
-			<stringItem title="lbl_left" stringValue="Left:" />
-			<stringItem title="mi_auto_start" stringValue="Auto start program" />
-			<stringItem title="mi_settings" stringValue="Settings..." />
-			<stringItem title="mi_about" stringValue="About" />
-			<stringItem title="mi_exit" stringValue="Exit" />
-			<stringItem title="about_form" stringValue="About " />
-			<stringItem title="about_btn_ok" stringValue="Ok" />
-			<stringItem title="settings_form" stringValue="Settngs" />
-			<stringItem title="tab_settings_general" stringValue="General" />
-			<stringItem title="grpb_process_exclusions" stringValue="Process Exclusions" />
-			<stringItem title="clm_process_exclusion_name" stringValue="File Name" />
-			<stringItem title="clm_process_exclusion_edit" stringValue="Edit" />
-			<stringItem title="clm_process_exclusion_delete" stringValue="Delete" />
-			<stringItem title="btn_process_exclusion_up" stringValue="Move Up Process" />
-			<stringItem title="btn_process_exclusion_down" stringValue="Move Down Process" />
-			<stringItem title="btn_add_process_exclusion" stringValue="Add Process Name" />
-			<stringItem title="tab_settings_menu" stringValue="Menu" />
-			<stringItem title="grpb_start_program" stringValue="Start Program Menu Items" />
-			<stringItem title="clm_start_program_title" stringValue="Title" />
-			<stringItem title="clm_start_program_path" stringValue="File Name" />
-			<stringItem title="clm_start_program_arguments" stringValue="Arguments" />
-			<stringItem title="clm_start_program_edit" stringValue="Edit" />
-			<stringItem title="clm_start_program_delete" stringValue="Delete" />
-			<stringItem title="btn_start_program_up" stringValue="Move Up Program" />
-			<stringItem title="btn_start_program_down" stringValue="Move Down Program" />
-			<stringItem title="btn_add_start_program" stringValue="Add Start Program" />
-			<stringItem title="settings_btn_apply" stringValue="Ok" />
-			<stringItem title="settings_btn_cancel" stringValue="Cancel" />
-			<stringItem title="process_name_form" stringValue="Process Exclusions" />
-			<stringItem title="process_lbl_file_name" stringValue="File Name:" />
-			<stringItem title="process_btn_apply" stringValue="Ok" />
-			<stringItem title="process_btn_cancel" stringValue="Cancel" />
-			<stringItem title="process_browse_file_filter" stringValue="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
-			<stringItem title="start_program_form" stringValue="Start Program" />
-			<stringItem title="start_program_lbl_title" stringValue="Title:" />
-			<stringItem title="start_program_lbl_file_name" stringValue="File Name:" />
-			<stringItem title="start_program_lbl_arguments" stringValue="Arguments:" />
-			<stringItem title="start_program_btn_apply" stringValue="Ok" />
-			<stringItem title="start_program_btn_Cancel" stringValue="Cancel" />
-			<stringItem title="start_program_browse_file_filter" stringValue="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
-			<stringItem title="message_box_attention_title" stringValue="Attention" />
-			<stringItem title="message_box_attention_content" stringValue="You should restart the application manually to apply the settings." />
-		</en>
-		<cn>
-			<stringItem title="information" stringValue="信息" />
-			<stringItem title="roll_up" stringValue="卷起" />
-			<stringItem title="aero_glass" stringValue="毛玻璃效果" />
-			<stringItem title="always_on_top" stringValue="始终在最前面" />
-			<stringItem title="send_to_bottom" stringValue="移至最底层" />
-			<stringItem title="save_screenshot" stringValue="保存窗口截图" />
-			<stringItem title="open_file_in_explorer" stringValue="在资源管理器中打开文件" />
-			<stringItem title="copy_text_to_clipboard" stringValue="将文本复制到剪贴板" />
-			<stringItem title="drag_by_mouse" stringValue="通过鼠标拖动" />
-			<stringItem title="size" stringValue="调整窗口大小" />
-			<stringItem title="size_default" stringValue="默认" />
-			<stringItem title="size_custom" stringValue="自定义..." />
-			<stringItem title="move_to" stringValue="移动到" />
-			<stringItem title="monitor" stringValue="显示器 " />
-			<stringItem title="alignment" stringValue="对齐" />
-			<stringItem title="align_top_left" stringValue="左上角" />
-			<stringItem title="align_top_center" stringValue="顶部中心" />
-			<stringItem title="align_top_right" stringValue="右上角" />
-			<stringItem title="align_middle_left" stringValue="中间左侧" />
-			<stringItem title="align_middle_center" stringValue="正中央" />
-			<stringItem title="align_middle_right" stringValue="中间右侧" />
-			<stringItem title="align_bottom_left" stringValue="左下角" />
-			<stringItem title="align_bottom_center" stringValue="底部中心" />
-			<stringItem title="align_bottom_right" stringValue="右下角" />
-			<stringItem title="align_default" stringValue="默认" />
-			<stringItem title="align_custom" stringValue="自定义..." />
-			<stringItem title="transparency" stringValue="透明度" />
-			<stringItem title="trans_opaque" stringValue=" (不透明)" />
-			<stringItem title="trans_invisible" stringValue=" (不可见)" />
-			<stringItem title="trans_default" stringValue="默认" />
-			<stringItem title="trans_custom" stringValue="自定义..." />
-			<stringItem title="priority" stringValue="优先级" />
-			<stringItem title="priority_real_time" stringValue="实时: 24" />
-			<stringItem title="priority_high" stringValue="高: 13" />
-			<stringItem title="priority_above_normal" stringValue="高于标准: 10" />
-			<stringItem title="priority_normal" stringValue="标准: 8" />
-			<stringItem title="priority_below_normal" stringValue="低于标准: 6" />
-			<stringItem title="priority_idle" stringValue="空闲: 4" />
-			<stringItem title="system_tray" stringValue="系统托盘" />
-			<stringItem title="minimize_to_systemtray" stringValue="最小化到托盘" />
-			<stringItem title="minimize_always_to_systemtray" stringValue="始终最小化到托盘" />
-			<stringItem title="other_windows" stringValue="其他窗口" />
-			<stringItem title="minimize_other_windows" stringValue="最小化" />
-			<stringItem title="close_other_windows" stringValue="关闭" />
-			<stringItem title="start_program" stringValue="启动程序" />
-			<stringItem title="tab_general" stringValue="常规" />
-			<stringItem title="lbl_handle" stringValue="句柄:" />
-			<stringItem title="lbl_caption" stringValue="标题:" />
-			<stringItem title="lbl_class" stringValue="类:" />
-			<stringItem title="lbl_style" stringValue="风格:" />
-			<stringItem title="lbl_rectangle" stringValue="绘制矩形:" />
-			<stringItem title="tab_process" stringValue="程序" />
-			<stringItem title="lbl_module_name" stringValue="模块名称:" />
-			<stringItem title="lbl_module_path" stringValue="模块路径:" />
-			<stringItem title="lbl_process_id" stringValue="进程 ID:" />
-			<stringItem title="lbl_thread_id" stringValue="线程 ID:" />
-			<stringItem title="save_screenshot_title" stringValue="保存窗口截图" />
-			<stringItem title="save_screenshot_filename" stringValue="WindowScreenshot" />
-			<stringItem title="save_screenshot_default_ext" stringValue="bmp" />
-			<stringItem title="save_screenshot_filter" stringValue="位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf" />
-			<stringItem title="size_form" stringValue="设置尺寸" />
-			<stringItem title="size_btn_apply" stringValue="应用" />
-			<stringItem title="lbl_height" stringValue="高度:" />
-			<stringItem title="lbl_width" stringValue="宽度:" />
-			<stringItem title="trans_form" stringValue="设置透明度" />
-			<stringItem title="trans_btn_apply" stringValue="应用" />
-			<stringItem title="align_form" stringValue="设置位置" />
-			<stringItem title="align_btn_apply" stringValue="应用" />
-			<stringItem title="lbl_top" stringValue="顶部:" />
-			<stringItem title="lbl_left" stringValue="左侧:" />
-			<stringItem title="mi_auto_start" stringValue="自动启动程序" />
-			<stringItem title="mi_settings" stringValue="设置..." />
-			<stringItem title="mi_about" stringValue="关于" />
-			<stringItem title="mi_exit" stringValue="退出" />
-			<stringItem title="about_form" stringValue="关于 " />
-			<stringItem title="about_btn_ok" stringValue="确定" />
-			<stringItem title="settings_form" stringValue="设置" />
-			<stringItem title="tab_settings_general" stringValue="常规" />
-			<stringItem title="grpb_process_exclusions" stringValue="进程排除" />
-			<stringItem title="clm_process_exclusion_name" stringValue="文件名称" />
-			<stringItem title="clm_process_exclusion_edit" stringValue="编辑" />
-			<stringItem title="clm_process_exclusion_delete" stringValue="删除" />
-			<stringItem title="btn_process_exclusion_up" stringValue="将进程上移" />
-			<stringItem title="btn_process_exclusion_down" stringValue="将进程下移" />
-			<stringItem title="btn_add_process_exclusion" stringValue="添加进程名称" />
-			<stringItem title="tab_settings_menu" stringValue="菜单" />
-			<stringItem title="grpb_start_program" stringValue="启动程序菜单项" />
-			<stringItem title="clm_start_program_title" stringValue="标题" />
-			<stringItem title="clm_start_program_path" stringValue="文件名称" />
-			<stringItem title="clm_start_program_arguments" stringValue="参数" />
-			<stringItem title="clm_start_program_edit" stringValue="编辑" />
-			<stringItem title="clm_start_program_delete" stringValue="删除" />
-			<stringItem title="btn_start_program_up" stringValue="将程序上移" />
-			<stringItem title="btn_start_program_down" stringValue="将程序下移" />
-			<stringItem title="btn_add_start_program" stringValue="添加启动程序" />
-			<stringItem title="settings_btn_apply" stringValue="确定" />
-			<stringItem title="settings_btn_cancel" stringValue="取消" />
-			<stringItem title="process_name_form" stringValue="进程排除" />
-			<stringItem title="process_lbl_file_name" stringValue="文件名称:" />
-			<stringItem title="process_btn_apply" stringValue="确定" />
-			<stringItem title="process_btn_cancel" stringValue="取消" />
-			<stringItem title="process_browse_file_filter" stringValue="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
-			<stringItem title="start_program_form" stringValue="启动程序" />
-			<stringItem title="start_program_lbl_title" stringValue="标题:" />
-			<stringItem title="start_program_lbl_file_name" stringValue="文件名称:" />
-			<stringItem title="start_program_lbl_arguments" stringValue="参数:" />
-			<stringItem title="start_program_btn_apply" stringValue="确定" />
-			<stringItem title="start_program_btn_Cancel" stringValue="取消" />
-			<stringItem title="start_program_browse_file_filter" stringValue="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
-			<stringItem title="message_box_attention_title" stringValue="注意" />
-			<stringItem title="message_box_attention_content" stringValue="您应该手动重新启动应用程序以应用设置。" />
-		</cn>
-	</menuTitleString>
-</menuLanguage>
+<language>
+  <items>
+    <en>
+      <item name="information" value="Information" />
+      <item name="roll_up" value="Roll Up" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="Always On Top" />
+      <item name="send_to_bottom" value="Send To Bottom" />
+      <item name="save_screenshot" value="Save Screenshot" />
+      <item name="open_file_in_explorer" value="Open File In Explorer" />
+      <item name="copy_text_to_clipboard" value="Copy Text To ClipBoard" />
+      <item name="drag_by_mouse" value="Drag By Mouse" />
+      <item name="size" value="Resize" />
+      <item name="size_default" value="Default" />
+      <item name="size_custom" value="Custom..." />
+      <item name="move_to" value="Move To" />
+      <item name="monitor" value="Monitor " />
+      <item name="alignment" value="Alignment" />
+      <item name="align_top_left" value="top-left" />
+      <item name="align_top_center" value="top-center" />
+      <item name="align_top_right" value="top-right" />
+      <item name="align_middle_left" value="middle-left" />
+      <item name="align_middle_center" value="middle-center" />
+      <item name="align_middle_right" value="middle-right" />
+      <item name="align_bottom_left" value="bottom-left" />
+      <item name="align_bottom_center" value="bottom-center" />
+      <item name="align_bottom_right" value="bottom-right" />
+      <item name="align_default" value="Default" />
+      <item name="align_custom" value="Custom..." />
+      <item name="transparency" value="Transparency" />
+      <item name="trans_opaque" value=" (opaque)" />
+      <item name="trans_invisible" value=" (invisible)" />
+      <item name="trans_default" value="Default" />
+      <item name="trans_custom" value="Custom..." />
+      <item name="priority" value="Priority" />
+      <item name="priority_real_time" value="Real Time: 24" />
+      <item name="priority_high" value="High: 13" />
+      <item name="priority_above_normal" value="Above Normal: 10" />
+      <item name="priority_normal" value="Normal: 8" />
+      <item name="priority_below_normal" value="Below Normal: 6" />
+      <item name="priority_idle" value="Idle: 4" />
+      <item name="system_tray" value="System Tray" />
+      <item name="minimize_to_systemtray" value="Minimize To Tray" />
+      <item name="minimize_always_to_systemtray" value="Minimize To Tray Always" />
+      <item name="other_windows" value="Other Windows" />
+      <item name="minimize_other_windows" value="Minimize" />
+      <item name="close_other_windows" value="Close" />
+      <item name="start_program" value="Start Program" />
+      <item name="tab_general" value="General" />
+      <item name="lbl_handle" value="Handle:" />
+      <item name="lbl_caption" value="Caption:" />
+      <item name="lbl_class" value="Class:" />
+      <item name="lbl_style" value="Style:" />
+      <item name="lbl_rectangle" value="Rectangle:" />
+      <item name="tab_process" value="Process" />
+      <item name="lbl_module_name" value="Module Name:" />
+      <item name="lbl_module_path" value="Module Path:" />
+      <item name="lbl_process_id" value="Process Id:" />
+      <item name="lbl_thread_id" value="Thread Id:" />
+      <item name="save_screenshot_title" value="Save Window Screenshot" />
+      <item name="save_screenshot_filename" value="WindowScreenshot" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="size_form" value="Set Size" />
+      <item name="size_btn_apply" value="Apply" />
+      <item name="lbl_height" value="Height:" />
+      <item name="lbl_width" value="Width:" />
+      <item name="trans_form" value="Set Transparency" />
+      <item name="trans_btn_apply" value="Apply" />
+      <item name="align_form" value="Set Position" />
+      <item name="align_btn_apply" value="Apply" />
+      <item name="lbl_top" value="Top:" />
+      <item name="lbl_left" value="Left:" />
+      <item name="mi_auto_start" value="Auto start program" />
+      <item name="mi_settings" value="Settings..." />
+      <item name="mi_about" value="About" />
+      <item name="mi_exit" value="Exit" />
+      <item name="about_form" value="About " />
+      <item name="about_btn_ok" value="Ok" />
+      <item name="settings_form" value="Settngs" />
+      <item name="tab_settings_general" value="General" />
+      <item name="grpb_process_exclusions" value="Process Exclusions" />
+      <item name="clm_process_exclusion_name" value="File Name" />
+      <item name="clm_process_exclusion_edit" value="Edit" />
+      <item name="clm_process_exclusion_delete" value="Delete" />
+      <item name="btn_process_exclusion_up" value="Move Up Process" />
+      <item name="btn_process_exclusion_down" value="Move Down Process" />
+      <item name="btn_add_process_exclusion" value="Add Process Name" />
+      <item name="tab_settings_menu" value="Menu" />
+      <item name="grpb_start_program" value="Start Program Menu Items" />
+      <item name="clm_start_program_title" value="Title" />
+      <item name="clm_start_program_path" value="File Name" />
+      <item name="clm_start_program_arguments" value="Arguments" />
+      <item name="clm_start_program_edit" value="Edit" />
+      <item name="clm_start_program_delete" value="Delete" />
+      <item name="btn_start_program_up" value="Move Up Program" />
+      <item name="btn_start_program_down" value="Move Down Program" />
+      <item name="btn_add_start_program" value="Add Start Program" />
+      <item name="settings_btn_apply" value="Ok" />
+      <item name="settings_btn_cancel" value="Cancel" />
+      <item name="process_name_form" value="Process Exclusions" />
+      <item name="process_lbl_file_name" value="File Name:" />
+      <item name="process_btn_apply" value="Ok" />
+      <item name="process_btn_cancel" value="Cancel" />
+      <item name="process_browse_file_filter" value="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="start_program_form" value="Start Program" />
+      <item name="start_program_lbl_title" value="Title:" />
+      <item name="start_program_lbl_file_name" value="File Name:" />
+      <item name="start_program_lbl_arguments" value="Arguments:" />
+      <item name="start_program_btn_apply" value="Ok" />
+      <item name="start_program_btn_Cancel" value="Cancel" />
+      <item name="start_program_browse_file_filter" value="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="message_box_attention_title" value="Attention" />
+      <item name="message_box_attention_content" value="You should restart the application manually to apply the settings." />
+    </en>
+    <cn>
+      <item name="information" value="信息" />
+      <item name="roll_up" value="卷起" />
+      <item name="aero_glass" value="毛玻璃效果" />
+      <item name="always_on_top" value="始终在最前面" />
+      <item name="send_to_bottom" value="移至最底层" />
+      <item name="save_screenshot" value="保存窗口截图" />
+      <item name="open_file_in_explorer" value="在资源管理器中打开文件" />
+      <item name="copy_text_to_clipboard" value="将文本复制到剪贴板" />
+      <item name="drag_by_mouse" value="通过鼠标拖动" />
+      <item name="size" value="调整窗口大小" />
+      <item name="size_default" value="默认" />
+      <item name="size_custom" value="自定义..." />
+      <item name="move_to" value="移动到" />
+      <item name="monitor" value="显示器 " />
+      <item name="alignment" value="对齐" />
+      <item name="align_top_left" value="左上角" />
+      <item name="align_top_center" value="顶部中心" />
+      <item name="align_top_right" value="右上角" />
+      <item name="align_middle_left" value="中间左侧" />
+      <item name="align_middle_center" value="正中央" />
+      <item name="align_middle_right" value="中间右侧" />
+      <item name="align_bottom_left" value="左下角" />
+      <item name="align_bottom_center" value="底部中心" />
+      <item name="align_bottom_right" value="右下角" />
+      <item name="align_default" value="默认" />
+      <item name="align_custom" value="自定义..." />
+      <item name="transparency" value="透明度" />
+      <item name="trans_opaque" value=" (不透明)" />
+      <item name="trans_invisible" value=" (不可见)" />
+      <item name="trans_default" value="默认" />
+      <item name="trans_custom" value="自定义..." />
+      <item name="priority" value="优先级" />
+      <item name="priority_real_time" value="实时: 24" />
+      <item name="priority_high" value="高: 13" />
+      <item name="priority_above_normal" value="高于标准: 10" />
+      <item name="priority_normal" value="标准: 8" />
+      <item name="priority_below_normal" value="低于标准: 6" />
+      <item name="priority_idle" value="空闲: 4" />
+      <item name="system_tray" value="系统托盘" />
+      <item name="minimize_to_systemtray" value="最小化到托盘" />
+      <item name="minimize_always_to_systemtray" value="始终最小化到托盘" />
+      <item name="other_windows" value="其他窗口" />
+      <item name="minimize_other_windows" value="最小化" />
+      <item name="close_other_windows" value="关闭" />
+      <item name="start_program" value="启动程序" />
+      <item name="tab_general" value="常规" />
+      <item name="lbl_handle" value="句柄:" />
+      <item name="lbl_caption" value="标题:" />
+      <item name="lbl_class" value="类:" />
+      <item name="lbl_style" value="风格:" />
+      <item name="lbl_rectangle" value="绘制矩形:" />
+      <item name="tab_process" value="程序" />
+      <item name="lbl_module_name" value="模块名称:" />
+      <item name="lbl_module_path" value="模块路径:" />
+      <item name="lbl_process_id" value="进程 ID:" />
+      <item name="lbl_thread_id" value="线程 ID:" />
+      <item name="save_screenshot_title" value="保存窗口截图" />
+      <item name="save_screenshot_filename" value="WindowScreenshot" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf" />
+      <item name="size_form" value="设置尺寸" />
+      <item name="size_btn_apply" value="应用" />
+      <item name="lbl_height" value="高度:" />
+      <item name="lbl_width" value="宽度:" />
+      <item name="trans_form" value="设置透明度" />
+      <item name="trans_btn_apply" value="应用" />
+      <item name="align_form" value="设置位置" />
+      <item name="align_btn_apply" value="应用" />
+      <item name="lbl_top" value="顶部:" />
+      <item name="lbl_left" value="左侧:" />
+      <item name="mi_auto_start" value="自动启动程序" />
+      <item name="mi_settings" value="设置..." />
+      <item name="mi_about" value="关于" />
+      <item name="mi_exit" value="退出" />
+      <item name="about_form" value="关于 " />
+      <item name="about_btn_ok" value="确定" />
+      <item name="settings_form" value="设置" />
+      <item name="tab_settings_general" value="常规" />
+      <item name="grpb_process_exclusions" value="进程排除" />
+      <item name="clm_process_exclusion_name" value="文件名称" />
+      <item name="clm_process_exclusion_edit" value="编辑" />
+      <item name="clm_process_exclusion_delete" value="删除" />
+      <item name="btn_process_exclusion_up" value="将进程上移" />
+      <item name="btn_process_exclusion_down" value="将进程下移" />
+      <item name="btn_add_process_exclusion" value="添加进程名称" />
+      <item name="tab_settings_menu" value="菜单" />
+      <item name="grpb_start_program" value="启动程序菜单项" />
+      <item name="clm_start_program_title" value="标题" />
+      <item name="clm_start_program_path" value="文件名称" />
+      <item name="clm_start_program_arguments" value="参数" />
+      <item name="clm_start_program_edit" value="编辑" />
+      <item name="clm_start_program_delete" value="删除" />
+      <item name="btn_start_program_up" value="将程序上移" />
+      <item name="btn_start_program_down" value="将程序下移" />
+      <item name="btn_add_start_program" value="添加启动程序" />
+      <item name="settings_btn_apply" value="确定" />
+      <item name="settings_btn_cancel" value="取消" />
+      <item name="process_name_form" value="进程排除" />
+      <item name="process_lbl_file_name" value="文件名称:" />
+      <item name="process_btn_apply" value="确定" />
+      <item name="process_btn_cancel" value="取消" />
+      <item name="process_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
+      <item name="start_program_form" value="启动程序" />
+      <item name="start_program_lbl_title" value="标题:" />
+      <item name="start_program_lbl_file_name" value="文件名称:" />
+      <item name="start_program_lbl_arguments" value="参数:" />
+      <item name="start_program_btn_apply" value="确定" />
+      <item name="start_program_btn_Cancel" value="取消" />
+      <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
+      <item name="message_box_attention_title" value="注意" />
+      <item name="message_box_attention_content" value="您应该手动重新启动应用程序以应用设置。" />
+    </cn>
+  </items>
+</language>

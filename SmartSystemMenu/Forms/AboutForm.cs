@@ -8,10 +8,11 @@ namespace SmartSystemMenu.Forms
     {
         private const string URL = "https://github.com/AlexanderPro/SmartSystemMenu";
 
-        public AboutForm(MenuLanguage menuLanguage)
+        public AboutForm(SmartSystemMenuSettings settings)
         {
-            InitializeComponent(menuLanguage);
-            Text = menuLanguage.GetStringValue("about_form") + AssemblyUtils.AssemblyProductName;
+            InitializeComponent();
+            btnOk.Text = settings.LanguageSettings.GetValue("about_btn_ok");
+            Text = settings.LanguageSettings.GetValue("about_form") + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyProductVersion);
             lblCopyright.Text = string.Format("{0}-{1} {2}", AssemblyUtils.AssemblyCopyright, DateTime.Now.Year, AssemblyUtils.AssemblyCompany);
             linkUrl.Text = URL;

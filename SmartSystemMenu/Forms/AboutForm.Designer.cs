@@ -1,6 +1,4 @@
-﻿using SmartSystemMenu.Settings;
-
-namespace SmartSystemMenu.Forms
+﻿namespace SmartSystemMenu.Forms
 {
     partial class AboutForm
     {
@@ -29,7 +27,7 @@ namespace SmartSystemMenu.Forms
         /// the contents of this method with the code editor.
         /// </summary>
         /// <param name="menuLanguage">Contains language strings.</param>
-        private void InitializeComponent(MenuLanguage menuLanguage)
+        private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.lblProductName = new System.Windows.Forms.Label();
@@ -75,7 +73,6 @@ namespace SmartSystemMenu.Forms
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(86, 30);
             this.btnOk.TabIndex = 3;
-            this.btnOk.Text = menuLanguage.GetStringValue("about_btn_ok");
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.CloseClick);
             // 

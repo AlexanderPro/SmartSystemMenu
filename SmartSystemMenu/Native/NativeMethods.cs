@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace SmartSystemMenu
+namespace SmartSystemMenu.Native
 {
     static class NativeMethods
     {

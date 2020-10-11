@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SmartSystemMenu
+﻿namespace SmartSystemMenu.Native
 {
     static class NativeConstants
     {

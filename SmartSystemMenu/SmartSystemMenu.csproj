@@ -94,9 +94,9 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings\MenuLanguage.cs" />
+    <Compile Include="Settings\LanguageSettings.cs" />
     <Compile Include="Settings\MenuItems.cs" />
-    <Compile Include="Settings\MenuTitleString.cs" />
+    <Compile Include="Settings\LanguageItem.cs" />
     <Compile Include="Settings\StartProgramItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
@@ -104,8 +104,8 @@
     <Compile Include="EnumWindows.cs" />
     <Compile Include="Extensions\PriorityExtensions.cs" />
     <Compile Include="Extensions\ProcessExtensions.cs" />
-    <Compile Include="NativeConstants.cs" />
-    <Compile Include="NativeTypes.cs" />
+    <Compile Include="Native\NativeConstants.cs" />
+    <Compile Include="Native\NativeTypes.cs" />
     <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="SystemMenu.cs" />
     <Compile Include="SystemTrayMenu.cs" />
@@ -163,7 +163,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Native\NativeMethods.cs" />
     <Compile Include="Window.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -228,6 +228,7 @@
     </Content>
     <Content Include="SmartSystemMenu.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

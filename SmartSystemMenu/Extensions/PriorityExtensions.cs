@@ -1,4 +1,6 @@
-﻿namespace SmartSystemMenu.Extensions
+﻿using SmartSystemMenu.Native;
+
+namespace SmartSystemMenu.Extensions
 {
     static class PriorityExtensions
     {

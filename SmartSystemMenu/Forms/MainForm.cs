@@ -8,6 +8,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Text;
 using System.Threading;
+using SmartSystemMenu.Native;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Hooks;
 using SmartSystemMenu.Settings;
@@ -74,14 +75,14 @@ namespace SmartSystemMenu.Forms
                 }
             }
 
-            _systemTrayMenu = new SystemTrayMenu(_settings.ShowSystemTrayIcon, _settings.MenuLanguage);
+            _systemTrayMenu = new SystemTrayMenu(_settings.ShowSystemTrayIcon, _settings.LanguageSettings);
             _systemTrayMenu.MenuItemAutoStart.Click += MenuItemAutoStartClick;
             _systemTrayMenu.MenuItemSettings.Click += MenuItemSettingsClick;
             _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
 #endif
-            _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, _settings.MenuLanguage, new string[] { SHELL_WINDOW_NAME }).ToList();
+            _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, _settings.LanguageSettings, new string[] { SHELL_WINDOW_NAME }).ToList();
 
             foreach (var window in _windows)
             {
@@ -233,7 +234,7 @@ namespace SmartSystemMenu.Forms
         {
             if (_aboutForm == null || _aboutForm.IsDisposed || !_aboutForm.IsHandleCreated)
             {
-                _aboutForm = new AboutForm(_settings.MenuLanguage);
+                _aboutForm = new AboutForm(_settings);
             }
             _aboutForm.Show();
             _aboutForm.Activate();
@@ -258,14 +259,14 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems, _settings.MenuLanguage).Exists && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems, _settings.LanguageSettings).Exists && !_windows.Any(w => w.Handle == e.Handle))
             {
                 int processId;
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
                 IList<Window> windows = new List<Window>();
                 try
                 {
-                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, _settings.MenuLanguage, new string[] { SHELL_WINDOW_NAME });
+                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, _settings.LanguageSettings, new string[] { SHELL_WINDOW_NAME });
                 }
                 catch
                 {
@@ -387,7 +388,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_INFORMATION:
                             {
-                                var infoForm = new InfoForm(window, _settings.MenuLanguage);
+                                var infoForm = new InfoForm(window, _settings);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;
@@ -399,11 +400,11 @@ namespace SmartSystemMenu.Forms
                                 {
                                     OverwritePrompt = true,
                                     ValidateNames = true,
-                                    Title = _settings.MenuLanguage.GetStringValue("save_screenshot_title"),
-                                    FileName = _settings.MenuLanguage.GetStringValue("save_screenshot_filename"),
-                                    DefaultExt = _settings.MenuLanguage.GetStringValue("save_screenshot_default_ext"),
+                                    Title = _settings.LanguageSettings.GetValue("save_screenshot_title"),
+                                    FileName = _settings.LanguageSettings.GetValue("save_screenshot_filename"),
+                                    DefaultExt = _settings.LanguageSettings.GetValue("save_screenshot_default_ext"),
                                     RestoreDirectory = false,
-                                    Filter = _settings.MenuLanguage.GetStringValue("save_screenshot_filter")
+                                    Filter = _settings.LanguageSettings.GetValue("save_screenshot_filter")
                                 };
                                 if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
                                 {
@@ -571,7 +572,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_SIZE_CUSTOM:
                             {
-                                var sizeForm = new SizeForm(window, _settings.MenuLanguage);
+                                var sizeForm = new SizeForm(window, _settings);
                                 sizeForm.Show(window.Win32Window);
                             }
                             break;
@@ -586,7 +587,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_TRANS_CUSTOM:
                             {
-                                var opacityForm = new TransparencyForm(window, _settings.MenuLanguage);
+                                var opacityForm = new TransparencyForm(window, _settings);
                                 opacityForm.Show(window.Win32Window);
                             }
                             break;
@@ -601,7 +602,7 @@ namespace SmartSystemMenu.Forms
 
                         case SystemMenu.SC_ALIGN_CUSTOM:
                             {
-                                var positionForm = new PositionForm(window, _settings.MenuLanguage);
+                                var positionForm = new PositionForm(window, _settings);
                                 positionForm.Show(window.Win32Window);
                             }
                             break;

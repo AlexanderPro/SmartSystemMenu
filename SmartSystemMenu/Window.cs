@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Windows.Automation;
+using SmartSystemMenu.Native;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
 
@@ -226,7 +227,7 @@ namespace SmartSystemMenu
 
         #region Methods.Public
 
-        public Window(IntPtr windowHandle, MenuItems menuItems, MenuLanguage menuLanguage)
+        public Window(IntPtr windowHandle, MenuItems menuItems, LanguageSettings languageSettings)
         {
             Handle = windowHandle;
             _isManaged = true;
@@ -236,7 +237,7 @@ namespace SmartSystemMenu
             _defaultTop = Size.Top;
             _beforeRollupHeight = Size.Height;
             _defaultTransparency = Transparency;
-            Menu = new SystemMenu(windowHandle, menuItems, menuLanguage);
+            Menu = new SystemMenu(windowHandle, menuItems, languageSettings);
             ScreenId = Screen.AllScreens.ToList().FindIndex(s => s.Primary);
 
             //Menu.Create();

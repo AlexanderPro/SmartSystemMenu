@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
+using SmartSystemMenu.Native;
 using SmartSystemMenu.Extensions;
 
 namespace SmartSystemMenu

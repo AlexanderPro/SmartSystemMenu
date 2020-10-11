@@ -8,11 +8,19 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public TransparencyForm(Window window, MenuLanguage menuLanguage)
+        public TransparencyForm(Window window, SmartSystemMenuSettings settings)
         {
-            InitializeComponent(menuLanguage);
+            InitializeComponent();
+            InitializeControls(settings);
+
             _window = window;
             numericTransparency.Value = _window.Transparency;
+        }
+
+        private void InitializeControls(SmartSystemMenuSettings settings)
+        {
+            btnApply.Text = settings.LanguageSettings.GetValue("trans_btn_apply");
+            Text = settings.LanguageSettings.GetValue("trans_form");
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
