@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -8,10 +9,10 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public InfoForm(Window window)
+        public InfoForm(Window window, MenuLanguage menuLanguage)
         {
             _window = window;
-            InitializeComponent();
+            InitializeComponent(menuLanguage);
             InitializeControls();
         }
 

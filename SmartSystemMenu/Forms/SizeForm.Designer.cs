@@ -1,4 +1,6 @@
-﻿namespace SmartSystemMenu.Forms
+﻿using SmartSystemMenu.Settings;
+
+namespace SmartSystemMenu.Forms
 {
     partial class SizeForm
     {
@@ -26,7 +28,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        /// <param name="menuLanguage">Contains language strings.</param>
+        private void InitializeComponent(MenuLanguage menuLanguage)
         {
             this.numericWidth = new System.Windows.Forms.NumericUpDown();
             this.lblWidth = new System.Windows.Forms.Label();
@@ -56,7 +59,7 @@
             this.lblWidth.Name = "lblWidth";
             this.lblWidth.Size = new System.Drawing.Size(38, 13);
             this.lblWidth.TabIndex = 0;
-            this.lblWidth.Text = "Width:";
+            this.lblWidth.Text = menuLanguage.GetStringValue("lbl_width");
             // 
             // lblHeight
             // 
@@ -65,7 +68,7 @@
             this.lblHeight.Name = "lblHeight";
             this.lblHeight.Size = new System.Drawing.Size(41, 13);
             this.lblHeight.TabIndex = 2;
-            this.lblHeight.Text = "Height:";
+            this.lblHeight.Text = menuLanguage.GetStringValue("lbl_height");
             // 
             // numericHeight
             // 
@@ -85,7 +88,7 @@
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
             this.btnApply.TabIndex = 4;
-            this.btnApply.Text = "Apply";
+            this.btnApply.Text = menuLanguage.GetStringValue("size_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -105,7 +108,7 @@
             this.MinimizeBox = false;
             this.Name = "SizeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Set Size";
+            this.Text = menuLanguage.GetStringValue("size_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericHeight)).EndInit();

@@ -226,7 +226,7 @@ namespace SmartSystemMenu
 
         #region Methods.Public
 
-        public Window(IntPtr windowHandle, MenuItems menuItems)
+        public Window(IntPtr windowHandle, MenuItems menuItems, MenuLanguage menuLanguage)
         {
             Handle = windowHandle;
             _isManaged = true;
@@ -236,7 +236,7 @@ namespace SmartSystemMenu
             _defaultTop = Size.Top;
             _beforeRollupHeight = Size.Height;
             _defaultTransparency = Transparency;
-            Menu = new SystemMenu(windowHandle, menuItems);
+            Menu = new SystemMenu(windowHandle, menuItems, menuLanguage);
             ScreenId = Screen.AllScreens.ToList().FindIndex(s => s.Primary);
 
             //Menu.Create();

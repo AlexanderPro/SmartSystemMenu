@@ -1,4 +1,6 @@
-﻿namespace SmartSystemMenu.Forms
+﻿using SmartSystemMenu.Settings;
+
+namespace SmartSystemMenu.Forms
 {
     partial class PositionForm
     {
@@ -26,7 +28,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        /// <param name="menuLanguage">Contains language strings.</param>
+        private void InitializeComponent(MenuLanguage menuLanguage)
         {
             this.numericLeft = new System.Windows.Forms.NumericUpDown();
             this.lblLeft = new System.Windows.Forms.Label();
@@ -61,7 +64,7 @@
             this.lblLeft.Name = "lblLeft";
             this.lblLeft.Size = new System.Drawing.Size(28, 13);
             this.lblLeft.TabIndex = 0;
-            this.lblLeft.Text = "Left:";
+            this.lblLeft.Text = menuLanguage.GetStringValue("lbl_left");
             // 
             // lblTop
             // 
@@ -70,7 +73,7 @@
             this.lblTop.Name = "lblTop";
             this.lblTop.Size = new System.Drawing.Size(29, 13);
             this.lblTop.TabIndex = 2;
-            this.lblTop.Text = "Top:";
+            this.lblTop.Text = menuLanguage.GetStringValue("lbl_top");
             // 
             // numericTop
             // 
@@ -95,7 +98,7 @@
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
             this.btnApply.TabIndex = 4;
-            this.btnApply.Text = "Apply";
+            this.btnApply.Text = menuLanguage.GetStringValue("align_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -115,7 +118,7 @@
             this.MinimizeBox = false;
             this.Name = "PositionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Set Position";
+            this.Text = menuLanguage.GetStringValue("align_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericTop)).EndInit();

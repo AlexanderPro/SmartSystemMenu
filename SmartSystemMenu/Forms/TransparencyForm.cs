@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
@@ -7,9 +8,9 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public TransparencyForm(Window window)
+        public TransparencyForm(Window window, MenuLanguage menuLanguage)
         {
-            InitializeComponent();
+            InitializeComponent(menuLanguage);
             _window = window;
             numericTransparency.Value = _window.Transparency;
         }
