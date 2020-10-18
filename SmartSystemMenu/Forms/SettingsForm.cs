@@ -30,6 +30,7 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(SmartSystemMenuSettings settings)
         {
+            lblLanguage.Text = settings.LanguageSettings.GetValue("lbl_language");
             tabpGeneral.Text = settings.LanguageSettings.GetValue("tab_settings_general");
             tabpMenu.Text = settings.LanguageSettings.GetValue("tab_settings_menu");
             grpbProcessExclusions.Text = settings.LanguageSettings.GetValue("grpb_process_exclusions");
@@ -71,6 +72,19 @@ namespace SmartSystemMenu.Forms
                 row.Cells[3].ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_edit");
                 row.Cells[4].ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_delete");
             }
+
+            cmbLanguage.DisplayMember = "Text";
+            cmbLanguage.ValueMember = "Value";
+
+            var languageItems = new[] {
+                new { Text = "", Value = "" },
+                new { Text = "English", Value = "en" },
+                new { Text = "中文", Value = "cn" },
+                new { Text = "Русский", Value = "ru" }
+            };
+
+            cmbLanguage.DataSource = languageItems;
+            cmbLanguage.SelectedValue = settings.LanguageName;
         }
 
         private void GridViewProcessExclusionsCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -228,6 +242,8 @@ namespace SmartSystemMenu.Forms
             {
                 settings.MenuItems.StartProgramItems.Add(new StartProgramItem { Title = row.Cells[0].Value.ToString(), FileName = row.Cells[1].Value.ToString(), Arguments = row.Cells[2].Value.ToString() });
             }
+
+            settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 
             if (!settings.Equals(_settings))
             {

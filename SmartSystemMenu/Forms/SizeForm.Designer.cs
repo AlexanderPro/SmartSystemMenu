@@ -40,7 +40,7 @@
             // 
             // numericWidth
             // 
-            this.numericWidth.Location = new System.Drawing.Point(53, 12);
+            this.numericWidth.Location = new System.Drawing.Point(62, 12);
             this.numericWidth.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -53,22 +53,22 @@
             // lblWidth
             // 
             this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(12, 14);
+            this.lblWidth.Location = new System.Drawing.Point(9, 14);
             this.lblWidth.Name = "lblWidth";
-            this.lblWidth.Size = new System.Drawing.Size(38, 13);
+            this.lblWidth.Size = new System.Drawing.Size(0, 13);
             this.lblWidth.TabIndex = 0;
             // 
             // lblHeight
             // 
             this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(136, 14);
+            this.lblHeight.Location = new System.Drawing.Point(144, 14);
             this.lblHeight.Name = "lblHeight";
-            this.lblHeight.Size = new System.Drawing.Size(41, 13);
+            this.lblHeight.Size = new System.Drawing.Size(0, 13);
             this.lblHeight.TabIndex = 2;
             // 
             // numericHeight
             // 
-            this.numericHeight.Location = new System.Drawing.Point(183, 12);
+            this.numericHeight.Location = new System.Drawing.Point(194, 12);
             this.numericHeight.Maximum = new decimal(new int[] {
             1000000,
             0,

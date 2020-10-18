@@ -111,6 +111,7 @@
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_Cancel" value="Cancel" />
       <item name="start_program_browse_file_filter" value="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="lbl_language" value="Language" />
       <item name="message_box_attention_title" value="Attention" />
       <item name="message_box_attention_content" value="You should restart the application manually to apply the settings." />
     </en>
@@ -224,8 +225,123 @@
       <item name="start_program_btn_apply" value="确定" />
       <item name="start_program_btn_Cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
+      <item name="lbl_language" value="文" />
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="您应该手动重新启动应用程序以应用设置。" />
     </cn>
+    <ru>
+      <item name="information" value="Информация" />
+      <item name="roll_up" value="Свернуть вверх" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="Поверх остальных" />
+      <item name="send_to_bottom" value="Переместить вниз" />
+      <item name="save_screenshot" value="Сохранить снимок окна" />
+      <item name="open_file_in_explorer" value="Открыть в проводнике" />
+      <item name="copy_text_to_clipboard" value="Скопировать текст в буфер обмена" />
+      <item name="drag_by_mouse" value="Перетащить мышкой" />
+      <item name="size" value="Изменить размер" />
+      <item name="size_default" value="По умолчанию" />
+      <item name="size_custom" value="Настроить..." />
+      <item name="move_to" value="Переместить" />
+      <item name="monitor" value="Монитор " />
+      <item name="alignment" value="Выравнить" />
+      <item name="align_top_left" value="верх-лево" />
+      <item name="align_top_center" value="верх-центр" />
+      <item name="align_top_right" value="верх-право" />
+      <item name="align_middle_left" value="середина-лево" />
+      <item name="align_middle_center" value="середина-центр" />
+      <item name="align_middle_right" value="середина-право" />
+      <item name="align_bottom_left" value="низ-лево" />
+      <item name="align_bottom_center" value="низ-центр" />
+      <item name="align_bottom_right" value="низ-право" />
+      <item name="align_default" value="По умолчанию" />
+      <item name="align_custom" value="Настроить..." />
+      <item name="transparency" value="Прозрачность" />
+      <item name="trans_opaque" value=" (непрозрачный)" />
+      <item name="trans_invisible" value=" (невидимый)" />
+      <item name="trans_default" value="По умолчанию" />
+      <item name="trans_custom" value="Настроить..." />
+      <item name="priority" value="Приоритет" />
+      <item name="priority_real_time" value="Реального времени: 24" />
+      <item name="priority_high" value="Высокий: 13" />
+      <item name="priority_above_normal" value="Выше: 10" />
+      <item name="priority_normal" value="Нормальный: 8" />
+      <item name="priority_below_normal" value="Ниже: 6" />
+      <item name="priority_idle" value="Холостой: 4" />
+      <item name="system_tray" value="Системный трей" />
+      <item name="minimize_to_systemtray" value="Минимизировать в трей" />
+      <item name="minimize_always_to_systemtray" value="Минимизировать в трей всегда" />
+      <item name="other_windows" value="Другие окна" />
+      <item name="minimize_other_windows" value="Минимизировать" />
+      <item name="close_other_windows" value="Закрыть" />
+      <item name="start_program" value="Пуск" />
+      <item name="tab_general" value="Общее" />
+      <item name="lbl_handle" value="Хэндл:" />
+      <item name="lbl_caption" value="Заголовок:" />
+      <item name="lbl_class" value="Класс:" />
+      <item name="lbl_style" value="Стиль:" />
+      <item name="lbl_rectangle" value="Область:" />
+      <item name="tab_process" value="Процесс" />
+      <item name="lbl_module_name" value="Файл:" />
+      <item name="lbl_module_path" value="Путь:" />
+      <item name="lbl_process_id" value="Id процесса:" />
+      <item name="lbl_thread_id" value="Id потока:" />
+      <item name="save_screenshot_title" value="Сохранить снимок окна" />
+      <item name="save_screenshot_filename" value="WindowScreenshot" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="size_form" value="Размер" />
+      <item name="size_btn_apply" value="Применить" />
+      <item name="lbl_height" value="Высота:" />
+      <item name="lbl_width" value="Ширина:" />
+      <item name="trans_form" value="Прозрачность" />
+      <item name="trans_btn_apply" value="Применить" />
+      <item name="align_form" value="Позиция" />
+      <item name="align_btn_apply" value="Применить" />
+      <item name="lbl_top" value="Верх:" />
+      <item name="lbl_left" value="Лево:" />
+      <item name="mi_auto_start" value="Автозапуск" />
+      <item name="mi_settings" value="Настройки..." />
+      <item name="mi_about" value="О программе" />
+      <item name="mi_exit" value="Выход" />
+      <item name="about_form" value="О программе " />
+      <item name="about_btn_ok" value="Ok" />
+      <item name="settings_form" value="Настройки" />
+      <item name="tab_settings_general" value="Общее" />
+      <item name="grpb_process_exclusions" value="Программы исключения" />
+      <item name="clm_process_exclusion_name" value="Имя файла" />
+      <item name="clm_process_exclusion_edit" value="Редактировать" />
+      <item name="clm_process_exclusion_delete" value="Удалить" />
+      <item name="btn_process_exclusion_up" value="Вверх" />
+      <item name="btn_process_exclusion_down" value="Вниз" />
+      <item name="btn_add_process_exclusion" value="Добавить процесс" />
+      <item name="tab_settings_menu" value="Меню" />
+      <item name="grpb_start_program" value="Пункты меню с запуском программ" />
+      <item name="clm_start_program_title" value="Заголовок" />
+      <item name="clm_start_program_path" value="Имя файла" />
+      <item name="clm_start_program_arguments" value="Параметры" />
+      <item name="clm_start_program_edit" value="Редактировать" />
+      <item name="clm_start_program_delete" value="Удалить" />
+      <item name="btn_start_program_up" value="Вверх" />
+      <item name="btn_start_program_down" value="Вниз" />
+      <item name="btn_add_start_program" value="Добавить" />
+      <item name="settings_btn_apply" value="Ok" />
+      <item name="settings_btn_cancel" value="Cancel" />
+      <item name="process_name_form" value="Программа исключение" />
+      <item name="process_lbl_file_name" value="Имя файла:" />
+      <item name="process_btn_apply" value="Ok" />
+      <item name="process_btn_cancel" value="Cancel" />
+      <item name="process_browse_file_filter" value="Исполняемые (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="start_program_form" value="Программа" />
+      <item name="start_program_lbl_title" value="Заголовок:" />
+      <item name="start_program_lbl_file_name" value="Имя файла:" />
+      <item name="start_program_lbl_arguments" value="Параметры:" />
+      <item name="start_program_btn_apply" value="Ok" />
+      <item name="start_program_btn_Cancel" value="Cancel" />
+      <item name="start_program_browse_file_filter" value="Исполняемые (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="lbl_language" value="Язык" />
+      <item name="message_box_attention_title" value="Внимание" />
+      <item name="message_box_attention_content" value="Необходимо перезапустить приложение, чтобы применились настройки." />
+    </ru>
   </items>
 </language>

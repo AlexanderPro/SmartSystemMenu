@@ -31,16 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabpGeneral = new System.Windows.Forms.TabPage();
-            this.grpbProcessExclusions = new System.Windows.Forms.GroupBox();
-            this.btnProcessExclusionDown = new System.Windows.Forms.Button();
-            this.btnProcessExclusionUp = new System.Windows.Forms.Button();
-            this.btnAddProcessExclusion = new System.Windows.Forms.Button();
-            this.gvProcessExclusions = new System.Windows.Forms.DataGridView();
-            this.clmProcessExclusionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmProcessExclusionEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.clmProcessExcusionDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblLanguage = new System.Windows.Forms.Label();
+            this.cmbLanguage = new System.Windows.Forms.ComboBox();
             this.tabpMenu = new System.Windows.Forms.TabPage();
             this.grpbStartProgram = new System.Windows.Forms.GroupBox();
+            this.btnStartProgramDown = new System.Windows.Forms.Button();
+            this.btnStartProgramUp = new System.Windows.Forms.Button();
             this.btnAddStartProgram = new System.Windows.Forms.Button();
             this.gvStartProgram = new System.Windows.Forms.DataGridView();
             this.clmStartProgramTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,15 +47,21 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
-            this.btnStartProgramDown = new System.Windows.Forms.Button();
-            this.btnStartProgramUp = new System.Windows.Forms.Button();
+            this.gvProcessExclusions = new System.Windows.Forms.DataGridView();
+            this.clmProcessExcusionDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmProcessExclusionEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmProcessExclusionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddProcessExclusion = new System.Windows.Forms.Button();
+            this.btnProcessExclusionUp = new System.Windows.Forms.Button();
+            this.btnProcessExclusionDown = new System.Windows.Forms.Button();
+            this.grpbProcessExclusions = new System.Windows.Forms.GroupBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
-            this.grpbProcessExclusions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvProcessExclusions)).BeginInit();
             this.tabpMenu.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProcessExclusions)).BeginInit();
+            this.grpbProcessExclusions.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -75,7 +77,9 @@
             // 
             // tabpGeneral
             // 
+            this.tabpGeneral.Controls.Add(this.lblLanguage);
             this.tabpGeneral.Controls.Add(this.grpbProcessExclusions);
+            this.tabpGeneral.Controls.Add(this.cmbLanguage);
             this.tabpGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabpGeneral.Name = "tabpGeneral";
             this.tabpGeneral.Padding = new System.Windows.Forms.Padding(3);
@@ -83,99 +87,22 @@
             this.tabpGeneral.TabIndex = 0;
             this.tabpGeneral.UseVisualStyleBackColor = true;
             // 
-            // grpbProcessExclusions
+            // lblLanguage
             // 
-            this.grpbProcessExclusions.Controls.Add(this.btnProcessExclusionDown);
-            this.grpbProcessExclusions.Controls.Add(this.btnProcessExclusionUp);
-            this.grpbProcessExclusions.Controls.Add(this.btnAddProcessExclusion);
-            this.grpbProcessExclusions.Controls.Add(this.gvProcessExclusions);
-            this.grpbProcessExclusions.Location = new System.Drawing.Point(8, 16);
-            this.grpbProcessExclusions.Name = "grpbProcessExclusions";
-            this.grpbProcessExclusions.Size = new System.Drawing.Size(497, 368);
-            this.grpbProcessExclusions.TabIndex = 0;
-            this.grpbProcessExclusions.TabStop = false;
+            this.lblLanguage.AutoSize = true;
+            this.lblLanguage.Location = new System.Drawing.Point(14, 18);
+            this.lblLanguage.Name = "lblLanguage";
+            this.lblLanguage.Size = new System.Drawing.Size(0, 13);
+            this.lblLanguage.TabIndex = 0;
             // 
-            // btnProcessExclusionDown
+            // cmbLanguage
             // 
-            this.btnProcessExclusionDown.Image = global::SmartSystemMenu.Properties.Resources.ArrowDown;
-            this.btnProcessExclusionDown.Location = new System.Drawing.Point(406, 339);
-            this.btnProcessExclusionDown.Name = "btnProcessExclusionDown";
-            this.btnProcessExclusionDown.Size = new System.Drawing.Size(31, 23);
-            this.btnProcessExclusionDown.TabIndex = 2;
-            this.btnProcessExclusionDown.UseVisualStyleBackColor = true;
-            this.btnProcessExclusionDown.Click += new System.EventHandler(this.ButtonArrowDownClick);
-            // 
-            // btnProcessExclusionUp
-            // 
-            this.btnProcessExclusionUp.Image = global::SmartSystemMenu.Properties.Resources.ArrowUp;
-            this.btnProcessExclusionUp.Location = new System.Drawing.Point(369, 339);
-            this.btnProcessExclusionUp.Name = "btnProcessExclusionUp";
-            this.btnProcessExclusionUp.Size = new System.Drawing.Size(31, 23);
-            this.btnProcessExclusionUp.TabIndex = 1;
-            this.btnProcessExclusionUp.UseVisualStyleBackColor = true;
-            this.btnProcessExclusionUp.Click += new System.EventHandler(this.ButtonArrowUpClick);
-            // 
-            // btnAddProcessExclusion
-            // 
-            this.btnAddProcessExclusion.Location = new System.Drawing.Point(460, 339);
-            this.btnAddProcessExclusion.Name = "btnAddProcessExclusion";
-            this.btnAddProcessExclusion.Size = new System.Drawing.Size(31, 23);
-            this.btnAddProcessExclusion.TabIndex = 3;
-            this.btnAddProcessExclusion.Text = "+";
-            this.btnAddProcessExclusion.UseVisualStyleBackColor = true;
-            this.btnAddProcessExclusion.Click += new System.EventHandler(this.ButtonAddProcessExclusionClick);
-            // 
-            // gvProcessExclusions
-            // 
-            this.gvProcessExclusions.AllowUserToAddRows = false;
-            this.gvProcessExclusions.AllowUserToDeleteRows = false;
-            this.gvProcessExclusions.AllowUserToResizeColumns = false;
-            this.gvProcessExclusions.AllowUserToResizeRows = false;
-            this.gvProcessExclusions.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gvProcessExclusions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gvProcessExclusions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.gvProcessExclusions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvProcessExclusions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmProcessExclusionName,
-            this.clmProcessExclusionEdit,
-            this.clmProcessExcusionDelete});
-            this.gvProcessExclusions.GridColor = System.Drawing.SystemColors.Control;
-            this.gvProcessExclusions.Location = new System.Drawing.Point(6, 19);
-            this.gvProcessExclusions.MultiSelect = false;
-            this.gvProcessExclusions.Name = "gvProcessExclusions";
-            this.gvProcessExclusions.RowHeadersVisible = false;
-            this.gvProcessExclusions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.gvProcessExclusions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvProcessExclusions.Size = new System.Drawing.Size(485, 314);
-            this.gvProcessExclusions.TabIndex = 0;
-            this.gvProcessExclusions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellContentClick);
-            this.gvProcessExclusions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellDoubleClick);
-            // 
-            // clmProcessExclusionName
-            // 
-            this.clmProcessExclusionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmProcessExclusionName.Name = "clmProcessExclusionName";
-            this.clmProcessExclusionName.ReadOnly = true;
-            this.clmProcessExclusionName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmProcessExclusionName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmProcessExclusionEdit
-            // 
-            this.clmProcessExclusionEdit.HeaderText = "";
-            this.clmProcessExclusionEdit.Name = "clmProcessExclusionEdit";
-            this.clmProcessExclusionEdit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmProcessExclusionEdit.Text = "...";
-            this.clmProcessExclusionEdit.UseColumnTextForButtonValue = true;
-            this.clmProcessExclusionEdit.Width = 30;
-            // 
-            // clmProcessExcusionDelete
-            // 
-            this.clmProcessExcusionDelete.HeaderText = "";
-            this.clmProcessExcusionDelete.Name = "clmProcessExcusionDelete";
-            this.clmProcessExcusionDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmProcessExcusionDelete.Text = "-";
-            this.clmProcessExcusionDelete.UseColumnTextForButtonValue = true;
-            this.clmProcessExcusionDelete.Width = 30;
+            this.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLanguage.FormattingEnabled = true;
+            this.cmbLanguage.Location = new System.Drawing.Point(75, 15);
+            this.cmbLanguage.Name = "cmbLanguage";
+            this.cmbLanguage.Size = new System.Drawing.Size(166, 21);
+            this.cmbLanguage.TabIndex = 1;
             // 
             // tabpMenu
             // 
@@ -198,6 +125,26 @@
             this.grpbStartProgram.Size = new System.Drawing.Size(497, 368);
             this.grpbStartProgram.TabIndex = 0;
             this.grpbStartProgram.TabStop = false;
+            // 
+            // btnStartProgramDown
+            // 
+            this.btnStartProgramDown.Image = global::SmartSystemMenu.Properties.Resources.ArrowDown;
+            this.btnStartProgramDown.Location = new System.Drawing.Point(406, 339);
+            this.btnStartProgramDown.Name = "btnStartProgramDown";
+            this.btnStartProgramDown.Size = new System.Drawing.Size(31, 23);
+            this.btnStartProgramDown.TabIndex = 2;
+            this.btnStartProgramDown.UseVisualStyleBackColor = true;
+            this.btnStartProgramDown.Click += new System.EventHandler(this.ButtonArrowDownClick);
+            // 
+            // btnStartProgramUp
+            // 
+            this.btnStartProgramUp.Image = global::SmartSystemMenu.Properties.Resources.ArrowUp;
+            this.btnStartProgramUp.Location = new System.Drawing.Point(369, 339);
+            this.btnStartProgramUp.Name = "btnStartProgramUp";
+            this.btnStartProgramUp.Size = new System.Drawing.Size(31, 23);
+            this.btnStartProgramUp.TabIndex = 1;
+            this.btnStartProgramUp.UseVisualStyleBackColor = true;
+            this.btnStartProgramUp.Click += new System.EventHandler(this.ButtonArrowUpClick);
             // 
             // btnAddStartProgram
             // 
@@ -232,7 +179,7 @@
             this.gvStartProgram.RowHeadersVisible = false;
             this.gvStartProgram.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvStartProgram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvStartProgram.Size = new System.Drawing.Size(485, 314);
+            this.gvStartProgram.Size = new System.Drawing.Size(485, 315);
             this.gvStartProgram.TabIndex = 0;
             this.gvStartProgram.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewStartProgramCellContentClick);
             this.gvStartProgram.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewStartProgramCellDoubleClick);
@@ -296,25 +243,99 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
-            // btnStartProgramDown
+            // gvProcessExclusions
             // 
-            this.btnStartProgramDown.Image = global::SmartSystemMenu.Properties.Resources.ArrowDown;
-            this.btnStartProgramDown.Location = new System.Drawing.Point(406, 339);
-            this.btnStartProgramDown.Name = "btnStartProgramDown";
-            this.btnStartProgramDown.Size = new System.Drawing.Size(31, 23);
-            this.btnStartProgramDown.TabIndex = 2;
-            this.btnStartProgramDown.UseVisualStyleBackColor = true;
-            this.btnStartProgramDown.Click += new System.EventHandler(this.ButtonArrowDownClick);
+            this.gvProcessExclusions.AllowUserToAddRows = false;
+            this.gvProcessExclusions.AllowUserToDeleteRows = false;
+            this.gvProcessExclusions.AllowUserToResizeColumns = false;
+            this.gvProcessExclusions.AllowUserToResizeRows = false;
+            this.gvProcessExclusions.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gvProcessExclusions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gvProcessExclusions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.gvProcessExclusions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvProcessExclusions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmProcessExclusionName,
+            this.clmProcessExclusionEdit,
+            this.clmProcessExcusionDelete});
+            this.gvProcessExclusions.GridColor = System.Drawing.SystemColors.Control;
+            this.gvProcessExclusions.Location = new System.Drawing.Point(6, 19);
+            this.gvProcessExclusions.MultiSelect = false;
+            this.gvProcessExclusions.Name = "gvProcessExclusions";
+            this.gvProcessExclusions.RowHeadersVisible = false;
+            this.gvProcessExclusions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.gvProcessExclusions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvProcessExclusions.Size = new System.Drawing.Size(485, 289);
+            this.gvProcessExclusions.TabIndex = 0;
+            this.gvProcessExclusions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellContentClick);
+            this.gvProcessExclusions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellDoubleClick);
             // 
-            // btnStartProgramUp
+            // clmProcessExcusionDelete
             // 
-            this.btnStartProgramUp.Image = global::SmartSystemMenu.Properties.Resources.ArrowUp;
-            this.btnStartProgramUp.Location = new System.Drawing.Point(369, 339);
-            this.btnStartProgramUp.Name = "btnStartProgramUp";
-            this.btnStartProgramUp.Size = new System.Drawing.Size(31, 23);
-            this.btnStartProgramUp.TabIndex = 1;
-            this.btnStartProgramUp.UseVisualStyleBackColor = true;
-            this.btnStartProgramUp.Click += new System.EventHandler(this.ButtonArrowUpClick);
+            this.clmProcessExcusionDelete.HeaderText = "";
+            this.clmProcessExcusionDelete.Name = "clmProcessExcusionDelete";
+            this.clmProcessExcusionDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmProcessExcusionDelete.Text = "-";
+            this.clmProcessExcusionDelete.UseColumnTextForButtonValue = true;
+            this.clmProcessExcusionDelete.Width = 30;
+            // 
+            // clmProcessExclusionEdit
+            // 
+            this.clmProcessExclusionEdit.HeaderText = "";
+            this.clmProcessExclusionEdit.Name = "clmProcessExclusionEdit";
+            this.clmProcessExclusionEdit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmProcessExclusionEdit.Text = "...";
+            this.clmProcessExclusionEdit.UseColumnTextForButtonValue = true;
+            this.clmProcessExclusionEdit.Width = 30;
+            // 
+            // clmProcessExclusionName
+            // 
+            this.clmProcessExclusionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmProcessExclusionName.Name = "clmProcessExclusionName";
+            this.clmProcessExclusionName.ReadOnly = true;
+            this.clmProcessExclusionName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmProcessExclusionName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // btnAddProcessExclusion
+            // 
+            this.btnAddProcessExclusion.Location = new System.Drawing.Point(460, 313);
+            this.btnAddProcessExclusion.Name = "btnAddProcessExclusion";
+            this.btnAddProcessExclusion.Size = new System.Drawing.Size(31, 23);
+            this.btnAddProcessExclusion.TabIndex = 3;
+            this.btnAddProcessExclusion.Text = "+";
+            this.btnAddProcessExclusion.UseVisualStyleBackColor = true;
+            this.btnAddProcessExclusion.Click += new System.EventHandler(this.ButtonAddProcessExclusionClick);
+            // 
+            // btnProcessExclusionUp
+            // 
+            this.btnProcessExclusionUp.Image = global::SmartSystemMenu.Properties.Resources.ArrowUp;
+            this.btnProcessExclusionUp.Location = new System.Drawing.Point(369, 313);
+            this.btnProcessExclusionUp.Name = "btnProcessExclusionUp";
+            this.btnProcessExclusionUp.Size = new System.Drawing.Size(31, 23);
+            this.btnProcessExclusionUp.TabIndex = 1;
+            this.btnProcessExclusionUp.UseVisualStyleBackColor = true;
+            this.btnProcessExclusionUp.Click += new System.EventHandler(this.ButtonArrowUpClick);
+            // 
+            // btnProcessExclusionDown
+            // 
+            this.btnProcessExclusionDown.Image = global::SmartSystemMenu.Properties.Resources.ArrowDown;
+            this.btnProcessExclusionDown.Location = new System.Drawing.Point(406, 313);
+            this.btnProcessExclusionDown.Name = "btnProcessExclusionDown";
+            this.btnProcessExclusionDown.Size = new System.Drawing.Size(31, 23);
+            this.btnProcessExclusionDown.TabIndex = 2;
+            this.btnProcessExclusionDown.UseVisualStyleBackColor = true;
+            this.btnProcessExclusionDown.Click += new System.EventHandler(this.ButtonArrowDownClick);
+            // 
+            // grpbProcessExclusions
+            // 
+            this.grpbProcessExclusions.Controls.Add(this.btnProcessExclusionDown);
+            this.grpbProcessExclusions.Controls.Add(this.btnProcessExclusionUp);
+            this.grpbProcessExclusions.Controls.Add(this.btnAddProcessExclusion);
+            this.grpbProcessExclusions.Controls.Add(this.gvProcessExclusions);
+            this.grpbProcessExclusions.Location = new System.Drawing.Point(8, 42);
+            this.grpbProcessExclusions.Name = "grpbProcessExclusions";
+            this.grpbProcessExclusions.Size = new System.Drawing.Size(497, 342);
+            this.grpbProcessExclusions.TabIndex = 2;
+            this.grpbProcessExclusions.TabStop = false;
             // 
             // SettingsForm
             // 
@@ -333,11 +354,12 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.tabMain.ResumeLayout(false);
             this.tabpGeneral.ResumeLayout(false);
-            this.grpbProcessExclusions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gvProcessExclusions)).EndInit();
+            this.tabpGeneral.PerformLayout();
             this.tabpMenu.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProcessExclusions)).EndInit();
+            this.grpbProcessExclusions.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -347,11 +369,8 @@
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabpGeneral;
         private System.Windows.Forms.TabPage tabpMenu;
-        private System.Windows.Forms.GroupBox grpbProcessExclusions;
-        private System.Windows.Forms.DataGridView gvProcessExclusions;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnAddProcessExclusion;
         private System.Windows.Forms.ToolTip toolTipAddProcessName;
         private System.Windows.Forms.GroupBox grpbStartProgram;
         private System.Windows.Forms.Button btnAddStartProgram;
@@ -361,12 +380,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStartProgramArguments;
         private System.Windows.Forms.DataGridViewButtonColumn clmStartProgramEdit;
         private System.Windows.Forms.DataGridViewButtonColumn clmStartProgramDelete;
+        private System.Windows.Forms.Button btnStartProgramDown;
+        private System.Windows.Forms.Button btnStartProgramUp;
+        private System.Windows.Forms.ComboBox cmbLanguage;
+        private System.Windows.Forms.Label lblLanguage;
+        private System.Windows.Forms.GroupBox grpbProcessExclusions;
+        private System.Windows.Forms.Button btnProcessExclusionDown;
+        private System.Windows.Forms.Button btnProcessExclusionUp;
+        private System.Windows.Forms.Button btnAddProcessExclusion;
+        private System.Windows.Forms.DataGridView gvProcessExclusions;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmProcessExclusionName;
         private System.Windows.Forms.DataGridViewButtonColumn clmProcessExclusionEdit;
         private System.Windows.Forms.DataGridViewButtonColumn clmProcessExcusionDelete;
-        private System.Windows.Forms.Button btnProcessExclusionUp;
-        private System.Windows.Forms.Button btnProcessExclusionDown;
-        private System.Windows.Forms.Button btnStartProgramDown;
-        private System.Windows.Forms.Button btnStartProgramUp;
     }
 }

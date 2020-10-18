@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Text;
+using System.Threading;
 
 namespace SmartSystemMenu.Settings
 {
@@ -16,6 +17,8 @@ namespace SmartSystemMenu.Settings
 
         public bool ShowSystemTrayIcon { get; private set; }
 
+        public string LanguageName { get; set; }
+
         public LanguageSettings LanguageSettings { get; set; }
 
         public SmartSystemMenuSettings()
@@ -23,6 +26,7 @@ namespace SmartSystemMenu.Settings
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
             ShowSystemTrayIcon = true;
+            LanguageName = "";
             LanguageSettings = new LanguageSettings();
         }
 
@@ -101,6 +105,11 @@ namespace SmartSystemMenu.Settings
                 }
             }
 
+            if (string.Compare(LanguageName, other.LanguageName, StringComparison.CurrentCultureIgnoreCase) != 0)
+            {
+                return false;
+            }
+
             return true;
         }
 
@@ -118,6 +127,7 @@ namespace SmartSystemMenu.Settings
                 hashCode ^= startProgramItem.Title.GetHashCode() ^ startProgramItem.FileName.GetHashCode() ^ startProgramItem.Arguments.GetHashCode();
             }
 
+            hashCode ^= LanguageName.GetHashCode();
             return hashCode;
         }
 
@@ -126,7 +136,6 @@ namespace SmartSystemMenu.Settings
             var settings = new SmartSystemMenuSettings();
             var document = XDocument.Load(fileName);
             var languageDocument = XDocument.Load(languageFileName);
-            var languageItemPath = "/language/items/en/item";
 
             settings.ProcessExclusions = document
                 .XPathSelectElements("/smartSystemMenu/processExclusions/processName")
@@ -149,10 +158,30 @@ namespace SmartSystemMenu.Settings
                 settings.ShowSystemTrayIcon = false;
             }
 
-            if ((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-CN") || (System.Threading.Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
+            var languageName = "";
+            if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
             {
-                languageItemPath = "/language/items/cn/item";
+                languageName = languageElement.Attribute("name").Value.ToLower().Trim();
+                settings.LanguageName = languageName;
             }
+
+            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "zh-CN" || Thread.CurrentThread.CurrentCulture.Name == "zh-TW")
+            {
+                languageName = "cn";
+            }
+
+            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+            {
+                languageName = "ru";
+            }
+
+            if (languageName == "")
+            {
+                languageName = "en";
+            }
+
+            var languageItemPath = "/language/items/" + languageName + "/item";
             settings.LanguageSettings.Items = languageDocument
                 .XPathSelectElements(languageItemPath)
                 .Select(x => new LanguageItem
@@ -177,6 +206,9 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("arguments", x.Arguments))))),
                                  new XElement("systemTrayIcon",
                                      new XAttribute("show", settings.ShowSystemTrayIcon.ToString().ToLower())
+                                 ),
+                                 new XElement("language",
+                                     new XAttribute("name", settings.LanguageName.ToLower())
                                  )));
             Save(fileName, document);
         }

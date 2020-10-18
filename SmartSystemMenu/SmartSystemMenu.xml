@@ -17,4 +17,5 @@
     </startProgramItem>
   </menuItems>
   <systemTrayIcon show="true" />
+  <language name="" />
 </smartSystemMenu>
