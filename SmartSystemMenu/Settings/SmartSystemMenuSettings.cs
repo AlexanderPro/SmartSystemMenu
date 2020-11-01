@@ -171,6 +171,11 @@ namespace SmartSystemMenu.Settings
                 languageName = "cn";
             }
 
+            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ko-KR" || Thread.CurrentThread.CurrentCulture.Name == "ko-KP")
+            {
+                languageName = "ko";
+            }
+
             if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
             {
                 languageName = "ru";

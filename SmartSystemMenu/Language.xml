@@ -229,6 +229,120 @@
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="您应该手动重新启动应用程序以应用设置。" />
     </cn>
+    <ko>
+      <item name="information" value="정보" />
+      <item name="roll_up" value="접기" />
+      <item name="aero_glass" value="에어로 글래스" />
+      <item name="always_on_top" value="항상 위에 표시" />
+      <item name="send_to_bottom" value="맨 아래로 보내기" />
+      <item name="save_screenshot" value="스크린샷 저장" />
+      <item name="open_file_in_explorer" value="탐색기에서 파일 열기" />
+      <item name="copy_text_to_clipboard" value="클립보드에 텍스트 복사" />
+      <item name="drag_by_mouse" value="마우스로 드래그" />
+      <item name="size" value="크기 변경" />
+      <item name="size_default" value="기본" />
+      <item name="size_custom" value="사용자 정의..." />
+      <item name="move_to" value="이동" />
+      <item name="monitor" value="모니터링 " />
+      <item name="alignment" value="정렬" />
+      <item name="align_top_left" value="상단 왼쪽" />
+      <item name="align_top_center" value="상단 가운데" />
+      <item name="align_top_right" value="상단 우측" />
+      <item name="align_middle_left" value="중간 왼쪽" />
+      <item name="align_middle_center" value="중간 가운데" />
+      <item name="align_middle_right" value="중간 오른쪽" />
+      <item name="align_bottom_left" value="하단 왼쪽" />
+      <item name="align_bottom_center" value="하단 가운데" />
+      <item name="align_bottom_right" value="하단 오른쪽" />
+      <item name="align_default" value="기본" />
+      <item name="align_custom" value="사용자 정의..." />
+      <item name="transparency" value="투명도" />
+      <item name="trans_opaque" value=" (불투명)" />
+      <item name="trans_invisible" value=" (투명)" />
+      <item name="trans_default" value="기본" />
+      <item name="trans_custom" value="사용자 정의..." />
+      <item name="priority" value="우선 순위" />
+      <item name="priority_real_time" value="실시간: 24" />
+      <item name="priority_high" value="높음: 13" />
+      <item name="priority_above_normal" value="보통 초과: 10" />
+      <item name="priority_normal" value="보통: 8" />
+      <item name="priority_below_normal" value="보통 미만: 6" />
+      <item name="priority_idle" value="유휴: 4" />
+      <item name="system_tray" value="시스템 트레이" />
+      <item name="minimize_to_systemtray" value="트레이로 최소화" />
+      <item name="minimize_always_to_systemtray" value="항상 트레이로 최소화" />
+      <item name="other_windows" value="다른 창" />
+      <item name="minimize_other_windows" value="최소화" />
+      <item name="close_other_windows" value="닫기" />
+      <item name="start_program" value="시작할 프로그램" />
+      <item name="tab_general" value="일반" />
+      <item name="lbl_handle" value="핸들:" />
+      <item name="lbl_caption" value="캡션:" />
+      <item name="lbl_class" value="클래스:" />
+      <item name="lbl_style" value="스타일:" />
+      <item name="lbl_rectangle" value="사각형:" />
+      <item name="tab_process" value="프로세스" />
+      <item name="lbl_module_name" value="모듈 이름:" />
+      <item name="lbl_module_path" value="모듈 경로:" />
+      <item name="lbl_process_id" value="프로세스 ID:" />
+      <item name="lbl_thread_id" value="스레드 ID:" />
+      <item name="save_screenshot_title" value="창 스크린샷 저장" />
+      <item name="save_screenshot_filename" value="창 스크린샷" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Bitmap 이미지 (*.bmp)|*.bmp|Gif 이미지 (*.gif)|*.gif|JPEG 이미지 (*.jpeg)|*.jpeg|Png 이미지 (*.png)|*.png|Tiff 이미지 (*.tiff)|*.tiff|Wmf 이미지 (*.wmf)|*.wmf" />
+      <item name="size_form" value="크기 저장" />
+      <item name="size_btn_apply" value="적용" />
+      <item name="lbl_height" value="높이:" />
+      <item name="lbl_width" value="너비:" />
+      <item name="trans_form" value="투명도 설정" />
+      <item name="trans_btn_apply" value="적용" />
+      <item name="align_form" value="위치 설정" />
+      <item name="align_btn_apply" value="적용" />
+      <item name="lbl_top" value="위:" />
+      <item name="lbl_left" value="왼쪽:" />
+      <item name="mi_auto_start" value="프로그램 자동 시작" />
+      <item name="mi_settings" value="설정..." />
+      <item name="mi_about" value="정보" />
+      <item name="mi_exit" value="종료" />
+      <item name="about_form" value="정보 " />
+      <item name="about_btn_ok" value="확인" />
+      <item name="settings_form" value="설정" />
+      <item name="tab_settings_general" value="일반" />
+      <item name="grpb_process_exclusions" value="제외할 프로세스" />
+      <item name="clm_process_exclusion_name" value="파일 이름" />
+      <item name="clm_process_exclusion_edit" value="편집" />
+      <item name="clm_process_exclusion_delete" value="삭제" />
+      <item name="btn_process_exclusion_up" value="프로세스 위로 이동" />
+      <item name="btn_process_exclusion_down" value="프로세스 아래로 이동" />
+      <item name="btn_add_process_exclusion" value="프로세스 이름 추가" />
+      <item name="tab_settings_menu" value="메뉴" />
+      <item name="grpb_start_program" value="SmartSystemMenu 메뉴 항목 시작" />
+      <item name="clm_start_program_title" value="제목" />
+      <item name="clm_start_program_path" value="파일 이름" />
+      <item name="clm_start_program_arguments" value="정렬" />
+      <item name="clm_start_program_edit" value="편집" />
+      <item name="clm_start_program_delete" value="삭제" />
+      <item name="btn_start_program_up" value="프로그램 위로 이동" />
+      <item name="btn_start_program_down" value="프로그램 아래로 이동" />
+      <item name="btn_add_start_program" value="시작할 프로그램 추가" />
+      <item name="settings_btn_apply" value="확인" />
+      <item name="settings_btn_cancel" value="취소" />
+      <item name="process_name_form" value="제외할 프로세스" />
+      <item name="process_lbl_file_name" value="파일 이름:" />
+      <item name="process_btn_apply" value="확인" />
+      <item name="process_btn_cancel" value="취소" />
+      <item name="process_browse_file_filter" value="실행 파일 (*.exe)|*.exe|모든 파일 (*.*)|*.*" />
+      <item name="start_program_form" value="시작할 프로그램" />
+      <item name="start_program_lbl_title" value="제목:" />
+      <item name="start_program_lbl_file_name" value="파일 이름:" />
+      <item name="start_program_lbl_arguments" value="정렬:" />
+      <item name="start_program_btn_apply" value="확인" />
+      <item name="start_program_btn_Cancel" value="취소" />
+      <item name="start_program_browse_file_filter" value="실행 파일 (*.exe)|*.exe|모든 파일 (*.*)|*.*" />
+      <item name="lbl_language" value="언어" />
+      <item name="message_box_attention_title" value="알림" />
+      <item name="message_box_attention_content" value="설정을 적용하려면 프로그램을 수동으로 재시작해야 합니다." />
+    </ko>
     <ru>
       <item name="information" value="Информация" />
       <item name="roll_up" value="Свернуть вверх" />

@@ -80,6 +80,7 @@ namespace SmartSystemMenu.Forms
                 new { Text = "", Value = "" },
                 new { Text = "English", Value = "en" },
                 new { Text = "中文", Value = "cn" },
+                new { Text = "한국어", Value = "ko" },
                 new { Text = "Русский", Value = "ru" }
             };
 
