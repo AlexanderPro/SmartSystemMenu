@@ -6,7 +6,9 @@ namespace SmartSystemMenu.Forms
 {
     partial class AboutForm : Form
     {
-        private const string URL = "https://github.com/AlexanderPro/SmartSystemMenu";
+        private const string URL_SMART_SYSTEM_MENU = "https://github.com/AlexanderPro/SmartSystemMenu";
+        private const string URL_LIGHT_APIS = "https://github.com/LightAPIs";
+        private const string URL_JAEHYUNG_LEE = "http://www.kolanp.com";
 
         public AboutForm(SmartSystemMenuSettings settings)
         {
@@ -15,7 +17,7 @@ namespace SmartSystemMenu.Forms
             Text = settings.LanguageSettings.GetValue("about_form") + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyProductVersion);
             lblCopyright.Text = string.Format("{0}-{1} {2}", AssemblyUtils.AssemblyCopyright, DateTime.Now.Year, AssemblyUtils.AssemblyCompany);
-            linkUrl.Text = URL;
+            linkUrl.Text = URL_SMART_SYSTEM_MENU;
         }
 
         private void CloseClick(object sender, EventArgs e)
@@ -27,7 +29,8 @@ namespace SmartSystemMenu.Forms
         {
             try
             {
-                SystemUtils.RunAsDesktopUser(SystemUtils.GetDefaultBrowserModuleName(), URL);
+                var controlName = ((LinkLabel)sender).Name;
+                SystemUtils.RunAsDesktopUser(SystemUtils.GetDefaultBrowserModuleName(), controlName == "linkLightAPIs" ? URL_LIGHT_APIS : controlName == "linkJaehyungLee" ? URL_JAEHYUNG_LEE : URL_SMART_SYSTEM_MENU);
             }
             catch
             {
