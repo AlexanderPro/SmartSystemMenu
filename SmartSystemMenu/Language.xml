@@ -229,6 +229,120 @@
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="您应该手动重新启动应用程序以应用设置。" />
     </cn>
+    <ja>
+      <item name="information" value="情報" />
+      <item name="roll_up" value="ロールアップ" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="常に手前に表示" />
+      <item name="send_to_bottom" value="背面へ送る" />
+      <item name="save_screenshot" value="スクリーンショットを撮る" />
+      <item name="open_file_in_explorer" value="エクスプローラーで開く" />
+      <item name="copy_text_to_clipboard" value="クリップボードに文字列をコピーする" />
+      <item name="drag_by_mouse" value="マウスでドラッグする" />
+      <item name="size" value="サイズ変更" />
+      <item name="size_default" value="デフォルト" />
+      <item name="size_custom" value="カストム" />
+      <item name="move_to" value="移動" />
+      <item name="monitor" value="モニター" />
+      <item name="alignment" value="位置合わせ" />
+      <item name="align_top_left" value="左上" />
+      <item name="align_top_center" value="上" />
+      <item name="align_top_right" value="右上" />
+      <item name="align_middle_left" value="左" />
+      <item name="align_middle_center" value="央中" />
+      <item name="align_middle_right" value="右" />
+      <item name="align_bottom_left" value="左下" />
+      <item name="align_bottom_center" value="下" />
+      <item name="align_bottom_right" value="右下" />
+      <item name="align_default" value="デフォルト" />
+      <item name="align_custom" value="カストム" />
+      <item name="transparency" value="透明度" />
+      <item name="trans_opaque" value=" (不透明)" />
+      <item name="trans_invisible" value=" (透明)" />
+      <item name="trans_default" value="デフォルト" />
+      <item name="trans_custom" value="カストム" />
+      <item name="priority" value="優先度の設定" />
+      <item name="priority_real_time" value="リアルタイム： 24" />
+      <item name="priority_high" value="高： 13" />
+      <item name="priority_above_normal" value="通常以上： 10" />
+      <item name="priority_normal" value="通常： 8" />
+      <item name="priority_below_normal" value="通常以下： 6" />
+      <item name="priority_idle" value="低： 4" />
+      <item name="system_tray" value="システムトレイ" />
+      <item name="minimize_to_systemtray" value="システムトレイへ最小化" />
+      <item name="minimize_always_to_systemtray" value="常にシステムトレイへ最小化" />
+      <item name="other_windows" value="その他画面" />
+      <item name="minimize_other_windows" value="最小化" />
+      <item name="close_other_windows" value="閉じる" />
+      <item name="start_program" value="起動プログラム" />
+      <item name="tab_general" value="全般" />
+      <item name="lbl_handle" value="ハンドル:" />
+      <item name="lbl_caption" value="キャプション:" />
+      <item name="lbl_class" value="クラス:" />
+      <item name="lbl_style" value="スタイル:" />
+      <item name="lbl_rectangle" value="四角形:" />
+      <item name="tab_process" value="プロセス" />
+      <item name="lbl_module_name" value="モジュール名:" />
+      <item name="lbl_module_path" value="モジュールパス:" />
+      <item name="lbl_process_id" value="プロセスID：" />
+      <item name="lbl_thread_id" value="スレッドID：" />
+      <item name="save_screenshot_title" value="ウィンドウスクリーンショット保存" />
+      <item name="save_screenshot_filename" value="ウィンドウスクリーンショット" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
+      <item name="save_screenshot_filter" value="サイズ" />
+      <item name="size_btn_apply" value="適用" />
+      <item name="lbl_height" value="高さ：" />
+      <item name="lbl_width" value="幅：" />
+      <item name="trans_form" value="透明度" />
+      <item name="trans_btn_apply" value="適用" />
+      <item name="align_form" value="位置設定" />
+      <item name="align_btn_apply" value="適用" />
+      <item name="lbl_top" value="上:" />
+      <item name="lbl_left" value="左:" />
+      <item name="mi_auto_start" value="自動起動" />
+      <item name="mi_settings" value="設定" />
+      <item name="mi_about" value="プログラム関連情報" />
+      <item name="mi_exit" value="終了" />
+      <item name="about_form" value="プログラム関連情報" />
+      <item name="about_btn_ok" value="OK" />
+      <item name="settings_form" value="設定" />
+      <item name="tab_settings_general" value="全般" />
+      <item name="grpb_process_exclusions" value="プロセスの除外" />
+      <item name="clm_process_exclusion_name" value="プロセス名" />
+      <item name="clm_process_exclusion_edit" value="編集" />
+      <item name="clm_process_exclusion_delete" value="削除" />
+      <item name="btn_process_exclusion_up" value="上へ" />
+      <item name="btn_process_exclusion_down" value="下へ" />
+      <item name="btn_add_process_exclusion" value="除外の追加" />
+      <item name="tab_settings_menu" value="メニュー" />
+      <item name="grpb_start_program" value="起動プログラムメニュー項目" />
+      <item name="clm_start_program_title" value="タイトル" />
+      <item name="clm_start_program_path" value="ファイル名" />
+      <item name="clm_start_program_arguments" value="引数" />
+      <item name="clm_start_program_edit" value="編集" />
+      <item name="clm_start_program_delete" value="削除" />
+      <item name="btn_start_program_up" value="上へ" />
+      <item name="btn_start_program_down" value="下へ" />
+      <item name="btn_add_start_program" value="起動プログラムの追加" />
+      <item name="settings_btn_apply" value="適用" />
+      <item name="settings_btn_cancel" value="キャンセル" />
+      <item name="process_name_form" value="プロセスの除外" />
+      <item name="process_lbl_file_name" value="プロセス名：" />
+      <item name="process_btn_apply" value="適用" />
+      <item name="process_btn_cancel" value="キャンセル" />
+      <item name="process_browse_file_filter" value="実行ファイル(*.exe)|*.exe|全てのファイル(*.*)|*.*" />
+      <item name="start_program_form" value="起動プログラム" />
+      <item name="start_program_lbl_title" value="タイトル：" />
+      <item name="start_program_lbl_file_name" value="ファイル名：" />
+      <item name="start_program_lbl_arguments" value="引数" />
+      <item name="start_program_btn_apply" value="適用" />
+      <item name="start_program_btn_Cancel" value="キャンセル" />
+      <item name="start_program_browse_file_filter" value="実行ファイル(*.exe)|*.exe|全てのファイル(*.*)|*.*" />
+      <item name="lbl_language" value="言語" />
+      <item name="message_box_attention_title" value="注意" />
+      <item name="message_box_attention_content" value="変更後設定が有効になるように、手動でアプリを再起動してください。" />
+    </ja>
     <ko>
       <item name="information" value="정보" />
       <item name="roll_up" value="접기" />
