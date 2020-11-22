@@ -36,7 +36,7 @@ namespace SmartSystemMenu.Forms
                 _window.ShowNormal();
                 _window.SetPosition(left, top);
                 _window.Menu.UncheckAlignmentMenu();
-                _window.Menu.CheckMenuItem(SystemMenu.SC_ALIGN_CUSTOM, true);
+                _window.Menu.CheckMenuItem(MenuItemId.SC_ALIGN_CUSTOM, true);
             }
             catch
             {

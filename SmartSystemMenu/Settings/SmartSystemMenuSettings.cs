@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Text;
 using System.Threading;
+using SmartSystemMenu.HotKeys;
 
 namespace SmartSystemMenu.Settings
 {
@@ -41,7 +42,7 @@ namespace SmartSystemMenu.Settings
 
             foreach (var menuItem in MenuItems.StartProgramItems)
             {
-                settings.MenuItems.StartProgramItems.Add(new StartProgramItem { Title = menuItem.Title, FileName = menuItem.FileName, Arguments = menuItem.Arguments });
+                settings.MenuItems.StartProgramItems.Add(new StartProgramMenuItem { Title = menuItem.Title, FileName = menuItem.FileName, Arguments = menuItem.Arguments });
             }
 
             foreach (var languageItem in LanguageSettings.Items)
@@ -145,10 +146,21 @@ namespace SmartSystemMenu.Settings
 
             settings.MenuItems.StartProgramItems = document
                 .XPathSelectElements("/smartSystemMenu/menuItems/startProgramItem/item")
-                .Select(x => new StartProgramItem {
+                .Select(x => new StartProgramMenuItem {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
                     FileName = x.Attribute("fileName") != null ? x.Attribute("fileName").Value : "",
                     Arguments = x.Attribute("arguments") != null ? x.Attribute("arguments").Value : "",
+                })
+                .ToList();
+
+            settings.MenuItems.Items = document
+                .XPathSelectElements("/smartSystemMenu/menuItems/item")
+                .Select(x => new MenuItem {
+                   Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
+                   HotKeyEnabled = x.Attribute("hotKeyEnabled") != null && !string.IsNullOrEmpty(x.Attribute("hotKeyEnabled").Value) ? x.Attribute("hotKeyEnabled").Value.ToLower() == "true" : false,
+                   Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
+                   Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
+                   Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : 0
                 })
                 .ToList();
 
@@ -210,6 +222,12 @@ namespace SmartSystemMenu.Settings
             document.Add(new XElement("smartSystemMenu",
                                  new XElement("processExclusions", settings.ProcessExclusions.Select(x => new XElement("processName", x))),
                                  new XElement("menuItems",
+                                     new XElement("item", settings.MenuItems.Items.Select(x => new XElement("item",
+                                         new XAttribute("name", x.Name),
+                                         new XAttribute("hotKeyEnabled", x.HotKeyEnabled.ToString().ToLower()),
+                                         new XAttribute("key1", ((int)x.Key1).ToString()),
+                                         new XAttribute("key2", ((int)x.Key2).ToString()),
+                                         new XAttribute("key3", ((int)x.Key3).ToString())))),
                                      new XElement("startProgramItem", settings.MenuItems.StartProgramItems.Select(x => new XElement("item", 
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),

@@ -242,7 +242,7 @@ namespace SmartSystemMenu.Forms
 
             foreach (DataGridViewRow row in gvStartProgram.Rows)
             {
-                settings.MenuItems.StartProgramItems.Add(new StartProgramItem { Title = row.Cells[0].Value.ToString(), FileName = row.Cells[1].Value.ToString(), Arguments = row.Cells[2].Value.ToString() });
+                settings.MenuItems.StartProgramItems.Add(new StartProgramMenuItem { Title = row.Cells[0].Value.ToString(), FileName = row.Cells[1].Value.ToString(), Arguments = row.Cells[2].Value.ToString() });
             }
 
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();

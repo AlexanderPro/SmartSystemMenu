@@ -76,6 +76,7 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Forms\StartProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,10 +95,16 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HotKeys\HotKeyHook.cs" />
+    <Compile Include="HotKeys\HotKeyHookEventArgs.cs" />
+    <Compile Include="HotKeys\VirtualKey.cs" />
+    <Compile Include="HotKeys\VirtualKeyModifier.cs" />
+    <Compile Include="MenuItemId.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />
+    <Compile Include="Settings\MenuItem.cs" />
     <Compile Include="Settings\MenuItems.cs" />
     <Compile Include="Settings\LanguageItem.cs" />
-    <Compile Include="Settings\StartProgramItem.cs" />
+    <Compile Include="Settings\StartProgramMenuItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="AutoStarter.cs" />

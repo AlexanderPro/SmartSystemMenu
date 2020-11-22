@@ -9,6 +9,64 @@
     <processName>code.exe</processName>
   </processExclusions>
   <menuItems>
+    <item name="information" hotKeyEnabled="true" key1="17" key2="16" key3="73" />
+    <item name="roll_up" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="aero_glass" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="always_on_top" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="send_to_bottom" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="save_screenshot" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="open_file_in_explorer" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="copy_text_to_clipboard" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="drag_by_mouse" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="640_480" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="720_480" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="720_576" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="800_600" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1024_768" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1152_864" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1280_768" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1280_800" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1280_960" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1280_1024" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1440_900" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1600_900" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="1680_1050" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="size_default" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="size_custom" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_top_left" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_top_center" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_top_right" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_middle_left" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_middle_center" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_middle_right" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_bottom_left" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_bottom_center" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_bottom_right" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_default" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_custom" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="trans_opaque" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="trans_invisible" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="trans_default" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="trans_custom" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="10%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="20%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="30%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="40%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="50%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="60%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="70%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="80%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="90%" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="priority_real_time" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="priority_high" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="priority_above_normal" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="priority_normal" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="priority_below_normal" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="priority_idle" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="minimize_to_systemtray" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="minimize_always_to_systemtray" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="minimize_other_windows" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="close_other_windows" hotKeyEnabled="false" key1="" key2="" key3="" />
     <startProgramItem>
       <item title="Notepad" fileName="notepad.exe" arguments="" />
       <item title="Calculator" fileName="calc.exe" arguments="" />

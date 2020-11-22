@@ -251,5 +251,17 @@ namespace SmartSystemMenu.Native
 
         [DllImport("advapi32", CharSet = CharSet.Unicode)]
         public static extern bool CreateProcessWithTokenW(IntPtr hToken, int dwLogonFlags, string lpApplicationName, string lpCommandLine, int dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr SetWindowsHookEx(int idHook, KeyboardHookProc callback, IntPtr hInstance, uint threadId);
+
+        [DllImport("user32.dll")]
+        public static extern bool UnhookWindowsHookEx(IntPtr handleHook);
+
+        [DllImport("user32.dll")]
+        public static extern int CallNextHookEx(IntPtr handleHook, int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr GetModuleHandle(string name);
     }
 }

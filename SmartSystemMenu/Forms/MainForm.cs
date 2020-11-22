@@ -11,6 +11,7 @@ using System.Threading;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Hooks;
+using SmartSystemMenu.HotKeys;
 using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
@@ -29,6 +30,7 @@ namespace SmartSystemMenu.Forms
 
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
+        private HotKeyHook _hotKeyHook;
         private Process _64BitProcess;
 #endif
 
@@ -81,6 +83,10 @@ namespace SmartSystemMenu.Forms
             _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
+
+            _hotKeyHook = new HotKeyHook();
+            _hotKeyHook.Hooked += HotKeyHooked;
+            _hotKeyHook.Start(Process.GetCurrentProcess().MainModule.ModuleName, _settings.MenuItems.Items);
 #endif
             _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, _settings.LanguageSettings, new string[] { SHELL_WINDOW_NAME }).ToList();
 
@@ -104,26 +110,26 @@ namespace SmartSystemMenu.Forms
                 window.Menu.Create();
                 int menuItemId = window.ProcessPriority.GetMenuItemId();
                 window.Menu.CheckMenuItem(menuItemId, true);
-                if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
+                if (window.AlwaysOnTop) window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
             }
 
-            _getMsgHook = new GetMsgHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
+            _getMsgHook = new GetMsgHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             _getMsgHook.GetMsg += WindowGetMsg;
             _getMsgHook.Start();
 
-            _shellHook = new ShellHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
+            _shellHook = new ShellHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             _shellHook.WindowCreated += WindowCreated;
             _shellHook.WindowDestroyed += WindowDestroyed;
             _shellHook.Start();
 
-            _cbtHook = new CBTHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
+            _cbtHook = new CBTHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             _cbtHook.WindowCreated += WindowCreated;
             _cbtHook.WindowDestroyed += WindowDestroyed;
             _cbtHook.MoveSize += WindowMoveSize;
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
-            _mouseHook = new MouseHook(Handle, SystemMenu.SC_DRAG_BY_MOUSE);
+            _mouseHook = new MouseHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             _mouseHook.Start();
 
             Hide();
@@ -160,6 +166,11 @@ namespace SmartSystemMenu.Forms
             if (_systemTrayMenu != null)
             {
                 _systemTrayMenu.Icon.Visible = false;
+            }
+
+            if (_hotKeyHook != null)
+            {
+                _hotKeyHook.Dispose();
             }
 
             if (Environment.Is64BitOperatingSystem && _64BitProcess != null && !_64BitProcess.HasExited)
@@ -292,7 +303,7 @@ namespace SmartSystemMenu.Forms
                     window.Menu.Create();
                     int menuItemId = window.ProcessPriority.GetMenuItemId();
                     window.Menu.CheckMenuItem(menuItemId, true);
-                    if (window.AlwaysOnTop) window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, true);
+                    if (window.AlwaysOnTop) window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
                     _windows.Add(window);
                 }
             }
@@ -317,7 +328,7 @@ namespace SmartSystemMenu.Forms
                 {
                     window.Menu.UncheckSizeMenu();
                 }
-                if (e.LParam.ToInt64() == NativeConstants.SW_MINIMIZE && window.Menu.IsMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
+                if (e.LParam.ToInt64() == NativeConstants.SW_MINIMIZE && window.Menu.IsMenuItemChecked(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
                 {
                     window.MoveToSystemTray();
                 }
@@ -373,27 +384,27 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
-                        case SystemMenu.SC_MINIMIZE_TO_SYSTEMTRAY:
+                        case MenuItemId.SC_MINIMIZE_TO_SYSTEMTRAY:
                             {
                                 window.MinimizeToSystemTray();
                             }
                             break;
 
-                        case SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY:
+                        case MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY:
                             {
-                                bool r = window.Menu.IsMenuItemChecked(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
-                                window.Menu.CheckMenuItem(SystemMenu.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, !r);
+                                bool r = window.Menu.IsMenuItemChecked(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, !r);
                             }
                             break;
 
-                        case SystemMenu.SC_INFORMATION:
+                        case MenuItemId.SC_INFORMATION:
                             {
                                 var infoForm = new InfoForm(window, _settings);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;
 
-                        case SystemMenu.SC_SAVE_SCREEN_SHOT:
+                        case MenuItemId.SC_SAVE_SCREEN_SHOT:
                             {
                                 var bitmap = window.PrintWindow();
                                 var dialog = new SaveFileDialog
@@ -419,7 +430,7 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
-                        case SystemMenu.SC_COPY_TEXT_TO_CLIPBOARD:
+                        case MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD:
                             {
                                 var text = window.ExtractText();
                                 if (text != null)
@@ -429,14 +440,14 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
-                        case SystemMenu.SC_DRAG_BY_MOUSE:
+                        case MenuItemId.SC_DRAG_BY_MOUSE:
                             {
-                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_DRAG_BY_MOUSE);
-                                window.Menu.CheckMenuItem(SystemMenu.SC_DRAG_BY_MOUSE, !isChecked);
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DRAG_BY_MOUSE);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_DRAG_BY_MOUSE, !isChecked);
                             }
                             break;
 
-                        case SystemMenu.SC_OPEN_FILE_IN_EXPLORER:
+                        case MenuItemId.SC_OPEN_FILE_IN_EXPLORER:
                             {
                                 try
                                 {
@@ -448,8 +459,8 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
-                        case SystemMenu.SC_MINIMIZE_OTHER_WINDOWS:
-                        case SystemMenu.SC_CLOSE_OTHER_WINDOWS:
+                        case MenuItemId.SC_MINIMIZE_OTHER_WINDOWS:
+                        case MenuItemId.SC_CLOSE_OTHER_WINDOWS:
                             {
                                 foreach (var process in Process.GetProcesses())
                                 {
@@ -466,7 +477,7 @@ namespace SmartSystemMenu.Forms
                                                     var className = builder.ToString().Trim();
                                                     if (className == "CabinetWClass" || className == "ExplorerWClass")
                                                     {
-                                                        if (lowOrder == SystemMenu.SC_CLOSE_OTHER_WINDOWS)
+                                                        if (lowOrder == MenuItemId.SC_CLOSE_OTHER_WINDOWS)
                                                         {
                                                             NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
                                                         }
@@ -479,7 +490,7 @@ namespace SmartSystemMenu.Forms
                                             }
                                             else
                                             {
-                                                if (lowOrder == SystemMenu.SC_CLOSE_OTHER_WINDOWS)
+                                                if (lowOrder == MenuItemId.SC_CLOSE_OTHER_WINDOWS)
                                                 {
                                                     NativeMethods.PostMessage(process.MainWindowHandle, NativeConstants.WM_CLOSE, 0, 0);
                                                 }
@@ -497,60 +508,60 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
-                        case SystemMenu.SC_TOPMOST:
+                        case MenuItemId.SC_TOPMOST:
                             {
-                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_TOPMOST);
-                                window.Menu.CheckMenuItem(SystemMenu.SC_TOPMOST, !isChecked);
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_TOPMOST);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, !isChecked);
                                 window.MakeTopMost(!isChecked);
                             }
                             break;
 
-                        case SystemMenu.SC_SEND_TO_BOTTOM:
+                        case MenuItemId.SC_SEND_TO_BOTTOM:
                             {
                                 window.SendToBottom();
                             }
                             break;
 
-                        case SystemMenu.SC_AERO_GLASS:
+                        case MenuItemId.SC_AERO_GLASS:
                             {
-                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_AERO_GLASS);
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_AERO_GLASS);
                                 var version = Environment.OSVersion.Version;
                                 if (version.Major == 6 && (version.Minor == 0 || version.Minor == 1))
                                 {
                                     window.AeroGlassForVistaAndSeven(!isChecked);
-                                    window.Menu.CheckMenuItem(SystemMenu.SC_AERO_GLASS, !isChecked);
+                                    window.Menu.CheckMenuItem(MenuItemId.SC_AERO_GLASS, !isChecked);
                                 }
                                 else if (version.Major >= 6)
                                 {
                                     window.AeroGlassForEightAndHigher(!isChecked);
-                                    window.Menu.CheckMenuItem(SystemMenu.SC_AERO_GLASS, !isChecked);
+                                    window.Menu.CheckMenuItem(MenuItemId.SC_AERO_GLASS, !isChecked);
                                 }
                             }
                             break;
 
-                        case SystemMenu.SC_ROLLUP:
+                        case MenuItemId.SC_ROLLUP:
                             {
-                                var isChecked = window.Menu.IsMenuItemChecked(SystemMenu.SC_ROLLUP);
-                                window.Menu.CheckMenuItem(SystemMenu.SC_ROLLUP, !isChecked);
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_ROLLUP);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_ROLLUP, !isChecked);
                                 if (!isChecked)
                                 {
                                     window.RollUp();
                                     window.Menu.UncheckMenuItems(
-                                    SystemMenu.SC_SIZE_640_480,
-                                    SystemMenu.SC_SIZE_720_480,
-                                    SystemMenu.SC_SIZE_720_576,
-                                    SystemMenu.SC_SIZE_800_600,
-                                    SystemMenu.SC_SIZE_1024_768,
-                                    SystemMenu.SC_SIZE_1152_864,
-                                    SystemMenu.SC_SIZE_1280_768,
-                                    SystemMenu.SC_SIZE_1280_800,
-                                    SystemMenu.SC_SIZE_1280_960,
-                                    SystemMenu.SC_SIZE_1280_1024,
-                                    SystemMenu.SC_SIZE_1440_900,
-                                    SystemMenu.SC_SIZE_1600_900,
-                                    SystemMenu.SC_SIZE_1680_1050,
-                                    SystemMenu.SC_SIZE_DEFAULT,
-                                    SystemMenu.SC_SIZE_CUSTOM);
+                                    MenuItemId.SC_SIZE_640_480,
+                                    MenuItemId.SC_SIZE_720_480,
+                                    MenuItemId.SC_SIZE_720_576,
+                                    MenuItemId.SC_SIZE_800_600,
+                                    MenuItemId.SC_SIZE_1024_768,
+                                    MenuItemId.SC_SIZE_1152_864,
+                                    MenuItemId.SC_SIZE_1280_768,
+                                    MenuItemId.SC_SIZE_1280_800,
+                                    MenuItemId.SC_SIZE_1280_960,
+                                    MenuItemId.SC_SIZE_1280_1024,
+                                    MenuItemId.SC_SIZE_1440_900,
+                                    MenuItemId.SC_SIZE_1600_900,
+                                    MenuItemId.SC_SIZE_1680_1050,
+                                    MenuItemId.SC_SIZE_DEFAULT,
+                                    MenuItemId.SC_SIZE_CUSTOM);
                                 }
                                 else
                                 {
@@ -560,98 +571,98 @@ namespace SmartSystemMenu.Forms
                             break;
 
 
-                        case SystemMenu.SC_SIZE_DEFAULT:
+                        case MenuItemId.SC_SIZE_DEFAULT:
                             {
                                 window.Menu.UncheckSizeMenu();
-                                window.Menu.CheckMenuItem(SystemMenu.SC_SIZE_DEFAULT, true);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_SIZE_DEFAULT, true);
                                 window.ShowNormal();
                                 window.RestoreSize();
-                                window.Menu.UncheckMenuItems(SystemMenu.SC_ROLLUP);
+                                window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
                             }
                             break;
 
-                        case SystemMenu.SC_SIZE_CUSTOM:
+                        case MenuItemId.SC_SIZE_CUSTOM:
                             {
                                 var sizeForm = new SizeForm(window, _settings);
                                 sizeForm.Show(window.Win32Window);
                             }
                             break;
 
-                        case SystemMenu.SC_TRANS_DEFAULT:
+                        case MenuItemId.SC_TRANS_DEFAULT:
                             {
                                 window.Menu.UncheckTransparencyMenu();
-                                window.Menu.CheckMenuItem(SystemMenu.SC_TRANS_DEFAULT, true);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_DEFAULT, true);
                                 window.RestoreTransparency();
                             }
                             break;
 
-                        case SystemMenu.SC_TRANS_CUSTOM:
+                        case MenuItemId.SC_TRANS_CUSTOM:
                             {
                                 var opacityForm = new TransparencyForm(window, _settings);
                                 opacityForm.Show(window.Win32Window);
                             }
                             break;
 
-                        case SystemMenu.SC_ALIGN_DEFAULT:
+                        case MenuItemId.SC_ALIGN_DEFAULT:
                             {
                                 window.Menu.UncheckAlignmentMenu();
-                                window.Menu.CheckMenuItem(SystemMenu.SC_ALIGN_DEFAULT, true);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_ALIGN_DEFAULT, true);
                                 window.RestorePosition();
                             }
                             break;
 
-                        case SystemMenu.SC_ALIGN_CUSTOM:
+                        case MenuItemId.SC_ALIGN_CUSTOM:
                             {
                                 var positionForm = new PositionForm(window, _settings);
                                 positionForm.Show(window.Win32Window);
                             }
                             break;
 
-                        case SystemMenu.SC_SIZE_640_480: SetSizeMenuItem(window, SystemMenu.SC_SIZE_640_480, 640, 480); break;
-                        case SystemMenu.SC_SIZE_720_480: SetSizeMenuItem(window, SystemMenu.SC_SIZE_720_480, 720, 480); break;
-                        case SystemMenu.SC_SIZE_720_576: SetSizeMenuItem(window, SystemMenu.SC_SIZE_720_576, 720, 576); break;
-                        case SystemMenu.SC_SIZE_800_600: SetSizeMenuItem(window, SystemMenu.SC_SIZE_800_600, 800, 600); break;
-                        case SystemMenu.SC_SIZE_1024_768: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1024_768, 1024, 768); break;
-                        case SystemMenu.SC_SIZE_1152_864: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1152_864, 1152, 864); break;
-                        case SystemMenu.SC_SIZE_1280_768: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1280_768, 1280, 768); break;
-                        case SystemMenu.SC_SIZE_1280_800: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1280_800, 1280, 800); break;
-                        case SystemMenu.SC_SIZE_1280_960: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1280_960, 1280, 960); break;
-                        case SystemMenu.SC_SIZE_1280_1024: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1280_1024, 1280, 1024); break;
-                        case SystemMenu.SC_SIZE_1440_900: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1440_900, 1440, 900); break;
-                        case SystemMenu.SC_SIZE_1600_900: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1600_900, 1600, 900); break;
-                        case SystemMenu.SC_SIZE_1680_1050: SetSizeMenuItem(window, SystemMenu.SC_SIZE_1680_1050, 1680, 1050); break;
+                        case MenuItemId.SC_SIZE_640_480: SetSizeMenuItem(window, MenuItemId.SC_SIZE_640_480, 640, 480); break;
+                        case MenuItemId.SC_SIZE_720_480: SetSizeMenuItem(window, MenuItemId.SC_SIZE_720_480, 720, 480); break;
+                        case MenuItemId.SC_SIZE_720_576: SetSizeMenuItem(window, MenuItemId.SC_SIZE_720_576, 720, 576); break;
+                        case MenuItemId.SC_SIZE_800_600: SetSizeMenuItem(window, MenuItemId.SC_SIZE_800_600, 800, 600); break;
+                        case MenuItemId.SC_SIZE_1024_768: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1024_768, 1024, 768); break;
+                        case MenuItemId.SC_SIZE_1152_864: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1152_864, 1152, 864); break;
+                        case MenuItemId.SC_SIZE_1280_768: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_768, 1280, 768); break;
+                        case MenuItemId.SC_SIZE_1280_800: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_800, 1280, 800); break;
+                        case MenuItemId.SC_SIZE_1280_960: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_960, 1280, 960); break;
+                        case MenuItemId.SC_SIZE_1280_1024: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_1024, 1280, 1024); break;
+                        case MenuItemId.SC_SIZE_1440_900: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1440_900, 1440, 900); break;
+                        case MenuItemId.SC_SIZE_1600_900: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1600_900, 1600, 900); break;
+                        case MenuItemId.SC_SIZE_1680_1050: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1680_1050, 1680, 1050); break;
 
-                        case SystemMenu.SC_TRANS_100: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_100, 100); break;
-                        case SystemMenu.SC_TRANS_90: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_90, 90); break;
-                        case SystemMenu.SC_TRANS_80: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_80, 80); break;
-                        case SystemMenu.SC_TRANS_70: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_70, 70); break;
-                        case SystemMenu.SC_TRANS_60: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_60, 60); break;
-                        case SystemMenu.SC_TRANS_50: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_50, 50); break;
-                        case SystemMenu.SC_TRANS_40: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_40, 40); break;
-                        case SystemMenu.SC_TRANS_30: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_30, 30); break;
-                        case SystemMenu.SC_TRANS_20: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_20, 20); break;
-                        case SystemMenu.SC_TRANS_10: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_10, 10); break;
-                        case SystemMenu.SC_TRANS_00: SetTransparencyMenuItem(window, SystemMenu.SC_TRANS_00, 0); break;
+                        case MenuItemId.SC_TRANS_100: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_100, 100); break;
+                        case MenuItemId.SC_TRANS_90: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_90, 90); break;
+                        case MenuItemId.SC_TRANS_80: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_80, 80); break;
+                        case MenuItemId.SC_TRANS_70: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_70, 70); break;
+                        case MenuItemId.SC_TRANS_60: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_60, 60); break;
+                        case MenuItemId.SC_TRANS_50: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_50, 50); break;
+                        case MenuItemId.SC_TRANS_40: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_40, 40); break;
+                        case MenuItemId.SC_TRANS_30: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_30, 30); break;
+                        case MenuItemId.SC_TRANS_20: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_20, 20); break;
+                        case MenuItemId.SC_TRANS_10: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_10, 10); break;
+                        case MenuItemId.SC_TRANS_00: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_00, 0); break;
 
-                        case SystemMenu.SC_PRIORITY_REAL_TIME: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_REAL_TIME, Priority.RealTime); break;
-                        case SystemMenu.SC_PRIORITY_HIGH: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_HIGH, Priority.High); break;
-                        case SystemMenu.SC_PRIORITY_ABOVE_NORMAL: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_ABOVE_NORMAL, Priority.AboveNormal); break;
-                        case SystemMenu.SC_PRIORITY_NORMAL: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_NORMAL, Priority.Normal); break;
-                        case SystemMenu.SC_PRIORITY_BELOW_NORMAL: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_BELOW_NORMAL, Priority.BelowNormal); break;
-                        case SystemMenu.SC_PRIORITY_IDLE: SetPriorityMenuItem(window, SystemMenu.SC_PRIORITY_IDLE, Priority.Idle); break;
+                        case MenuItemId.SC_PRIORITY_REAL_TIME: SetPriorityMenuItem(window, MenuItemId.SC_PRIORITY_REAL_TIME, Priority.RealTime); break;
+                        case MenuItemId.SC_PRIORITY_HIGH: SetPriorityMenuItem(window, MenuItemId.SC_PRIORITY_HIGH, Priority.High); break;
+                        case MenuItemId.SC_PRIORITY_ABOVE_NORMAL: SetPriorityMenuItem(window, MenuItemId.SC_PRIORITY_ABOVE_NORMAL, Priority.AboveNormal); break;
+                        case MenuItemId.SC_PRIORITY_NORMAL: SetPriorityMenuItem(window, MenuItemId.SC_PRIORITY_NORMAL, Priority.Normal); break;
+                        case MenuItemId.SC_PRIORITY_BELOW_NORMAL: SetPriorityMenuItem(window, MenuItemId.SC_PRIORITY_BELOW_NORMAL, Priority.BelowNormal); break;
+                        case MenuItemId.SC_PRIORITY_IDLE: SetPriorityMenuItem(window, MenuItemId.SC_PRIORITY_IDLE, Priority.Idle); break;
 
-                        case SystemMenu.SC_ALIGN_TOP_LEFT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_TOP_LEFT, WindowAlignment.TopLeft); break;
-                        case SystemMenu.SC_ALIGN_TOP_CENTER: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_TOP_CENTER, WindowAlignment.TopCenter); break;
-                        case SystemMenu.SC_ALIGN_TOP_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_TOP_RIGHT, WindowAlignment.TopRight); break;
-                        case SystemMenu.SC_ALIGN_MIDDLE_LEFT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_MIDDLE_LEFT, WindowAlignment.MiddleLeft); break;
-                        case SystemMenu.SC_ALIGN_MIDDLE_CENTER: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_MIDDLE_CENTER, WindowAlignment.MiddleCenter); break;
-                        case SystemMenu.SC_ALIGN_MIDDLE_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_MIDDLE_RIGHT, WindowAlignment.MiddleRight); break;
-                        case SystemMenu.SC_ALIGN_BOTTOM_LEFT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_LEFT, WindowAlignment.BottomLeft); break;
-                        case SystemMenu.SC_ALIGN_BOTTOM_CENTER: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_CENTER, WindowAlignment.BottomCenter); break;
-                        case SystemMenu.SC_ALIGN_BOTTOM_RIGHT: SetAlignmentMenuItem(window, SystemMenu.SC_ALIGN_BOTTOM_RIGHT, WindowAlignment.BottomRight); break;
+                        case MenuItemId.SC_ALIGN_TOP_LEFT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_TOP_LEFT, WindowAlignment.TopLeft); break;
+                        case MenuItemId.SC_ALIGN_TOP_CENTER: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_TOP_CENTER, WindowAlignment.TopCenter); break;
+                        case MenuItemId.SC_ALIGN_TOP_RIGHT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_TOP_RIGHT, WindowAlignment.TopRight); break;
+                        case MenuItemId.SC_ALIGN_MIDDLE_LEFT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_MIDDLE_LEFT, WindowAlignment.MiddleLeft); break;
+                        case MenuItemId.SC_ALIGN_MIDDLE_CENTER: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_MIDDLE_CENTER, WindowAlignment.MiddleCenter); break;
+                        case MenuItemId.SC_ALIGN_MIDDLE_RIGHT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_MIDDLE_RIGHT, WindowAlignment.MiddleRight); break;
+                        case MenuItemId.SC_ALIGN_BOTTOM_LEFT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_BOTTOM_LEFT, WindowAlignment.BottomLeft); break;
+                        case MenuItemId.SC_ALIGN_BOTTOM_CENTER: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_BOTTOM_CENTER, WindowAlignment.BottomCenter); break;
+                        case MenuItemId.SC_ALIGN_BOTTOM_RIGHT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_BOTTOM_RIGHT, WindowAlignment.BottomRight); break;
                     }
 
-                    var moveToSubMenuItem = (int)lowOrder - SystemMenu.SC_MOVE_TO;
+                    var moveToSubMenuItem = (int)lowOrder - MenuItemId.SC_MOVE_TO;
                     if (window.Menu.MoveToMenuItems.ContainsKey(moveToSubMenuItem))
                     {
                         var monitorHandle = window.Menu.MoveToMenuItems[moveToSubMenuItem];
@@ -660,7 +671,7 @@ namespace SmartSystemMenu.Forms
 
                     for (int i = 0; i < _settings.MenuItems.StartProgramItems.Count; i++)
                     {
-                        if (lowOrder - SystemMenu.SC_START_PROGRAM == i)
+                        if (lowOrder - MenuItemId.SC_START_PROGRAM == i)
                         {
                             try
                             {
@@ -674,6 +685,12 @@ namespace SmartSystemMenu.Forms
                     }
                 }
             }
+        }
+
+        private void HotKeyHooked(object sender, HotKeyHookEventArgs e)
+        {
+            var handle = NativeMethods.GetForegroundWindow();
+            NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, (uint)e.MenuItemId, 0);
         }
 
         private void SetPriorityMenuItem(Window window, int itemId, Priority priority)
@@ -697,7 +714,7 @@ namespace SmartSystemMenu.Forms
             window.Menu.CheckMenuItem(itemId, true);
             window.ShowNormal();
             window.SetSize(width, height);
-            window.Menu.UncheckMenuItems(SystemMenu.SC_ROLLUP);
+            window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
         }
 
         private void SetTransparencyMenuItem(Window window, int itemId, int transparency)
