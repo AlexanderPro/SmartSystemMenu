@@ -49,6 +49,7 @@
         public const int WM_CLOSE = 0x0010;
         public const int WM_NULL = 0x0000;
         public const int WM_KEYDOWN = 0x0100;
+        public const int WM_SYSKEYDOWN = 0x0104;
 
         // SetWindowPos
         public const uint SWP_NOSIZE = 0x0001;

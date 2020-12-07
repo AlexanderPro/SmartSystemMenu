@@ -59,7 +59,7 @@ namespace SmartSystemMenu.HotKeys
         {
             if (code == NativeConstants.HC_ACTION)
             {
-                if (wParam.ToInt32() == NativeConstants.WM_KEYDOWN)
+                if (wParam.ToInt32() == NativeConstants.WM_KEYDOWN || wParam.ToInt32() == NativeConstants.WM_SYSKEYDOWN)
                 {
                     foreach (var item in _menuItems.Where(x => x.HotKeyEnabled))
                     {
@@ -89,7 +89,6 @@ namespace SmartSystemMenu.HotKeys
                                 break;
                             }
                         }
-
                     }
                 }
             }

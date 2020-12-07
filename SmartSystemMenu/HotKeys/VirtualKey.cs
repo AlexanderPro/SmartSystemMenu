@@ -4,6 +4,9 @@ namespace SmartSystemMenu.HotKeys
 {
     public enum VirtualKey : int
     {
+        [Description("None")]
+        None = 0x00,
+
         VK_LBUTTON = 0x01,
         VK_RBUTTON = 0x02,
         VK_CANCEL = 0x03,
@@ -183,34 +186,34 @@ namespace SmartSystemMenu.HotKeys
         VK_RWIN = 0x5C,
         VK_APPS = 0x5D,
 
-        [Description("Numpad 0")]
+        [Description("Num 0")]
         VK_NUMPAD0 = 0x60,
 
-        [Description("Numpad 1")]
+        [Description("Num 1")]
         VK_NUMPAD1 = 0x61,
 
-        [Description("Numpad 2")]
+        [Description("Num 2")]
         VK_NUMPAD2 = 0x62,
 
-        [Description("Numpad 3")]
+        [Description("Num 3")]
         VK_NUMPAD3 = 0x63,
 
-        [Description("Numpad 4")]
+        [Description("Num 4")]
         VK_NUMPAD4 = 0x64,
 
-        [Description("Numpad 5")]
+        [Description("Num 5")]
         VK_NUMPAD5 = 0x65,
 
-        [Description("Numpad 6")]
+        [Description("Num 6")]
         VK_NUMPAD6 = 0x66,
 
-        [Description("Numpad 7")]
+        [Description("Num 7")]
         VK_NUMPAD7 = 0x67,
 
-        [Description("Numpad 8")]
+        [Description("Num 8")]
         VK_NUMPAD8 = 0x68,
 
-        [Description("Numpad 9")]
+        [Description("Num 9")]
         VK_NUMPAD9 = 0x69,
 
         [Description("Multiply")]

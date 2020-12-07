@@ -160,7 +160,7 @@ namespace SmartSystemMenu.Settings
                    HotKeyEnabled = x.Attribute("hotKeyEnabled") != null && !string.IsNullOrEmpty(x.Attribute("hotKeyEnabled").Value) ? x.Attribute("hotKeyEnabled").Value.ToLower() == "true" : false,
                    Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
                    Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
-                   Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : 0
+                   Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
                 })
                 .ToList();
 
@@ -225,9 +225,9 @@ namespace SmartSystemMenu.Settings
                                      new XElement("item", settings.MenuItems.Items.Select(x => new XElement("item",
                                          new XAttribute("name", x.Name),
                                          new XAttribute("hotKeyEnabled", x.HotKeyEnabled.ToString().ToLower()),
-                                         new XAttribute("key1", ((int)x.Key1).ToString()),
-                                         new XAttribute("key2", ((int)x.Key2).ToString()),
-                                         new XAttribute("key3", ((int)x.Key3).ToString())))),
+                                         new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
+                                         new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
+                                         new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),
                                      new XElement("startProgramItem", settings.MenuItems.StartProgramItems.Select(x => new XElement("item", 
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),

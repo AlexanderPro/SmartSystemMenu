@@ -33,15 +33,15 @@
     <item name="1680_1050" hotKeyEnabled="false" key1="" key2="" key3="" />
     <item name="size_default" hotKeyEnabled="false" key1="" key2="" key3="" />
     <item name="size_custom" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_top_left" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_top_center" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_top_right" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_middle_left" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_middle_center" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_middle_right" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_bottom_left" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_bottom_center" hotKeyEnabled="false" key1="" key2="" key3="" />
-    <item name="align_bottom_right" hotKeyEnabled="false" key1="" key2="" key3="" />
+    <item name="align_top_left" hotKeyEnabled="true" key1="18" key2="" key3="103" />
+    <item name="align_top_center" hotKeyEnabled="true" key1="18" key2="" key3="104" />
+    <item name="align_top_right" hotKeyEnabled="true" key1="18" key2="" key3="105" />
+    <item name="align_middle_left" hotKeyEnabled="true" key1="18" key2="" key3="100" />
+    <item name="align_middle_center" hotKeyEnabled="true" key1="18" key2="" key3="101" />
+    <item name="align_middle_right" hotKeyEnabled="true" key1="18" key2="" key3="102" />
+    <item name="align_bottom_left" hotKeyEnabled="true" key1="18" key2="" key3="97" />
+    <item name="align_bottom_center" hotKeyEnabled="true" key1="18" key2="" key3="98" />
+    <item name="align_bottom_right" hotKeyEnabled="true" key1="18" key2="" key3="99" />
     <item name="align_default" hotKeyEnabled="false" key1="" key2="" key3="" />
     <item name="align_custom" hotKeyEnabled="false" key1="" key2="" key3="" />
     <item name="trans_opaque" hotKeyEnabled="false" key1="" key2="" key3="" />
