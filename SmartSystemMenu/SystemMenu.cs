@@ -306,15 +306,9 @@ namespace SmartSystemMenu
 
         #region Methods.Private
 
-        private string GetTitle(string name)
+        private string GetTitle(string name, string title = null)
         {
-            var title = _languageSettings.GetValue(name);
-            var hotKey = _menuItems.GetHotKeysCombination(name);
-            return string.IsNullOrEmpty(hotKey) ? title : title + "\t" + hotKey;
-        }
-
-        private string GetTitle(string name, string title)
-        {
+            title = title != null ? title : _languageSettings.GetValue(name);
             var hotKey = _menuItems.GetHotKeysCombination(name);
             return string.IsNullOrEmpty(hotKey) ? title : title + "\t" + hotKey;
         }

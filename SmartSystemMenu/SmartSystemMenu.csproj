@@ -76,6 +76,8 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DataGridViewDisableButtonCell.cs" />
+    <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Forms\StartProgramForm.cs">
       <SubType>Form</SubType>
