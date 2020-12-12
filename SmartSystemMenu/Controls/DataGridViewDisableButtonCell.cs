@@ -51,7 +51,7 @@ namespace SmartSystemMenu.Controls
 
                 // Calculate the area in which to draw the button.
                 Rectangle buttonArea = cellBounds;
-                Rectangle buttonAdjustment = this.BorderWidths(advancedBorderStyle);
+                Rectangle buttonAdjustment = BorderWidths(advancedBorderStyle);
                 buttonArea.X += buttonAdjustment.X;
                 buttonArea.Y += buttonAdjustment.Y;
                 buttonArea.Height -= buttonAdjustment.Height;
@@ -61,9 +61,9 @@ namespace SmartSystemMenu.Controls
                 ButtonRenderer.DrawButton(graphics, buttonArea, PushButtonState.Disabled);
 
                 // Draw the disabled button text.
-                if (this.FormattedValue is String)
+                if (FormattedValue is string)
                 {
-                    TextRenderer.DrawText(graphics, (string)this.FormattedValue, this.DataGridView.Font, buttonArea, SystemColors.GrayText);
+                    TextRenderer.DrawText(graphics, (string)FormattedValue, DataGridView.Font, buttonArea, SystemColors.GrayText);
                 }
             }
             else

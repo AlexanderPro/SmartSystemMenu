@@ -31,6 +31,7 @@ namespace SmartSystemMenu.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabpGeneral = new System.Windows.Forms.TabPage();
             this.lblLanguage = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@ namespace SmartSystemMenu.Forms
             this.gvHotkeys = new System.Windows.Forms.DataGridView();
             this.clmnMenuItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnHotkeys = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnChangeHotkey = new DataGridViewDisableButtonColumn();
+            this.clmnChangeHotkey = new SmartSystemMenu.Controls.DataGridViewDisableButtonColumn();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
@@ -121,7 +122,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnProcessExclusionDown
             // 
-            this.btnProcessExclusionDown.Image = global::SmartSystemMenu.Properties.Resources.ArrowDown;
+            this.btnProcessExclusionDown.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessExclusionDown.Image")));
             this.btnProcessExclusionDown.Location = new System.Drawing.Point(406, 313);
             this.btnProcessExclusionDown.Name = "btnProcessExclusionDown";
             this.btnProcessExclusionDown.Size = new System.Drawing.Size(31, 23);
@@ -131,7 +132,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnProcessExclusionUp
             // 
-            this.btnProcessExclusionUp.Image = global::SmartSystemMenu.Properties.Resources.ArrowUp;
+            this.btnProcessExclusionUp.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessExclusionUp.Image")));
             this.btnProcessExclusionUp.Location = new System.Drawing.Point(369, 313);
             this.btnProcessExclusionUp.Name = "btnProcessExclusionUp";
             this.btnProcessExclusionUp.Size = new System.Drawing.Size(31, 23);
@@ -234,7 +235,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnStartProgramDown
             // 
-            this.btnStartProgramDown.Image = global::SmartSystemMenu.Properties.Resources.ArrowDown;
+            this.btnStartProgramDown.Image = ((System.Drawing.Image)(resources.GetObject("btnStartProgramDown.Image")));
             this.btnStartProgramDown.Location = new System.Drawing.Point(406, 339);
             this.btnStartProgramDown.Name = "btnStartProgramDown";
             this.btnStartProgramDown.Size = new System.Drawing.Size(31, 23);
@@ -244,7 +245,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnStartProgramUp
             // 
-            this.btnStartProgramUp.Image = global::SmartSystemMenu.Properties.Resources.ArrowUp;
+            this.btnStartProgramUp.Image = ((System.Drawing.Image)(resources.GetObject("btnStartProgramUp.Image")));
             this.btnStartProgramUp.Location = new System.Drawing.Point(369, 339);
             this.btnStartProgramUp.Name = "btnStartProgramUp";
             this.btnStartProgramUp.Size = new System.Drawing.Size(31, 23);
@@ -363,6 +364,7 @@ namespace SmartSystemMenu.Forms
             this.clmnMenuItemName,
             this.clmnHotkeys,
             this.clmnChangeHotkey});
+            this.gvHotkeys.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gvHotkeys.GridColor = System.Drawing.SystemColors.Control;
             this.gvHotkeys.Location = new System.Drawing.Point(6, 19);
             this.gvHotkeys.MultiSelect = false;
@@ -482,6 +484,6 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.DataGridView gvHotkeys;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnMenuItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnHotkeys;
-        private System.Windows.Forms.DataGridViewButtonColumn clmnChangeHotkey;
+        private DataGridViewDisableButtonColumn clmnChangeHotkey;
     }
 }

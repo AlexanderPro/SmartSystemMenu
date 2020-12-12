@@ -35,6 +35,7 @@ namespace SmartSystemMenu.Forms
             lblLanguage.Text = settings.LanguageSettings.GetValue("lbl_language");
             tabpGeneral.Text = settings.LanguageSettings.GetValue("tab_settings_general");
             tabpMenu.Text = settings.LanguageSettings.GetValue("tab_settings_menu");
+            tabpHotkeys.Text = settings.LanguageSettings.GetValue("tab_settings_hotkeys");
             grpbProcessExclusions.Text = settings.LanguageSettings.GetValue("grpb_process_exclusions");
             grpbStartProgram.Text = settings.LanguageSettings.GetValue("grpb_start_program");
             clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
@@ -45,12 +46,14 @@ namespace SmartSystemMenu.Forms
             clmStartProgramArguments.HeaderText = settings.LanguageSettings.GetValue("clm_start_program_arguments");
             clmStartProgramEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_edit");
             clmStartProgramDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_delete");
+            clmnMenuItemName.HeaderText = settings.LanguageSettings.GetValue("clm_hotkeys_name");
+            clmnHotkeys.HeaderText = settings.LanguageSettings.GetValue("clm_hotkeys_keys");
             toolTipAddProcessName.SetToolTip(btnProcessExclusionDown, settings.LanguageSettings.GetValue("btn_process_exclusion_down"));
             toolTipAddProcessName.SetToolTip(btnProcessExclusionUp, settings.LanguageSettings.GetValue("btn_process_exclusion_up"));
             toolTipAddProcessName.SetToolTip(btnAddProcessExclusion, settings.LanguageSettings.GetValue("btn_add_process_exclusion"));
             toolTipAddProcessName.SetToolTip(btnAddStartProgram, settings.LanguageSettings.GetValue("btn_add_start_program"));
             toolTipAddProcessName.SetToolTip(btnStartProgramDown, settings.LanguageSettings.GetValue("btn_start_program_down"));
-            toolTipAddProcessName.SetToolTip(this.btnStartProgramUp, settings.LanguageSettings.GetValue("btn_start_program_up"));
+            toolTipAddProcessName.SetToolTip(btnStartProgramUp, settings.LanguageSettings.GetValue("btn_start_program_up"));
             btnApply.Text = settings.LanguageSettings.GetValue("settings_btn_apply");
             btnCancel.Text = settings.LanguageSettings.GetValue("settings_btn_cancel");
             Text = settings.LanguageSettings.GetValue("settings_form");
@@ -229,7 +232,7 @@ namespace SmartSystemMenu.Forms
                 var row = grid.Rows[e.RowIndex];
                 if (row.Tag != null)
                 {
-                    MessageBox.Show("Hotkeys1");
+                    ShowHotkeysForm(row);
                 }
             }
         }
@@ -242,7 +245,7 @@ namespace SmartSystemMenu.Forms
                 var row = grid.Rows[e.RowIndex];
                 if (row.Tag != null)
                 {
-                    MessageBox.Show("Hotkeys2");
+                    ShowHotkeysForm(row);
                 }
             }
         }
@@ -338,6 +341,12 @@ namespace SmartSystemMenu.Forms
                 settings.MenuItems.StartProgramItems.Add(new StartProgramMenuItem { Title = row.Cells[0].Value.ToString(), FileName = row.Cells[1].Value.ToString(), Arguments = row.Cells[2].Value.ToString() });
             }
 
+            foreach (DataGridViewRow row in gvHotkeys.Rows.OfType<DataGridViewRow>().Where(x => x.Tag is Settings.MenuItem))
+            {
+                var menuItem = (Settings.MenuItem)row.Tag;
+                settings.MenuItems.Items.Add(menuItem);
+            }
+
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 
             if (!settings.Equals(_settings))
@@ -380,13 +389,28 @@ namespace SmartSystemMenu.Forms
             }
         }
 
+        private void ShowHotkeysForm(DataGridViewRow row)
+        {
+            var menuItem = (Settings.MenuItem)row.Tag;
+            var form = new HotkeysForm(_settings, menuItem);
+            var result = form.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                menuItem.Key1 = form.MenuItem.Key1;
+                menuItem.Key2 = form.MenuItem.Key2;
+                menuItem.Key3 = form.MenuItem.Key3;
+                row.Cells[1].Value = menuItem.ToString();
+                row.Tag = menuItem;
+            }
+        }
+
         private void FillGridViewRowHotkey(DataGridView gridView, SmartSystemMenuSettings settings, string itemName, string title = null, bool isPadding = false)
         {
             var index = gridView.Rows.Add();
             var row = gridView.Rows[index];
             var menuItem = settings.MenuItems.Items.FirstOrDefault(x => x.Name == itemName);
             title = title != null ? title : settings.LanguageSettings.GetValue(itemName);
-            row.Tag = menuItem;
+            row.Tag = (Settings.MenuItem)menuItem.Clone();
             row.Cells[0].Value = title;
             row.Cells[1].Value = menuItem == null ? "" : menuItem.ToString();
             if (isPadding)

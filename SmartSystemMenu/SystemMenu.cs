@@ -125,7 +125,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(windowMenuHandle, index + 12, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _alignmentMenuHandle, GetTitle("alignment"));
 
             _transparencyMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_00, GetTitle("trans_opaque", "0%" + GetTitle("trans_opaque")));
+            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_00, GetTitle("trans_opaque", "0%" + GetTitle("trans_opaque", null, false)));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_10, GetTitle("10%", "10%"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_20, GetTitle("20%", "20%"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_30, GetTitle("30%", "30%"));
@@ -135,7 +135,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_70, GetTitle("70%", "70%"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_80, GetTitle("80%", "80%"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_90, GetTitle("90%", "90%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_100, GetTitle("trans_invisible", "100%" + GetTitle("trans_invisible")));
+            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_100, GetTitle("trans_invisible", "100%" + GetTitle("trans_invisible", null, false)));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_DEFAULT, GetTitle("trans_default"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
@@ -306,11 +306,18 @@ namespace SmartSystemMenu
 
         #region Methods.Private
 
-        private string GetTitle(string name, string title = null)
+        private string GetTitle(string name, string title = null, bool showHotKey = true)
         {
             title = title != null ? title : _languageSettings.GetValue(name);
-            var hotKey = _menuItems.GetHotKeysCombination(name);
-            return string.IsNullOrEmpty(hotKey) ? title : title + "\t" + hotKey;
+            if (showHotKey)
+            {
+                var hotKey = _menuItems.GetHotKeysCombination(name);
+                return string.IsNullOrEmpty(hotKey) ? title : title + "\t" + hotKey;
+            }
+            else
+            {
+                return title;
+            }
         }
 
         #endregion

@@ -45,6 +45,11 @@ namespace SmartSystemMenu.Settings
                 settings.MenuItems.StartProgramItems.Add(new StartProgramMenuItem { Title = menuItem.Title, FileName = menuItem.FileName, Arguments = menuItem.Arguments });
             }
 
+            foreach (var menuItem in MenuItems.Items)
+            {
+                settings.MenuItems.Items.Add(new MenuItem { Name = menuItem.Name, Key1 = menuItem.Key1, Key2 = menuItem.Key2, Key3 = menuItem.Key3 });
+            }
+
             foreach (var languageItem in LanguageSettings.Items)
             {
                 settings.LanguageSettings.Items.Add(new LanguageItem { Name = languageItem.Name, Value = languageItem.Value });
@@ -61,10 +66,10 @@ namespace SmartSystemMenu.Settings
             if (object.ReferenceEquals(this, other))
                 return true;
 
-            if (this.GetType() != other.GetType())
+            if (GetType() != other.GetType())
                 return false;
 
-            return this.Equals(other as SmartSystemMenuSettings);
+            return Equals(other as SmartSystemMenuSettings);
         }
 
         public bool Equals(SmartSystemMenuSettings other)
@@ -75,32 +80,48 @@ namespace SmartSystemMenu.Settings
             if (object.ReferenceEquals(this, other))
                 return true;
 
-            if (this.GetType() != other.GetType())
+            if (GetType() != other.GetType())
                 return false;
 
-            if (this.ProcessExclusions.Count != other.ProcessExclusions.Count)
+            if (ProcessExclusions.Count != other.ProcessExclusions.Count)
             {
                 return false;
             }
 
-            if (this.MenuItems.StartProgramItems.Count != other.MenuItems.StartProgramItems.Count)
+            if (MenuItems.StartProgramItems.Count != other.MenuItems.StartProgramItems.Count)
             {
                 return false;
             }
 
-            for (var i = 0; i < this.ProcessExclusions.Count; i++)
+            if (MenuItems.Items.Count != other.MenuItems.Items.Count)
             {
-                if (string.Compare(this.ProcessExclusions[i], other.ProcessExclusions[i], StringComparison.CurrentCultureIgnoreCase) != 0)
+                return false;
+            }
+
+            for (var i = 0; i < ProcessExclusions.Count; i++)
+            {
+                if (string.Compare(ProcessExclusions[i], other.ProcessExclusions[i], StringComparison.CurrentCultureIgnoreCase) != 0)
                 {
                     return false;
                 }
             }
 
-            for (var i = 0; i < this.MenuItems.StartProgramItems.Count; i++)
+            for (var i = 0; i < MenuItems.StartProgramItems.Count; i++)
             {
-                if (string.Compare(this.MenuItems.StartProgramItems[i].Title, other.MenuItems.StartProgramItems[i].Title, StringComparison.CurrentCultureIgnoreCase) != 0 ||
-                    string.Compare(this.MenuItems.StartProgramItems[i].FileName, other.MenuItems.StartProgramItems[i].FileName, StringComparison.CurrentCultureIgnoreCase) != 0 ||
-                    string.Compare(this.MenuItems.StartProgramItems[i].Arguments, other.MenuItems.StartProgramItems[i].Arguments, StringComparison.CurrentCultureIgnoreCase) != 0)
+                if (string.Compare(MenuItems.StartProgramItems[i].Title, other.MenuItems.StartProgramItems[i].Title, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    string.Compare(MenuItems.StartProgramItems[i].FileName, other.MenuItems.StartProgramItems[i].FileName, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    string.Compare(MenuItems.StartProgramItems[i].Arguments, other.MenuItems.StartProgramItems[i].Arguments, StringComparison.CurrentCultureIgnoreCase) != 0)
+                {
+                    return false;
+                }
+            }
+
+            for (var i = 0; i < MenuItems.Items.Count; i++)
+            {
+                if (string.Compare(MenuItems.Items[i].Name, other.MenuItems.Items[i].Name, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    MenuItems.Items[i].Key1 != other.MenuItems.Items[i].Key1 ||
+                    MenuItems.Items[i].Key2 != other.MenuItems.Items[i].Key2 ||
+                    MenuItems.Items[i].Key3 != other.MenuItems.Items[i].Key3)
                 {
                     return false;
                 }
@@ -123,9 +144,14 @@ namespace SmartSystemMenu.Settings
                 hashCode ^= processExclusion.GetHashCode();
             }
 
-            foreach (var startProgramItem in MenuItems.StartProgramItems)
+            foreach (var item in MenuItems.StartProgramItems)
             {
-                hashCode ^= startProgramItem.Title.GetHashCode() ^ startProgramItem.FileName.GetHashCode() ^ startProgramItem.Arguments.GetHashCode();
+                hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode();
+            }
+
+            foreach (var item in MenuItems.Items)
+            {
+                hashCode ^= item.Name.GetHashCode() ^ item.Key1.GetHashCode() ^ item.Key2.GetHashCode() ^ item.Key3.GetHashCode();
             }
 
             hashCode ^= LanguageName.GetHashCode();
@@ -145,7 +171,7 @@ namespace SmartSystemMenu.Settings
                 .ToList();
 
             settings.MenuItems.StartProgramItems = document
-                .XPathSelectElements("/smartSystemMenu/menuItems/startProgramItem/item")
+                .XPathSelectElements("/smartSystemMenu/menuItems/startProgramItems/item")
                 .Select(x => new StartProgramMenuItem {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
                     FileName = x.Attribute("fileName") != null ? x.Attribute("fileName").Value : "",
@@ -154,10 +180,9 @@ namespace SmartSystemMenu.Settings
                 .ToList();
 
             settings.MenuItems.Items = document
-                .XPathSelectElements("/smartSystemMenu/menuItems/item")
+                .XPathSelectElements("/smartSystemMenu/menuItems/items/item")
                 .Select(x => new MenuItem {
                    Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
-                   HotKeyEnabled = x.Attribute("hotKeyEnabled") != null && !string.IsNullOrEmpty(x.Attribute("hotKeyEnabled").Value) ? x.Attribute("hotKeyEnabled").Value.ToLower() == "true" : false,
                    Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
                    Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
                    Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
@@ -222,13 +247,12 @@ namespace SmartSystemMenu.Settings
             document.Add(new XElement("smartSystemMenu",
                                  new XElement("processExclusions", settings.ProcessExclusions.Select(x => new XElement("processName", x))),
                                  new XElement("menuItems",
-                                     new XElement("item", settings.MenuItems.Items.Select(x => new XElement("item",
+                                     new XElement("items", settings.MenuItems.Items.Select(x => new XElement("item",
                                          new XAttribute("name", x.Name),
-                                         new XAttribute("hotKeyEnabled", x.HotKeyEnabled.ToString().ToLower()),
                                          new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
                                          new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
                                          new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),
-                                     new XElement("startProgramItem", settings.MenuItems.StartProgramItems.Select(x => new XElement("item", 
+                                     new XElement("startProgramItems", settings.MenuItems.StartProgramItems.Select(x => new XElement("item", 
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
                                          new XAttribute("arguments", x.Arguments))))),

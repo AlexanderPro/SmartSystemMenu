@@ -61,7 +61,7 @@ namespace SmartSystemMenu.HotKeys
             {
                 if (wParam.ToInt32() == NativeConstants.WM_KEYDOWN || wParam.ToInt32() == NativeConstants.WM_SYSKEYDOWN)
                 {
-                    foreach (var item in _menuItems.Where(x => x.HotKeyEnabled))
+                    foreach (var item in _menuItems)
                     {
                         var key1 = true;
                         var key2 = true;

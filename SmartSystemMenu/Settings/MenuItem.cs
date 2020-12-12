@@ -1,13 +1,12 @@
-﻿using SmartSystemMenu.Extensions;
+﻿using System;
+using SmartSystemMenu.Extensions;
 using SmartSystemMenu.HotKeys;
 
 namespace SmartSystemMenu.Settings
 {
-    public class MenuItem
+    public class MenuItem : ICloneable
     {
         public string Name { get; set; }
-
-        public bool HotKeyEnabled { get; set; }
 
         public VirtualKeyModifier Key1 { get; set; }
 
@@ -15,14 +14,14 @@ namespace SmartSystemMenu.Settings
 
         public VirtualKey Key3 { get; set; }
 
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
+
         public override string ToString()
         {
             var combination = "";
-
-            if (!HotKeyEnabled)
-            {
-                return combination;
-            }
 
             if (Key1 != VirtualKeyModifier.None)
             {
@@ -34,7 +33,14 @@ namespace SmartSystemMenu.Settings
                 combination += string.IsNullOrEmpty(combination) ? Key2.GetDescription() : "+" + Key2.GetDescription();
             }
 
-            combination += string.IsNullOrEmpty(combination) ? Key3.GetDescription() : "+" + Key3.GetDescription();
+            if (Key3 != VirtualKey.None)
+            {
+                combination += string.IsNullOrEmpty(combination) ? Key3.GetDescription() : "+" + Key3.GetDescription();
+            }
+            else
+            {
+                combination = "";
+            }
 
             return combination;
         }
