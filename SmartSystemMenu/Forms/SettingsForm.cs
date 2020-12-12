@@ -355,6 +355,8 @@ namespace SmartSystemMenu.Forms
 
                 try
                 {
+                    settings.LanguageSettings = _settings.LanguageSettings;
+
                     var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
                     SmartSystemMenuSettings.Save(settingsFileName, settings);
                     if (OkClick != null)
