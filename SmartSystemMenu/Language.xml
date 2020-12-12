@@ -114,6 +114,15 @@
       <item name="lbl_language" value="Language" />
       <item name="message_box_attention_title" value="Attention" />
       <item name="message_box_attention_content" value="You should restart the application manually to apply the settings." />
+      <item name="hotkeys_form" value="Hotkeys" />
+      <item name="hotkeys_lbl_key1" value="Key 1" />
+      <item name="hotkeys_lbl_key2" value="Key 2" />
+      <item name="hotkeys_lbl_key3" value="Key 3" />
+      <item name="hotkeys_btn_apply" value="Ok" />
+      <item name="hotkeys_btn_cancel" value="Cancel" />
+      <item name="tab_settings_hotkeys" value="Hotkeys" />
+      <item name="clm_hotkeys_name" value="Name" />
+      <item name="tab_settings_hotkeys" value="Keys" />
     </en>
     <cn>
       <item name="information" value="信息" />
@@ -228,6 +237,15 @@
       <item name="lbl_language" value="文" />
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="您应该手动重新启动应用程序以应用设置。" />
+      <item name="hotkeys_form" value="熱鍵" />
+      <item name="hotkeys_lbl_key1" value="鍵 1" />
+      <item name="hotkeys_lbl_key2" value="鍵 2" />
+      <item name="hotkeys_lbl_key3" value="鍵 3" />
+      <item name="hotkeys_btn_apply" value="确定" />
+      <item name="hotkeys_btn_cancel" value="取消" />
+      <item name="tab_settings_hotkeys" value="熱鍵" />
+      <item name="clm_hotkeys_name" value="名稱" />
+      <item name="tab_settings_hotkeys" value="鍵" />
     </cn>
     <ja>
       <item name="information" value="情報" />
@@ -342,6 +360,15 @@
       <item name="lbl_language" value="言語" />
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="変更後設定が有効になるように、手動でアプリを再起動してください。" />
+      <item name="hotkeys_form" value="ホットキー" />
+      <item name="hotkeys_lbl_key1" value="キー 1" />
+      <item name="hotkeys_lbl_key2" value="キー 2" />
+      <item name="hotkeys_lbl_key3" value="キー 3" />
+      <item name="hotkeys_btn_apply" value="適用" />
+      <item name="hotkeys_btn_cancel" value="キャンセル" />
+      <item name="tab_settings_hotkeys" value="ホットキー" />
+      <item name="clm_hotkeys_name" value="名前" />
+      <item name="tab_settings_hotkeys" value="キー" />
     </ja>
     <ko>
       <item name="information" value="정보" />
@@ -456,6 +483,15 @@
       <item name="lbl_language" value="언어" />
       <item name="message_box_attention_title" value="알림" />
       <item name="message_box_attention_content" value="설정을 적용하려면 프로그램을 수동으로 재시작해야 합니다." />
+      <item name="hotkeys_form" value="단축키" />
+      <item name="hotkeys_lbl_key1" value="키 1" />
+      <item name="hotkeys_lbl_key2" value="키 2" />
+      <item name="hotkeys_lbl_key3" value="키 3" />
+      <item name="hotkeys_btn_apply" value="확인" />
+      <item name="hotkeys_btn_cancel" value="취소" />
+      <item name="tab_settings_hotkeys" value="단축키" />
+      <item name="clm_hotkeys_name" value="이름" />
+      <item name="tab_settings_hotkeys" value="키" />
     </ko>
     <ru>
       <item name="information" value="Информация" />
@@ -570,6 +606,15 @@
       <item name="lbl_language" value="Язык" />
       <item name="message_box_attention_title" value="Внимание" />
       <item name="message_box_attention_content" value="Необходимо перезапустить приложение, чтобы применились настройки." />
+      <item name="hotkeys_form" value="Горячие клавиши" />
+      <item name="hotkeys_lbl_key1" value="Клавиша 1" />
+      <item name="hotkeys_lbl_key2" value="Клавиша 2" />
+      <item name="hotkeys_lbl_key3" value="Клавиша 3" />
+      <item name="hotkeys_btn_apply" value="Ok" />
+      <item name="hotkeys_btn_cancel" value="Cancel" />
+      <item name="tab_settings_hotkeys" value="Горячие клавиши" />
+      <item name="clm_hotkeys_name" value="Наименовение" />
+      <item name="tab_settings_hotkeys" value="Комбинация" />
     </ru>
   </items>
 </language>
