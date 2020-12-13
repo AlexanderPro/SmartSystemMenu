@@ -24,10 +24,9 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 Screenshots
 ------------------
 
-![alt tag](https://user-images.githubusercontent.com/8102586/102021167-f5989500-3d8e-11eb-9253-31c42f9c593f.jpg)
-![alt tag](https://user-images.githubusercontent.com/8102586/102021171-f9c4b280-3d8e-11eb-81be-2090caa3948e.jpg)
-![alt tag](https://user-images.githubusercontent.com/8102586/102021175-fdf0d000-3d8e-11eb-888d-ad9286b99d49.jpg)
-![alt tag](https://user-images.githubusercontent.com/8102586/102021179-0517de00-3d8f-11eb-984d-1b7b0e3c02ae.jpg)
+![alt tag](https://user-images.githubusercontent.com/8102586/102021339-3349ed80-3d90-11eb-835f-7780a2caae69.jpg)
+![alt tag](https://user-images.githubusercontent.com/8102586/102021342-380ea180-3d90-11eb-9dd3-537aab1b17f5.jpg)
+![alt tag](https://user-images.githubusercontent.com/8102586/102021344-3b099200-3d90-11eb-99fd-a021ee54043f.jpg)
 
 Requirements
 --------------------
