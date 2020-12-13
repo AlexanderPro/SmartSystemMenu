@@ -76,6 +76,15 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DataGridViewDisableButtonCell.cs" />
+    <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Forms\HotkeysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HotkeysForm.Designer.cs">
+      <DependentUpon>HotkeysForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StartProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,10 +103,16 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HotKeys\HotKeyHook.cs" />
+    <Compile Include="HotKeys\HotKeyHookEventArgs.cs" />
+    <Compile Include="HotKeys\VirtualKey.cs" />
+    <Compile Include="HotKeys\VirtualKeyModifier.cs" />
+    <Compile Include="MenuItemId.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />
+    <Compile Include="Settings\MenuItem.cs" />
     <Compile Include="Settings\MenuItems.cs" />
     <Compile Include="Settings\LanguageItem.cs" />
-    <Compile Include="Settings\StartProgramItem.cs" />
+    <Compile Include="Settings\StartProgramMenuItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="AutoStarter.cs" />
@@ -167,6 +182,9 @@
     <Compile Include="Window.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HotkeysForm.resx">
+      <DependentUpon>HotkeysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StartProgramForm.resx">
       <DependentUpon>StartProgramForm.cs</DependentUpon>

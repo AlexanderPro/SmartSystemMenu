@@ -30,7 +30,7 @@ namespace SmartSystemMenu.Forms
                 var value = (Byte)numericTransparency.Value;
                 _window.SetTrancparency(value);
                 _window.Menu.UncheckTransparencyMenu();
-                _window.Menu.CheckMenuItem(SystemMenu.SC_TRANS_CUSTOM, true);
+                _window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_CUSTOM, true);
             }
             catch
             {
