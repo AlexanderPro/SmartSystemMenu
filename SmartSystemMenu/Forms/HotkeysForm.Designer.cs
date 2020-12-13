@@ -125,6 +125,7 @@
             this.Controls.Add(this.cmbKey1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnApply);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
