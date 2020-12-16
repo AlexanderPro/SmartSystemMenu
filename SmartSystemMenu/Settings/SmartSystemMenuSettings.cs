@@ -223,6 +223,11 @@ namespace SmartSystemMenu.Settings
                 languageName = "ru";
             }
 
+            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "de-DE")
+            {
+                languageName = "de";
+            }
+
             if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl" ||
                 Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-BA" ||
                 Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-ME" ||

@@ -84,6 +84,7 @@ namespace SmartSystemMenu.Forms
             var languageItems = new[] {
                 new { Text = "", Value = "" },
                 new { Text = "English", Value = "en" },
+                new { Text = "Deutsch", Value = "de" },
                 new { Text = "Русский", Value = "ru" },
                 new { Text = "Српски", Value = "sr" },
                 new { Text = "中文", Value = "cn" },

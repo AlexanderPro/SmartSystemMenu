@@ -124,6 +124,129 @@
       <item name="clm_hotkeys_name" value="Name" />
       <item name="tab_settings_hotkeys" value="Keys" />
     </en>
+    <de>
+      <item name="information" value="Information" />
+      <item name="roll_up" value="Verkleinern nach oben" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="Im Vordergrund" />
+      <item name="send_to_bottom" value="Herunter" />
+      <item name="save_screenshot" value="Den Screenshot speichern" />
+      <item name="open_file_in_explorer" value="In Exprorer öffnen" />
+      <item name="copy_text_to_clipboard" value="Kopieren in die Zwischenablage" />
+      <item name="drag_by_mouse" value="Ziehen mit der Maus" />
+      <item name="size" value="die Gröβe verändern" />
+      <item name="size_default" value="Standardmäβig" />
+      <item name="size_custom" value="Einrichten…" />
+      <item name="move_to" value="Setzt den Kursor" />
+      <item name="monitor" value="Monitor" />
+      <item name="alignment" value="Richten" />
+      <item name="align_top_left" value="oben-links" />
+      <item name="align_top_center" value="oben-Zentrum" />
+      <item name="align_top_right" value="oben-rechts" />
+      <item name="align_middle_left" value="Mitte-links" />
+      <item name="align_middle_center" value="Mitte-Zentrum" />
+      <item name="align_middle_right" value="Mitte-rechts" />
+      <item name="align_bottom_left" value="unter-links" />
+      <item name="align_bottom_center" value="unter-Zentrum" />
+      <item name="align_bottom_right" value="unter-rechts" />
+      <item name="align_default" value="Standardmäβig" />
+      <item name="align_custom" value="Einrichten…" />
+      <item name="transparency" value="Deckkraft" />
+      <item name="trans_opaque" value=" (undursichtig)" />
+      <item name="trans_invisible" value=" (unsichtbar)" />
+      <item name="trans_default" value="Standardmäβig" />
+      <item name="trans_custom" value="Einrichten…" />
+      <item name="priority" value="Priorität" />
+      <item name="priority_real_time" value="reale Zeit: 24" />
+      <item name="priority_high" value="Hohe: 13" />
+      <item name="priority_above_normal" value="Höher: 10" />
+      <item name="priority_normal" value="Normal: 8" />
+      <item name="priority_below_normal" value="Niedriger: 6" />
+      <item name="priority_idle" value="Single: 4" />
+      <item name="system_tray" value="Systemtray" />
+      <item name="minimize_to_systemtray" value="Minimieren zum Tray" />
+      <item name="minimize_always_to_systemtray" value="Immer minimieren zum Tray" />
+      <item name="other_windows" value="Andere Fernster" />
+      <item name="minimize_other_windows" value="Minimieren" />
+      <item name="close_other_windows" value="Schlieβen" />
+      <item name="start_program" value="Start" />
+      <item name="tab_general" value="Gemeinsam" />
+      <item name="lbl_handle" value="Handle:" />
+      <item name="lbl_caption" value="Titel" />
+      <item name="lbl_class" value="Klasse:" />
+      <item name="lbl_style" value="Stil:" />
+      <item name="lbl_rectangle" value="Bereich:" />
+      <item name="tab_process" value="Prozeβ" />
+      <item name="lbl_module_name" value="File" />
+      <item name="lbl_module_path" value="Route" />
+      <item name="lbl_process_id" value="Prozeβ-ID" />
+      <item name="lbl_thread_id" value="Verkehr-ID" />
+      <item name="save_screenshot_title" value="Den Screenshot speichern" />
+      <item name="save_screenshot_filename" value="WindowScreenshot" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="size_form" value="Gröβe" />
+      <item name="size_btn_apply" value="Anwenden" />
+      <item name="lbl_height" value="Höhe:" />
+      <item name="lbl_width" value="Breite:" />
+      <item name="trans_form" value="Deckkraft" />
+      <item name="trans_btn_apply" value="Anwenden" />
+      <item name="align_form" value="Position" />
+      <item name="align_btn_apply" value="Anwenden" />
+      <item name="lbl_top" value="Oben:" />
+      <item name="lbl_left" value="Links:" />
+      <item name="mi_auto_start" value="Auto-Start" />
+      <item name="mi_settings" value="Einstellungen..." />
+      <item name="mi_about" value="Über das Programm" />
+      <item name="mi_exit" value="Ausgabe" />
+      <item name="about_form" value="Über das Programm" />
+      <item name="about_btn_ok" value="Ok" />
+      <item name="settings_form" value="Einstellungen" />
+      <item name="tab_settings_general" value="Gemeinsam" />
+      <item name="grpb_process_exclusions" value="Programme der Ausnahme" />
+      <item name="clm_process_exclusion_name" value="Filename" />
+      <item name="clm_process_exclusion_edit" value="Ändern" />
+      <item name="clm_process_exclusion_delete" value="Löschen" />
+      <item name="btn_process_exclusion_up" value="Oben" />
+      <item name="btn_process_exclusion_down" value="Runter" />
+      <item name="btn_add_process_exclusion" value="Prozeβ hinzufügen" />
+      <item name="tab_settings_menu" value="Menü" />
+      <item name="grpb_start_program" value="Menüeinträge mit dem Programmstart" />
+      <item name="clm_start_program_title" value="Titel" />
+      <item name="clm_start_program_path" value="Filename" />
+      <item name="clm_start_program_arguments" value="Parameter" />
+      <item name="clm_start_program_edit" value="Ändern" />
+      <item name="clm_start_program_delete" value="Löschen" />
+      <item name="btn_start_program_up" value="Oben" />
+      <item name="btn_start_program_down" value="Runter" />
+      <item name="btn_add_start_program" value="Hinzufügen" />
+      <item name="settings_btn_apply" value="Ok" />
+      <item name="settings_btn_cancel" value="Cancel" />
+      <item name="process_name_form" value="Programm der Ausnahme" />
+      <item name="process_lbl_file_name" value="Filename:" />
+      <item name="process_btn_apply" value="Ok" />
+      <item name="process_btn_cancel" value="Cancel" />
+      <item name="process_browse_file_filter" value="Ausführbare (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="start_program_form" value="Programm" />
+      <item name="start_program_lbl_title" value="Titel:" />
+      <item name="start_program_lbl_file_name" value="Filename:" />
+      <item name="start_program_lbl_arguments" value="Parameter:" />
+      <item name="start_program_btn_apply" value="Ok" />
+      <item name="start_program_btn_Cancel" value="Cancel" />
+      <item name="start_program_browse_file_filter" value="Ausführbare (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="lbl_language" value="Sprache" />
+      <item name="message_box_attention_title" value="Achtung" />
+      <item name="message_box_attention_content" value="Es ist nötig die Anwendungen neue zu starten um die Einstellungen zu speichern." />
+      <item name="hotkeys_form" value="Hotkeys" />
+      <item name="hotkeys_lbl_key1" value="Schlüssel 1" />
+      <item name="hotkeys_lbl_key2" value="Schlüssel 2" />
+      <item name="hotkeys_lbl_key3" value="Schlüssel 3" />
+      <item name="hotkeys_btn_apply" value="Ok" />
+      <item name="hotkeys_btn_cancel" value="Cancel" />
+      <item name="tab_settings_hotkeys" value="Hotkeys" />
+      <item name="clm_hotkeys_name" value="Name" />
+      <item name="tab_settings_hotkeys" value="Schlüssel" />      
+    </de>
     <cn>
       <item name="information" value="信息" />
       <item name="roll_up" value="卷起" />
