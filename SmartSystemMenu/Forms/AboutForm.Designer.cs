@@ -38,6 +38,10 @@
             this.lblSpecialThanks = new System.Windows.Forms.Label();
             this.linkLightAPIs = new System.Windows.Forms.LinkLabel();
             this.linkJaehyungLee = new System.Windows.Forms.LinkLabel();
+            this.lblJaehyungLee = new System.Windows.Forms.Label();
+            this.lblLightAPIs = new System.Windows.Forms.Label();
+            this.lblOzzii = new System.Windows.Forms.Label();
+            this.lblOzziiAction = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +51,7 @@
             this.lblProductName.Location = new System.Drawing.Point(114, 30);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(75, 13);
-            this.lblProductName.TabIndex = 1;
+            this.lblProductName.TabIndex = 0;
             this.lblProductName.Text = "Product Name";
             // 
             // lblCopyright
@@ -56,7 +60,7 @@
             this.lblCopyright.Location = new System.Drawing.Point(114, 52);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(51, 13);
-            this.lblCopyright.TabIndex = 2;
+            this.lblCopyright.TabIndex = 1;
             this.lblCopyright.Text = "Copyright";
             // 
             // linkUrl
@@ -65,7 +69,7 @@
             this.linkUrl.Location = new System.Drawing.Point(114, 75);
             this.linkUrl.Name = "linkUrl";
             this.linkUrl.Size = new System.Drawing.Size(29, 13);
-            this.linkUrl.TabIndex = 3;
+            this.linkUrl.TabIndex = 2;
             this.linkUrl.TabStop = true;
             this.linkUrl.Text = "URL";
             this.linkUrl.Click += new System.EventHandler(this.LinkClick);
@@ -95,7 +99,7 @@
             this.lblSpecialThanks.Location = new System.Drawing.Point(114, 109);
             this.lblSpecialThanks.Name = "lblSpecialThanks";
             this.lblSpecialThanks.Size = new System.Drawing.Size(92, 13);
-            this.lblSpecialThanks.TabIndex = 4;
+            this.lblSpecialThanks.TabIndex = 3;
             this.lblSpecialThanks.Text = "Special thanks to:";
             // 
             // linkLightAPIs
@@ -104,7 +108,7 @@
             this.linkLightAPIs.Location = new System.Drawing.Point(116, 131);
             this.linkLightAPIs.Name = "linkLightAPIs";
             this.linkLightAPIs.Size = new System.Drawing.Size(52, 13);
-            this.linkLightAPIs.TabIndex = 5;
+            this.linkLightAPIs.TabIndex = 4;
             this.linkLightAPIs.TabStop = true;
             this.linkLightAPIs.Text = "LightAPIs";
             this.linkLightAPIs.Click += new System.EventHandler(this.LinkClick);
@@ -120,11 +124,51 @@
             this.linkJaehyungLee.Text = "Jaehyung Lee";
             this.linkJaehyungLee.Click += new System.EventHandler(this.LinkClick);
             // 
+            // lblJaehyungLee
+            // 
+            this.lblJaehyungLee.AutoSize = true;
+            this.lblJaehyungLee.Location = new System.Drawing.Point(193, 153);
+            this.lblJaehyungLee.Name = "lblJaehyungLee";
+            this.lblJaehyungLee.Size = new System.Drawing.Size(98, 13);
+            this.lblJaehyungLee.TabIndex = 7;
+            this.lblJaehyungLee.Text = "(Korean translation)";
+            // 
+            // lblLightAPIs
+            // 
+            this.lblLightAPIs.AutoSize = true;
+            this.lblLightAPIs.Location = new System.Drawing.Point(193, 130);
+            this.lblLightAPIs.Name = "lblLightAPIs";
+            this.lblLightAPIs.Size = new System.Drawing.Size(138, 13);
+            this.lblLightAPIs.TabIndex = 5;
+            this.lblLightAPIs.Text = "(Multi language support PR)";
+            // 
+            // lblOzzii
+            // 
+            this.lblOzzii.AutoSize = true;
+            this.lblOzzii.Location = new System.Drawing.Point(116, 175);
+            this.lblOzzii.Name = "lblOzzii";
+            this.lblOzzii.Size = new System.Drawing.Size(27, 13);
+            this.lblOzzii.TabIndex = 8;
+            this.lblOzzii.Text = "ozzii";
+            // 
+            // lblOzziiAction
+            // 
+            this.lblOzziiAction.AutoSize = true;
+            this.lblOzziiAction.Location = new System.Drawing.Point(193, 175);
+            this.lblOzziiAction.Name = "lblOzziiAction";
+            this.lblOzziiAction.Size = new System.Drawing.Size(100, 13);
+            this.lblOzziiAction.TabIndex = 9;
+            this.lblOzziiAction.Text = "(Serbian translation)";
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 185);
+            this.ClientSize = new System.Drawing.Size(456, 205);
+            this.Controls.Add(this.lblOzziiAction);
+            this.Controls.Add(this.lblOzzii);
+            this.Controls.Add(this.lblLightAPIs);
+            this.Controls.Add(this.lblJaehyungLee);
             this.Controls.Add(this.linkJaehyungLee);
             this.Controls.Add(this.linkLightAPIs);
             this.Controls.Add(this.lblSpecialThanks);
@@ -157,5 +201,9 @@
         private System.Windows.Forms.Label lblSpecialThanks;
         private System.Windows.Forms.LinkLabel linkLightAPIs;
         private System.Windows.Forms.LinkLabel linkJaehyungLee;
+        private System.Windows.Forms.Label lblJaehyungLee;
+        private System.Windows.Forms.Label lblLightAPIs;
+        private System.Windows.Forms.Label lblOzzii;
+        private System.Windows.Forms.Label lblOzziiAction;
     }
 }
