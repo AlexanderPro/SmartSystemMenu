@@ -203,7 +203,7 @@ namespace SmartSystemMenu.Settings
                 settings.LanguageName = languageName;
             }
 
-            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "zh-CN" || Thread.CurrentThread.CurrentCulture.Name == "zh-TW")
+            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN" || Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
             {
                 languageName = "cn";
             }
@@ -213,7 +213,7 @@ namespace SmartSystemMenu.Settings
                 languageName = "ja";
             }
 
-            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ko-KR" || Thread.CurrentThread.CurrentCulture.Name == "ko-KP")
+            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "ko-KR" || Thread.CurrentThread.CurrentCulture.Name == "ko-KP"))
             {
                 languageName = "ko";
             }
@@ -221,6 +221,15 @@ namespace SmartSystemMenu.Settings
             if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
             {
                 languageName = "ru";
+            }
+
+            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl" ||
+                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-BA" ||
+                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-ME" ||
+                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-RS" ||
+                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-CS"))
+            {
+                languageName = "sr";
             }
 
             if (languageName == "")
