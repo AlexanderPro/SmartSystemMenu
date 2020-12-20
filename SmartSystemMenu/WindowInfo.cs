@@ -1,0 +1,88 @@
+﻿using System;
+using SmartSystemMenu.Native;
+
+namespace SmartSystemMenu
+{
+    class WindowInfo
+    {
+        public string GetWindowText { get; set; }
+
+        public string WM_GETTEXT { get; set; }
+
+        public string GetClassName { get; set; }
+
+        public string RealGetWindowClass { get; set; }
+
+        public string FontFace { get; set; }
+
+        public IntPtr Handle { get; set; }
+
+        public IntPtr ParentHandle { get; set; }
+
+        public Rect Size { get; set; }
+
+        public int Instance { get; set; }
+
+        public int ProcessId { get; set; }
+
+        public uint ThreadId { get; set; }
+
+        public int WindowProc { get; set; }
+
+        public int GCL_WNDPROC { get; set; }
+
+        public int DWL_DLGPROC { get; set; }
+
+        public int GWL_STYLE { get; set; }
+
+        public int GCL_STYLE { get; set; }
+
+        public int GWL_EXSTYLE { get; set; }
+
+        public int ExStyle { get; set; }
+
+        public int LWA_ALPHA { get; set; }
+
+        public int LWA_COLORKEY { get; set; }
+
+        public int GWL_ID { get; set; }
+
+        public int GWL_USERDATA { get; set; }
+
+        public int DWL_USER { get; set; }
+
+        public string AccessibleName { get; set; }
+
+        public string AccessibleValue { get; set; }
+
+        public string AccessibleRole { get; set; }
+
+        public string AccessibleDescription { get; set; }
+
+        public string FullPath { get; set; }
+
+        public string CommandLine { get; set; }
+
+        public string Directory { get; set; }
+
+        public string Owner { get; set; }
+
+        public string Started { get; set; }
+
+        public string Parent { get; set; }
+
+        public string Priority { get; set; }
+
+        public string ProductName { get; set; }
+
+        public string ProductDescription { get; set; }
+
+        public string FileVersion { get; set; }
+
+        public string ProductVersion { get; set; }
+
+        public string Author { get; set; }
+
+        public string Copyright { get; set; }
+    }
+}

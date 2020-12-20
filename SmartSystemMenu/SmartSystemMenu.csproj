@@ -180,6 +180,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Native\NativeMethods.cs" />
     <Compile Include="Window.cs" />
+    <Compile Include="WindowInfo.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>

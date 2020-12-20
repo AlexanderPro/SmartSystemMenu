@@ -34,38 +34,7 @@ namespace SmartSystemMenu
 
         public IntPtr Handle { get; private set; }
 
-        public SystemMenu Menu { get; private set; }
-
-        public string WindowText
-        {
-            get
-            {
-                var builder = new StringBuilder(1024);
-                NativeMethods.GetWindowText(Handle, builder, builder.Capacity);
-                var windowText = builder.ToString().Trim();
-                return windowText;
-            }
-        }
-
-        public string ClassName
-        {
-            get
-            {
-                var builder = new StringBuilder(1024);
-                NativeMethods.GetClassName(Handle, builder, builder.Capacity);
-                var className = builder.ToString().Trim();
-                return className;
-            }
-        }
-
-        public int Style
-        {
-            get
-            {
-                int style = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
-                return style;
-            }
-        }
+        public SystemMenu Menu { get; private set; }        
 
         public Rect Size
         {
@@ -262,7 +231,36 @@ namespace SmartSystemMenu
 
         public override string ToString()
         {
-            return WindowText;
+            return GetWindowText();
+        }
+
+        public string GetWindowText()
+        {
+            var builder = new StringBuilder(1024);
+            NativeMethods.GetWindowText(Handle, builder, builder.Capacity);
+            var windowText = builder.ToString().Trim();
+            return windowText;
+        }
+
+        public string GetClassName()
+        {
+            var builder = new StringBuilder(1024);
+            NativeMethods.GetClassName(Handle, builder, builder.Capacity);
+            var className = builder.ToString().Trim();
+            return className;
+        }
+
+        public WindowInfo GetWindowInfo()
+        {
+            var info = new WindowInfo();
+            info.GetWindowText = GetWindowText();
+            info.GetClassName = GetClassName();
+            info.Size = Size;
+            info.Handle = Handle;
+            info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
+            info.ProcessId = ProcessId;
+            info.ThreadId = ThreadId;
+            return info;
         }
 
         public void SetTrancparency(int percent)
@@ -617,7 +615,8 @@ namespace SmartSystemMenu
             _systemTrayIcon.MouseClick -= SystemTrayIconClick;
             _systemTrayIcon.MouseClick += SystemTrayIconClick;
             _systemTrayIcon.Icon = GetWindowIcon();
-            _systemTrayIcon.Text = WindowText.Length > 63 ? WindowText.Substring(0, 60).PadRight(63, '.') : WindowText;
+            var windowText = GetWindowText();
+            _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;
             _systemTrayIcon.Visible = true;
         }
 
