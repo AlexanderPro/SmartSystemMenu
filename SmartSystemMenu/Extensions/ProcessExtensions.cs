@@ -2,6 +2,8 @@
 using System.Text;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Security.Principal;
+using System.Runtime.InteropServices;
 using SmartSystemMenu.Native;
 
 namespace SmartSystemMenu.Extensions
@@ -68,6 +70,50 @@ namespace SmartSystemMenu.Extensions
                 NativeMethods.EnumThreadWindows(thread.Id, (hwnd, lParam) => { handles.Add(hwnd); return true; }, 0);
             }
             return handles;
+        }
+
+        public static string GetProcessUser(this Process process)
+        {
+            IntPtr processHandle = IntPtr.Zero;
+            try
+            {
+                NativeMethods.OpenProcessToken(process.Handle, 8, ref processHandle);
+                var wi = new WindowsIdentity(processHandle);
+                string user = wi.Name;
+                return user.Contains(@"\") ? user.Substring(user.IndexOf(@"\") + 1) : user;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                if (processHandle != IntPtr.Zero)
+                {
+                    NativeMethods.CloseHandle(processHandle);
+                }
+            }
+        }
+
+
+        public static Process GetParentProcess(this Process process)
+        {
+            var pbi = new PROCESS_BASIC_INFORMATION();
+            int returnLength;
+            var status = NativeMethods.NtQueryInformationProcess(process.Handle, 0, ref pbi, Marshal.SizeOf(pbi), out returnLength);
+            if (status != 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                return Process.GetProcessById(pbi.InheritedFromUniqueProcessId.ToInt32());
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

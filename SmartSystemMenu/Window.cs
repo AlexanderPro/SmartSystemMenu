@@ -260,6 +260,32 @@ namespace SmartSystemMenu
             info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
             info.ProcessId = ProcessId;
             info.ThreadId = ThreadId;
+            info.FullPath = Process.GetMainModuleFileName();
+            info.FullPath = info.FullPath == null ? "" : info.FullPath;
+            info.Owner = Process.GetProcessUser();
+            info.Owner = info.Owner == null ? "" : info.Owner;
+            info.Priority = ProcessPriority;
+            info.StartTime = Process.StartTime;
+            info.WorkingDirectory = Process.StartInfo.WorkingDirectory;
+
+            var parentProcess = Process.GetParentProcess();
+            if (parentProcess != null)
+            {
+                info.Parent = parentProcess.ProcessName;
+            }
+
+            try
+            {
+                var fileVersionInfo = Process.MainModule.FileVersionInfo;
+                info.ProductName = fileVersionInfo.ProductName;
+                info.ProductVersion = fileVersionInfo.ProductVersion;
+                info.FileVersion = fileVersionInfo.FileVersion;
+                info.Copyright = fileVersionInfo.LegalCopyright;
+            }
+            catch
+            {
+            }
+
             return info;
         }
 

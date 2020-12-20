@@ -63,15 +63,15 @@ namespace SmartSystemMenu
 
         public string CommandLine { get; set; }
 
-        public string Directory { get; set; }
+        public string WorkingDirectory { get; set; }
 
         public string Owner { get; set; }
 
-        public string Started { get; set; }
+        public DateTime StartTime { get; set; }
 
         public string Parent { get; set; }
 
-        public string Priority { get; set; }
+        public Priority Priority { get; set; }
 
         public string ProductName { get; set; }
 
@@ -80,8 +80,6 @@ namespace SmartSystemMenu
         public string FileVersion { get; set; }
 
         public string ProductVersion { get; set; }
-
-        public string Author { get; set; }
 
         public string Copyright { get; set; }
     }
