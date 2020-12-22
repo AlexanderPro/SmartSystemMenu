@@ -94,16 +94,6 @@ namespace SmartSystemMenu
             }
         }
 
-        public uint ThreadId
-        {
-            get
-            {
-                int processId;
-                uint threadId = NativeMethods.GetWindowThreadProcessId(Handle, out processId);
-                return threadId;
-            }
-        }
-
         public Priority ProcessPriority
         {
             get
@@ -238,7 +228,7 @@ namespace SmartSystemMenu
         {
             var builder = new StringBuilder(1024);
             NativeMethods.GetWindowText(Handle, builder, builder.Capacity);
-            var windowText = builder.ToString().Trim();
+            var windowText = builder.ToString();
             return windowText;
         }
 
@@ -246,37 +236,69 @@ namespace SmartSystemMenu
         {
             var builder = new StringBuilder(1024);
             NativeMethods.GetClassName(Handle, builder, builder.Capacity);
-            var className = builder.ToString().Trim();
+            var className = builder.ToString();
             return className;
         }
 
+        private string RealGetWindowClass()
+        {
+            var builder = new StringBuilder(1024);
+            NativeMethods.RealGetWindowClass(Handle, builder, builder.Capacity);
+            var className = builder.ToString();
+            return className;
+        }
+
+
         public WindowInfo GetWindowInfo()
         {
+            var process = Process;
             var info = new WindowInfo();
             info.GetWindowText = GetWindowText();
+            info.WM_GETTEXT = GetWmGettext();
             info.GetClassName = GetClassName();
-            info.Size = Size;
+            info.RealGetWindowClass = RealGetWindowClass();
+            info.FontFace = GetFontName();
             info.Handle = Handle;
-            info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
+            info.ParentHandle = NativeMethods.GetParent(Handle);
+            info.Size = Size;
             info.ProcessId = ProcessId;
-            info.ThreadId = ThreadId;
-            info.FullPath = Process.GetMainModuleFileName();
+            info.ThreadId = GetThreadId();
+            info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
+            info.FullPath = process == null ? "" : process.GetMainModuleFileName();
             info.FullPath = info.FullPath == null ? "" : info.FullPath;
-            info.Owner = Process.GetProcessUser();
+            info.Owner = process == null ? "" : process.GetProcessUser();
             info.Owner = info.Owner == null ? "" : info.Owner;
             info.Priority = ProcessPriority;
-            info.StartTime = Process.StartTime;
-            info.WorkingDirectory = Process.StartInfo.WorkingDirectory;
+            info.StartTime = process == null ? (DateTime?)null : process.StartTime;
+            info.WorkingDirectory = process == null ? "" : process.StartInfo.WorkingDirectory;
 
-            var parentProcess = Process.GetParentProcess();
-            if (parentProcess != null)
+            try
             {
-                info.Parent = parentProcess.ProcessName;
+                info.Instance = process == null ? IntPtr.Zero : process.Modules[0].BaseAddress;
+            }
+            catch
+            {
             }
 
             try
             {
-                var fileVersionInfo = Process.MainModule.FileVersionInfo;
+                info.CommandLine = process == null ? "" : process.GetCommandLine();
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                info.Parent = process.GetParentProcess().ProcessName;
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                var fileVersionInfo = process.MainModule.FileVersionInfo;
                 info.ProductName = fileVersionInfo.ProductName;
                 info.ProductVersion = fileVersionInfo.ProductVersion;
                 info.FileVersion = fileVersionInfo.FileVersion;
@@ -573,6 +595,34 @@ namespace SmartSystemMenu
 
 
         #region Methods.Private
+
+        private string GetFontName()
+        {
+            var graphics = Graphics.FromHwnd(Handle);
+            var hdc = graphics.GetHdc();
+            var font = Font.FromHdc(hdc);
+            return font.Name;
+        }
+
+        private string GetWmGettext()
+        {
+            var titleSize = NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXTLENGTH, 0, 0);
+            if (titleSize.ToInt32() == 0)
+            {
+                return String.Empty;
+            }
+
+            var title = new StringBuilder(titleSize.ToInt32() + 1);
+            NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXT, title.Capacity, title);
+            return title.ToString();
+        }
+
+        private uint GetThreadId()
+        {
+            int processId;
+            uint threadId = NativeMethods.GetWindowThreadProcessId(Handle, out processId);
+            return threadId;
+        }
 
         private void SetOpacity(IntPtr handle, Byte opacity)
         {

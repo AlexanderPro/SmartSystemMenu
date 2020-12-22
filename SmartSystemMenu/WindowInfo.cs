@@ -21,7 +21,7 @@ namespace SmartSystemMenu
 
         public Rect Size { get; set; }
 
-        public int Instance { get; set; }
+        public IntPtr Instance { get; set; }
 
         public int ProcessId { get; set; }
 
@@ -67,7 +67,7 @@ namespace SmartSystemMenu
 
         public string Owner { get; set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         public string Parent { get; set; }
 
@@ -82,5 +82,48 @@ namespace SmartSystemMenu
         public string ProductVersion { get; set; }
 
         public string Copyright { get; set; }
+
+        public WindowInfo()
+        {
+            GetWindowText = "";
+            WM_GETTEXT = "";
+            GetClassName = "";
+            RealGetWindowClass = "";
+            FontFace = "";
+            Handle = IntPtr.Zero;
+            ParentHandle = IntPtr.Zero;
+            Size = new Rect();
+            Instance = IntPtr.Zero;
+            ProcessId = 0;
+            ThreadId = 0;
+            WindowProc = 0;
+            GCL_WNDPROC = 0;
+            DWL_DLGPROC = 0;
+            GWL_STYLE = 0;
+            GCL_STYLE = 0;
+            GWL_EXSTYLE = 0;
+            ExStyle = 0;
+            LWA_ALPHA = 0;
+            LWA_COLORKEY = 0;
+            GWL_ID = 0;
+            GWL_USERDATA = 0;
+            DWL_USER = 0;
+            AccessibleName = "";
+            AccessibleValue = "";
+            AccessibleRole = "";
+            AccessibleDescription = "";
+            FullPath = "";
+            CommandLine = "";
+            WorkingDirectory = "";
+            Owner = "";
+            StartTime = null;
+            Parent = "";
+            Priority = 0;
+            ProductName = "";
+            ProductDescription = "";
+            FileVersion = "";
+            ProductVersion = "";
+            Copyright = "";
+        }
     }
 }

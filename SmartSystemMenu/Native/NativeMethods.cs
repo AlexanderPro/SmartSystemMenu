@@ -24,11 +24,17 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindow(IntPtr handle, int uCmd);
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetParent(IntPtr handle);
+
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int GetWindowText(IntPtr handle, StringBuilder title, int size);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int GetClassName(IntPtr handle, StringBuilder className, int size);
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern uint RealGetWindowClass(IntPtr handle, [Out] StringBuilder className, int size);
 
         [DllImport("user32.dll")]
         public static extern bool IsWindowVisible(IntPtr handle);
@@ -129,6 +135,9 @@ namespace SmartSystemMenu.Native
 
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd, int msg, uint wParam, uint lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern bool SendMessage(IntPtr hWnd, uint Msg, int wParam, StringBuilder lParam);
 
         [DllImport("user32.dll")]
         public static extern IntPtr PostMessage(IntPtr hWnd, int msg, uint wParam, uint lParam);

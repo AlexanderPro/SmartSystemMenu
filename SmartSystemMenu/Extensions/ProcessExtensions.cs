@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Security.Principal;
 using System.Runtime.InteropServices;
+using System.Management;
+using System.Linq;
 using SmartSystemMenu.Native;
 
 namespace SmartSystemMenu.Extensions
@@ -113,6 +115,16 @@ namespace SmartSystemMenu.Extensions
             catch
             {
                 return null;
+            }
+        }
+
+        public static string GetCommandLine(this Process process)
+        {
+            using (var searcher = new ManagementObjectSearcher("SELECT CommandLine FROM Win32_Process WHERE ProcessId = " + process.Id))
+            using (var objects = searcher.Get())
+            {
+                var baseObject = objects.Cast<ManagementBaseObject>().FirstOrDefault();
+                return baseObject != null && baseObject["CommandLine"] != null ? baseObject["CommandLine"].ToString() : "";
             }
         }
     }
