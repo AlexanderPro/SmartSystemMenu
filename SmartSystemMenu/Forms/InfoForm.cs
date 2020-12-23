@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.IO;
-using System.Text;
+using System.Globalization;
 using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
@@ -26,21 +25,45 @@ namespace SmartSystemMenu.Forms
             lblThreadId.Text = settings.LanguageSettings.GetValue("lbl_thread_id");
             lblProcessId.Text = settings.LanguageSettings.GetValue("lbl_process_id");
             lblModulePath.Text = settings.LanguageSettings.GetValue("lbl_module_path");
-            lblModuleName.Text = settings.LanguageSettings.GetValue("lbl_module_name");
+            lblModuleName.Text = settings.LanguageSettings.GetValue("lbl_module_name");*/
+            var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone(); ;
+            nfi.NumberGroupSeparator = ",";
             Text = settings.LanguageSettings.GetValue("information");
-            txtHandleValue.Text = windowInfo.Handle.ToInt64().ToString("X8");
-            txtCaptionValue.Text = windowInfo.GetWindowText;
-            txtClassValue.Text = windowInfo.GetClassName;
-            lblStyleValue.Text = windowInfo.GWL_STYLE.ToString("X8");
-            lblRectangleValue.Text = string.Format("({0},{1}) - ({2},{3})  -  {4}x{5}", windowInfo.Size.Left, windowInfo.Size.Top, windowInfo.Size.Right, windowInfo.Size.Bottom, windowInfo.Size.Width, windowInfo.Size.Height);
-            lblProcessIdValue.Text = string.Format("{0:X8} ({0})", windowInfo.ProcessId);
-            lblThreadIdValue.Text = string.Format("{0:X8} ({0})", windowInfo.ThreadId);
-            var process = SystemUtils.GetProcessByIdSafely(windowInfo.ProcessId);
-            if (process != null)
-            {
-                txtModuleNameValue.Text = Path.GetFileName(process.MainModule.FileName);
-                txtModulePathValue.Text = process.MainModule.FileName;
-            }*/
+            txtGetWindowText.Text = windowInfo.GetWindowText;
+            txtWmGetText.Text = windowInfo.WM_GETTEXT;
+            txtGetClassName.Text = windowInfo.GetClassName;
+            txtRealGetWindowClass.Text = windowInfo.RealGetWindowClass;
+            txtFontFace.Text = windowInfo.FontFace;
+            txtWindowHandle.Text = string.Format("0x{0:X8}", windowInfo.Handle);
+            txtParentWindowHandle.Text = string.Format("0x{0:X8}", windowInfo.ParentHandle);
+            txtWindowSize.Text = string.Format("{0} x {1}", windowInfo.Size.Width, windowInfo.Size.Height);
+            txtInstance.Text = string.Format("0x{0:X8}", windowInfo.Instance);
+            txtProcessId.Text = string.Format("0x{0:X4}", windowInfo.ProcessId);
+            txtThreadId.Text = string.Format("0x{0:X4}", windowInfo.ThreadId);
+            txtGclWndProc.Text = string.Format("0x{0:X8}", windowInfo.GCL_WNDPROC);
+            txtDwlDlgProc.Text = string.Format("0x{0:X8}", windowInfo.DWL_DLGPROC);
+            txtGwlStyle.Text = string.Format("0x{0:X8}", windowInfo.GWL_STYLE);
+            txtGclStyle.Text = string.Format("0x{0:X8}", windowInfo.GCL_STYLE);
+            txtGwlExStyle.Text = string.Format("0x{0:X8}", windowInfo.GWL_EXSTYLE);
+            txtWindowInfoExStyle.Text = string.Format("0x{0:X8}", windowInfo.WindowInfoExStyle);
+            txtLwaAlpha.Text = windowInfo.LWA_ALPHA ? "+" : "-";
+            txtLwaColorKey.Text = windowInfo.LWA_COLORKEY ? "+" : "-";
+            txtGwlUserData.Text = string.Format("0x{0:X8}", windowInfo.GWL_USERDATA);
+            txtDwlUser.Text = string.Format("0x{0:X8}", windowInfo.DWL_USER);
+            txtFullPath.Text = windowInfo.FullPath;
+            txtCommandLine.Text = windowInfo.CommandLine;
+            txtStartedAt.Text = windowInfo.StartTime == null ? "" : windowInfo.StartTime.Value.ToString("dd.MM.yyyy HH:mm:ss");
+            txtOwner.Text = windowInfo.Owner;
+            txtParent.Text = windowInfo.Parent;
+            txtPriority.Text = windowInfo.Priority.ToString();
+            txtThreads.Text = windowInfo.ThreadCount.ToString();
+            txtHandles.Text = windowInfo.HandleCount.ToString();
+            txtWorkingSetSize.Text = ((decimal)windowInfo.WorkingSetSize).ToString("#,0", nfi);
+            txtVirtualSize.Text = ((decimal)windowInfo.VirtualSize).ToString("#,0", nfi);
+            txtProductName.Text = windowInfo.ProductName;
+            txtCopyright.Text = windowInfo.Copyright;
+            txtFileVersion.Text = windowInfo.FileVersion;
+            txtProductVersion.Text = windowInfo.ProductVersion;
         }
 
         private void CloseClick(object sender, EventArgs e)

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Windows.Automation;
+using System.IO;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
@@ -256,7 +257,6 @@ namespace SmartSystemMenu
             info.WM_GETTEXT = GetWmGettext();
             info.GetClassName = GetClassName();
             info.RealGetWindowClass = RealGetWindowClass();
-            info.FontFace = GetFontName();
             info.Handle = Handle;
             info.ParentHandle = NativeMethods.GetParent(Handle);
             info.Size = Size;
@@ -272,11 +272,30 @@ namespace SmartSystemMenu
             info.DWL_USER = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_USER);
             info.FullPath = process == null ? "" : process.GetMainModuleFileName();
             info.FullPath = info.FullPath == null ? "" : info.FullPath;
-            info.Owner = process == null ? "" : process.GetProcessUser();
-            info.Owner = info.Owner == null ? "" : info.Owner;
             info.Priority = ProcessPriority;
             info.StartTime = process == null ? (DateTime?)null : process.StartTime;
-            info.WorkingDirectory = process == null ? "" : process.StartInfo.WorkingDirectory;
+
+            try
+            {
+                var processInfo = SystemUtils.GetWmiProcessInfo(process.Id);
+                info.Owner = processInfo.Owner;
+                info.CommandLine = processInfo.CommandLine;
+                info.ThreadCount = processInfo.ThreadCount;
+                info.HandleCount = processInfo.HandleCount;
+                info.VirtualSize = processInfo.VirtualSize;
+                info.WorkingSetSize = processInfo.WorkingSetSize;
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                info.FontFace = GetFontName();
+            }
+            catch
+            {
+            }
 
             try
             {
@@ -315,15 +334,7 @@ namespace SmartSystemMenu
 
             try
             {
-                info.CommandLine = process == null ? "" : process.GetCommandLine();
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                info.Parent = process.GetParentProcess().ProcessName;
+                info.Parent = Path.GetFileName(process.GetParentProcess().MainModule.FileName);
             }
             catch
             {
@@ -341,7 +352,7 @@ namespace SmartSystemMenu
             {
             }
 
-            try
+            /*try
             {
                 var control = Control.FromHandle(Handle);
                 var accessibilityObject = control.AccessibilityObject;
@@ -352,7 +363,7 @@ namespace SmartSystemMenu
             }
             catch
             {
-            }
+            }*/
 
             return info;
         }
@@ -647,7 +658,7 @@ namespace SmartSystemMenu
             var graphics = Graphics.FromHwnd(Handle);
             var hdc = graphics.GetHdc();
             var font = Font.FromHdc(hdc);
-            return font.Name;
+            return font.OriginalFontName;
         }
 
         private string GetWmGettext()

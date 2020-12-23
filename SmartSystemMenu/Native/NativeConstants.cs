@@ -97,6 +97,7 @@
         public const int PROCESS_SET_INFORMATION = 0x0200;
         public const int PROCESS_QUERY_INFORMATION = 0x0400;
         public const int PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
+        public const int PROCESS_VM_READ = 0x10;
 
         public const int STD_OUTPUT_HANDLE = -11;
 

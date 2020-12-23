@@ -61,9 +61,17 @@ namespace SmartSystemMenu
 
         public string CommandLine { get; set; }
 
-        public string WorkingDirectory { get; set; }
+        public string CurrentDirectory { get; set; }
 
         public string Owner { get; set; }
+
+        public uint HandleCount { get; set; }
+
+        public uint ThreadCount { get; set; }
+
+        public ulong VirtualSize { get; set; }
+
+        public ulong WorkingSetSize { get; set; }
 
         public DateTime? StartTime { get; set; }
 
@@ -72,8 +80,6 @@ namespace SmartSystemMenu
         public Priority Priority { get; set; }
 
         public string ProductName { get; set; }
-
-        public string ProductDescription { get; set; }
 
         public string FileVersion { get; set; }
 
@@ -111,13 +117,16 @@ namespace SmartSystemMenu
             AccessibleDescription = "";
             FullPath = "";
             CommandLine = "";
-            WorkingDirectory = "";
+            CurrentDirectory = "";
             Owner = "";
+            HandleCount = 0;
+            ThreadCount = 0;
+            VirtualSize = 0;
+            WorkingSetSize = 0;
             StartTime = null;
             Parent = "";
             Priority = 0;
             ProductName = "";
-            ProductDescription = "";
             FileVersion = "";
             ProductVersion = "";
             Copyright = "";
