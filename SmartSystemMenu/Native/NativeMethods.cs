@@ -93,6 +93,13 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern int GetWindowLong(IntPtr handle, int nIndex);
 
+        [DllImport("user32.dll")]
+        public static extern int GetClassLong(IntPtr handle, int nIndex);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowInfo([In] IntPtr hWnd, [In, Out] ref WINDOW_INFO rect);
+
         [DllImport("kernel32.dll")]
         public static extern bool SetPriorityClass(IntPtr hProcess, PriorityClass priorityClass);
 

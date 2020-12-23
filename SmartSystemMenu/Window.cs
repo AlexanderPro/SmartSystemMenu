@@ -248,7 +248,6 @@ namespace SmartSystemMenu
             return className;
         }
 
-
         public WindowInfo GetWindowInfo()
         {
             var process = Process;
@@ -264,6 +263,13 @@ namespace SmartSystemMenu
             info.ProcessId = ProcessId;
             info.ThreadId = GetThreadId();
             info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
+            info.GWL_EXSTYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_EXSTYLE);
+            info.GWL_ID = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_ID);
+            info.GWL_USERDATA = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_USERDATA);
+            info.GCL_STYLE = NativeMethods.GetClassLong(Handle, NativeConstants.GCL_STYLE);
+            info.GCL_WNDPROC = NativeMethods.GetClassLong(Handle, NativeConstants.GCL_WNDPROC);
+            info.DWL_DLGPROC = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_DLGPROC);
+            info.DWL_USER = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_USER);
             info.FullPath = process == null ? "" : process.GetMainModuleFileName();
             info.FullPath = info.FullPath == null ? "" : info.FullPath;
             info.Owner = process == null ? "" : process.GetProcessUser();
@@ -271,6 +277,33 @@ namespace SmartSystemMenu
             info.Priority = ProcessPriority;
             info.StartTime = process == null ? (DateTime?)null : process.StartTime;
             info.WorkingDirectory = process == null ? "" : process.StartInfo.WorkingDirectory;
+
+            try
+            {
+                var windowInfo = new WINDOW_INFO();
+                windowInfo.cbSize = Marshal.SizeOf(windowInfo);
+                if (NativeMethods.GetWindowInfo(Handle, ref windowInfo))
+                {
+                    info.WindowInfoExStyle = windowInfo.dwExStyle;
+                }
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                uint key;
+                Byte alpha;
+                uint flags;
+                var result = NativeMethods.GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                var layeredWindow = (LayeredWindow)flags;
+                info.LWA_ALPHA = layeredWindow.HasFlag(LayeredWindow.LWA_ALPHA);
+                info.LWA_COLORKEY = layeredWindow.HasFlag(LayeredWindow.LWA_COLORKEY);
+            }
+            catch
+            {
+            }
 
             try
             {
@@ -303,6 +336,19 @@ namespace SmartSystemMenu
                 info.ProductVersion = fileVersionInfo.ProductVersion;
                 info.FileVersion = fileVersionInfo.FileVersion;
                 info.Copyright = fileVersionInfo.LegalCopyright;
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                var control = Control.FromHandle(Handle);
+                var accessibilityObject = control.AccessibilityObject;
+                info.AccessibleName = accessibilityObject == null ? "" : accessibilityObject.Name;
+                info.AccessibleValue = accessibilityObject == null ? "" : accessibilityObject.Value;
+                info.AccessibleRole = accessibilityObject == null ? "" : accessibilityObject.Role.ToString();
+                info.AccessibleDescription = accessibilityObject == null ? "" : accessibilityObject.Description;
             }
             catch
             {

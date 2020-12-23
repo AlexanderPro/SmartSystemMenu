@@ -282,5 +282,27 @@ namespace SmartSystemMenu.Native
         public IntPtr InheritedFromUniqueProcessId;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct WINDOW_INFO
+    {
+        public int cbSize;
+        public Rect rcWindow;
+        public Rect rcClient;
+        public uint dwStyle;
+        public uint dwExStyle;
+        public uint dwWindowStatus;
+        public int cxWindowBorders;
+        public int cyWindowBorders;
+        public ushort atomWindowType;
+        public ushort wCreatorVersion;
+    }
+
+    [Flags]
+    enum LayeredWindow : uint
+    {
+        LWA_COLORKEY = 0x00000001,
+        LWA_ALPHA = 0x00000002
+    }
+
     delegate int KeyboardHookProc(int code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
 }

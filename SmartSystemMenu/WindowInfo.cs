@@ -27,8 +27,6 @@ namespace SmartSystemMenu
 
         public uint ThreadId { get; set; }
 
-        public int WindowProc { get; set; }
-
         public int GCL_WNDPROC { get; set; }
 
         public int DWL_DLGPROC { get; set; }
@@ -39,11 +37,11 @@ namespace SmartSystemMenu
 
         public int GWL_EXSTYLE { get; set; }
 
-        public int ExStyle { get; set; }
+        public uint WindowInfoExStyle { get; set; }
 
-        public int LWA_ALPHA { get; set; }
+        public bool LWA_ALPHA { get; set; }
 
-        public int LWA_COLORKEY { get; set; }
+        public bool LWA_COLORKEY { get; set; }
 
         public int GWL_ID { get; set; }
 
@@ -96,15 +94,14 @@ namespace SmartSystemMenu
             Instance = IntPtr.Zero;
             ProcessId = 0;
             ThreadId = 0;
-            WindowProc = 0;
             GCL_WNDPROC = 0;
             DWL_DLGPROC = 0;
             GWL_STYLE = 0;
             GCL_STYLE = 0;
             GWL_EXSTYLE = 0;
-            ExStyle = 0;
-            LWA_ALPHA = 0;
-            LWA_COLORKEY = 0;
+            WindowInfoExStyle = 0;
+            LWA_ALPHA = false;
+            LWA_COLORKEY = false;
             GWL_ID = 0;
             GWL_USERDATA = 0;
             DWL_USER = 0;

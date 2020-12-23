@@ -30,6 +30,12 @@
         public const int GWL_EXSTYLE = -20;
         public const int GWL_USERDATA = -21;
         public const int GWL_ID = -12;
+        
+        // ClassLong
+        public const int GCL_STYLE = -26;
+        public const int GCL_WNDPROC = -24;
+        public const int DWL_DLGPROC = 4;
+        public const int DWL_USER = 8;
 
         // WindowStyle
         public const int WS_EX_LAYERED = 0x00080000;
