@@ -16,7 +16,7 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(WindowInfo windowInfo, SmartSystemMenuSettings settings)
         {
-            tabGeneral.Text = settings.LanguageSettings.GetValue("tab_general");
+            /*tabGeneral.Text = settings.LanguageSettings.GetValue("tab_general");
             tabProcess.Text = settings.LanguageSettings.GetValue("tab_process");
             lblRectangle.Text = settings.LanguageSettings.GetValue("lbl_rectangle");
             lblStyle.Text = settings.LanguageSettings.GetValue("lbl_style");
@@ -40,16 +40,12 @@ namespace SmartSystemMenu.Forms
             {
                 txtModuleNameValue.Text = Path.GetFileName(process.MainModule.FileName);
                 txtModulePathValue.Text = process.MainModule.FileName;
-            }
+            }*/
+        }
 
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendFormat("GetWindowText {0}{1}", windowInfo.GetWindowText, Environment.NewLine);
-            stringBuilder.AppendFormat("GetClassName {0}{1}", windowInfo.GetClassName, Environment.NewLine);
-            stringBuilder.AppendFormat("Size {0} x {1}{2}", windowInfo.Size.Width, windowInfo.Size.Height, Environment.NewLine);
-            stringBuilder.AppendFormat("GWL_STYLE {0:X8}{1}", windowInfo.GWL_EXSTYLE, Environment.NewLine);
-            stringBuilder.AppendFormat("ProcessId {0:X4}{1}", windowInfo.ProcessId, Environment.NewLine);
-            stringBuilder.AppendFormat("ThreadId {0:X4}{1}", windowInfo.ThreadId, Environment.NewLine);
-            MessageBox.Show(stringBuilder.ToString(), "Information", MessageBoxButtons.OK);
+        private void CloseClick(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void FormKeyDown(object sender, KeyEventArgs e)
