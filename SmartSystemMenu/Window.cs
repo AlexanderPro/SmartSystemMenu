@@ -291,7 +291,7 @@ namespace SmartSystemMenu
 
             try
             {
-                info.FontFace = GetFontName();
+                info.FontName = GetFontName();
             }
             catch
             {
@@ -655,10 +655,13 @@ namespace SmartSystemMenu
 
         private string GetFontName()
         {
-            var graphics = Graphics.FromHwnd(Handle);
-            var hdc = graphics.GetHdc();
-            var font = Font.FromHdc(hdc);
-            return font.OriginalFontName;
+            var hFont = NativeMethods.SendMessage(Handle, NativeConstants.WM_GETFONT, 0, 0);
+            if (hFont == IntPtr.Zero)
+            {
+                return "Default system font";
+            }
+            var font = Font.FromHfont(hFont);
+            return font.Name;
         }
 
         private string GetWmGettext()

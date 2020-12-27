@@ -13,7 +13,7 @@ namespace SmartSystemMenu
 
         public string RealGetWindowClass { get; set; }
 
-        public string FontFace { get; set; }
+        public string FontName { get; set; }
 
         public IntPtr Handle { get; set; }
 
@@ -93,7 +93,7 @@ namespace SmartSystemMenu
             WM_GETTEXT = "";
             GetClassName = "";
             RealGetWindowClass = "";
-            FontFace = "";
+            FontName = "";
             Handle = IntPtr.Zero;
             ParentHandle = IntPtr.Zero;
             Size = new Rect();

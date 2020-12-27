@@ -33,7 +33,7 @@ namespace SmartSystemMenu.Forms
             txtWmGetText.Text = windowInfo.WM_GETTEXT;
             txtGetClassName.Text = windowInfo.GetClassName;
             txtRealGetWindowClass.Text = windowInfo.RealGetWindowClass;
-            txtFontFace.Text = windowInfo.FontFace;
+            txtFontName.Text = windowInfo.FontName;
             txtWindowHandle.Text = string.Format("0x{0:X8}", windowInfo.Handle);
             txtParentWindowHandle.Text = string.Format("0x{0:X8}", windowInfo.ParentHandle);
             txtWindowSize.Text = string.Format("{0} x {1}", windowInfo.Size.Width, windowInfo.Size.Height);

@@ -63,7 +63,7 @@
             this.lblGwlUserData = new System.Windows.Forms.Label();
             this.lblDwlUser = new System.Windows.Forms.Label();
             this.tblWindowTop = new System.Windows.Forms.TableLayoutPanel();
-            this.lblFontFace = new System.Windows.Forms.Label();
+            this.lblFontName = new System.Windows.Forms.Label();
             this.lblRealGetWindowClass = new System.Windows.Forms.Label();
             this.lblGetClassName = new System.Windows.Forms.Label();
             this.lblWmGetText = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.txtWmGetText = new System.Windows.Forms.TextBox();
             this.txtGetClassName = new System.Windows.Forms.TextBox();
             this.txtRealGetWindowClass = new System.Windows.Forms.TextBox();
-            this.txtFontFace = new System.Windows.Forms.TextBox();
+            this.txtFontName = new System.Windows.Forms.TextBox();
             this.grpProcess = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtFileVersion = new System.Windows.Forms.TextBox();
@@ -80,33 +80,33 @@
             this.lblProductVersion = new System.Windows.Forms.Label();
             this.txtProductVersion = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCopyright = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.txtCopyright = new System.Windows.Forms.TextBox();
+            this.lblCopyright = new System.Windows.Forms.Label();
             this.tblProcessBottom = new System.Windows.Forms.TableLayoutPanel();
-            this.txtOwner = new System.Windows.Forms.TextBox();
-            this.lblOwner = new System.Windows.Forms.Label();
+            this.txtWorkingSetSize = new System.Windows.Forms.TextBox();
+            this.lblWorkingSetSize = new System.Windows.Forms.Label();
             this.lblStartedAt = new System.Windows.Forms.Label();
             this.lblParent = new System.Windows.Forms.Label();
             this.lblPriority = new System.Windows.Forms.Label();
             this.txtStartedAt = new System.Windows.Forms.TextBox();
             this.txtParent = new System.Windows.Forms.TextBox();
             this.txtPriority = new System.Windows.Forms.TextBox();
+            this.lblThreads = new System.Windows.Forms.Label();
+            this.txtOwner = new System.Windows.Forms.TextBox();
+            this.lblOwner = new System.Windows.Forms.Label();
+            this.lblHandles = new System.Windows.Forms.Label();
+            this.lblVirtualSize = new System.Windows.Forms.Label();
+            this.txtThreads = new System.Windows.Forms.TextBox();
+            this.txtHandles = new System.Windows.Forms.TextBox();
+            this.txtVirtualSize = new System.Windows.Forms.TextBox();
             this.tblProcessTop = new System.Windows.Forms.TableLayoutPanel();
             this.lblFullPath = new System.Windows.Forms.Label();
             this.lblCommandLine = new System.Windows.Forms.Label();
             this.txtFullPath = new System.Windows.Forms.TextBox();
             this.txtCommandLine = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
-            this.lblThreads = new System.Windows.Forms.Label();
-            this.lblHandles = new System.Windows.Forms.Label();
-            this.lblVirtualSize = new System.Windows.Forms.Label();
-            this.lblWorkingSetSize = new System.Windows.Forms.Label();
-            this.txtHandles = new System.Windows.Forms.TextBox();
-            this.txtThreads = new System.Windows.Forms.TextBox();
-            this.txtWorkingSetSize = new System.Windows.Forms.TextBox();
-            this.txtVirtualSize = new System.Windows.Forms.TextBox();
             this.grpWindow.SuspendLayout();
             this.tblWindowBottom.SuspendLayout();
             this.tblWindowTop.SuspendLayout();
@@ -538,7 +538,7 @@
             this.tblWindowTop.ColumnCount = 2;
             this.tblWindowTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.45377F));
             this.tblWindowTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.54623F));
-            this.tblWindowTop.Controls.Add(this.lblFontFace, 0, 4);
+            this.tblWindowTop.Controls.Add(this.lblFontName, 0, 4);
             this.tblWindowTop.Controls.Add(this.lblRealGetWindowClass, 0, 3);
             this.tblWindowTop.Controls.Add(this.lblGetClassName, 0, 2);
             this.tblWindowTop.Controls.Add(this.lblWmGetText, 0, 1);
@@ -547,7 +547,7 @@
             this.tblWindowTop.Controls.Add(this.txtWmGetText, 1, 1);
             this.tblWindowTop.Controls.Add(this.txtGetClassName, 1, 2);
             this.tblWindowTop.Controls.Add(this.txtRealGetWindowClass, 1, 3);
-            this.tblWindowTop.Controls.Add(this.txtFontFace, 1, 4);
+            this.tblWindowTop.Controls.Add(this.txtFontName, 1, 4);
             this.tblWindowTop.Location = new System.Drawing.Point(6, 16);
             this.tblWindowTop.Name = "tblWindowTop";
             this.tblWindowTop.RowCount = 5;
@@ -563,15 +563,15 @@
             this.tblWindowTop.Size = new System.Drawing.Size(703, 126);
             this.tblWindowTop.TabIndex = 0;
             // 
-            // lblFontFace
+            // lblFontName
             // 
-            this.lblFontFace.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblFontFace.AutoSize = true;
-            this.lblFontFace.Location = new System.Drawing.Point(132, 106);
-            this.lblFontFace.Name = "lblFontFace";
-            this.lblFontFace.Size = new System.Drawing.Size(58, 13);
-            this.lblFontFace.TabIndex = 8;
-            this.lblFontFace.Text = "Font Face:";
+            this.lblFontName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblFontName.AutoSize = true;
+            this.lblFontName.Location = new System.Drawing.Point(128, 106);
+            this.lblFontName.Name = "lblFontName";
+            this.lblFontName.Size = new System.Drawing.Size(62, 13);
+            this.lblFontName.TabIndex = 8;
+            this.lblFontName.Text = "Font Name:";
             // 
             // lblRealGetWindowClass
             // 
@@ -657,16 +657,16 @@
             this.txtRealGetWindowClass.TabIndex = 7;
             this.txtRealGetWindowClass.TabStop = false;
             // 
-            // txtFontFace
+            // txtFontName
             // 
-            this.txtFontFace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtFontName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFontFace.Location = new System.Drawing.Point(196, 103);
-            this.txtFontFace.Name = "txtFontFace";
-            this.txtFontFace.ReadOnly = true;
-            this.txtFontFace.Size = new System.Drawing.Size(504, 20);
-            this.txtFontFace.TabIndex = 9;
-            this.txtFontFace.TabStop = false;
+            this.txtFontName.Location = new System.Drawing.Point(196, 103);
+            this.txtFontName.Name = "txtFontName";
+            this.txtFontName.ReadOnly = true;
+            this.txtFontName.Size = new System.Drawing.Size(504, 20);
+            this.txtFontName.TabIndex = 9;
+            this.txtFontName.TabStop = false;
             // 
             // grpProcess
             // 
@@ -759,16 +759,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(703, 53);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // lblCopyright
-            // 
-            this.lblCopyright.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(137, 32);
-            this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(54, 13);
-            this.lblCopyright.TabIndex = 2;
-            this.lblCopyright.Text = "Copyright:";
-            // 
             // lblProductName
             // 
             this.lblProductName.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -800,6 +790,16 @@
             this.txtCopyright.Size = new System.Drawing.Size(503, 20);
             this.txtCopyright.TabIndex = 3;
             this.txtCopyright.TabStop = false;
+            // 
+            // lblCopyright
+            // 
+            this.lblCopyright.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblCopyright.AutoSize = true;
+            this.lblCopyright.Location = new System.Drawing.Point(137, 32);
+            this.lblCopyright.Name = "lblCopyright";
+            this.lblCopyright.Size = new System.Drawing.Size(54, 13);
+            this.lblCopyright.TabIndex = 2;
+            this.lblCopyright.Text = "Copyright:";
             // 
             // tblProcessBottom
             // 
@@ -834,26 +834,26 @@
             this.tblProcessBottom.Size = new System.Drawing.Size(703, 104);
             this.tblProcessBottom.TabIndex = 1;
             // 
-            // txtOwner
+            // txtWorkingSetSize
             // 
-            this.txtOwner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtWorkingSetSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOwner.Location = new System.Drawing.Point(197, 28);
-            this.txtOwner.Name = "txtOwner";
-            this.txtOwner.ReadOnly = true;
-            this.txtOwner.Size = new System.Drawing.Size(223, 20);
-            this.txtOwner.TabIndex = 5;
-            this.txtOwner.TabStop = false;
+            this.txtWorkingSetSize.Location = new System.Drawing.Point(197, 78);
+            this.txtWorkingSetSize.Name = "txtWorkingSetSize";
+            this.txtWorkingSetSize.ReadOnly = true;
+            this.txtWorkingSetSize.Size = new System.Drawing.Size(224, 20);
+            this.txtWorkingSetSize.TabIndex = 13;
+            this.txtWorkingSetSize.TabStop = false;
             // 
-            // lblOwner
+            // lblWorkingSetSize
             // 
-            this.lblOwner.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblOwner.AutoSize = true;
-            this.lblOwner.Location = new System.Drawing.Point(150, 31);
-            this.lblOwner.Name = "lblOwner";
-            this.lblOwner.Size = new System.Drawing.Size(41, 13);
-            this.lblOwner.TabIndex = 4;
-            this.lblOwner.Text = "Owner:";
+            this.lblWorkingSetSize.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblWorkingSetSize.AutoSize = true;
+            this.lblWorkingSetSize.Location = new System.Drawing.Point(99, 83);
+            this.lblWorkingSetSize.Name = "lblWorkingSetSize";
+            this.lblWorkingSetSize.Size = new System.Drawing.Size(92, 13);
+            this.lblWorkingSetSize.TabIndex = 12;
+            this.lblWorkingSetSize.Text = "Working Set Size:";
             // 
             // lblStartedAt
             // 
@@ -869,7 +869,7 @@
             // 
             this.lblParent.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblParent.AutoSize = true;
-            this.lblParent.Location = new System.Drawing.Point(485, 6);
+            this.lblParent.Location = new System.Drawing.Point(486, 6);
             this.lblParent.Name = "lblParent";
             this.lblParent.Size = new System.Drawing.Size(41, 13);
             this.lblParent.TabIndex = 2;
@@ -879,7 +879,7 @@
             // 
             this.lblPriority.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPriority.AutoSize = true;
-            this.lblPriority.Location = new System.Drawing.Point(485, 31);
+            this.lblPriority.Location = new System.Drawing.Point(486, 31);
             this.lblPriority.Name = "lblPriority";
             this.lblPriority.Size = new System.Drawing.Size(41, 13);
             this.lblPriority.TabIndex = 6;
@@ -892,7 +892,7 @@
             this.txtStartedAt.Location = new System.Drawing.Point(197, 3);
             this.txtStartedAt.Name = "txtStartedAt";
             this.txtStartedAt.ReadOnly = true;
-            this.txtStartedAt.Size = new System.Drawing.Size(223, 20);
+            this.txtStartedAt.Size = new System.Drawing.Size(224, 20);
             this.txtStartedAt.TabIndex = 1;
             this.txtStartedAt.TabStop = false;
             // 
@@ -900,10 +900,10 @@
             // 
             this.txtParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParent.Location = new System.Drawing.Point(532, 3);
+            this.txtParent.Location = new System.Drawing.Point(533, 3);
             this.txtParent.Name = "txtParent";
             this.txtParent.ReadOnly = true;
-            this.txtParent.Size = new System.Drawing.Size(168, 20);
+            this.txtParent.Size = new System.Drawing.Size(167, 20);
             this.txtParent.TabIndex = 3;
             this.txtParent.TabStop = false;
             // 
@@ -911,12 +911,96 @@
             // 
             this.txtPriority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPriority.Location = new System.Drawing.Point(532, 28);
+            this.txtPriority.Location = new System.Drawing.Point(533, 28);
             this.txtPriority.Name = "txtPriority";
             this.txtPriority.ReadOnly = true;
-            this.txtPriority.Size = new System.Drawing.Size(168, 20);
+            this.txtPriority.Size = new System.Drawing.Size(167, 20);
             this.txtPriority.TabIndex = 7;
             this.txtPriority.TabStop = false;
+            // 
+            // lblThreads
+            // 
+            this.lblThreads.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblThreads.AutoSize = true;
+            this.lblThreads.Location = new System.Drawing.Point(142, 56);
+            this.lblThreads.Name = "lblThreads";
+            this.lblThreads.Size = new System.Drawing.Size(49, 13);
+            this.lblThreads.TabIndex = 8;
+            this.lblThreads.Text = "Threads:";
+            // 
+            // txtOwner
+            // 
+            this.txtOwner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOwner.Location = new System.Drawing.Point(197, 28);
+            this.txtOwner.Name = "txtOwner";
+            this.txtOwner.ReadOnly = true;
+            this.txtOwner.Size = new System.Drawing.Size(224, 20);
+            this.txtOwner.TabIndex = 5;
+            this.txtOwner.TabStop = false;
+            // 
+            // lblOwner
+            // 
+            this.lblOwner.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblOwner.AutoSize = true;
+            this.lblOwner.Location = new System.Drawing.Point(150, 31);
+            this.lblOwner.Name = "lblOwner";
+            this.lblOwner.Size = new System.Drawing.Size(41, 13);
+            this.lblOwner.TabIndex = 4;
+            this.lblOwner.Text = "Owner:";
+            // 
+            // lblHandles
+            // 
+            this.lblHandles.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblHandles.AutoSize = true;
+            this.lblHandles.Location = new System.Drawing.Point(478, 56);
+            this.lblHandles.Name = "lblHandles";
+            this.lblHandles.Size = new System.Drawing.Size(49, 13);
+            this.lblHandles.TabIndex = 10;
+            this.lblHandles.Text = "Handles:";
+            // 
+            // lblVirtualSize
+            // 
+            this.lblVirtualSize.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblVirtualSize.AutoSize = true;
+            this.lblVirtualSize.Location = new System.Drawing.Point(465, 83);
+            this.lblVirtualSize.Name = "lblVirtualSize";
+            this.lblVirtualSize.Size = new System.Drawing.Size(62, 13);
+            this.lblVirtualSize.TabIndex = 14;
+            this.lblVirtualSize.Text = "Virtual Size:";
+            // 
+            // txtThreads
+            // 
+            this.txtThreads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtThreads.Location = new System.Drawing.Point(197, 53);
+            this.txtThreads.Name = "txtThreads";
+            this.txtThreads.ReadOnly = true;
+            this.txtThreads.Size = new System.Drawing.Size(224, 20);
+            this.txtThreads.TabIndex = 9;
+            this.txtThreads.TabStop = false;
+            // 
+            // txtHandles
+            // 
+            this.txtHandles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHandles.Location = new System.Drawing.Point(533, 53);
+            this.txtHandles.Name = "txtHandles";
+            this.txtHandles.ReadOnly = true;
+            this.txtHandles.Size = new System.Drawing.Size(167, 20);
+            this.txtHandles.TabIndex = 11;
+            this.txtHandles.TabStop = false;
+            // 
+            // txtVirtualSize
+            // 
+            this.txtVirtualSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVirtualSize.Location = new System.Drawing.Point(533, 78);
+            this.txtVirtualSize.Name = "txtVirtualSize";
+            this.txtVirtualSize.ReadOnly = true;
+            this.txtVirtualSize.Size = new System.Drawing.Size(167, 20);
+            this.txtVirtualSize.TabIndex = 15;
+            this.txtVirtualSize.TabStop = false;
             // 
             // tblProcessTop
             // 
@@ -988,90 +1072,6 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.CloseClick);
             // 
-            // lblThreads
-            // 
-            this.lblThreads.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblThreads.AutoSize = true;
-            this.lblThreads.Location = new System.Drawing.Point(142, 56);
-            this.lblThreads.Name = "lblThreads";
-            this.lblThreads.Size = new System.Drawing.Size(49, 13);
-            this.lblThreads.TabIndex = 8;
-            this.lblThreads.Text = "Threads:";
-            // 
-            // lblHandles
-            // 
-            this.lblHandles.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblHandles.AutoSize = true;
-            this.lblHandles.Location = new System.Drawing.Point(477, 56);
-            this.lblHandles.Name = "lblHandles";
-            this.lblHandles.Size = new System.Drawing.Size(49, 13);
-            this.lblHandles.TabIndex = 10;
-            this.lblHandles.Text = "Handles:";
-            // 
-            // lblVirtualSize
-            // 
-            this.lblVirtualSize.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblVirtualSize.AutoSize = true;
-            this.lblVirtualSize.Location = new System.Drawing.Point(464, 83);
-            this.lblVirtualSize.Name = "lblVirtualSize";
-            this.lblVirtualSize.Size = new System.Drawing.Size(62, 13);
-            this.lblVirtualSize.TabIndex = 14;
-            this.lblVirtualSize.Text = "Virtual Size:";
-            // 
-            // lblWorkingSetSize
-            // 
-            this.lblWorkingSetSize.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblWorkingSetSize.AutoSize = true;
-            this.lblWorkingSetSize.Location = new System.Drawing.Point(99, 83);
-            this.lblWorkingSetSize.Name = "lblWorkingSetSize";
-            this.lblWorkingSetSize.Size = new System.Drawing.Size(92, 13);
-            this.lblWorkingSetSize.TabIndex = 12;
-            this.lblWorkingSetSize.Text = "Working Set Size:";
-            // 
-            // txtHandles
-            // 
-            this.txtHandles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHandles.Location = new System.Drawing.Point(532, 53);
-            this.txtHandles.Name = "txtHandles";
-            this.txtHandles.ReadOnly = true;
-            this.txtHandles.Size = new System.Drawing.Size(168, 20);
-            this.txtHandles.TabIndex = 11;
-            this.txtHandles.TabStop = false;
-            // 
-            // txtThreads
-            // 
-            this.txtThreads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtThreads.Location = new System.Drawing.Point(197, 53);
-            this.txtThreads.Name = "txtThreads";
-            this.txtThreads.ReadOnly = true;
-            this.txtThreads.Size = new System.Drawing.Size(223, 20);
-            this.txtThreads.TabIndex = 9;
-            this.txtThreads.TabStop = false;
-            // 
-            // txtWorkingSetSize
-            // 
-            this.txtWorkingSetSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtWorkingSetSize.Location = new System.Drawing.Point(197, 78);
-            this.txtWorkingSetSize.Name = "txtWorkingSetSize";
-            this.txtWorkingSetSize.ReadOnly = true;
-            this.txtWorkingSetSize.Size = new System.Drawing.Size(223, 20);
-            this.txtWorkingSetSize.TabIndex = 13;
-            this.txtWorkingSetSize.TabStop = false;
-            // 
-            // txtVirtualSize
-            // 
-            this.txtVirtualSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVirtualSize.Location = new System.Drawing.Point(532, 78);
-            this.txtVirtualSize.Name = "txtVirtualSize";
-            this.txtVirtualSize.ReadOnly = true;
-            this.txtVirtualSize.Size = new System.Drawing.Size(168, 20);
-            this.txtVirtualSize.TabIndex = 15;
-            this.txtVirtualSize.TabStop = false;
-            // 
             // InfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1142,7 +1142,7 @@
         private System.Windows.Forms.Label lblGwlUserData;
         private System.Windows.Forms.Label lblDwlUser;
         private System.Windows.Forms.TableLayoutPanel tblWindowTop;
-        private System.Windows.Forms.Label lblFontFace;
+        private System.Windows.Forms.Label lblFontName;
         private System.Windows.Forms.Label lblRealGetWindowClass;
         private System.Windows.Forms.Label lblGetClassName;
         private System.Windows.Forms.Label lblWmGetText;
@@ -1151,7 +1151,7 @@
         private System.Windows.Forms.TextBox txtWmGetText;
         private System.Windows.Forms.TextBox txtGetClassName;
         private System.Windows.Forms.TextBox txtRealGetWindowClass;
-        private System.Windows.Forms.TextBox txtFontFace;
+        private System.Windows.Forms.TextBox txtFontName;
         private System.Windows.Forms.GroupBox grpProcess;
         private System.Windows.Forms.TableLayoutPanel tblProcessTop;
         private System.Windows.Forms.Label lblFullPath;
