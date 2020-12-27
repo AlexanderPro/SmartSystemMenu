@@ -15,6 +15,8 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(WindowInfo windowInfo, SmartSystemMenuSettings settings)
         {
+            grpWindow.Text = settings.LanguageSettings.GetValue("grp_window");
+            grpProcess.Text = settings.LanguageSettings.GetValue("grp_process");
             lblGetWindowText.Text = settings.LanguageSettings.GetValue("lbl_get_window_text");
             lblWmGetText.Text = settings.LanguageSettings.GetValue("lbl_wm_gettext");
             lblGetClassName.Text = settings.LanguageSettings.GetValue("lbl_get_class_name");
@@ -23,6 +25,7 @@ namespace SmartSystemMenu.Forms
             lblWindowHandle.Text = settings.LanguageSettings.GetValue("lbl_window_handle");
             lblParentWindowHandle.Text = settings.LanguageSettings.GetValue("lbl_parent_window_handle");
             lblWindowSize.Text = settings.LanguageSettings.GetValue("lbl_window_size");
+            lblInstance.Text = settings.LanguageSettings.GetValue("lbl_instance");
             lblProcessId.Text = settings.LanguageSettings.GetValue("lbl_process_id");
             lblThreadId.Text = settings.LanguageSettings.GetValue("lbl_thread_id");
             lblGclWndProc.Text = settings.LanguageSettings.GetValue("lbl_gcl_wnd_proc");
@@ -49,10 +52,11 @@ namespace SmartSystemMenu.Forms
             lblCopyright.Text = settings.LanguageSettings.GetValue("lbl_copyright");
             lblFileVersion.Text = settings.LanguageSettings.GetValue("lbl_file_version");
             lblProductVersion.Text = settings.LanguageSettings.GetValue("lbl_product_version");
+            btnOk.Text = settings.LanguageSettings.GetValue("information_btn_apply");
+            Text = settings.LanguageSettings.GetValue("information");
 
             var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone(); ;
             nfi.NumberGroupSeparator = ",";
-            Text = settings.LanguageSettings.GetValue("information");
             txtGetWindowText.Text = windowInfo.GetWindowText;
             txtWmGetText.Text = windowInfo.WM_GETTEXT;
             txtGetClassName.Text = windowInfo.GetClassName;

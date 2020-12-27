@@ -57,6 +57,7 @@
       <item name="lbl_window_handle" value="Window Handle:" />
       <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
       <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
       <item name="lbl_process_id" value="ProcessID:" />
       <item name="lbl_thread_id" value="ThreadID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -83,6 +84,7 @@
       <item name="lbl_copyright" value="Copyright:" />
       <item name="lbl_file_version" value="File Version:" />
       <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="Ok" />
       <item name="save_screenshot_title" value="Save Window Screenshot" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -205,6 +207,7 @@
       <item name="lbl_window_handle" value="Window Handle:" />
       <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
       <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
       <item name="lbl_process_id" value="ProcessID:" />
       <item name="lbl_thread_id" value="ThreadID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -231,6 +234,7 @@
       <item name="lbl_copyright" value="Copyright:" />
       <item name="lbl_file_version" value="File Version:" />
       <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="Ok" />
       <item name="save_screenshot_title" value="Den Screenshot speichern" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -353,6 +357,7 @@
       <item name="lbl_window_handle" value="Window Handle:" />
       <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
       <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
       <item name="lbl_process_id" value="ProcessID:" />
       <item name="lbl_thread_id" value="ThreadID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -379,6 +384,7 @@
       <item name="lbl_copyright" value="Copyright:" />
       <item name="lbl_file_version" value="File Version:" />
       <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="确定" />
       <item name="save_screenshot_title" value="保存窗口截图" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -501,6 +507,7 @@
       <item name="lbl_window_handle" value="Window Handle:" />
       <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
       <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
       <item name="lbl_process_id" value="ProcessID:" />
       <item name="lbl_thread_id" value="ThreadID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -527,6 +534,7 @@
       <item name="lbl_copyright" value="Copyright:" />
       <item name="lbl_file_version" value="File Version:" />
       <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="適用" />
       <item name="save_screenshot_title" value="ウィンドウスクリーンショット保存" />
       <item name="save_screenshot_filename" value="ウィンドウスクリーンショット" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -649,6 +657,7 @@
       <item name="lbl_window_handle" value="Window Handle:" />
       <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
       <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
       <item name="lbl_process_id" value="ProcessID:" />
       <item name="lbl_thread_id" value="ThreadID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -675,6 +684,7 @@
       <item name="lbl_copyright" value="Copyright:" />
       <item name="lbl_file_version" value="File Version:" />
       <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="확인" />
       <item name="save_screenshot_title" value="창 스크린샷 저장" />
       <item name="save_screenshot_filename" value="창 스크린샷" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -797,6 +807,7 @@
       <item name="lbl_window_handle" value="Хэндл окна:" />
       <item name="lbl_parent_window_handle" value="Хэндл предка:" />
       <item name="lbl_window_size" value="Размер окна:" />
+      <item name="lbl_instance" value="Экземпляр:" />
       <item name="lbl_process_id" value="Процесс ID:" />
       <item name="lbl_thread_id" value="Поток ID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -823,6 +834,7 @@
       <item name="lbl_copyright" value="Копирайт:" />
       <item name="lbl_file_version" value="Версия файла:" />
       <item name="lbl_product_version" value="Версия продукта:" />
+      <item name="information_btn_apply" value="Ok" />
       <item name="save_screenshot_title" value="Сохранить снимок окна" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -945,6 +957,7 @@
       <item name="lbl_window_handle" value="Window Handle:" />
       <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
       <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
       <item name="lbl_process_id" value="ProcessID:" />
       <item name="lbl_thread_id" value="ThreadID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -971,6 +984,7 @@
       <item name="lbl_copyright" value="Copyright:" />
       <item name="lbl_file_version" value="File Version:" />
       <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="У реду" />
       <item name="save_screenshot_title" value="Сачувај прозор програма" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
