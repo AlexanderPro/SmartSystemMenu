@@ -15,17 +15,41 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(WindowInfo windowInfo, SmartSystemMenuSettings settings)
         {
-            /*tabGeneral.Text = settings.LanguageSettings.GetValue("tab_general");
-            tabProcess.Text = settings.LanguageSettings.GetValue("tab_process");
-            lblRectangle.Text = settings.LanguageSettings.GetValue("lbl_rectangle");
-            lblStyle.Text = settings.LanguageSettings.GetValue("lbl_style");
-            lblClass.Text = settings.LanguageSettings.GetValue("lbl_class");
-            lblCaption.Text = settings.LanguageSettings.GetValue("lbl_caption");
-            lblHandle.Text = settings.LanguageSettings.GetValue("lbl_handle");
-            lblThreadId.Text = settings.LanguageSettings.GetValue("lbl_thread_id");
+            lblGetWindowText.Text = settings.LanguageSettings.GetValue("lbl_get_window_text");
+            lblWmGetText.Text = settings.LanguageSettings.GetValue("lbl_wm_gettext");
+            lblGetClassName.Text = settings.LanguageSettings.GetValue("lbl_get_class_name");
+            lblRealGetWindowClass.Text = settings.LanguageSettings.GetValue("lbl_real_get_window_class");
+            lblFontName.Text = settings.LanguageSettings.GetValue("lbl_font_name");
+            lblWindowHandle.Text = settings.LanguageSettings.GetValue("lbl_window_handle");
+            lblParentWindowHandle.Text = settings.LanguageSettings.GetValue("lbl_parent_window_handle");
+            lblWindowSize.Text = settings.LanguageSettings.GetValue("lbl_window_size");
             lblProcessId.Text = settings.LanguageSettings.GetValue("lbl_process_id");
-            lblModulePath.Text = settings.LanguageSettings.GetValue("lbl_module_path");
-            lblModuleName.Text = settings.LanguageSettings.GetValue("lbl_module_name");*/
+            lblThreadId.Text = settings.LanguageSettings.GetValue("lbl_thread_id");
+            lblGclWndProc.Text = settings.LanguageSettings.GetValue("lbl_gcl_wnd_proc");
+            lblDwlDlgProc.Text = settings.LanguageSettings.GetValue("lbl_dwl_dlg_proc");
+            lblGwlStyle.Text = settings.LanguageSettings.GetValue("lbl_gwl_style");
+            lblGclStyle.Text = settings.LanguageSettings.GetValue("lbl_gcl_style");
+            lblGwlExStyle.Text = settings.LanguageSettings.GetValue("lbl_gwl_exstyle");
+            lblWindowInfoExStyle.Text = settings.LanguageSettings.GetValue("lbl_windowinfo_exstyle");
+            lblLwaAlpha.Text = settings.LanguageSettings.GetValue("lbl_lwa_alpha");
+            lblLwaColorKey.Text = settings.LanguageSettings.GetValue("lbl_lwa_colorkey");
+            lblGwlUserData.Text = settings.LanguageSettings.GetValue("lbl_gwl_userdata");
+            lblDwlUser.Text = settings.LanguageSettings.GetValue("lbl_dwl_user");
+            lblFullPath.Text = settings.LanguageSettings.GetValue("lbl_full_path");
+            lblCommandLine.Text = settings.LanguageSettings.GetValue("lbl_command_line");
+            lblStartedAt.Text = settings.LanguageSettings.GetValue("lbl_started_at");
+            lblOwner.Text = settings.LanguageSettings.GetValue("lbl_owner");
+            lblThreads.Text = settings.LanguageSettings.GetValue("lbl_threads");
+            lblWorkingSetSize.Text = settings.LanguageSettings.GetValue("lbl_working_set_size");
+            lblParent.Text = settings.LanguageSettings.GetValue("lbl_parent");
+            lblPriority.Text = settings.LanguageSettings.GetValue("lbl_priority");
+            lblHandles.Text = settings.LanguageSettings.GetValue("lbl_handles");
+            lblVirtualSize.Text = settings.LanguageSettings.GetValue("lbl_virtual_size");
+            lblProductName.Text = settings.LanguageSettings.GetValue("lbl_product_name");
+            lblCopyright.Text = settings.LanguageSettings.GetValue("lbl_copyright");
+            lblFileVersion.Text = settings.LanguageSettings.GetValue("lbl_file_version");
+            lblProductVersion.Text = settings.LanguageSettings.GetValue("lbl_product_version");
+
             var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone(); ;
             nfi.NumberGroupSeparator = ",";
             Text = settings.LanguageSettings.GetValue("information");
