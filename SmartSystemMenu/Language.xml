@@ -438,18 +438,18 @@
       <item name="start_program_btn_apply" value="确定" />
       <item name="start_program_btn_Cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
-      <item name="lbl_language" value="文" />
+      <item name="lbl_language" value="语言" />
       <item name="message_box_attention_title" value="注意" />
-      <item name="message_box_attention_content" value="您应该手动重新启动应用程序以应用设置。" />
-      <item name="hotkeys_form" value="熱鍵" />
-      <item name="hotkeys_lbl_key1" value="鍵 1" />
-      <item name="hotkeys_lbl_key2" value="鍵 2" />
-      <item name="hotkeys_lbl_key3" value="鍵 3" />
+      <item name="message_box_attention_content" value="您应该手动重启应用程序以应用设置。" />
+      <item name="hotkeys_form" value="热键" />
+      <item name="hotkeys_lbl_key1" value="键 1" />
+      <item name="hotkeys_lbl_key2" value="键 2" />
+      <item name="hotkeys_lbl_key3" value="键 3" />
       <item name="hotkeys_btn_apply" value="确定" />
       <item name="hotkeys_btn_cancel" value="取消" />
-      <item name="tab_settings_hotkeys" value="熱鍵" />
-      <item name="clm_hotkeys_name" value="名稱" />
-      <item name="tab_settings_hotkeys" value="鍵" />
+      <item name="tab_settings_hotkeys" value="热键" />
+      <item name="clm_hotkeys_name" value="名称" />
+      <item name="tab_settings_hotkeys" value="键" />
     </cn>
     <ja>
       <item name="information" value="情報" />
