@@ -399,7 +399,7 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_INFORMATION:
                             {
-                                var infoForm = new InfoForm(window, _settings);
+                                var infoForm = new InfoForm(window.GetWindowInfo(), _settings);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;

@@ -47,17 +47,44 @@
       <item name="minimize_other_windows" value="Minimize" />
       <item name="close_other_windows" value="Close" />
       <item name="start_program" value="Start Program" />
-      <item name="tab_general" value="General" />
-      <item name="lbl_handle" value="Handle:" />
-      <item name="lbl_caption" value="Caption:" />
-      <item name="lbl_class" value="Class:" />
-      <item name="lbl_style" value="Style:" />
-      <item name="lbl_rectangle" value="Rectangle:" />
-      <item name="tab_process" value="Process" />
-      <item name="lbl_module_name" value="Module Name:" />
-      <item name="lbl_module_path" value="Module Path:" />
-      <item name="lbl_process_id" value="Process Id:" />
-      <item name="lbl_thread_id" value="Thread Id:" />
+      <item name="grp_window" value="Window" />
+      <item name="grp_process" value="Process" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Font Name:" />
+      <item name="lbl_window_handle" value="Window Handle:" />
+      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
+      <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Full Path:" />
+      <item name="lbl_command_line" value="Command Line:" />
+      <item name="lbl_started_at" value="Started at:" />
+      <item name="lbl_owner" value="Owner:" />
+      <item name="lbl_threads" value="Threads:" />
+      <item name="lbl_working_set_size" value="Working Set Size:" />
+      <item name="lbl_parent" value="Parent:" />
+      <item name="lbl_priority" value="Priority:" />
+      <item name="lbl_handles" value="Handles:" />
+      <item name="lbl_virtual_size" value="Virtual Size:" />
+      <item name="lbl_product_name" value="Product Name:" />
+      <item name="lbl_copyright" value="Copyright:" />
+      <item name="lbl_file_version" value="File Version:" />
+      <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="Ok" />
       <item name="save_screenshot_title" value="Save Window Screenshot" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -170,17 +197,44 @@
       <item name="minimize_other_windows" value="Minimieren" />
       <item name="close_other_windows" value="Schlieβen" />
       <item name="start_program" value="Start" />
-      <item name="tab_general" value="Gemeinsam" />
-      <item name="lbl_handle" value="Handle:" />
-      <item name="lbl_caption" value="Titel" />
-      <item name="lbl_class" value="Klasse:" />
-      <item name="lbl_style" value="Stil:" />
-      <item name="lbl_rectangle" value="Bereich:" />
-      <item name="tab_process" value="Prozeβ" />
-      <item name="lbl_module_name" value="File" />
-      <item name="lbl_module_path" value="Route" />
-      <item name="lbl_process_id" value="Prozeβ-ID" />
-      <item name="lbl_thread_id" value="Verkehr-ID" />
+      <item name="grp_window" value="Window" />
+      <item name="grp_process" value="Process" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Font Name:" />
+      <item name="lbl_window_handle" value="Window Handle:" />
+      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
+      <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Full Path:" />
+      <item name="lbl_command_line" value="Command Line:" />
+      <item name="lbl_started_at" value="Started at:" />
+      <item name="lbl_owner" value="Owner:" />
+      <item name="lbl_threads" value="Threads:" />
+      <item name="lbl_working_set_size" value="Working Set Size:" />
+      <item name="lbl_parent" value="Parent:" />
+      <item name="lbl_priority" value="Priority:" />
+      <item name="lbl_handles" value="Handles:" />
+      <item name="lbl_virtual_size" value="Virtual Size:" />
+      <item name="lbl_product_name" value="Product Name:" />
+      <item name="lbl_copyright" value="Copyright:" />
+      <item name="lbl_file_version" value="File Version:" />
+      <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="Ok" />
       <item name="save_screenshot_title" value="Den Screenshot speichern" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -293,17 +347,44 @@
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="关闭" />
       <item name="start_program" value="启动程序" />
-      <item name="tab_general" value="常规" />
-      <item name="lbl_handle" value="句柄:" />
-      <item name="lbl_caption" value="标题:" />
-      <item name="lbl_class" value="类:" />
-      <item name="lbl_style" value="风格:" />
-      <item name="lbl_rectangle" value="绘制矩形:" />
-      <item name="tab_process" value="程序" />
-      <item name="lbl_module_name" value="模块名称:" />
-      <item name="lbl_module_path" value="模块路径:" />
-      <item name="lbl_process_id" value="进程 ID:" />
-      <item name="lbl_thread_id" value="线程 ID:" />
+      <item name="grp_window" value="Window" />
+      <item name="grp_process" value="Process" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Font Name:" />
+      <item name="lbl_window_handle" value="Window Handle:" />
+      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
+      <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Full Path:" />
+      <item name="lbl_command_line" value="Command Line:" />
+      <item name="lbl_started_at" value="Started at:" />
+      <item name="lbl_owner" value="Owner:" />
+      <item name="lbl_threads" value="Threads:" />
+      <item name="lbl_working_set_size" value="Working Set Size:" />
+      <item name="lbl_parent" value="Parent:" />
+      <item name="lbl_priority" value="Priority:" />
+      <item name="lbl_handles" value="Handles:" />
+      <item name="lbl_virtual_size" value="Virtual Size:" />
+      <item name="lbl_product_name" value="Product Name:" />
+      <item name="lbl_copyright" value="Copyright:" />
+      <item name="lbl_file_version" value="File Version:" />
+      <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="确定" />
       <item name="save_screenshot_title" value="保存窗口截图" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -416,17 +497,44 @@
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="閉じる" />
       <item name="start_program" value="起動プログラム" />
-      <item name="tab_general" value="全般" />
-      <item name="lbl_handle" value="ハンドル:" />
-      <item name="lbl_caption" value="キャプション:" />
-      <item name="lbl_class" value="クラス:" />
-      <item name="lbl_style" value="スタイル:" />
-      <item name="lbl_rectangle" value="四角形:" />
-      <item name="tab_process" value="プロセス" />
-      <item name="lbl_module_name" value="モジュール名:" />
-      <item name="lbl_module_path" value="モジュールパス:" />
-      <item name="lbl_process_id" value="プロセスID：" />
-      <item name="lbl_thread_id" value="スレッドID：" />
+      <item name="grp_window" value="Window" />
+      <item name="grp_process" value="Process" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Font Name:" />
+      <item name="lbl_window_handle" value="Window Handle:" />
+      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
+      <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Full Path:" />
+      <item name="lbl_command_line" value="Command Line:" />
+      <item name="lbl_started_at" value="Started at:" />
+      <item name="lbl_owner" value="Owner:" />
+      <item name="lbl_threads" value="Threads:" />
+      <item name="lbl_working_set_size" value="Working Set Size:" />
+      <item name="lbl_parent" value="Parent:" />
+      <item name="lbl_priority" value="Priority:" />
+      <item name="lbl_handles" value="Handles:" />
+      <item name="lbl_virtual_size" value="Virtual Size:" />
+      <item name="lbl_product_name" value="Product Name:" />
+      <item name="lbl_copyright" value="Copyright:" />
+      <item name="lbl_file_version" value="File Version:" />
+      <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="適用" />
       <item name="save_screenshot_title" value="ウィンドウスクリーンショット保存" />
       <item name="save_screenshot_filename" value="ウィンドウスクリーンショット" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -539,17 +647,44 @@
       <item name="minimize_other_windows" value="최소화" />
       <item name="close_other_windows" value="닫기" />
       <item name="start_program" value="시작할 프로그램" />
-      <item name="tab_general" value="일반" />
-      <item name="lbl_handle" value="핸들:" />
-      <item name="lbl_caption" value="캡션:" />
-      <item name="lbl_class" value="클래스:" />
-      <item name="lbl_style" value="스타일:" />
-      <item name="lbl_rectangle" value="사각형:" />
-      <item name="tab_process" value="프로세스" />
-      <item name="lbl_module_name" value="모듈 이름:" />
-      <item name="lbl_module_path" value="모듈 경로:" />
-      <item name="lbl_process_id" value="프로세스 ID:" />
-      <item name="lbl_thread_id" value="스레드 ID:" />
+      <item name="grp_window" value="Window" />
+      <item name="grp_process" value="Process" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Font Name:" />
+      <item name="lbl_window_handle" value="Window Handle:" />
+      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
+      <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Full Path:" />
+      <item name="lbl_command_line" value="Command Line:" />
+      <item name="lbl_started_at" value="Started at:" />
+      <item name="lbl_owner" value="Owner:" />
+      <item name="lbl_threads" value="Threads:" />
+      <item name="lbl_working_set_size" value="Working Set Size:" />
+      <item name="lbl_parent" value="Parent:" />
+      <item name="lbl_priority" value="Priority:" />
+      <item name="lbl_handles" value="Handles:" />
+      <item name="lbl_virtual_size" value="Virtual Size:" />
+      <item name="lbl_product_name" value="Product Name:" />
+      <item name="lbl_copyright" value="Copyright:" />
+      <item name="lbl_file_version" value="File Version:" />
+      <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="확인" />
       <item name="save_screenshot_title" value="창 스크린샷 저장" />
       <item name="save_screenshot_filename" value="창 스크린샷" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -662,17 +797,44 @@
       <item name="minimize_other_windows" value="Минимизировать" />
       <item name="close_other_windows" value="Закрыть" />
       <item name="start_program" value="Пуск" />
-      <item name="tab_general" value="Общее" />
-      <item name="lbl_handle" value="Хэндл:" />
-      <item name="lbl_caption" value="Заголовок:" />
-      <item name="lbl_class" value="Класс:" />
-      <item name="lbl_style" value="Стиль:" />
-      <item name="lbl_rectangle" value="Область:" />
-      <item name="tab_process" value="Процесс" />
-      <item name="lbl_module_name" value="Файл:" />
-      <item name="lbl_module_path" value="Путь:" />
-      <item name="lbl_process_id" value="Id процесса:" />
-      <item name="lbl_thread_id" value="Id потока:" />
+      <item name="grp_window" value="Окно" />
+      <item name="grp_process" value="Процесс" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Имя шрифта:" />
+      <item name="lbl_window_handle" value="Хэндл окна:" />
+      <item name="lbl_parent_window_handle" value="Хэндл предка:" />
+      <item name="lbl_window_size" value="Размер окна:" />
+      <item name="lbl_instance" value="Экземпляр:" />
+      <item name="lbl_process_id" value="Процесс ID:" />
+      <item name="lbl_thread_id" value="Поток ID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Полный путь:" />
+      <item name="lbl_command_line" value="Командная строка:" />
+      <item name="lbl_started_at" value="Запущен в:" />
+      <item name="lbl_owner" value="Владелец:" />
+      <item name="lbl_threads" value="Потоки:" />
+      <item name="lbl_working_set_size" value="Working Set Size:" />
+      <item name="lbl_parent" value="Родитель:" />
+      <item name="lbl_priority" value="Priority:" />
+      <item name="lbl_handles" value="Handles:" />
+      <item name="lbl_virtual_size" value="Virtual Size:" />
+      <item name="lbl_product_name" value="Имя продукта:" />
+      <item name="lbl_copyright" value="Копирайт:" />
+      <item name="lbl_file_version" value="Версия файла:" />
+      <item name="lbl_product_version" value="Версия продукта:" />
+      <item name="information_btn_apply" value="Ok" />
       <item name="save_screenshot_title" value="Сохранить снимок окна" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -785,17 +947,44 @@
       <item name="minimize_other_windows" value="Умањи" />
       <item name="close_other_windows" value="Затвори" />
       <item name="start_program" value="Покренути програм" />
-      <item name="tab_general" value="Опште" />
-      <item name="lbl_handle" value="Ручка:" />
-      <item name="lbl_caption" value="Наслов:" />
-      <item name="lbl_class" value="Класа:" />
-      <item name="lbl_style" value="Стил:" />
-      <item name="lbl_rectangle" value="Правоугаоник:" />
-      <item name="tab_process" value="Процес" />
-      <item name="lbl_module_name" value="Име:" />
-      <item name="lbl_module_path" value="Путање:" />
-      <item name="lbl_process_id" value="Бр. процеса:" />
-      <item name="lbl_thread_id" value="Бр. навоја:" />
+      <item name="grp_window" value="Window" />
+      <item name="grp_process" value="Process" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Font Name:" />
+      <item name="lbl_window_handle" value="Window Handle:" />
+      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
+      <item name="lbl_window_size" value="Window Size:" />
+      <item name="lbl_instance" value="Instance:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Full Path:" />
+      <item name="lbl_command_line" value="Command Line:" />
+      <item name="lbl_started_at" value="Started at:" />
+      <item name="lbl_owner" value="Owner:" />
+      <item name="lbl_threads" value="Threads:" />
+      <item name="lbl_working_set_size" value="Working Set Size:" />
+      <item name="lbl_parent" value="Parent:" />
+      <item name="lbl_priority" value="Priority:" />
+      <item name="lbl_handles" value="Handles:" />
+      <item name="lbl_virtual_size" value="Virtual Size:" />
+      <item name="lbl_product_name" value="Product Name:" />
+      <item name="lbl_copyright" value="Copyright:" />
+      <item name="lbl_file_version" value="File Version:" />
+      <item name="lbl_product_version" value="Product Version:" />
+      <item name="information_btn_apply" value="У реду" />
       <item name="save_screenshot_title" value="Сачувај прозор програма" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />

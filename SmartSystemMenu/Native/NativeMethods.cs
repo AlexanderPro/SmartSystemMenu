@@ -24,11 +24,17 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindow(IntPtr handle, int uCmd);
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetParent(IntPtr handle);
+
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int GetWindowText(IntPtr handle, StringBuilder title, int size);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int GetClassName(IntPtr handle, StringBuilder className, int size);
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern uint RealGetWindowClass(IntPtr handle, [Out] StringBuilder className, int size);
 
         [DllImport("user32.dll")]
         public static extern bool IsWindowVisible(IntPtr handle);
@@ -87,6 +93,13 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern int GetWindowLong(IntPtr handle, int nIndex);
 
+        [DllImport("user32.dll")]
+        public static extern int GetClassLong(IntPtr handle, int nIndex);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowInfo([In] IntPtr hWnd, [In, Out] ref WINDOW_INFO rect);
+
         [DllImport("kernel32.dll")]
         public static extern bool SetPriorityClass(IntPtr hProcess, PriorityClass priorityClass);
 
@@ -129,6 +142,9 @@ namespace SmartSystemMenu.Native
 
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd, int msg, uint wParam, uint lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern bool SendMessage(IntPtr hWnd, uint Msg, int wParam, StringBuilder lParam);
 
         [DllImport("user32.dll")]
         public static extern IntPtr PostMessage(IntPtr hWnd, int msg, uint wParam, uint lParam);
@@ -263,5 +279,43 @@ namespace SmartSystemMenu.Native
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetModuleHandle(string name);
+
+        [DllImport("ntdll.dll")]
+        public static extern int NtQueryInformationProcess(IntPtr processHandle, int processInformationClass, ref PROCESS_BASIC_INFORMATION pbi, int processInformationLength, out int returnLength);
+
+        /*[DllImport("ntdll.dll")]
+        public static extern int NtQueryInformationProcess(IntPtr ProcessHandle, int ProcessInformationClass, ref PROCESS_BASIC_INFORMATION ProcessInformation, int ProcessInformationLength, IntPtr ReturnLength);
+
+        //ProcessWow64Information, // q: ULONG_PTR
+        [DllImport("ntdll.dll")]
+        public static extern int NtQueryInformationProcess(IntPtr ProcessHandle, int ProcessInformationClass, ref IntPtr ProcessInformation, int ProcessInformationLength, IntPtr ReturnLength);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, ref IntPtr lpBuffer, IntPtr dwSize, IntPtr lpNumberOfBytesRead);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, ref UNICODE_STRING lpBuffer, IntPtr dwSize, IntPtr lpNumberOfBytesRead);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, ref UNICODE_STRING_32 lpBuffer, IntPtr dwSize, IntPtr lpNumberOfBytesRead);
+
+        //[DllImport("kernel32.dll", SetLastError = true)]
+        //public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, ref UNICODE_STRING_WOW64 lpBuffer, IntPtr dwSize, IntPtr lpNumberOfBytesRead);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [MarshalAs(UnmanagedType.LPWStr)] string lpBuffer, IntPtr dwSize, IntPtr lpNumberOfBytesRead);
+
+        // for 32-bit process in a 64-bit OS only
+        [DllImport("ntdll.dll")]
+        public static extern int NtWow64QueryInformationProcess64(IntPtr ProcessHandle, int ProcessInformationClass, ref PROCESS_BASIC_INFORMATION_WOW64 ProcessInformation, int ProcessInformationLength, IntPtr ReturnLength);
+
+        [DllImport("ntdll.dll")]
+        public static extern int NtWow64ReadVirtualMemory64(IntPtr hProcess, long lpBaseAddress, ref long lpBuffer, long dwSize, IntPtr lpNumberOfBytesRead);
+
+        [DllImport("ntdll.dll")]
+        public static extern int NtWow64ReadVirtualMemory64(IntPtr hProcess, long lpBaseAddress, ref UNICODE_STRING_WOW64 lpBuffer, long dwSize, IntPtr lpNumberOfBytesRead);
+
+        [DllImport("ntdll.dll")]
+        public static extern int NtWow64ReadVirtualMemory64(IntPtr hProcess, long lpBaseAddress, [MarshalAs(UnmanagedType.LPWStr)] string lpBuffer, long dwSize, IntPtr lpNumberOfBytesRead);*/
     }
 }

@@ -30,6 +30,12 @@
         public const int GWL_EXSTYLE = -20;
         public const int GWL_USERDATA = -21;
         public const int GWL_ID = -12;
+        
+        // ClassLong
+        public const int GCL_STYLE = -26;
+        public const int GCL_WNDPROC = -24;
+        public const int DWL_DLGPROC = 4;
+        public const int DWL_USER = 8;
 
         // WindowStyle
         public const int WS_EX_LAYERED = 0x00080000;
@@ -50,6 +56,9 @@
         public const int WM_NULL = 0x0000;
         public const int WM_KEYDOWN = 0x0100;
         public const int WM_SYSKEYDOWN = 0x0104;
+        public const int WM_GETTEXT = 0x000D;
+        public const int WM_GETTEXTLENGTH = 0x000E;
+        public const int WM_GETFONT = 0x0031;
 
         // SetWindowPos
         public const uint SWP_NOSIZE = 0x0001;
@@ -89,6 +98,7 @@
         public const int PROCESS_SET_INFORMATION = 0x0200;
         public const int PROCESS_QUERY_INFORMATION = 0x0400;
         public const int PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
+        public const int PROCESS_VM_READ = 0x10;
 
         public const int STD_OUTPUT_HANDLE = -11;
 
