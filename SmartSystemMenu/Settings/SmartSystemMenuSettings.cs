@@ -203,9 +203,14 @@ namespace SmartSystemMenu.Settings
                 settings.LanguageName = languageName;
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN" || Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN"))
             {
-                languageName = "cn";
+                languageName = "zh_cn";
+            }
+
+            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            {
+                languageName = "zh_tw";
             }
 
             if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ja-JP")

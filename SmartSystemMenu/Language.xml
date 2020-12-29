@@ -301,11 +301,11 @@
       <item name="clm_hotkeys_name" value="Name" />
       <item name="tab_settings_hotkeys" value="Schlüssel" />      
     </de>
-    <cn>
+    <zh_cn>
       <item name="information" value="信息" />
       <item name="roll_up" value="卷起" />
       <item name="aero_glass" value="毛玻璃效果" />
-      <item name="always_on_top" value="始终在最前面" />
+      <item name="always_on_top" value="窗口置顶" />
       <item name="send_to_bottom" value="移至最底层" />
       <item name="save_screenshot" value="保存窗口截图" />
       <item name="open_file_in_explorer" value="在资源管理器中打开文件" />
@@ -339,7 +339,7 @@
       <item name="priority_above_normal" value="高于标准: 10" />
       <item name="priority_normal" value="标准: 8" />
       <item name="priority_below_normal" value="低于标准: 6" />
-      <item name="priority_idle" value="空闲: 4" />
+      <item name="priority_idle" value="闲置: 4" />
       <item name="system_tray" value="系统托盘" />
       <item name="minimize_to_systemtray" value="最小化到托盘" />
       <item name="minimize_always_to_systemtray" value="始终最小化到托盘" />
@@ -348,7 +348,7 @@
       <item name="close_other_windows" value="关闭" />
       <item name="start_program" value="启动程序" />
       <item name="grp_window" value="窗口" />
-      <item name="grp_process" value="程序" />
+      <item name="grp_process" value="进程" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
       <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
       <item name="lbl_get_class_name" value="GetClassName:" />
@@ -440,7 +440,7 @@
       <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
       <item name="lbl_language" value="语言" />
       <item name="message_box_attention_title" value="注意" />
-      <item name="message_box_attention_content" value="您应该手动重启应用程序以应用设置。" />
+      <item name="message_box_attention_content" value="您应该手动重启应用程序以使设置生效。" />
       <item name="hotkeys_form" value="热键" />
       <item name="hotkeys_lbl_key1" value="键 1" />
       <item name="hotkeys_lbl_key2" value="键 2" />
@@ -450,7 +450,157 @@
       <item name="tab_settings_hotkeys" value="热键" />
       <item name="clm_hotkeys_name" value="名称" />
       <item name="tab_settings_hotkeys" value="键" />
-    </cn>
+    </zh_cn>
+    <zh_tw>
+      <item name="information" value="資訊" />
+      <item name="roll_up" value="卷起" />
+      <item name="aero_glass" value="航空玻璃效果" />
+      <item name="always_on_top" value="視窗最上層顯示" />
+      <item name="send_to_bottom" value="發送到底部" />
+      <item name="save_screenshot" value="儲存視窗擷圖" />
+      <item name="open_file_in_explorer" value="在資料管理員中打開檔案" />
+      <item name="copy_text_to_clipboard" value="將文字複製到剪貼板" />
+      <item name="drag_by_mouse" value="用滑鼠拖動" />
+      <item name="size" value="調整視窗大小" />
+      <item name="size_default" value="預設" />
+      <item name="size_custom" value="自訂..." />
+      <item name="move_to" value="移動到" />
+      <item name="monitor" value="顯示屏 " />
+      <item name="alignment" value="對齊" />
+      <item name="align_top_left" value="左上角" />
+      <item name="align_top_center" value="上止點" />
+      <item name="align_top_right" value="右上角" />
+      <item name="align_middle_left" value="中間偏左" />
+      <item name="align_middle_center" value="居中" />
+      <item name="align_middle_right" value="中間偏右" />
+      <item name="align_bottom_left" value="左下角" />
+      <item name="align_bottom_center" value="底部居中" />
+      <item name="align_bottom_right" value="右下角" />
+      <item name="align_default" value="預設" />
+      <item name="align_custom" value="自訂..." />
+      <item name="transparency" value="透明度" />
+      <item name="trans_opaque" value=" (不透明的)" />
+      <item name="trans_invisible" value=" (看不見的)" />
+      <item name="trans_default" value="預設" />
+      <item name="trans_custom" value="自訂..." />
+      <item name="priority" value="优先權" />
+      <item name="priority_real_time" value="實時: 24" />
+      <item name="priority_high" value="高: 13" />
+      <item name="priority_above_normal" value="高於正常值: 10" />
+      <item name="priority_normal" value="正常: 8" />
+      <item name="priority_below_normal" value="低於正常值: 6" />
+      <item name="priority_idle" value="閒置: 4" />
+      <item name="system_tray" value="系統託盤" />
+      <item name="minimize_to_systemtray" value="最小化到託盤" />
+      <item name="minimize_always_to_systemtray" value="始終最小化到託盤" />
+      <item name="other_windows" value="其他視窗" />
+      <item name="minimize_other_windows" value="最小化" />
+      <item name="close_other_windows" value="關閉" />
+      <item name="start_program" value="啟動程式" />
+      <item name="grp_window" value="視窗" />
+      <item name="grp_process" value="程式" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="字體名稱:" />
+      <item name="lbl_window_handle" value="視窗控制碼:" />
+      <item name="lbl_parent_window_handle" value="父視窗控制碼:" />
+      <item name="lbl_window_size" value="視窗大小:" />
+      <item name="lbl_instance" value="實例:" />
+      <item name="lbl_process_id" value="程式ID:" />
+      <item name="lbl_thread_id" value="線程ID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="完整路徑:" />
+      <item name="lbl_command_line" value="命令列:" />
+      <item name="lbl_started_at" value="開始於:" />
+      <item name="lbl_owner" value="所有者:" />
+      <item name="lbl_threads" value="線程:" />
+      <item name="lbl_working_set_size" value="工作者大小:" />
+      <item name="lbl_parent" value="父級:" />
+      <item name="lbl_priority" value="优先權:" />
+      <item name="lbl_handles" value="控制碼:" />
+      <item name="lbl_virtual_size" value="虛擬大小:" />
+      <item name="lbl_product_name" value="產品名稱:" />
+      <item name="lbl_copyright" value="版權:" />
+      <item name="lbl_file_version" value="檔案版本:" />
+      <item name="lbl_product_version" value="產品版本:" />
+      <item name="information_btn_apply" value="確定" />
+      <item name="save_screenshot_title" value="儲存視窗擷圖" />
+      <item name="save_screenshot_filename" value="WindowScreenshot" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="點陣圖 (*.bmp)|*.bmp|Gif 圖片 (*.gif)|*.gif|JPEG 圖片 (*.jpeg)|*.jpeg|Png 圖片 (*.png)|*.png|Tiff 圖片 (*.tiff)|*.tiff|Wmf 圖片 (*.wmf)|*.wmf" />
+      <item name="size_form" value="設定大小" />
+      <item name="size_btn_apply" value="應用" />
+      <item name="lbl_height" value="高度:" />
+      <item name="lbl_width" value="寬度:" />
+      <item name="trans_form" value="設定透明度" />
+      <item name="trans_btn_apply" value="應用" />
+      <item name="align_form" value="設定位置" />
+      <item name="align_btn_apply" value="應用" />
+      <item name="lbl_top" value="頂部:" />
+      <item name="lbl_left" value="左邊:" />
+      <item name="mi_auto_start" value="自動啟動程式" />
+      <item name="mi_settings" value="設定..." />
+      <item name="mi_about" value="關於" />
+      <item name="mi_exit" value="結束" />
+      <item name="about_form" value="關於 " />
+      <item name="about_btn_ok" value="確定" />
+      <item name="settings_form" value="設定" />
+      <item name="tab_settings_general" value="一般" />
+      <item name="grpb_process_exclusions" value="程式排除" />
+      <item name="clm_process_exclusion_name" value="檔案名稱" />
+      <item name="clm_process_exclusion_edit" value="編輯" />
+      <item name="clm_process_exclusion_delete" value="刪除" />
+      <item name="btn_process_exclusion_up" value="上移程式" />
+      <item name="btn_process_exclusion_down" value="下移程式" />
+      <item name="btn_add_process_exclusion" value="新增程式名稱" />
+      <item name="tab_settings_menu" value="選單" />
+      <item name="grpb_start_program" value="開始程式功能表項目" />
+      <item name="clm_start_program_title" value="標題" />
+      <item name="clm_start_program_path" value="檔案名稱" />
+      <item name="clm_start_program_arguments" value="參數" />
+      <item name="clm_start_program_edit" value="編輯" />
+      <item name="clm_start_program_delete" value="刪除" />
+      <item name="btn_start_program_up" value="上移程式" />
+      <item name="btn_start_program_down" value="下移程式" />
+      <item name="btn_add_start_program" value="新增啟動程式" />
+      <item name="settings_btn_apply" value="確定" />
+      <item name="settings_btn_cancel" value="取消" />
+      <item name="process_name_form" value="程式排除" />
+      <item name="process_lbl_file_name" value="檔案名稱:" />
+      <item name="process_btn_apply" value="確定" />
+      <item name="process_btn_cancel" value="取消" />
+      <item name="process_browse_file_filter" value="可執行程式 (*.exe)|*.exe|所有檔案 (*.*)|*.*" />
+      <item name="start_program_form" value="啟動程式" />
+      <item name="start_program_lbl_title" value="標題:" />
+      <item name="start_program_lbl_file_name" value="檔案名稱:" />
+      <item name="start_program_lbl_arguments" value="參數:" />
+      <item name="start_program_btn_apply" value="確定" />
+      <item name="start_program_btn_Cancel" value="取消" />
+      <item name="start_program_browse_file_filter" value="可執行程式 (*.exe)|*.exe|所有檔案 (*.*)|*.*" />
+      <item name="lbl_language" value="語言" />
+      <item name="message_box_attention_title" value="注意" />
+      <item name="message_box_attention_content" value="您應該手動重新啟動應用程序以應用設定。" />
+      <item name="hotkeys_form" value="快速鍵" />
+      <item name="hotkeys_lbl_key1" value="鍵 1" />
+      <item name="hotkeys_lbl_key2" value="鍵 2" />
+      <item name="hotkeys_lbl_key3" value="鍵 3" />
+      <item name="hotkeys_btn_apply" value="確定" />
+      <item name="hotkeys_btn_cancel" value="取消" />
+      <item name="tab_settings_hotkeys" value="快速鍵" />
+      <item name="clm_hotkeys_name" value="名稱" />
+      <item name="tab_settings_hotkeys" value="鍵" />
+    </zh_tw>
     <ja>
       <item name="information" value="情報" />
       <item name="roll_up" value="ロールアップ" />

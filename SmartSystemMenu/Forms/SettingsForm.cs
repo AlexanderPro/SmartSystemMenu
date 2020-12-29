@@ -87,7 +87,8 @@ namespace SmartSystemMenu.Forms
                 new { Text = "Deutsch", Value = "de" },
                 new { Text = "Русский", Value = "ru" },
                 new { Text = "Српски", Value = "sr" },
-                new { Text = "简体中文", Value = "cn" },
+                new { Text = "简体中文", Value = "zh_cn" },
+                new { Text = "繁體中文", Value = "zh_tw"},
                 new { Text = "日本語", Value = "ja" },
                 new { Text = "한국어", Value = "ko" }
             };
