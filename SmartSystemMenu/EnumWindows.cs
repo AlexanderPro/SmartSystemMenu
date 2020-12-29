@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using SmartSystemMenu.Settings;
+using SmartSystemMenu.Native;
 
 namespace SmartSystemMenu
 {
@@ -12,26 +13,26 @@ namespace SmartSystemMenu
         private static IntPtr[] _filterHandles;
         private static IList<Window> _windows;
         private static MenuItems _menuItems;
-        private static MenuLanguage _menuLanguage;
+        private static LanguageSettings _languageSettings;
 
-        public static IList<Window> EnumAllWindows(MenuItems menuItems, MenuLanguage MenuLanguage, params string[] filterTitles)
+        public static IList<Window> EnumAllWindows(MenuItems menuItems, LanguageSettings languageSettings, params string[] filterTitles)
         {
             _filterTitles = filterTitles ?? new string[0];
             _filterHandles = new IntPtr[0];
             _windows = new List<Window>();
             _menuItems = menuItems;
-            _menuLanguage = MenuLanguage;
+            _languageSettings = languageSettings;
             NativeMethods.EnumWindows(EnumWindowCallback, 0);
             return _windows;
         }
 
-        public static IList<Window> EnumProcessWindows(int processId, IntPtr[] filterHandles, MenuItems menuItems, MenuLanguage menuLanguage, params string[] filterTitles)
+        public static IList<Window> EnumProcessWindows(int processId, IntPtr[] filterHandles, MenuItems menuItems, LanguageSettings languageSettings, params string[] filterTitles)
         {
             _filterTitles = filterTitles ?? new string[0];
             _filterHandles = filterHandles ?? new IntPtr[0];
             _windows = new List<Window>();
             _menuItems = menuItems;
-            _menuLanguage = menuLanguage;
+            _languageSettings = languageSettings;
             var process = SystemUtils.GetProcessByIdSafely(processId);
             if (process != null)
             {
@@ -60,7 +61,7 @@ namespace SmartSystemMenu
 
             if (!isAdd) return true;
 
-            var window = new Window(hwnd, _menuItems, _menuLanguage);
+            var window = new Window(hwnd, _menuItems, _languageSettings);
 
             if (!window.Menu.Exists)
             {

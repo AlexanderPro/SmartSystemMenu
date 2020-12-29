@@ -1,6 +1,4 @@
-﻿using SmartSystemMenu.Settings;
-
-namespace SmartSystemMenu.Forms
+﻿namespace SmartSystemMenu.Forms
 {
     partial class StartProgramForm
     {
@@ -8,11 +6,6 @@ namespace SmartSystemMenu.Forms
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Add MenuLanguage Class member.
-        /// </summary>
-        private MenuLanguage _menuLanguage;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -60,7 +53,6 @@ namespace SmartSystemMenu.Forms
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(30, 13);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = _menuLanguage.GetStringValue("start_program_lbl_title");
             // 
             // btnApply
             // 
@@ -68,7 +60,6 @@ namespace SmartSystemMenu.Forms
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(75, 23);
             this.btnApply.TabIndex = 7;
-            this.btnApply.Text = _menuLanguage.GetStringValue("start_program_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -78,7 +69,6 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = _menuLanguage.GetStringValue("start_program_btn_Cancel");
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
@@ -89,7 +79,6 @@ namespace SmartSystemMenu.Forms
             this.lblFileName.Name = "lblFileName";
             this.lblFileName.Size = new System.Drawing.Size(57, 13);
             this.lblFileName.TabIndex = 2;
-            this.lblFileName.Text = _menuLanguage.GetStringValue("start_program_lbl_file_name");
             // 
             // txtFileName
             // 
@@ -105,7 +94,6 @@ namespace SmartSystemMenu.Forms
             this.lblArguments.Name = "lblArguments";
             this.lblArguments.Size = new System.Drawing.Size(60, 13);
             this.lblArguments.TabIndex = 5;
-            this.lblArguments.Text = _menuLanguage.GetStringValue("start_program_lbl_arguments");
             // 
             // txtArguments
             // 
@@ -146,7 +134,6 @@ namespace SmartSystemMenu.Forms
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = _menuLanguage.GetStringValue("start_program_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,6 +1,4 @@
-﻿using SmartSystemMenu.Settings;
-
-namespace SmartSystemMenu.Forms
+﻿namespace SmartSystemMenu.Forms
 {
     partial class SizeForm
     {
@@ -29,7 +27,7 @@ namespace SmartSystemMenu.Forms
         /// the contents of this method with the code editor.
         /// </summary>
         /// <param name="menuLanguage">Contains language strings.</param>
-        private void InitializeComponent(MenuLanguage menuLanguage)
+        private void InitializeComponent()
         {
             this.numericWidth = new System.Windows.Forms.NumericUpDown();
             this.lblWidth = new System.Windows.Forms.Label();
@@ -42,7 +40,7 @@ namespace SmartSystemMenu.Forms
             // 
             // numericWidth
             // 
-            this.numericWidth.Location = new System.Drawing.Point(53, 12);
+            this.numericWidth.Location = new System.Drawing.Point(62, 12);
             this.numericWidth.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -55,24 +53,22 @@ namespace SmartSystemMenu.Forms
             // lblWidth
             // 
             this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(12, 14);
+            this.lblWidth.Location = new System.Drawing.Point(9, 14);
             this.lblWidth.Name = "lblWidth";
-            this.lblWidth.Size = new System.Drawing.Size(38, 13);
+            this.lblWidth.Size = new System.Drawing.Size(0, 13);
             this.lblWidth.TabIndex = 0;
-            this.lblWidth.Text = menuLanguage.GetStringValue("lbl_width");
             // 
             // lblHeight
             // 
             this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(136, 14);
+            this.lblHeight.Location = new System.Drawing.Point(144, 14);
             this.lblHeight.Name = "lblHeight";
-            this.lblHeight.Size = new System.Drawing.Size(41, 13);
+            this.lblHeight.Size = new System.Drawing.Size(0, 13);
             this.lblHeight.TabIndex = 2;
-            this.lblHeight.Text = menuLanguage.GetStringValue("lbl_height");
             // 
             // numericHeight
             // 
-            this.numericHeight.Location = new System.Drawing.Point(183, 12);
+            this.numericHeight.Location = new System.Drawing.Point(194, 12);
             this.numericHeight.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -88,7 +84,6 @@ namespace SmartSystemMenu.Forms
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
             this.btnApply.TabIndex = 4;
-            this.btnApply.Text = menuLanguage.GetStringValue("size_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -108,7 +103,6 @@ namespace SmartSystemMenu.Forms
             this.MinimizeBox = false;
             this.Name = "SizeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = menuLanguage.GetStringValue("size_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericHeight)).EndInit();

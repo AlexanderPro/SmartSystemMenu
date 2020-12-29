@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace SmartSystemMenu
+namespace SmartSystemMenu.Native
 {
     [StructLayout(LayoutKind.Sequential)]
     struct Rect
@@ -260,4 +260,16 @@ namespace SmartSystemMenu
         public IntPtr hStdOutput;
         public IntPtr hStdError;
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct KBDLLHOOKSTRUCT
+    {
+        public int vkCode;
+        public int scanCode;
+        public int flags;
+        public int time;
+        public IntPtr dwExtraInfo;
+    }
+
+    delegate int KeyboardHookProc(int code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
 }

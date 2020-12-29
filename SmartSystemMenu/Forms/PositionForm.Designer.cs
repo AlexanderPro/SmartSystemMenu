@@ -1,6 +1,4 @@
-﻿using SmartSystemMenu.Settings;
-
-namespace SmartSystemMenu.Forms
+﻿namespace SmartSystemMenu.Forms
 {
     partial class PositionForm
     {
@@ -29,7 +27,7 @@ namespace SmartSystemMenu.Forms
         /// the contents of this method with the code editor.
         /// </summary>
         /// <param name="menuLanguage">Contains language strings.</param>
-        private void InitializeComponent(MenuLanguage menuLanguage)
+        private void InitializeComponent()
         {
             this.numericLeft = new System.Windows.Forms.NumericUpDown();
             this.lblLeft = new System.Windows.Forms.Label();
@@ -64,7 +62,6 @@ namespace SmartSystemMenu.Forms
             this.lblLeft.Name = "lblLeft";
             this.lblLeft.Size = new System.Drawing.Size(28, 13);
             this.lblLeft.TabIndex = 0;
-            this.lblLeft.Text = menuLanguage.GetStringValue("lbl_left");
             // 
             // lblTop
             // 
@@ -73,7 +70,6 @@ namespace SmartSystemMenu.Forms
             this.lblTop.Name = "lblTop";
             this.lblTop.Size = new System.Drawing.Size(29, 13);
             this.lblTop.TabIndex = 2;
-            this.lblTop.Text = menuLanguage.GetStringValue("lbl_top");
             // 
             // numericTop
             // 
@@ -98,7 +94,6 @@ namespace SmartSystemMenu.Forms
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
             this.btnApply.TabIndex = 4;
-            this.btnApply.Text = menuLanguage.GetStringValue("align_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -118,7 +113,6 @@ namespace SmartSystemMenu.Forms
             this.MinimizeBox = false;
             this.Name = "PositionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = menuLanguage.GetStringValue("align_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericTop)).EndInit();

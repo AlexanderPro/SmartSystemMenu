@@ -7,19 +7,34 @@ namespace SmartSystemMenu.Forms
 {
     public partial class StartProgramForm : Form
     {
+        private readonly SmartSystemMenuSettings _settings;
+
         public string Title { get; private set; }
 
         public string FileName { get; private set; }
 
         public string Arguments { get; private set; }
 
-        public StartProgramForm(string title, string processName, string arguments, MenuLanguage menuLanguage)
+        public StartProgramForm(string title, string processName, string arguments, SmartSystemMenuSettings settings)
         {
-            _menuLanguage = menuLanguage;
+            _settings = settings;
+
             InitializeComponent();
+            InitializeControls(settings);
+
             txtTitle.Text = title;
             txtFileName.Text = processName;
             txtArguments.Text = arguments;
+        }
+
+        private void InitializeControls(SmartSystemMenuSettings settings)
+        {
+            lblTitle.Text = settings.LanguageSettings.GetValue("start_program_lbl_title");
+            btnApply.Text = settings.LanguageSettings.GetValue("start_program_btn_apply");
+            btnCancel.Text = settings.LanguageSettings.GetValue("start_program_btn_Cancel");
+            lblFileName.Text = settings.LanguageSettings.GetValue("start_program_lbl_file_name");
+            lblArguments.Text = settings.LanguageSettings.GetValue("start_program_lbl_arguments");
+            Text = settings.LanguageSettings.GetValue("start_program_form");
         }
 
         protected override void OnLoad(EventArgs e)
@@ -35,7 +50,7 @@ namespace SmartSystemMenu.Forms
             var dialog = new OpenFileDialog()
             {
                 RestoreDirectory = true,
-                Filter = _menuLanguage.GetStringValue("start_program_browse_file_filter")
+                Filter = _settings.LanguageSettings.GetValue("start_program_browse_file_filter")
             };
 
             if (File.Exists(txtFileName.Text))

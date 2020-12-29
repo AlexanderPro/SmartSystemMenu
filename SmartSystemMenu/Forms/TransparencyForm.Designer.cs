@@ -1,6 +1,4 @@
-﻿using SmartSystemMenu.Settings;
-
-namespace SmartSystemMenu.Forms
+﻿namespace SmartSystemMenu.Forms
 {
     partial class TransparencyForm
     {
@@ -28,8 +26,7 @@ namespace SmartSystemMenu.Forms
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        /// <param name="menuLanguage">Contains language strings.</param>
-        private void InitializeComponent(MenuLanguage menuLanguage)
+        private void InitializeComponent()
         {
             this.btnApply = new System.Windows.Forms.Button();
             this.numericTransparency = new System.Windows.Forms.NumericUpDown();
@@ -42,7 +39,6 @@ namespace SmartSystemMenu.Forms
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
             this.btnApply.TabIndex = 1;
-            this.btnApply.Text = menuLanguage.GetStringValue("trans_btn_apply");
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
@@ -66,7 +62,6 @@ namespace SmartSystemMenu.Forms
             this.MinimizeBox = false;
             this.Name = "TransparencyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = menuLanguage.GetStringValue("trans_form");
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericTransparency)).EndInit();
             this.ResumeLayout(false);

@@ -8,13 +8,23 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public PositionForm(Window window, MenuLanguage menuLanguage)
+        public PositionForm(Window window, SmartSystemMenuSettings settings)
         {
-            InitializeComponent(menuLanguage);
-
             _window = window;
+
+            InitializeComponent();
+            InitializeControls(settings);
+
             numericLeft.Value = _window.SizeOnMonitor.Left;
             numericTop.Value = _window.SizeOnMonitor.Top;
+        }
+
+        private void InitializeControls(SmartSystemMenuSettings settings)
+        {
+            lblLeft.Text = settings.LanguageSettings.GetValue("lbl_left");
+            lblTop.Text = settings.LanguageSettings.GetValue("lbl_top");
+            btnApply.Text = settings.LanguageSettings.GetValue("align_btn_apply");
+            Text = settings.LanguageSettings.GetValue("align_form");
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
@@ -26,7 +36,7 @@ namespace SmartSystemMenu.Forms
                 _window.ShowNormal();
                 _window.SetPosition(left, top);
                 _window.Menu.UncheckAlignmentMenu();
-                _window.Menu.CheckMenuItem(SystemMenu.SC_ALIGN_CUSTOM, true);
+                _window.Menu.CheckMenuItem(MenuItemId.SC_ALIGN_CUSTOM, true);
             }
             catch
             {

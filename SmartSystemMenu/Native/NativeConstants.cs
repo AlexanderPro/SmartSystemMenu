@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SmartSystemMenu
+﻿namespace SmartSystemMenu.Native
 {
     static class NativeConstants
     {
@@ -50,6 +48,8 @@ namespace SmartSystemMenu
         public const int WM_GETICON = 0x7F;
         public const int WM_CLOSE = 0x0010;
         public const int WM_NULL = 0x0000;
+        public const int WM_KEYDOWN = 0x0100;
+        public const int WM_SYSKEYDOWN = 0x0104;
 
         // SetWindowPos
         public const uint SWP_NOSIZE = 0x0001;
@@ -91,5 +91,8 @@ namespace SmartSystemMenu
         public const int PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
 
         public const int STD_OUTPUT_HANDLE = -11;
+
+        public const int WH_KEYBOARD_LL = 0x0D;
+        public const uint HC_ACTION = 0;
     }
 }

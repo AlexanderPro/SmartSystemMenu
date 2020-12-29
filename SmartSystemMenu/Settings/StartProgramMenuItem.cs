@@ -1,6 +1,6 @@
 ﻿namespace SmartSystemMenu.Settings
 {
-    public class StartProgramItem
+    public class StartProgramMenuItem
     {
         public string Title { get; set; }
 

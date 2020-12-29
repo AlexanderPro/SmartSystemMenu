@@ -7,13 +7,24 @@ namespace SmartSystemMenu.Forms
 {
     public partial class ProcessExclusionForm : Form
     {
+        private readonly SmartSystemMenuSettings _settings;
+
         public string ProcessName { get; private set; }
 
-        public ProcessExclusionForm(string processName, MenuLanguage menuLanguage)
+        public ProcessExclusionForm(string processName, SmartSystemMenuSettings settings)
         {
-            _menuLanguage = menuLanguage;
+            _settings = settings;
             InitializeComponent();
+            InitializeControls(settings);
             txtFileName.Text = processName;
+        }
+
+        private void InitializeControls(SmartSystemMenuSettings settings)
+        {
+            lblFileName.Text = settings.LanguageSettings.GetValue("process_lbl_file_name");
+            btnApply.Text = settings.LanguageSettings.GetValue("process_btn_apply");
+            btnCancel.Text = settings.LanguageSettings.GetValue("process_btn_cancel");
+            Text = settings.LanguageSettings.GetValue("process_name_form");
         }
 
         protected override void OnLoad(EventArgs e)
@@ -29,7 +40,7 @@ namespace SmartSystemMenu.Forms
             var dialog = new OpenFileDialog()
             {
                 RestoreDirectory = false,
-                Filter = _menuLanguage.GetStringValue("process_browse_file_filter")
+                Filter = _settings.LanguageSettings.GetValue("process_browse_file_filter")
             };
 
             if (dialog.ShowDialog() == DialogResult.OK)
