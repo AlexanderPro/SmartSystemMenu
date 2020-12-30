@@ -797,19 +797,19 @@
       <item name="minimize_other_windows" value="최소화" />
       <item name="close_other_windows" value="닫기" />
       <item name="start_program" value="시작할 프로그램" />
-      <item name="grp_window" value="Window" />
-      <item name="grp_process" value="Process" />
+      <item name="grp_window" value="창" />
+      <item name="grp_process" value="프로세스" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
       <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
       <item name="lbl_get_class_name" value="GetClassName:" />
       <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
-      <item name="lbl_font_name" value="Font Name:" />
-      <item name="lbl_window_handle" value="Window Handle:" />
-      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
-      <item name="lbl_window_size" value="Window Size:" />
-      <item name="lbl_instance" value="Instance:" />
-      <item name="lbl_process_id" value="ProcessID:" />
-      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_font_name" value="글꼴 이름:" />
+      <item name="lbl_window_handle" value="창 핸들:" />
+      <item name="lbl_parent_window_handle" value="부모 창 핸들:" />
+      <item name="lbl_window_size" value="창 크기:" />
+      <item name="lbl_instance" value="인스턴스:" />
+      <item name="lbl_process_id" value="프로세스 ID:" />
+      <item name="lbl_thread_id" value="스레드 ID:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
       <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
       <item name="lbl_gwl_style" value="GWL_STYLE:" />
@@ -820,20 +820,20 @@
       <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
       <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
       <item name="lbl_dwl_user" value="DWL_USER:" />
-      <item name="lbl_full_path" value="Full Path:" />
-      <item name="lbl_command_line" value="Command Line:" />
-      <item name="lbl_started_at" value="Started at:" />
-      <item name="lbl_owner" value="Owner:" />
-      <item name="lbl_threads" value="Threads:" />
-      <item name="lbl_working_set_size" value="Working Set Size:" />
-      <item name="lbl_parent" value="Parent:" />
-      <item name="lbl_priority" value="Priority:" />
-      <item name="lbl_handles" value="Handles:" />
-      <item name="lbl_virtual_size" value="Virtual Size:" />
-      <item name="lbl_product_name" value="Product Name:" />
-      <item name="lbl_copyright" value="Copyright:" />
-      <item name="lbl_file_version" value="File Version:" />
-      <item name="lbl_product_version" value="Product Version:" />
+      <item name="lbl_full_path" value="전체 경로:" />
+      <item name="lbl_command_line" value="명령 줄:" />
+      <item name="lbl_started_at" value="시작 시간:" />
+      <item name="lbl_owner" value="소유자:" />
+      <item name="lbl_threads" value="스레드:" />
+      <item name="lbl_working_set_size" value="작업 집합 크기:" />
+      <item name="lbl_parent" value="부모:" />
+      <item name="lbl_priority" value="우선 순위:" />
+      <item name="lbl_handles" value="핸들:" />
+      <item name="lbl_virtual_size" value="가상 크기:" />
+      <item name="lbl_product_name" value="제품 이름:" />
+      <item name="lbl_copyright" value="저작권:" />
+      <item name="lbl_file_version" value="파일 버전:" />
+      <item name="lbl_product_version" value="제품 버전:" />
       <item name="information_btn_apply" value="확인" />
       <item name="save_screenshot_title" value="창 스크린샷 저장" />
       <item name="save_screenshot_filename" value="창 스크린샷" />
