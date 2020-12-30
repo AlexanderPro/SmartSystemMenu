@@ -1,6 +1,11 @@
 ![SmartSystemMenu](https://user-images.githubusercontent.com/8102586/68280906-8e86b800-0087-11ea-9762-f9eb028bb8fe.png) SmartSystemMenu
 =============
 
+- English
+- [中文版](/README_CN.md)
+
+---
+
 SmartSystemMenu extends system menu of all windows in the system. It appends next custom items to menu:
 
 * **Information.** Shows a dialog with information of the current window and process: the window handle, the window caption, the window style, the window class, the process name, the process id, the path to the process.
