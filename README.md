@@ -32,6 +32,7 @@ Screenshots
 ![alt tag](https://user-images.githubusercontent.com/8102586/102021339-3349ed80-3d90-11eb-835f-7780a2caae69.jpg)
 ![alt tag](https://user-images.githubusercontent.com/8102586/102021342-380ea180-3d90-11eb-9dd3-537aab1b17f5.jpg)
 ![alt tag](https://user-images.githubusercontent.com/8102586/102021344-3b099200-3d90-11eb-99fd-a021ee54043f.jpg)
+![alt tag](https://user-images.githubusercontent.com/8102586/103346844-566de000-4aa6-11eb-9f15-f0ca2ea80ee9.png)
 
 Requirements
 --------------------
