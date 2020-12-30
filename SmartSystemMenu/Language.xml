@@ -1097,19 +1097,19 @@
       <item name="minimize_other_windows" value="Умањи" />
       <item name="close_other_windows" value="Затвори" />
       <item name="start_program" value="Покренути програм" />
-      <item name="grp_window" value="Window" />
-      <item name="grp_process" value="Process" />
+      <item name="grp_window" value="Прозор" />
+      <item name="grp_process" value="Процес" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
       <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
       <item name="lbl_get_class_name" value="GetClassName:" />
       <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
-      <item name="lbl_font_name" value="Font Name:" />
-      <item name="lbl_window_handle" value="Window Handle:" />
-      <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
-      <item name="lbl_window_size" value="Window Size:" />
-      <item name="lbl_instance" value="Instance:" />
-      <item name="lbl_process_id" value="ProcessID:" />
-      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_font_name" value="Име фонта:" />
+      <item name="lbl_window_handle" value="Ручка за прозор:" />
+      <item name="lbl_parent_window_handle" value="Матична ручка прозора:" />
+      <item name="lbl_window_size" value="Величина прозора:" />
+      <item name="lbl_instance" value="Инстанца:" />
+      <item name="lbl_process_id" value="ИД процеса:" />
+      <item name="lbl_thread_id" value="ИД нита:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
       <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
       <item name="lbl_gwl_style" value="GWL_STYLE:" />
@@ -1120,20 +1120,20 @@
       <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
       <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
       <item name="lbl_dwl_user" value="DWL_USER:" />
-      <item name="lbl_full_path" value="Full Path:" />
-      <item name="lbl_command_line" value="Command Line:" />
-      <item name="lbl_started_at" value="Started at:" />
-      <item name="lbl_owner" value="Owner:" />
-      <item name="lbl_threads" value="Threads:" />
-      <item name="lbl_working_set_size" value="Working Set Size:" />
-      <item name="lbl_parent" value="Parent:" />
-      <item name="lbl_priority" value="Priority:" />
-      <item name="lbl_handles" value="Handles:" />
-      <item name="lbl_virtual_size" value="Virtual Size:" />
-      <item name="lbl_product_name" value="Product Name:" />
-      <item name="lbl_copyright" value="Copyright:" />
-      <item name="lbl_file_version" value="File Version:" />
-      <item name="lbl_product_version" value="Product Version:" />
+      <item name="lbl_full_path" value="Путања:" />
+      <item name="lbl_command_line" value="Командна линија:" />
+      <item name="lbl_started_at" value="Покренуто:" />
+      <item name="lbl_owner" value="Власник:" />
+      <item name="lbl_threads" value="Нитови:" />
+      <item name="lbl_working_set_size" value="Величина радног сета:" />
+      <item name="lbl_parent" value="Родитељ:" />
+      <item name="lbl_priority" value="Приоритет:" />
+      <item name="lbl_handles" value="Ручке:" />
+      <item name="lbl_virtual_size" value="Виртуелна величина:" />
+      <item name="lbl_product_name" value="Име производа:" />
+      <item name="lbl_copyright" value="Копирајт:" />
+      <item name="lbl_file_version" value="Верзија датотеке:" />
+      <item name="lbl_product_version" value="Верзија производа:" />
       <item name="information_btn_apply" value="У реду" />
       <item name="save_screenshot_title" value="Сачувај прозор програма" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
