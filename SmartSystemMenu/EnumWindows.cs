@@ -68,7 +68,7 @@ namespace SmartSystemMenu
                 isAdd = false;
             }
 
-            if (_filterTitles.Any(s => window.WindowText == s))
+            if (_filterTitles.Any(s => window.GetWindowText() == s))
             {
                 isAdd = false;
             }

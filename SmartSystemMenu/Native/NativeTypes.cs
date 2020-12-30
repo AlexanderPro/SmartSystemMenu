@@ -271,5 +271,96 @@ namespace SmartSystemMenu.Native
         public IntPtr dwExtraInfo;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct PROCESS_BASIC_INFORMATION
+    {
+        public IntPtr Reserved1;
+        public IntPtr PebBaseAddress;
+        public IntPtr Reserved2_0;
+        public IntPtr Reserved2_1;
+        public IntPtr UniqueProcessId;
+        public IntPtr InheritedFromUniqueProcessId;
+    }
+
+    /*[StructLayout(LayoutKind.Sequential)]
+    struct UNICODE_STRING
+    {
+        public short Length;
+        public short MaximumLength;
+        public IntPtr Buffer;
+    }
+
+    // for 32-bit process in a 64-bit OS only
+    [StructLayout(LayoutKind.Sequential)]
+    struct PROCESS_BASIC_INFORMATION_WOW64
+    {
+        public long Reserved1;
+        public long PebBaseAddress;
+        public long Reserved2_0;
+        public long Reserved2_1;
+        public long UniqueProcessId;
+        public long Reserved3;
+    }
+
+    // for 32-bit process
+    [StructLayout(LayoutKind.Sequential)]
+    struct UNICODE_STRING_WOW64
+    {
+        public short Length;
+        public short MaximumLength;
+        public long Buffer;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct UNICODE_STRING_32
+    {
+        public short Length;
+        public short MaximumLength;
+        public int Buffer;
+    }
+
+    enum PROCESSINFOCLASS : int
+    {
+        ProcessBasicInformation = 0, // 0, q: PROCESS_BASIC_INFORMATION, PROCESS_EXTENDED_BASIC_INFORMATION
+        ProcessWow64Information = 26, // q: ULONG_PTR
+    }
+
+    [Flags]
+    public enum PEB_OFFSET
+    {
+        CurrentDirectory,
+        //DllPath,
+        //ImagePathName,
+        CommandLine,
+        //WindowTitle,
+        //DesktopInfo,
+        //ShellInfo,
+        //RuntimeData,
+        //TypeMask = 0xffff,
+        //Wow64 = 0x10000,
+    };*/
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct WINDOW_INFO
+    {
+        public int cbSize;
+        public Rect rcWindow;
+        public Rect rcClient;
+        public uint dwStyle;
+        public uint dwExStyle;
+        public uint dwWindowStatus;
+        public int cxWindowBorders;
+        public int cyWindowBorders;
+        public ushort atomWindowType;
+        public ushort wCreatorVersion;
+    }
+
+    [Flags]
+    enum LayeredWindow : uint
+    {
+        LWA_COLORKEY = 0x00000001,
+        LWA_ALPHA = 0x00000002
+    }
+
     delegate int KeyboardHookProc(int code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
 }

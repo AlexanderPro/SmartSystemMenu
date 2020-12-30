@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Diagnostics;
 using System.IO;
+using System.Management;
 using Microsoft.Win32;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Extensions;
@@ -10,11 +12,11 @@ namespace SmartSystemMenu
 {
     static class SystemUtils
     {
-        public static bool IsWow64Process(int pId)
+        public static bool IsWow64Process(int processId)
         {
             if ((Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor >= 1) || Environment.OSVersion.Version.Major >= 6)
             {
-                var process = GetProcessByIdSafely(pId);
+                var process = GetProcessByIdSafely(processId);
                 if (process != null)
                 {
                     bool retVal;
@@ -26,6 +28,38 @@ namespace SmartSystemMenu
                 }
             }
             return false;
+        }
+
+        public static WmiProcessInfo GetWmiProcessInfo(int processId)
+        {
+            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Process WHERE ProcessId = " + processId))
+            using (var objects = searcher.Get())
+            {
+                var processInfo = new WmiProcessInfo();
+                foreach (ManagementObject obj in objects)
+                {
+                    var argList = new string[] { string.Empty, string.Empty };
+                    var returnVal = Convert.ToInt32(obj.InvokeMethod("GetOwner", argList));
+                    if (returnVal == 0)
+                    {
+                        // return DOMAIN\user
+                        processInfo.Owner = argList[1] + "\\" + argList[0];
+                        break;
+                    }
+                }
+
+                var baseObject = objects.Cast<ManagementBaseObject>().FirstOrDefault();
+                if (baseObject != null)
+                {
+                    processInfo.CommandLine = baseObject["CommandLine"] != null ? baseObject["CommandLine"].ToString() : "";
+                    processInfo.HandleCount = baseObject["HandleCount"] != null ? (uint)baseObject["HandleCount"] : 0;
+                    processInfo.ThreadCount = baseObject["ThreadCount"] != null ? (uint)baseObject["ThreadCount"] : 0;
+                    processInfo.VirtualSize = baseObject["VirtualSize"] != null ? (ulong)baseObject["VirtualSize"] : 0;
+                    processInfo.WorkingSetSize = baseObject["WorkingSetSize"] != null ? (ulong)baseObject["WorkingSetSize"] : 0;
+                }
+
+                return processInfo;
+            }
         }
 
         public static IList<IntPtr> GetMonitors()

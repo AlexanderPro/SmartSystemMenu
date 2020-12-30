@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Windows.Automation;
+using System.IO;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
@@ -34,38 +35,7 @@ namespace SmartSystemMenu
 
         public IntPtr Handle { get; private set; }
 
-        public SystemMenu Menu { get; private set; }
-
-        public string WindowText
-        {
-            get
-            {
-                var builder = new StringBuilder(1024);
-                NativeMethods.GetWindowText(Handle, builder, builder.Capacity);
-                var windowText = builder.ToString().Trim();
-                return windowText;
-            }
-        }
-
-        public string ClassName
-        {
-            get
-            {
-                var builder = new StringBuilder(1024);
-                NativeMethods.GetClassName(Handle, builder, builder.Capacity);
-                var className = builder.ToString().Trim();
-                return className;
-            }
-        }
-
-        public int Style
-        {
-            get
-            {
-                int style = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
-                return style;
-            }
-        }
+        public SystemMenu Menu { get; private set; }        
 
         public Rect Size
         {
@@ -122,16 +92,6 @@ namespace SmartSystemMenu
             get
             {
                 return SystemUtils.GetProcessByIdSafely(ProcessId);
-            }
-        }
-
-        public uint ThreadId
-        {
-            get
-            {
-                int processId;
-                uint threadId = NativeMethods.GetWindowThreadProcessId(Handle, out processId);
-                return threadId;
             }
         }
 
@@ -262,7 +222,150 @@ namespace SmartSystemMenu
 
         public override string ToString()
         {
-            return WindowText;
+            return GetWindowText();
+        }
+
+        public string GetWindowText()
+        {
+            var builder = new StringBuilder(1024);
+            NativeMethods.GetWindowText(Handle, builder, builder.Capacity);
+            var windowText = builder.ToString();
+            return windowText;
+        }
+
+        public string GetClassName()
+        {
+            var builder = new StringBuilder(1024);
+            NativeMethods.GetClassName(Handle, builder, builder.Capacity);
+            var className = builder.ToString();
+            return className;
+        }
+
+        private string RealGetWindowClass()
+        {
+            var builder = new StringBuilder(1024);
+            NativeMethods.RealGetWindowClass(Handle, builder, builder.Capacity);
+            var className = builder.ToString();
+            return className;
+        }
+
+        public WindowInfo GetWindowInfo()
+        {
+            var process = Process;
+            var info = new WindowInfo();
+            info.GetWindowText = GetWindowText();
+            info.WM_GETTEXT = GetWmGettext();
+            info.GetClassName = GetClassName();
+            info.RealGetWindowClass = RealGetWindowClass();
+            info.Handle = Handle;
+            info.ParentHandle = NativeMethods.GetParent(Handle);
+            info.Size = Size;
+            info.ProcessId = ProcessId;
+            info.ThreadId = GetThreadId();
+            info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
+            info.GWL_EXSTYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_EXSTYLE);
+            info.GWL_ID = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_ID);
+            info.GWL_USERDATA = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_USERDATA);
+            info.GCL_STYLE = NativeMethods.GetClassLong(Handle, NativeConstants.GCL_STYLE);
+            info.GCL_WNDPROC = NativeMethods.GetClassLong(Handle, NativeConstants.GCL_WNDPROC);
+            info.DWL_DLGPROC = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_DLGPROC);
+            info.DWL_USER = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_USER);
+            info.FullPath = process == null ? "" : process.GetMainModuleFileName();
+            info.FullPath = info.FullPath == null ? "" : info.FullPath;
+            info.Priority = ProcessPriority;
+            info.StartTime = process == null ? (DateTime?)null : process.StartTime;
+
+            try
+            {
+                var processInfo = SystemUtils.GetWmiProcessInfo(process.Id);
+                info.Owner = processInfo.Owner;
+                info.CommandLine = processInfo.CommandLine;
+                info.ThreadCount = processInfo.ThreadCount;
+                info.HandleCount = processInfo.HandleCount;
+                info.VirtualSize = processInfo.VirtualSize;
+                info.WorkingSetSize = processInfo.WorkingSetSize;
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                info.FontName = GetFontName();
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                var windowInfo = new WINDOW_INFO();
+                windowInfo.cbSize = Marshal.SizeOf(windowInfo);
+                if (NativeMethods.GetWindowInfo(Handle, ref windowInfo))
+                {
+                    info.WindowInfoExStyle = windowInfo.dwExStyle;
+                }
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                uint key;
+                Byte alpha;
+                uint flags;
+                var result = NativeMethods.GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                var layeredWindow = (LayeredWindow)flags;
+                info.LWA_ALPHA = layeredWindow.HasFlag(LayeredWindow.LWA_ALPHA);
+                info.LWA_COLORKEY = layeredWindow.HasFlag(LayeredWindow.LWA_COLORKEY);
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                info.Instance = process == null ? IntPtr.Zero : process.Modules[0].BaseAddress;
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                info.Parent = Path.GetFileName(process.GetParentProcess().MainModule.FileName);
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                var fileVersionInfo = process.MainModule.FileVersionInfo;
+                info.ProductName = fileVersionInfo.ProductName;
+                info.ProductVersion = fileVersionInfo.ProductVersion;
+                info.FileVersion = fileVersionInfo.FileVersion;
+                info.Copyright = fileVersionInfo.LegalCopyright;
+            }
+            catch
+            {
+            }
+
+            /*try
+            {
+                var control = Control.FromHandle(Handle);
+                var accessibilityObject = control.AccessibilityObject;
+                info.AccessibleName = accessibilityObject == null ? "" : accessibilityObject.Name;
+                info.AccessibleValue = accessibilityObject == null ? "" : accessibilityObject.Value;
+                info.AccessibleRole = accessibilityObject == null ? "" : accessibilityObject.Role.ToString();
+                info.AccessibleDescription = accessibilityObject == null ? "" : accessibilityObject.Description;
+            }
+            catch
+            {
+            }*/
+
+            return info;
         }
 
         public void SetTrancparency(int percent)
@@ -550,6 +653,37 @@ namespace SmartSystemMenu
 
         #region Methods.Private
 
+        private string GetFontName()
+        {
+            var hFont = NativeMethods.SendMessage(Handle, NativeConstants.WM_GETFONT, 0, 0);
+            if (hFont == IntPtr.Zero)
+            {
+                return "Default system font";
+            }
+            var font = Font.FromHfont(hFont);
+            return font.Name;
+        }
+
+        private string GetWmGettext()
+        {
+            var titleSize = NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXTLENGTH, 0, 0);
+            if (titleSize.ToInt32() == 0)
+            {
+                return String.Empty;
+            }
+
+            var title = new StringBuilder(titleSize.ToInt32() + 1);
+            NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXT, title.Capacity, title);
+            return title.ToString();
+        }
+
+        private uint GetThreadId()
+        {
+            int processId;
+            uint threadId = NativeMethods.GetWindowThreadProcessId(Handle, out processId);
+            return threadId;
+        }
+
         private void SetOpacity(IntPtr handle, Byte opacity)
         {
             NativeMethods.SetWindowLong(handle, NativeConstants.GWL_EXSTYLE, NativeMethods.GetWindowLong(handle, NativeConstants.GWL_EXSTYLE) | NativeConstants.WS_EX_LAYERED);
@@ -617,7 +751,8 @@ namespace SmartSystemMenu
             _systemTrayIcon.MouseClick -= SystemTrayIconClick;
             _systemTrayIcon.MouseClick += SystemTrayIconClick;
             _systemTrayIcon.Icon = GetWindowIcon();
-            _systemTrayIcon.Text = WindowText.Length > 63 ? WindowText.Substring(0, 60).PadRight(63, '.') : WindowText;
+            var windowText = GetWindowText();
+            _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;
             _systemTrayIcon.Visible = true;
         }
 

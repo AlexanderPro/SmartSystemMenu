@@ -197,15 +197,21 @@ namespace SmartSystemMenu.Settings
 
             var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
             var languageName = "";
+            var languageNameList = new[] { "en", "ru", "zh_cn", "zh_tw", "ja", "ko", "de", "sr" };
             if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
             {
                 languageName = languageElement.Attribute("name").Value.ToLower().Trim();
                 settings.LanguageName = languageName;
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN" || Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN"))
             {
-                languageName = "cn";
+                languageName = "zh_cn";
+            }
+
+            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            {
+                languageName = "zh_tw";
             }
 
             if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ja-JP")
@@ -237,7 +243,7 @@ namespace SmartSystemMenu.Settings
                 languageName = "sr";
             }
 
-            if (languageName == "")
+            if (languageName == "" || !languageNameList.Contains(languageName))
             {
                 languageName = "en";
             }
