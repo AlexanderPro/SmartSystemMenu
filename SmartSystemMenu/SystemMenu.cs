@@ -22,6 +22,7 @@ namespace SmartSystemMenu
         private readonly MenuItems _menuItems;
         private readonly LanguageSettings _languageSettings;
         private bool _wasOriginalBefore;
+        private int _numberItems;
 
         #endregion
 
@@ -59,6 +60,7 @@ namespace SmartSystemMenu
             _moveToMenuHandle = IntPtr.Zero;
             _menuItems = menuItems;
             _languageSettings = languageSettings;
+            _numberItems = 0;
             WindowHandle = windowHandle;
             MoveToMenuItems = SystemUtils.GetMonitors().Select((x, i) => new KeyValuePair<int, IntPtr>(i + 1, x)).ToDictionary(x => x.Key, y => y.Value);
         }
@@ -69,36 +71,162 @@ namespace SmartSystemMenu
             var index = NativeMethods.GetMenuItemCount(windowMenuHandle);
             _wasOriginalBefore = index > 0 && NativeMethods.GetMenuItemID(windowMenuHandle, index - 1) == MenuItemId.SC_CLOSE;
 
+            _numberItems++;
             NativeMethods.InsertMenu(windowMenuHandle, index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, IntPtr.Zero, "");
-            NativeMethods.InsertMenu(windowMenuHandle, index + 1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_INFORMATION, GetTitle("information"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 2, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ROLLUP, GetTitle("roll_up"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 3, NativeConstants.MF_BYPOSITION, MenuItemId.SC_AERO_GLASS, GetTitle("aero_glass"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 4, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TOPMOST, GetTitle("always_on_top"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 5, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SEND_TO_BOTTOM, GetTitle("send_to_bottom"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 6, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SAVE_SCREEN_SHOT, GetTitle("save_screenshot"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 7, NativeConstants.MF_BYPOSITION, MenuItemId.SC_OPEN_FILE_IN_EXPLORER, GetTitle("open_file_in_explorer"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 8, NativeConstants.MF_BYPOSITION, MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD, GetTitle("copy_text_to_clipboard"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 9, NativeConstants.MF_BYPOSITION, MenuItemId.SC_DRAG_BY_MOUSE, GetTitle("drag_by_mouse"));
+            var name = "information";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_INFORMATION, GetTitle(name));
+            }
+
+            name = "roll_up";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ROLLUP, GetTitle(name));
+            }
+
+            name = "aero_glass";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_AERO_GLASS, GetTitle(name));
+            }
+
+            name = "always_on_top";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TOPMOST, GetTitle(name));
+            }
+
+            name = "send_to_bottom";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SEND_TO_BOTTOM, GetTitle(name));
+            }
+
+            name = "save_screenshot";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SAVE_SCREEN_SHOT, GetTitle(name));
+            }
+
+            name = "open_file_in_explorer";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_OPEN_FILE_IN_EXPLORER, GetTitle(name));
+            }
+
+            name = "copy_text_to_clipboard";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD, GetTitle(name));
+            }
+
+            name = "drag_by_mouse";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION, MenuItemId.SC_DRAG_BY_MOUSE, GetTitle(name));
+            }
 
             _sizeMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_640_480, GetTitle("640_480", "640x480"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_720_480, GetTitle("720_480", "720x480"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_720_576, GetTitle("720_576", "720x576"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_800_600, GetTitle("800_600", "800x600"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1024_768, GetTitle("1024_768", "1024x768"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1152_864, GetTitle("1152_864", "1152x864"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_768, GetTitle("1280_768", "1280x768"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_800, GetTitle("1280_800", "1280x800"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_960, GetTitle("1280_960", "1280x960"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_1024, GetTitle("1280_1024", "1280x1024"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1440_900, GetTitle("1440_900", "1440x900"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1600_900, GetTitle("1600_900", "1600x900"));
-            NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1680_1050, GetTitle("1680_1050", "1680x1050"));
+
+            name = "640_480";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_640_480, GetTitle(name, "640x480"));
+            }
+
+            name = "720_480";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_720_480, GetTitle(name, "720x480"));
+            }
+
+            name = "720_576";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_720_576, GetTitle(name, "720x576"));
+            }
+
+            name = "800_600";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_800_600, GetTitle(name, "800x600"));
+            }
+
+            name = "1024_768";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1024_768, GetTitle(name, "1024x768"));
+            }
+
+            name = "1152_864";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1152_864, GetTitle(name, "1152x864"));
+            }
+
+            name = "1280_768";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_768, GetTitle(name, "1280x768"));
+            }
+
+            name = "1280_800";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_800, GetTitle(name, "1280x800"));
+            }
+
+            name = "1280_960";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_960, GetTitle(name, "1280x960"));
+            }
+
+            name = "1280_1024";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1280_1024, GetTitle(name, "1280x1024"));
+            }
+
+            name = "1440_900";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1440_900, GetTitle(name, "1440x900"));
+            }
+
+            name = "1600_900";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1600_900, GetTitle(name, "1600x900"));
+            }
+
+            name = "1680_1050";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_1680_1050, GetTitle(name, "1680x1050"));
+            }
+
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_DEFAULT, GetTitle("size_default"));
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_sizeMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_SIZE_CUSTOM, GetTitle("size_custom"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 10, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _sizeMenuHandle, GetTitle("size"));
+
+            name = "size";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _sizeMenuHandle, GetTitle(name));
+            }
 
             _moveToMenuHandle = NativeMethods.CreateMenu();
             foreach (var item in MoveToMenuItems)
@@ -106,91 +234,271 @@ namespace SmartSystemMenu
                 NativeMethods.InsertMenu(_moveToMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MOVE_TO + item.Key, GetTitle("monitor") + item.Key);
             }
 
-            NativeMethods.InsertMenu(windowMenuHandle, index + 11, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _moveToMenuHandle, GetTitle("move_to"));
+            name = "move_to";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _moveToMenuHandle, GetTitle(name));
+            }
 
             _alignmentMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_TOP_LEFT, GetTitle("align_top_left"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_TOP_CENTER, GetTitle("align_top_center"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_TOP_RIGHT, GetTitle("align_top_right"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_MIDDLE_LEFT, GetTitle("align_middle_left"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_MIDDLE_CENTER, GetTitle("align_middle_center"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_MIDDLE_RIGHT, GetTitle("align_middle_right"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_BOTTOM_LEFT, GetTitle("align_bottom_left"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_BOTTOM_CENTER, GetTitle("align_bottom_center"));
-            NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_BOTTOM_RIGHT, GetTitle("align_bottom_right"));
+
+            name = "align_top_left";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_TOP_LEFT, GetTitle(name));
+            }
+
+            name = "align_top_center";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_TOP_CENTER, GetTitle(name));
+            }
+
+            name = "align_top_right";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_TOP_RIGHT, GetTitle(name));
+            }
+
+            name = "align_middle_left";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_MIDDLE_LEFT, GetTitle(name));
+            }
+
+            name = "align_middle_center";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_MIDDLE_CENTER, GetTitle(name));
+            }
+
+            name = "align_middle_right";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_MIDDLE_RIGHT, GetTitle(name));
+            }
+
+            name = "align_bottom_left";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_BOTTOM_LEFT, GetTitle(name));
+            }
+
+            name = "align_bottom_center";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_BOTTOM_CENTER, GetTitle(name));
+            }
+
+            name = "align_bottom_right";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_BOTTOM_RIGHT, GetTitle(name));
+            }
+
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_DEFAULT, GetTitle("align_default"));
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_alignmentMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_ALIGN_CUSTOM, GetTitle("align_custom"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 12, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _alignmentMenuHandle, GetTitle("alignment"));
+
+            name = "alignment";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _alignmentMenuHandle, GetTitle(name));
+            }
 
             _transparencyMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_00, GetTitle("trans_opaque", "0%" + GetTitle("trans_opaque", null, false)));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_10, GetTitle("10%", "10%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_20, GetTitle("20%", "20%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_30, GetTitle("30%", "30%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_40, GetTitle("40%", "40%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_50, GetTitle("50%", "50%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_60, GetTitle("60%", "60%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_70, GetTitle("70%", "70%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_80, GetTitle("80%", "80%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_90, GetTitle("90%", "90%"));
-            NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_100, GetTitle("trans_invisible", "100%" + GetTitle("trans_invisible", null, false)));
+
+            name = "trans_opaque";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_00, GetTitle(name, "0%" + GetTitle(name, null, false)));
+            }
+
+            name = "10%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_10, GetTitle(name, "10%"));
+            }
+
+            name = "20%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_20, GetTitle(name, "20%"));
+            }
+
+            name = "30%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_30, GetTitle(name, "30%"));
+            }
+
+            name = "40%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_40, GetTitle(name, "40%"));
+            }
+
+            name = "50%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_50, GetTitle(name, "50%"));
+            }
+
+            name = "60%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_60, GetTitle(name, "60%"));
+            }
+
+            name = "70%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_70, GetTitle(name, "70%"));
+            }
+
+            name = "80%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_80, GetTitle(name, "80%"));
+            }
+
+            name = "90%";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_90, GetTitle(name, "90%"));
+            }
+
+            name = "trans_invisible";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_100, GetTitle(name, "100%" + GetTitle(name, null, false)));
+            }
+
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_DEFAULT, GetTitle("trans_default"));
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, 0, "");
             NativeMethods.InsertMenu(_transparencyMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_TRANS_CUSTOM, GetTitle("trans_custom"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 13, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _transparencyMenuHandle, GetTitle("transparency"));
+
+            name = "transparency";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _transparencyMenuHandle, GetTitle(name));
+            }
 
             _priorityMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_REAL_TIME, GetTitle("priority_real_time"));
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_HIGH, GetTitle("priority_high"));
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_ABOVE_NORMAL, GetTitle("priority_above_normal"));
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_NORMAL, GetTitle("priority_normal"));
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_BELOW_NORMAL, GetTitle("priority_below_normal"));
-            NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_IDLE, GetTitle("priority_idle"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 14, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _priorityMenuHandle, GetTitle("priority"));
+
+            name = "priority_real_time";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_REAL_TIME, GetTitle(name));
+            }
+
+            name = "priority_high";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_HIGH, GetTitle(name));
+            }
+
+            name = "priority_above_normal";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_ABOVE_NORMAL, GetTitle(name));
+            }
+
+            name = "priority_normal";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_NORMAL, GetTitle(name));
+            }
+
+            name = "priority_below_normal";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_BELOW_NORMAL, GetTitle(name));
+            }
+
+            name = "priority_idle";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_priorityMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_PRIORITY_IDLE, GetTitle(name));
+            }
+
+            name = "priority";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _priorityMenuHandle, GetTitle(name));
+            }
 
             _systemTrayMenuHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MINIMIZE_TO_SYSTEMTRAY, GetTitle("minimize_to_systemtray"));
-            NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, GetTitle("minimize_always_to_systemtray"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 15, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _systemTrayMenuHandle, GetTitle("system_tray"));
+
+            name = "minimize_to_systemtray";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MINIMIZE_TO_SYSTEMTRAY, GetTitle(name));
+            }
+
+            name = "minimize_always_to_systemtray";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_systemTrayMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, GetTitle(name));
+            }
+
+            name = "system_tray";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _systemTrayMenuHandle, GetTitle(name));
+            }
 
             _otherWindowsHandle = NativeMethods.CreateMenu();
-            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MINIMIZE_OTHER_WINDOWS, GetTitle("minimize_other_windows"));
-            NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_CLOSE_OTHER_WINDOWS, GetTitle("close_other_windows"));
-            NativeMethods.InsertMenu(windowMenuHandle, index + 16, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _otherWindowsHandle, GetTitle("other_windows"));
+
+            name = "minimize_other_windows";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MINIMIZE_OTHER_WINDOWS, GetTitle(name));
+            }
+
+            name = "close_other_windows";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                NativeMethods.InsertMenu(_otherWindowsHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_CLOSE_OTHER_WINDOWS, GetTitle(name));
+            }
+
+            name = "other_windows";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _otherWindowsHandle, GetTitle(name));
+            }
 
             _startProgramsHandle = NativeMethods.CreateMenu();
             for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
             {
                 NativeMethods.InsertMenu(_startProgramsHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
             }
-            NativeMethods.InsertMenu(windowMenuHandle, index + 17, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _startProgramsHandle, GetTitle("start_program"));
+
+            name = "start_program";
+            if (_menuItems.Items.Any(x => x.Name == name && x.Show))
+            {
+                _numberItems++;
+                NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, _startProgramsHandle, GetTitle(name));
+            }
         }
 
         public void Destroy()
         {
             var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             var Index = NativeMethods.GetMenuItemCount(windowMenuHandle);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 1, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 2, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 3, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 4, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 5, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 6, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 7, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 8, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 9, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 10, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 11, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 12, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 13, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 14, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 15, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 16, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 17, NativeConstants.MF_BYPOSITION);
-            NativeMethods.DeleteMenu(windowMenuHandle, Index - 18, NativeConstants.MF_BYPOSITION);
+            for (int i = 0; i < _numberItems; i++)
+            {
+                NativeMethods.DeleteMenu(windowMenuHandle, --Index, NativeConstants.MF_BYPOSITION);
+
+            }
             NativeMethods.DestroyMenu(_priorityMenuHandle);
             NativeMethods.DestroyMenu(_alignmentMenuHandle);
             NativeMethods.DestroyMenu(_moveToMenuHandle);
@@ -208,11 +516,11 @@ namespace SmartSystemMenu
         public void SetMenuItemText(int id, string text)
         {
             var info = new MenuItemInfo();
-            info.cbSize = (UInt32)Marshal.SizeOf(info);
+            info.cbSize = (uint)Marshal.SizeOf(info);
             info.fMask = NativeConstants.MIIM_TYPE;
             info.fType = NativeConstants.MFT_STRING;
             info.dwTypeData = text;
-            info.cch = (UInt32)text.Length;
+            info.cch = (uint)text.Length;
             var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             NativeMethods.SetMenuItemInfo(windowMenuHandle, id, false, ref info);
         }

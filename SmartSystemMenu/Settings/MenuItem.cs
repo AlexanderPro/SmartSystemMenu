@@ -8,11 +8,22 @@ namespace SmartSystemMenu.Settings
     {
         public string Name { get; set; }
 
+        public bool Show { get; set; }
+
         public VirtualKeyModifier Key1 { get; set; }
 
         public VirtualKeyModifier Key2 { get; set; }
 
         public VirtualKey Key3 { get; set; }
+
+        public MenuItem()
+        {
+            Name = "";
+            Show = true;
+            Key1 = VirtualKeyModifier.None;
+            Key2 = VirtualKeyModifier.None;
+            Key3 = VirtualKey.None;
+        }
 
         public object Clone()
         {

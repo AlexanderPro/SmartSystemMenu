@@ -149,7 +149,8 @@
       <item name="hotkeys_btn_cancel" value="Cancel" />
       <item name="tab_settings_hotkeys" value="Hotkeys" />
       <item name="clm_hotkeys_name" value="Name" />
-      <item name="tab_settings_hotkeys" value="Keys" />
+      <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
+      <item name="tab_settings_menu_start" value="Menu (Start Program)" />
     </en>
     <de>
       <item name="information" value="Information" />
@@ -299,7 +300,8 @@
       <item name="hotkeys_btn_cancel" value="Abbrechen" />
       <item name="tab_settings_hotkeys" value="Tastaturkürzel" />
       <item name="clm_hotkeys_name" value="Name" />
-      <item name="tab_settings_hotkeys" value="Tastaturkürzel" />      
+      <item name="clm_hotkeys_show_tooltip" value="Menüpunkt anzeigen" />
+      <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />      
     </de>
     <zh_cn>
       <item name="information" value="信息" />
@@ -449,7 +451,8 @@
       <item name="hotkeys_btn_cancel" value="取消" />
       <item name="tab_settings_hotkeys" value="热键" />
       <item name="clm_hotkeys_name" value="名称" />
-      <item name="tab_settings_hotkeys" value="键" />
+      <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
+      <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
     </zh_cn>
     <zh_tw>
       <item name="information" value="資訊" />
@@ -599,7 +602,8 @@
       <item name="hotkeys_btn_cancel" value="取消" />
       <item name="tab_settings_hotkeys" value="快速鍵" />
       <item name="clm_hotkeys_name" value="名稱" />
-      <item name="tab_settings_hotkeys" value="鍵" />
+      <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
+      <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
     </zh_tw>
     <ja>
       <item name="information" value="情報" />
@@ -749,7 +753,8 @@
       <item name="hotkeys_btn_cancel" value="キャンセル" />
       <item name="tab_settings_hotkeys" value="ホットキー" />
       <item name="clm_hotkeys_name" value="名前" />
-      <item name="tab_settings_hotkeys" value="キー" />
+      <item name="clm_hotkeys_show_tooltip" value="メニュー項目を表示" />
+      <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
     </ja>
     <ko>
       <item name="information" value="정보" />
@@ -899,7 +904,8 @@
       <item name="hotkeys_btn_cancel" value="취소" />
       <item name="tab_settings_hotkeys" value="단축키" />
       <item name="clm_hotkeys_name" value="이름" />
-      <item name="tab_settings_hotkeys" value="키" />
+      <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
+      <item name="tab_settings_menu_start" value="메뉴 (시작할 프로그램)" />
     </ko>
     <ru>
       <item name="information" value="Информация" />
@@ -1049,7 +1055,8 @@
       <item name="hotkeys_btn_cancel" value="Cancel" />
       <item name="tab_settings_hotkeys" value="Горячие клавиши" />
       <item name="clm_hotkeys_name" value="Наименовение" />
-      <item name="tab_settings_hotkeys" value="Комбинация" />
+      <item name="clm_hotkeys_show_tooltip" value="Отобразить или скрыть пункт меню" />
+      <item name="tab_settings_menu_start" value="Меню (Пуск)" />
     </ru>
     <sr>
       <item name="information" value="Информација програма" />
@@ -1199,7 +1206,8 @@
       <item name="hotkeys_btn_cancel" value="Откажи" />
       <item name="tab_settings_hotkeys" value="Пречице" />
       <item name="clm_hotkeys_name" value="Име" />
-      <item name="tab_settings_hotkeys" value="Типци" />
+      <item name="clm_hotkeys_show_tooltip" value="Прикажи ставку менија" />
+      <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
     </sr>
   </items>
 </language>

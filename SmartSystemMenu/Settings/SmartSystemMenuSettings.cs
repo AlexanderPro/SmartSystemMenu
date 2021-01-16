@@ -119,6 +119,7 @@ namespace SmartSystemMenu.Settings
             for (var i = 0; i < MenuItems.Items.Count; i++)
             {
                 if (string.Compare(MenuItems.Items[i].Name, other.MenuItems.Items[i].Name, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    MenuItems.Items[i].Show != other.MenuItems.Items[i].Show ||
                     MenuItems.Items[i].Key1 != other.MenuItems.Items[i].Key1 ||
                     MenuItems.Items[i].Key2 != other.MenuItems.Items[i].Key2 ||
                     MenuItems.Items[i].Key3 != other.MenuItems.Items[i].Key3)
@@ -183,6 +184,7 @@ namespace SmartSystemMenu.Settings
                 .XPathSelectElements("/smartSystemMenu/menuItems/items/item")
                 .Select(x => new MenuItem {
                    Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
+                   Show = x.Attribute("show") != null ? x.Attribute("show").Value.ToLower() != "false" : true,
                    Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
                    Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
                    Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
@@ -269,6 +271,7 @@ namespace SmartSystemMenu.Settings
                                  new XElement("menuItems",
                                      new XElement("items", settings.MenuItems.Items.Select(x => new XElement("item",
                                          new XAttribute("name", x.Name),
+                                         x.Show == false ? new XAttribute("show", x.Show.ToString().ToLower()) : null,
                                          new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
                                          new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
                                          new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),

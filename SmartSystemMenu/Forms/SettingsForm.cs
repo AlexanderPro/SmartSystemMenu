@@ -34,8 +34,8 @@ namespace SmartSystemMenu.Forms
         {
             lblLanguage.Text = settings.LanguageSettings.GetValue("lbl_language");
             tabpGeneral.Text = settings.LanguageSettings.GetValue("tab_settings_general");
+            tabpMenuStart.Text = settings.LanguageSettings.GetValue("tab_settings_menu_start");
             tabpMenu.Text = settings.LanguageSettings.GetValue("tab_settings_menu");
-            tabpHotkeys.Text = settings.LanguageSettings.GetValue("tab_settings_hotkeys");
             grpbProcessExclusions.Text = settings.LanguageSettings.GetValue("grpb_process_exclusions");
             grpbStartProgram.Text = settings.LanguageSettings.GetValue("grpb_start_program");
             clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
@@ -160,6 +160,7 @@ namespace SmartSystemMenu.Forms
             FillGridViewGroupHotkey(gvHotkeys, settings, "other_windows");
             FillGridViewRowHotkey(gvHotkeys, settings, "minimize_other_windows", null, true);
             FillGridViewRowHotkey(gvHotkeys, settings, "close_other_windows", null, true);
+            FillGridViewGroupHotkey(gvHotkeys, settings, "start_program");
         }
 
         private void GridViewProcessExclusionsCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -233,10 +234,19 @@ namespace SmartSystemMenu.Forms
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 var row = grid.Rows[e.RowIndex];
-                if (row.Tag != null)
+                if (!row.ReadOnly)
                 {
                     ShowHotkeysForm(row);
                 }
+            }
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+            {
+                var row = grid.Rows[e.RowIndex];
+                var cell = (DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex];
+                cell.Value = !(bool)cell.Value;
+                var menuItem = (Settings.MenuItem)row.Tag;
+                menuItem.Show = (bool)cell.Value;
             }
         }
 
@@ -246,7 +256,7 @@ namespace SmartSystemMenu.Forms
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1) && e.RowIndex >= 0)
             {
                 var row = grid.Rows[e.RowIndex];
-                if (row.Tag != null)
+                if (!row.ReadOnly)
                 {
                     ShowHotkeysForm(row);
                 }
@@ -258,10 +268,10 @@ namespace SmartSystemMenu.Forms
             var grid = (DataGridView)sender;
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0)
             {
-                var cellTitle = grid.Rows[e.RowIndex].Cells[0];
-                var cellFileName = grid.Rows[e.RowIndex].Cells[1];
-                var cellArguments = grid.Rows[e.RowIndex].Cells[2];
-
+                var row = grid.Rows[e.RowIndex];
+                var cellTitle = row.Cells[0];
+                var cellFileName = row.Cells[1];
+                var cellArguments = row.Cells[2];
                 var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _settings);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
@@ -418,6 +428,8 @@ namespace SmartSystemMenu.Forms
             row.Tag = (Settings.MenuItem)menuItem.Clone();
             row.Cells[0].Value = title;
             row.Cells[1].Value = menuItem == null ? "" : menuItem.ToString();
+            ((DataGridViewCheckBoxCell)row.Cells[2]).Value = menuItem.Show;
+            ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = settings.LanguageSettings.GetValue("clm_hotkeys_show_tooltip");
             if (isPadding)
             {
                 var padding = row.Cells[0].Style.Padding;
@@ -429,9 +441,13 @@ namespace SmartSystemMenu.Forms
         {
             var index = gridView.Rows.Add();
             var row = gridView.Rows[index];
+            var menuItem = settings.MenuItems.Items.FirstOrDefault(x => x.Name == itemName);
+            row.Tag = (Settings.MenuItem)menuItem.Clone();
             row.Cells[0].Value = settings.LanguageSettings.GetValue(itemName);
             row.ReadOnly = true;
-            ((DataGridViewDisableButtonCell)row.Cells[2]).Enabled = false;
+            ((DataGridViewCheckBoxCell)row.Cells[2]).Value = menuItem.Show;
+            ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = settings.LanguageSettings.GetValue("clm_hotkeys_show_tooltip");
+            ((DataGridViewDisableButtonCell)row.Cells[3]).Enabled = false;
         }
     }
 

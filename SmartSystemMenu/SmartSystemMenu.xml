@@ -19,6 +19,7 @@
       <item name="open_file_in_explorer" key1="" key2="" key3="" />
       <item name="copy_text_to_clipboard" key1="" key2="" key3="" />
       <item name="drag_by_mouse" key1="" key2="" key3="" />
+      <item name="size" key1="" key2="" key3="" />
       <item name="640_480" key1="" key2="" key3="" />
       <item name="720_480" key1="" key2="" key3="" />
       <item name="720_576" key1="" key2="" key3="" />
@@ -34,6 +35,8 @@
       <item name="1680_1050" key1="" key2="" key3="" />
       <item name="size_default" key1="" key2="" key3="" />
       <item name="size_custom" key1="" key2="" key3="" />
+      <item name="move_to" key1="" key2="" key3="" />
+      <item name="alignment" key1="" key2="" key3="" />
       <item name="align_top_left" key1="18" key2="" key3="103" />
       <item name="align_top_center" key1="18" key2="" key3="104" />
       <item name="align_top_right" key1="18" key2="" key3="105" />
@@ -45,6 +48,7 @@
       <item name="align_bottom_right" key1="18" key2="" key3="99" />
       <item name="align_default" key1="" key2="" key3="" />
       <item name="align_custom" key1="" key2="" key3="" />
+      <item name="transparency" key1="" key2="" key3="" />
       <item name="trans_invisible" key1="" key2="" key3="" />
       <item name="trans_default" key1="" key2="" key3="" />
       <item name="trans_custom" key1="" key2="" key3="" />
@@ -58,16 +62,20 @@
       <item name="70%" key1="17" key2="" key3="103" />
       <item name="80%" key1="17" key2="" key3="104" />
       <item name="90%" key1="17" key2="" key3="105" />
+      <item name="priority" key1="" key2="" key3="" />
       <item name="priority_real_time" key1="" key2="" key3="" />
       <item name="priority_high" key1="" key2="" key3="" />
       <item name="priority_above_normal" key1="" key2="" key3="" />
       <item name="priority_normal" key1="" key2="" key3="" />
       <item name="priority_below_normal" key1="" key2="" key3="" />
       <item name="priority_idle" key1="" key2="" key3="" />
+      <item name="system_tray" key1="" key2="" key3="" />
       <item name="minimize_to_systemtray" key1="" key2="" key3="" />
       <item name="minimize_always_to_systemtray" key1="" key2="" key3="" />
+      <item name="other_windows" key1="" key2="" key3="" />
       <item name="minimize_other_windows" key1="" key2="" key3="" />
       <item name="close_other_windows" key1="" key2="" key3="" />
+      <item name="start_program" key1="" key2="" key3="" />
     </items>
     <startProgramItems>
       <item title="Notepad" fileName="notepad.exe" arguments="" />
