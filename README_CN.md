@@ -2,7 +2,7 @@
 =============
 
 - [English](/README.md)
-
+- [Русский](/README_RU.md)
 - 中文版
 
 ---
@@ -49,6 +49,8 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
 * SmartSystemMenu64.exe (位于 SmartSystemMenu.exe 模块的资源中)
 * SmartSystemMenuHook.dll
 * SmartSystemMenuHook64.dll
+* SmartSystemMenu.xml
+* Language.xml
 
 此程序具有用于 x86 进程的 SmartSystemMenu.exe 和 SmartSystemMenuHook.dll 模块，用于 x64 进程的 SmartSystemMenu64.exe 和 SmartSystemMenuHook64.dll 模块。当您运行 SmartSystemMenu.exe 时，它还会运行 SmartSystemMenu64.exe。 这两个可执行模块将挂钩 (SmartSystemMenuHook.dll 和 SmartSystemMenuHook64.dll) 加载到所有进程。 当您在系统菜单中选择一项时，挂钩会向可执行模块发送一条消息。之后，模块执行选定的操作：更改窗口的透明度、更改窗口的大小等等。
 
