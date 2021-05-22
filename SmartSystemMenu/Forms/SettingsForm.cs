@@ -157,6 +157,7 @@ namespace SmartSystemMenu.Forms
             FillGridViewGroupHotkey(gvHotkeys, settings, "system_tray");
             FillGridViewRowHotkey(gvHotkeys, settings, "minimize_to_systemtray", null, true);
             FillGridViewRowHotkey(gvHotkeys, settings, "minimize_always_to_systemtray", null, true);
+            FillGridViewRowHotkey(gvHotkeys, settings, "suspend_to_systemtray", null, true);
             FillGridViewGroupHotkey(gvHotkeys, settings, "other_windows");
             FillGridViewRowHotkey(gvHotkeys, settings, "minimize_other_windows", null, true);
             FillGridViewRowHotkey(gvHotkeys, settings, "close_other_windows", null, true);

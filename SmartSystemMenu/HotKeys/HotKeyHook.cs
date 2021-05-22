@@ -83,7 +83,7 @@ namespace SmartSystemMenu.HotKeys
                             var handler = Hooked;
                             if (handler != null)
                             {
-                                var menuItemId = MenuItemId.GetMenuItemId(item.Name);
+                                var menuItemId = MenuItemId.GetId(item.Name);
                                 var eventArgs = new HotKeyHookEventArgs(menuItemId);
                                 handler.BeginInvoke(this, eventArgs, null, null);
                                 break;
