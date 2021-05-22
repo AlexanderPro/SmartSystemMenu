@@ -11,7 +11,7 @@ namespace SmartSystemMenu
     {
         #region Fields.Private
 
-        private List<IntPtr> _subMenuHandles = new();
+        private List<IntPtr> _subMenuHandles = new List<IntPtr>();
         private readonly MenuItems _menuItems;
         private readonly LanguageSettings _languageSettings;
         private bool _wasOriginalBefore;

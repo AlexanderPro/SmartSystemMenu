@@ -760,7 +760,7 @@ namespace SmartSystemMenu
 
         private void CreateIconInSystemTray()
         {
-            _systemTrayIcon ??= new NotifyIcon();
+            _systemTrayIcon = _systemTrayIcon ?? new NotifyIcon();
             _systemTrayIcon.MouseClick -= SystemTrayIconClick;
             _systemTrayIcon.MouseClick += SystemTrayIconClick;
             _systemTrayIcon.Icon = GetWindowIcon();
