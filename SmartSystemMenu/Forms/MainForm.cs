@@ -272,8 +272,7 @@ namespace SmartSystemMenu.Forms
         {
             if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems, _settings.LanguageSettings).Exists && !_windows.Any(w => w.Handle == e.Handle))
             {
-                int processId;
-                NativeMethods.GetWindowThreadProcessId(e.Handle, out processId);
+                NativeMethods.GetWindowThreadProcessId(e.Handle, out int processId);
                 IList<Window> windows = new List<Window>();
                 try
                 {
@@ -394,6 +393,13 @@ namespace SmartSystemMenu.Forms
                             {
                                 bool r = window.Menu.IsMenuItemChecked(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
                                 window.Menu.CheckMenuItem(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, !r);
+                            }
+                            break;
+
+                        case MenuItemId.SC_SUSPEND_TO_SYSTEMTRAY:
+                            {
+                                window.MinimizeToSystemTray();
+                                window.Suspend();
                             }
                             break;
 

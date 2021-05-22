@@ -15,6 +15,7 @@
       <item name="aero_glass" key1="" key2="" key3="" />
       <item name="always_on_top" key1="" key2="" key3="" />
       <item name="send_to_bottom" key1="" key2="" key3="" />
+      <item name="suspend_to_systemtray" key1="" key2="" key3="" />
       <item name="save_screenshot" key1="" key2="" key3="" />
       <item name="open_file_in_explorer" key1="" key2="" key3="" />
       <item name="copy_text_to_clipboard" key1="" key2="" key3="" />

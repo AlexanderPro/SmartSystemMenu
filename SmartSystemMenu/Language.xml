@@ -43,6 +43,7 @@
       <item name="system_tray" value="System Tray" />
       <item name="minimize_to_systemtray" value="Minimize To Tray" />
       <item name="minimize_always_to_systemtray" value="Minimize To Tray Always" />
+      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
       <item name="other_windows" value="Other Windows" />
       <item name="minimize_other_windows" value="Minimize" />
       <item name="close_other_windows" value="Close" />
@@ -194,6 +195,7 @@
       <item name="system_tray" value="System-Tray" />
       <item name="minimize_to_systemtray" value="Ins System-Tray minimieren" />
       <item name="minimize_always_to_systemtray" value="Immer ins System-Tray minimieren" />
+      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
       <item name="other_windows" value="Andere Fernster" />
       <item name="minimize_other_windows" value="Minimieren" />
       <item name="close_other_windows" value="Schlieβen" />
@@ -345,6 +347,7 @@
       <item name="system_tray" value="系统托盘" />
       <item name="minimize_to_systemtray" value="最小化到托盘" />
       <item name="minimize_always_to_systemtray" value="始终最小化到托盘" />
+      <item name="suspend_to_systemtray" value="挂起并最小化到托盘" />
       <item name="other_windows" value="其他窗口" />
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="关闭" />
@@ -496,6 +499,7 @@
       <item name="system_tray" value="系統託盤" />
       <item name="minimize_to_systemtray" value="最小化到託盤" />
       <item name="minimize_always_to_systemtray" value="始終最小化到託盤" />
+      <item name="suspend_to_systemtray" value="挂起並最小化到託盤" />
       <item name="other_windows" value="其他視窗" />
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="關閉" />
@@ -647,6 +651,7 @@
       <item name="system_tray" value="システムトレイ" />
       <item name="minimize_to_systemtray" value="システムトレイへ最小化" />
       <item name="minimize_always_to_systemtray" value="常にシステムトレイへ最小化" />
+      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
       <item name="other_windows" value="その他画面" />
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="閉じる" />
@@ -798,6 +803,7 @@
       <item name="system_tray" value="시스템 트레이" />
       <item name="minimize_to_systemtray" value="트레이로 최소화" />
       <item name="minimize_always_to_systemtray" value="항상 트레이로 최소화" />
+      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
       <item name="other_windows" value="다른 창" />
       <item name="minimize_other_windows" value="최소화" />
       <item name="close_other_windows" value="닫기" />
@@ -949,6 +955,7 @@
       <item name="system_tray" value="Системный трей" />
       <item name="minimize_to_systemtray" value="Минимизировать в трей" />
       <item name="minimize_always_to_systemtray" value="Минимизировать в трей всегда" />
+      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
       <item name="other_windows" value="Другие окна" />
       <item name="minimize_other_windows" value="Минимизировать" />
       <item name="close_other_windows" value="Закрыть" />
@@ -1100,6 +1107,7 @@
       <item name="system_tray" value="Систем треј" />
       <item name="minimize_to_systemtray" value="Умањи у Треј" />
       <item name="minimize_always_to_systemtray" value="Увек Умањи у Треј" />
+      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
       <item name="other_windows" value="Друге прозоре" />
       <item name="minimize_other_windows" value="Умањи" />
       <item name="close_other_windows" value="Затвори" />
