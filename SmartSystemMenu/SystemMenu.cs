@@ -67,7 +67,6 @@ namespace SmartSystemMenu
             AddMenuItem(MenuItemId.SC_AERO_GLASS);
             AddMenuItem(MenuItemId.SC_TOPMOST);
             AddMenuItem(MenuItemId.SC_SEND_TO_BOTTOM);
-            AddMenuItem(MenuItemId.SC_SEND_TO_BOTTOM);
             AddMenuItem(MenuItemId.SC_SAVE_SCREEN_SHOT);
             AddMenuItem(MenuItemId.SC_OPEN_FILE_IN_EXPLORER);
             AddMenuItem(MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD);
