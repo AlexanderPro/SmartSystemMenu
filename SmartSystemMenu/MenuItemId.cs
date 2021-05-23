@@ -1,6 +1,10 @@
-﻿namespace SmartSystemMenu
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SmartSystemMenu
 {
-    static class MenuItemId
+    internal static class MenuItemId
     {
         public const int SC_CLOSE = 0xF060;
         public const int SC_TRANS_100 = 0x4740;
@@ -61,73 +65,99 @@
         public const int SC_AERO_GLASS = 0x4807;
         public const int SC_SEND_TO_BOTTOM = 0x4808;
         public const int SC_DRAG_BY_MOUSE = 0x4809;
+        public const int SC_SUSPEND_TO_SYSTEMTRAY = 0x4810;
         public const int SC_START_PROGRAM = 0x4900;
         public const int SC_MOVE_TO = 0x5000;
 
-        public static int GetMenuItemId(string name)
+        private static readonly Dictionary<string, int> NameToId = new Dictionary<string, int>();
+        private static readonly Dictionary<int, string> IdToName = new Dictionary<int, string>();
+
+        static MenuItemId()
         {
-            switch (name.ToLower())
+            NameToId["information"] = SC_INFORMATION;
+            NameToId["roll_up"] = SC_ROLLUP;
+            NameToId["aero_glass"] = SC_AERO_GLASS;
+            NameToId["always_on_top"] = SC_TOPMOST;
+            NameToId["send_to_bottom"] = SC_SEND_TO_BOTTOM;
+            NameToId["save_screenshot"] = SC_SAVE_SCREEN_SHOT;
+            NameToId["open_file_in_explorer"] = SC_OPEN_FILE_IN_EXPLORER;
+            NameToId["copy_text_to_clipboard"] = SC_COPY_TEXT_TO_CLIPBOARD;
+            NameToId["drag_by_mouse"] = SC_DRAG_BY_MOUSE;
+            NameToId["size_default"] = SC_SIZE_DEFAULT;
+            NameToId["size_custom"] = SC_SIZE_CUSTOM;
+            NameToId["640_480"] = SC_SIZE_640_480;
+            NameToId["720_480"] = SC_SIZE_720_480;
+            NameToId["720_576"] = SC_SIZE_720_576;
+            NameToId["800_600"] = SC_SIZE_800_600;
+            NameToId["1024_768"] = SC_SIZE_1024_768;
+            NameToId["1152_864"] = SC_SIZE_1152_864;
+            NameToId["1280_768"] = SC_SIZE_1280_768;
+            NameToId["1280_800"] = SC_SIZE_1280_800;
+            NameToId["1280_960"] = SC_SIZE_1280_960;
+            NameToId["1280_1024"] = SC_SIZE_1280_1024;
+            NameToId["1440_900"] = SC_SIZE_1440_900;
+            NameToId["1600_900"] = SC_SIZE_1600_900;
+            NameToId["1680_1050"] = SC_SIZE_1680_1050;
+            NameToId["align_top_left"] = SC_ALIGN_TOP_LEFT;
+            NameToId["align_top_center"] = SC_ALIGN_TOP_CENTER;
+            NameToId["align_top_right"] = SC_ALIGN_TOP_RIGHT;
+            NameToId["align_middle_left"] = SC_ALIGN_MIDDLE_LEFT;
+            NameToId["align_middle_center"] = SC_ALIGN_MIDDLE_CENTER;
+            NameToId["align_middle_right"] = SC_ALIGN_MIDDLE_RIGHT;
+            NameToId["align_bottom_left"] = SC_ALIGN_BOTTOM_LEFT;
+            NameToId["align_bottom_center"] = SC_ALIGN_BOTTOM_CENTER;
+            NameToId["align_bottom_right"] = SC_ALIGN_BOTTOM_RIGHT;
+            NameToId["align_default"] = SC_ALIGN_DEFAULT;
+            NameToId["align_custom"] = SC_ALIGN_CUSTOM;
+            NameToId["trans_opaque"] = SC_TRANS_00;
+            NameToId["10%"] = SC_TRANS_10;
+            NameToId["20%"] = SC_TRANS_20;
+            NameToId["30%"] = SC_TRANS_30;
+            NameToId["40%"] = SC_TRANS_40;
+            NameToId["50%"] = SC_TRANS_50;
+            NameToId["60%"] = SC_TRANS_60;
+            NameToId["70%"] = SC_TRANS_70;
+            NameToId["80%"] = SC_TRANS_80;
+            NameToId["90%"] = SC_TRANS_90;
+            NameToId["trans_invisible"] = SC_TRANS_100;
+            NameToId["trans_default"] = SC_TRANS_DEFAULT;
+            NameToId["trans_custom"] = SC_TRANS_CUSTOM;
+            NameToId["priority_real_time"] = SC_PRIORITY_REAL_TIME;
+            NameToId["priority_high"] = SC_PRIORITY_HIGH;
+            NameToId["priority_above_normal"] = SC_PRIORITY_ABOVE_NORMAL;
+            NameToId["priority_normal"] = SC_PRIORITY_NORMAL;
+            NameToId["priority_below_normal"] = SC_PRIORITY_BELOW_NORMAL;
+            NameToId["priority_idle"] = SC_PRIORITY_IDLE;
+            NameToId["minimize_to_systemtray"] = SC_MINIMIZE_TO_SYSTEMTRAY;
+            NameToId["suspend_to_systemtray"] = SC_SUSPEND_TO_SYSTEMTRAY;
+            NameToId["minimize_always_to_systemtray"] = SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY;
+            NameToId["minimize_other_windows"] = SC_MINIMIZE_OTHER_WINDOWS;
+            NameToId["close_other_windows"] = SC_CLOSE_OTHER_WINDOWS;
+
+            foreach (var pair in NameToId)
             {
-                case "information": return SC_INFORMATION;
-                case "roll_up": return SC_ROLLUP;
-                case "aero_glass": return SC_AERO_GLASS;
-                case "always_on_top": return SC_TOPMOST;
-                case "send_to_bottom": return SC_SEND_TO_BOTTOM;
-                case "save_screenshot": return SC_SAVE_SCREEN_SHOT;
-                case "open_file_in_explorer": return SC_OPEN_FILE_IN_EXPLORER;
-                case "copy_text_to_clipboard": return SC_COPY_TEXT_TO_CLIPBOARD;
-                case "drag_by_mouse": return SC_DRAG_BY_MOUSE;
-                case "size_default": return SC_SIZE_DEFAULT;
-                case "size_custom": return SC_SIZE_CUSTOM;
-                case "640_480": return SC_SIZE_640_480;
-                case "720_480": return SC_SIZE_720_480;
-                case "720_576": return SC_SIZE_720_576;
-                case "800_600": return SC_SIZE_800_600;
-                case "1024_768": return SC_SIZE_1024_768;
-                case "1152_864": return SC_SIZE_1152_864;
-                case "1280_768": return SC_SIZE_1280_768;
-                case "1280_800": return SC_SIZE_1280_800;
-                case "1280_960": return SC_SIZE_1280_960;
-                case "1280_1024": return SC_SIZE_1280_1024;
-                case "1440_900": return SC_SIZE_1440_900;
-                case "1600_900": return SC_SIZE_1600_900;
-                case "1680_1050": return SC_SIZE_1680_1050;
-                case "align_top_left": return SC_ALIGN_TOP_LEFT;
-                case "align_top_center": return SC_ALIGN_TOP_CENTER;
-                case "align_top_right": return SC_ALIGN_TOP_RIGHT;
-                case "align_middle_left": return SC_ALIGN_MIDDLE_LEFT;
-                case "align_middle_center": return SC_ALIGN_MIDDLE_CENTER;
-                case "align_middle_right": return SC_ALIGN_MIDDLE_RIGHT;
-                case "align_bottom_left": return SC_ALIGN_BOTTOM_LEFT;
-                case "align_bottom_center": return SC_ALIGN_BOTTOM_CENTER;
-                case "align_bottom_right": return SC_ALIGN_BOTTOM_RIGHT;
-                case "align_default": return SC_ALIGN_DEFAULT;
-                case "align_custom": return SC_ALIGN_CUSTOM;
-                case "trans_opaque": return SC_TRANS_00;
-                case "10%": return SC_TRANS_10;
-                case "20%": return SC_TRANS_20;
-                case "30%": return SC_TRANS_30;
-                case "40%": return SC_TRANS_40;
-                case "50%": return SC_TRANS_50;
-                case "60%": return SC_TRANS_60;
-                case "70%": return SC_TRANS_70;
-                case "80%": return SC_TRANS_80;
-                case "90%": return SC_TRANS_90;
-                case "trans_invisible": return SC_TRANS_100;
-                case "trans_default": return SC_TRANS_DEFAULT;
-                case "trans_custom": return SC_TRANS_CUSTOM;
-                case "priority_real_time": return SC_PRIORITY_REAL_TIME;
-                case "priority_high": return SC_PRIORITY_HIGH;
-                case "priority_above_normal": return SC_PRIORITY_ABOVE_NORMAL;
-                case "priority_normal": return SC_PRIORITY_NORMAL;
-                case "priority_below_normal": return SC_PRIORITY_BELOW_NORMAL;
-                case "priority_idle": return SC_PRIORITY_IDLE;
-                case "minimize_to_systemtray": return SC_MINIMIZE_TO_SYSTEMTRAY;
-                case "minimize_always_to_systemtray": return SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY;
-                case "minimize_other_windows": return SC_MINIMIZE_OTHER_WINDOWS;
-                case "close_other_windows": return SC_CLOSE_OTHER_WINDOWS;
-                default: return 0;
+                IdToName[pair.Value] = pair.Key;
             }
+        }
+
+        public static int GetId(string name)
+        {
+            if (NameToId.TryGetValue(name.ToLower(), out int id))
+            {
+                return id;
+            }
+
+            return 0;
+        }
+
+        public static string GetName(int id)
+        {
+            if (IdToName.TryGetValue(id, out string name))
+            {
+                return name;
+            }
+
+            return "";
         }
     }
 }

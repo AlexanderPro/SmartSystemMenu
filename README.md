@@ -23,7 +23,7 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Alignment.** Allows the current window to be aligned with any of the 9 positions on the desktop.
 * **Transparency.** Allows to change the transparency of the current window.
 * **Priority.** Allows to change the current window's program priority.
-* **System Tray.** Allows to minimize the current window to the system tray.
+* **System Tray.** Allows to minimize or suspend the current window to the system tray.
 * **Other Windows.** Allows to close and minimize all windows in the system except the current.
 * **Start Program.** Allows to start programs which is in the settings.
 

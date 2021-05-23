@@ -26,6 +26,7 @@ namespace SmartSystemMenu
         private int _defaultLeft;
         private int _defaultTop;
         private int _beforeRollupHeight;
+        private bool _suspended;
         private NotifyIcon _systemTrayIcon;
 
         #endregion
@@ -366,6 +367,18 @@ namespace SmartSystemMenu
             }*/
 
             return info;
+        }
+
+        public void Suspend()
+        {
+            _suspended = true;
+            Process.Suspend();
+        }
+
+        public void Resume()
+        {
+            _suspended = false;
+            Process.Resume();
         }
 
         public void SetTrancparency(int percent)
@@ -751,15 +764,18 @@ namespace SmartSystemMenu
             _systemTrayIcon.MouseClick -= SystemTrayIconClick;
             _systemTrayIcon.MouseClick += SystemTrayIconClick;
             _systemTrayIcon.Icon = GetWindowIcon();
-            var windowText = GetWindowText();
+            string windowText = GetWindowText();
             _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;
             _systemTrayIcon.Visible = true;
         }
 
         private void SystemTrayIconClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
+                if (_suspended)
+                    Resume();
+
                 _systemTrayIcon.Visible = false;
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Restore);
