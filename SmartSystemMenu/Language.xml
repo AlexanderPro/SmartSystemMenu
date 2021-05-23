@@ -195,7 +195,7 @@
       <item name="system_tray" value="System-Tray" />
       <item name="minimize_to_systemtray" value="Ins System-Tray minimieren" />
       <item name="minimize_always_to_systemtray" value="Immer ins System-Tray minimieren" />
-      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
+      <item name="suspend_to_systemtray" value="Suspendieren und Ins System-Tray minimieren" />
       <item name="other_windows" value="Andere Fernster" />
       <item name="minimize_other_windows" value="Minimieren" />
       <item name="close_other_windows" value="Schlieβen" />
@@ -955,7 +955,7 @@
       <item name="system_tray" value="Системный трей" />
       <item name="minimize_to_systemtray" value="Минимизировать в трей" />
       <item name="minimize_always_to_systemtray" value="Минимизировать в трей всегда" />
-      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
+      <item name="suspend_to_systemtray" value="Приостановить и минимизировать в трей" />
       <item name="other_windows" value="Другие окна" />
       <item name="minimize_other_windows" value="Минимизировать" />
       <item name="close_other_windows" value="Закрыть" />
@@ -1107,7 +1107,7 @@
       <item name="system_tray" value="Систем треј" />
       <item name="minimize_to_systemtray" value="Умањи у Треј" />
       <item name="minimize_always_to_systemtray" value="Увек Умањи у Треј" />
-      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
+      <item name="suspend_to_systemtray" value="Обустави и Умањи у Треј" />
       <item name="other_windows" value="Друге прозоре" />
       <item name="minimize_other_windows" value="Умањи" />
       <item name="close_other_windows" value="Затвори" />
