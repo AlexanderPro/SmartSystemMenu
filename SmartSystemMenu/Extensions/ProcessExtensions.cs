@@ -99,12 +99,12 @@ namespace SmartSystemMenu.Extensions
         {
             foreach (ProcessThread thread in process.Threads)
             {
-                var pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
+                var pOpenThread = NativeMethods.OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                 if (pOpenThread == IntPtr.Zero)
                 {
                     break;
                 }
-                SuspendThread(pOpenThread);
+                NativeMethods.SuspendThread(pOpenThread);
             }
         }
 
@@ -112,12 +112,12 @@ namespace SmartSystemMenu.Extensions
         {
             foreach (ProcessThread thread in process.Threads)
             {
-                var pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
+                var pOpenThread = NativeMethods.OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                 if (pOpenThread == IntPtr.Zero)
                 {
                     break;
                 }
-                ResumeThread(pOpenThread);
+                NativeMethods.ResumeThread(pOpenThread);
             }
         }
 
@@ -126,27 +126,6 @@ namespace SmartSystemMenu.Extensions
             return process.Threads[0].ThreadState == ThreadState.Wait
                 && process.Threads[0].WaitReason == ThreadWaitReason.Suspended;
         }
-
-        [Flags]
-        public enum ThreadAccess : int
-        {
-            TERMINATE = (0x0001),
-            SUSPEND_RESUME = (0x0002),
-            GET_CONTEXT = (0x0008),
-            SET_CONTEXT = (0x0010),
-            SET_INFORMATION = (0x0020),
-            QUERY_INFORMATION = (0x0040),
-            SET_THREAD_TOKEN = (0x0080),
-            IMPERSONATE = (0x0100),
-            DIRECT_IMPERSONATION = (0x0200)
-        }
-
-        [DllImport("kernel32.dll")]
-        static extern IntPtr OpenThread(ThreadAccess dwDesiredAccess, bool bInheritHandle, uint dwThreadId);
-        [DllImport("kernel32.dll")]
-        static extern uint SuspendThread(IntPtr hThread);
-        [DllImport("kernel32.dll")]
-        static extern int ResumeThread(IntPtr hThread);
 
         /*public static string GetCurrentDirectory(this Process process)
         {
