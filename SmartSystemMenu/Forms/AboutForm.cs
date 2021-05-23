@@ -8,6 +8,7 @@ namespace SmartSystemMenu.Forms
     {
         private const string URL_SMART_SYSTEM_MENU = "https://github.com/AlexanderPro/SmartSystemMenu";
         private const string URL_LIGHT_APIS = "https://github.com/LightAPIs";
+        private const string URL_WENGH = "https://github.com/wengh";
         private const string URL_JAEHYUNG_LEE = "http://www.kolanp.com";
 
         public AboutForm(SmartSystemMenuSettings settings)
@@ -30,7 +31,11 @@ namespace SmartSystemMenu.Forms
             try
             {
                 var controlName = ((LinkLabel)sender).Name;
-                SystemUtils.RunAsDesktopUser(SystemUtils.GetDefaultBrowserModuleName(), controlName == "linkLightAPIs" ? URL_LIGHT_APIS : controlName == "linkJaehyungLee" ? URL_JAEHYUNG_LEE : URL_SMART_SYSTEM_MENU);
+                SystemUtils.RunAsDesktopUser(SystemUtils.GetDefaultBrowserModuleName(),
+                    controlName == "linkLightAPIs" ? URL_LIGHT_APIS :
+                    controlName == "linkWengh" ? URL_WENGH :
+                    controlName == "linkJaehyungLee" ? URL_JAEHYUNG_LEE :
+                    URL_SMART_SYSTEM_MENU);
             }
             catch
             {

@@ -42,6 +42,8 @@
             this.lblLightAPIs = new System.Windows.Forms.Label();
             this.lblOzzii = new System.Windows.Forms.Label();
             this.lblOzziiAction = new System.Windows.Forms.Label();
+            this.lblWengh = new System.Windows.Forms.Label();
+            this.linkWengh = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             this.btnOk.Location = new System.Drawing.Point(358, 30);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(86, 30);
-            this.btnOk.TabIndex = 0;
+            this.btnOk.TabIndex = 12;
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.CloseClick);
             // 
@@ -116,10 +118,10 @@
             // linkJaehyungLee
             // 
             this.linkJaehyungLee.AutoSize = true;
-            this.linkJaehyungLee.Location = new System.Drawing.Point(116, 153);
+            this.linkJaehyungLee.Location = new System.Drawing.Point(116, 175);
             this.linkJaehyungLee.Name = "linkJaehyungLee";
             this.linkJaehyungLee.Size = new System.Drawing.Size(74, 13);
-            this.linkJaehyungLee.TabIndex = 6;
+            this.linkJaehyungLee.TabIndex = 8;
             this.linkJaehyungLee.TabStop = true;
             this.linkJaehyungLee.Text = "Jaehyung Lee";
             this.linkJaehyungLee.Click += new System.EventHandler(this.LinkClick);
@@ -127,44 +129,66 @@
             // lblJaehyungLee
             // 
             this.lblJaehyungLee.AutoSize = true;
-            this.lblJaehyungLee.Location = new System.Drawing.Point(193, 153);
+            this.lblJaehyungLee.Location = new System.Drawing.Point(193, 175);
             this.lblJaehyungLee.Name = "lblJaehyungLee";
-            this.lblJaehyungLee.Size = new System.Drawing.Size(98, 13);
-            this.lblJaehyungLee.TabIndex = 7;
-            this.lblJaehyungLee.Text = "(Korean translation)";
+            this.lblJaehyungLee.Size = new System.Drawing.Size(92, 13);
+            this.lblJaehyungLee.TabIndex = 9;
+            this.lblJaehyungLee.Text = "Korean translation";
             // 
             // lblLightAPIs
             // 
             this.lblLightAPIs.AutoSize = true;
             this.lblLightAPIs.Location = new System.Drawing.Point(193, 130);
             this.lblLightAPIs.Name = "lblLightAPIs";
-            this.lblLightAPIs.Size = new System.Drawing.Size(138, 13);
+            this.lblLightAPIs.Size = new System.Drawing.Size(114, 13);
             this.lblLightAPIs.TabIndex = 5;
-            this.lblLightAPIs.Text = "(Multi language support PR)";
+            this.lblLightAPIs.Text = "Multi language support";
             // 
             // lblOzzii
             // 
             this.lblOzzii.AutoSize = true;
-            this.lblOzzii.Location = new System.Drawing.Point(116, 175);
+            this.lblOzzii.Location = new System.Drawing.Point(116, 197);
             this.lblOzzii.Name = "lblOzzii";
             this.lblOzzii.Size = new System.Drawing.Size(27, 13);
-            this.lblOzzii.TabIndex = 8;
+            this.lblOzzii.TabIndex = 10;
             this.lblOzzii.Text = "ozzii";
             // 
             // lblOzziiAction
             // 
             this.lblOzziiAction.AutoSize = true;
-            this.lblOzziiAction.Location = new System.Drawing.Point(193, 175);
+            this.lblOzziiAction.Location = new System.Drawing.Point(193, 197);
             this.lblOzziiAction.Name = "lblOzziiAction";
-            this.lblOzziiAction.Size = new System.Drawing.Size(100, 13);
-            this.lblOzziiAction.TabIndex = 9;
-            this.lblOzziiAction.Text = "(Serbian translation)";
+            this.lblOzziiAction.Size = new System.Drawing.Size(94, 13);
+            this.lblOzziiAction.TabIndex = 11;
+            this.lblOzziiAction.Text = "Serbian translation";
+            // 
+            // lblWengh
+            // 
+            this.lblWengh.AutoSize = true;
+            this.lblWengh.Location = new System.Drawing.Point(193, 152);
+            this.lblWengh.Name = "lblWengh";
+            this.lblWengh.Size = new System.Drawing.Size(226, 13);
+            this.lblWengh.TabIndex = 7;
+            this.lblWengh.Text = "Menu item Suspend and Minimize, Refactoring";
+            // 
+            // linkWengh
+            // 
+            this.linkWengh.AutoSize = true;
+            this.linkWengh.Location = new System.Drawing.Point(116, 153);
+            this.linkWengh.Name = "linkWengh";
+            this.linkWengh.Size = new System.Drawing.Size(39, 13);
+            this.linkWengh.TabIndex = 6;
+            this.linkWengh.TabStop = true;
+            this.linkWengh.Text = "wengh";
+            this.linkWengh.Click += new System.EventHandler(this.LinkClick);
             // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 205);
+            this.ClientSize = new System.Drawing.Size(456, 228);
+            this.Controls.Add(this.lblWengh);
+            this.Controls.Add(this.linkWengh);
             this.Controls.Add(this.lblOzziiAction);
             this.Controls.Add(this.lblOzzii);
             this.Controls.Add(this.lblLightAPIs);
@@ -205,5 +229,7 @@
         private System.Windows.Forms.Label lblLightAPIs;
         private System.Windows.Forms.Label lblOzzii;
         private System.Windows.Forms.Label lblOzziiAction;
+        private System.Windows.Forms.Label lblWengh;
+        private System.Windows.Forms.LinkLabel linkWengh;
     }
 }
