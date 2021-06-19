@@ -51,7 +51,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Location = new System.Drawing.Point(12, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(30, 13);
+            this.lblTitle.Size = new System.Drawing.Size(0, 13);
             this.lblTitle.TabIndex = 0;
             // 
             // btnApply
@@ -77,7 +77,7 @@
             this.lblFileName.AutoSize = true;
             this.lblFileName.Location = new System.Drawing.Point(12, 64);
             this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(57, 13);
+            this.lblFileName.Size = new System.Drawing.Size(0, 13);
             this.lblFileName.TabIndex = 2;
             // 
             // txtFileName
@@ -90,14 +90,14 @@
             // lblArguments
             // 
             this.lblArguments.AutoSize = true;
-            this.lblArguments.Location = new System.Drawing.Point(12, 115);
+            this.lblArguments.Location = new System.Drawing.Point(12, 116);
             this.lblArguments.Name = "lblArguments";
-            this.lblArguments.Size = new System.Drawing.Size(60, 13);
+            this.lblArguments.Size = new System.Drawing.Size(0, 13);
             this.lblArguments.TabIndex = 5;
             // 
             // txtArguments
             // 
-            this.txtArguments.Location = new System.Drawing.Point(12, 131);
+            this.txtArguments.Location = new System.Drawing.Point(12, 132);
             this.txtArguments.Name = "txtArguments";
             this.txtArguments.Size = new System.Drawing.Size(374, 20);
             this.txtArguments.TabIndex = 6;

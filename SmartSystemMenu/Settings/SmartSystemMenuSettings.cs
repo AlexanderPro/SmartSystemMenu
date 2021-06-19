@@ -40,6 +40,11 @@ namespace SmartSystemMenu.Settings
                 settings.ProcessExclusions.Add(processExclusion);
             }
 
+            foreach (var menuItem in MenuItems.WindowSizeItems)
+            {
+                settings.MenuItems.WindowSizeItems.Add(new WindowSizeMenuItem { Title = menuItem.Title, Width = menuItem.Width, Height = menuItem.Height });
+            }
+
             foreach (var menuItem in MenuItems.StartProgramItems)
             {
                 settings.MenuItems.StartProgramItems.Add(new StartProgramMenuItem { Title = menuItem.Title, FileName = menuItem.FileName, Arguments = menuItem.Arguments });
@@ -88,6 +93,11 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
+            if (MenuItems.WindowSizeItems.Count != other.MenuItems.WindowSizeItems.Count)
+            {
+                return false;
+            }
+
             if (MenuItems.StartProgramItems.Count != other.MenuItems.StartProgramItems.Count)
             {
                 return false;
@@ -101,6 +111,16 @@ namespace SmartSystemMenu.Settings
             for (var i = 0; i < ProcessExclusions.Count; i++)
             {
                 if (string.Compare(ProcessExclusions[i], other.ProcessExclusions[i], StringComparison.CurrentCultureIgnoreCase) != 0)
+                {
+                    return false;
+                }
+            }
+
+            for (var i = 0; i < MenuItems.WindowSizeItems.Count; i++)
+            {
+                if (string.Compare(MenuItems.WindowSizeItems[i].Title, other.MenuItems.WindowSizeItems[i].Title, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    MenuItems.WindowSizeItems[i].Width != other.MenuItems.WindowSizeItems[i].Width ||
+                    MenuItems.WindowSizeItems[i].Height != other.MenuItems.WindowSizeItems[i].Height)
                 {
                     return false;
                 }
@@ -145,6 +165,11 @@ namespace SmartSystemMenu.Settings
                 hashCode ^= processExclusion.GetHashCode();
             }
 
+            foreach (var item in MenuItems.WindowSizeItems)
+            {
+                hashCode ^= item.Title.GetHashCode() ^ item.Width.GetHashCode() ^ item.Height.GetHashCode();
+            }
+
             foreach (var item in MenuItems.StartProgramItems)
             {
                 hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode();
@@ -171,9 +196,20 @@ namespace SmartSystemMenu.Settings
                 .Select(x => x.Value.ToLower())
                 .ToList();
 
+            settings.MenuItems.WindowSizeItems = document
+                .XPathSelectElements("/smartSystemMenu/menuItems/windowSizeItems/item")
+                .Select(x => new WindowSizeMenuItem
+                {
+                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
+                    Width = int.Parse(x.Attribute("width").Value),
+                    Height = int.Parse(x.Attribute("height").Value)
+                })
+                .ToList();
+
             settings.MenuItems.StartProgramItems = document
                 .XPathSelectElements("/smartSystemMenu/menuItems/startProgramItems/item")
-                .Select(x => new StartProgramMenuItem {
+                .Select(x => new StartProgramMenuItem
+                {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
                     FileName = x.Attribute("fileName") != null ? x.Attribute("fileName").Value : "",
                     Arguments = x.Attribute("arguments") != null ? x.Attribute("arguments").Value : "",
@@ -182,12 +218,13 @@ namespace SmartSystemMenu.Settings
 
             settings.MenuItems.Items = document
                 .XPathSelectElements("/smartSystemMenu/menuItems/items/item")
-                .Select(x => new MenuItem {
-                   Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
-                   Show = x.Attribute("show") != null ? x.Attribute("show").Value.ToLower() != "false" : true,
-                   Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
-                   Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
-                   Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
+                .Select(x => new MenuItem
+                {
+                    Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
+                    Show = x.Attribute("show") != null ? x.Attribute("show").Value.ToLower() != "false" : true,
+                    Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
+                    Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
+                    Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
                 })
                 .ToList();
 
@@ -275,7 +312,11 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
                                          new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
                                          new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),
-                                     new XElement("startProgramItems", settings.MenuItems.StartProgramItems.Select(x => new XElement("item", 
+                                     new XElement("windowSizeItems", settings.MenuItems.WindowSizeItems.Select(x => new XElement("item",
+                                         new XAttribute("title", x.Title),
+                                         new XAttribute("width", x.Width),
+                                         new XAttribute("height", x.Height)))),
+                                     new XElement("startProgramItems", settings.MenuItems.StartProgramItems.Select(x => new XElement("item",
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
                                          new XAttribute("arguments", x.Arguments))))),

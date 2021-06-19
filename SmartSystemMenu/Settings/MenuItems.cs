@@ -5,12 +5,15 @@ namespace SmartSystemMenu.Settings
 {
     public class MenuItems
     {
+        public IList<WindowSizeMenuItem> WindowSizeItems { get; set; }
+
         public IList<StartProgramMenuItem> StartProgramItems { get; set; }
 
         public IList<MenuItem> Items { get; set; }
 
         public MenuItems()
         {
+            WindowSizeItems = new List<WindowSizeMenuItem>();
             StartProgramItems = new List<StartProgramMenuItem>();
             Items = new List<MenuItem>();
         }

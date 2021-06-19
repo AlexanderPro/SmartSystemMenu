@@ -127,6 +127,21 @@
       <item name="btn_add_start_program" value="Add Start Program" />
       <item name="settings_btn_apply" value="Ok" />
       <item name="settings_btn_cancel" value="Cancel" />
+      <item name="grpb_window_size" value="Window Size Menu Items" />
+      <item name="window_size_form" value="Window Size" />
+      <item name="window_size_btn_apply" value="Ok" />
+      <item name="window_size_btn_cancel" value="Cancel" />
+      <item name="clm_window_size_title" value="Title" />
+      <item name="clm_window_size_width" value="Width" />
+      <item name="clm_window_size_height" value="Height" />
+      <item name="clm_window_size_edit" value="Edit" />
+      <item name="clm_window_size_delete" value="Delete" />
+      <item name="lbl_window_size_title" value="Title:" />
+      <item name="lbl_window_size_width" value="Width:" />
+      <item name="lbl_window_size_height" value="Height:" />
+      <item name="btn_window_size_up" value="Move Up" />
+      <item name="btn_window_size_down" value="Move Down" />
+      <item name="btn_add_window_size" value="Add" />
       <item name="process_name_form" value="Process Exclusions" />
       <item name="process_lbl_file_name" value="File Name:" />
       <item name="process_btn_apply" value="Ok" />
@@ -137,7 +152,7 @@
       <item name="start_program_lbl_file_name" value="File Name:" />
       <item name="start_program_lbl_arguments" value="Arguments:" />
       <item name="start_program_btn_apply" value="Ok" />
-      <item name="start_program_btn_Cancel" value="Cancel" />
+      <item name="start_program_btn_cancel" value="Cancel" />
       <item name="start_program_browse_file_filter" value="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
       <item name="lbl_language" value="Language" />
       <item name="message_box_attention_title" value="Attention" />
@@ -152,6 +167,7 @@
       <item name="clm_hotkeys_name" value="Name" />
       <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
       <item name="tab_settings_menu_start" value="Menu (Start Program)" />
+      <item name="tab_settings_menu_size" value="Menu (Resize)" />
     </en>
     <de>
       <item name="information" value="Information" />
@@ -279,6 +295,21 @@
       <item name="btn_add_start_program" value="Hinzufügen" />
       <item name="settings_btn_apply" value="Ok" />
       <item name="settings_btn_cancel" value="Abbrechen" />
+      <item name="grpb_window_size" value="Gröβe" />
+      <item name="window_size_form" value="Gröβe" />
+      <item name="window_size_btn_apply" value="Ok" />
+      <item name="window_size_btn_cancel" value="Abbrechen" />
+      <item name="clm_window_size_title" value="Titel" />
+      <item name="clm_window_size_width" value="Breite" />
+      <item name="clm_window_size_height" value="Höhe" />
+      <item name="clm_window_size_edit" value="Ändern" />
+      <item name="clm_window_size_delete" value="Löschen" />
+      <item name="lbl_window_size_title" value="Titel:" />
+      <item name="lbl_window_size_width" value="Breite:" />
+      <item name="lbl_window_size_height" value="Höhe:" />
+      <item name="btn_window_size_up" value="Oben" />
+      <item name="btn_window_size_down" value="Runter" />
+      <item name="btn_add_window_size" value="Hinzufügen" />
       <item name="process_name_form" value="Programm der Ausnahme" />
       <item name="process_lbl_file_name" value="Dateiname:" />
       <item name="process_btn_apply" value="Ok" />
@@ -289,7 +320,7 @@
       <item name="start_program_lbl_file_name" value="Dateiname:" />
       <item name="start_program_lbl_arguments" value="Parameter:" />
       <item name="start_program_btn_apply" value="Ok" />
-      <item name="start_program_btn_Cancel" value="Abbrechen" />
+      <item name="start_program_btn_cancel" value="Abbrechen" />
       <item name="start_program_browse_file_filter" value="Ausführbare Dateien (*.exe)|*.exe|Alle Dateien (*.*)|*.*" />
       <item name="lbl_language" value="Sprache" />
       <item name="message_box_attention_title" value="Achtung" />
@@ -303,7 +334,8 @@
       <item name="tab_settings_hotkeys" value="Tastaturkürzel" />
       <item name="clm_hotkeys_name" value="Name" />
       <item name="clm_hotkeys_show_tooltip" value="Menüpunkt anzeigen" />
-      <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />      
+      <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
+      <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
     </de>
     <zh_cn>
       <item name="information" value="信息" />
@@ -431,6 +463,21 @@
       <item name="btn_add_start_program" value="添加启动程序" />
       <item name="settings_btn_apply" value="确定" />
       <item name="settings_btn_cancel" value="取消" />
+      <item name="grpb_window_size" value="Window Size Menu Items" />
+      <item name="window_size_form" value="Window Size" />
+      <item name="window_size_btn_apply" value="确定" />
+      <item name="window_size_btn_cancel" value="取消" />
+      <item name="clm_window_size_title" value="标题" />
+      <item name="clm_window_size_width" value="宽度" />
+      <item name="clm_window_size_height" value="高度" />
+      <item name="clm_window_size_edit" value="编辑" />
+      <item name="clm_window_size_delete" value="删除" />
+      <item name="lbl_window_size_title" value="标题:" />
+      <item name="lbl_window_size_width" value="宽度:" />
+      <item name="lbl_window_size_height" value="高度:" />
+      <item name="btn_window_size_up" value="Move Up" />
+      <item name="btn_window_size_down" value="Move Down" />
+      <item name="btn_add_window_size" value="添加" />
       <item name="process_name_form" value="进程排除" />
       <item name="process_lbl_file_name" value="文件名称:" />
       <item name="process_btn_apply" value="确定" />
@@ -441,7 +488,7 @@
       <item name="start_program_lbl_file_name" value="文件名称:" />
       <item name="start_program_lbl_arguments" value="参数:" />
       <item name="start_program_btn_apply" value="确定" />
-      <item name="start_program_btn_Cancel" value="取消" />
+      <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
       <item name="lbl_language" value="语言" />
       <item name="message_box_attention_title" value="注意" />
@@ -456,6 +503,7 @@
       <item name="clm_hotkeys_name" value="名称" />
       <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
       <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
+      <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
     </zh_cn>
     <zh_tw>
       <item name="information" value="資訊" />
@@ -583,6 +631,21 @@
       <item name="btn_add_start_program" value="新增啟動程式" />
       <item name="settings_btn_apply" value="確定" />
       <item name="settings_btn_cancel" value="取消" />
+      <item name="grpb_window_size" value="Window Size Menu Items" />
+      <item name="window_size_form" value="Window Size" />
+      <item name="window_size_btn_apply" value="確定" />
+      <item name="window_size_btn_cancel" value="取消" />
+      <item name="clm_window_size_title" value="標題" />
+      <item name="clm_window_size_width" value="寬度" />
+      <item name="clm_window_size_height" value="高度" />
+      <item name="clm_window_size_edit" value="編輯" />
+      <item name="clm_window_size_delete" value="刪除" />
+      <item name="lbl_window_size_title" value="標題:" />
+      <item name="lbl_window_size_width" value="寬度:" />
+      <item name="lbl_window_size_height" value="高度:" />
+      <item name="btn_window_size_up" value="Move Up" />
+      <item name="btn_window_size_down" value="Move Down" />
+      <item name="btn_add_window_size" value="添加" />
       <item name="process_name_form" value="程式排除" />
       <item name="process_lbl_file_name" value="檔案名稱:" />
       <item name="process_btn_apply" value="確定" />
@@ -593,7 +656,7 @@
       <item name="start_program_lbl_file_name" value="檔案名稱:" />
       <item name="start_program_lbl_arguments" value="參數:" />
       <item name="start_program_btn_apply" value="確定" />
-      <item name="start_program_btn_Cancel" value="取消" />
+      <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可執行程式 (*.exe)|*.exe|所有檔案 (*.*)|*.*" />
       <item name="lbl_language" value="語言" />
       <item name="message_box_attention_title" value="注意" />
@@ -608,6 +671,7 @@
       <item name="clm_hotkeys_name" value="名稱" />
       <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
+      <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
     </zh_tw>
     <ja>
       <item name="information" value="情報" />
@@ -733,8 +797,23 @@
       <item name="btn_start_program_up" value="上へ" />
       <item name="btn_start_program_down" value="下へ" />
       <item name="btn_add_start_program" value="起動プログラムの追加" />
-      <item name="settings_btn_apply" value="適用" />
+      <item name="settings_btn_apply" value="OK" />
       <item name="settings_btn_cancel" value="キャンセル" />
+      <item name="grpb_window_size" value="Window Size Menu Items" />
+      <item name="window_size_form" value="Window Size" />
+      <item name="window_size_btn_apply" value="OK" />
+      <item name="window_size_btn_cancel" value="キャンセル" />
+      <item name="clm_window_size_title" value="タイトル" />
+      <item name="clm_window_size_width" value="幅" />
+      <item name="clm_window_size_height" value="高さ" />
+      <item name="clm_window_size_edit" value="編集" />
+      <item name="clm_window_size_delete" value="削除" />
+      <item name="lbl_window_size_title" value="タイトル:" />
+      <item name="lbl_window_size_width" value="幅:" />
+      <item name="lbl_window_size_height" value="高さ:" />
+      <item name="btn_window_size_up" value="Move Up" />
+      <item name="btn_window_size_down" value="Move Down" />
+      <item name="btn_add_window_size" value="追加" />
       <item name="process_name_form" value="プロセスの除外" />
       <item name="process_lbl_file_name" value="プロセス名：" />
       <item name="process_btn_apply" value="適用" />
@@ -745,7 +824,7 @@
       <item name="start_program_lbl_file_name" value="ファイル名：" />
       <item name="start_program_lbl_arguments" value="引数" />
       <item name="start_program_btn_apply" value="適用" />
-      <item name="start_program_btn_Cancel" value="キャンセル" />
+      <item name="start_program_btn_cancel" value="キャンセル" />
       <item name="start_program_browse_file_filter" value="実行ファイル(*.exe)|*.exe|全てのファイル(*.*)|*.*" />
       <item name="lbl_language" value="言語" />
       <item name="message_box_attention_title" value="注意" />
@@ -760,6 +839,7 @@
       <item name="clm_hotkeys_name" value="名前" />
       <item name="clm_hotkeys_show_tooltip" value="メニュー項目を表示" />
       <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
+      <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
     </ja>
     <ko>
       <item name="information" value="정보" />
@@ -887,6 +967,21 @@
       <item name="btn_add_start_program" value="시작할 프로그램 추가" />
       <item name="settings_btn_apply" value="확인" />
       <item name="settings_btn_cancel" value="취소" />
+      <item name="grpb_window_size" value="Window Size Menu Items" />
+      <item name="window_size_form" value="Window Size" />
+      <item name="window_size_btn_apply" value="확인" />
+      <item name="window_size_btn_cancel" value="취소" />
+      <item name="clm_window_size_title" value="제목" />
+      <item name="clm_window_size_width" value="너비" />
+      <item name="clm_window_size_height" value="높이" />
+      <item name="clm_window_size_edit" value="편집" />
+      <item name="clm_window_size_delete" value="삭제" />
+      <item name="lbl_window_size_title" value="제목:" />
+      <item name="lbl_window_size_width" value="너비:" />
+      <item name="lbl_window_size_height" value="높이:" />
+      <item name="btn_window_size_up" value="Move Up" />
+      <item name="btn_window_size_down" value="Move Down" />
+      <item name="btn_add_window_size" value="더하다" />
       <item name="process_name_form" value="제외할 프로세스" />
       <item name="process_lbl_file_name" value="파일 이름:" />
       <item name="process_btn_apply" value="확인" />
@@ -897,7 +992,7 @@
       <item name="start_program_lbl_file_name" value="파일 이름:" />
       <item name="start_program_lbl_arguments" value="정렬:" />
       <item name="start_program_btn_apply" value="확인" />
-      <item name="start_program_btn_Cancel" value="취소" />
+      <item name="start_program_btn_cancel" value="취소" />
       <item name="start_program_browse_file_filter" value="실행 파일 (*.exe)|*.exe|모든 파일 (*.*)|*.*" />
       <item name="lbl_language" value="언어" />
       <item name="message_box_attention_title" value="알림" />
@@ -912,6 +1007,7 @@
       <item name="clm_hotkeys_name" value="이름" />
       <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
       <item name="tab_settings_menu_start" value="메뉴 (시작할 프로그램)" />
+      <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
     </ko>
     <ru>
       <item name="information" value="Информация" />
@@ -1039,6 +1135,21 @@
       <item name="btn_add_start_program" value="Добавить" />
       <item name="settings_btn_apply" value="Ok" />
       <item name="settings_btn_cancel" value="Cancel" />
+      <item name="grpb_window_size" value="Пункты меню с размерами окна" />
+      <item name="window_size_form" value="Размер окна" />
+      <item name="window_size_btn_apply" value="Ok" />
+      <item name="window_size_btn_cancel" value="Cancel" />
+      <item name="clm_window_size_title" value="Заголовок" />
+      <item name="clm_window_size_width" value="Ширина" />
+      <item name="clm_window_size_height" value="Высота" />
+      <item name="clm_window_size_edit" value="Редактировать" />
+      <item name="clm_window_size_delete" value="Удалить" />
+      <item name="lbl_window_size_title" value="Заголовок:" />
+      <item name="lbl_window_size_width" value="Ширина:" />
+      <item name="lbl_window_size_height" value="Высота:" />
+      <item name="btn_window_size_up" value="Вверх" />
+      <item name="btn_window_size_down" value="Вниз" />
+      <item name="btn_add_window_size" value="Добавить" />
       <item name="process_name_form" value="Программа исключение" />
       <item name="process_lbl_file_name" value="Имя файла:" />
       <item name="process_btn_apply" value="Ok" />
@@ -1049,7 +1160,7 @@
       <item name="start_program_lbl_file_name" value="Имя файла:" />
       <item name="start_program_lbl_arguments" value="Параметры:" />
       <item name="start_program_btn_apply" value="Ok" />
-      <item name="start_program_btn_Cancel" value="Cancel" />
+      <item name="start_program_btn_cancel" value="Cancel" />
       <item name="start_program_browse_file_filter" value="Исполняемые (*.exe)|*.exe|All files (*.*)|*.*" />
       <item name="lbl_language" value="Язык" />
       <item name="message_box_attention_title" value="Внимание" />
@@ -1064,6 +1175,7 @@
       <item name="clm_hotkeys_name" value="Наименовение" />
       <item name="clm_hotkeys_show_tooltip" value="Отобразить или скрыть пункт меню" />
       <item name="tab_settings_menu_start" value="Меню (Пуск)" />
+      <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
     </ru>
     <sr>
       <item name="information" value="Информација програма" />
@@ -1191,6 +1303,21 @@
       <item name="btn_add_start_program" value="Додај програм за покретање" />
       <item name="settings_btn_apply" value="У реду" />
       <item name="settings_btn_cancel" value="Откажи" />
+      <item name="grpb_window_size" value="Пункты меню с размерами окна" />
+      <item name="window_size_form" value="Размер окна" />
+      <item name="window_size_btn_apply" value="У реду" />
+      <item name="window_size_btn_cancel" value="Откажи" />
+      <item name="clm_window_size_title" value="Наслов" />
+      <item name="clm_window_size_width" value="Ширина" />
+      <item name="clm_window_size_height" value="Высота" />
+      <item name="clm_window_size_edit" value="Уреди" />
+      <item name="clm_window_size_delete" value="Обриши" />
+      <item name="lbl_window_size_title" value="Наслов:" />
+      <item name="lbl_window_size_width" value="Ширина:" />
+      <item name="lbl_window_size_height" value="Висина:" />
+      <item name="btn_window_size_up" value="Премести на горе" />
+      <item name="btn_window_size_down" value="Премести на доле" />
+      <item name="btn_add_window_size" value="Додај" />
       <item name="process_name_form" value="Изузимања процеса" />
       <item name="process_lbl_file_name" value="Име датотеке:" />
       <item name="process_btn_apply" value="У реду" />
@@ -1201,7 +1328,7 @@
       <item name="start_program_lbl_file_name" value="Име датотеке:" />
       <item name="start_program_lbl_arguments" value="Аргументи:" />
       <item name="start_program_btn_apply" value="У реду" />
-      <item name="start_program_btn_Cancel" value="Откажи" />
+      <item name="start_program_btn_cancel" value="Откажи" />
       <item name="start_program_browse_file_filter" value="Покретљиво (*.exe)|*.exe|Све (*.*)|*.*" />
       <item name="lbl_language" value="Језик" />
       <item name="message_box_attention_title" value="Пажња" />
@@ -1216,6 +1343,7 @@
       <item name="clm_hotkeys_name" value="Име" />
       <item name="clm_hotkeys_show_tooltip" value="Прикажи ставку менија" />
       <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
+      <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
     </sr>
   </items>
 </language>

@@ -35,9 +35,11 @@ namespace SmartSystemMenu.Forms
             lblLanguage.Text = settings.LanguageSettings.GetValue("lbl_language");
             tabpGeneral.Text = settings.LanguageSettings.GetValue("tab_settings_general");
             tabpMenuStart.Text = settings.LanguageSettings.GetValue("tab_settings_menu_start");
+            tabpMenuSize.Text = settings.LanguageSettings.GetValue("tab_settings_menu_size");
             tabpMenu.Text = settings.LanguageSettings.GetValue("tab_settings_menu");
             grpbProcessExclusions.Text = settings.LanguageSettings.GetValue("grpb_process_exclusions");
             grpbStartProgram.Text = settings.LanguageSettings.GetValue("grpb_start_program");
+            grpbWindowSize.Text = settings.LanguageSettings.GetValue("grpb_window_size");
             clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
             clmProcessExclusionEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
             clmProcessExcusionDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
@@ -46,6 +48,11 @@ namespace SmartSystemMenu.Forms
             clmStartProgramArguments.HeaderText = settings.LanguageSettings.GetValue("clm_start_program_arguments");
             clmStartProgramEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_edit");
             clmStartProgramDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_delete");
+            clmWindowSizeTitle.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_title");
+            clmWindowSizeWidth.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_width");
+            clmWindowSizeHeight.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_height");
+            clmWindowSizeEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_edit");
+            clmWindowSizeDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_delete");
             clmnMenuItemName.HeaderText = settings.LanguageSettings.GetValue("clm_hotkeys_name");
             clmnHotkeys.HeaderText = settings.LanguageSettings.GetValue("clm_hotkeys_keys");
             toolTipAddProcessName.SetToolTip(btnProcessExclusionDown, settings.LanguageSettings.GetValue("btn_process_exclusion_down"));
@@ -54,6 +61,9 @@ namespace SmartSystemMenu.Forms
             toolTipAddProcessName.SetToolTip(btnAddStartProgram, settings.LanguageSettings.GetValue("btn_add_start_program"));
             toolTipAddProcessName.SetToolTip(btnStartProgramDown, settings.LanguageSettings.GetValue("btn_start_program_down"));
             toolTipAddProcessName.SetToolTip(btnStartProgramUp, settings.LanguageSettings.GetValue("btn_start_program_up"));
+            toolTipAddProcessName.SetToolTip(btnAddWindowSize, settings.LanguageSettings.GetValue("btn_add_window_size"));
+            toolTipAddProcessName.SetToolTip(btnWindowSizeDown, settings.LanguageSettings.GetValue("btn_window_size_down"));
+            toolTipAddProcessName.SetToolTip(btnWindowSizeUp, settings.LanguageSettings.GetValue("btn_window_size_up"));
             btnApply.Text = settings.LanguageSettings.GetValue("settings_btn_apply");
             btnCancel.Text = settings.LanguageSettings.GetValue("settings_btn_cancel");
             Text = settings.LanguageSettings.GetValue("settings_form");
@@ -65,6 +75,18 @@ namespace SmartSystemMenu.Forms
                 row.Cells[0].Value = processExclusion;
                 row.Cells[1].ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
                 row.Cells[2].ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
+            }
+
+            foreach (var item in settings.MenuItems.WindowSizeItems)
+            {
+                var index = gvWindowSize.Rows.Add();
+                var row = gvWindowSize.Rows[index];
+                row.Tag = item;
+                row.Cells[0].Value = item.Title;
+                row.Cells[1].Value = item.Width.ToString();
+                row.Cells[2].Value = item.Height.ToString();
+                row.Cells[3].ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_edit");
+                row.Cells[4].ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_delete");
             }
 
             foreach (var item in settings.MenuItems.StartProgramItems)
@@ -215,6 +237,31 @@ namespace SmartSystemMenu.Forms
             }
         }
 
+        private void GridViewWindowSizeCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == 3 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem)
+                {
+                    var menuItem = (WindowSizeMenuItem)grid.Rows[e.RowIndex].Tag;
+                    var dialog = new SettingsSizeForm(menuItem.Title, menuItem.Width, menuItem.Height, _settings);
+                    if (dialog.ShowDialog(this) == DialogResult.OK)
+                    {
+                        menuItem.Title = dialog.Title;
+                        menuItem.Width = dialog.WindowWidth;
+                        menuItem.Height = dialog.WindowHeight;
+                    }
+                }
+
+                if (e.ColumnIndex == 4)
+                {
+                    grid.Rows.RemoveAt(e.RowIndex);
+                }
+            }
+        }
+
         private void GridViewProcessExclusionsCellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
@@ -283,6 +330,22 @@ namespace SmartSystemMenu.Forms
             }
         }
 
+        private void GridViewWindowSizeCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem)
+            {
+                var menuItem = (WindowSizeMenuItem)grid.Rows[e.RowIndex].Tag;
+                var dialog = new SettingsSizeForm(menuItem.Title, menuItem.Width, menuItem.Height, _settings);
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    menuItem.Title = dialog.Title;
+                    menuItem.Width = dialog.WindowWidth;
+                    menuItem.Height = dialog.WindowHeight;
+                }
+            }
+        }
+
         private void ButtonAddProcessExclusionClick(object sender, EventArgs e)
         {
             var dialog = new ProcessExclusionForm("", _settings);
@@ -311,10 +374,31 @@ namespace SmartSystemMenu.Forms
             }
         }
 
+        private void ButtonAddWindowSizeClick(object sender, EventArgs e)
+        {
+            var dialog = new SettingsSizeForm("", 1, 1, _settings);
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                var index = gvWindowSize.Rows.Add();
+                var row = gvWindowSize.Rows[index];
+                row.Cells[0].Value = dialog.Title;
+                row.Cells[1].Value = dialog.WindowWidth.ToString();
+                row.Cells[2].Value = dialog.WindowHeight.ToString();
+                row.Cells[3].ToolTipText = _settings.LanguageSettings.GetValue("clm_window_size_edit");
+                row.Cells[4].ToolTipText = _settings.LanguageSettings.GetValue("clm_window_size_delete");
+                row.Tag = new WindowSizeMenuItem
+                {
+                    Title = dialog.Title,
+                    Width = dialog.WindowWidth,
+                    Height = dialog.WindowHeight
+                };
+            }
+        }
+
         private void ButtonArrowUpClick(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            var grid = button.Name == "btnProcessExclusionUp" ? gvProcessExclusions : gvStartProgram;
+            var grid = button.Name == "btnProcessExclusionUp" ? gvProcessExclusions : button.Name == "btnWindowSizeUp" ? gvWindowSize : gvStartProgram;
             if (grid.SelectedRows.Count > 0)
             {
                 var index = grid.SelectedRows[0].Index;
@@ -329,7 +413,7 @@ namespace SmartSystemMenu.Forms
         private void ButtonArrowDownClick(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            var grid = button.Name == "btnProcessExclusionDown" ? gvProcessExclusions : gvStartProgram;
+            var grid = button.Name == "btnProcessExclusionDown" ? gvProcessExclusions : button.Name == "btnWindowSizeDown" ? gvWindowSize : gvStartProgram;
             if (grid.SelectedRows.Count > 0)
             {
                 var index = grid.SelectedRows[0].Index;
@@ -348,6 +432,15 @@ namespace SmartSystemMenu.Forms
             foreach (DataGridViewRow row in gvProcessExclusions.Rows)
             {
                 settings.ProcessExclusions.Add(row.Cells[0].Value.ToString());
+            }
+
+            foreach (DataGridViewRow row in gvWindowSize.Rows)
+            {
+                var item = row.Tag as WindowSizeMenuItem;
+                if (item != null)
+                {
+                    settings.MenuItems.WindowSizeItems.Add(new WindowSizeMenuItem { Title = item.Title, Width = item.Width, Height = item.Height });
+                }
             }
 
             foreach (DataGridViewRow row in gvStartProgram.Rows)

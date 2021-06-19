@@ -68,6 +68,7 @@ namespace SmartSystemMenu
         public const int SC_SUSPEND_TO_SYSTEMTRAY = 0x4810;
         public const int SC_START_PROGRAM = 0x4900;
         public const int SC_MOVE_TO = 0x5000;
+        public const int SC_SIZE_DEFINED = 0x5100;
 
         private static readonly Dictionary<string, int> NameToId = new Dictionary<string, int>();
         private static readonly Dictionary<int, string> IdToName = new Dictionary<int, string>();

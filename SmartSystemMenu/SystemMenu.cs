@@ -9,18 +9,11 @@ namespace SmartSystemMenu
 {
    class SystemMenu
     {
-        #region Fields.Private
-
         private List<IntPtr> _subMenuHandles = new List<IntPtr>();
         private readonly MenuItems _menuItems;
         private readonly LanguageSettings _languageSettings;
         private bool _wasOriginalBefore;
         private int _numberItems;
-
-        #endregion
-
-
-        #region Properties.Public
 
         public IntPtr WindowHandle { get; private set; }
 
@@ -35,11 +28,6 @@ namespace SmartSystemMenu
                 return existsWindowMenu;
             }
         }
-
-        #endregion
-
-
-        #region Methods.Public
 
         public SystemMenu(IntPtr windowHandle, MenuItems menuItems, LanguageSettings languageSettings)
         {
@@ -87,6 +75,16 @@ namespace SmartSystemMenu
             AddSubMenuItem(MenuItemId.SC_SIZE_1440_900, "1440x900");
             AddSubMenuItem(MenuItemId.SC_SIZE_1600_900, "1600x900");
             AddSubMenuItem(MenuItemId.SC_SIZE_1680_1050, "1680x1050");
+            if (_menuItems.WindowSizeItems.Any())
+            {
+                AddSubMenuSeparator();
+                for (int i = 0; i < _menuItems.WindowSizeItems.Count; i++)
+                {
+                    var menuItemId = MenuItemId.SC_SIZE_DEFINED + i;
+                    _menuItems.WindowSizeItems[i].Id = menuItemId;
+                    NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, menuItemId, _menuItems.WindowSizeItems[i].Title);
+                }
+            }
             AddSubMenuSeparator();
             AddSubMenuItem(MenuItemId.SC_SIZE_DEFAULT);
             AddSubMenuSeparator();
@@ -320,11 +318,6 @@ namespace SmartSystemMenu
             CheckMenuItem(MenuItemId.SC_TRANS_DEFAULT, false);
         }
 
-        #endregion
-
-
-        #region Methods.Private
-
         private string GetTitle(string name, string title = null, bool showHotKey = true)
         {
             title = title != null ? title : _languageSettings.GetValue(name);
@@ -338,7 +331,5 @@ namespace SmartSystemMenu
                 return title;
             }
         }
-
-        #endregion
     }
 }

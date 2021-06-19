@@ -106,7 +106,7 @@ namespace SmartSystemMenu
                     return Priority.Normal;
                 }
 
-                var priorityClass = NativeMethods.GetPriorityClass(process.GetHandle());
+                var priorityClass = NativeMethods.GetPriorityClass(process.Handle);
                 switch (priorityClass)
                 {
                     case PriorityClass.REALTIME_PRIORITY_CLASS: return Priority.RealTime;
@@ -552,7 +552,7 @@ namespace SmartSystemMenu
             var process = Process;
             if (process != null)
             {
-                NativeMethods.SetPriorityClass(process.GetHandle(), priority.GetPriorityClass());
+                NativeMethods.SetPriorityClass(process.Handle, priority.GetPriorityClass());
             }
         }
 

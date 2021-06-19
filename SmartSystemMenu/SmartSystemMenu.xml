@@ -78,6 +78,10 @@
       <item name="close_other_windows" key1="" key2="" key3="" />
       <item name="start_program" key1="" key2="" key3="" />
     </items>
+    <windowSizeItems>
+      <item title="1360x768" width="1360" height="768" />
+      <item title="1400x1050" width="1400" height="1050" />
+    </windowSizeItems>
     <startProgramItems>
       <item title="Notepad" fileName="notepad.exe" arguments="" />
       <item title="Calculator" fileName="calc.exe" arguments="" />

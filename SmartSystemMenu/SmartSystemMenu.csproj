@@ -86,6 +86,12 @@
     <Compile Include="Forms\HotkeysForm.Designer.cs">
       <DependentUpon>HotkeysForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SettingsSizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsSizeForm.Designer.cs">
+      <DependentUpon>SettingsSizeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StartProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,7 @@
     <Compile Include="Settings\LanguageItem.cs" />
     <Compile Include="Settings\StartProgramMenuItem.cs" />
     <Compile Include="Settings\SmartSystemMenuSettings.cs" />
+    <Compile Include="Settings\WindowSizeMenuItem.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="AutoStarter.cs" />
     <Compile Include="EnumWindows.cs" />
@@ -188,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HotkeysForm.resx">
       <DependentUpon>HotkeysForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsSizeForm.resx">
+      <DependentUpon>SettingsSizeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StartProgramForm.resx">
       <DependentUpon>StartProgramForm.cs</DependentUpon>

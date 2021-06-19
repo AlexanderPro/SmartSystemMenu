@@ -20,7 +20,7 @@ namespace SmartSystemMenu
                 if (process != null)
                 {
                     bool retVal;
-                    if (!NativeMethods.IsWow64Process(process.GetHandle(), out retVal))
+                    if (!NativeMethods.IsWow64Process(process.Handle, out retVal))
                     {
                         return false;
                     }

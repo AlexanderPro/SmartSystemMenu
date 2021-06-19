@@ -552,22 +552,26 @@ namespace SmartSystemMenu.Forms
                                 if (!isChecked)
                                 {
                                     window.RollUp();
-                                    window.Menu.UncheckMenuItems(
-                                    MenuItemId.SC_SIZE_640_480,
-                                    MenuItemId.SC_SIZE_720_480,
-                                    MenuItemId.SC_SIZE_720_576,
-                                    MenuItemId.SC_SIZE_800_600,
-                                    MenuItemId.SC_SIZE_1024_768,
-                                    MenuItemId.SC_SIZE_1152_864,
-                                    MenuItemId.SC_SIZE_1280_768,
-                                    MenuItemId.SC_SIZE_1280_800,
-                                    MenuItemId.SC_SIZE_1280_960,
-                                    MenuItemId.SC_SIZE_1280_1024,
-                                    MenuItemId.SC_SIZE_1440_900,
-                                    MenuItemId.SC_SIZE_1600_900,
-                                    MenuItemId.SC_SIZE_1680_1050,
-                                    MenuItemId.SC_SIZE_DEFAULT,
-                                    MenuItemId.SC_SIZE_CUSTOM);
+                                    var windowSizeMenuItemIds = new List<int>
+                                    { 
+                                        MenuItemId.SC_SIZE_640_480,
+                                        MenuItemId.SC_SIZE_720_480,
+                                        MenuItemId.SC_SIZE_720_576,
+                                        MenuItemId.SC_SIZE_800_600,
+                                        MenuItemId.SC_SIZE_1024_768,
+                                        MenuItemId.SC_SIZE_1152_864,
+                                        MenuItemId.SC_SIZE_1280_768,
+                                        MenuItemId.SC_SIZE_1280_800,
+                                        MenuItemId.SC_SIZE_1280_960,
+                                        MenuItemId.SC_SIZE_1280_1024,
+                                        MenuItemId.SC_SIZE_1440_900,
+                                        MenuItemId.SC_SIZE_1600_900,
+                                        MenuItemId.SC_SIZE_1680_1050,
+                                        MenuItemId.SC_SIZE_DEFAULT,
+                                        MenuItemId.SC_SIZE_CUSTOM
+                                    };
+                                    windowSizeMenuItemIds.AddRange(_settings.MenuItems.WindowSizeItems.Select(x => x.Id));
+                                    window.Menu.UncheckMenuItems(windowSizeMenuItemIds.ToArray());
                                 }
                                 else
                                 {
@@ -579,6 +583,8 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_SIZE_DEFAULT:
                             {
+                                var windowSizeMenuItemIds = _settings.MenuItems.WindowSizeItems.Select(x => x.Id).ToArray();
+                                window.Menu.UncheckMenuItems(windowSizeMenuItemIds);
                                 window.Menu.UncheckSizeMenu();
                                 window.Menu.CheckMenuItem(MenuItemId.SC_SIZE_DEFAULT, true);
                                 window.ShowNormal();
@@ -675,6 +681,12 @@ namespace SmartSystemMenu.Forms
                         window.MoveToMonitor(monitorHandle);
                     }
 
+                    var windowSize = _settings.MenuItems.WindowSizeItems.FirstOrDefault(x => x.Id == lowOrder);
+                    if (windowSize != null)
+                    {
+                        SetSizeMenuItem(window, (int)lowOrder, windowSize.Width, windowSize.Height);
+                    }
+
                     for (int i = 0; i < _settings.MenuItems.StartProgramItems.Count; i++)
                     {
                         if (lowOrder - MenuItemId.SC_START_PROGRAM == i)
@@ -716,6 +728,8 @@ namespace SmartSystemMenu.Forms
 
         private void SetSizeMenuItem(Window window, int itemId, int width, int height)
         {
+            var windowSizeMenuItemIds = _settings.MenuItems.WindowSizeItems.Select(x => x.Id).ToArray();
+            window.Menu.UncheckMenuItems(windowSizeMenuItemIds);
             window.Menu.UncheckSizeMenu();
             window.Menu.CheckMenuItem(itemId, true);
             window.ShowNormal();

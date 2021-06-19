@@ -64,7 +64,7 @@ namespace SmartSystemMenu.Forms
             txtFontName.Text = windowInfo.FontName;
             txtWindowHandle.Text = string.Format("0x{0:X}", windowInfo.Handle.ToInt64());
             txtParentWindowHandle.Text = string.Format("0x{0:X}", windowInfo.ParentHandle.ToInt64());
-            txtWindowSize.Text = string.Format("{0} x {1}", windowInfo.Size.Width, windowInfo.Size.Height);
+            txtWindowSize.Text = string.Format("{0}x{1}", windowInfo.Size.Width, windowInfo.Size.Height);
             txtInstance.Text = string.Format("0x{0:X}", windowInfo.Instance.ToInt64());
             txtProcessId.Text = string.Format("0x{0:X} ({0})", windowInfo.ProcessId);
             txtThreadId.Text = string.Format("0x{0:X} ({0})", windowInfo.ThreadId);

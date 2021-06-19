@@ -31,7 +31,7 @@ namespace SmartSystemMenu.Forms
         {
             lblTitle.Text = settings.LanguageSettings.GetValue("start_program_lbl_title");
             btnApply.Text = settings.LanguageSettings.GetValue("start_program_btn_apply");
-            btnCancel.Text = settings.LanguageSettings.GetValue("start_program_btn_Cancel");
+            btnCancel.Text = settings.LanguageSettings.GetValue("start_program_btn_cancel");
             lblFileName.Text = settings.LanguageSettings.GetValue("start_program_lbl_file_name");
             lblArguments.Text = settings.LanguageSettings.GetValue("start_program_lbl_arguments");
             Text = settings.LanguageSettings.GetValue("start_program_form");
