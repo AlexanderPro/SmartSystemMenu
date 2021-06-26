@@ -137,20 +137,9 @@ namespace SmartSystemMenu.Forms
 
         protected override void OnClosed(EventArgs e)
         {
-            if (_getMsgHook != null)
-            {
-                _getMsgHook.Stop();
-            }
-
-            if (_shellHook != null)
-            {
-                _shellHook.Stop();
-            }
-
-            if (_cbtHook != null)
-            {
-                _cbtHook.Stop();
-            }
+            _getMsgHook?.Stop();
+            _shellHook?.Stop();
+            _cbtHook?.Stop();
 
             if (_windows != null)
             {
@@ -168,10 +157,7 @@ namespace SmartSystemMenu.Forms
                 _systemTrayMenu.Icon.Visible = false;
             }
 
-            if (_hotKeyHook != null)
-            {
-                _hotKeyHook.Dispose();
-            }
+            _hotKeyHook?.Dispose();
 
             if (Environment.Is64BitOperatingSystem && _64BitProcess != null && !_64BitProcess.HasExited)
             {
@@ -199,29 +185,18 @@ namespace SmartSystemMenu.Forms
 
         protected override void WndProc(ref Message m)
         {
-            if (_shellHook != null)
-            {
-                _shellHook.ProcessWindowMessage(ref m);
-            }
-
-            if (_cbtHook != null)
-            {
-                _cbtHook.ProcessWindowMessage(ref m);
-            }
-
-            if (_getMsgHook != null)
-            {
-                _getMsgHook.ProcessWindowMessage(ref m);
-            }
-
+            _shellHook?.ProcessWindowMessage(ref m);
+            _cbtHook?.ProcessWindowMessage(ref m);
+            _getMsgHook?.ProcessWindowMessage(ref m);
+            
             base.WndProc(ref m);
         }
 
         private void MenuItemAutoStartClick(object sender, EventArgs e)
         {
-            string keyName = AssemblyUtils.AssemblyProductName;
-            string assemblyLocation = AssemblyUtils.AssemblyLocation;
-            bool autoStartEnabled = AutoStarter.IsAutoStartByRegisterEnabled(keyName, assemblyLocation);
+            var keyName = AssemblyUtils.AssemblyProductName;
+            var assemblyLocation = AssemblyUtils.AssemblyLocation;
+            var autoStartEnabled = AutoStarter.IsAutoStartByRegisterEnabled(keyName, assemblyLocation);
             if (autoStartEnabled)
             {
                 AutoStarter.UnsetAutoStartByRegister(keyName);
@@ -320,7 +295,7 @@ namespace SmartSystemMenu.Forms
 
         private void WindowMinMax(object sender, SysCommandEventArgs e)
         {
-            Window window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
+            var window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
             if (window != null)
             {
                 if (e.LParam.ToInt64() == NativeConstants.SW_MAXIMIZE)
@@ -336,42 +311,36 @@ namespace SmartSystemMenu.Forms
 
         private void WindowMoveSize(object sender, WindowEventArgs e)
         {
-            Window window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
-            if (window != null)
-            {
-                window.SaveDefaultSizePosition();
-            }
+            var window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
+            window?.SaveDefaultSizePosition();
         }
 
         private void WindowKeyboardEvent(object sender, BasicHookEventArgs e)
         {
-            long wParam = e.WParam.ToInt64();
+            var wParam = e.WParam.ToInt64();
             if (wParam == NativeConstants.VK_DOWN)
             {
-                int controlState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_CONTROL) & 0x8000;
-                int shiftState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_SHIFT) & 0x8000;
-                bool controlKey = Convert.ToBoolean(controlState);
-                bool shiftKey = Convert.ToBoolean(shiftState);
+                var controlState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_CONTROL) & 0x8000;
+                var shiftState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_SHIFT) & 0x8000;
+                var controlKey = Convert.ToBoolean(controlState);
+                var shiftKey = Convert.ToBoolean(shiftState);
                 if (controlKey && shiftKey)
                 {
                     IntPtr handle = NativeMethods.GetForegroundWindow();
                     Window window = _windows.FirstOrDefault(w => w.Handle == handle);
-                    if (window != null)
-                    {
-                        window.MinimizeToSystemTray();
-                    }
+                    window?.MinimizeToSystemTray();
                 }
             }
         }
 
         private void WindowGetMsg(object sender, WndProcEventArgs e)
         {
-            long message = e.Message.ToInt64();
+            var message = e.Message.ToInt64();
             if (message == NativeConstants.WM_SYSCOMMAND)
             {
                 //string dbgMessage = string.Format("WM_SYSCOMMAND, Form, Handle = {0}, WParam = {1}", e.Handle, e.WParam);
                 //System.Diagnostics.Trace.WriteLine(dbgMessage);
-                Window window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
+                var window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
                 if (window != null)
                 {
                     long lowOrder = e.WParam.ToInt64() & 0x0000FFFF;
@@ -553,7 +522,7 @@ namespace SmartSystemMenu.Forms
                                 {
                                     window.RollUp();
                                     var windowSizeMenuItemIds = new List<int>
-                                    { 
+                                    {
                                         MenuItemId.SC_SIZE_640_480,
                                         MenuItemId.SC_SIZE_720_480,
                                         MenuItemId.SC_SIZE_720_576,

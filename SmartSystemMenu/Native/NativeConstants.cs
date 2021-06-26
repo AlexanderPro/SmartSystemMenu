@@ -104,5 +104,7 @@
 
         public const int WH_KEYBOARD_LL = 0x0D;
         public const uint HC_ACTION = 0;
+
+        public const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;
     }
 }

@@ -17,8 +17,6 @@ namespace SmartSystemMenu
 {
     class Window : IDisposable
     {
-        #region Fields.Private
-
         private bool _isManaged;
         private int _defaultTransparency;
         private int _defaultWidth;
@@ -29,10 +27,6 @@ namespace SmartSystemMenu
         private bool _suspended;
         private NotifyIcon _systemTrayIcon;
 
-        #endregion
-
-
-        #region Properties.Public
 
         public IntPtr Handle { get; private set; }
 
@@ -120,8 +114,6 @@ namespace SmartSystemMenu
             }
         }
 
-        public int ScreenId { get; set; }
-
         public bool IsVisible
         {
             get
@@ -183,11 +175,6 @@ namespace SmartSystemMenu
             }
         }
 
-        #endregion
-
-
-        #region Methods.Public
-
         public Window(IntPtr windowHandle, MenuItems menuItems, LanguageSettings languageSettings)
         {
             Handle = windowHandle;
@@ -199,7 +186,6 @@ namespace SmartSystemMenu
             _beforeRollupHeight = Size.Height;
             _defaultTransparency = Transparency;
             Menu = new SystemMenu(windowHandle, menuItems, languageSettings);
-            ScreenId = Screen.AllScreens.ToList().FindIndex(s => s.Primary);
 
             //Menu.Create();
         }
@@ -404,11 +390,7 @@ namespace SmartSystemMenu
 
         public void SetPosition(int left, int top)
         {
-            var monitorHandle = NativeMethods.MonitorFromWindow(Handle, NativeConstants.MONITOR_DEFAULTTONEAREST);
-            var monitorInfo = new MonitorInfo();
-            monitorInfo.Init();
-            NativeMethods.GetMonitorInfo(monitorHandle, ref monitorInfo);
-            NativeMethods.MoveWindow(Handle, monitorInfo.rcWork.Left + left, monitorInfo.rcWork.Top + top, Size.Width, Size.Height, true);
+            NativeMethods.MoveWindow(Handle, left, top, Size.Width, Size.Height, true);
         }
 
         public void RestorePosition()
@@ -426,16 +408,19 @@ namespace SmartSystemMenu
 
         public void SetAlignment(WindowAlignment alignment)
         {
-            int x, y;
-            Rectangle screen = ScreenId < Screen.AllScreens.Length ? Screen.AllScreens[ScreenId].WorkingArea : Screen.PrimaryScreen.WorkingArea;
-            Rect window = Size;
+            var x = 0;
+            var y = 0;
+            var screen = Screen.FromHandle(Handle).WorkingArea;
+            var window = Size;
+            var margin = GetSystemMargin();
+
 
             switch (alignment)
             {
                 case WindowAlignment.TopLeft:
                     {
-                        x = screen.X;
-                        y = screen.Y;
+                        x = screen.X - margin.Left;
+                        y = screen.Y - margin.Top;
                         SetPosition(x, y);
                     }
                     break;
@@ -443,23 +428,23 @@ namespace SmartSystemMenu
                 case WindowAlignment.TopCenter:
                     {
                         x = ((screen.Width - window.Width) / 2) + screen.X;
-                        y = screen.Y;
+                        y = screen.Y - margin.Top;
                         SetPosition(x, y);
                     }
                     break;
 
                 case WindowAlignment.TopRight:
                     {
-                        x = screen.Width - window.Width + screen.X;
-                        y = screen.Y;
+                        x = (screen.Width - window.Width + screen.X) + margin.Right;
+                        y = screen.Y - margin.Top;
                         SetPosition(x, y);
                     }
                     break;
 
                 case WindowAlignment.MiddleLeft:
                     {
-                        x = screen.X;
-                        y = ((screen.Height - window.Height) / 2) + screen.Y;
+                        x = screen.X - margin.Left;
+                        y = (((screen.Height - window.Height) / 2) + screen.Y);
                         SetPosition(x, y);
                     }
                     break;
@@ -474,16 +459,16 @@ namespace SmartSystemMenu
 
                 case WindowAlignment.MiddleRight:
                     {
-                        x = screen.Width - window.Width + screen.X;
-                        y = ((screen.Height - window.Height) / 2) + screen.Y;
+                        x = screen.Width - window.Width + screen.X + margin.Right;
+                        y = (((screen.Height - window.Height) / 2) + screen.Y);
                         SetPosition(x, y);
                     }
                     break;
 
                 case WindowAlignment.BottomLeft:
                     {
-                        x = screen.X;
-                        y = screen.Height - window.Height + screen.Y;
+                        x = screen.X - margin.Left;
+                        y = screen.Height - window.Height + screen.Y + margin.Bottom;
                         SetPosition(x, y);
                     }
                     break;
@@ -491,15 +476,15 @@ namespace SmartSystemMenu
                 case WindowAlignment.BottomCenter:
                     {
                         x = ((screen.Width - window.Width) / 2) + screen.X;
-                        y = screen.Height - window.Height + screen.Y;
+                        y = screen.Height - window.Height + screen.Y + margin.Bottom;
                         SetPosition(x, y);
                     }
                     break;
 
                 case WindowAlignment.BottomRight:
                     {
-                        x = screen.Width - window.Width + screen.X;
-                        y = screen.Height - window.Height + screen.Y;
+                        x = screen.Width - window.Width + screen.X + margin.Right;
+                        y = screen.Height - window.Height + screen.Y + margin.Bottom;
                         SetPosition(x, y);
                     }
                     break;
@@ -661,10 +646,6 @@ namespace SmartSystemMenu
             NativeMethods.SendMessageTimeout((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
         }
 
-        #endregion
-
-
-        #region Methods.Private
 
         private string GetFontName()
         {
@@ -867,6 +848,30 @@ namespace SmartSystemMenu
             }
         }
 
-        #endregion
+        private Rect GetSizeWithMargin()
+        {
+            Rect size;
+            if (Environment.OSVersion.Version.Major < 6)
+            {
+                NativeMethods.GetWindowRect(Handle, out size);
+            }
+            else if (NativeMethods.DwmGetWindowAttribute(Handle, NativeConstants.DWMWA_EXTENDED_FRAME_BOUNDS, out size, Marshal.SizeOf(typeof(Rect))) != 0)
+            {
+                NativeMethods.GetWindowRect(Handle, out size);
+            }
+            return size;
+        }
+
+        private Rect GetSystemMargin()
+        {
+            var withMargin = GetSizeWithMargin();
+            return new Rect
+            {
+                Left = withMargin.Left - Size.Left,
+                Top = withMargin.Top - Size.Top,
+                Right = Size.Right - withMargin.Right,
+                Bottom = Size.Bottom - withMargin.Bottom,
+            };
+        }
     }
 }
