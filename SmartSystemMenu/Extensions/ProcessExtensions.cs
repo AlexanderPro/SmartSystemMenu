@@ -3,44 +3,12 @@ using System.Text;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Linq;
 using SmartSystemMenu.Native;
 
 namespace SmartSystemMenu.Extensions
 {
     static class ProcessExtensions
     {
-        public static bool ExistProcessWithSameNameAndDesktop(this Process currentProcess)
-        {
-            foreach (Process process in Process.GetProcessesByName(currentProcess.ProcessName))
-            {
-                if (currentProcess.Id != process.Id)
-                {
-                    int processThreadId = process.GetMainThreadId();
-                    int currentProcessThreadId = currentProcess.GetMainThreadId();
-                    IntPtr processDesktop = NativeMethods.GetThreadDesktop(processThreadId);
-                    IntPtr currentProcessDesktop = NativeMethods.GetThreadDesktop(currentProcessThreadId);
-                    if (currentProcessDesktop == processDesktop) return true;
-                }
-            }
-            return false;
-        }
-
-        public static int GetMainThreadId(this Process currentProcess)
-        {
-            var mainThreadId = -1;
-            var startTime = DateTime.MaxValue;
-            foreach (ProcessThread thread in currentProcess.Threads)
-            {
-                if (thread.StartTime < startTime)
-                {
-                    startTime = thread.StartTime;
-                    mainThreadId = thread.Id;
-                }
-            }
-            return mainThreadId;
-        }
-
         public static string GetMainModuleFileName(this Process process, int buffer = 1024)
         {
             try
