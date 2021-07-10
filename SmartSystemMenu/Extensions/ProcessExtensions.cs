@@ -9,6 +9,13 @@ namespace SmartSystemMenu.Extensions
 {
     static class ProcessExtensions
     {
+        public static IntPtr GetHandle(this Process currentProcess)
+        {
+            var handle = Environment.OSVersion.Version.Major >= 6 ? NativeMethods.OpenProcess(NativeConstants.PROCESS_QUERY_LIMITED_INFORMATION | NativeConstants.PROCESS_SET_INFORMATION, false, currentProcess.Id) :
+                                                                    NativeMethods.OpenProcess(NativeConstants.PROCESS_QUERY_INFORMATION | NativeConstants.PROCESS_SET_INFORMATION, false, currentProcess.Id);
+            return handle;
+        }
+
         public static string GetMainModuleFileName(this Process process, int buffer = 1024)
         {
             try
@@ -19,7 +26,7 @@ namespace SmartSystemMenu.Extensions
             {
                 var fileNameBuilder = new StringBuilder(buffer);
                 var bufferLength = (uint)fileNameBuilder.Capacity + 1;
-                return NativeMethods.QueryFullProcessImageName(process.Handle, 0, fileNameBuilder, ref bufferLength) ? fileNameBuilder.ToString() : null;
+                return NativeMethods.QueryFullProcessImageName(process.GetHandle(), 0, fileNameBuilder, ref bufferLength) ? fileNameBuilder.ToString() : null;
             }
         }
 
@@ -37,7 +44,7 @@ namespace SmartSystemMenu.Extensions
         {
             var pbi = new PROCESS_BASIC_INFORMATION();
             int returnLength;
-            var status = NativeMethods.NtQueryInformationProcess(process.Handle, 0, ref pbi, Marshal.SizeOf(pbi), out returnLength);
+            var status = NativeMethods.NtQueryInformationProcess(process.GetHandle(), 0, ref pbi, Marshal.SizeOf(pbi), out returnLength);
             if (status != 0)
             {
                 return null;
