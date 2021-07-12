@@ -58,7 +58,6 @@ namespace SmartSystemMenu
         public const int SC_ALIGN_DEFAULT = 0x4799;
         public const int SC_ALIGN_CUSTOM = 0x4800;
         public const int SC_SAVE_SCREEN_SHOT = 0x4802;
-        public const int SC_COPY_TEXT_TO_CLIPBOARD = 0x4803;
         public const int SC_OPEN_FILE_IN_EXPLORER = 0x4804;
         public const int SC_CLOSE_OTHER_WINDOWS = 0x4805;
         public const int SC_MINIMIZE_OTHER_WINDOWS = 0x4806;
@@ -66,6 +65,8 @@ namespace SmartSystemMenu
         public const int SC_SEND_TO_BOTTOM = 0x4808;
         public const int SC_DRAG_BY_MOUSE = 0x4809;
         public const int SC_SUSPEND_TO_SYSTEMTRAY = 0x4810;
+        public const int SC_COPY_TEXT_TO_CLIPBOARD = 0x4811;
+        public const int SC_CLEAR_CLIPBOARD = 0x4812;
         public const int SC_START_PROGRAM = 0x4900;
         public const int SC_MOVE_TO = 0x5000;
         public const int SC_SIZE_DEFINED = 0x5100;
@@ -82,7 +83,6 @@ namespace SmartSystemMenu
             NameToId["send_to_bottom"] = SC_SEND_TO_BOTTOM;
             NameToId["save_screenshot"] = SC_SAVE_SCREEN_SHOT;
             NameToId["open_file_in_explorer"] = SC_OPEN_FILE_IN_EXPLORER;
-            NameToId["copy_text_to_clipboard"] = SC_COPY_TEXT_TO_CLIPBOARD;
             NameToId["drag_by_mouse"] = SC_DRAG_BY_MOUSE;
             NameToId["size_default"] = SC_SIZE_DEFAULT;
             NameToId["size_custom"] = SC_SIZE_CUSTOM;
@@ -129,6 +129,8 @@ namespace SmartSystemMenu
             NameToId["priority_normal"] = SC_PRIORITY_NORMAL;
             NameToId["priority_below_normal"] = SC_PRIORITY_BELOW_NORMAL;
             NameToId["priority_idle"] = SC_PRIORITY_IDLE;
+            NameToId["copy_text_to_clipboard"] = SC_COPY_TEXT_TO_CLIPBOARD;
+            NameToId["clear_clipboard"] = SC_CLEAR_CLIPBOARD;
             NameToId["minimize_to_systemtray"] = SC_MINIMIZE_TO_SYSTEMTRAY;
             NameToId["suspend_to_systemtray"] = SC_SUSPEND_TO_SYSTEMTRAY;
             NameToId["minimize_always_to_systemtray"] = SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY;

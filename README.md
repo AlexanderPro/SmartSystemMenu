@@ -16,13 +16,13 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Send To Bottom.** Allows to send to bottom the current window.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
-* **Copy Text To Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard.
 * **Drag By Mouse.** Allows to drag by mouse the current window.
 * **Resize.** Allows to change the size of the current window.
 * **Move To.** Allows to move the current window to another monitor.
 * **Alignment.** Allows the current window to be aligned with any of the 9 positions on the desktop.
 * **Transparency.** Allows to change the transparency of the current window.
 * **Priority.** Allows to change the current window's program priority.
+* **Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard and clear clipboard.
 * **System Tray.** Allows to minimize or suspend the current window to the system tray.
 * **Other Windows.** Allows to close and minimize all windows in the system except the current.
 * **Start Program.** Allows to start programs which is in the settings.

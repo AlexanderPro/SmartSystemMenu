@@ -415,6 +415,12 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_CLEAR_CLIPBOARD:
+                            {
+                                Clipboard.Clear();
+                            }
+                            break;
+
                         case MenuItemId.SC_DRAG_BY_MOUSE:
                             {
                                 var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DRAG_BY_MOUSE);

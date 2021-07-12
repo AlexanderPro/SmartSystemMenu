@@ -57,7 +57,6 @@ namespace SmartSystemMenu
             AddMenuItem(MenuItemId.SC_SEND_TO_BOTTOM);
             AddMenuItem(MenuItemId.SC_SAVE_SCREEN_SHOT);
             AddMenuItem(MenuItemId.SC_OPEN_FILE_IN_EXPLORER);
-            AddMenuItem(MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD);
             AddMenuItem(MenuItemId.SC_DRAG_BY_MOUSE);
 
             StartCreatingSubMenu();
@@ -140,6 +139,11 @@ namespace SmartSystemMenu
             AddSubMenuItem(MenuItemId.SC_PRIORITY_BELOW_NORMAL);
             AddSubMenuItem(MenuItemId.SC_PRIORITY_IDLE);
             FinishSubMenu("priority");
+
+            StartCreatingSubMenu();
+            AddSubMenuItem(MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD);
+            AddSubMenuItem(MenuItemId.SC_CLEAR_CLIPBOARD);
+            FinishSubMenu("clipboard");
 
             StartCreatingSubMenu();
             AddSubMenuItem(MenuItemId.SC_MINIMIZE_TO_SYSTEMTRAY);

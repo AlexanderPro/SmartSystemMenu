@@ -9,7 +9,9 @@
       <item name="send_to_bottom" value="Send To Bottom" />
       <item name="save_screenshot" value="Save Screenshot" />
       <item name="open_file_in_explorer" value="Open File In Explorer" />
-      <item name="copy_text_to_clipboard" value="Copy Text To ClipBoard" />
+      <item name="clipboard" value="Clipboard" />
+      <item name="copy_text_to_clipboard" value="Copy Text To Clipboard" />
+      <item name="clear_clipboard" value="Clear Clipboard" />
       <item name="drag_by_mouse" value="Drag By Mouse" />
       <item name="size" value="Resize" />
       <item name="size_default" value="Default" />
@@ -177,7 +179,9 @@
       <item name="send_to_bottom" value="In den Hintergrund" />
       <item name="save_screenshot" value="Screenshot speichern…" />
       <item name="open_file_in_explorer" value="Im Windows Explorer anzeigen" />
+      <item name="clipboard" value="Zwischenablage" />
       <item name="copy_text_to_clipboard" value="Text in die Zwischenablage kopieren" />
+      <item name="clear_clipboard" value="Zwischenablage löschen" />
       <item name="drag_by_mouse" value="Ziehen mit der Maus" />
       <item name="size" value="Fenstergröβe ändern" />
       <item name="size_default" value="Standardmäβig" />
@@ -345,7 +349,9 @@
       <item name="send_to_bottom" value="移至最底层" />
       <item name="save_screenshot" value="保存窗口截图" />
       <item name="open_file_in_explorer" value="在资源管理器中打开文件" />
+      <item name="clipboard" value="剪貼板" />
       <item name="copy_text_to_clipboard" value="将文本复制到剪贴板" />
+      <item name="clear_clipboard" value="清除剪貼板" />
       <item name="drag_by_mouse" value="通过鼠标拖动" />
       <item name="size" value="调整窗口大小" />
       <item name="size_default" value="默认" />
@@ -513,7 +519,9 @@
       <item name="send_to_bottom" value="發送到底部" />
       <item name="save_screenshot" value="儲存視窗擷圖" />
       <item name="open_file_in_explorer" value="在資料管理員中打開檔案" />
+      <item name="clipboard" value="剪貼板" />
       <item name="copy_text_to_clipboard" value="將文字複製到剪貼板" />
+      <item name="clear_clipboard" value="清除剪貼板" />
       <item name="drag_by_mouse" value="用滑鼠拖動" />
       <item name="size" value="調整視窗大小" />
       <item name="size_default" value="預設" />
@@ -681,7 +689,9 @@
       <item name="send_to_bottom" value="背面へ送る" />
       <item name="save_screenshot" value="スクリーンショットを撮る" />
       <item name="open_file_in_explorer" value="エクスプローラーで開く" />
+      <item name="clipboard" value="クリップボード" />
       <item name="copy_text_to_clipboard" value="クリップボードに文字列をコピーする" />
+      <item name="clear_clipboard" value="クリップボードをクリア" />
       <item name="drag_by_mouse" value="マウスでドラッグする" />
       <item name="size" value="サイズ変更" />
       <item name="size_default" value="デフォルト" />
@@ -849,7 +859,9 @@
       <item name="send_to_bottom" value="맨 아래로 보내기" />
       <item name="save_screenshot" value="스크린샷 저장" />
       <item name="open_file_in_explorer" value="탐색기에서 파일 열기" />
+      <item name="clipboard" value="클립보드" />
       <item name="copy_text_to_clipboard" value="클립보드에 텍스트 복사" />
+      <item name="clear_clipboard" value="클립보드 지우기" />
       <item name="drag_by_mouse" value="마우스로 드래그" />
       <item name="size" value="크기 변경" />
       <item name="size_default" value="기본" />
@@ -1017,7 +1029,9 @@
       <item name="send_to_bottom" value="Переместить вниз" />
       <item name="save_screenshot" value="Сохранить снимок окна" />
       <item name="open_file_in_explorer" value="Открыть в проводнике" />
+      <item name="clipboard" value="Буфер обмена" />
       <item name="copy_text_to_clipboard" value="Скопировать текст в буфер обмена" />
+      <item name="clear_clipboard" value="Очистить буфер обмена" />
       <item name="drag_by_mouse" value="Перетащить мышкой" />
       <item name="size" value="Изменить размер" />
       <item name="size_default" value="По умолчанию" />
@@ -1185,7 +1199,9 @@
       <item name="send_to_bottom" value="Попаљи на дно" />
       <item name="save_screenshot" value="Сачувај прозор програма" />
       <item name="open_file_in_explorer" value="Отвори датотеку у Explorer" />
+      <item name="clipboard" value="Клипборд" />
       <item name="copy_text_to_clipboard" value="Копирај текст у клипборду" />
+      <item name="clear_clipboard" value="Обриши клипборд" />
       <item name="drag_by_mouse" value="Премести са мишем" />
       <item name="size" value="Промени величину" />
       <item name="size_default" value="Подразумевано" />
@@ -1353,7 +1369,9 @@
       <item name="send_to_bottom" value="Enviar para trás" />
       <item name="save_screenshot" value="Fazer captura de tela" />
       <item name="open_file_in_explorer" value="Abrir arquivo no Explorer" />
+      <item name="clipboard" value="Área de Transferência" />
       <item name="copy_text_to_clipboard" value="Copiar texto na Área de Transferência" />
+      <item name="clear_clipboard" value="Limpar Área de Transferência" />
       <item name="drag_by_mouse" value="Arrastar com mouse" />
       <item name="size" value="Redimensionar" />
       <item name="size_default" value="Padrão" />

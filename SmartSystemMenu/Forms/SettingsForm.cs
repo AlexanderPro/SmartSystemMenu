@@ -126,7 +126,6 @@ namespace SmartSystemMenu.Forms
             FillGridViewRowHotkey(gvHotkeys, settings, "send_to_bottom");
             FillGridViewRowHotkey(gvHotkeys, settings, "save_screenshot");
             FillGridViewRowHotkey(gvHotkeys, settings, "open_file_in_explorer");
-            FillGridViewRowHotkey(gvHotkeys, settings, "copy_text_to_clipboard");
             FillGridViewRowHotkey(gvHotkeys, settings, "drag_by_mouse");
             FillGridViewGroupHotkey(gvHotkeys, settings, "size");
             FillGridViewRowHotkey(gvHotkeys, settings, "640_480", "640x480", true);
@@ -134,7 +133,8 @@ namespace SmartSystemMenu.Forms
             FillGridViewRowHotkey(gvHotkeys, settings, "720_576", "720x576", true);
             FillGridViewRowHotkey(gvHotkeys, settings, "800_600", "800x600", true);
             FillGridViewRowHotkey(gvHotkeys, settings, "1024_768", "1024x768", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "1152_864", "1024x768", true);
+            FillGridViewRowHotkey(gvHotkeys, settings, "1152_864", "1152x864", true);
+            FillGridViewRowHotkey(gvHotkeys, settings, "1280_768", "1280x768", true);
             FillGridViewRowHotkey(gvHotkeys, settings, "1280_800", "1280x800", true);
             FillGridViewRowHotkey(gvHotkeys, settings, "1280_960", "1280x960", true);
             FillGridViewRowHotkey(gvHotkeys, settings, "1280_1024", "1280x1024", true);
@@ -177,6 +177,9 @@ namespace SmartSystemMenu.Forms
             FillGridViewRowHotkey(gvHotkeys, settings, "priority_normal", null, true);
             FillGridViewRowHotkey(gvHotkeys, settings, "priority_below_normal", null, true);
             FillGridViewRowHotkey(gvHotkeys, settings, "priority_idle", null, true);
+            FillGridViewGroupHotkey(gvHotkeys, settings, "clipboard");
+            FillGridViewRowHotkey(gvHotkeys, settings, "copy_text_to_clipboard", null, true);
+            FillGridViewRowHotkey(gvHotkeys, settings, "clear_clipboard", null, true);
             FillGridViewGroupHotkey(gvHotkeys, settings, "system_tray");
             FillGridViewRowHotkey(gvHotkeys, settings, "minimize_to_systemtray", null, true);
             FillGridViewRowHotkey(gvHotkeys, settings, "minimize_always_to_systemtray", null, true);
