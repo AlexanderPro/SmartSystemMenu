@@ -8,7 +8,7 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public PositionForm(Window window, SmartSystemMenuSettings settings)
+        public PositionForm(Window window, LanguageSettings settings)
         {
             _window = window;
 
@@ -19,12 +19,12 @@ namespace SmartSystemMenu.Forms
             numericTop.Value = _window.SizeOnMonitor.Top;
         }
 
-        private void InitializeControls(SmartSystemMenuSettings settings)
+        private void InitializeControls(LanguageSettings settings)
         {
-            lblLeft.Text = settings.LanguageSettings.GetValue("lbl_left");
-            lblTop.Text = settings.LanguageSettings.GetValue("lbl_top");
-            btnApply.Text = settings.LanguageSettings.GetValue("align_btn_apply");
-            Text = settings.LanguageSettings.GetValue("align_form");
+            lblLeft.Text = settings.GetValue("lbl_left");
+            lblTop.Text = settings.GetValue("lbl_top");
+            btnApply.Text = settings.GetValue("align_btn_apply");
+            Text = settings.GetValue("align_form");
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)

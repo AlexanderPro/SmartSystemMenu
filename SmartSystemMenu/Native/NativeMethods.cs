@@ -244,6 +244,9 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern IntPtr MonitorFromWindow(IntPtr hwnd, uint dwFlags);
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr WindowFromPoint(Point p);
+
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetCurrentProcess();
 
@@ -262,6 +265,10 @@ namespace SmartSystemMenu.Native
         [DllImport("kernel32.dll")]
         public static extern IntPtr OpenProcess(ProcessAccessFlags processAccess, bool bInheritHandle, int processId);
 
+        [DllImport("kernel32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool TerminateProcess(IntPtr hProcess, uint uExitCode);
+
         [DllImport("advapi32.dll", CharSet = CharSet.Auto)]
         public static extern bool DuplicateTokenEx(IntPtr hExistingToken, uint dwDesiredAccess, IntPtr lpTokenAttributes, SECURITY_IMPERSONATION_LEVEL impersonationLevel, TOKEN_TYPE tokenType, out IntPtr phNewToken);
 
@@ -269,13 +276,19 @@ namespace SmartSystemMenu.Native
         public static extern bool CreateProcessWithTokenW(IntPtr hToken, int dwLogonFlags, string lpApplicationName, string lpCommandLine, int dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr SetWindowsHookEx(int idHook, KeyboardHookProc callback, IntPtr hInstance, uint threadId);
+        public static extern IntPtr SetWindowsHookEx(int idHook, KeyboardHookProc callback, IntPtr hModule, uint threadId);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr SetWindowsHookEx(int idHook, MouseHookProc callback, IntPtr hModule, uint dwThreadId);
 
         [DllImport("user32.dll")]
         public static extern bool UnhookWindowsHookEx(IntPtr handleHook);
 
         [DllImport("user32.dll")]
-        public static extern int CallNextHookEx(IntPtr handleHook, int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
+        public static extern int CallNextHookEx(IntPtr handleHook, int nCode, IntPtr wParam, ref KeyboardLLHookStruct lParam);
+
+        [DllImport("user32.dll")]
+        public static extern int CallNextHookEx(IntPtr handleHook, int nCode, int wParam, IntPtr lParam);
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetModuleHandle(string name);

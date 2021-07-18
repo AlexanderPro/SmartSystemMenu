@@ -92,7 +92,14 @@ namespace SmartSystemMenu.Native
             X = x;
             Y = y;
         }
-    };
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct Point
+    {
+        public int x;
+        public int y;
+    }
 
     [StructLayout(LayoutKind.Sequential)]
     struct SmallRect
@@ -262,13 +269,23 @@ namespace SmartSystemMenu.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    struct KBDLLHOOKSTRUCT
+    struct KeyboardLLHookStruct
     {
         public int vkCode;
         public int scanCode;
         public int flags;
         public int time;
         public IntPtr dwExtraInfo;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct MouseLLHookStruct
+    {
+        public Point pt;
+        public int mouseData;
+        public int flags;
+        public int time;
+        public int dwExtraInfo;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -281,64 +298,6 @@ namespace SmartSystemMenu.Native
         public IntPtr UniqueProcessId;
         public IntPtr InheritedFromUniqueProcessId;
     }
-
-    /*[StructLayout(LayoutKind.Sequential)]
-    struct UNICODE_STRING
-    {
-        public short Length;
-        public short MaximumLength;
-        public IntPtr Buffer;
-    }
-
-    // for 32-bit process in a 64-bit OS only
-    [StructLayout(LayoutKind.Sequential)]
-    struct PROCESS_BASIC_INFORMATION_WOW64
-    {
-        public long Reserved1;
-        public long PebBaseAddress;
-        public long Reserved2_0;
-        public long Reserved2_1;
-        public long UniqueProcessId;
-        public long Reserved3;
-    }
-
-    // for 32-bit process
-    [StructLayout(LayoutKind.Sequential)]
-    struct UNICODE_STRING_WOW64
-    {
-        public short Length;
-        public short MaximumLength;
-        public long Buffer;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    struct UNICODE_STRING_32
-    {
-        public short Length;
-        public short MaximumLength;
-        public int Buffer;
-    }
-
-    enum PROCESSINFOCLASS : int
-    {
-        ProcessBasicInformation = 0, // 0, q: PROCESS_BASIC_INFORMATION, PROCESS_EXTENDED_BASIC_INFORMATION
-        ProcessWow64Information = 26, // q: ULONG_PTR
-    }
-
-    [Flags]
-    public enum PEB_OFFSET
-    {
-        CurrentDirectory,
-        //DllPath,
-        //ImagePathName,
-        CommandLine,
-        //WindowTitle,
-        //DesktopInfo,
-        //ShellInfo,
-        //RuntimeData,
-        //TypeMask = 0xffff,
-        //Wow64 = 0x10000,
-    };*/
 
     [StructLayout(LayoutKind.Sequential)]
     struct WINDOW_INFO
@@ -377,5 +336,7 @@ namespace SmartSystemMenu.Native
     }
 
 
-    delegate int KeyboardHookProc(int code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
+    delegate int KeyboardHookProc(int code, IntPtr wParam, ref KeyboardLLHookStruct lParam);
+
+    delegate int MouseHookProc(int code, int wParam, IntPtr lParam);
 }

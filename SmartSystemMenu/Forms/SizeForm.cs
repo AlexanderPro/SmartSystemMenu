@@ -8,7 +8,7 @@ namespace SmartSystemMenu.Forms
     {
         private Window _window;
 
-        public SizeForm(Window window, SmartSystemMenuSettings settings)
+        public SizeForm(Window window, LanguageSettings settings)
         {
             InitializeComponent();
             InitializeControls(settings);
@@ -18,12 +18,12 @@ namespace SmartSystemMenu.Forms
             numericHeight.Value = _window.Size.Height;
         }
 
-        private void InitializeControls(SmartSystemMenuSettings settings)
+        private void InitializeControls(LanguageSettings settings)
         {
-            lblWidth.Text = settings.LanguageSettings.GetValue("lbl_width");
-            lblHeight.Text = settings.LanguageSettings.GetValue("lbl_height");
-            btnApply.Text = settings.LanguageSettings.GetValue("size_btn_apply");
-            Text = settings.LanguageSettings.GetValue("size_form");
+            lblWidth.Text = settings.GetValue("lbl_width");
+            lblHeight.Text = settings.GetValue("lbl_height");
+            btnApply.Text = settings.GetValue("size_btn_apply");
+            Text = settings.GetValue("size_form");
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)

@@ -12,21 +12,21 @@ namespace SmartSystemMenu.Forms
     {
         public Settings.MenuItem MenuItem { get; set; }
 
-        public HotkeysForm(SmartSystemMenuSettings settings, Settings.MenuItem menuItem)
+        public HotkeysForm(LanguageSettings settings, Settings.MenuItem menuItem)
         {
             InitializeComponent();
             MenuItem = menuItem;
             InitializeControls(settings, menuItem);
         }
 
-        private void InitializeControls(SmartSystemMenuSettings settings, Settings.MenuItem menuItem)
+        private void InitializeControls(LanguageSettings settings, Settings.MenuItem menuItem)
         {
-            Text = settings.LanguageSettings.GetValue("hotkeys_form");
-            btnApply.Text = settings.LanguageSettings.GetValue("hotkeys_btn_apply");
-            btnCancel.Text = settings.LanguageSettings.GetValue("hotkeys_btn_cancel");
-            lblKey1.Text = settings.LanguageSettings.GetValue("hotkeys_lbl_key1");
-            lblKey2.Text = settings.LanguageSettings.GetValue("hotkeys_lbl_key2");
-            lblKey3.Text = settings.LanguageSettings.GetValue("hotkeys_lbl_key3");
+            Text = settings.GetValue("hotkeys_form");
+            btnApply.Text = settings.GetValue("hotkeys_btn_apply");
+            btnCancel.Text = settings.GetValue("hotkeys_btn_cancel");
+            lblKey1.Text = settings.GetValue("hotkeys_lbl_key1");
+            lblKey2.Text = settings.GetValue("hotkeys_lbl_key2");
+            lblKey3.Text = settings.GetValue("hotkeys_lbl_key3");
 
             cmbKey1.ValueMember = "Id";
             cmbKey1.DisplayMember = "Text";

@@ -108,7 +108,7 @@
       <item name="mi_exit" value="Exit" />
       <item name="about_form" value="About " />
       <item name="about_btn_ok" value="Ok" />
-      <item name="settings_form" value="Settngs" />
+      <item name="settings_form" value="Settings" />
       <item name="tab_settings_general" value="General" />
       <item name="grpb_process_exclusions" value="Process Exclusions" />
       <item name="clm_process_exclusion_name" value="File Name" />
@@ -156,7 +156,7 @@
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Cancel" />
       <item name="start_program_browse_file_filter" value="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
-      <item name="lbl_language" value="Language" />
+      <item name="grpb_language" value="Language" />
       <item name="message_box_attention_title" value="Attention" />
       <item name="message_box_attention_content" value="You should restart the application manually to apply the settings." />
       <item name="hotkeys_form" value="Hotkeys" />
@@ -170,6 +170,17 @@
       <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
       <item name="tab_settings_menu_start" value="Menu (Start Program)" />
       <item name="tab_settings_menu_size" value="Menu (Resize)" />
+      <item name="grpb_window_killer" value="Close Window By Mouse Click" />
+      <item name="window_killer_button_name" value="Settings..." />
+      <item name="window_killer_form" value="Settings" />
+      <item name="window_killer_btn_apply" value="Ok" />
+      <item name="window_killer_btn_cancel" value="Cancel" />
+      <item name="window_killer_lbl_key1" value="Key 1" />
+      <item name="window_killer_lbl_key2" value="Key 2" />
+      <item name="window_killer_lbl_mouse_button" value="Mouse Button" />
+      <item name="window_killer_lbl_action" value="Action" />
+      <item name="window_killer_close_window" value="Close window" />
+      <item name="window_killer_kill_process" value="Kill process" />
     </en>
     <de>
       <item name="information" value="Information" />
@@ -326,7 +337,7 @@
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Abbrechen" />
       <item name="start_program_browse_file_filter" value="Ausführbare Dateien (*.exe)|*.exe|Alle Dateien (*.*)|*.*" />
-      <item name="lbl_language" value="Sprache" />
+      <item name="grpb_language" value="Sprache" />
       <item name="message_box_attention_title" value="Achtung" />
       <item name="message_box_attention_content" value="Es ist nötig die Anwendung neu zu starten um die Änderungen zu aktivieren." />
       <item name="hotkeys_form" value="Tastaturkürzel" />
@@ -340,6 +351,17 @@
       <item name="clm_hotkeys_show_tooltip" value="Menüpunkt anzeigen" />
       <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
       <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
+      <item name="grpb_window_killer" value="Fenster per Mausklick schließen" />
+      <item name="window_killer_button_name" value="Einstellungen..." />
+      <item name="window_killer_form" value="Einstellungen" />
+      <item name="window_killer_btn_apply" value="Ok" />
+      <item name="window_killer_btn_cancel" value="Abbrechen" />
+      <item name="window_killer_lbl_key1" value="Taste 1" />
+      <item name="window_killer_lbl_key2" value="Taste 2" />
+      <item name="window_killer_lbl_mouse_button" value="Maustaste" />
+      <item name="window_killer_lbl_action" value="Aktion" />
+      <item name="window_killer_close_window" value="Fenster schließen" />
+      <item name="window_killer_kill_process" value="Tötungsprozess" />
     </de>
     <zh_cn>
       <item name="information" value="信息" />
@@ -496,7 +518,7 @@
       <item name="start_program_btn_apply" value="确定" />
       <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
-      <item name="lbl_language" value="语言" />
+      <item name="grpb_language" value="语言" />
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="您应该手动重启应用程序以使设置生效。" />
       <item name="hotkeys_form" value="热键" />
@@ -510,6 +532,17 @@
       <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
       <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
       <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
+      <item name="grpb_window_killer" value="通过鼠标单击关闭窗口" />
+      <item name="window_killer_button_name" value="设置..." />
+      <item name="window_killer_form" value="设置." />
+      <item name="window_killer_btn_apply" value="确定" />
+      <item name="window_killer_btn_cancel" value="取消" />
+      <item name="window_killer_lbl_key1" value="键 1" />
+      <item name="window_killer_lbl_key2" value="键 2" />
+      <item name="window_killer_lbl_mouse_button" value="鼠标按钮" />
+      <item name="window_killer_lbl_action" value="行动" />
+      <item name="window_killer_close_window" value="关闭窗口" />
+      <item name="window_killer_kill_process" value="杀死进程" />
     </zh_cn>
     <zh_tw>
       <item name="information" value="資訊" />
@@ -666,7 +699,7 @@
       <item name="start_program_btn_apply" value="確定" />
       <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可執行程式 (*.exe)|*.exe|所有檔案 (*.*)|*.*" />
-      <item name="lbl_language" value="語言" />
+      <item name="grpb_language" value="語言" />
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="您應該手動重新啟動應用程序以應用設定。" />
       <item name="hotkeys_form" value="快速鍵" />
@@ -680,6 +713,17 @@
       <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
       <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
+      <item name="grpb_window_killer" value="通过鼠标单击关闭窗口" />
+      <item name="window_killer_button_name" value="設定..." />
+      <item name="window_killer_form" value="設定" />
+      <item name="window_killer_btn_apply" value="確定" />
+      <item name="window_killer_btn_cancel" value="取消" />
+      <item name="window_killer_lbl_key1" value="鍵 1" />
+      <item name="window_killer_lbl_key2" value="鍵 2" />
+      <item name="window_killer_lbl_mouse_button" value="鼠标按钮" />
+      <item name="window_killer_lbl_action" value="行动" />
+      <item name="window_killer_close_window" value="关闭窗口" />
+      <item name="window_killer_kill_process" value="杀死进程" />
     </zh_tw>
     <ja>
       <item name="information" value="情報" />
@@ -783,7 +827,7 @@
       <item name="lbl_top" value="上:" />
       <item name="lbl_left" value="左:" />
       <item name="mi_auto_start" value="自動起動" />
-      <item name="mi_settings" value="設定" />
+      <item name="mi_settings" value="設定..." />
       <item name="mi_about" value="プログラム関連情報" />
       <item name="mi_exit" value="終了" />
       <item name="about_form" value="プログラム関連情報" />
@@ -836,20 +880,31 @@
       <item name="start_program_btn_apply" value="適用" />
       <item name="start_program_btn_cancel" value="キャンセル" />
       <item name="start_program_browse_file_filter" value="実行ファイル(*.exe)|*.exe|全てのファイル(*.*)|*.*" />
-      <item name="lbl_language" value="言語" />
+      <item name="grpb_language" value="言語" />
       <item name="message_box_attention_title" value="注意" />
       <item name="message_box_attention_content" value="変更後設定が有効になるように、手動でアプリを再起動してください。" />
       <item name="hotkeys_form" value="ホットキー" />
       <item name="hotkeys_lbl_key1" value="キー 1" />
       <item name="hotkeys_lbl_key2" value="キー 2" />
       <item name="hotkeys_lbl_key3" value="キー 3" />
-      <item name="hotkeys_btn_apply" value="適用" />
+      <item name="hotkeys_btn_apply" value="OK" />
       <item name="hotkeys_btn_cancel" value="キャンセル" />
       <item name="tab_settings_hotkeys" value="ホットキー" />
       <item name="clm_hotkeys_name" value="名前" />
       <item name="clm_hotkeys_show_tooltip" value="メニュー項目を表示" />
       <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
       <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
+      <item name="grpb_window_killer" value="マウスクリックでウィンドウを閉じる" />
+      <item name="window_killer_button_name" value="設定..." />
+      <item name="window_killer_form" value="設定" />
+      <item name="window_killer_btn_apply" value="OK" />
+      <item name="window_killer_btn_cancel" value="キャンセル" />
+      <item name="window_killer_lbl_key1" value="キー 1" />
+      <item name="window_killer_lbl_key2" value="キー 2" />
+      <item name="window_killer_lbl_mouse_button" value="マウスボタン" />
+      <item name="window_killer_lbl_action" value="アクション" />
+      <item name="window_killer_close_window" value="ウィンドウを閉じる" />
+      <item name="window_killer_kill_process" value="プロセスを強制終了します" />
     </ja>
     <ko>
       <item name="information" value="정보" />
@@ -1006,7 +1061,7 @@
       <item name="start_program_btn_apply" value="확인" />
       <item name="start_program_btn_cancel" value="취소" />
       <item name="start_program_browse_file_filter" value="실행 파일 (*.exe)|*.exe|모든 파일 (*.*)|*.*" />
-      <item name="lbl_language" value="언어" />
+      <item name="grpb_language" value="언어" />
       <item name="message_box_attention_title" value="알림" />
       <item name="message_box_attention_content" value="설정을 적용하려면 프로그램을 수동으로 재시작해야 합니다." />
       <item name="hotkeys_form" value="단축키" />
@@ -1020,6 +1075,17 @@
       <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
       <item name="tab_settings_menu_start" value="메뉴 (시작할 프로그램)" />
       <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
+      <item name="grpb_window_killer" value="마우스 클릭으로 창 닫기" />
+      <item name="window_killer_button_name" value="설정..." />
+      <item name="window_killer_form" value="설정" />
+      <item name="window_killer_btn_apply" value="확인" />
+      <item name="window_killer_btn_cancel" value="취소" />
+      <item name="window_killer_lbl_key1" value="키 1" />
+      <item name="window_killer_lbl_key2" value="키 2" />
+      <item name="window_killer_lbl_mouse_button" value="마우스 버튼" />
+      <item name="window_killer_lbl_action" value="동작" />
+      <item name="window_killer_close_window" value="창 닫기" />
+      <item name="window_killer_kill_process" value="프로세스 종료" />
     </ko>
     <ru>
       <item name="information" value="Информация" />
@@ -1176,7 +1242,7 @@
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Cancel" />
       <item name="start_program_browse_file_filter" value="Исполняемые (*.exe)|*.exe|All files (*.*)|*.*" />
-      <item name="lbl_language" value="Язык" />
+      <item name="grpb_language" value="Язык" />
       <item name="message_box_attention_title" value="Внимание" />
       <item name="message_box_attention_content" value="Необходимо перезапустить приложение, чтобы применились настройки." />
       <item name="hotkeys_form" value="Горячие клавиши" />
@@ -1190,6 +1256,17 @@
       <item name="clm_hotkeys_show_tooltip" value="Отобразить или скрыть пункт меню" />
       <item name="tab_settings_menu_start" value="Меню (Пуск)" />
       <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
+      <item name="grpb_window_killer" value="Закрытие окна кнопкой мышки" />
+      <item name="window_killer_button_name" value="Настройки..." />
+      <item name="window_killer_form" value="Настройки" />
+      <item name="window_killer_btn_apply" value="Ok" />
+      <item name="window_killer_btn_cancel" value="Cancel" />
+      <item name="window_killer_lbl_key1" value="Клавиша 1" />
+      <item name="window_killer_lbl_key2" value="Клавиша 2" />
+      <item name="window_killer_lbl_mouse_button" value="Кнопка мышки" />
+      <item name="window_killer_lbl_action" value="Действие" />
+      <item name="window_killer_close_window" value="Закрыть окно" />
+      <item name="window_killer_kill_process" value="Убить процесс" />
     </ru>
     <sr>
       <item name="information" value="Информација програма" />
@@ -1346,7 +1423,7 @@
       <item name="start_program_btn_apply" value="У реду" />
       <item name="start_program_btn_cancel" value="Откажи" />
       <item name="start_program_browse_file_filter" value="Покретљиво (*.exe)|*.exe|Све (*.*)|*.*" />
-      <item name="lbl_language" value="Језик" />
+      <item name="grpb_language" value="Језик" />
       <item name="message_box_attention_title" value="Пажња" />
       <item name="message_box_attention_content" value="Требате ручно да поново покренете програм да би применили подешавања." />
       <item name="hotkeys_form" value="Пречице" />
@@ -1360,6 +1437,17 @@
       <item name="clm_hotkeys_show_tooltip" value="Прикажи ставку менија" />
       <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
       <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
+      <item name="grpb_window_killer" value="Затворите прозор кликом миша" />
+      <item name="window_killer_button_name" value="Подешавања..." />
+      <item name="window_killer_form" value="Подешавања" />
+      <item name="window_killer_btn_apply" value="У реду" />
+      <item name="window_killer_btn_cancel" value="Откажи" />
+      <item name="window_killer_lbl_key1" value="Типак 1" />
+      <item name="window_killer_lbl_key2" value="Типак 2" />
+      <item name="window_killer_lbl_mouse_button" value="Дугме миша" />
+      <item name="window_killer_lbl_action" value="Поступак" />
+      <item name="window_killer_close_window" value="Затвори прозор" />
+      <item name="window_killer_kill_process" value="Процес убијања" />
     </sr>
     <pt>
       <item name="information" value="Informações" />
@@ -1516,7 +1604,7 @@
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Cancelar" />
       <item name="start_program_browse_file_filter" value="Executáveis (*.exe)|*.exe|Todos os arquivos (*.*)|*.*" />
-      <item name="lbl_language" value="Idioma" />
+      <item name="grpb_language" value="Idioma" />
       <item name="message_box_attention_title" value="Atenção" />
       <item name="message_box_attention_content" value="É necessário fechar e reabrir o aplicativo para efetivar a configuração." />
       <item name="hotkeys_form" value="Atalhos" />
@@ -1530,6 +1618,17 @@
       <item name="clm_hotkeys_show_tooltip" value="Exibir item do menu" />
       <item name="tab_settings_menu_start" value="Menu (Executar programa)" />
       <item name="tab_settings_menu_size" value="Menu (Redimensionar)" />
+      <item name="grpb_window_killer" value="Fechar janela com clique do mouse" />
+      <item name="window_killer_button_name" value="Configuração..." />
+      <item name="window_killer_form" value="Configuração" />
+      <item name="window_killer_btn_apply" value="Ok" />
+      <item name="window_killer_btn_cancel" value="Cancelar" />
+      <item name="window_killer_lbl_key1" value="Key 1" />
+      <item name="window_killer_lbl_key2" value="Key 2" />
+      <item name="window_killer_lbl_mouse_button" value="Botão do mouse" />
+      <item name="window_killer_lbl_action" value="Açao" />
+      <item name="window_killer_close_window" value="Janela fechada" />
+      <item name="window_killer_kill_process" value="Processo de matar" />
     </pt>
   </items>
 </language>

@@ -6,17 +6,14 @@ namespace SmartSystemMenu.Forms
 {
     partial class SettingsSizeForm : Form
     {
-        private readonly SmartSystemMenuSettings _settings;
-
         public string Title { get; private set; }
 
         public int WindowWidth { get; private set; }
 
         public int WindowHeight { get; private set; }
 
-        public SettingsSizeForm(string title, int width, int height, SmartSystemMenuSettings settings)
+        public SettingsSizeForm(string title, int width, int height, LanguageSettings settings)
         {
-            _settings = settings;
 
             InitializeComponent();
             InitializeControls(settings);
@@ -30,14 +27,14 @@ namespace SmartSystemMenu.Forms
             WindowHeight = height;
         }
 
-        private void InitializeControls(SmartSystemMenuSettings settings)
+        private void InitializeControls(LanguageSettings settings)
         {
-            lblTitle.Text = settings.LanguageSettings.GetValue("lbl_window_size_title");
-            lblWidth.Text = settings.LanguageSettings.GetValue("lbl_window_size_width");
-            lblHeight.Text = settings.LanguageSettings.GetValue("lbl_window_size_height");
-            btnApply.Text = settings.LanguageSettings.GetValue("window_size_btn_apply");
-            btnCancel.Text = settings.LanguageSettings.GetValue("window_size_btn_cancel");
-            Text = settings.LanguageSettings.GetValue("window_size_form");
+            lblTitle.Text = settings.GetValue("lbl_window_size_title");
+            lblWidth.Text = settings.GetValue("lbl_window_size_width");
+            lblHeight.Text = settings.GetValue("lbl_window_size_height");
+            btnApply.Text = settings.GetValue("window_size_btn_apply");
+            btnCancel.Text = settings.GetValue("window_size_btn_cancel");
+            Text = settings.GetValue("window_size_form");
         }
 
         protected override void OnLoad(EventArgs e)

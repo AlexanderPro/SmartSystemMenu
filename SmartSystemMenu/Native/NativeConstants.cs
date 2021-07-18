@@ -60,6 +60,10 @@
         public const int WM_GETTEXTLENGTH = 0x000E;
         public const int WM_GETFONT = 0x0031;
 
+        public const int WM_LBUTTONDOWN = 0x0201;
+        public const int WM_RBUTTONDOWN = 0x0204;
+        public const int WM_MBUTTONDOWN = 0x0207;
+
         // SetWindowPos
         public const uint SWP_NOSIZE = 0x0001;
         public const uint SWP_NOMOVE = 0x0002;
@@ -95,6 +99,7 @@
         public const int MIIM_TYPE = 0x00000010;
         public const int MFT_STRING = 0x00000000;
 
+        public const int PROCESS_TERMINATE = 0x0001;
         public const int PROCESS_SET_INFORMATION = 0x0200;
         public const int PROCESS_QUERY_INFORMATION = 0x0400;
         public const int PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
@@ -103,6 +108,7 @@
         public const int STD_OUTPUT_HANDLE = -11;
 
         public const int WH_KEYBOARD_LL = 0x0D;
+        public const int WH_MOUSE_LL = 0x0E;
         public const uint HC_ACTION = 0;
 
         public const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;

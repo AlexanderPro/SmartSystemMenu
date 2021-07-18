@@ -16,6 +16,8 @@ namespace SmartSystemMenu.Settings
 
         public MenuItems MenuItems { get; private set; }
 
+        public WindowKillerSettings WindowKiller { get; private set; }        
+
         public bool ShowSystemTrayIcon { get; private set; }
 
         public string LanguageName { get; set; }
@@ -26,6 +28,7 @@ namespace SmartSystemMenu.Settings
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
+            WindowKiller = new WindowKillerSettings();
             ShowSystemTrayIcon = true;
             LanguageName = "";
             LanguageSettings = new LanguageSettings();
@@ -60,19 +63,30 @@ namespace SmartSystemMenu.Settings
                 settings.LanguageSettings.Items.Add(new LanguageItem { Name = languageItem.Name, Value = languageItem.Value });
             }
 
+            settings.WindowKiller.Type = WindowKiller.Type;
+            settings.WindowKiller.Key1 = WindowKiller.Key1;
+            settings.WindowKiller.Key2 = WindowKiller.Key2;
+            settings.WindowKiller.MouseButton = WindowKiller.MouseButton;
+            settings.LanguageName = LanguageName;
             return settings;
         }
 
         public override bool Equals(object other)
         {
             if (other == null)
+            {
                 return false;
+            }
 
             if (object.ReferenceEquals(this, other))
+            {
                 return true;
+            }
 
             if (GetType() != other.GetType())
+            {
                 return false;
+            }
 
             return Equals(other as SmartSystemMenuSettings);
         }
@@ -80,13 +94,19 @@ namespace SmartSystemMenu.Settings
         public bool Equals(SmartSystemMenuSettings other)
         {
             if (other == null)
+            {
                 return false;
+            }
 
             if (object.ReferenceEquals(this, other))
+            {
                 return true;
+            }
 
             if (GetType() != other.GetType())
+            {
                 return false;
+            }
 
             if (ProcessExclusions.Count != other.ProcessExclusions.Count)
             {
@@ -148,6 +168,12 @@ namespace SmartSystemMenu.Settings
                 }
             }
 
+            if (WindowKiller.Type != other.WindowKiller.Type || WindowKiller.Key1 != other.WindowKiller.Key1 || WindowKiller.Key2 != other.WindowKiller.Key2 || WindowKiller.MouseButton != other.WindowKiller.MouseButton)
+            {
+                return false;
+            }
+
+
             if (string.Compare(LanguageName, other.LanguageName, StringComparison.CurrentCultureIgnoreCase) != 0)
             {
                 return false;
@@ -180,6 +206,10 @@ namespace SmartSystemMenu.Settings
                 hashCode ^= item.Name.GetHashCode() ^ item.Key1.GetHashCode() ^ item.Key2.GetHashCode() ^ item.Key3.GetHashCode();
             }
 
+            hashCode ^= WindowKiller.Type.GetHashCode();
+            hashCode ^= WindowKiller.Key1.GetHashCode();
+            hashCode ^= WindowKiller.Key2.GetHashCode();
+            hashCode ^= WindowKiller.MouseButton.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
             return hashCode;
         }
@@ -227,6 +257,12 @@ namespace SmartSystemMenu.Settings
                     Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
                 })
                 .ToList();
+
+            var windowKillerElement = document.XPathSelectElement("/smartSystemMenu/windowKiller");
+            settings.WindowKiller.Type = windowKillerElement.Attribute("type") != null && !string.IsNullOrEmpty(windowKillerElement.Attribute("type").Value) ? (WindowKillerType)int.Parse(windowKillerElement.Attribute("type").Value) : WindowKillerType.CloseWindow;
+            settings.WindowKiller.Key1 = windowKillerElement.Attribute("key1") != null && !string.IsNullOrEmpty(windowKillerElement.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(windowKillerElement.Attribute("key1").Value) : VirtualKeyModifier.None;
+            settings.WindowKiller.Key2 = windowKillerElement.Attribute("key2") != null && !string.IsNullOrEmpty(windowKillerElement.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(windowKillerElement.Attribute("key2").Value) : VirtualKeyModifier.None;
+            settings.WindowKiller.MouseButton = windowKillerElement.Attribute("mouseButton") != null && !string.IsNullOrEmpty(windowKillerElement.Attribute("mouseButton").Value) ? (MouseButton)int.Parse(windowKillerElement.Attribute("mouseButton").Value) : MouseButton.None;
 
             var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
             if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
@@ -325,6 +361,12 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
                                          new XAttribute("arguments", x.Arguments))))),
+                                 new XElement("windowKiller",
+                                     new XAttribute("type", ((int)settings.WindowKiller.Type).ToString()),
+                                     new XAttribute("key1", settings.WindowKiller.Key1 == VirtualKeyModifier.None ? "" : ((int)settings.WindowKiller.Key1).ToString()),
+                                     new XAttribute("key2", settings.WindowKiller.Key2 == VirtualKeyModifier.None ? "" : ((int)settings.WindowKiller.Key2).ToString()),
+                                     new XAttribute("mouseButton", settings.WindowKiller.MouseButton == MouseButton.None ? "" : ((int)settings.WindowKiller.MouseButton).ToString())
+                                 ),
                                  new XElement("systemTrayIcon",
                                      new XAttribute("show", settings.ShowSystemTrayIcon.ToString().ToLower())
                                  ),

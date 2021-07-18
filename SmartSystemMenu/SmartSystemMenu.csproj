@@ -80,6 +80,12 @@
     <Compile Include="Controls\DataGridViewDisableButtonCell.cs" />
     <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Forms\WindowKillerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WindowKillerForm.Designer.cs">
+      <DependentUpon>WindowKillerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HotkeysForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,11 +116,17 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HotKeys\MouseEventArgs.cs" />
+    <Compile Include="HotKeys\MouseHook.cs" />
     <Compile Include="HotKeys\HotKeyHook.cs" />
-    <Compile Include="HotKeys\HotKeyHookEventArgs.cs" />
+    <Compile Include="HotKeys\HotKeyEventArgs.cs" />
     <Compile Include="HotKeys\VirtualKey.cs" />
+    <Compile Include="HotKeys\MouseButton.cs" />
     <Compile Include="HotKeys\VirtualKeyModifier.cs" />
     <Compile Include="MenuItemId.cs" />
+    <Compile Include="Settings\WindowKillerSettings.cs" />
+    <Compile Include="Utils\WindowUtils.cs" />
+    <Compile Include="WindowKillerType.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />
     <Compile Include="Settings\MenuItem.cs" />
     <Compile Include="Settings\MenuItems.cs" />
@@ -192,6 +204,9 @@
     <Compile Include="WmiProcessInfo.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WindowKillerForm.resx">
+      <DependentUpon>WindowKillerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HotkeysForm.resx">
       <DependentUpon>HotkeysForm.cs</DependentUpon>

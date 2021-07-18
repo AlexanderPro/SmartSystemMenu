@@ -10,6 +10,7 @@ namespace SmartSystemMenu.Forms
     public partial class SettingsForm : Form
     {
         private SmartSystemMenuSettings _settings;
+        private WindowKillerSettings _windowKillerSettings;
 
         public event EventHandler<SmartSystemMenuSettingsEventArgs> OkClick;
 
@@ -20,6 +21,7 @@ namespace SmartSystemMenu.Forms
             try
             {
                 _settings = settings;
+                _windowKillerSettings = (WindowKillerSettings)settings.WindowKiller.Clone();
                 InitializeControls(settings);
             }
             catch
@@ -32,14 +34,15 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(SmartSystemMenuSettings settings)
         {
-            lblLanguage.Text = settings.LanguageSettings.GetValue("lbl_language");
             tabpGeneral.Text = settings.LanguageSettings.GetValue("tab_settings_general");
             tabpMenuStart.Text = settings.LanguageSettings.GetValue("tab_settings_menu_start");
             tabpMenuSize.Text = settings.LanguageSettings.GetValue("tab_settings_menu_size");
             tabpMenu.Text = settings.LanguageSettings.GetValue("tab_settings_menu");
+            grpbLanguage.Text = settings.LanguageSettings.GetValue("grpb_language");
             grpbProcessExclusions.Text = settings.LanguageSettings.GetValue("grpb_process_exclusions");
             grpbStartProgram.Text = settings.LanguageSettings.GetValue("grpb_start_program");
             grpbWindowSize.Text = settings.LanguageSettings.GetValue("grpb_window_size");
+            grpbWindowKiller.Text = settings.LanguageSettings.GetValue("grpb_window_killer");
             clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
             clmProcessExclusionEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
             clmProcessExcusionDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
@@ -64,6 +67,7 @@ namespace SmartSystemMenu.Forms
             toolTipAddProcessName.SetToolTip(btnAddWindowSize, settings.LanguageSettings.GetValue("btn_add_window_size"));
             toolTipAddProcessName.SetToolTip(btnWindowSizeDown, settings.LanguageSettings.GetValue("btn_window_size_down"));
             toolTipAddProcessName.SetToolTip(btnWindowSizeUp, settings.LanguageSettings.GetValue("btn_window_size_up"));
+            btnWindowKiller.Text = settings.LanguageSettings.GetValue("window_killer_button_name");
             btnApply.Text = settings.LanguageSettings.GetValue("settings_btn_apply");
             btnCancel.Text = settings.LanguageSettings.GetValue("settings_btn_cancel");
             Text = settings.LanguageSettings.GetValue("settings_form");
@@ -199,7 +203,7 @@ namespace SmartSystemMenu.Forms
                 if (e.ColumnIndex == 1)
                 {
                     var cell = grid.Rows[e.RowIndex].Cells[0];
-                    var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings);
+                    var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings.LanguageSettings);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         cell.Value = dialog.ProcessName;
@@ -225,7 +229,7 @@ namespace SmartSystemMenu.Forms
                     var cellFileName = grid.Rows[e.RowIndex].Cells[1];
                     var cellArguments = grid.Rows[e.RowIndex].Cells[2];
 
-                    var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _settings);
+                    var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _settings.LanguageSettings);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         cellTitle.Value = dialog.Title;
@@ -250,7 +254,7 @@ namespace SmartSystemMenu.Forms
                 if (e.ColumnIndex == 3 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem)
                 {
                     var menuItem = (WindowSizeMenuItem)grid.Rows[e.RowIndex].Tag;
-                    var dialog = new SettingsSizeForm(menuItem.Title, menuItem.Width, menuItem.Height, _settings);
+                    var dialog = new SettingsSizeForm(menuItem.Title, menuItem.Width, menuItem.Height, _settings.LanguageSettings);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         menuItem.Title = dialog.Title;
@@ -272,7 +276,7 @@ namespace SmartSystemMenu.Forms
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
                 var cell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings);
+                var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings.LanguageSettings);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     cell.Value = dialog.ProcessName;
@@ -324,7 +328,7 @@ namespace SmartSystemMenu.Forms
                 var cellTitle = row.Cells[0];
                 var cellFileName = row.Cells[1];
                 var cellArguments = row.Cells[2];
-                var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _settings);
+                var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _settings.LanguageSettings);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     cellTitle.Value = dialog.Title;
@@ -340,7 +344,7 @@ namespace SmartSystemMenu.Forms
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem)
             {
                 var menuItem = (WindowSizeMenuItem)grid.Rows[e.RowIndex].Tag;
-                var dialog = new SettingsSizeForm(menuItem.Title, menuItem.Width, menuItem.Height, _settings);
+                var dialog = new SettingsSizeForm(menuItem.Title, menuItem.Width, menuItem.Height, _settings.LanguageSettings);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     menuItem.Title = dialog.Title;
@@ -352,7 +356,7 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonAddProcessExclusionClick(object sender, EventArgs e)
         {
-            var dialog = new ProcessExclusionForm("", _settings);
+            var dialog = new ProcessExclusionForm("", _settings.LanguageSettings);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvProcessExclusions.Rows.Add();
@@ -365,7 +369,7 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonAddStartProgramClick(object sender, EventArgs e)
         {
-            var dialog = new StartProgramForm("", "", "", _settings);
+            var dialog = new StartProgramForm("", "", "", _settings.LanguageSettings);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvStartProgram.Rows.Add();
@@ -380,7 +384,7 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonAddWindowSizeClick(object sender, EventArgs e)
         {
-            var dialog = new SettingsSizeForm("", 1, 1, _settings);
+            var dialog = new SettingsSizeForm("", 1, 1, _settings.LanguageSettings);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvWindowSize.Rows.Add();
@@ -429,6 +433,18 @@ namespace SmartSystemMenu.Forms
             }
         }
 
+        private void ButtonWindowKillerClick(object sender, EventArgs e)
+        {
+            var dialog = new WindowKillerForm(_settings.LanguageSettings, _windowKillerSettings.Key1, _windowKillerSettings.Key2, _windowKillerSettings.MouseButton, _windowKillerSettings.Type);
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                _windowKillerSettings.Key1 = dialog.Key1;
+                _windowKillerSettings.Key2 = dialog.Key2;
+                _windowKillerSettings.MouseButton = dialog.MouseButton;
+                _windowKillerSettings.Type = dialog.WindowKillerType;
+            }
+        }
+
         private void ButtonApplyClick(object sender, EventArgs e)
         {
             var settings = new SmartSystemMenuSettings();
@@ -457,6 +473,11 @@ namespace SmartSystemMenu.Forms
                 var menuItem = (Settings.MenuItem)row.Tag;
                 settings.MenuItems.Items.Add(menuItem);
             }
+
+            settings.WindowKiller.Key1 = _windowKillerSettings.Key1;
+            settings.WindowKiller.Key2 = _windowKillerSettings.Key2;
+            settings.WindowKiller.MouseButton = _windowKillerSettings.MouseButton;
+            settings.WindowKiller.Type = _windowKillerSettings.Type;
 
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 
@@ -505,7 +526,7 @@ namespace SmartSystemMenu.Forms
         private void ShowHotkeysForm(DataGridViewRow row)
         {
             var menuItem = (Settings.MenuItem)row.Tag;
-            var form = new HotkeysForm(_settings, menuItem);
+            var form = new HotkeysForm(_settings.LanguageSettings, menuItem);
             var result = form.ShowDialog(this);
             if (result == DialogResult.OK)
             {

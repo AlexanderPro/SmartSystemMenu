@@ -1,9 +1,7 @@
 using System;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
@@ -12,6 +10,7 @@ using System.IO;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
+using SmartSystemMenu.Utils;
 
 namespace SmartSystemMenu
 {
@@ -248,7 +247,7 @@ namespace SmartSystemMenu
             info.ParentHandle = NativeMethods.GetParent(Handle);
             info.Size = Size;
             info.ProcessId = ProcessId;
-            info.ThreadId = GetThreadId();
+            info.ThreadId = WindowUtils.GetThreadId(Handle);
             info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
             info.GWL_EXSTYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_EXSTYLE);
             info.GWL_ID = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_ID);
@@ -541,20 +540,6 @@ namespace SmartSystemMenu
             }
         }
 
-        public Bitmap PrintWindow()
-        {
-            Rect rect;
-            NativeMethods.GetWindowRect(Handle, out rect);
-            var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
-            using (var graphics = Graphics.FromImage(bitmap))
-            {
-                var hdc = graphics.GetHdc();
-                NativeMethods.PrintWindow(Handle, hdc, 0);
-                graphics.ReleaseHdc(hdc);
-            }
-            return bitmap;
-        }
-
         public string ExtractText()
         {
             var text = ExtractTextFromConsole();
@@ -669,13 +654,6 @@ namespace SmartSystemMenu
             var title = new StringBuilder(titleSize.ToInt32() + 1);
             NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXT, title.Capacity, title);
             return title.ToString();
-        }
-
-        private uint GetThreadId()
-        {
-            int processId;
-            uint threadId = NativeMethods.GetWindowThreadProcessId(Handle, out processId);
-            return threadId;
         }
 
         private void SetOpacity(IntPtr handle, Byte opacity)

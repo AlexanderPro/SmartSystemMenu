@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Extensions;
+using SmartSystemMenu.Utils;
 using SmartSystemMenu.Hooks;
 using SmartSystemMenu.HotKeys;
 using SmartSystemMenu.Settings;
@@ -23,7 +24,7 @@ namespace SmartSystemMenu.Forms
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
         private CBTHook _cbtHook;
-        private MouseHook _mouseHook;
+        private Hooks.MouseHook _mouseHook;
         private AboutForm _aboutForm;
         private SettingsForm _settingsForm;
         private SmartSystemMenuSettings _settings;
@@ -31,6 +32,7 @@ namespace SmartSystemMenu.Forms
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
         private HotKeyHook _hotKeyHook;
+        private HotKeys.MouseHook _hotKeyMouseHook;
         private Process _64BitProcess;
 #endif
 
@@ -84,9 +86,19 @@ namespace SmartSystemMenu.Forms
             _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
             _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
 
+            var moduleName = Process.GetCurrentProcess().MainModule.ModuleName;
+
             _hotKeyHook = new HotKeyHook();
             _hotKeyHook.Hooked += HotKeyHooked;
-            _hotKeyHook.Start(Process.GetCurrentProcess().MainModule.ModuleName, _settings.MenuItems.Items);
+            _hotKeyHook.Start(moduleName, _settings.MenuItems.Items);
+
+            _hotKeyMouseHook = new HotKeys.MouseHook();
+            _hotKeyMouseHook.Hooked += HotKeyMouseHooked;
+            if (_settings.WindowKiller.MouseButton != MouseButton.None)
+            {
+                _hotKeyMouseHook.Start(moduleName, _settings.WindowKiller.Key1, _settings.WindowKiller.Key2, _settings.WindowKiller.MouseButton);
+            }
+
 #endif
             _windows = EnumWindows.EnumAllWindows(_settings.MenuItems, _settings.LanguageSettings, new string[] { SHELL_WINDOW_NAME }).ToList();
 
@@ -129,10 +141,28 @@ namespace SmartSystemMenu.Forms
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
 
-            _mouseHook = new MouseHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
+            _mouseHook = new Hooks.MouseHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             _mouseHook.Start();
 
             Hide();
+        }
+
+        private void HotKeyMouseHooked(object sender, HotKeys.MouseEventArgs e)
+        {
+            var handle = NativeMethods.WindowFromPoint(e.Point);
+            if (handle != IntPtr.Zero)
+            {
+                if (_settings.WindowKiller.Type == WindowKillerType.CloseWindow)
+                {
+                    handle = WindowUtils.GetParentWindow(handle);
+                    NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                }
+                else
+                {
+                    var processId = WindowUtils.GetProcessId(handle);
+                    SystemUtils.TerminateProcess(processId, 0);
+                }
+            }
         }
 
         protected override void OnClosed(EventArgs e)
@@ -220,7 +250,7 @@ namespace SmartSystemMenu.Forms
         {
             if (_aboutForm == null || _aboutForm.IsDisposed || !_aboutForm.IsHandleCreated)
             {
-                _aboutForm = new AboutForm(_settings);
+                _aboutForm = new AboutForm(_settings.LanguageSettings);
             }
             _aboutForm.Show();
             _aboutForm.Activate();
@@ -374,14 +404,14 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_INFORMATION:
                             {
-                                var infoForm = new InfoForm(window.GetWindowInfo(), _settings);
+                                var infoForm = new InfoForm(window.GetWindowInfo(), _settings.LanguageSettings);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;
 
                         case MenuItemId.SC_SAVE_SCREEN_SHOT:
                             {
-                                var bitmap = window.PrintWindow();
+                                var bitmap = WindowUtils.PrintWindow(window.Handle);
                                 var dialog = new SaveFileDialog
                                 {
                                     OverwritePrompt = true,
@@ -570,7 +600,7 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_SIZE_CUSTOM:
                             {
-                                var sizeForm = new SizeForm(window, _settings);
+                                var sizeForm = new SizeForm(window, _settings.LanguageSettings);
                                 sizeForm.Show(window.Win32Window);
                             }
                             break;
@@ -600,7 +630,7 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_ALIGN_CUSTOM:
                             {
-                                var positionForm = new PositionForm(window, _settings);
+                                var positionForm = new PositionForm(window, _settings.LanguageSettings);
                                 positionForm.Show(window.Win32Window);
                             }
                             break;
@@ -680,7 +710,7 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void HotKeyHooked(object sender, HotKeyHookEventArgs e)
+        private void HotKeyHooked(object sender, HotKeyEventArgs e)
         {
             var handle = NativeMethods.GetForegroundWindow();
             NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, (uint)e.MenuItemId, 0);

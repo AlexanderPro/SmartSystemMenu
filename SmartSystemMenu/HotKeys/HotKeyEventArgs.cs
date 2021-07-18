@@ -2,11 +2,11 @@
 
 namespace SmartSystemMenu.HotKeys
 {
-    class HotKeyHookEventArgs : EventArgs
+    class HotKeyEventArgs : EventArgs
     {
         public int MenuItemId { get; private set; }
 
-        public HotKeyHookEventArgs(int menuItemId)
+        public HotKeyEventArgs(int menuItemId)
         {
             MenuItemId = menuItemId;
         }

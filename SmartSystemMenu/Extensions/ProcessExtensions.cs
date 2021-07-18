@@ -4,16 +4,19 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.NativeMethods;
+using static SmartSystemMenu.Native.NativeConstants;
 
 namespace SmartSystemMenu.Extensions
 {
     static class ProcessExtensions
     {
-        public static IntPtr GetHandle(this Process currentProcess)
+        public static IntPtr GetHandle(this Process process)
         {
-            var handle = Environment.OSVersion.Version.Major >= 6 ? NativeMethods.OpenProcess(NativeConstants.PROCESS_QUERY_LIMITED_INFORMATION | NativeConstants.PROCESS_SET_INFORMATION, false, currentProcess.Id) :
-                                                                    NativeMethods.OpenProcess(NativeConstants.PROCESS_QUERY_INFORMATION | NativeConstants.PROCESS_SET_INFORMATION, false, currentProcess.Id);
-            return handle;
+            var hProcess = Environment.OSVersion.Version.Major >= 6 ?
+                OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION | PROCESS_SET_INFORMATION, false, process.Id) :
+                OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_SET_INFORMATION, false, process.Id);
+            return hProcess;
         }
 
         public static string GetMainModuleFileName(this Process process, int buffer = 1024)
@@ -26,7 +29,7 @@ namespace SmartSystemMenu.Extensions
             {
                 var fileNameBuilder = new StringBuilder(buffer);
                 var bufferLength = (uint)fileNameBuilder.Capacity + 1;
-                return NativeMethods.QueryFullProcessImageName(process.GetHandle(), 0, fileNameBuilder, ref bufferLength) ? fileNameBuilder.ToString() : null;
+                return QueryFullProcessImageName(process.GetHandle(), 0, fileNameBuilder, ref bufferLength) ? fileNameBuilder.ToString() : null;
             }
         }
 
@@ -35,7 +38,7 @@ namespace SmartSystemMenu.Extensions
             var handles = new List<IntPtr>();
             foreach (ProcessThread thread in process.Threads)
             {
-                NativeMethods.EnumThreadWindows(thread.Id, (hwnd, lParam) => { handles.Add(hwnd); return true; }, 0);
+                EnumThreadWindows(thread.Id, (hwnd, lParam) => { handles.Add(hwnd); return true; }, 0);
             }
             return handles;
         }
@@ -44,7 +47,7 @@ namespace SmartSystemMenu.Extensions
         {
             var pbi = new PROCESS_BASIC_INFORMATION();
             int returnLength;
-            var status = NativeMethods.NtQueryInformationProcess(process.GetHandle(), 0, ref pbi, Marshal.SizeOf(pbi), out returnLength);
+            var status = NtQueryInformationProcess(process.GetHandle(), 0, ref pbi, Marshal.SizeOf(pbi), out returnLength);
             if (status != 0)
             {
                 return null;
@@ -64,12 +67,12 @@ namespace SmartSystemMenu.Extensions
         {
             foreach (ProcessThread thread in process.Threads)
             {
-                var pOpenThread = NativeMethods.OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
+                var pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                 if (pOpenThread == IntPtr.Zero)
                 {
                     break;
                 }
-                NativeMethods.SuspendThread(pOpenThread);
+                SuspendThread(pOpenThread);
             }
         }
 
@@ -77,12 +80,12 @@ namespace SmartSystemMenu.Extensions
         {
             foreach (ProcessThread thread in process.Threads)
             {
-                var pOpenThread = NativeMethods.OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
+                var pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                 if (pOpenThread == IntPtr.Zero)
                 {
                     break;
                 }
-                NativeMethods.ResumeThread(pOpenThread);
+                ResumeThread(pOpenThread);
             }
         }
 

@@ -7,53 +7,53 @@ namespace SmartSystemMenu.Forms
 {
     partial class InfoForm : Form
     {
-        public InfoForm(WindowInfo windowInfo, SmartSystemMenuSettings settings)
+        public InfoForm(WindowInfo windowInfo, LanguageSettings settings)
         {
             InitializeComponent();
             InitializeControls(windowInfo, settings);
         }
 
-        private void InitializeControls(WindowInfo windowInfo, SmartSystemMenuSettings settings)
+        private void InitializeControls(WindowInfo windowInfo, LanguageSettings settings)
         {
-            grpWindow.Text = settings.LanguageSettings.GetValue("grp_window");
-            grpProcess.Text = settings.LanguageSettings.GetValue("grp_process");
-            lblGetWindowText.Text = settings.LanguageSettings.GetValue("lbl_get_window_text");
-            lblWmGetText.Text = settings.LanguageSettings.GetValue("lbl_wm_gettext");
-            lblGetClassName.Text = settings.LanguageSettings.GetValue("lbl_get_class_name");
-            lblRealGetWindowClass.Text = settings.LanguageSettings.GetValue("lbl_real_get_window_class");
-            lblFontName.Text = settings.LanguageSettings.GetValue("lbl_font_name");
-            lblWindowHandle.Text = settings.LanguageSettings.GetValue("lbl_window_handle");
-            lblParentWindowHandle.Text = settings.LanguageSettings.GetValue("lbl_parent_window_handle");
-            lblWindowSize.Text = settings.LanguageSettings.GetValue("lbl_window_size");
-            lblInstance.Text = settings.LanguageSettings.GetValue("lbl_instance");
-            lblProcessId.Text = settings.LanguageSettings.GetValue("lbl_process_id");
-            lblThreadId.Text = settings.LanguageSettings.GetValue("lbl_thread_id");
-            lblGclWndProc.Text = settings.LanguageSettings.GetValue("lbl_gcl_wnd_proc");
-            lblDwlDlgProc.Text = settings.LanguageSettings.GetValue("lbl_dwl_dlg_proc");
-            lblGwlStyle.Text = settings.LanguageSettings.GetValue("lbl_gwl_style");
-            lblGclStyle.Text = settings.LanguageSettings.GetValue("lbl_gcl_style");
-            lblGwlExStyle.Text = settings.LanguageSettings.GetValue("lbl_gwl_exstyle");
-            lblWindowInfoExStyle.Text = settings.LanguageSettings.GetValue("lbl_windowinfo_exstyle");
-            lblLwaAlpha.Text = settings.LanguageSettings.GetValue("lbl_lwa_alpha");
-            lblLwaColorKey.Text = settings.LanguageSettings.GetValue("lbl_lwa_colorkey");
-            lblGwlUserData.Text = settings.LanguageSettings.GetValue("lbl_gwl_userdata");
-            lblDwlUser.Text = settings.LanguageSettings.GetValue("lbl_dwl_user");
-            lblFullPath.Text = settings.LanguageSettings.GetValue("lbl_full_path");
-            lblCommandLine.Text = settings.LanguageSettings.GetValue("lbl_command_line");
-            lblStartedAt.Text = settings.LanguageSettings.GetValue("lbl_started_at");
-            lblOwner.Text = settings.LanguageSettings.GetValue("lbl_owner");
-            lblThreads.Text = settings.LanguageSettings.GetValue("lbl_threads");
-            lblWorkingSetSize.Text = settings.LanguageSettings.GetValue("lbl_working_set_size");
-            lblParent.Text = settings.LanguageSettings.GetValue("lbl_parent");
-            lblPriority.Text = settings.LanguageSettings.GetValue("lbl_priority");
-            lblHandles.Text = settings.LanguageSettings.GetValue("lbl_handles");
-            lblVirtualSize.Text = settings.LanguageSettings.GetValue("lbl_virtual_size");
-            lblProductName.Text = settings.LanguageSettings.GetValue("lbl_product_name");
-            lblCopyright.Text = settings.LanguageSettings.GetValue("lbl_copyright");
-            lblFileVersion.Text = settings.LanguageSettings.GetValue("lbl_file_version");
-            lblProductVersion.Text = settings.LanguageSettings.GetValue("lbl_product_version");
-            btnOk.Text = settings.LanguageSettings.GetValue("information_btn_apply");
-            Text = settings.LanguageSettings.GetValue("information");
+            grpWindow.Text = settings.GetValue("grp_window");
+            grpProcess.Text = settings.GetValue("grp_process");
+            lblGetWindowText.Text = settings.GetValue("lbl_get_window_text");
+            lblWmGetText.Text = settings.GetValue("lbl_wm_gettext");
+            lblGetClassName.Text = settings.GetValue("lbl_get_class_name");
+            lblRealGetWindowClass.Text = settings.GetValue("lbl_real_get_window_class");
+            lblFontName.Text = settings.GetValue("lbl_font_name");
+            lblWindowHandle.Text = settings.GetValue("lbl_window_handle");
+            lblParentWindowHandle.Text = settings.GetValue("lbl_parent_window_handle");
+            lblWindowSize.Text = settings.GetValue("lbl_window_size");
+            lblInstance.Text = settings.GetValue("lbl_instance");
+            lblProcessId.Text = settings.GetValue("lbl_process_id");
+            lblThreadId.Text = settings.GetValue("lbl_thread_id");
+            lblGclWndProc.Text = settings.GetValue("lbl_gcl_wnd_proc");
+            lblDwlDlgProc.Text = settings.GetValue("lbl_dwl_dlg_proc");
+            lblGwlStyle.Text = settings.GetValue("lbl_gwl_style");
+            lblGclStyle.Text = settings.GetValue("lbl_gcl_style");
+            lblGwlExStyle.Text = settings.GetValue("lbl_gwl_exstyle");
+            lblWindowInfoExStyle.Text = settings.GetValue("lbl_windowinfo_exstyle");
+            lblLwaAlpha.Text = settings.GetValue("lbl_lwa_alpha");
+            lblLwaColorKey.Text = settings.GetValue("lbl_lwa_colorkey");
+            lblGwlUserData.Text = settings.GetValue("lbl_gwl_userdata");
+            lblDwlUser.Text = settings.GetValue("lbl_dwl_user");
+            lblFullPath.Text = settings.GetValue("lbl_full_path");
+            lblCommandLine.Text = settings.GetValue("lbl_command_line");
+            lblStartedAt.Text = settings.GetValue("lbl_started_at");
+            lblOwner.Text = settings.GetValue("lbl_owner");
+            lblThreads.Text = settings.GetValue("lbl_threads");
+            lblWorkingSetSize.Text = settings.GetValue("lbl_working_set_size");
+            lblParent.Text = settings.GetValue("lbl_parent");
+            lblPriority.Text = settings.GetValue("lbl_priority");
+            lblHandles.Text = settings.GetValue("lbl_handles");
+            lblVirtualSize.Text = settings.GetValue("lbl_virtual_size");
+            lblProductName.Text = settings.GetValue("lbl_product_name");
+            lblCopyright.Text = settings.GetValue("lbl_copyright");
+            lblFileVersion.Text = settings.GetValue("lbl_file_version");
+            lblProductVersion.Text = settings.GetValue("lbl_product_version");
+            btnOk.Text = settings.GetValue("information_btn_apply");
+            Text = settings.GetValue("information");
 
             var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone(); ;
             nfi.NumberGroupSeparator = ",";

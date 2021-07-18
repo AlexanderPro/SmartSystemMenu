@@ -7,7 +7,7 @@ namespace SmartSystemMenu.Forms
 {
     public partial class StartProgramForm : Form
     {
-        private readonly SmartSystemMenuSettings _settings;
+        private readonly LanguageSettings _settings;
 
         public string Title { get; private set; }
 
@@ -15,7 +15,7 @@ namespace SmartSystemMenu.Forms
 
         public string Arguments { get; private set; }
 
-        public StartProgramForm(string title, string processName, string arguments, SmartSystemMenuSettings settings)
+        public StartProgramForm(string title, string processName, string arguments, LanguageSettings settings)
         {
             _settings = settings;
 
@@ -27,14 +27,14 @@ namespace SmartSystemMenu.Forms
             txtArguments.Text = arguments;
         }
 
-        private void InitializeControls(SmartSystemMenuSettings settings)
+        private void InitializeControls(LanguageSettings settings)
         {
-            lblTitle.Text = settings.LanguageSettings.GetValue("start_program_lbl_title");
-            btnApply.Text = settings.LanguageSettings.GetValue("start_program_btn_apply");
-            btnCancel.Text = settings.LanguageSettings.GetValue("start_program_btn_cancel");
-            lblFileName.Text = settings.LanguageSettings.GetValue("start_program_lbl_file_name");
-            lblArguments.Text = settings.LanguageSettings.GetValue("start_program_lbl_arguments");
-            Text = settings.LanguageSettings.GetValue("start_program_form");
+            lblTitle.Text = settings.GetValue("start_program_lbl_title");
+            btnApply.Text = settings.GetValue("start_program_btn_apply");
+            btnCancel.Text = settings.GetValue("start_program_btn_cancel");
+            lblFileName.Text = settings.GetValue("start_program_lbl_file_name");
+            lblArguments.Text = settings.GetValue("start_program_lbl_arguments");
+            Text = settings.GetValue("start_program_form");
         }
 
         protected override void OnLoad(EventArgs e)
@@ -50,7 +50,7 @@ namespace SmartSystemMenu.Forms
             var dialog = new OpenFileDialog()
             {
                 RestoreDirectory = true,
-                Filter = _settings.LanguageSettings.GetValue("start_program_browse_file_filter")
+                Filter = _settings.GetValue("start_program_browse_file_filter")
             };
 
             if (File.Exists(txtFileName.Text))
