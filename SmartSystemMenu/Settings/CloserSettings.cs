@@ -3,9 +3,9 @@ using SmartSystemMenu.HotKeys;
 
 namespace SmartSystemMenu.Settings
 {
-    public class WindowKillerSettings : ICloneable
+    public class CloserSettings : ICloneable
     {
-        public WindowKillerType Type { get; set; }
+        public WindowCloserType Type { get; set; }
 
         public VirtualKeyModifier Key1 { get; set; }
 
@@ -13,9 +13,9 @@ namespace SmartSystemMenu.Settings
 
         public MouseButton MouseButton { get; set; }
 
-        public WindowKillerSettings()
+        public CloserSettings()
         {
-            Type = WindowKillerType.CloseWindow;
+            Type = WindowCloserType.CloseForegroundWindow;
             Key1 = VirtualKeyModifier.None;
             Key2 = VirtualKeyModifier.None;
             MouseButton = MouseButton.None;

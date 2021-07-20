@@ -1,6 +1,6 @@
 ﻿namespace SmartSystemMenu.Forms
 {
-    partial class WindowKillerForm
+    partial class SettingsCloserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -132,7 +132,7 @@
             this.lblAction.TabIndex = 6;
             this.lblAction.Text = "Action";
             // 
-            // WindowKillerForm
+            // WindowCloserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,7 +151,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "WindowKillerForm";
+            this.Name = "WindowCloserForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

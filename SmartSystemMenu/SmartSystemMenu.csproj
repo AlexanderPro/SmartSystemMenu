@@ -80,11 +80,11 @@
     <Compile Include="Controls\DataGridViewDisableButtonCell.cs" />
     <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Forms\WindowKillerForm.cs">
+    <Compile Include="Forms\SettingsCloserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\WindowKillerForm.Designer.cs">
-      <DependentUpon>WindowKillerForm.cs</DependentUpon>
+    <Compile Include="Forms\SettingsCloserForm.Designer.cs">
+      <DependentUpon>SettingsCloserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HotkeysForm.cs">
       <SubType>Form</SubType>
@@ -124,9 +124,9 @@
     <Compile Include="HotKeys\MouseButton.cs" />
     <Compile Include="HotKeys\VirtualKeyModifier.cs" />
     <Compile Include="MenuItemId.cs" />
-    <Compile Include="Settings\WindowKillerSettings.cs" />
+    <Compile Include="Settings\CloserSettings.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
-    <Compile Include="WindowKillerType.cs" />
+    <Compile Include="WindowCloserType.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />
     <Compile Include="Settings\MenuItem.cs" />
     <Compile Include="Settings\MenuItems.cs" />
@@ -205,8 +205,8 @@
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\WindowKillerForm.resx">
-      <DependentUpon>WindowKillerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SettingsCloserForm.resx">
+      <DependentUpon>SettingsCloserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HotkeysForm.resx">
       <DependentUpon>HotkeysForm.cs</DependentUpon>

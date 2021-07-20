@@ -94,9 +94,9 @@ namespace SmartSystemMenu.Forms
 
             _hotKeyMouseHook = new HotKeys.MouseHook();
             _hotKeyMouseHook.Hooked += HotKeyMouseHooked;
-            if (_settings.WindowKiller.MouseButton != MouseButton.None)
+            if (_settings.Closer.MouseButton != MouseButton.None)
             {
-                _hotKeyMouseHook.Start(moduleName, _settings.WindowKiller.Key1, _settings.WindowKiller.Key2, _settings.WindowKiller.MouseButton);
+                _hotKeyMouseHook.Start(moduleName, _settings.Closer.Key1, _settings.Closer.Key2, _settings.Closer.MouseButton);
             }
 
 #endif
@@ -149,19 +149,29 @@ namespace SmartSystemMenu.Forms
 
         private void HotKeyMouseHooked(object sender, HotKeys.MouseEventArgs e)
         {
-            var handle = NativeMethods.WindowFromPoint(e.Point);
-            if (handle != IntPtr.Zero)
+            if (_settings.Closer.Type == WindowCloserType.CloseForegroundWindow)
             {
-                if (_settings.WindowKiller.Type == WindowKillerType.CloseWindow)
-                {
-                    handle = WindowUtils.GetParentWindow(handle);
-                    NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
-                }
-                else
-                {
-                    var processId = WindowUtils.GetProcessId(handle);
-                    SystemUtils.TerminateProcess(processId, 0);
-                }
+                var handle = NativeMethods.GetForegroundWindow();
+                NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+            }
+            else if (_settings.Closer.Type == WindowCloserType.CloseWindowUnderCursor)
+            {
+                var handle = NativeMethods.WindowFromPoint(e.Point);
+                handle = WindowUtils.GetParentWindow(handle);
+                NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+            }
+            else if (_settings.Closer.Type == WindowCloserType.KillProcessWithForegroundWindow)
+            {
+                var handle = NativeMethods.GetForegroundWindow();
+                var processId = WindowUtils.GetProcessId(handle);
+                SystemUtils.TerminateProcess(processId, 0);
+            }
+            else if (_settings.Closer.Type == WindowCloserType.KillProcessWithWindowUnderCursor)
+            {
+                var handle = NativeMethods.WindowFromPoint(e.Point);
+                handle = WindowUtils.GetParentWindow(handle);
+                var processId = WindowUtils.GetProcessId(handle);
+                SystemUtils.TerminateProcess(processId, 0);
             }
         }
 

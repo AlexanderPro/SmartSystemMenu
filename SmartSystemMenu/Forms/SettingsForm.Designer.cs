@@ -34,8 +34,8 @@ namespace SmartSystemMenu.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabpGeneral = new System.Windows.Forms.TabPage();
-            this.grpbWindowKiller = new System.Windows.Forms.GroupBox();
-            this.btnWindowKiller = new System.Windows.Forms.Button();
+            this.grpbCloser = new System.Windows.Forms.GroupBox();
+            this.btnCloser = new System.Windows.Forms.Button();
             this.grpbLanguage = new System.Windows.Forms.GroupBox();
             this.cmbLanguage = new System.Windows.Forms.ComboBox();
             this.grpbProcessExclusions = new System.Windows.Forms.GroupBox();
@@ -80,7 +80,7 @@ namespace SmartSystemMenu.Forms
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
-            this.grpbWindowKiller.SuspendLayout();
+            this.grpbCloser.SuspendLayout();
             this.grpbLanguage.SuspendLayout();
             this.grpbProcessExclusions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvProcessExclusions)).BeginInit();
@@ -110,7 +110,7 @@ namespace SmartSystemMenu.Forms
             // 
             // tabpGeneral
             // 
-            this.tabpGeneral.Controls.Add(this.grpbWindowKiller);
+            this.tabpGeneral.Controls.Add(this.grpbCloser);
             this.tabpGeneral.Controls.Add(this.grpbLanguage);
             this.tabpGeneral.Controls.Add(this.grpbProcessExclusions);
             this.tabpGeneral.Location = new System.Drawing.Point(4, 22);
@@ -120,23 +120,23 @@ namespace SmartSystemMenu.Forms
             this.tabpGeneral.TabIndex = 0;
             this.tabpGeneral.UseVisualStyleBackColor = true;
             // 
-            // grpbWindowKiller
+            // grpbCloser
             // 
-            this.grpbWindowKiller.Controls.Add(this.btnWindowKiller);
-            this.grpbWindowKiller.Location = new System.Drawing.Point(8, 87);
-            this.grpbWindowKiller.Name = "grpbWindowKiller";
-            this.grpbWindowKiller.Size = new System.Drawing.Size(497, 69);
-            this.grpbWindowKiller.TabIndex = 1;
-            this.grpbWindowKiller.TabStop = false;
+            this.grpbCloser.Controls.Add(this.btnCloser);
+            this.grpbCloser.Location = new System.Drawing.Point(8, 87);
+            this.grpbCloser.Name = "grpbCloser";
+            this.grpbCloser.Size = new System.Drawing.Size(497, 69);
+            this.grpbCloser.TabIndex = 1;
+            this.grpbCloser.TabStop = false;
             // 
-            // btnWindowKiller
+            // btnCloser
             // 
-            this.btnWindowKiller.Location = new System.Drawing.Point(6, 26);
-            this.btnWindowKiller.Name = "btnWindowKiller";
-            this.btnWindowKiller.Size = new System.Drawing.Size(166, 23);
-            this.btnWindowKiller.TabIndex = 0;
-            this.btnWindowKiller.UseVisualStyleBackColor = true;
-            this.btnWindowKiller.Click += new System.EventHandler(this.ButtonWindowKillerClick);
+            this.btnCloser.Location = new System.Drawing.Point(6, 26);
+            this.btnCloser.Name = "btnCloser";
+            this.btnCloser.Size = new System.Drawing.Size(166, 23);
+            this.btnCloser.TabIndex = 0;
+            this.btnCloser.UseVisualStyleBackColor = true;
+            this.btnCloser.Click += new System.EventHandler(this.ButtonWindowCloserClick);
             // 
             // grpbLanguage
             // 
@@ -611,7 +611,7 @@ namespace SmartSystemMenu.Forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.tabMain.ResumeLayout(false);
             this.tabpGeneral.ResumeLayout(false);
-            this.grpbWindowKiller.ResumeLayout(false);
+            this.grpbCloser.ResumeLayout(false);
             this.grpbLanguage.ResumeLayout(false);
             this.grpbProcessExclusions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvProcessExclusions)).EndInit();
@@ -673,8 +673,8 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHeight;
         private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeEdit;
         private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeDelete;
-        private System.Windows.Forms.GroupBox grpbWindowKiller;
-        private System.Windows.Forms.Button btnWindowKiller;
+        private System.Windows.Forms.GroupBox grpbCloser;
+        private System.Windows.Forms.Button btnCloser;
         private System.Windows.Forms.GroupBox grpbLanguage;
     }
 }

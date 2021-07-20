@@ -170,17 +170,21 @@
       <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
       <item name="tab_settings_menu_start" value="Menu (Start Program)" />
       <item name="tab_settings_menu_size" value="Menu (Resize)" />
-      <item name="grpb_window_killer" value="Close Window By Mouse Click" />
-      <item name="window_killer_button_name" value="Settings..." />
-      <item name="window_killer_form" value="Settings" />
-      <item name="window_killer_btn_apply" value="Ok" />
-      <item name="window_killer_btn_cancel" value="Cancel" />
-      <item name="window_killer_lbl_key1" value="Key 1" />
-      <item name="window_killer_lbl_key2" value="Key 2" />
-      <item name="window_killer_lbl_mouse_button" value="Mouse Button" />
-      <item name="window_killer_lbl_action" value="Action" />
-      <item name="window_killer_close_window" value="Close window" />
-      <item name="window_killer_kill_process" value="Kill process" />
+      <item name="grpb_closer" value="Close Window By Mouse Click" />
+      <item name="closer_button_name" value="Settings..." />
+      <item name="closer_form" value="Settings" />
+      <item name="closer_btn_apply" value="Ok" />
+      <item name="closer_btn_cancel" value="Cancel" />
+      <item name="closer_lbl_key1" value="Key 1" />
+      <item name="closer_lbl_key2" value="Key 2" />
+      <item name="closer_lbl_mouse_button" value="Mouse Button" />
+      <item name="closer_lbl_action" value="Action" />
+      <item name="closer_close_window" value="Close window" />
+      <item name="closer_kill_process" value="Kill process" />
+      <item name="closer_close_foreground_window" value="Close foreground window" />
+      <item name="closer_close_window_under_cursor" value="Close window under cursor" />
+      <item name="closer_kill_process_with_foreground_window" value="Kill process with foreground window" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Kill process with window under cursor" />
     </en>
     <de>
       <item name="information" value="Information" />
@@ -351,17 +355,19 @@
       <item name="clm_hotkeys_show_tooltip" value="Menüpunkt anzeigen" />
       <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
       <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
-      <item name="grpb_window_killer" value="Fenster per Mausklick schließen" />
-      <item name="window_killer_button_name" value="Einstellungen..." />
-      <item name="window_killer_form" value="Einstellungen" />
-      <item name="window_killer_btn_apply" value="Ok" />
-      <item name="window_killer_btn_cancel" value="Abbrechen" />
-      <item name="window_killer_lbl_key1" value="Taste 1" />
-      <item name="window_killer_lbl_key2" value="Taste 2" />
-      <item name="window_killer_lbl_mouse_button" value="Maustaste" />
-      <item name="window_killer_lbl_action" value="Aktion" />
-      <item name="window_killer_close_window" value="Fenster schließen" />
-      <item name="window_killer_kill_process" value="Tötungsprozess" />
+      <item name="grpb_closer" value="Fenster per Mausklick schließen" />
+      <item name="closer_button_name" value="Einstellungen..." />
+      <item name="closer_form" value="Einstellungen" />
+      <item name="closer_btn_apply" value="Ok" />
+      <item name="closer_btn_cancel" value="Abbrechen" />
+      <item name="closer_lbl_key1" value="Taste 1" />
+      <item name="closer_lbl_key2" value="Taste 2" />
+      <item name="closer_lbl_mouse_button" value="Maustaste" />
+      <item name="closer_lbl_action" value="Aktion" />
+      <item name="closer_close_foreground_window" value="Vordergrundfenster schließen" />
+      <item name="closer_close_window_under_cursor" value="Fenster unter Cursor schließen" />
+      <item name="closer_kill_process_with_foreground_window" value="Prozess mit Vordergrundfenster beenden" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Prozess mit Fenster unter Cursor beenden" />
     </de>
     <zh_cn>
       <item name="information" value="信息" />
@@ -532,17 +538,19 @@
       <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
       <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
       <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
-      <item name="grpb_window_killer" value="通过鼠标单击关闭窗口" />
-      <item name="window_killer_button_name" value="设置..." />
-      <item name="window_killer_form" value="设置." />
-      <item name="window_killer_btn_apply" value="确定" />
-      <item name="window_killer_btn_cancel" value="取消" />
-      <item name="window_killer_lbl_key1" value="键 1" />
-      <item name="window_killer_lbl_key2" value="键 2" />
-      <item name="window_killer_lbl_mouse_button" value="鼠标按钮" />
-      <item name="window_killer_lbl_action" value="行动" />
-      <item name="window_killer_close_window" value="关闭窗口" />
-      <item name="window_killer_kill_process" value="杀死进程" />
+      <item name="grpb_closer" value="通过鼠标单击关闭窗口" />
+      <item name="closer_button_name" value="设置..." />
+      <item name="closer_form" value="设置." />
+      <item name="closer_btn_apply" value="确定" />
+      <item name="closer_btn_cancel" value="取消" />
+      <item name="closer_lbl_key1" value="键 1" />
+      <item name="closer_lbl_key2" value="键 2" />
+      <item name="closer_lbl_mouse_button" value="鼠标按钮" />
+      <item name="closer_lbl_action" value="行动" />
+      <item name="closer_close_foreground_window" value="关闭前景窗口" />
+      <item name="closer_close_window_under_cursor" value="关闭光标下的窗口" />
+      <item name="closer_kill_process_with_foreground_window" value="使用前台窗口杀死进程" />
+      <item name="closer_kill_process_with_window_under_cursor" value="用光标下的窗口杀死进程" />
     </zh_cn>
     <zh_tw>
       <item name="information" value="資訊" />
@@ -713,17 +721,19 @@
       <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
       <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
-      <item name="grpb_window_killer" value="通过鼠标单击关闭窗口" />
-      <item name="window_killer_button_name" value="設定..." />
-      <item name="window_killer_form" value="設定" />
-      <item name="window_killer_btn_apply" value="確定" />
-      <item name="window_killer_btn_cancel" value="取消" />
-      <item name="window_killer_lbl_key1" value="鍵 1" />
-      <item name="window_killer_lbl_key2" value="鍵 2" />
-      <item name="window_killer_lbl_mouse_button" value="鼠标按钮" />
-      <item name="window_killer_lbl_action" value="行动" />
-      <item name="window_killer_close_window" value="关闭窗口" />
-      <item name="window_killer_kill_process" value="杀死进程" />
+      <item name="grpb_closer" value="通过鼠标单击关闭窗口" />
+      <item name="closer_button_name" value="設定..." />
+      <item name="closer_form" value="設定" />
+      <item name="closer_btn_apply" value="確定" />
+      <item name="closer_btn_cancel" value="取消" />
+      <item name="closer_lbl_key1" value="鍵 1" />
+      <item name="closer_lbl_key2" value="鍵 2" />
+      <item name="closer_lbl_mouse_button" value="鼠标按钮" />
+      <item name="closer_lbl_action" value="行动" />
+      <item name="closer_close_foreground_window" value="关闭前景窗口" />
+      <item name="closer_close_window_under_cursor" value="关闭光标下的窗口" />
+      <item name="closer_kill_process_with_foreground_window" value="使用前台窗口杀死进程" />
+      <item name="closer_kill_process_with_window_under_cursor" value="用光标下的窗口杀死进程" />
     </zh_tw>
     <ja>
       <item name="information" value="情報" />
@@ -894,17 +904,19 @@
       <item name="clm_hotkeys_show_tooltip" value="メニュー項目を表示" />
       <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
       <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
-      <item name="grpb_window_killer" value="マウスクリックでウィンドウを閉じる" />
-      <item name="window_killer_button_name" value="設定..." />
-      <item name="window_killer_form" value="設定" />
-      <item name="window_killer_btn_apply" value="OK" />
-      <item name="window_killer_btn_cancel" value="キャンセル" />
-      <item name="window_killer_lbl_key1" value="キー 1" />
-      <item name="window_killer_lbl_key2" value="キー 2" />
-      <item name="window_killer_lbl_mouse_button" value="マウスボタン" />
-      <item name="window_killer_lbl_action" value="アクション" />
-      <item name="window_killer_close_window" value="ウィンドウを閉じる" />
-      <item name="window_killer_kill_process" value="プロセスを強制終了します" />
+      <item name="grpb_closer" value="マウスクリックでウィンドウを閉じる" />
+      <item name="closer_button_name" value="設定..." />
+      <item name="closer_form" value="設定" />
+      <item name="closer_btn_apply" value="OK" />
+      <item name="closer_btn_cancel" value="キャンセル" />
+      <item name="closer_lbl_key1" value="キー 1" />
+      <item name="closer_lbl_key2" value="キー 2" />
+      <item name="closer_lbl_mouse_button" value="マウスボタン" />
+      <item name="closer_lbl_action" value="アクション" />
+      <item name="closer_close_foreground_window" value="前景ウィンドウを閉じる" />
+      <item name="closer_close_window_under_cursor" value="カーソルの下のウィンドウを閉じる" />
+      <item name="closer_kill_process_with_foreground_window" value="フォアグラウンドウィンドウでプロセスを強制終了します" />
+      <item name="closer_kill_process_with_window_under_cursor" value="カーソルの下のウィンドウでプロセスを強制終了します" />
     </ja>
     <ko>
       <item name="information" value="정보" />
@@ -1075,17 +1087,19 @@
       <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
       <item name="tab_settings_menu_start" value="메뉴 (시작할 프로그램)" />
       <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
-      <item name="grpb_window_killer" value="마우스 클릭으로 창 닫기" />
-      <item name="window_killer_button_name" value="설정..." />
-      <item name="window_killer_form" value="설정" />
-      <item name="window_killer_btn_apply" value="확인" />
-      <item name="window_killer_btn_cancel" value="취소" />
-      <item name="window_killer_lbl_key1" value="키 1" />
-      <item name="window_killer_lbl_key2" value="키 2" />
-      <item name="window_killer_lbl_mouse_button" value="마우스 버튼" />
-      <item name="window_killer_lbl_action" value="동작" />
-      <item name="window_killer_close_window" value="창 닫기" />
-      <item name="window_killer_kill_process" value="프로세스 종료" />
+      <item name="grpb_closer" value="마우스 클릭으로 창 닫기" />
+      <item name="closer_button_name" value="설정..." />
+      <item name="closer_form" value="설정" />
+      <item name="closer_btn_apply" value="확인" />
+      <item name="closer_btn_cancel" value="취소" />
+      <item name="closer_lbl_key1" value="키 1" />
+      <item name="closer_lbl_key2" value="키 2" />
+      <item name="closer_lbl_mouse_button" value="마우스 버튼" />
+      <item name="closer_lbl_action" value="동작" />
+      <item name="closer_close_foreground_window" value="전경 창 닫기" />
+      <item name="closer_close_window_under_cursor" value="커서 아래 창 닫기" />
+      <item name="closer_kill_process_with_foreground_window" value="전경 창으로 프로세스 종료" />
+      <item name="closer_kill_process_with_window_under_cursor" value="커서 아래 창으로 프로세스 종료" />
     </ko>
     <ru>
       <item name="information" value="Информация" />
@@ -1256,17 +1270,19 @@
       <item name="clm_hotkeys_show_tooltip" value="Отобразить или скрыть пункт меню" />
       <item name="tab_settings_menu_start" value="Меню (Пуск)" />
       <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
-      <item name="grpb_window_killer" value="Закрытие окна кнопкой мышки" />
-      <item name="window_killer_button_name" value="Настройки..." />
-      <item name="window_killer_form" value="Настройки" />
-      <item name="window_killer_btn_apply" value="Ok" />
-      <item name="window_killer_btn_cancel" value="Cancel" />
-      <item name="window_killer_lbl_key1" value="Клавиша 1" />
-      <item name="window_killer_lbl_key2" value="Клавиша 2" />
-      <item name="window_killer_lbl_mouse_button" value="Кнопка мышки" />
-      <item name="window_killer_lbl_action" value="Действие" />
-      <item name="window_killer_close_window" value="Закрыть окно" />
-      <item name="window_killer_kill_process" value="Убить процесс" />
+      <item name="grpb_closer" value="Закрытие окна кнопкой мышки" />
+      <item name="closer_button_name" value="Настройки..." />
+      <item name="closer_form" value="Настройки" />
+      <item name="closer_btn_apply" value="Ok" />
+      <item name="closer_btn_cancel" value="Cancel" />
+      <item name="closer_lbl_key1" value="Клавиша 1" />
+      <item name="closer_lbl_key2" value="Клавиша 2" />
+      <item name="closer_lbl_mouse_button" value="Кнопка мышки" />
+      <item name="closer_lbl_action" value="Действие" />
+      <item name="closer_close_foreground_window" value="Закрыть переднее окно" />
+      <item name="closer_close_window_under_cursor" value="Закрыть окно под курсором" />
+      <item name="closer_kill_process_with_foreground_window" value="Убить процесс с передним окном" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Убить процесс с окном под курсором" />
     </ru>
     <sr>
       <item name="information" value="Информација програма" />
@@ -1437,17 +1453,19 @@
       <item name="clm_hotkeys_show_tooltip" value="Прикажи ставку менија" />
       <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
       <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
-      <item name="grpb_window_killer" value="Затворите прозор кликом миша" />
-      <item name="window_killer_button_name" value="Подешавања..." />
-      <item name="window_killer_form" value="Подешавања" />
-      <item name="window_killer_btn_apply" value="У реду" />
-      <item name="window_killer_btn_cancel" value="Откажи" />
-      <item name="window_killer_lbl_key1" value="Типак 1" />
-      <item name="window_killer_lbl_key2" value="Типак 2" />
-      <item name="window_killer_lbl_mouse_button" value="Дугме миша" />
-      <item name="window_killer_lbl_action" value="Поступак" />
-      <item name="window_killer_close_window" value="Затвори прозор" />
-      <item name="window_killer_kill_process" value="Процес убијања" />
+      <item name="grpb_closer" value="Затворите прозор кликом миша" />
+      <item name="closer_button_name" value="Подешавања..." />
+      <item name="closer_form" value="Подешавања" />
+      <item name="closer_btn_apply" value="У реду" />
+      <item name="closer_btn_cancel" value="Откажи" />
+      <item name="closer_lbl_key1" value="Типак 1" />
+      <item name="closer_lbl_key2" value="Типак 2" />
+      <item name="closer_lbl_mouse_button" value="Дугме миша" />
+      <item name="closer_lbl_action" value="Поступак" />
+      <item name="closer_close_foreground_window" value="Затворите прозор у првом плану" />
+      <item name="closer_close_window_under_cursor" value="Затворите прозор испод курсора" />
+      <item name="closer_kill_process_with_foreground_window" value="Процес убијања помоћу прозора у првом плану" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Процес убијања помоћу прозора испод курсора" />
     </sr>
     <pt>
       <item name="information" value="Informações" />
@@ -1618,17 +1636,19 @@
       <item name="clm_hotkeys_show_tooltip" value="Exibir item do menu" />
       <item name="tab_settings_menu_start" value="Menu (Executar programa)" />
       <item name="tab_settings_menu_size" value="Menu (Redimensionar)" />
-      <item name="grpb_window_killer" value="Fechar janela com clique do mouse" />
-      <item name="window_killer_button_name" value="Configuração..." />
-      <item name="window_killer_form" value="Configuração" />
-      <item name="window_killer_btn_apply" value="Ok" />
-      <item name="window_killer_btn_cancel" value="Cancelar" />
-      <item name="window_killer_lbl_key1" value="Key 1" />
-      <item name="window_killer_lbl_key2" value="Key 2" />
-      <item name="window_killer_lbl_mouse_button" value="Botão do mouse" />
-      <item name="window_killer_lbl_action" value="Açao" />
-      <item name="window_killer_close_window" value="Janela fechada" />
-      <item name="window_killer_kill_process" value="Processo de matar" />
+      <item name="grpb_closer" value="Fechar janela com clique do mouse" />
+      <item name="closer_button_name" value="Configuração..." />
+      <item name="closer_form" value="Configuração" />
+      <item name="closer_btn_apply" value="Ok" />
+      <item name="closer_btn_cancel" value="Cancelar" />
+      <item name="closer_lbl_key1" value="Key 1" />
+      <item name="closer_lbl_key2" value="Key 2" />
+      <item name="closer_lbl_mouse_button" value="Botão do mouse" />
+      <item name="closer_lbl_action" value="Açao" />
+      <item name="closer_close_foreground_window" value="Fechar janela de primeiro plano" />
+      <item name="closer_close_window_under_cursor" value="Fechar a janela sob o cursor" />
+      <item name="closer_kill_process_with_foreground_window" value="Mate o processo com a janela em primeiro plano" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Mate o processo com a janela sob o cursor" />
     </pt>
   </items>
 </language>

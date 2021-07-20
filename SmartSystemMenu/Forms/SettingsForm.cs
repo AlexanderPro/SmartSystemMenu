@@ -10,7 +10,7 @@ namespace SmartSystemMenu.Forms
     public partial class SettingsForm : Form
     {
         private SmartSystemMenuSettings _settings;
-        private WindowKillerSettings _windowKillerSettings;
+        private CloserSettings _closerSettings;
 
         public event EventHandler<SmartSystemMenuSettingsEventArgs> OkClick;
 
@@ -21,7 +21,7 @@ namespace SmartSystemMenu.Forms
             try
             {
                 _settings = settings;
-                _windowKillerSettings = (WindowKillerSettings)settings.WindowKiller.Clone();
+                _closerSettings = (CloserSettings)settings.Closer.Clone();
                 InitializeControls(settings);
             }
             catch
@@ -42,7 +42,7 @@ namespace SmartSystemMenu.Forms
             grpbProcessExclusions.Text = settings.LanguageSettings.GetValue("grpb_process_exclusions");
             grpbStartProgram.Text = settings.LanguageSettings.GetValue("grpb_start_program");
             grpbWindowSize.Text = settings.LanguageSettings.GetValue("grpb_window_size");
-            grpbWindowKiller.Text = settings.LanguageSettings.GetValue("grpb_window_killer");
+            grpbCloser.Text = settings.LanguageSettings.GetValue("grpb_closer");
             clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
             clmProcessExclusionEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
             clmProcessExcusionDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
@@ -67,7 +67,7 @@ namespace SmartSystemMenu.Forms
             toolTipAddProcessName.SetToolTip(btnAddWindowSize, settings.LanguageSettings.GetValue("btn_add_window_size"));
             toolTipAddProcessName.SetToolTip(btnWindowSizeDown, settings.LanguageSettings.GetValue("btn_window_size_down"));
             toolTipAddProcessName.SetToolTip(btnWindowSizeUp, settings.LanguageSettings.GetValue("btn_window_size_up"));
-            btnWindowKiller.Text = settings.LanguageSettings.GetValue("window_killer_button_name");
+            btnCloser.Text = settings.LanguageSettings.GetValue("closer_button_name");
             btnApply.Text = settings.LanguageSettings.GetValue("settings_btn_apply");
             btnCancel.Text = settings.LanguageSettings.GetValue("settings_btn_cancel");
             Text = settings.LanguageSettings.GetValue("settings_form");
@@ -433,15 +433,15 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void ButtonWindowKillerClick(object sender, EventArgs e)
+        private void ButtonWindowCloserClick(object sender, EventArgs e)
         {
-            var dialog = new WindowKillerForm(_settings.LanguageSettings, _windowKillerSettings.Key1, _windowKillerSettings.Key2, _windowKillerSettings.MouseButton, _windowKillerSettings.Type);
+            var dialog = new SettingsCloserForm(_settings.LanguageSettings, _closerSettings.Key1, _closerSettings.Key2, _closerSettings.MouseButton, _closerSettings.Type);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
-                _windowKillerSettings.Key1 = dialog.Key1;
-                _windowKillerSettings.Key2 = dialog.Key2;
-                _windowKillerSettings.MouseButton = dialog.MouseButton;
-                _windowKillerSettings.Type = dialog.WindowKillerType;
+                _closerSettings.Key1 = dialog.Key1;
+                _closerSettings.Key2 = dialog.Key2;
+                _closerSettings.MouseButton = dialog.MouseButton;
+                _closerSettings.Type = dialog.CloserType;
             }
         }
 
@@ -474,10 +474,10 @@ namespace SmartSystemMenu.Forms
                 settings.MenuItems.Items.Add(menuItem);
             }
 
-            settings.WindowKiller.Key1 = _windowKillerSettings.Key1;
-            settings.WindowKiller.Key2 = _windowKillerSettings.Key2;
-            settings.WindowKiller.MouseButton = _windowKillerSettings.MouseButton;
-            settings.WindowKiller.Type = _windowKillerSettings.Type;
+            settings.Closer.Key1 = _closerSettings.Key1;
+            settings.Closer.Key2 = _closerSettings.Key2;
+            settings.Closer.MouseButton = _closerSettings.MouseButton;
+            settings.Closer.Type = _closerSettings.Type;
 
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 

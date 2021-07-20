@@ -91,7 +91,7 @@
       <item title="Explorer" fileName="explorer.exe" arguments="" />
     </startProgramItems>
   </menuItems>
-  <windowKiller type="" key1="" key2="" mouseButton="" />
+  <closer type="" key1="" key2="" mouseButton="" />
   <systemTrayIcon show="true" />
   <language name="" />
 </smartSystemMenu>

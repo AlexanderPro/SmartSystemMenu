@@ -8,9 +8,9 @@ using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
 {
-    public partial class WindowKillerForm : Form
+    public partial class SettingsCloserForm : Form
     {
-        public WindowKillerType WindowKillerType { get; set; }
+        public WindowCloserType CloserType { get; set; }
 
         public VirtualKeyModifier Key1 { get; private set; }
 
@@ -18,21 +18,21 @@ namespace SmartSystemMenu.Forms
 
         public MouseButton MouseButton { get; private set; }
 
-        public WindowKillerForm(LanguageSettings settings, VirtualKeyModifier key1, VirtualKeyModifier key2, MouseButton mouseButton, WindowKillerType windowKillerType)
+        public SettingsCloserForm(LanguageSettings settings, VirtualKeyModifier key1, VirtualKeyModifier key2, MouseButton mouseButton, WindowCloserType closerType)
         {
             InitializeComponent();
-            InitializeControls(settings, key1, key2, mouseButton, windowKillerType);
+            InitializeControls(settings, key1, key2, mouseButton, closerType);
         }
 
-        private void InitializeControls(LanguageSettings settings, VirtualKeyModifier key1, VirtualKeyModifier key2, MouseButton mouseButton, WindowKillerType windowKillerType)
+        private void InitializeControls(LanguageSettings settings, VirtualKeyModifier key1, VirtualKeyModifier key2, MouseButton mouseButton, WindowCloserType closerType)
         {
-            Text = settings.GetValue("window_killer_form");
-            btnApply.Text = settings.GetValue("window_killer_btn_apply");
-            btnCancel.Text = settings.GetValue("window_killer_btn_cancel");
-            lblKey1.Text = settings.GetValue("window_killer_lbl_key1");
-            lblKey2.Text = settings.GetValue("window_killer_lbl_key2");
-            lblMouseButton.Text = settings.GetValue("window_killer_lbl_mouse_button");
-            lblAction.Text = settings.GetValue("window_killer_lbl_action");
+            Text = settings.GetValue("closer_form");
+            btnApply.Text = settings.GetValue("closer_btn_apply");
+            btnCancel.Text = settings.GetValue("closer_btn_cancel");
+            lblKey1.Text = settings.GetValue("closer_lbl_key1");
+            lblKey2.Text = settings.GetValue("closer_lbl_key2");
+            lblMouseButton.Text = settings.GetValue("closer_lbl_mouse_button");
+            lblAction.Text = settings.GetValue("closer_lbl_action");
 
             cmbKey1.ValueMember = "Id";
             cmbKey1.DisplayMember = "Text";
@@ -49,9 +49,11 @@ namespace SmartSystemMenu.Forms
             cmMouseButton.DataSource = ((MouseButton[])Enum.GetValues(typeof(MouseButton))).Where(x => !string.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = x, Text = x.GetDescription() }).ToList();
             cmMouseButton.SelectedValue = mouseButton;
 
-            cmbAction.Items.Add(settings.GetValue("window_killer_close_window"));
-            cmbAction.Items.Add(settings.GetValue("window_killer_kill_process"));
-            cmbAction.SelectedIndex = (int)windowKillerType;
+            cmbAction.Items.Add(settings.GetValue("closer_close_foreground_window"));
+            cmbAction.Items.Add(settings.GetValue("closer_close_window_under_cursor"));
+            cmbAction.Items.Add(settings.GetValue("closer_kill_process_with_foreground_window"));
+            cmbAction.Items.Add(settings.GetValue("closer_kill_process_with_window_under_cursor"));
+            cmbAction.SelectedIndex = (int)closerType;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
@@ -59,7 +61,7 @@ namespace SmartSystemMenu.Forms
             Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
             Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;
             MouseButton = (MouseButton)cmMouseButton.SelectedValue;
-            WindowKillerType = (WindowKillerType)cmbAction.SelectedIndex;
+            CloserType = (WindowCloserType)cmbAction.SelectedIndex;
             DialogResult = DialogResult.OK;
             Close();
         }
