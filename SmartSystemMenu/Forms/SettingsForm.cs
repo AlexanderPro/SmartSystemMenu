@@ -43,6 +43,7 @@ namespace SmartSystemMenu.Forms
             grpbStartProgram.Text = settings.LanguageSettings.GetValue("grpb_start_program");
             grpbWindowSize.Text = settings.LanguageSettings.GetValue("grpb_window_size");
             grpbCloser.Text = settings.LanguageSettings.GetValue("grpb_closer");
+            grpbSizer.Text = settings.LanguageSettings.GetValue("grpb_sizer");
             clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
             clmProcessExclusionEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
             clmProcessExcusionDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
@@ -122,6 +123,10 @@ namespace SmartSystemMenu.Forms
 
             cmbLanguage.DataSource = languageItems;
             cmbLanguage.SelectedValue = settings.LanguageName;
+
+            cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_with_margins"));
+            cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_without_margins"));
+            cmbSizer.SelectedIndex = (int)settings.Sizer;
 
             FillGridViewRowHotkey(gvHotkeys, settings, "information");
             FillGridViewRowHotkey(gvHotkeys, settings, "roll_up");
@@ -478,7 +483,7 @@ namespace SmartSystemMenu.Forms
             settings.Closer.Key2 = _closerSettings.Key2;
             settings.Closer.MouseButton = _closerSettings.MouseButton;
             settings.Closer.Type = _closerSettings.Type;
-
+            settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 
             if (!settings.Equals(_settings))

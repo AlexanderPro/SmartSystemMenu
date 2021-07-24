@@ -7,13 +7,15 @@ namespace SmartSystemMenu.Forms
     partial class SizeForm : Form
     {
         private Window _window;
+        private SmartSystemMenuSettings _settings;
 
-        public SizeForm(Window window, LanguageSettings settings)
+        public SizeForm(Window window, SmartSystemMenuSettings settings)
         {
             InitializeComponent();
-            InitializeControls(settings);
+            InitializeControls(settings.LanguageSettings);
 
             _window = window;
+            _settings = settings;
             numericWidth.Value = _window.Size.Width;
             numericHeight.Value = _window.Size.Height;
         }
@@ -33,7 +35,17 @@ namespace SmartSystemMenu.Forms
                 int width = (int)numericWidth.Value;
                 int height = (int)numericHeight.Value;
                 _window.ShowNormal();
-                _window.SetSize(width, height);
+
+                if (_settings.Sizer == WindowSizerType.WindowWithMargins)
+                {
+                    _window.SetSize(width, height);
+                }
+                else
+                {
+                    var windowSystemMargins = _window.GetSystemMargins();
+                    _window.SetSize(width + windowSystemMargins.Left + windowSystemMargins.Right, height + windowSystemMargins.Top + windowSystemMargins.Bottom);
+                }
+
                 _window.Menu.UncheckSizeMenu();
                 _window.Menu.CheckMenuItem(MenuItemId.SC_SIZE_CUSTOM, true);
                 _window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);

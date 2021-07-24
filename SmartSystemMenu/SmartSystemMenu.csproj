@@ -201,6 +201,7 @@
     <Compile Include="Native\NativeMethods.cs" />
     <Compile Include="Window.cs" />
     <Compile Include="WindowInfo.cs" />
+    <Compile Include="WindowSizerType.cs" />
     <Compile Include="WmiProcessInfo.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>

@@ -610,7 +610,7 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_SIZE_CUSTOM:
                             {
-                                var sizeForm = new SizeForm(window, _settings.LanguageSettings);
+                                var sizeForm = new SizeForm(window, _settings);
                                 sizeForm.Show(window.Win32Window);
                             }
                             break;
@@ -748,7 +748,15 @@ namespace SmartSystemMenu.Forms
             window.Menu.UncheckSizeMenu();
             window.Menu.CheckMenuItem(itemId, true);
             window.ShowNormal();
-            window.SetSize(width, height);
+            if (_settings.Sizer == WindowSizerType.WindowWithMargins)
+            {
+                window.SetSize(width, height);
+            }
+            else
+            {
+                var windowSystemMargins = window.GetSystemMargins();
+                window.SetSize(width + windowSystemMargins.Left + windowSystemMargins.Right, height + windowSystemMargins.Top + windowSystemMargins.Bottom);
+            }
             window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
         }
 

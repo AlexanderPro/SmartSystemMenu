@@ -411,7 +411,7 @@ namespace SmartSystemMenu
             var y = 0;
             var screen = Screen.FromHandle(Handle).WorkingArea;
             var window = Size;
-            var margin = GetSystemMargin();
+            var margin = GetSystemMargins();
 
 
             switch (alignment)
@@ -826,7 +826,7 @@ namespace SmartSystemMenu
             }
         }
 
-        private Rect GetSizeWithMargin()
+        private Rect GetSizeWithMargins()
         {
             Rect size;
             if (Environment.OSVersion.Version.Major < 6)
@@ -840,9 +840,9 @@ namespace SmartSystemMenu
             return size;
         }
 
-        private Rect GetSystemMargin()
+        public Rect GetSystemMargins()
         {
-            var withMargin = GetSizeWithMargin();
+            var withMargin = GetSizeWithMargins();
             return new Rect
             {
                 Left = withMargin.Left - Size.Left,

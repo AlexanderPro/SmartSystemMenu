@@ -20,6 +20,8 @@ namespace SmartSystemMenu.Settings
 
         public bool ShowSystemTrayIcon { get; private set; }
 
+        public WindowSizerType Sizer { get; set; }
+
         public string LanguageName { get; set; }
 
         public LanguageSettings LanguageSettings { get; set; }
@@ -29,6 +31,7 @@ namespace SmartSystemMenu.Settings
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
             Closer = new CloserSettings();
+            Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
             LanguageName = "";
             LanguageSettings = new LanguageSettings();
@@ -67,6 +70,7 @@ namespace SmartSystemMenu.Settings
             settings.Closer.Key1 = Closer.Key1;
             settings.Closer.Key2 = Closer.Key2;
             settings.Closer.MouseButton = Closer.MouseButton;
+            settings.Sizer = Sizer;
             settings.LanguageName = LanguageName;
             return settings;
         }
@@ -173,6 +177,10 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
+            if (Sizer != other.Sizer)
+            {
+                return false;
+            }
 
             if (string.Compare(LanguageName, other.LanguageName, StringComparison.CurrentCultureIgnoreCase) != 0)
             {
@@ -210,6 +218,7 @@ namespace SmartSystemMenu.Settings
             hashCode ^= Closer.Key1.GetHashCode();
             hashCode ^= Closer.Key2.GetHashCode();
             hashCode ^= Closer.MouseButton.GetHashCode();
+            hashCode ^= Sizer.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
             return hashCode;
         }
@@ -263,6 +272,9 @@ namespace SmartSystemMenu.Settings
             settings.Closer.Key1 = closerElement.Attribute("key1") != null && !string.IsNullOrEmpty(closerElement.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(closerElement.Attribute("key1").Value) : VirtualKeyModifier.None;
             settings.Closer.Key2 = closerElement.Attribute("key2") != null && !string.IsNullOrEmpty(closerElement.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(closerElement.Attribute("key2").Value) : VirtualKeyModifier.None;
             settings.Closer.MouseButton = closerElement.Attribute("mouseButton") != null && !string.IsNullOrEmpty(closerElement.Attribute("mouseButton").Value) ? (MouseButton)int.Parse(closerElement.Attribute("mouseButton").Value) : MouseButton.None;
+
+            var sizerElement = document.XPathSelectElement("/smartSystemMenu/sizer");
+            settings.Sizer = sizerElement.Attribute("type") != null && !string.IsNullOrEmpty(sizerElement.Attribute("type").Value) ? (WindowSizerType)int.Parse(sizerElement.Attribute("type").Value) : WindowSizerType.WindowWithMargins;
 
             var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
             if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
@@ -366,6 +378,9 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("key1", settings.Closer.Key1 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key1).ToString()),
                                      new XAttribute("key2", settings.Closer.Key2 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key2).ToString()),
                                      new XAttribute("mouseButton", settings.Closer.MouseButton == MouseButton.None ? "" : ((int)settings.Closer.MouseButton).ToString())
+                                 ),
+                                 new XElement("sizer",
+                                     new XAttribute("type", ((int)settings.Sizer).ToString())
                                  ),
                                  new XElement("systemTrayIcon",
                                      new XAttribute("show", settings.ShowSystemTrayIcon.ToString().ToLower())

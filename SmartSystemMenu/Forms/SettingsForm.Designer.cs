@@ -78,6 +78,8 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
+            this.cmbSizer = new System.Windows.Forms.ComboBox();
+            this.grpbSizer = new System.Windows.Forms.GroupBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbCloser.SuspendLayout();
@@ -93,6 +95,7 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
+            this.grpbSizer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -171,7 +174,7 @@ namespace SmartSystemMenu.Forms
             // btnProcessExclusionDown
             // 
             this.btnProcessExclusionDown.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessExclusionDown.Image")));
-            this.btnProcessExclusionDown.Location = new System.Drawing.Point(406, 192);
+            this.btnProcessExclusionDown.Location = new System.Drawing.Point(406, 195);
             this.btnProcessExclusionDown.Name = "btnProcessExclusionDown";
             this.btnProcessExclusionDown.Size = new System.Drawing.Size(31, 23);
             this.btnProcessExclusionDown.TabIndex = 2;
@@ -181,7 +184,7 @@ namespace SmartSystemMenu.Forms
             // btnProcessExclusionUp
             // 
             this.btnProcessExclusionUp.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessExclusionUp.Image")));
-            this.btnProcessExclusionUp.Location = new System.Drawing.Point(369, 192);
+            this.btnProcessExclusionUp.Location = new System.Drawing.Point(369, 195);
             this.btnProcessExclusionUp.Name = "btnProcessExclusionUp";
             this.btnProcessExclusionUp.Size = new System.Drawing.Size(31, 23);
             this.btnProcessExclusionUp.TabIndex = 1;
@@ -190,7 +193,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnAddProcessExclusion
             // 
-            this.btnAddProcessExclusion.Location = new System.Drawing.Point(460, 192);
+            this.btnAddProcessExclusion.Location = new System.Drawing.Point(460, 195);
             this.btnAddProcessExclusion.Name = "btnAddProcessExclusion";
             this.btnAddProcessExclusion.Size = new System.Drawing.Size(31, 23);
             this.btnAddProcessExclusion.TabIndex = 3;
@@ -219,7 +222,7 @@ namespace SmartSystemMenu.Forms
             this.gvProcessExclusions.RowHeadersVisible = false;
             this.gvProcessExclusions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvProcessExclusions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvProcessExclusions.Size = new System.Drawing.Size(485, 167);
+            this.gvProcessExclusions.Size = new System.Drawing.Size(485, 170);
             this.gvProcessExclusions.TabIndex = 0;
             this.gvProcessExclusions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellContentClick);
             this.gvProcessExclusions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellDoubleClick);
@@ -332,6 +335,7 @@ namespace SmartSystemMenu.Forms
             // 
             // tabpMenuSize
             // 
+            this.tabpMenuSize.Controls.Add(this.grpbSizer);
             this.tabpMenuSize.Controls.Add(this.grpbWindowSize);
             this.tabpMenuSize.Location = new System.Drawing.Point(4, 22);
             this.tabpMenuSize.Name = "tabpMenuSize";
@@ -346,16 +350,16 @@ namespace SmartSystemMenu.Forms
             this.grpbWindowSize.Controls.Add(this.btnWindowSizeUp);
             this.grpbWindowSize.Controls.Add(this.btnAddWindowSize);
             this.grpbWindowSize.Controls.Add(this.gvWindowSize);
-            this.grpbWindowSize.Location = new System.Drawing.Point(8, 16);
+            this.grpbWindowSize.Location = new System.Drawing.Point(8, 87);
             this.grpbWindowSize.Name = "grpbWindowSize";
-            this.grpbWindowSize.Size = new System.Drawing.Size(497, 368);
-            this.grpbWindowSize.TabIndex = 2;
+            this.grpbWindowSize.Size = new System.Drawing.Size(497, 297);
+            this.grpbWindowSize.TabIndex = 1;
             this.grpbWindowSize.TabStop = false;
             // 
             // btnWindowSizeDown
             // 
             this.btnWindowSizeDown.Image = ((System.Drawing.Image)(resources.GetObject("btnWindowSizeDown.Image")));
-            this.btnWindowSizeDown.Location = new System.Drawing.Point(406, 339);
+            this.btnWindowSizeDown.Location = new System.Drawing.Point(406, 268);
             this.btnWindowSizeDown.Name = "btnWindowSizeDown";
             this.btnWindowSizeDown.Size = new System.Drawing.Size(31, 23);
             this.btnWindowSizeDown.TabIndex = 2;
@@ -365,7 +369,7 @@ namespace SmartSystemMenu.Forms
             // btnWindowSizeUp
             // 
             this.btnWindowSizeUp.Image = ((System.Drawing.Image)(resources.GetObject("btnWindowSizeUp.Image")));
-            this.btnWindowSizeUp.Location = new System.Drawing.Point(369, 339);
+            this.btnWindowSizeUp.Location = new System.Drawing.Point(369, 268);
             this.btnWindowSizeUp.Name = "btnWindowSizeUp";
             this.btnWindowSizeUp.Size = new System.Drawing.Size(31, 23);
             this.btnWindowSizeUp.TabIndex = 1;
@@ -374,7 +378,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnAddWindowSize
             // 
-            this.btnAddWindowSize.Location = new System.Drawing.Point(460, 339);
+            this.btnAddWindowSize.Location = new System.Drawing.Point(460, 268);
             this.btnAddWindowSize.Name = "btnAddWindowSize";
             this.btnAddWindowSize.Size = new System.Drawing.Size(31, 23);
             this.btnAddWindowSize.TabIndex = 3;
@@ -405,7 +409,7 @@ namespace SmartSystemMenu.Forms
             this.gvWindowSize.RowHeadersVisible = false;
             this.gvWindowSize.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvWindowSize.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvWindowSize.Size = new System.Drawing.Size(485, 314);
+            this.gvWindowSize.Size = new System.Drawing.Size(485, 243);
             this.gvWindowSize.TabIndex = 0;
             this.gvWindowSize.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewWindowSizeCellContentClick);
             this.gvWindowSize.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewWindowSizeCellDoubleClick);
@@ -594,6 +598,24 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
+            // cmbSizer
+            // 
+            this.cmbSizer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSizer.FormattingEnabled = true;
+            this.cmbSizer.Location = new System.Drawing.Point(6, 28);
+            this.cmbSizer.Name = "cmbSizer";
+            this.cmbSizer.Size = new System.Drawing.Size(166, 21);
+            this.cmbSizer.TabIndex = 0;
+            // 
+            // grpbSizer
+            // 
+            this.grpbSizer.Controls.Add(this.cmbSizer);
+            this.grpbSizer.Location = new System.Drawing.Point(8, 16);
+            this.grpbSizer.Name = "grpbSizer";
+            this.grpbSizer.Size = new System.Drawing.Size(497, 68);
+            this.grpbSizer.TabIndex = 0;
+            this.grpbSizer.TabStop = false;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -624,6 +646,7 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
+            this.grpbSizer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -676,5 +699,7 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.GroupBox grpbCloser;
         private System.Windows.Forms.Button btnCloser;
         private System.Windows.Forms.GroupBox grpbLanguage;
+        private System.Windows.Forms.GroupBox grpbSizer;
+        private System.Windows.Forms.ComboBox cmbSizer;
     }
 }
