@@ -1495,8 +1495,8 @@
       <item name="information" value="Informações" />
       <item name="roll_up" value="Enrolar" />
       <item name="aero_glass" value="Aero Glass" />
-      <item name="always_on_top" value="Sempre na frente" />
-      <item name="send_to_bottom" value="Enviar para trás" />
+      <item name="always_on_top" value="Manter janela sempre na frente" />
+      <item name="send_to_bottom" value="Enviar para o fundo" />
       <item name="save_screenshot" value="Fazer captura de tela" />
       <item name="open_file_in_explorer" value="Abrir arquivo no Explorer" />
       <item name="clipboard" value="Área de Transferência" />
@@ -1668,11 +1668,11 @@
       <item name="closer_lbl_key1" value="Key 1" />
       <item name="closer_lbl_key2" value="Key 2" />
       <item name="closer_lbl_mouse_button" value="Botão do mouse" />
-      <item name="closer_lbl_action" value="Açao" />
+      <item name="closer_lbl_action" value="Comando" />
       <item name="closer_close_foreground_window" value="Fechar janela de primeiro plano" />
       <item name="closer_close_window_under_cursor" value="Fechar a janela sob o cursor" />
-      <item name="closer_kill_process_with_foreground_window" value="Mate o processo com a janela em primeiro plano" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Mate o processo com a janela sob o cursor" />
+      <item name="closer_kill_process_with_foreground_window" value="Encerrar executável com janela em primeiro plano" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Encerrar executável com janela sob o cursor" />
       <item name="grpb_sizer" value="Como definir o tamanho da janela" />
       <item name="sizer_window_with_margins" value="Janela com margens" />
       <item name="sizer_window_without_margins" value="Janela sem margens" />
