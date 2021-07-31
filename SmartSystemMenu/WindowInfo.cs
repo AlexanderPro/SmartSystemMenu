@@ -21,6 +21,8 @@ namespace SmartSystemMenu
 
         public Rect Size { get; set; }
 
+        public Rect ClientSize { get; set; }
+
         public IntPtr Instance { get; set; }
 
         public int ProcessId { get; set; }
@@ -97,6 +99,7 @@ namespace SmartSystemMenu
             Handle = IntPtr.Zero;
             ParentHandle = IntPtr.Zero;
             Size = new Rect();
+            ClientSize = new Rect();
             Instance = IntPtr.Zero;
             ProcessId = 0;
             ThreadId = 0;

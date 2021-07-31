@@ -752,10 +752,14 @@ namespace SmartSystemMenu.Forms
             {
                 window.SetSize(width, height);
             }
+            else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
+            {
+                var margins = window.GetSystemMargins();
+                window.SetSize(width + margins.Left + margins.Right, height + margins.Top + margins.Bottom);
+            }
             else
             {
-                var windowSystemMargins = window.GetSystemMargins();
-                window.SetSize(width + windowSystemMargins.Left + windowSystemMargins.Right, height + windowSystemMargins.Top + windowSystemMargins.Bottom);
+                window.SetSize(width + (window.Size.Width - window.ClientSize.Width), height + (window.Size.Height - window.ClientSize.Height));
             }
             window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
         }

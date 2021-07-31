@@ -246,6 +246,7 @@ namespace SmartSystemMenu
             info.Handle = Handle;
             info.ParentHandle = NativeMethods.GetParent(Handle);
             info.Size = Size;
+            info.ClientSize = ClientSize;
             info.ProcessId = ProcessId;
             info.ThreadId = WindowUtils.GetThreadId(Handle);
             info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
@@ -848,7 +849,7 @@ namespace SmartSystemMenu
                 Left = withMargin.Left - Size.Left,
                 Top = withMargin.Top - Size.Top,
                 Right = Size.Right - withMargin.Right,
-                Bottom = Size.Bottom - withMargin.Bottom,
+                Bottom = Size.Bottom - withMargin.Bottom
             };
         }
     }

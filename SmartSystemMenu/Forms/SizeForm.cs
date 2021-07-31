@@ -40,10 +40,14 @@ namespace SmartSystemMenu.Forms
                 {
                     _window.SetSize(width, height);
                 }
+                else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
+                {
+                    var margins = _window.GetSystemMargins();
+                    _window.SetSize(width + margins.Left + margins.Right, height + margins.Top + margins.Bottom);
+                }
                 else
                 {
-                    var windowSystemMargins = _window.GetSystemMargins();
-                    _window.SetSize(width + windowSystemMargins.Left + windowSystemMargins.Right, height + windowSystemMargins.Top + windowSystemMargins.Bottom);
+                    _window.SetSize(width + (_window.Size.Width - _window.ClientSize.Width), height + (_window.Size.Height - _window.ClientSize.Height));
                 }
 
                 _window.Menu.UncheckSizeMenu();

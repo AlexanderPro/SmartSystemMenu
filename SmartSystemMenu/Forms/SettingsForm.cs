@@ -126,6 +126,7 @@ namespace SmartSystemMenu.Forms
 
             cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_with_margins"));
             cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_without_margins"));
+            cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_client_area"));
             cmbSizer.SelectedIndex = (int)settings.Sizer;
 
             FillGridViewRowHotkey(gvHotkeys, settings, "information");

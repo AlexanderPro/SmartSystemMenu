@@ -188,6 +188,7 @@
       <item name="grpb_sizer" value="How to set window size" />
       <item name="sizer_window_with_margins" value="Window with margins" />
       <item name="sizer_window_without_margins" value="Window without margins" />
+      <item name="sizer_window_client_area" value="Window client area" />
     </en>
     <de>
       <item name="information" value="Information" />
@@ -374,6 +375,7 @@
       <item name="grpb_sizer" value="Fenstergröße einstellen window" />
       <item name="sizer_window_with_margins" value="Fenster mit Rändern" />
       <item name="sizer_window_without_margins" value="Fenster ohne Ränder" />
+      <item name="sizer_window_client_area" value="Fensterkundenbereich" />
     </de>
     <zh_cn>
       <item name="information" value="信息" />
@@ -560,6 +562,7 @@
       <item name="grpb_sizer" value="如何设置窗口大小" />
       <item name="sizer_window_with_margins" value="有边距的窗口" />
       <item name="sizer_window_without_margins" value="没有边距的窗口" />
+      <item name="sizer_window_client_area" value="窗口客户区" />
     </zh_cn>
     <zh_tw>
       <item name="information" value="資訊" />
@@ -746,6 +749,7 @@
       <item name="grpb_sizer" value="如何设置窗口大小" />
       <item name="sizer_window_with_margins" value="有边距的窗口" />
       <item name="sizer_window_without_margins" value="没有边距的窗口" />
+      <item name="sizer_window_client_area" value="窗口客户区" />
     </zh_tw>
     <ja>
       <item name="information" value="情報" />
@@ -932,6 +936,7 @@
       <item name="grpb_sizer" value="ウィンドウサイズの設定方法" />
       <item name="sizer_window_with_margins" value="余白のあるウィンドウ" />
       <item name="sizer_window_without_margins" value="余白のないウィンドウ" />
+      <item name="sizer_window_client_area" value="ウィンドウクライアントエリア" />
     </ja>
     <ko>
       <item name="information" value="정보" />
@@ -1118,6 +1123,7 @@
       <item name="grpb_sizer" value="창 크기를 설정하는 방법" />
       <item name="sizer_window_with_margins" value="여백이 있는 창" />
       <item name="sizer_window_without_margins" value="여백 없는 창" />
+      <item name="sizer_window_client_area" value="창 클라이언트 영역" />
     </ko>
     <ru>
       <item name="information" value="Информация" />
@@ -1304,6 +1310,7 @@
       <item name="grpb_sizer" value="Как устанавливать размер окна" />
       <item name="sizer_window_with_margins" value="Окно с отступами" />
       <item name="sizer_window_without_margins" value="Окно без отступов" />    
+      <item name="sizer_window_client_area" value="Клиентская область окна" />
     </ru>
     <sr>
       <item name="information" value="Информација програма" />
@@ -1490,6 +1497,7 @@
       <item name="grpb_sizer" value="Како поставити величину прозора" />
       <item name="sizer_window_with_margins" value="Прозор са маргинама" />
       <item name="sizer_window_without_margins" value="Прозор без маргина" />
+      <item name="sizer_window_client_area" value="Подручје клијента прозора" />
     </sr>
     <pt>
       <item name="information" value="Informações" />
@@ -1676,6 +1684,7 @@
       <item name="grpb_sizer" value="Como definir o tamanho da janela" />
       <item name="sizer_window_with_margins" value="Janela com margens" />
       <item name="sizer_window_without_margins" value="Janela sem margens" />
+      <item name="sizer_window_client_area" value="Área do cliente da janela" />
     </pt>
   </items>
 </language>
