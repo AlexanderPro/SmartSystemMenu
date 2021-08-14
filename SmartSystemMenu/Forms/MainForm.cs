@@ -90,7 +90,10 @@ namespace SmartSystemMenu.Forms
 
             _hotKeyHook = new HotKeyHook();
             _hotKeyHook.Hooked += HotKeyHooked;
-            _hotKeyHook.Start(moduleName, _settings.MenuItems.Items);
+            if (_settings.MenuItems.Items.Any(x => x.Key3 != VirtualKey.None && x.Show))
+            {
+                _hotKeyHook.Start(moduleName, _settings.MenuItems.Items);
+            }
 
             _hotKeyMouseHook = new HotKeys.MouseHook();
             _hotKeyMouseHook.Hooked += HotKeyMouseHooked;
@@ -142,7 +145,11 @@ namespace SmartSystemMenu.Forms
             _cbtHook.Start();
 
             _mouseHook = new Hooks.MouseHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
-            _mouseHook.Start();
+            var dragByMouseItemName = MenuItemId.GetName(MenuItemId.SC_DRAG_BY_MOUSE);
+            if (_settings.MenuItems.Items.Any(x => x.Name == dragByMouseItemName && x.Show))
+            {
+                _mouseHook.Start();
+            }
 
             Hide();
         }
