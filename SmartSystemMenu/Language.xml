@@ -1500,20 +1500,20 @@
       <item name="sizer_window_client_area" value="Подручје клијента прозора" />
     </sr>
     <pt>
-      <item name="information" value="Informações" />
+      <item name="information" value="Informações do executável atual" />
       <item name="roll_up" value="Enrolar" />
       <item name="aero_glass" value="Aero Glass" />
-      <item name="always_on_top" value="Manter janela sempre na frente" />
+      <item name="always_on_top" value="Manter esta janela sempre na frente" />
       <item name="send_to_bottom" value="Enviar para o fundo" />
       <item name="save_screenshot" value="Fazer captura de tela" />
-      <item name="open_file_in_explorer" value="Abrir arquivo no Explorer" />
+      <item name="open_file_in_explorer" value="Abrir a pasta do executável no Explorer" />
       <item name="clipboard" value="Área de Transferência" />
-      <item name="copy_text_to_clipboard" value="Copiar texto na Área de Transferência" />
-      <item name="clear_clipboard" value="Limpar Área de Transferência" />
-      <item name="drag_by_mouse" value="Arrastar com mouse" />
+      <item name="copy_text_to_clipboard" value="Copiar nela o título desta janela" />
+      <item name="clear_clipboard" value="Limpar a Área de Transferência" />
+      <item name="drag_by_mouse" value="Arrastar com o mouse" />
       <item name="size" value="Redimensionar" />
       <item name="size_default" value="Padrão" />
-      <item name="size_custom" value="Personalizado..." />
+      <item name="size_custom" value="Personalizar..." />
       <item name="move_to" value="Mover para" />
       <item name="monitor" value="Monitor" />
       <item name="alignment" value="Alinhamento" />
@@ -1527,23 +1527,23 @@
       <item name="align_bottom_center" value="embaixo, ao centro" />
       <item name="align_bottom_right" value="embaixo, à direita" />
       <item name="align_default" value="Padrão" />
-      <item name="align_custom" value="Personalizado..." />
+      <item name="align_custom" value="Personalizar..." />
       <item name="transparency" value="Transparência" />
-      <item name="trans_opaque" value=" (opaco)" />
-      <item name="trans_invisible" value=" (invisível)" />
+      <item name="trans_opaque" value=" (nenhuma)" />
+      <item name="trans_invisible" value=" (total)" />
       <item name="trans_default" value="Padrão" />
-      <item name="trans_custom" value="Personalizado..." />
-      <item name="priority" value="Prioridade" />
-      <item name="priority_real_time" value="Instantâneo: 24" />
-      <item name="priority_high" value="Alto: 13" />
-      <item name="priority_above_normal" value="Acima do normal: 10" />
+      <item name="trans_custom" value="Personalizar..." />
+      <item name="priority" value="Prioridade do executável atual" />
+      <item name="priority_real_time" value="Máxima: 24" />
+      <item name="priority_high" value="Alta: 13" />
+      <item name="priority_above_normal" value="Acima da normal: 10" />
       <item name="priority_normal" value="Normal: 8" />
-      <item name="priority_below_normal" value="Abaixo do normal: 6" />
-      <item name="priority_idle" value="Ocioso: 4" />
+      <item name="priority_below_normal" value="Abaixo da normal: 6" />
+      <item name="priority_idle" value="De executável ocioso: 4" />
       <item name="system_tray" value="Área de Notificação" />
-      <item name="minimize_to_systemtray" value="Minimizar na Ár. de Notificação" />
-      <item name="minimize_always_to_systemtray" value="Min. sempre na Ár. de Notificação" />
-      <item name="suspend_to_systemtray" value="Hibernar a Min. na Ár. Notificação" />
+      <item name="minimize_to_systemtray" value="Minim. na Ár. de Notificação" />
+      <item name="minimize_always_to_systemtray" value="Minim. sempre na Ár. de Notificação" />
+      <item name="suspend_to_systemtray" value="Hibernar e Minim. na Ár. Notificação" />
       <item name="other_windows" value="Outras janelas" />
       <item name="minimize_other_windows" value="Minimizar" />
       <item name="close_other_windows" value="Fechar" />
@@ -1625,9 +1625,9 @@
       <item name="btn_start_program_up" value="Subir" />
       <item name="btn_start_program_down" value="Descer" />
       <item name="btn_add_start_program" value="Adicionar Executável" />
-      <item name="settings_btn_apply" value="Ok" />
+      <item name="settings_btn_apply" value="OK" />
       <item name="settings_btn_cancel" value="Cancelar" />
-      <item name="grpb_window_size" value="Itens do Redimensionar Janelas" />
+      <item name="grpb_window_size" value="Itens do Redimensionamento de Janelas" />
       <item name="window_size_form" value="Tamanho da janela" />
       <item name="window_size_btn_apply" value="Ok" />
       <item name="window_size_btn_cancel" value="Cancelar" />
