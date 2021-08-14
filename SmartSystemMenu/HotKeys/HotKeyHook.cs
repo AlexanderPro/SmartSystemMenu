@@ -88,7 +88,7 @@ namespace SmartSystemMenu.HotKeys
                                 var menuItemId = MenuItemId.GetId(item.Name);
                                 var eventArgs = new HotKeyEventArgs(menuItemId);
                                 handler.BeginInvoke(this, eventArgs, null, null);
-                                break;
+                                return 1;
                             }
                         }
                     }

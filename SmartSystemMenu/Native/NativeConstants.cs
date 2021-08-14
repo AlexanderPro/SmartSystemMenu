@@ -61,8 +61,11 @@
         public const int WM_GETFONT = 0x0031;
 
         public const int WM_LBUTTONDOWN = 0x0201;
+        public const int WM_LBUTTONUP = 0x0202;
         public const int WM_RBUTTONDOWN = 0x0204;
+        public const int WM_RBUTTONUP = 0x0205;
         public const int WM_MBUTTONDOWN = 0x0207;
+        public const int WM_MBUTTONUP = 0x0208;
 
         // SetWindowPos
         public const uint SWP_NOSIZE = 0x0001;

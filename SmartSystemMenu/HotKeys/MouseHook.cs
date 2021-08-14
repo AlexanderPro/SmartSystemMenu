@@ -64,7 +64,7 @@ namespace SmartSystemMenu.HotKeys
             if (code == HC_ACTION)
             {
                 if (_mouseButton != MouseButton.None && 
-                    (wParam == WM_LBUTTONDOWN || wParam == WM_RBUTTONDOWN || wParam == WM_MBUTTONDOWN))
+                    (wParam == WM_LBUTTONDOWN || wParam == WM_RBUTTONDOWN || wParam == WM_MBUTTONDOWN || wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP || wParam == WM_MBUTTONUP))
                 {
                     var key1 = true;
                     var key2 = true;
@@ -89,7 +89,13 @@ namespace SmartSystemMenu.HotKeys
                             var mouseHookStruct = (MouseLLHookStruct)Marshal.PtrToStructure(lParam, typeof(MouseLLHookStruct));
                             var eventArgs = new MouseEventArgs(mouseHookStruct.pt);
                             handler.BeginInvoke(this, eventArgs, null, null);
+                            return 1;
                         }
+                    }
+
+                    if (key1 && key2 && ((_mouseButton == MouseButton.Left && wParam == WM_LBUTTONUP) || (_mouseButton == MouseButton.Right && wParam == WM_RBUTTONUP) || (_mouseButton == MouseButton.Middle && wParam == WM_MBUTTONUP)))
+                    {
+                        return 1;
                     }
                 }
             }
