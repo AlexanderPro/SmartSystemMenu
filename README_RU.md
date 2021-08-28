@@ -27,13 +27,19 @@ SmartSystemMenu добавляет дополнительные пункты с�
 * **Other Windows.** Позволяет закрыть или минимизировать все окна системы кроме текущего.
 * **Start Program.** Запускает любой процесс заданный через настройки программы.
 
-Screenshots
+Скриншоты
 ------------------
 
 ![alt tag](https://user-images.githubusercontent.com/8102586/104854360-42840400-5917-11eb-8844-1528b72ee62c.jpg)
 ![alt tag](https://user-images.githubusercontent.com/8102586/104854362-457ef480-5917-11eb-9ccf-21c6a8d50b53.jpg)
 ![alt tag](https://user-images.githubusercontent.com/8102586/104854366-4879e500-5917-11eb-91d1-e2a7c555ce39.jpg)
 ![alt tag](https://user-images.githubusercontent.com/8102586/104854373-4d3e9900-5917-11eb-9ab6-ec7e29b8f704.png)
+
+Установка
+--------------------
+
+* Скачайте последнюю версию [SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu/releases) в zip файле
+* [Chocolatey](https://chocolatey.org/): `choco install smartsystemmenu`
 
 Требования к системе
 --------------------
