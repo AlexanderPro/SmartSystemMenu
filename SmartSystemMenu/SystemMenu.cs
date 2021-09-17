@@ -48,7 +48,7 @@ namespace SmartSystemMenu
             NativeMethods.InsertMenu(windowMenuHandle, index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_SEPARATOR, IntPtr.Zero, "");
 
 
-            IntPtr subMenuHandle;
+            IntPtr subMenuHandle = IntPtr.Zero;
 
             AddMenuItem(MenuItemId.SC_INFORMATION);
             AddMenuItem(MenuItemId.SC_ROLLUP);
@@ -59,115 +59,119 @@ namespace SmartSystemMenu
             AddMenuItem(MenuItemId.SC_OPEN_FILE_IN_EXPLORER);
             AddMenuItem(MenuItemId.SC_DRAG_BY_MOUSE);
 
-            StartCreatingSubMenu();
-            AddSubMenuItem(MenuItemId.SC_SIZE_640_480, "640x480");
-            AddSubMenuItem(MenuItemId.SC_SIZE_720_480, "720x480");
-            AddSubMenuItem(MenuItemId.SC_SIZE_720_576, "720x576");
-            AddSubMenuItem(MenuItemId.SC_SIZE_720_576, "720x576");
-            AddSubMenuItem(MenuItemId.SC_SIZE_800_600, "800x600");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1024_768, "1024x768");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1152_864, "1152x846");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1280_768, "1280x768");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1280_800, "1280x800");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1280_960, "1280x960");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1280_1024, "1280x1024");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1440_900, "1440x900");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1600_900, "1600x900");
-            AddSubMenuItem(MenuItemId.SC_SIZE_1680_1050, "1680x1050");
-            if (_menuItems.WindowSizeItems.Any())
+            CreateSubMenu(() =>
             {
-                AddSubMenuSeparator();
-                for (int i = 0; i < _menuItems.WindowSizeItems.Count; i++)
+                AddSubMenuItem(MenuItemId.SC_SIZE_640_480, "640x480");
+                AddSubMenuItem(MenuItemId.SC_SIZE_720_480, "720x480");
+                AddSubMenuItem(MenuItemId.SC_SIZE_720_576, "720x576");
+                AddSubMenuItem(MenuItemId.SC_SIZE_720_576, "720x576");
+                AddSubMenuItem(MenuItemId.SC_SIZE_800_600, "800x600");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1024_768, "1024x768");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1152_864, "1152x846");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1280_768, "1280x768");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1280_800, "1280x800");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1280_960, "1280x960");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1280_1024, "1280x1024");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1440_900, "1440x900");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1600_900, "1600x900");
+                AddSubMenuItem(MenuItemId.SC_SIZE_1680_1050, "1680x1050");
+                if (_menuItems.WindowSizeItems.Any())
                 {
-                    var menuItemId = MenuItemId.SC_SIZE_DEFINED + i;
-                    _menuItems.WindowSizeItems[i].Id = menuItemId;
-                    NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, menuItemId, _menuItems.WindowSizeItems[i].Title);
+                    AddSubMenuSeparator();
+                    for (int i = 0; i < _menuItems.WindowSizeItems.Count; i++)
+                    {
+                        var menuItemId = MenuItemId.SC_SIZE_DEFINED + i;
+                        _menuItems.WindowSizeItems[i].Id = menuItemId;
+                        NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, menuItemId, _menuItems.WindowSizeItems[i].Title);
+                    }
                 }
-            }
-            AddSubMenuSeparator();
-            AddSubMenuItem(MenuItemId.SC_SIZE_DEFAULT);
-            AddSubMenuSeparator();
-            AddSubMenuItem(MenuItemId.SC_SIZE_CUSTOM);
-            FinishSubMenu("size");
+                AddSubMenuSeparator();
+                AddSubMenuItem(MenuItemId.SC_SIZE_DEFAULT);
+                AddSubMenuSeparator();
+                AddSubMenuItem(MenuItemId.SC_SIZE_CUSTOM);
+            }, "size");
 
-            StartCreatingSubMenu();
-            foreach (var item in MoveToMenuItems)
+            CreateSubMenu(() =>
             {
-                NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MOVE_TO + item.Key, GetTitle("monitor") + item.Key);
-            }
-            FinishSubMenu("move_to");
+                foreach (var item in MoveToMenuItems)
+                {
+                    NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_MOVE_TO + item.Key, GetTitle("monitor") + item.Key);
+                }
+            }, "move_to");
 
-            StartCreatingSubMenu();
-            AddSubMenuItem(MenuItemId.SC_ALIGN_TOP_LEFT);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_TOP_CENTER);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_TOP_RIGHT);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_MIDDLE_LEFT);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_MIDDLE_CENTER);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_MIDDLE_RIGHT);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_BOTTOM_LEFT);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_BOTTOM_CENTER);
-            AddSubMenuItem(MenuItemId.SC_ALIGN_BOTTOM_RIGHT);
-            AddSubMenuSeparator();
-            AddSubMenuItem(MenuItemId.SC_ALIGN_DEFAULT);
-            AddSubMenuSeparator();
-            AddSubMenuItem(MenuItemId.SC_ALIGN_CUSTOM);
-            FinishSubMenu("alignment");
-
-            StartCreatingSubMenu();
-            AddSubMenuItem(MenuItemId.SC_TRANS_00, "0%" + GetTitle("trans_opaque", null, false));
-            AddSubMenuItem(MenuItemId.SC_TRANS_10, "10%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_20, "20%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_30, "30%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_40, "40%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_50, "50%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_60, "60%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_70, "70%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_80, "80%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_90, "90%");
-            AddSubMenuItem(MenuItemId.SC_TRANS_100, "100%" + GetTitle("trans_invisible", null, false));
-            AddSubMenuSeparator();
-            AddSubMenuItem(MenuItemId.SC_TRANS_DEFAULT);
-            AddSubMenuSeparator();
-            AddSubMenuItem(MenuItemId.SC_TRANS_CUSTOM);
-            FinishSubMenu("transparency");
-
-            StartCreatingSubMenu();
-            AddSubMenuItem(MenuItemId.SC_PRIORITY_REAL_TIME);
-            AddSubMenuItem(MenuItemId.SC_PRIORITY_HIGH);
-            AddSubMenuItem(MenuItemId.SC_PRIORITY_ABOVE_NORMAL);
-            AddSubMenuItem(MenuItemId.SC_PRIORITY_NORMAL);
-            AddSubMenuItem(MenuItemId.SC_PRIORITY_BELOW_NORMAL);
-            AddSubMenuItem(MenuItemId.SC_PRIORITY_IDLE);
-            FinishSubMenu("priority");
-
-            StartCreatingSubMenu();
-            AddSubMenuItem(MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD);
-            AddSubMenuItem(MenuItemId.SC_CLEAR_CLIPBOARD);
-            FinishSubMenu("clipboard");
-
-            StartCreatingSubMenu();
-            AddSubMenuItem(MenuItemId.SC_MINIMIZE_TO_SYSTEMTRAY);
-            AddSubMenuItem(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
-            AddSubMenuItem(MenuItemId.SC_SUSPEND_TO_SYSTEMTRAY);
-            FinishSubMenu("system_tray");
-
-            StartCreatingSubMenu();
-            AddSubMenuItem(MenuItemId.SC_MINIMIZE_OTHER_WINDOWS);
-            AddSubMenuItem(MenuItemId.SC_CLOSE_OTHER_WINDOWS);
-            FinishSubMenu("other_windows");
-
-            StartCreatingSubMenu();
-            for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
+            CreateSubMenu(() =>
             {
-                NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
-            }
-            FinishSubMenu("start_program");
+                AddSubMenuItem(MenuItemId.SC_ALIGN_TOP_LEFT);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_TOP_CENTER);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_TOP_RIGHT);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_MIDDLE_LEFT);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_MIDDLE_CENTER);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_MIDDLE_RIGHT);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_BOTTOM_LEFT);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_BOTTOM_CENTER);
+                AddSubMenuItem(MenuItemId.SC_ALIGN_BOTTOM_RIGHT);
+                AddSubMenuSeparator();
+                AddSubMenuItem(MenuItemId.SC_ALIGN_DEFAULT);
+                AddSubMenuSeparator();
+                AddSubMenuItem(MenuItemId.SC_ALIGN_CUSTOM);
+            }, "alignment");
 
-
-            void StartCreatingSubMenu()
+            CreateSubMenu(() =>
             {
-                subMenuHandle = NativeMethods.CreateMenu();
-            }
+                AddSubMenuItem(MenuItemId.SC_TRANS_00, "0%" + GetTitle("trans_opaque", null, false));
+                AddSubMenuItem(MenuItemId.SC_TRANS_10, "10%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_20, "20%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_30, "30%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_40, "40%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_50, "50%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_60, "60%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_70, "70%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_80, "80%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_90, "90%");
+                AddSubMenuItem(MenuItemId.SC_TRANS_100, "100%" + GetTitle("trans_invisible", null, false));
+                AddSubMenuSeparator();
+                AddSubMenuItem(MenuItemId.SC_TRANS_DEFAULT);
+                AddSubMenuSeparator();
+                AddSubMenuItem(MenuItemId.SC_TRANS_CUSTOM);
+            }, "transparency");
+
+            CreateSubMenu(() =>
+            {
+                AddSubMenuItem(MenuItemId.SC_PRIORITY_REAL_TIME);
+                AddSubMenuItem(MenuItemId.SC_PRIORITY_HIGH);
+                AddSubMenuItem(MenuItemId.SC_PRIORITY_ABOVE_NORMAL);
+                AddSubMenuItem(MenuItemId.SC_PRIORITY_NORMAL);
+                AddSubMenuItem(MenuItemId.SC_PRIORITY_BELOW_NORMAL);
+                AddSubMenuItem(MenuItemId.SC_PRIORITY_IDLE);
+            }, "priority");
+
+            CreateSubMenu(() =>
+            {
+                AddSubMenuItem(MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD);
+                AddSubMenuItem(MenuItemId.SC_CLEAR_CLIPBOARD);
+            }, "clipboard");
+
+            CreateSubMenu(() =>
+            {
+                AddSubMenuItem(MenuItemId.SC_MINIMIZE_TO_SYSTEMTRAY);
+                AddSubMenuItem(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY);
+                AddSubMenuItem(MenuItemId.SC_SUSPEND_TO_SYSTEMTRAY);
+            }, "system_tray");
+
+            CreateSubMenu(() =>
+            {
+                AddSubMenuItem(MenuItemId.SC_MINIMIZE_OTHER_WINDOWS);
+                AddSubMenuItem(MenuItemId.SC_CLOSE_OTHER_WINDOWS);
+            }, "other_windows");
+
+            CreateSubMenu(() =>
+            {
+                for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
+                {
+                    NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, MenuItemId.SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
+                }
+            }, "start_program");
+
 
             void AddMenuItem(int id, string title = null, bool showHotkey = true)
             {
@@ -193,16 +197,17 @@ namespace SmartSystemMenu
                 }
             }
 
-            void FinishSubMenu(string itemName, string title = null, bool showHotkey = true)
+            void CreateSubMenu(Action action, string itemName, string title = null, bool showHotkey = true)
             {
                 if (_menuItems.Items.Any(x => x.Name == itemName && x.Show))
                 {
+                    subMenuHandle = NativeMethods.CreateMenu();
+                    action.Invoke();
                     _numberItems++;
-                    NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, subMenuHandle,
-                        GetTitle(itemName, title, showHotkey));
+                    NativeMethods.InsertMenu(windowMenuHandle, ++index, NativeConstants.MF_BYPOSITION | NativeConstants.MF_POPUP, subMenuHandle, GetTitle(itemName, title, showHotkey));
+                    _subMenuHandles.Add(subMenuHandle);
+                    subMenuHandle = IntPtr.Zero;
                 }
-                _subMenuHandles.Add(subMenuHandle);
-                subMenuHandle = IntPtr.Zero;
             }
         }
 
@@ -257,7 +262,7 @@ namespace SmartSystemMenu
         {
             var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
             var flags = NativeMethods.GetMenuState(windowMenuHandle, id, NativeConstants.MF_BYCOMMAND);
-            var isChecked = (flags & NativeConstants.MF_CHECKED) != 0;
+            var isChecked = flags != -1 && (flags & NativeConstants.MF_CHECKED) != 0;
             return isChecked;
         }
 

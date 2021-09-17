@@ -70,7 +70,7 @@ namespace SmartSystemMenu.Native
         public static extern int GetMenuItemCount(IntPtr hMenu);
 
         [DllImport("user32.dll")]
-        public static extern uint GetMenuState(IntPtr hMenu, int uIdItem, int uFlags);
+        public static extern int GetMenuState(IntPtr hMenu, int uIdItem, int uFlags);
 
         [DllImport("User32.dll")]
         public static extern bool SetMenuItemInfo(IntPtr hMenu, int uIdItem, bool fByPosition, ref MenuItemInfo lpmii);

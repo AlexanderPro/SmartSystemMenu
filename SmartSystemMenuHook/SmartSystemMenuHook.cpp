@@ -284,7 +284,7 @@ static LRESULT CALLBACK MouseHookCallback(int code, WPARAM wparam, LPARAM lparam
 				LPWSTR szCaption = new WCHAR[MAX_PATH];
 				GetMenuString(menu, scDragByMouseMenuItem, szCaption, MAX_PATH, MF_BYCOMMAND);
 				UINT flags = GetMenuState(menu, scDragByMouseMenuItem, MF_BYCOMMAND);
-				bool isChecked = (flags & MF_CHECKED) != 0;
+				bool isChecked = flags != -1 && (flags & MF_CHECKED) != 0;
 				if (isChecked && szCaption != NULL && szCaption[0] != 0)
 				{
 					cursorWnd = hwnd;
