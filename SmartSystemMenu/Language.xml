@@ -385,9 +385,9 @@
       <item name="send_to_bottom" value="移至最底层" />
       <item name="save_screenshot" value="保存窗口截图" />
       <item name="open_file_in_explorer" value="在资源管理器中打开文件" />
-      <item name="clipboard" value="剪貼板" />
+      <item name="clipboard" value="剪贴板" />
       <item name="copy_text_to_clipboard" value="将文本复制到剪贴板" />
-      <item name="clear_clipboard" value="清除剪貼板" />
+      <item name="clear_clipboard" value="清除剪贴板" />
       <item name="drag_by_mouse" value="通过鼠标拖动" />
       <item name="size" value="调整窗口大小" />
       <item name="size_default" value="默认" />
@@ -543,7 +543,7 @@
       <item name="hotkeys_btn_cancel" value="取消" />
       <item name="tab_settings_hotkeys" value="热键" />
       <item name="clm_hotkeys_name" value="名称" />
-      <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
+      <item name="clm_hotkeys_show_tooltip" value="显示菜单项" />
       <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
       <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
       <item name="grpb_closer" value="通过鼠标单击关闭窗口" />
