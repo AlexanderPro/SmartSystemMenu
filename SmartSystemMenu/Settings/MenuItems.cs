@@ -24,5 +24,12 @@ namespace SmartSystemMenu.Settings
             var value = item == null ? "" : item.ToString();
             return value;
         }
+
+        public string GetHotKeysCombination(int id)
+        {
+            var item = WindowSizeItems.FirstOrDefault(x => x.Id == id);
+            var value = item == null ? "" : item.ToString();
+            return value;
+        }
     }
 }

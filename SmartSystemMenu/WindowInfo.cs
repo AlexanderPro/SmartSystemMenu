@@ -23,6 +23,8 @@ namespace SmartSystemMenu
 
         public Rect ClientSize { get; set; }
 
+        public Rect FrameBounds { get; set; }
+
         public IntPtr Instance { get; set; }
 
         public int ProcessId { get; set; }
@@ -100,6 +102,7 @@ namespace SmartSystemMenu
             ParentHandle = IntPtr.Zero;
             Size = new Rect();
             ClientSize = new Rect();
+            FrameBounds = new Rect();
             Instance = IntPtr.Zero;
             ProcessId = 0;
             ThreadId = 0;

@@ -90,9 +90,9 @@ namespace SmartSystemMenu.Forms
 
             _hotKeyHook = new HotKeyHook();
             _hotKeyHook.Hooked += HotKeyHooked;
-            if (_settings.MenuItems.Items.Any(x => x.Key3 != VirtualKey.None && x.Show))
+            if (_settings.MenuItems.Items.Any(x => x.Key3 != VirtualKey.None && x.Show) || _settings.MenuItems.WindowSizeItems.Any(x => x.Key3 != VirtualKey.None))
             {
-                _hotKeyHook.Start(moduleName, _settings.MenuItems.Items);
+                _hotKeyHook.Start(moduleName, _settings.MenuItems);
             }
 
             _hotKeyMouseHook = new HotKeys.MouseHook();
@@ -576,19 +576,6 @@ namespace SmartSystemMenu.Forms
                                     window.RollUp();
                                     var windowSizeMenuItemIds = new List<int>
                                     {
-                                        MenuItemId.SC_SIZE_640_480,
-                                        MenuItemId.SC_SIZE_720_480,
-                                        MenuItemId.SC_SIZE_720_576,
-                                        MenuItemId.SC_SIZE_800_600,
-                                        MenuItemId.SC_SIZE_1024_768,
-                                        MenuItemId.SC_SIZE_1152_864,
-                                        MenuItemId.SC_SIZE_1280_768,
-                                        MenuItemId.SC_SIZE_1280_800,
-                                        MenuItemId.SC_SIZE_1280_960,
-                                        MenuItemId.SC_SIZE_1280_1024,
-                                        MenuItemId.SC_SIZE_1440_900,
-                                        MenuItemId.SC_SIZE_1600_900,
-                                        MenuItemId.SC_SIZE_1680_1050,
                                         MenuItemId.SC_SIZE_DEFAULT,
                                         MenuItemId.SC_SIZE_CUSTOM
                                     };
@@ -652,20 +639,6 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
-                        case MenuItemId.SC_SIZE_640_480: SetSizeMenuItem(window, MenuItemId.SC_SIZE_640_480, 640, 480); break;
-                        case MenuItemId.SC_SIZE_720_480: SetSizeMenuItem(window, MenuItemId.SC_SIZE_720_480, 720, 480); break;
-                        case MenuItemId.SC_SIZE_720_576: SetSizeMenuItem(window, MenuItemId.SC_SIZE_720_576, 720, 576); break;
-                        case MenuItemId.SC_SIZE_800_600: SetSizeMenuItem(window, MenuItemId.SC_SIZE_800_600, 800, 600); break;
-                        case MenuItemId.SC_SIZE_1024_768: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1024_768, 1024, 768); break;
-                        case MenuItemId.SC_SIZE_1152_864: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1152_864, 1152, 864); break;
-                        case MenuItemId.SC_SIZE_1280_768: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_768, 1280, 768); break;
-                        case MenuItemId.SC_SIZE_1280_800: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_800, 1280, 800); break;
-                        case MenuItemId.SC_SIZE_1280_960: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_960, 1280, 960); break;
-                        case MenuItemId.SC_SIZE_1280_1024: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1280_1024, 1280, 1024); break;
-                        case MenuItemId.SC_SIZE_1440_900: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1440_900, 1440, 900); break;
-                        case MenuItemId.SC_SIZE_1600_900: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1600_900, 1600, 900); break;
-                        case MenuItemId.SC_SIZE_1680_1050: SetSizeMenuItem(window, MenuItemId.SC_SIZE_1680_1050, 1680, 1050); break;
-
                         case MenuItemId.SC_TRANS_100: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_100, 100); break;
                         case MenuItemId.SC_TRANS_90: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_90, 90); break;
                         case MenuItemId.SC_TRANS_80: SetTransparencyMenuItem(window, MenuItemId.SC_TRANS_80, 80); break;
@@ -703,10 +676,10 @@ namespace SmartSystemMenu.Forms
                         window.MoveToMonitor(monitorHandle);
                     }
 
-                    var windowSize = _settings.MenuItems.WindowSizeItems.FirstOrDefault(x => x.Id == lowOrder);
-                    if (windowSize != null)
+                    var windowSizeItem = _settings.MenuItems.WindowSizeItems.FirstOrDefault(x => x.Id == lowOrder);
+                    if (windowSizeItem != null)
                     {
-                        SetSizeMenuItem(window, (int)lowOrder, windowSize.Width, windowSize.Height);
+                        SetSizeMenuItem(window, (int)lowOrder, windowSizeItem);
                     }
 
                     for (int i = 0; i < _settings.MenuItems.StartProgramItems.Count; i++)
@@ -748,7 +721,7 @@ namespace SmartSystemMenu.Forms
             window.SetAlignment(alignment);
         }
 
-        private void SetSizeMenuItem(Window window, int itemId, int width, int height)
+        private void SetSizeMenuItem(Window window, int itemId, WindowSizeMenuItem item)
         {
             var windowSizeMenuItemIds = _settings.MenuItems.WindowSizeItems.Select(x => x.Id).ToArray();
             window.Menu.UncheckMenuItems(windowSizeMenuItemIds);
@@ -757,16 +730,16 @@ namespace SmartSystemMenu.Forms
             window.ShowNormal();
             if (_settings.Sizer == WindowSizerType.WindowWithMargins)
             {
-                window.SetSize(width, height);
+                window.SetSize(item.Width, item.Height, item.Left, item.Top);
             }
             else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
             {
                 var margins = window.GetSystemMargins();
-                window.SetSize(width + margins.Left + margins.Right, height + margins.Top + margins.Bottom);
+                window.SetSize(item.Width + margins.Left + margins.Right, item.Height + margins.Top + margins.Bottom, item.Left, item.Top);
             }
             else
             {
-                window.SetSize(width + (window.Size.Width - window.ClientSize.Width), height + (window.Size.Height - window.ClientSize.Height));
+                window.SetSize(item.Width + (window.Size.Width - window.ClientSize.Width), item.Height + (window.Size.Height - window.ClientSize.Height), item.Left, item.Top);
             }
             window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
         }

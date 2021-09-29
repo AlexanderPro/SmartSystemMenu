@@ -61,29 +61,11 @@ namespace SmartSystemMenu
 
             CreateSubMenu(() =>
             {
-                AddSubMenuItem(MenuItemId.SC_SIZE_640_480, "640x480");
-                AddSubMenuItem(MenuItemId.SC_SIZE_720_480, "720x480");
-                AddSubMenuItem(MenuItemId.SC_SIZE_720_576, "720x576");
-                AddSubMenuItem(MenuItemId.SC_SIZE_720_576, "720x576");
-                AddSubMenuItem(MenuItemId.SC_SIZE_800_600, "800x600");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1024_768, "1024x768");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1152_864, "1152x846");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1280_768, "1280x768");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1280_800, "1280x800");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1280_960, "1280x960");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1280_1024, "1280x1024");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1440_900, "1440x900");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1600_900, "1600x900");
-                AddSubMenuItem(MenuItemId.SC_SIZE_1680_1050, "1680x1050");
-                if (_menuItems.WindowSizeItems.Any())
+                for (int i = 0; i < _menuItems.WindowSizeItems.Count; i++)
                 {
-                    AddSubMenuSeparator();
-                    for (int i = 0; i < _menuItems.WindowSizeItems.Count; i++)
-                    {
-                        var menuItemId = MenuItemId.SC_SIZE_DEFINED + i;
-                        _menuItems.WindowSizeItems[i].Id = menuItemId;
-                        NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, menuItemId, _menuItems.WindowSizeItems[i].Title);
-                    }
+                    var menuItemId = MenuItemId.SC_SIZE_DEFINED + i;
+                    _menuItems.WindowSizeItems[i].Id = menuItemId;
+                    NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYPOSITION, menuItemId, GetTitle(_menuItems.WindowSizeItems[i]));
                 }
                 AddSubMenuSeparator();
                 AddSubMenuItem(MenuItemId.SC_SIZE_DEFAULT);
@@ -293,19 +275,6 @@ namespace SmartSystemMenu
 
         public void UncheckSizeMenu()
         {
-            CheckMenuItem(MenuItemId.SC_SIZE_640_480, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_720_480, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_720_576, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_800_600, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1024_768, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1152_864, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1280_768, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1280_800, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1280_960, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1280_1024, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1440_900, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1600_900, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_1680_1050, false);
             CheckMenuItem(MenuItemId.SC_SIZE_DEFAULT, false);
             CheckMenuItem(MenuItemId.SC_SIZE_CUSTOM, false);
         }
@@ -339,6 +308,12 @@ namespace SmartSystemMenu
             {
                 return title;
             }
+        }
+
+        private string GetTitle(WindowSizeMenuItem item)
+        {
+            var hotKey = _menuItems.GetHotKeysCombination(item.Id);
+            return string.IsNullOrEmpty(hotKey) ? item.Title : item.Title + "\t" + hotKey;
         }
     }
 }

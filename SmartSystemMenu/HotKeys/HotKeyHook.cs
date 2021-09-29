@@ -12,11 +12,11 @@ namespace SmartSystemMenu.HotKeys
     {
         private IntPtr _hookHandle;
         private KeyboardHookProc _hookProc;
-        private IList<MenuItem> _menuItems;
+        private MenuItems _menuItems;
 
         public event EventHandler<HotKeyEventArgs> Hooked;
 
-        public bool Start(string moduleName, IList<MenuItem> menuItems)
+        public bool Start(string moduleName, MenuItems menuItems)
         {
             _menuItems = menuItems;
             _hookProc = HookProc;
@@ -63,7 +63,7 @@ namespace SmartSystemMenu.HotKeys
             {
                 if (wParam.ToInt32() == WM_KEYDOWN || wParam.ToInt32() == WM_SYSKEYDOWN)
                 {
-                    foreach (var item in _menuItems)
+                    foreach (var item in _menuItems.Items)
                     {
                         var key1 = true;
                         var key2 = true;
@@ -87,6 +87,35 @@ namespace SmartSystemMenu.HotKeys
                             {
                                 var menuItemId = MenuItemId.GetId(item.Name);
                                 var eventArgs = new HotKeyEventArgs(menuItemId);
+                                handler.BeginInvoke(this, eventArgs, null, null);
+                                return 1;
+                            }
+                        }
+                    }
+
+                    foreach (var item in _menuItems.WindowSizeItems)
+                    {
+                        var key1 = true;
+                        var key2 = true;
+
+                        if (item.Key1 != VirtualKeyModifier.None)
+                        {
+                            var key1State = GetAsyncKeyState((int)item.Key1) & 0x8000;
+                            key1 = Convert.ToBoolean(key1State);
+                        }
+
+                        if (item.Key2 != VirtualKeyModifier.None)
+                        {
+                            var key2State = GetAsyncKeyState((int)item.Key2) & 0x8000;
+                            key2 = Convert.ToBoolean(key2State);
+                        }
+
+                        if (key1 && key2 && lParam.vkCode == (int)item.Key3)
+                        {
+                            var handler = Hooked;
+                            if (handler != null)
+                            {
+                                var eventArgs = new HotKeyEventArgs(item.Id);
                                 handler.BeginInvoke(this, eventArgs, null, null);
                                 return 1;
                             }

@@ -1,40 +1,57 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using SmartSystemMenu.Settings;
+using SmartSystemMenu.HotKeys;
+using SmartSystemMenu.Extensions;
 
 namespace SmartSystemMenu.Forms
 {
     partial class SettingsSizeForm : Form
     {
-        public string Title { get; private set; }
+        public WindowSizeMenuItem MenuItem { get; private set; }
 
-        public int WindowWidth { get; private set; }
-
-        public int WindowHeight { get; private set; }
-
-        public SettingsSizeForm(string title, int width, int height, LanguageSettings settings)
+        public SettingsSizeForm(LanguageSettings settings, WindowSizeMenuItem menuItem)
         {
-
             InitializeComponent();
-            InitializeControls(settings);
-
-            txtTitle.Text = title;
-            numericWidth.Value = width;
-            numericHeight.Value = height;
-
-            Title = title;
-            WindowWidth = width;
-            WindowHeight = height;
+            InitializeControls(settings, menuItem);
+            MenuItem = menuItem;
         }
 
-        private void InitializeControls(LanguageSettings settings)
+        private void InitializeControls(LanguageSettings settings, WindowSizeMenuItem menuItem)
         {
             lblTitle.Text = settings.GetValue("lbl_window_size_title");
+            lblLeft.Text = settings.GetValue("lbl_window_size_left");
+            lblTop.Text = settings.GetValue("lbl_window_size_top");
             lblWidth.Text = settings.GetValue("lbl_window_size_width");
             lblHeight.Text = settings.GetValue("lbl_window_size_height");
+            lblKey1.Text = settings.GetValue("lbl_window_size_key1");
+            lblKey2.Text = settings.GetValue("lbl_window_size_key2");
+            lblKey3.Text = settings.GetValue("lbl_window_size_key3");
             btnApply.Text = settings.GetValue("window_size_btn_apply");
             btnCancel.Text = settings.GetValue("window_size_btn_cancel");
             Text = settings.GetValue("window_size_form");
+
+            txtTitle.Text = menuItem.Title;
+            txtLeft.Text = menuItem.Left == null ? "" : menuItem.Left.Value.ToString();
+            txtTop.Text = menuItem.Top == null ? "" : menuItem.Top.Value.ToString();
+            txtWidth.Text = menuItem.Width.ToString();
+            txtHeight.Text = menuItem.Height.ToString();
+
+            cmbKey1.ValueMember = "Id";
+            cmbKey1.DisplayMember = "Text";
+            cmbKey1.DataSource = ((VirtualKeyModifier[])Enum.GetValues(typeof(VirtualKeyModifier))).Where(x => !string.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = x, Text = x.GetDescription() }).ToList();
+            cmbKey1.SelectedValue = menuItem.Key1;
+
+            cmbKey2.ValueMember = "Id";
+            cmbKey2.DisplayMember = "Text";
+            cmbKey2.DataSource = ((VirtualKeyModifier[])Enum.GetValues(typeof(VirtualKeyModifier))).Where(x => !string.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = x, Text = x.GetDescription() }).ToList();
+            cmbKey2.SelectedValue = menuItem.Key2;
+
+            cmbKey3.ValueMember = "Id";
+            cmbKey3.DisplayMember = "Text";
+            cmbKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !string.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = x, Text = x.GetDescription() }).ToList();
+            cmbKey3.SelectedValue = menuItem.Key3;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -53,9 +70,46 @@ namespace SmartSystemMenu.Forms
                 txtTitle.Focus();
                 return;
             }
-            Title = txtTitle.Text;
-            WindowWidth = (int)numericWidth.Value;
-            WindowHeight = (int)numericHeight.Value;
+
+            var menuItem = new Settings.WindowSizeMenuItem();
+            menuItem.Title = txtTitle.Text;
+            menuItem.Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
+            menuItem.Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;
+            menuItem.Key3 = (VirtualKey)cmbKey3.SelectedValue;
+
+            if (int.TryParse(txtWidth.Text, out var width))
+            {
+                menuItem.Width = width;
+            }
+            else
+            {
+                txtWidth.SelectAll();
+                txtWidth.Focus();
+                return;
+            }
+
+            if (int.TryParse(txtHeight.Text, out var height))
+            {
+                menuItem.Height = height;
+            }
+            else
+            {
+                txtHeight.SelectAll();
+                txtHeight.Focus();
+                return;
+            }
+
+            if (int.TryParse(txtLeft.Text, out var left))
+            {
+                menuItem.Left = left;
+            }
+
+            if (int.TryParse(txtTop.Text, out var top))
+            {
+                menuItem.Top = top;
+            }
+
+            MenuItem = menuItem;
             DialogResult = DialogResult.OK;
             Close();
         }

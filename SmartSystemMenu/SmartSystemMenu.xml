@@ -19,19 +19,6 @@
       <item name="open_file_in_explorer" key1="" key2="" key3="" />
       <item name="drag_by_mouse" key1="" key2="" key3="" />
       <item name="size" key1="" key2="" key3="" />
-      <item name="640_480" key1="" key2="" key3="" />
-      <item name="720_480" key1="" key2="" key3="" />
-      <item name="720_576" key1="" key2="" key3="" />
-      <item name="800_600" key1="" key2="" key3="" />
-      <item name="1024_768" key1="" key2="" key3="" />
-      <item name="1152_864" key1="" key2="" key3="" />
-      <item name="1280_768" key1="" key2="" key3="" />
-      <item name="1280_800" key1="" key2="" key3="" />
-      <item name="1280_960" key1="" key2="" key3="" />
-      <item name="1280_1024" key1="" key2="" key3="" />
-      <item name="1440_900" key1="" key2="" key3="" />
-      <item name="1600_900" key1="" key2="" key3="" />
-      <item name="1680_1050" key1="" key2="" key3="" />
       <item name="size_default" key1="" key2="" key3="" />
       <item name="size_custom" key1="" key2="" key3="" />
       <item name="move_to" key1="" key2="" key3="" />
@@ -81,9 +68,22 @@
       <item name="start_program" key1="" key2="" key3="" />
     </items>
     <windowSizeItems>
-      <item title="1280x720" width="1280" height="720" />
-      <item title="1360x768" width="1360" height="768" />
-      <item title="1400x1050" width="1400" height="1050" />
+      <item title="640x480" left="" top="" width="640" height="480" key1="" key2="" key3="" />
+      <item title="720x480" left="" top="" width="720" height="480" key1="" key2="" key3="" />
+      <item title="720x576" left="" top="" width="720" height="576" key1="" key2="" key3="" />
+      <item title="800x600" left="" top="" width="800" height="600" key1="" key2="" key3="" />
+      <item title="1024x768" left="" top="" width="1024" height="768" key1="" key2="" key3="" />
+      <item title="1152x864" left="" top="" width="1152" height="864" key1="" key2="" key3="" />
+      <item title="1280x720" left="" top="" width="1280" height="720" key1="" key2="" key3="" />
+      <item title="1280x768" left="" top="" width="1280" height="768" key1="" key2="" key3="" />
+      <item title="1280x800" left="" top="" width="1280" height="800" key1="" key2="" key3="" />
+      <item title="1280x960" left="" top="" width="1280" height="960" key1="" key2="" key3="" />
+      <item title="1280x1024" left="" top="" width="1280" height="1024" key1="" key2="" key3="" />
+      <item title="1360x768" left="" top="" width="1360" height="768" key1="" key2="" key3="" />
+      <item title="1400x1050" left="" top=""  width="1400" height="1050" key1="" key2="" key3="" />
+      <item title="1440x900" left="" top=""  width="1440" height="900" key1="" key2="" key3="" />
+      <item title="1600x900" left="" top=""  width="1600" height="900" key1="" key2="" key3="" />
+      <item title="1680x1050" left="" top=""  width="1680" height="1050" key1="" key2="" key3="" />
     </windowSizeItems>
     <startProgramItems>
       <item title="Notepad" fileName="notepad.exe" arguments="" />

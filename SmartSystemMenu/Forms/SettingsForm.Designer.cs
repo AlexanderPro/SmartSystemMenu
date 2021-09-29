@@ -54,16 +54,13 @@ namespace SmartSystemMenu.Forms
             this.clmnShow = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.clmnChangeHotkey = new SmartSystemMenu.Controls.DataGridViewDisableButtonColumn();
             this.tabpMenuSize = new System.Windows.Forms.TabPage();
+            this.grpbSizer = new System.Windows.Forms.GroupBox();
+            this.cmbSizer = new System.Windows.Forms.ComboBox();
             this.grpbWindowSize = new System.Windows.Forms.GroupBox();
             this.btnWindowSizeDown = new System.Windows.Forms.Button();
             this.btnWindowSizeUp = new System.Windows.Forms.Button();
             this.btnAddWindowSize = new System.Windows.Forms.Button();
             this.gvWindowSize = new System.Windows.Forms.DataGridView();
-            this.clmWindowSizeTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWindowSizeWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWindowSizeHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWindowSizeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.clmWindowSizeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabpMenuStart = new System.Windows.Forms.TabPage();
             this.grpbStartProgram = new System.Windows.Forms.GroupBox();
             this.btnStartProgramDown = new System.Windows.Forms.Button();
@@ -78,8 +75,14 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
-            this.cmbSizer = new System.Windows.Forms.ComboBox();
-            this.grpbSizer = new System.Windows.Forms.GroupBox();
+            this.clmWindowSizeTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWindowSizeLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWindowSizeTop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWindowSizeWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWindowSizeHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWindowSizeHotKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWindowSizeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmWindowSizeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbCloser.SuspendLayout();
@@ -90,12 +93,12 @@ namespace SmartSystemMenu.Forms
             this.grpbHotkeys.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvHotkeys)).BeginInit();
             this.tabpMenuSize.SuspendLayout();
+            this.grpbSizer.SuspendLayout();
             this.grpbWindowSize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvWindowSize)).BeginInit();
             this.tabpMenuStart.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
-            this.grpbSizer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -344,6 +347,24 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuSize.TabIndex = 3;
             this.tabpMenuSize.UseVisualStyleBackColor = true;
             // 
+            // grpbSizer
+            // 
+            this.grpbSizer.Controls.Add(this.cmbSizer);
+            this.grpbSizer.Location = new System.Drawing.Point(8, 16);
+            this.grpbSizer.Name = "grpbSizer";
+            this.grpbSizer.Size = new System.Drawing.Size(497, 68);
+            this.grpbSizer.TabIndex = 0;
+            this.grpbSizer.TabStop = false;
+            // 
+            // cmbSizer
+            // 
+            this.cmbSizer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSizer.FormattingEnabled = true;
+            this.cmbSizer.Location = new System.Drawing.Point(6, 28);
+            this.cmbSizer.Name = "cmbSizer";
+            this.cmbSizer.Size = new System.Drawing.Size(166, 21);
+            this.cmbSizer.TabIndex = 0;
+            // 
             // grpbWindowSize
             // 
             this.grpbWindowSize.Controls.Add(this.btnWindowSizeDown);
@@ -398,8 +419,11 @@ namespace SmartSystemMenu.Forms
             this.gvWindowSize.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvWindowSize.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmWindowSizeTitle,
+            this.clmWindowSizeLeft,
+            this.clmWindowSizeTop,
             this.clmWindowSizeWidth,
             this.clmWindowSizeHeight,
+            this.clmWindowSizeHotKey,
             this.clmWindowSizeEdit,
             this.clmWindowSizeDelete});
             this.gvWindowSize.GridColor = System.Drawing.SystemColors.Control;
@@ -413,51 +437,6 @@ namespace SmartSystemMenu.Forms
             this.gvWindowSize.TabIndex = 0;
             this.gvWindowSize.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewWindowSizeCellContentClick);
             this.gvWindowSize.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewWindowSizeCellDoubleClick);
-            // 
-            // clmWindowSizeTitle
-            // 
-            this.clmWindowSizeTitle.HeaderText = "clmWindowSizeTitle";
-            this.clmWindowSizeTitle.Name = "clmWindowSizeTitle";
-            this.clmWindowSizeTitle.ReadOnly = true;
-            this.clmWindowSizeTitle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmWindowSizeTitle.Width = 200;
-            // 
-            // clmWindowSizeWidth
-            // 
-            this.clmWindowSizeWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmWindowSizeWidth.HeaderText = "clmWindowSizeWidth";
-            this.clmWindowSizeWidth.Name = "clmWindowSizeWidth";
-            this.clmWindowSizeWidth.ReadOnly = true;
-            this.clmWindowSizeWidth.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeWidth.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmWindowSizeHeight
-            // 
-            this.clmWindowSizeHeight.HeaderText = "clmWindowSizeHeight";
-            this.clmWindowSizeHeight.Name = "clmWindowSizeHeight";
-            this.clmWindowSizeHeight.ReadOnly = true;
-            this.clmWindowSizeHeight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeHeight.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmWindowSizeHeight.Width = 105;
-            // 
-            // clmWindowSizeEdit
-            // 
-            this.clmWindowSizeEdit.HeaderText = "";
-            this.clmWindowSizeEdit.Name = "clmWindowSizeEdit";
-            this.clmWindowSizeEdit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeEdit.Text = "...";
-            this.clmWindowSizeEdit.UseColumnTextForButtonValue = true;
-            this.clmWindowSizeEdit.Width = 30;
-            // 
-            // clmWindowSizeDelete
-            // 
-            this.clmWindowSizeDelete.HeaderText = "";
-            this.clmWindowSizeDelete.Name = "clmWindowSizeDelete";
-            this.clmWindowSizeDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeDelete.Text = "-";
-            this.clmWindowSizeDelete.UseColumnTextForButtonValue = true;
-            this.clmWindowSizeDelete.Width = 30;
             // 
             // tabpMenuStart
             // 
@@ -598,23 +577,67 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
-            // cmbSizer
+            // clmWindowSizeTitle
             // 
-            this.cmbSizer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSizer.FormattingEnabled = true;
-            this.cmbSizer.Location = new System.Drawing.Point(6, 28);
-            this.cmbSizer.Name = "cmbSizer";
-            this.cmbSizer.Size = new System.Drawing.Size(166, 21);
-            this.cmbSizer.TabIndex = 0;
+            this.clmWindowSizeTitle.HeaderText = "clmWindowSizeTitle";
+            this.clmWindowSizeTitle.Name = "clmWindowSizeTitle";
+            this.clmWindowSizeTitle.ReadOnly = true;
+            this.clmWindowSizeTitle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmWindowSizeTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // grpbSizer
+            // clmWindowSizeLeft
             // 
-            this.grpbSizer.Controls.Add(this.cmbSizer);
-            this.grpbSizer.Location = new System.Drawing.Point(8, 16);
-            this.grpbSizer.Name = "grpbSizer";
-            this.grpbSizer.Size = new System.Drawing.Size(497, 68);
-            this.grpbSizer.TabIndex = 0;
-            this.grpbSizer.TabStop = false;
+            this.clmWindowSizeLeft.HeaderText = "clmWindowSizeLeft";
+            this.clmWindowSizeLeft.Name = "clmWindowSizeLeft";
+            this.clmWindowSizeLeft.Width = 50;
+            // 
+            // clmWindowSizeTop
+            // 
+            this.clmWindowSizeTop.HeaderText = "clmWindowSizeTop";
+            this.clmWindowSizeTop.Name = "clmWindowSizeTop";
+            this.clmWindowSizeTop.Width = 50;
+            // 
+            // clmWindowSizeWidth
+            // 
+            this.clmWindowSizeWidth.HeaderText = "clmWindowSizeWidth";
+            this.clmWindowSizeWidth.Name = "clmWindowSizeWidth";
+            this.clmWindowSizeWidth.ReadOnly = true;
+            this.clmWindowSizeWidth.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmWindowSizeWidth.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmWindowSizeWidth.Width = 50;
+            // 
+            // clmWindowSizeHeight
+            // 
+            this.clmWindowSizeHeight.HeaderText = "clmWindowSizeHeight";
+            this.clmWindowSizeHeight.Name = "clmWindowSizeHeight";
+            this.clmWindowSizeHeight.ReadOnly = true;
+            this.clmWindowSizeHeight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmWindowSizeHeight.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmWindowSizeHeight.Width = 50;
+            // 
+            // clmWindowSizeHotKey
+            // 
+            this.clmWindowSizeHotKey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmWindowSizeHotKey.HeaderText = "";
+            this.clmWindowSizeHotKey.Name = "clmWindowSizeHotKey";
+            // 
+            // clmWindowSizeEdit
+            // 
+            this.clmWindowSizeEdit.HeaderText = "";
+            this.clmWindowSizeEdit.Name = "clmWindowSizeEdit";
+            this.clmWindowSizeEdit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmWindowSizeEdit.Text = "...";
+            this.clmWindowSizeEdit.UseColumnTextForButtonValue = true;
+            this.clmWindowSizeEdit.Width = 30;
+            // 
+            // clmWindowSizeDelete
+            // 
+            this.clmWindowSizeDelete.HeaderText = "";
+            this.clmWindowSizeDelete.Name = "clmWindowSizeDelete";
+            this.clmWindowSizeDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmWindowSizeDelete.Text = "-";
+            this.clmWindowSizeDelete.UseColumnTextForButtonValue = true;
+            this.clmWindowSizeDelete.Width = 30;
             // 
             // SettingsForm
             // 
@@ -641,12 +664,12 @@ namespace SmartSystemMenu.Forms
             this.grpbHotkeys.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvHotkeys)).EndInit();
             this.tabpMenuSize.ResumeLayout(false);
+            this.grpbSizer.ResumeLayout(false);
             this.grpbWindowSize.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvWindowSize)).EndInit();
             this.tabpMenuStart.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
-            this.grpbSizer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -691,15 +714,18 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.Button btnWindowSizeUp;
         private System.Windows.Forms.Button btnAddWindowSize;
         private System.Windows.Forms.DataGridView gvWindowSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeWidth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHeight;
-        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeDelete;
         private System.Windows.Forms.GroupBox grpbCloser;
         private System.Windows.Forms.Button btnCloser;
         private System.Windows.Forms.GroupBox grpbLanguage;
         private System.Windows.Forms.GroupBox grpbSizer;
         private System.Windows.Forms.ComboBox cmbSizer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeLeft;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeTop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeWidth;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHotKey;
+        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeDelete;
     }
 }

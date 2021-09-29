@@ -247,6 +247,7 @@ namespace SmartSystemMenu
             info.ParentHandle = NativeMethods.GetParent(Handle);
             info.Size = Size;
             info.ClientSize = ClientSize;
+            info.FrameBounds = GetSystemMargins();
             info.ProcessId = ProcessId;
             info.ThreadId = WindowUtils.GetThreadId(Handle);
             info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
@@ -378,14 +379,14 @@ namespace SmartSystemMenu
             SetTrancparency(_defaultTransparency);
         }
 
-        public void SetSize(int width, int height)
+        public void SetSize(int width, int height, int? left = null, int? top = null)
         {
-            NativeMethods.MoveWindow(Handle, Size.Left, Size.Top, width, height, true);
+            NativeMethods.MoveWindow(Handle, left == null ? Size.Left : left.Value, top == null ? Size.Top : top.Value, width, height, true);
         }
 
         public void RestoreSize()
         {
-            NativeMethods.MoveWindow(Handle, Size.Left, Size.Top, _defaultWidth, _defaultHeight, true);
+            NativeMethods.MoveWindow(Handle, _defaultLeft, _defaultTop, _defaultWidth, _defaultHeight, true);
         }
 
         public void SetPosition(int left, int top)

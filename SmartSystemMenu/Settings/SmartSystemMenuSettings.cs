@@ -143,8 +143,13 @@ namespace SmartSystemMenu.Settings
             for (var i = 0; i < MenuItems.WindowSizeItems.Count; i++)
             {
                 if (string.Compare(MenuItems.WindowSizeItems[i].Title, other.MenuItems.WindowSizeItems[i].Title, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    MenuItems.WindowSizeItems[i].Left != other.MenuItems.WindowSizeItems[i].Left ||
+                    MenuItems.WindowSizeItems[i].Top != other.MenuItems.WindowSizeItems[i].Top ||
                     MenuItems.WindowSizeItems[i].Width != other.MenuItems.WindowSizeItems[i].Width ||
-                    MenuItems.WindowSizeItems[i].Height != other.MenuItems.WindowSizeItems[i].Height)
+                    MenuItems.WindowSizeItems[i].Height != other.MenuItems.WindowSizeItems[i].Height ||
+                    MenuItems.WindowSizeItems[i].Key1 != other.MenuItems.WindowSizeItems[i].Key1 ||
+                    MenuItems.WindowSizeItems[i].Key2 != other.MenuItems.WindowSizeItems[i].Key2 ||
+                    MenuItems.WindowSizeItems[i].Key3 != other.MenuItems.WindowSizeItems[i].Key3)
                 {
                     return false;
                 }
@@ -201,7 +206,7 @@ namespace SmartSystemMenu.Settings
 
             foreach (var item in MenuItems.WindowSizeItems)
             {
-                hashCode ^= item.Title.GetHashCode() ^ item.Width.GetHashCode() ^ item.Height.GetHashCode();
+                hashCode ^= item.Title.GetHashCode() ^ item.Left.GetHashCode() ^ item.Top.GetHashCode() ^ item.Width.GetHashCode() ^ item.Height.GetHashCode() ^ item.Key1.GetHashCode() ^ item.Key2.GetHashCode() ^ item.Key3.GetHashCode();
             }
 
             foreach (var item in MenuItems.StartProgramItems)
@@ -240,8 +245,13 @@ namespace SmartSystemMenu.Settings
                 .Select(x => new WindowSizeMenuItem
                 {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
+                    Left = !string.IsNullOrEmpty(x.Attribute("left").Value) ? int.Parse(x.Attribute("left").Value) : (int?)null,
+                    Top = !string.IsNullOrEmpty(x.Attribute("top").Value) ? int.Parse(x.Attribute("top").Value) : (int?)null,
                     Width = int.Parse(x.Attribute("width").Value),
-                    Height = int.Parse(x.Attribute("height").Value)
+                    Height = int.Parse(x.Attribute("height").Value),
+                    Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
+                    Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
+                    Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
                 })
                 .ToList();
 
@@ -367,8 +377,13 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),
                                      new XElement("windowSizeItems", settings.MenuItems.WindowSizeItems.Select(x => new XElement("item",
                                          new XAttribute("title", x.Title),
+                                         new XAttribute("left", x.Left == null ? "" : x.Left.Value.ToString()),
+                                         new XAttribute("top", x.Top == null ? "" : x.Top.Value.ToString()),
                                          new XAttribute("width", x.Width),
-                                         new XAttribute("height", x.Height)))),
+                                         new XAttribute("height", x.Height),
+                                         new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
+                                         new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
+                                         new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),
                                      new XElement("startProgramItems", settings.MenuItems.StartProgramItems.Select(x => new XElement("item",
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),

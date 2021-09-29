@@ -15,7 +15,7 @@ namespace SmartSystemMenu.Settings
         public string GetValue(string name)
         {
             var item = Items.FirstOrDefault(x => x.Name == name);
-            var value = item == null ? "" : item.Value;
+            var value = item?.Value ?? "";
             return value;
         }
     }

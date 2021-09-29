@@ -30,30 +30,19 @@
         {
             this.grpWindow = new System.Windows.Forms.GroupBox();
             this.tblWindowBottom = new System.Windows.Forms.TableLayoutPanel();
-            this.lblDwlDlgProc = new System.Windows.Forms.Label();
+            this.txtExtendedFrameBounds = new System.Windows.Forms.TextBox();
             this.txtWindowHandle = new System.Windows.Forms.TextBox();
             this.txtGwlStyle = new System.Windows.Forms.TextBox();
             this.txtParentWindowHandle = new System.Windows.Forms.TextBox();
             this.txtGclStyle = new System.Windows.Forms.TextBox();
-            this.txtWindowSize = new System.Windows.Forms.TextBox();
             this.txtGwlExStyle = new System.Windows.Forms.TextBox();
-            this.txtInstance = new System.Windows.Forms.TextBox();
             this.txtWindowInfoExStyle = new System.Windows.Forms.TextBox();
-            this.txtProcessId = new System.Windows.Forms.TextBox();
             this.txtLwaAlpha = new System.Windows.Forms.TextBox();
-            this.txtThreadId = new System.Windows.Forms.TextBox();
             this.txtLwaColorKey = new System.Windows.Forms.TextBox();
-            this.txtGclWndProc = new System.Windows.Forms.TextBox();
             this.txtGwlUserData = new System.Windows.Forms.TextBox();
-            this.txtDwlDlgProc = new System.Windows.Forms.TextBox();
             this.txtDwlUser = new System.Windows.Forms.TextBox();
             this.lblWindowHandle = new System.Windows.Forms.Label();
             this.lblParentWindowHandle = new System.Windows.Forms.Label();
-            this.lblWindowSize = new System.Windows.Forms.Label();
-            this.lblInstance = new System.Windows.Forms.Label();
-            this.lblProcessId = new System.Windows.Forms.Label();
-            this.lblThreadId = new System.Windows.Forms.Label();
-            this.lblGclWndProc = new System.Windows.Forms.Label();
             this.lblGwlStyle = new System.Windows.Forms.Label();
             this.lblGclStyle = new System.Windows.Forms.Label();
             this.lblGwlExStyle = new System.Windows.Forms.Label();
@@ -62,6 +51,17 @@
             this.lblLwaColorKey = new System.Windows.Forms.Label();
             this.lblGwlUserData = new System.Windows.Forms.Label();
             this.lblDwlUser = new System.Windows.Forms.Label();
+            this.txtWindowSize = new System.Windows.Forms.TextBox();
+            this.lblWindowSize = new System.Windows.Forms.Label();
+            this.lblWindowPosition = new System.Windows.Forms.Label();
+            this.txtWindowPosition = new System.Windows.Forms.TextBox();
+            this.txtThreadId = new System.Windows.Forms.TextBox();
+            this.lblThreadId = new System.Windows.Forms.Label();
+            this.txtProcessId = new System.Windows.Forms.TextBox();
+            this.lblProcessId = new System.Windows.Forms.Label();
+            this.txtInstance = new System.Windows.Forms.TextBox();
+            this.lblInstance = new System.Windows.Forms.Label();
+            this.lblExtendedFrameBounds = new System.Windows.Forms.Label();
             this.tblWindowTop = new System.Windows.Forms.TableLayoutPanel();
             this.lblFontName = new System.Windows.Forms.Label();
             this.lblRealGetWindowClass = new System.Windows.Forms.Label();
@@ -135,30 +135,19 @@
             this.tblWindowBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.21367F));
             this.tblWindowBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.32859F));
             this.tblWindowBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.03983F));
-            this.tblWindowBottom.Controls.Add(this.lblDwlDlgProc, 0, 7);
+            this.tblWindowBottom.Controls.Add(this.txtExtendedFrameBounds, 1, 4);
             this.tblWindowBottom.Controls.Add(this.txtWindowHandle, 1, 0);
             this.tblWindowBottom.Controls.Add(this.txtGwlStyle, 3, 0);
             this.tblWindowBottom.Controls.Add(this.txtParentWindowHandle, 1, 1);
             this.tblWindowBottom.Controls.Add(this.txtGclStyle, 3, 1);
-            this.tblWindowBottom.Controls.Add(this.txtWindowSize, 1, 2);
             this.tblWindowBottom.Controls.Add(this.txtGwlExStyle, 3, 2);
-            this.tblWindowBottom.Controls.Add(this.txtInstance, 1, 3);
             this.tblWindowBottom.Controls.Add(this.txtWindowInfoExStyle, 3, 3);
-            this.tblWindowBottom.Controls.Add(this.txtProcessId, 1, 4);
             this.tblWindowBottom.Controls.Add(this.txtLwaAlpha, 3, 4);
-            this.tblWindowBottom.Controls.Add(this.txtThreadId, 1, 5);
             this.tblWindowBottom.Controls.Add(this.txtLwaColorKey, 3, 5);
-            this.tblWindowBottom.Controls.Add(this.txtGclWndProc, 1, 6);
             this.tblWindowBottom.Controls.Add(this.txtGwlUserData, 3, 6);
-            this.tblWindowBottom.Controls.Add(this.txtDwlDlgProc, 1, 7);
             this.tblWindowBottom.Controls.Add(this.txtDwlUser, 3, 7);
             this.tblWindowBottom.Controls.Add(this.lblWindowHandle, 0, 0);
             this.tblWindowBottom.Controls.Add(this.lblParentWindowHandle, 0, 1);
-            this.tblWindowBottom.Controls.Add(this.lblWindowSize, 0, 2);
-            this.tblWindowBottom.Controls.Add(this.lblInstance, 0, 3);
-            this.tblWindowBottom.Controls.Add(this.lblProcessId, 0, 4);
-            this.tblWindowBottom.Controls.Add(this.lblThreadId, 0, 5);
-            this.tblWindowBottom.Controls.Add(this.lblGclWndProc, 0, 6);
             this.tblWindowBottom.Controls.Add(this.lblGwlStyle, 2, 0);
             this.tblWindowBottom.Controls.Add(this.lblGclStyle, 2, 1);
             this.tblWindowBottom.Controls.Add(this.lblGwlExStyle, 2, 2);
@@ -167,6 +156,17 @@
             this.tblWindowBottom.Controls.Add(this.lblLwaColorKey, 2, 5);
             this.tblWindowBottom.Controls.Add(this.lblGwlUserData, 2, 6);
             this.tblWindowBottom.Controls.Add(this.lblDwlUser, 2, 7);
+            this.tblWindowBottom.Controls.Add(this.txtWindowSize, 1, 3);
+            this.tblWindowBottom.Controls.Add(this.lblWindowSize, 0, 3);
+            this.tblWindowBottom.Controls.Add(this.lblWindowPosition, 0, 2);
+            this.tblWindowBottom.Controls.Add(this.txtWindowPosition, 1, 2);
+            this.tblWindowBottom.Controls.Add(this.txtThreadId, 1, 7);
+            this.tblWindowBottom.Controls.Add(this.lblThreadId, 0, 7);
+            this.tblWindowBottom.Controls.Add(this.txtProcessId, 1, 6);
+            this.tblWindowBottom.Controls.Add(this.lblProcessId, 0, 6);
+            this.tblWindowBottom.Controls.Add(this.txtInstance, 1, 5);
+            this.tblWindowBottom.Controls.Add(this.lblInstance, 0, 5);
+            this.tblWindowBottom.Controls.Add(this.lblExtendedFrameBounds, 0, 4);
             this.tblWindowBottom.Location = new System.Drawing.Point(6, 142);
             this.tblWindowBottom.Name = "tblWindowBottom";
             this.tblWindowBottom.RowCount = 8;
@@ -181,15 +181,17 @@
             this.tblWindowBottom.Size = new System.Drawing.Size(703, 205);
             this.tblWindowBottom.TabIndex = 1;
             // 
-            // lblDwlDlgProc
+            // txtExtendedFrameBounds
             // 
-            this.lblDwlDlgProc.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblDwlDlgProc.AutoSize = true;
-            this.lblDwlDlgProc.Location = new System.Drawing.Point(97, 183);
-            this.lblDwlDlgProc.Name = "lblDwlDlgProc";
-            this.lblDwlDlgProc.Size = new System.Drawing.Size(93, 13);
-            this.lblDwlDlgProc.TabIndex = 28;
-            this.lblDwlDlgProc.Text = "DWL_DLGPROC:";
+            this.txtExtendedFrameBounds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtExtendedFrameBounds.Location = new System.Drawing.Point(196, 103);
+            this.txtExtendedFrameBounds.Name = "txtExtendedFrameBounds";
+            this.txtExtendedFrameBounds.ReadOnly = true;
+            this.txtExtendedFrameBounds.Size = new System.Drawing.Size(171, 20);
+            this.txtExtendedFrameBounds.TabIndex = 9;
+            this.txtExtendedFrameBounds.TabStop = false;
+            this.txtExtendedFrameBounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtWindowHandle
             // 
@@ -211,7 +213,7 @@
             this.txtGwlStyle.Name = "txtGwlStyle";
             this.txtGwlStyle.ReadOnly = true;
             this.txtGwlStyle.Size = new System.Drawing.Size(164, 20);
-            this.txtGwlStyle.TabIndex = 3;
+            this.txtGwlStyle.TabIndex = 17;
             this.txtGwlStyle.TabStop = false;
             this.txtGwlStyle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -223,7 +225,7 @@
             this.txtParentWindowHandle.Name = "txtParentWindowHandle";
             this.txtParentWindowHandle.ReadOnly = true;
             this.txtParentWindowHandle.Size = new System.Drawing.Size(171, 20);
-            this.txtParentWindowHandle.TabIndex = 5;
+            this.txtParentWindowHandle.TabIndex = 3;
             this.txtParentWindowHandle.TabStop = false;
             this.txtParentWindowHandle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -235,21 +237,9 @@
             this.txtGclStyle.Name = "txtGclStyle";
             this.txtGclStyle.ReadOnly = true;
             this.txtGclStyle.Size = new System.Drawing.Size(164, 20);
-            this.txtGclStyle.TabIndex = 7;
+            this.txtGclStyle.TabIndex = 19;
             this.txtGclStyle.TabStop = false;
             this.txtGclStyle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtWindowSize
-            // 
-            this.txtWindowSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtWindowSize.Location = new System.Drawing.Point(196, 53);
-            this.txtWindowSize.Name = "txtWindowSize";
-            this.txtWindowSize.ReadOnly = true;
-            this.txtWindowSize.Size = new System.Drawing.Size(171, 20);
-            this.txtWindowSize.TabIndex = 9;
-            this.txtWindowSize.TabStop = false;
-            this.txtWindowSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtGwlExStyle
             // 
@@ -259,21 +249,9 @@
             this.txtGwlExStyle.Name = "txtGwlExStyle";
             this.txtGwlExStyle.ReadOnly = true;
             this.txtGwlExStyle.Size = new System.Drawing.Size(164, 20);
-            this.txtGwlExStyle.TabIndex = 11;
+            this.txtGwlExStyle.TabIndex = 21;
             this.txtGwlExStyle.TabStop = false;
             this.txtGwlExStyle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtInstance
-            // 
-            this.txtInstance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInstance.Location = new System.Drawing.Point(196, 78);
-            this.txtInstance.Name = "txtInstance";
-            this.txtInstance.ReadOnly = true;
-            this.txtInstance.Size = new System.Drawing.Size(171, 20);
-            this.txtInstance.TabIndex = 13;
-            this.txtInstance.TabStop = false;
-            this.txtInstance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtWindowInfoExStyle
             // 
@@ -283,21 +261,9 @@
             this.txtWindowInfoExStyle.Name = "txtWindowInfoExStyle";
             this.txtWindowInfoExStyle.ReadOnly = true;
             this.txtWindowInfoExStyle.Size = new System.Drawing.Size(164, 20);
-            this.txtWindowInfoExStyle.TabIndex = 15;
+            this.txtWindowInfoExStyle.TabIndex = 23;
             this.txtWindowInfoExStyle.TabStop = false;
             this.txtWindowInfoExStyle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtProcessId
-            // 
-            this.txtProcessId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProcessId.Location = new System.Drawing.Point(196, 103);
-            this.txtProcessId.Name = "txtProcessId";
-            this.txtProcessId.ReadOnly = true;
-            this.txtProcessId.Size = new System.Drawing.Size(171, 20);
-            this.txtProcessId.TabIndex = 17;
-            this.txtProcessId.TabStop = false;
-            this.txtProcessId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtLwaAlpha
             // 
@@ -307,21 +273,9 @@
             this.txtLwaAlpha.Name = "txtLwaAlpha";
             this.txtLwaAlpha.ReadOnly = true;
             this.txtLwaAlpha.Size = new System.Drawing.Size(164, 20);
-            this.txtLwaAlpha.TabIndex = 19;
+            this.txtLwaAlpha.TabIndex = 25;
             this.txtLwaAlpha.TabStop = false;
             this.txtLwaAlpha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtThreadId
-            // 
-            this.txtThreadId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtThreadId.Location = new System.Drawing.Point(196, 128);
-            this.txtThreadId.Name = "txtThreadId";
-            this.txtThreadId.ReadOnly = true;
-            this.txtThreadId.Size = new System.Drawing.Size(171, 20);
-            this.txtThreadId.TabIndex = 21;
-            this.txtThreadId.TabStop = false;
-            this.txtThreadId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtLwaColorKey
             // 
@@ -331,21 +285,9 @@
             this.txtLwaColorKey.Name = "txtLwaColorKey";
             this.txtLwaColorKey.ReadOnly = true;
             this.txtLwaColorKey.Size = new System.Drawing.Size(164, 20);
-            this.txtLwaColorKey.TabIndex = 23;
+            this.txtLwaColorKey.TabIndex = 27;
             this.txtLwaColorKey.TabStop = false;
             this.txtLwaColorKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtGclWndProc
-            // 
-            this.txtGclWndProc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGclWndProc.Location = new System.Drawing.Point(196, 153);
-            this.txtGclWndProc.Name = "txtGclWndProc";
-            this.txtGclWndProc.ReadOnly = true;
-            this.txtGclWndProc.Size = new System.Drawing.Size(171, 20);
-            this.txtGclWndProc.TabIndex = 25;
-            this.txtGclWndProc.TabStop = false;
-            this.txtGclWndProc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtGwlUserData
             // 
@@ -355,21 +297,9 @@
             this.txtGwlUserData.Name = "txtGwlUserData";
             this.txtGwlUserData.ReadOnly = true;
             this.txtGwlUserData.Size = new System.Drawing.Size(164, 20);
-            this.txtGwlUserData.TabIndex = 27;
+            this.txtGwlUserData.TabIndex = 29;
             this.txtGwlUserData.TabStop = false;
             this.txtGwlUserData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtDwlDlgProc
-            // 
-            this.txtDwlDlgProc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDwlDlgProc.Location = new System.Drawing.Point(196, 178);
-            this.txtDwlDlgProc.Name = "txtDwlDlgProc";
-            this.txtDwlDlgProc.ReadOnly = true;
-            this.txtDwlDlgProc.Size = new System.Drawing.Size(171, 20);
-            this.txtDwlDlgProc.TabIndex = 29;
-            this.txtDwlDlgProc.TabStop = false;
-            this.txtDwlDlgProc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDwlUser
             // 
@@ -400,58 +330,8 @@
             this.lblParentWindowHandle.Location = new System.Drawing.Point(70, 31);
             this.lblParentWindowHandle.Name = "lblParentWindowHandle";
             this.lblParentWindowHandle.Size = new System.Drawing.Size(120, 13);
-            this.lblParentWindowHandle.TabIndex = 4;
+            this.lblParentWindowHandle.TabIndex = 2;
             this.lblParentWindowHandle.Text = "Parent Window Handle:";
-            // 
-            // lblWindowSize
-            // 
-            this.lblWindowSize.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblWindowSize.AutoSize = true;
-            this.lblWindowSize.Location = new System.Drawing.Point(118, 56);
-            this.lblWindowSize.Name = "lblWindowSize";
-            this.lblWindowSize.Size = new System.Drawing.Size(72, 13);
-            this.lblWindowSize.TabIndex = 8;
-            this.lblWindowSize.Text = "Window Size:";
-            // 
-            // lblInstance
-            // 
-            this.lblInstance.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblInstance.AutoSize = true;
-            this.lblInstance.Location = new System.Drawing.Point(139, 81);
-            this.lblInstance.Name = "lblInstance";
-            this.lblInstance.Size = new System.Drawing.Size(51, 13);
-            this.lblInstance.TabIndex = 12;
-            this.lblInstance.Text = "Instance:";
-            // 
-            // lblProcessId
-            // 
-            this.lblProcessId.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblProcessId.AutoSize = true;
-            this.lblProcessId.Location = new System.Drawing.Point(131, 106);
-            this.lblProcessId.Name = "lblProcessId";
-            this.lblProcessId.Size = new System.Drawing.Size(59, 13);
-            this.lblProcessId.TabIndex = 16;
-            this.lblProcessId.Text = "ProcessID:";
-            // 
-            // lblThreadId
-            // 
-            this.lblThreadId.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblThreadId.AutoSize = true;
-            this.lblThreadId.Location = new System.Drawing.Point(135, 131);
-            this.lblThreadId.Name = "lblThreadId";
-            this.lblThreadId.Size = new System.Drawing.Size(55, 13);
-            this.lblThreadId.TabIndex = 20;
-            this.lblThreadId.Text = "ThreadID:";
-            // 
-            // lblGclWndProc
-            // 
-            this.lblGclWndProc.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblGclWndProc.AutoSize = true;
-            this.lblGclWndProc.Location = new System.Drawing.Point(96, 156);
-            this.lblGclWndProc.Name = "lblGclWndProc";
-            this.lblGclWndProc.Size = new System.Drawing.Size(94, 13);
-            this.lblGclWndProc.TabIndex = 24;
-            this.lblGclWndProc.Text = "GCL_WNDPROC:";
             // 
             // lblGwlStyle
             // 
@@ -460,7 +340,7 @@
             this.lblGwlStyle.Location = new System.Drawing.Point(455, 6);
             this.lblGwlStyle.Name = "lblGwlStyle";
             this.lblGwlStyle.Size = new System.Drawing.Size(75, 13);
-            this.lblGwlStyle.TabIndex = 2;
+            this.lblGwlStyle.TabIndex = 16;
             this.lblGwlStyle.Text = "GWL_STYLE:";
             // 
             // lblGclStyle
@@ -470,7 +350,7 @@
             this.lblGclStyle.Location = new System.Drawing.Point(459, 31);
             this.lblGclStyle.Name = "lblGclStyle";
             this.lblGclStyle.Size = new System.Drawing.Size(71, 13);
-            this.lblGclStyle.TabIndex = 6;
+            this.lblGclStyle.TabIndex = 18;
             this.lblGclStyle.Text = "GCL_STYLE:";
             // 
             // lblGwlExStyle
@@ -480,7 +360,7 @@
             this.lblGwlExStyle.Location = new System.Drawing.Point(441, 56);
             this.lblGwlExStyle.Name = "lblGwlExStyle";
             this.lblGwlExStyle.Size = new System.Drawing.Size(89, 13);
-            this.lblGwlExStyle.TabIndex = 10;
+            this.lblGwlExStyle.TabIndex = 20;
             this.lblGwlExStyle.Text = "GWL_EXSTYLE:";
             // 
             // lblWindowInfoExStyle
@@ -490,7 +370,7 @@
             this.lblWindowInfoExStyle.Location = new System.Drawing.Point(425, 81);
             this.lblWindowInfoExStyle.Name = "lblWindowInfoExStyle";
             this.lblWindowInfoExStyle.Size = new System.Drawing.Size(105, 13);
-            this.lblWindowInfoExStyle.TabIndex = 14;
+            this.lblWindowInfoExStyle.TabIndex = 22;
             this.lblWindowInfoExStyle.Text = "WindowInfo.ExStyle:";
             // 
             // lblLwaAlpha
@@ -500,7 +380,7 @@
             this.lblLwaAlpha.Location = new System.Drawing.Point(455, 106);
             this.lblLwaAlpha.Name = "lblLwaAlpha";
             this.lblLwaAlpha.Size = new System.Drawing.Size(75, 13);
-            this.lblLwaAlpha.TabIndex = 18;
+            this.lblLwaAlpha.TabIndex = 24;
             this.lblLwaAlpha.Text = "LWA_ALPHA:";
             // 
             // lblLwaColorKey
@@ -510,7 +390,7 @@
             this.lblLwaColorKey.Location = new System.Drawing.Point(432, 131);
             this.lblLwaColorKey.Name = "lblLwaColorKey";
             this.lblLwaColorKey.Size = new System.Drawing.Size(98, 13);
-            this.lblLwaColorKey.TabIndex = 22;
+            this.lblLwaColorKey.TabIndex = 26;
             this.lblLwaColorKey.Text = "LWA_COLORKEY:";
             // 
             // lblGwlUserData
@@ -520,7 +400,7 @@
             this.lblGwlUserData.Location = new System.Drawing.Point(430, 156);
             this.lblGwlUserData.Name = "lblGwlUserData";
             this.lblGwlUserData.Size = new System.Drawing.Size(100, 13);
-            this.lblGwlUserData.TabIndex = 26;
+            this.lblGwlUserData.TabIndex = 28;
             this.lblGwlUserData.Text = "GWL_USERDATA:";
             // 
             // lblDwlUser
@@ -532,6 +412,126 @@
             this.lblDwlUser.Size = new System.Drawing.Size(71, 13);
             this.lblDwlUser.TabIndex = 30;
             this.lblDwlUser.Text = "DWL_USER:";
+            // 
+            // txtWindowSize
+            // 
+            this.txtWindowSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWindowSize.Location = new System.Drawing.Point(196, 78);
+            this.txtWindowSize.Name = "txtWindowSize";
+            this.txtWindowSize.ReadOnly = true;
+            this.txtWindowSize.Size = new System.Drawing.Size(171, 20);
+            this.txtWindowSize.TabIndex = 7;
+            this.txtWindowSize.TabStop = false;
+            this.txtWindowSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblWindowSize
+            // 
+            this.lblWindowSize.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblWindowSize.AutoSize = true;
+            this.lblWindowSize.Location = new System.Drawing.Point(118, 81);
+            this.lblWindowSize.Name = "lblWindowSize";
+            this.lblWindowSize.Size = new System.Drawing.Size(72, 13);
+            this.lblWindowSize.TabIndex = 6;
+            this.lblWindowSize.Text = "Window Size:";
+            // 
+            // lblWindowPosition
+            // 
+            this.lblWindowPosition.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblWindowPosition.AutoSize = true;
+            this.lblWindowPosition.Location = new System.Drawing.Point(101, 56);
+            this.lblWindowPosition.Name = "lblWindowPosition";
+            this.lblWindowPosition.Size = new System.Drawing.Size(89, 13);
+            this.lblWindowPosition.TabIndex = 4;
+            this.lblWindowPosition.Text = "Window Position:";
+            // 
+            // txtWindowPosition
+            // 
+            this.txtWindowPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWindowPosition.Location = new System.Drawing.Point(196, 53);
+            this.txtWindowPosition.Name = "txtWindowPosition";
+            this.txtWindowPosition.ReadOnly = true;
+            this.txtWindowPosition.Size = new System.Drawing.Size(171, 20);
+            this.txtWindowPosition.TabIndex = 5;
+            this.txtWindowPosition.TabStop = false;
+            this.txtWindowPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtThreadId
+            // 
+            this.txtThreadId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtThreadId.Location = new System.Drawing.Point(196, 178);
+            this.txtThreadId.Name = "txtThreadId";
+            this.txtThreadId.ReadOnly = true;
+            this.txtThreadId.Size = new System.Drawing.Size(171, 20);
+            this.txtThreadId.TabIndex = 15;
+            this.txtThreadId.TabStop = false;
+            this.txtThreadId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblThreadId
+            // 
+            this.lblThreadId.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblThreadId.AutoSize = true;
+            this.lblThreadId.Location = new System.Drawing.Point(135, 183);
+            this.lblThreadId.Name = "lblThreadId";
+            this.lblThreadId.Size = new System.Drawing.Size(55, 13);
+            this.lblThreadId.TabIndex = 14;
+            this.lblThreadId.Text = "ThreadID:";
+            // 
+            // txtProcessId
+            // 
+            this.txtProcessId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProcessId.Location = new System.Drawing.Point(196, 153);
+            this.txtProcessId.Name = "txtProcessId";
+            this.txtProcessId.ReadOnly = true;
+            this.txtProcessId.Size = new System.Drawing.Size(171, 20);
+            this.txtProcessId.TabIndex = 13;
+            this.txtProcessId.TabStop = false;
+            this.txtProcessId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblProcessId
+            // 
+            this.lblProcessId.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblProcessId.AutoSize = true;
+            this.lblProcessId.Location = new System.Drawing.Point(131, 156);
+            this.lblProcessId.Name = "lblProcessId";
+            this.lblProcessId.Size = new System.Drawing.Size(59, 13);
+            this.lblProcessId.TabIndex = 12;
+            this.lblProcessId.Text = "ProcessID:";
+            // 
+            // txtInstance
+            // 
+            this.txtInstance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtInstance.Location = new System.Drawing.Point(196, 128);
+            this.txtInstance.Name = "txtInstance";
+            this.txtInstance.ReadOnly = true;
+            this.txtInstance.Size = new System.Drawing.Size(171, 20);
+            this.txtInstance.TabIndex = 11;
+            this.txtInstance.TabStop = false;
+            this.txtInstance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblInstance
+            // 
+            this.lblInstance.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblInstance.AutoSize = true;
+            this.lblInstance.Location = new System.Drawing.Point(139, 131);
+            this.lblInstance.Name = "lblInstance";
+            this.lblInstance.Size = new System.Drawing.Size(51, 13);
+            this.lblInstance.TabIndex = 10;
+            this.lblInstance.Text = "Instance:";
+            // 
+            // lblExtendedFrameBounds
+            // 
+            this.lblExtendedFrameBounds.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblExtendedFrameBounds.AutoSize = true;
+            this.lblExtendedFrameBounds.Location = new System.Drawing.Point(64, 106);
+            this.lblExtendedFrameBounds.Name = "lblExtendedFrameBounds";
+            this.lblExtendedFrameBounds.Size = new System.Drawing.Size(126, 13);
+            this.lblExtendedFrameBounds.TabIndex = 8;
+            this.lblExtendedFrameBounds.Text = "Extended Frame Bounds:";
             // 
             // tblWindowTop
             // 
@@ -842,7 +842,7 @@
             this.txtWorkingSetSize.Name = "txtWorkingSetSize";
             this.txtWorkingSetSize.ReadOnly = true;
             this.txtWorkingSetSize.Size = new System.Drawing.Size(224, 20);
-            this.txtWorkingSetSize.TabIndex = 13;
+            this.txtWorkingSetSize.TabIndex = 7;
             this.txtWorkingSetSize.TabStop = false;
             // 
             // lblWorkingSetSize
@@ -852,7 +852,7 @@
             this.lblWorkingSetSize.Location = new System.Drawing.Point(99, 83);
             this.lblWorkingSetSize.Name = "lblWorkingSetSize";
             this.lblWorkingSetSize.Size = new System.Drawing.Size(92, 13);
-            this.lblWorkingSetSize.TabIndex = 12;
+            this.lblWorkingSetSize.TabIndex = 6;
             this.lblWorkingSetSize.Text = "Working Set Size:";
             // 
             // lblStartedAt
@@ -872,7 +872,7 @@
             this.lblParent.Location = new System.Drawing.Point(486, 6);
             this.lblParent.Name = "lblParent";
             this.lblParent.Size = new System.Drawing.Size(41, 13);
-            this.lblParent.TabIndex = 2;
+            this.lblParent.TabIndex = 8;
             this.lblParent.Text = "Parent:";
             // 
             // lblPriority
@@ -882,7 +882,7 @@
             this.lblPriority.Location = new System.Drawing.Point(486, 31);
             this.lblPriority.Name = "lblPriority";
             this.lblPriority.Size = new System.Drawing.Size(41, 13);
-            this.lblPriority.TabIndex = 6;
+            this.lblPriority.TabIndex = 10;
             this.lblPriority.Text = "Priority:";
             // 
             // txtStartedAt
@@ -904,7 +904,7 @@
             this.txtParent.Name = "txtParent";
             this.txtParent.ReadOnly = true;
             this.txtParent.Size = new System.Drawing.Size(167, 20);
-            this.txtParent.TabIndex = 3;
+            this.txtParent.TabIndex = 9;
             this.txtParent.TabStop = false;
             // 
             // txtPriority
@@ -915,7 +915,7 @@
             this.txtPriority.Name = "txtPriority";
             this.txtPriority.ReadOnly = true;
             this.txtPriority.Size = new System.Drawing.Size(167, 20);
-            this.txtPriority.TabIndex = 7;
+            this.txtPriority.TabIndex = 11;
             this.txtPriority.TabStop = false;
             // 
             // lblThreads
@@ -925,7 +925,7 @@
             this.lblThreads.Location = new System.Drawing.Point(142, 56);
             this.lblThreads.Name = "lblThreads";
             this.lblThreads.Size = new System.Drawing.Size(49, 13);
-            this.lblThreads.TabIndex = 8;
+            this.lblThreads.TabIndex = 4;
             this.lblThreads.Text = "Threads:";
             // 
             // txtOwner
@@ -936,7 +936,7 @@
             this.txtOwner.Name = "txtOwner";
             this.txtOwner.ReadOnly = true;
             this.txtOwner.Size = new System.Drawing.Size(224, 20);
-            this.txtOwner.TabIndex = 5;
+            this.txtOwner.TabIndex = 3;
             this.txtOwner.TabStop = false;
             // 
             // lblOwner
@@ -946,7 +946,7 @@
             this.lblOwner.Location = new System.Drawing.Point(150, 31);
             this.lblOwner.Name = "lblOwner";
             this.lblOwner.Size = new System.Drawing.Size(41, 13);
-            this.lblOwner.TabIndex = 4;
+            this.lblOwner.TabIndex = 2;
             this.lblOwner.Text = "Owner:";
             // 
             // lblHandles
@@ -956,7 +956,7 @@
             this.lblHandles.Location = new System.Drawing.Point(478, 56);
             this.lblHandles.Name = "lblHandles";
             this.lblHandles.Size = new System.Drawing.Size(49, 13);
-            this.lblHandles.TabIndex = 10;
+            this.lblHandles.TabIndex = 12;
             this.lblHandles.Text = "Handles:";
             // 
             // lblVirtualSize
@@ -977,7 +977,7 @@
             this.txtThreads.Name = "txtThreads";
             this.txtThreads.ReadOnly = true;
             this.txtThreads.Size = new System.Drawing.Size(224, 20);
-            this.txtThreads.TabIndex = 9;
+            this.txtThreads.TabIndex = 5;
             this.txtThreads.TabStop = false;
             // 
             // txtHandles
@@ -988,7 +988,7 @@
             this.txtHandles.Name = "txtHandles";
             this.txtHandles.ReadOnly = true;
             this.txtHandles.Size = new System.Drawing.Size(167, 20);
-            this.txtHandles.TabIndex = 11;
+            this.txtHandles.TabIndex = 13;
             this.txtHandles.TabStop = false;
             // 
             // txtVirtualSize
@@ -1109,7 +1109,6 @@
 
         private System.Windows.Forms.GroupBox grpWindow;
         private System.Windows.Forms.TableLayoutPanel tblWindowBottom;
-        private System.Windows.Forms.Label lblDwlDlgProc;
         private System.Windows.Forms.TextBox txtWindowHandle;
         private System.Windows.Forms.TextBox txtGwlStyle;
         private System.Windows.Forms.TextBox txtParentWindowHandle;
@@ -1122,9 +1121,7 @@
         private System.Windows.Forms.TextBox txtLwaAlpha;
         private System.Windows.Forms.TextBox txtThreadId;
         private System.Windows.Forms.TextBox txtLwaColorKey;
-        private System.Windows.Forms.TextBox txtGclWndProc;
         private System.Windows.Forms.TextBox txtGwlUserData;
-        private System.Windows.Forms.TextBox txtDwlDlgProc;
         private System.Windows.Forms.TextBox txtDwlUser;
         private System.Windows.Forms.Label lblWindowHandle;
         private System.Windows.Forms.Label lblParentWindowHandle;
@@ -1132,7 +1129,6 @@
         private System.Windows.Forms.Label lblInstance;
         private System.Windows.Forms.Label lblProcessId;
         private System.Windows.Forms.Label lblThreadId;
-        private System.Windows.Forms.Label lblGclWndProc;
         private System.Windows.Forms.Label lblGwlStyle;
         private System.Windows.Forms.Label lblGclStyle;
         private System.Windows.Forms.Label lblGwlExStyle;
@@ -1186,5 +1182,9 @@
         private System.Windows.Forms.TextBox txtThreads;
         private System.Windows.Forms.TextBox txtHandles;
         private System.Windows.Forms.TextBox txtVirtualSize;
+        private System.Windows.Forms.Label lblWindowPosition;
+        private System.Windows.Forms.TextBox txtWindowPosition;
+        private System.Windows.Forms.Label lblExtendedFrameBounds;
+        private System.Windows.Forms.TextBox txtExtendedFrameBounds;
     }
 }
