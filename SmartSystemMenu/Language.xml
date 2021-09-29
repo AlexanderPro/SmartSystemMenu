@@ -149,6 +149,9 @@
       <item name="lbl_window_size_height" value="Height:" />
       <item name="lbl_window_size_top" value="Top:" />
       <item name="lbl_window_size_left" value="Left:" />
+      <item name="lbl_window_size_key1" value="Key 1:" />
+      <item name="lbl_window_size_key2" value="Key 2:" />
+      <item name="lbl_window_size_key3" value="Key 3:" />
       <item name="btn_window_size_up" value="Move Up" />
       <item name="btn_window_size_down" value="Move Down" />
       <item name="btn_add_window_size" value="Add" />
@@ -344,6 +347,9 @@
       <item name="lbl_window_size_title" value="Titel:" />
       <item name="lbl_window_size_width" value="Breite:" />
       <item name="lbl_window_size_height" value="Höhe:" />
+      <item name="lbl_window_size_key1" value="Taste 1:" />
+      <item name="lbl_window_size_key2" value="Taste 2:" />
+      <item name="lbl_window_size_key3" value="Taste 3:" />
       <item name="lbl_window_size_top" value="Oben:" />
       <item name="lbl_window_size_left" value="Links:" />
       <item name="btn_window_size_up" value="Oben" />
@@ -539,6 +545,9 @@
       <item name="lbl_window_size_title" value="标题:" />
       <item name="lbl_window_size_width" value="宽度:" />
       <item name="lbl_window_size_height" value="高度:" />
+      <item name="lbl_window_size_key1" value="键 1:" />
+      <item name="lbl_window_size_key2" value="键 2:" />
+      <item name="lbl_window_size_key3" value="键 3:" />
       <item name="lbl_window_size_top" value="顶部:" />
       <item name="lbl_window_size_left" value="左侧:" />
       <item name="btn_window_size_up" value="Move Up" />
@@ -734,6 +743,9 @@
       <item name="lbl_window_size_title" value="標題:" />
       <item name="lbl_window_size_width" value="寬度:" />
       <item name="lbl_window_size_height" value="高度:" />
+      <item name="lbl_window_size_key1" value="鍵 1:" />
+      <item name="lbl_window_size_key2" value="鍵 2:" />
+      <item name="lbl_window_size_key3" value="鍵 3:" />
       <item name="lbl_window_size_top" value="頂部:" />
       <item name="lbl_window_size_left" value="左侧:" />
       <item name="btn_window_size_up" value="Move Up" />
@@ -929,6 +941,9 @@
       <item name="lbl_window_size_title" value="タイトル:" />
       <item name="lbl_window_size_width" value="幅:" />
       <item name="lbl_window_size_height" value="高さ:" />
+      <item name="lbl_window_size_key1" value="キー 1:" />
+      <item name="lbl_window_size_key2" value="キー 2:" />
+      <item name="lbl_window_size_key3" value="キー 3:" />
       <item name="lbl_window_size_top" value="上:" />
       <item name="lbl_window_size_left" value="左:" />
       <item name="btn_window_size_up" value="Move Up" />
@@ -1124,6 +1139,9 @@
       <item name="lbl_window_size_title" value="제목:" />
       <item name="lbl_window_size_width" value="너비:" />
       <item name="lbl_window_size_height" value="높이:" />
+      <item name="lbl_window_size_key1" value="키 1:" />
+      <item name="lbl_window_size_key2" value="키 2:" />
+      <item name="lbl_window_size_key3" value="키 3:" />
       <item name="lbl_window_size_top" value="위:" />
       <item name="lbl_window_size_left" value="왼쪽:" />
       <item name="btn_window_size_up" value="Move Up" />
@@ -1319,6 +1337,9 @@
       <item name="lbl_window_size_title" value="Заголовок:" />
       <item name="lbl_window_size_width" value="Ширина:" />
       <item name="lbl_window_size_height" value="Высота:" />
+      <item name="lbl_window_size_key1" value="Клавиша 1:" />
+      <item name="lbl_window_size_key2" value="Клавиша 2:" />
+      <item name="lbl_window_size_key3" value="Клавиша 3:" />
       <item name="lbl_window_size_top" value="Верх:" />
       <item name="lbl_window_size_left" value="Лево:" />
       <item name="btn_window_size_up" value="Вверх" />
@@ -1514,6 +1535,9 @@
       <item name="lbl_window_size_title" value="Наслов:" />
       <item name="lbl_window_size_width" value="Ширина:" />
       <item name="lbl_window_size_height" value="Висина:" />
+      <item name="lbl_window_size_key1" value="Типак 1:" />
+      <item name="lbl_window_size_key2" value="Типак 2:" />
+      <item name="lbl_window_size_key3" value="Типак 3:" />
       <item name="lbl_window_size_top" value="Горе:" />
       <item name="lbl_window_size_left" value="Лево:" />
       <item name="btn_window_size_up" value="Премести на горе" />
@@ -1709,6 +1733,9 @@
       <item name="lbl_window_size_title" value="Nome:" />
       <item name="lbl_window_size_width" value="Largura:" />
       <item name="lbl_window_size_height" value="Altura:" />
+      <item name="lbl_window_size_key1" value="Key 1:" />
+      <item name="lbl_window_size_key2" value="Key 2:" />
+      <item name="lbl_window_size_key3" value="Key 3:" />
       <item name="lbl_window_size_top" value="Em cima:" />
       <item name="lbl_window_size_left" value="À esquerda:" />
       <item name="btn_window_size_up" value="Subir" />

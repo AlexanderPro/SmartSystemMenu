@@ -589,12 +589,16 @@ namespace SmartSystemMenu.Forms
             // 
             this.clmWindowSizeLeft.HeaderText = "clmWindowSizeLeft";
             this.clmWindowSizeLeft.Name = "clmWindowSizeLeft";
+            this.clmWindowSizeLeft.ReadOnly = true;
+            this.clmWindowSizeLeft.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmWindowSizeLeft.Width = 50;
             // 
             // clmWindowSizeTop
             // 
             this.clmWindowSizeTop.HeaderText = "clmWindowSizeTop";
             this.clmWindowSizeTop.Name = "clmWindowSizeTop";
+            this.clmWindowSizeTop.ReadOnly = true;
+            this.clmWindowSizeTop.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmWindowSizeTop.Width = 50;
             // 
             // clmWindowSizeWidth
@@ -620,6 +624,7 @@ namespace SmartSystemMenu.Forms
             this.clmWindowSizeHotKey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.clmWindowSizeHotKey.HeaderText = "";
             this.clmWindowSizeHotKey.Name = "clmWindowSizeHotKey";
+            this.clmWindowSizeHotKey.ReadOnly = true;
             // 
             // clmWindowSizeEdit
             // 
