@@ -413,40 +413,34 @@ namespace SmartSystemMenu
             var y = 0;
             var screen = Screen.FromHandle(Handle).WorkingArea;
             var window = Size;
-            var margin = GetSystemMargins();
-
 
             switch (alignment)
             {
                 case WindowAlignment.TopLeft:
                     {
-                        x = screen.X - margin.Left;
-                        y = screen.Y - margin.Top;
-                        SetPosition(x, y);
+                        x = screen.X;
+                        y = screen.Y;
                     }
                     break;
 
                 case WindowAlignment.TopCenter:
                     {
                         x = ((screen.Width - window.Width) / 2) + screen.X;
-                        y = screen.Y - margin.Top;
-                        SetPosition(x, y);
+                        y = screen.Y;
                     }
                     break;
 
                 case WindowAlignment.TopRight:
                     {
-                        x = (screen.Width - window.Width + screen.X) + margin.Right;
-                        y = screen.Y - margin.Top;
-                        SetPosition(x, y);
+                        x = screen.Width - window.Width + screen.X;
+                        y = screen.Y;
                     }
                     break;
 
                 case WindowAlignment.MiddleLeft:
                     {
-                        x = screen.X - margin.Left;
+                        x = screen.X;
                         y = (((screen.Height - window.Height) / 2) + screen.Y);
-                        SetPosition(x, y);
                     }
                     break;
 
@@ -454,42 +448,38 @@ namespace SmartSystemMenu
                     {
                         x = ((screen.Width - window.Width) / 2) + screen.X;
                         y = ((screen.Height - window.Height) / 2) + screen.Y;
-                        SetPosition(x, y);
                     }
                     break;
 
                 case WindowAlignment.MiddleRight:
                     {
-                        x = screen.Width - window.Width + screen.X + margin.Right;
+                        x = screen.Width - window.Width + screen.X;
                         y = (((screen.Height - window.Height) / 2) + screen.Y);
-                        SetPosition(x, y);
                     }
                     break;
 
                 case WindowAlignment.BottomLeft:
                     {
-                        x = screen.X - margin.Left;
-                        y = screen.Height - window.Height + screen.Y + margin.Bottom;
-                        SetPosition(x, y);
+                        x = screen.X;
+                        y = screen.Height - window.Height + screen.Y;
                     }
                     break;
 
                 case WindowAlignment.BottomCenter:
                     {
                         x = ((screen.Width - window.Width) / 2) + screen.X;
-                        y = screen.Height - window.Height + screen.Y + margin.Bottom;
-                        SetPosition(x, y);
+                        y = screen.Height - window.Height + screen.Y;
                     }
                     break;
 
                 case WindowAlignment.BottomRight:
                     {
-                        x = screen.Width - window.Width + screen.X + margin.Right;
-                        y = screen.Height - window.Height + screen.Y + margin.Bottom;
-                        SetPosition(x, y);
+                        x = screen.Width - window.Width + screen.X;
+                        y = screen.Height - window.Height + screen.Y;
                     }
                     break;
             }
+            SetPosition(x, y);
         }
 
         public void MakeTopMost(bool topMost)
