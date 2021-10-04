@@ -29,84 +29,62 @@
         /// <param name="menuLanguage">Contains language strings.</param>
         private void InitializeComponent()
         {
-            this.numericLeft = new System.Windows.Forms.NumericUpDown();
             this.lblLeft = new System.Windows.Forms.Label();
             this.lblTop = new System.Windows.Forms.Label();
-            this.numericTop = new System.Windows.Forms.NumericUpDown();
             this.btnApply = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericTop)).BeginInit();
+            this.txtLeft = new System.Windows.Forms.TextBox();
+            this.txtTop = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // numericLeft
-            // 
-            this.numericLeft.Location = new System.Drawing.Point(53, 12);
-            this.numericLeft.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.numericLeft.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
-            this.numericLeft.Name = "numericLeft";
-            this.numericLeft.Size = new System.Drawing.Size(72, 20);
-            this.numericLeft.TabIndex = 1;
             // 
             // lblLeft
             // 
             this.lblLeft.AutoSize = true;
             this.lblLeft.Location = new System.Drawing.Point(12, 14);
             this.lblLeft.Name = "lblLeft";
-            this.lblLeft.Size = new System.Drawing.Size(28, 13);
+            this.lblLeft.Size = new System.Drawing.Size(0, 13);
             this.lblLeft.TabIndex = 0;
             // 
             // lblTop
             // 
             this.lblTop.AutoSize = true;
-            this.lblTop.Location = new System.Drawing.Point(136, 14);
+            this.lblTop.Location = new System.Drawing.Point(199, 14);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(29, 13);
+            this.lblTop.Size = new System.Drawing.Size(0, 13);
             this.lblTop.TabIndex = 2;
-            // 
-            // numericTop
-            // 
-            this.numericTop.Location = new System.Drawing.Point(183, 12);
-            this.numericTop.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.numericTop.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
-            this.numericTop.Name = "numericTop";
-            this.numericTop.Size = new System.Drawing.Size(72, 20);
-            this.numericTop.TabIndex = 3;
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(279, 9);
+            this.btnApply.Location = new System.Drawing.Point(268, 69);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
             this.btnApply.TabIndex = 4;
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
+            // txtLeft
+            // 
+            this.txtLeft.Location = new System.Drawing.Point(15, 33);
+            this.txtLeft.Name = "txtLeft";
+            this.txtLeft.Size = new System.Drawing.Size(157, 20);
+            this.txtLeft.TabIndex = 1;
+            // 
+            // txtTop
+            // 
+            this.txtTop.Location = new System.Drawing.Point(202, 33);
+            this.txtTop.Name = "txtTop";
+            this.txtTop.Size = new System.Drawing.Size(157, 20);
+            this.txtTop.TabIndex = 3;
+            // 
             // PositionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 44);
+            this.ClientSize = new System.Drawing.Size(376, 116);
+            this.Controls.Add(this.txtTop);
+            this.Controls.Add(this.txtLeft);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.lblTop);
-            this.Controls.Add(this.numericTop);
             this.Controls.Add(this.lblLeft);
-            this.Controls.Add(this.numericLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -114,19 +92,16 @@
             this.Name = "PositionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.numericLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericTop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.NumericUpDown numericLeft;
         private System.Windows.Forms.Label lblLeft;
         private System.Windows.Forms.Label lblTop;
-        private System.Windows.Forms.NumericUpDown numericTop;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.TextBox txtLeft;
+        private System.Windows.Forms.TextBox txtTop;
     }
 }

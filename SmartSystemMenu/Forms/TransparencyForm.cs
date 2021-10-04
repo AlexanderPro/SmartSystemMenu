@@ -6,39 +6,28 @@ namespace SmartSystemMenu.Forms
 {
     partial class TransparencyForm : Form
     {
-        private Window _window;
+        public int WindowTransparency { get; set; }
 
         public TransparencyForm(Window window, SmartSystemMenuSettings settings)
         {
             InitializeComponent();
-            InitializeControls(settings);
+            InitializeControls(window, settings);
 
-            _window = window;
-            numericTransparency.Value = _window.Transparency;
         }
 
-        private void InitializeControls(SmartSystemMenuSettings settings)
+        private void InitializeControls(Window window, SmartSystemMenuSettings settings)
         {
             btnApply.Text = settings.LanguageSettings.GetValue("trans_btn_apply");
             Text = settings.LanguageSettings.GetValue("trans_form");
+            numericTransparency.Value = window.Transparency;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
-            try
-            {
-                var value = (Byte)numericTransparency.Value;
-                _window.SetTrancparency(value);
-                _window.Menu.UncheckTransparencyMenu();
-                _window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_CUSTOM, true);
-            }
-            catch
-            {
-            }
-            finally
-            {
-                Close();
-            }
+            WindowTransparency = (int)numericTransparency.Value;
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void FormKeyDown(object sender, KeyEventArgs e)

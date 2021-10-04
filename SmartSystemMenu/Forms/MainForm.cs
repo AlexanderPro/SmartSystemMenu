@@ -79,12 +79,16 @@ namespace SmartSystemMenu.Forms
                 }
             }
 
-            _systemTrayMenu = new SystemTrayMenu(_settings.ShowSystemTrayIcon, _settings.LanguageSettings);
-            _systemTrayMenu.MenuItemAutoStart.Click += MenuItemAutoStartClick;
-            _systemTrayMenu.MenuItemSettings.Click += MenuItemSettingsClick;
-            _systemTrayMenu.MenuItemAbout.Click += MenuItemAboutClick;
-            _systemTrayMenu.MenuItemExit.Click += MenuItemExitClick;
-            _systemTrayMenu.MenuItemAutoStart.Checked = AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
+            if (_settings.ShowSystemTrayIcon)
+            {
+                _systemTrayMenu = new SystemTrayMenu(_settings.LanguageSettings);
+                _systemTrayMenu.MenuItemAutoStartClick += MenuItemAutoStartClick;
+                _systemTrayMenu.MenuItemSettingsClick += MenuItemSettingsClick;
+                _systemTrayMenu.MenuItemAboutClick += MenuItemAboutClick;
+                _systemTrayMenu.MenuItemExitClick += MenuItemExitClick;
+                _systemTrayMenu.Create();
+                _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
+            }
 
             var moduleName = Process.GetCurrentProcess().MainModule.ModuleName;
 
@@ -199,11 +203,7 @@ namespace SmartSystemMenu.Forms
             Window.ForceAllMessageLoopsToWakeUp();
 
 #if WIN32
-            if (_systemTrayMenu != null)
-            {
-                _systemTrayMenu.Icon.Visible = false;
-            }
-
+            _systemTrayMenu?.Dispose();
             _hotKeyHook?.Dispose();
 
             if (Environment.Is64BitOperatingSystem && _64BitProcess != null && !_64BitProcess.HasExited)
@@ -574,13 +574,7 @@ namespace SmartSystemMenu.Forms
                                 if (!isChecked)
                                 {
                                     window.RollUp();
-                                    var windowSizeMenuItemIds = new List<int>
-                                    {
-                                        MenuItemId.SC_SIZE_DEFAULT,
-                                        MenuItemId.SC_SIZE_CUSTOM
-                                    };
-                                    windowSizeMenuItemIds.AddRange(_settings.MenuItems.WindowSizeItems.Select(x => x.Id));
-                                    window.Menu.UncheckMenuItems(windowSizeMenuItemIds.ToArray());
+                                    window.Menu.UncheckSizeMenu();
                                 }
                                 else
                                 {
@@ -592,8 +586,6 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_SIZE_DEFAULT:
                             {
-                                var windowSizeMenuItemIds = _settings.MenuItems.WindowSizeItems.Select(x => x.Id).ToArray();
-                                window.Menu.UncheckMenuItems(windowSizeMenuItemIds);
                                 window.Menu.UncheckSizeMenu();
                                 window.Menu.CheckMenuItem(MenuItemId.SC_SIZE_DEFAULT, true);
                                 window.ShowNormal();
@@ -605,7 +597,29 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_SIZE_CUSTOM:
                             {
                                 var sizeForm = new SizeForm(window, _settings);
-                                sizeForm.Show(window.Win32Window);
+                                var result = sizeForm.ShowDialog(window.Win32Window);
+                                if (result == DialogResult.OK)
+                                {
+                                    window.ShowNormal();
+
+                                    if (_settings.Sizer == WindowSizerType.WindowWithMargins)
+                                    {
+                                        window.SetSize(sizeForm.WindowWidth, sizeForm.WindowHeight, sizeForm.WindowLeft, sizeForm.WindowTop);
+                                    }
+                                    else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
+                                    {
+                                        var margins = window.GetSystemMargins();
+                                        window.SetSize(sizeForm.WindowWidth + margins.Left + margins.Right, sizeForm.WindowHeight + margins.Top + margins.Bottom, sizeForm.WindowLeft, sizeForm.WindowTop);
+                                    }
+                                    else
+                                    {
+                                        window.SetSize(sizeForm.WindowWidth + (window.Size.Width - window.ClientSize.Width), sizeForm.WindowHeight + (window.Size.Height - window.ClientSize.Height), sizeForm.WindowLeft, sizeForm.WindowTop);
+                                    }
+
+                                    window.Menu.UncheckSizeMenu();
+                                    window.Menu.CheckMenuItem(MenuItemId.SC_SIZE_CUSTOM, true);
+                                    window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
+                                }
                             }
                             break;
 
@@ -620,7 +634,13 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_TRANS_CUSTOM:
                             {
                                 var opacityForm = new TransparencyForm(window, _settings);
-                                opacityForm.Show(window.Win32Window);
+                                var result = opacityForm.ShowDialog(window.Win32Window);
+                                if (result == DialogResult.OK)
+                                {
+                                    window.SetTrancparency(opacityForm.WindowTransparency);
+                                    window.Menu.UncheckTransparencyMenu();
+                                    window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_CUSTOM, true);
+                                }
                             }
                             break;
 
@@ -635,7 +655,15 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_ALIGN_CUSTOM:
                             {
                                 var positionForm = new PositionForm(window, _settings.LanguageSettings);
-                                positionForm.Show(window.Win32Window);
+                                var result = positionForm.ShowDialog(window.Win32Window);
+
+                                if (result == DialogResult.OK)
+                                {
+                                    window.ShowNormal();
+                                    window.SetPosition(positionForm.WindowLeft, positionForm.WindowTop);
+                                    window.Menu.UncheckAlignmentMenu();
+                                    window.Menu.CheckMenuItem(MenuItemId.SC_ALIGN_CUSTOM, true);
+                                }
                             }
                             break;
 
@@ -723,8 +751,6 @@ namespace SmartSystemMenu.Forms
 
         private void SetSizeMenuItem(Window window, int itemId, WindowSizeMenuItem item)
         {
-            var windowSizeMenuItemIds = _settings.MenuItems.WindowSizeItems.Select(x => x.Id).ToArray();
-            window.Menu.UncheckMenuItems(windowSizeMenuItemIds);
             window.Menu.UncheckSizeMenu();
             window.Menu.CheckMenuItem(itemId, true);
             window.ShowNormal();

@@ -6,45 +6,56 @@ namespace SmartSystemMenu.Forms
 {
     partial class PositionForm : Form
     {
-        private Window _window;
+        public int WindowLeft { get; private set; }
+
+        public int WindowTop { get; private set; }
 
         public PositionForm(Window window, LanguageSettings settings)
         {
-            _window = window;
-
             InitializeComponent();
-            InitializeControls(settings);
-
-            numericLeft.Value = _window.SizeOnMonitor.Left;
-            numericTop.Value = _window.SizeOnMonitor.Top;
+            InitializeControls(window, settings);
         }
 
-        private void InitializeControls(LanguageSettings settings)
+        private void InitializeControls(Window window, LanguageSettings settings)
         {
             lblLeft.Text = settings.GetValue("lbl_left");
             lblTop.Text = settings.GetValue("lbl_top");
             btnApply.Text = settings.GetValue("align_btn_apply");
             Text = settings.GetValue("align_form");
+
+            var left = window.Size.Left;
+            var top = window.Size.Top;
+
+            WindowLeft = left;
+            WindowTop = top;
+
+            txtLeft.Text = left.ToString();
+            txtTop.Text = top.ToString();
+
+            DialogResult = DialogResult.Cancel;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
-            try
+            if (!int.TryParse(txtLeft.Text, out var left))
             {
-                int left = (int)numericLeft.Value;
-                int top = (int)numericTop.Value;
-                _window.ShowNormal();
-                _window.SetPosition(left, top);
-                _window.Menu.UncheckAlignmentMenu();
-                _window.Menu.CheckMenuItem(MenuItemId.SC_ALIGN_CUSTOM, true);
+                txtLeft.SelectAll();
+                txtLeft.Focus();
+                return;
             }
-            catch
+
+            if (!int.TryParse(txtTop.Text, out var top))
             {
+                txtTop.SelectAll();
+                txtTop.Focus();
+                return;
             }
-            finally
-            {
-                Close();
-            }
+
+            WindowLeft = left;
+            WindowTop = top;
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void FormKeyDown(object sender, KeyEventArgs e)

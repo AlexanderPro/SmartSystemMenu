@@ -7,16 +7,18 @@ namespace SmartSystemMenu.Forms
 {
     partial class SizeForm : Form
     {
-        private Window _window;
-        private SmartSystemMenuSettings _settings;
+        public int WindowLeft { get; private set; }
+
+        public int WindowTop { get; private set; }
+
+        public int WindowWidth { get; private set; }
+
+        public int WindowHeight { get; private set; }
 
         public SizeForm(Window window, SmartSystemMenuSettings settings)
         {
             InitializeComponent();
             InitializeControls(window, settings.LanguageSettings);
-
-            _window = window;
-            _settings = settings;
         }
 
         private void InitializeControls(Window window, LanguageSettings settings)
@@ -28,10 +30,22 @@ namespace SmartSystemMenu.Forms
             btnApply.Text = settings.GetValue("size_btn_apply");
             Text = settings.GetValue("size_form");
 
-            txtLeft.Text = window.Size.Left.ToString();
-            txtTop.Text = window.Size.Top.ToString();
-            txtWidth.Text = window.Size.Width.ToString();
-            txtHeight.Text = window.Size.Height.ToString();
+            var left = window.Size.Left;
+            var top = window.Size.Top;
+            var width = window.Size.Width;
+            var height = window.Size.Height;
+
+            WindowLeft = left;
+            WindowTop = top;
+            WindowWidth = width;
+            WindowHeight = height;
+
+            txtLeft.Text = left.ToString();
+            txtTop.Text = top.ToString();
+            txtWidth.Text = width.ToString();
+            txtHeight.Text = height.ToString();
+
+            DialogResult = DialogResult.Cancel;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
@@ -64,27 +78,12 @@ namespace SmartSystemMenu.Forms
                 return;
             }
 
-            _window.ShowNormal();
+            WindowLeft = left;
+            WindowTop = top;
+            WindowWidth = width;
+            WindowHeight = height;
 
-            if (_settings.Sizer == WindowSizerType.WindowWithMargins)
-            {
-                _window.SetSize(width, height, left, top);
-            }
-            else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
-            {
-                var margins = _window.GetSystemMargins();
-                _window.SetSize(width + margins.Left + margins.Right, height + margins.Top + margins.Bottom, left, top);
-            }
-            else
-            {
-                _window.SetSize(width + (_window.Size.Width - _window.ClientSize.Width), height + (_window.Size.Height - _window.ClientSize.Height), left, top);
-            }
-
-            var windowSizeMenuItemIds = _settings.MenuItems.WindowSizeItems.Select(x => x.Id).ToArray();
-            _window.Menu.UncheckMenuItems(windowSizeMenuItemIds);
-            _window.Menu.UncheckSizeMenu();
-            _window.Menu.CheckMenuItem(MenuItemId.SC_SIZE_CUSTOM, true);
-            _window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
+            DialogResult = DialogResult.OK;
             Close();
         }
 

@@ -275,6 +275,8 @@ namespace SmartSystemMenu
 
         public void UncheckSizeMenu()
         {
+            var windowSizeMenuItemIds = _menuItems.WindowSizeItems.Select(x => x.Id).ToArray();
+            UncheckMenuItems(windowSizeMenuItemIds);
             CheckMenuItem(MenuItemId.SC_SIZE_DEFAULT, false);
             CheckMenuItem(MenuItemId.SC_SIZE_CUSTOM, false);
         }
