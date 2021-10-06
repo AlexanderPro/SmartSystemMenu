@@ -7,6 +7,7 @@
     <processName>sihost.exe</processName>
     <processName>chrome.exe</processName>
     <processName>code.exe</processName>
+    <processName>smartscreen.exe</processName>
   </processExclusions>
   <menuItems>
     <items>

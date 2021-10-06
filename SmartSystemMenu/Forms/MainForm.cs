@@ -189,8 +189,11 @@ namespace SmartSystemMenu.Forms
         protected override void OnClosed(EventArgs e)
         {
             _getMsgHook?.Stop();
+            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
             _shellHook?.Stop();
+            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
             _cbtHook?.Stop();
+            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
 
             if (_windows != null)
             {
@@ -228,6 +231,7 @@ namespace SmartSystemMenu.Forms
             }
 #endif
             base.OnClosed(e);
+            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
         }
 
         protected override void WndProc(ref Message m)

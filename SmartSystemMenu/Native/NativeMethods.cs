@@ -153,6 +153,9 @@ namespace SmartSystemMenu.Native
         public static extern IntPtr PostMessage(IntPtr hWnd, int msg, UInt64 wParam, UInt64 lParam);
 
         [DllImport("user32.dll")]
+        public extern static int SendNotifyMessage(IntPtr hWnd, int msg, uint wParam, uint lParam);
+
+        [DllImport("user32.dll")]
         public static extern int SendMessageTimeout(IntPtr handle, int uMsg, uint wParam, uint lParam, SendMessageTimeoutFlags fuFlags, int uTimeout, out uint lpdwResult);
 
         [DllImport("user32.dll")]
