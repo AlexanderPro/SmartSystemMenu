@@ -735,7 +735,28 @@ namespace SmartSystemMenu.Forms
         private void HotKeyHooked(object sender, HotKeyEventArgs e)
         {
             var handle = NativeMethods.GetForegroundWindow();
-            NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, (uint)e.MenuItemId, 0);
+            var systemMenuHandle = NativeMethods.GetSystemMenu(handle, false);
+
+            if (handle != null && handle != IntPtr.Zero && systemMenuHandle != null && systemMenuHandle != IntPtr.Zero)
+            {
+                var processName = "";
+
+                try
+                {
+                    NativeMethods.GetWindowThreadProcessId(handle, out var processId);
+                    var process = SystemUtils.GetProcessByIdSafely(processId);
+                    processName = Path.GetFileName(process.GetMainModuleFileName());
+                }
+                catch
+                {
+                }
+
+                if (!_settings.ProcessExclusions.Contains(processName.ToLower()))
+                {
+                    NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, (uint)e.MenuItemId, 0);
+                    e.Succeeded = true;
+                }
+            }
         }
 
         private void SetPriorityMenuItem(Window window, int itemId, Priority priority)

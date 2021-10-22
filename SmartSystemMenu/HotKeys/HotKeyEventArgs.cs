@@ -6,6 +6,8 @@ namespace SmartSystemMenu.HotKeys
     {
         public int MenuItemId { get; private set; }
 
+        public bool Succeeded { get; set; }
+
         public HotKeyEventArgs(int menuItemId)
         {
             MenuItemId = menuItemId;

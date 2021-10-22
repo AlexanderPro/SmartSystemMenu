@@ -87,7 +87,11 @@ namespace SmartSystemMenu.HotKeys
                             {
                                 var menuItemId = MenuItemId.GetId(item.Name);
                                 var eventArgs = new HotKeyEventArgs(menuItemId);
-                                handler.BeginInvoke(this, eventArgs, null, null);
+                                handler.Invoke(this, eventArgs);
+                                if (eventArgs.Succeeded)
+                                {
+                                    return 1;
+                                }
                             }
                         }
                     }
@@ -115,7 +119,11 @@ namespace SmartSystemMenu.HotKeys
                             if (handler != null)
                             {
                                 var eventArgs = new HotKeyEventArgs(item.Id);
-                                handler.BeginInvoke(this, eventArgs, null, null);
+                                handler.Invoke(this, eventArgs);
+                                if (eventArgs.Succeeded)
+                                {
+                                    return 1;
+                                }
                             }
                         }
                     }
