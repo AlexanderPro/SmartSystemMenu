@@ -94,7 +94,7 @@ namespace SmartSystemMenu.Forms
 
             _hotKeyHook = new HotKeyHook();
             _hotKeyHook.Hooked += HotKeyHooked;
-            if (_settings.MenuItems.Items.Any(x => x.Key3 != VirtualKey.None && x.Show) || _settings.MenuItems.WindowSizeItems.Any(x => x.Key3 != VirtualKey.None))
+            if (_settings.MenuItems.Items.Flatten(x => x.Items).Any(x => x.Type == MenuItemType.Item && x.Key3 != VirtualKey.None && x.Show) || _settings.MenuItems.WindowSizeItems.Any(x => x.Key3 != VirtualKey.None))
             {
                 _hotKeyHook.Start(moduleName, _settings.MenuItems);
             }
@@ -150,7 +150,7 @@ namespace SmartSystemMenu.Forms
 
             _mouseHook = new Hooks.MouseHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             var dragByMouseItemName = MenuItemId.GetName(MenuItemId.SC_DRAG_BY_MOUSE);
-            if (_settings.MenuItems.Items.Any(x => x.Name == dragByMouseItemName && x.Show))
+            if (_settings.MenuItems.Items.Flatten(x => x.Items).Any(x => x.Type == MenuItemType.Item && x.Name == dragByMouseItemName && x.Show))
             {
                 _mouseHook.Start();
             }

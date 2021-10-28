@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Settings;
+using SmartSystemMenu.Extensions;
 using static SmartSystemMenu.Native.NativeMethods;
 using static SmartSystemMenu.Native.NativeConstants;
 
@@ -63,7 +64,7 @@ namespace SmartSystemMenu.HotKeys
             {
                 if (wParam.ToInt32() == WM_KEYDOWN || wParam.ToInt32() == WM_SYSKEYDOWN)
                 {
-                    foreach (var item in _menuItems.Items)
+                    foreach (var item in _menuItems.Items.Flatten(x => x.Items).Where(x => x.Type == MenuItemType.Item))
                     {
                         var key1 = true;
                         var key2 = true;

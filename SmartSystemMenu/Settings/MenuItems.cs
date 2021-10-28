@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SmartSystemMenu.Extensions;
 
 namespace SmartSystemMenu.Settings
 {
@@ -20,7 +21,7 @@ namespace SmartSystemMenu.Settings
 
         public string GetHotKeysCombination(string name)
         {
-            var item = Items.FirstOrDefault(x => x.Name == name);
+            var item = Items.Flatten(x => x.Items).Where(x => x.Type == MenuItemType.Item).FirstOrDefault(x => x.Name == name);
             var value = item == null ? "" : item.ToString();
             return value;
         }

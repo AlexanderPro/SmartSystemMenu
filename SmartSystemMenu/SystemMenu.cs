@@ -119,10 +119,10 @@ namespace SmartSystemMenu
         public void Destroy()
         {
             var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            int Index = NativeMethods.GetMenuItemCount(windowMenuHandle);
+            var index = NativeMethods.GetMenuItemCount(windowMenuHandle);
             for (int i = 0; i < _numberItems; i++)
             {
-                NativeMethods.DeleteMenu(windowMenuHandle, --Index, NativeConstants.MF_BYPOSITION);
+                NativeMethods.DeleteMenu(windowMenuHandle, --index, NativeConstants.MF_BYPOSITION);
             }
 
             foreach (var handle in _subMenuHandles)
