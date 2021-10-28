@@ -125,6 +125,7 @@
     <Compile Include="HotKeys\VirtualKeyModifier.cs" />
     <Compile Include="MenuItemId.cs" />
     <Compile Include="Settings\CloserSettings.cs" />
+    <Compile Include="Settings\MenuItemType.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
     <Compile Include="WindowCloserType.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />

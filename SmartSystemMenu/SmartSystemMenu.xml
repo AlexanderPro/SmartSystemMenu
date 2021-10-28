@@ -11,62 +11,89 @@
   </processExclusions>
   <menuItems>
     <items>
-      <item name="information" key1="17" key2="16" key3="73" />
-      <item name="roll_up" key1="" key2="" key3="" />
-      <item name="aero_glass" key1="" key2="" key3="" />
-      <item name="always_on_top" key1="" key2="" key3="" />
-      <item name="send_to_bottom" key1="" key2="" key3="" />
-      <item name="save_screenshot" key1="" key2="" key3="" />
-      <item name="open_file_in_explorer" key1="" key2="" key3="" />
-      <item name="drag_by_mouse" key1="" key2="" key3="" />
-      <item name="size" key1="" key2="" key3="" />
-      <item name="size_default" key1="" key2="" key3="" />
-      <item name="size_custom" key1="" key2="" key3="" />
-      <item name="move_to" key1="" key2="" key3="" />
-      <item name="alignment" key1="" key2="" key3="" />
-      <item name="align_top_left" key1="18" key2="" key3="103" />
-      <item name="align_top_center" key1="18" key2="" key3="104" />
-      <item name="align_top_right" key1="18" key2="" key3="105" />
-      <item name="align_middle_left" key1="18" key2="" key3="100" />
-      <item name="align_middle_center" key1="18" key2="" key3="101" />
-      <item name="align_middle_right" key1="18" key2="" key3="102" />
-      <item name="align_bottom_left" key1="18" key2="" key3="97" />
-      <item name="align_bottom_center" key1="18" key2="" key3="98" />
-      <item name="align_bottom_right" key1="18" key2="" key3="99" />
-      <item name="align_default" key1="" key2="" key3="" />
-      <item name="align_custom" key1="" key2="" key3="" />
-      <item name="transparency" key1="" key2="" key3="" />
-      <item name="trans_opaque" key1="17" key2="" key3="96" />
-      <item name="10%" key1="17" key2="" key3="97" />
-      <item name="20%" key1="17" key2="" key3="98" />
-      <item name="30%" key1="17" key2="" key3="99" />
-      <item name="40%" key1="17" key2="" key3="100" />
-      <item name="50%" key1="17" key2="" key3="101" />
-      <item name="60%" key1="17" key2="" key3="102" />
-      <item name="70%" key1="17" key2="" key3="103" />
-      <item name="80%" key1="17" key2="" key3="104" />
-      <item name="90%" key1="17" key2="" key3="105" />
-      <item name="trans_invisible" key1="" key2="" key3="" />
-      <item name="trans_default" key1="" key2="" key3="" />
-      <item name="trans_custom" key1="" key2="" key3="" />
-      <item name="priority" key1="" key2="" key3="" />
-      <item name="priority_real_time" key1="" key2="" key3="" />
-      <item name="priority_high" key1="" key2="" key3="" />
-      <item name="priority_above_normal" key1="" key2="" key3="" />
-      <item name="priority_normal" key1="" key2="" key3="" />
-      <item name="priority_below_normal" key1="" key2="" key3="" />
-      <item name="priority_idle" key1="" key2="" key3="" />
-      <item name="clipboard" key1="" key2="" key3="" />
-      <item name="copy_text_to_clipboard" key1="" key2="" key3="" />
-      <item name="clear_clipboard" key1="" key2="" key3="" />
-      <item name="system_tray" key1="" key2="" key3="" />
-      <item name="minimize_to_systemtray" key1="" key2="" key3="" />
-      <item name="minimize_always_to_systemtray" key1="" key2="" key3="" />
-      <item name="suspend_to_systemtray" key1="" key2="" key3="" />
-      <item name="other_windows" key1="" key2="" key3="" />
-      <item name="minimize_other_windows" key1="" key2="" key3="" />
-      <item name="close_other_windows" key1="" key2="" key3="" />
-      <item name="start_program" key1="" key2="" key3="" />
+      <item type="item" name="information" key1="17" key2="16" key3="73" />
+      <item type="item" name="roll_up" key1="" key2="" key3="" />
+      <item type="item" name="aero_glass" key1="" key2="" key3="" />
+      <item type="item" name="always_on_top" key1="" key2="" key3="" />
+      <item type="item" name="send_to_bottom" key1="" key2="" key3="" />
+      <item type="item" name="save_screenshot" key1="" key2="" key3="" />
+      <item type="item" name="open_file_in_explorer" key1="" key2="" key3="" />
+      <item type="item" name="drag_by_mouse" key1="" key2="" key3="" />
+      <item type="group" name="size">
+        <items>
+          <item type="separator" />
+          <item type="item" name="size_default" key1="" key2="" key3="" />
+          <item type="separator" />
+          <item type="item" name="size_custom" key1="" key2="" key3="" />
+        </items>
+      </item>
+      <item type="group" name="move_to" />
+      <item type="group" name="alignment">
+        <items>
+          <item type="item" name="align_top_left" key1="18" key2="" key3="103" />
+          <item type="item" name="align_top_center" key1="18" key2="" key3="104" />
+          <item type="item" name="align_top_right" key1="18" key2="" key3="105" />
+          <item type="item" name="align_middle_left" key1="18" key2="" key3="100" />
+          <item type="item" name="align_middle_center" key1="18" key2="" key3="101" />
+          <item type="item" name="align_middle_right" key1="18" key2="" key3="102" />
+          <item type="item" name="align_bottom_left" key1="18" key2="" key3="97" />
+          <item type="item" name="align_bottom_center" key1="18" key2="" key3="98" />
+          <item type="item" name="align_bottom_right" key1="18" key2="" key3="99" />
+          <item type="separator" />
+          <item type="item" name="align_default" key1="" key2="" key3="" />
+          <item type="separator" />
+          <item type="item" name="align_custom" key1="" key2="" key3="" />
+        </items>
+      </item>
+      <item type="group" name="transparency">
+        <items>
+          <item type="item" name="trans_opaque" key1="17" key2="" key3="96" />
+          <item type="item" name="10%" key1="17" key2="" key3="97" />
+          <item type="item" name="20%" key1="17" key2="" key3="98" />
+          <item type="item" name="30%" key1="17" key2="" key3="99" />
+          <item type="item" name="40%" key1="17" key2="" key3="100" />
+          <item type="item" name="50%" key1="17" key2="" key3="101" />
+          <item type="item" name="60%" key1="17" key2="" key3="102" />
+          <item type="item" name="70%" key1="17" key2="" key3="103" />
+          <item type="item" name="80%" key1="17" key2="" key3="104" />
+          <item type="item" name="90%" key1="17" key2="" key3="105" />
+          <item type="item" name="trans_invisible" key1="" key2="" key3="" />
+          <item type="separator" />
+          <item type="item" name="trans_default" key1="" key2="" key3="" />
+          <item type="separator" />
+          <item type="item" name="trans_custom" key1="" key2="" key3="" />
+        </items>
+      </item>
+      <item type="group" name="priority">
+        <items>
+          <item type="item" name="priority_real_time" key1="" key2="" key3="" />
+          <item type="item" name="priority_high" key1="" key2="" key3="" />
+          <item type="item" name="priority_above_normal" key1="" key2="" key3="" />
+          <item type="item" name="priority_normal" key1="" key2="" key3="" />
+          <item type="item" name="priority_below_normal" key1="" key2="" key3="" />
+          <item type="item" name="priority_idle" key1="" key2="" key3="" />
+        </items>
+      </item>
+      <item type="group" name="clipboard">
+        <items>
+          <item type="item" name="copy_text_to_clipboard" key1="" key2="" key3="" />
+          <item type="item" name="clear_clipboard" key1="" key2="" key3="" />
+        </items>
+      </item>
+      <item type="group" name="system_tray">
+        <items>
+          <item type="item" name="minimize_to_systemtray" key1="" key2="" key3="" />
+          <item type="item" name="minimize_always_to_systemtray" key1="" key2="" key3="" />
+          <item type="item" name="suspend_to_systemtray" key1="" key2="" key3="" />
+        </items>
+      </item>
+      <item type="group" name="other_windows">
+        <items>
+          <item type="item" name="minimize_other_windows" key1="" key2="" key3="" />
+          <item type="item" name="close_other_windows" key1="" key2="" key3="" />
+        </items>
+      </item>
+      <item type="group" name="start_program" />
     </items>
     <windowSizeItems>
       <item title="640x480" left="" top="" width="640" height="480" key1="" key2="" key3="" />

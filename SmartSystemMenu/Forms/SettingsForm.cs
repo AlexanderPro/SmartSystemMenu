@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
@@ -70,6 +71,8 @@ namespace SmartSystemMenu.Forms
             toolTipAddProcessName.SetToolTip(btnAddWindowSize, settings.LanguageSettings.GetValue("btn_add_window_size"));
             toolTipAddProcessName.SetToolTip(btnWindowSizeDown, settings.LanguageSettings.GetValue("btn_window_size_down"));
             toolTipAddProcessName.SetToolTip(btnWindowSizeUp, settings.LanguageSettings.GetValue("btn_window_size_up"));
+            toolTipAddProcessName.SetToolTip(btnMenuItemDown, settings.LanguageSettings.GetValue("btn_menu_item_down"));
+            toolTipAddProcessName.SetToolTip(btnMenuItemUp, settings.LanguageSettings.GetValue("btn_menu_item_up"));
             btnCloser.Text = settings.LanguageSettings.GetValue("closer_button_name");
             btnApply.Text = settings.LanguageSettings.GetValue("settings_btn_apply");
             btnCancel.Text = settings.LanguageSettings.GetValue("settings_btn_cancel");
@@ -134,62 +137,12 @@ namespace SmartSystemMenu.Forms
             cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_client_area"));
             cmbSizer.SelectedIndex = (int)settings.Sizer;
 
-            FillGridViewRowHotkey(gvHotkeys, settings, "information");
-            FillGridViewRowHotkey(gvHotkeys, settings, "roll_up");
-            FillGridViewRowHotkey(gvHotkeys, settings, "aero_glass");
-            FillGridViewRowHotkey(gvHotkeys, settings, "always_on_top");
-            FillGridViewRowHotkey(gvHotkeys, settings, "send_to_bottom");
-            FillGridViewRowHotkey(gvHotkeys, settings, "save_screenshot");
-            FillGridViewRowHotkey(gvHotkeys, settings, "open_file_in_explorer");
-            FillGridViewRowHotkey(gvHotkeys, settings, "drag_by_mouse");
-            FillGridViewGroupHotkey(gvHotkeys, settings, "size");
-            FillGridViewRowHotkey(gvHotkeys, settings, "size_default", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "size_custom", null, true);
-            FillGridViewGroupHotkey(gvHotkeys, settings, "move_to");
-            FillGridViewGroupHotkey(gvHotkeys, settings, "alignment");
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_top_left", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_top_center", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_top_right", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_middle_left", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_middle_center", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_middle_right", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_bottom_left", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_bottom_center", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_bottom_right", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_default", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "align_custom", null, true);
-            FillGridViewGroupHotkey(gvHotkeys, settings, "transparency");
-            FillGridViewRowHotkey(gvHotkeys, settings, "trans_opaque", "0%" + settings.LanguageSettings.GetValue("trans_opaque"), true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "10%", "10%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "20%", "20%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "30%", "30%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "40%", "40%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "50%", "50%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "60%", "60%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "70%", "70%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "80%", "80%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "90%", "90%", true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "trans_invisible", "100%" + settings.LanguageSettings.GetValue("trans_invisible"), true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "trans_default", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "trans_custom", null, true);
-            FillGridViewGroupHotkey(gvHotkeys, settings, "priority");
-            FillGridViewRowHotkey(gvHotkeys, settings, "priority_real_time", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "priority_high", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "priority_above_normal", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "priority_normal", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "priority_below_normal", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "priority_idle", null, true);
-            FillGridViewGroupHotkey(gvHotkeys, settings, "clipboard");
-            FillGridViewRowHotkey(gvHotkeys, settings, "copy_text_to_clipboard", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "clear_clipboard", null, true);
-            FillGridViewGroupHotkey(gvHotkeys, settings, "system_tray");
-            FillGridViewRowHotkey(gvHotkeys, settings, "minimize_to_systemtray", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "minimize_always_to_systemtray", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "suspend_to_systemtray", null, true);
-            FillGridViewGroupHotkey(gvHotkeys, settings, "other_windows");
-            FillGridViewRowHotkey(gvHotkeys, settings, "minimize_other_windows", null, true);
-            FillGridViewRowHotkey(gvHotkeys, settings, "close_other_windows", null, true);
-            FillGridViewGroupHotkey(gvHotkeys, settings, "start_program");
+            var items = new List<Settings.MenuItem>();
+            foreach(var item in settings.MenuItems.Items)
+            {
+                items.Add((Settings.MenuItem)item.Clone());
+            }
+            FillGridViewHotKeys(gvHotkeys, items, settings.LanguageSettings);
         }
 
         private void GridViewProcessExclusionsCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -435,6 +388,7 @@ namespace SmartSystemMenu.Forms
                 grid.Rows.RemoveAt(index);
                 grid.Rows.Insert(newIndex, selectedRow);
                 grid.Rows[newIndex].Selected = true;
+                grid.CurrentCell = grid.Rows[newIndex].Cells[0];
             }
         }
 
@@ -450,6 +404,7 @@ namespace SmartSystemMenu.Forms
                 grid.Rows.RemoveAt(index);
                 grid.Rows.Insert(newIndex, selectedRow);
                 grid.Rows[newIndex].Selected = true;
+                grid.CurrentCell = grid.Rows[newIndex].Cells[0];
             }
         }
 
@@ -462,6 +417,64 @@ namespace SmartSystemMenu.Forms
                 _closerSettings.Key2 = dialog.Key2;
                 _closerSettings.MouseButton = dialog.MouseButton;
                 _closerSettings.Type = dialog.CloserType;
+            }
+        }
+
+        private void ButtonMenuItemUpClick(object sender, EventArgs e)
+        {
+            if (gvHotkeys.SelectedRows.Count > 0)
+            {
+                var items = (IList<Settings.MenuItem>)gvHotkeys.Tag;
+                var item = (Settings.MenuItem)gvHotkeys.SelectedRows[0].Tag;
+                var list = FindList(items, item);
+                if (list != null && list.Count > 1)
+                {
+                    var index = list.IndexOf(item);
+                    if (index > 0)
+                    {
+                        ((List<Settings.MenuItem>)list).Reverse(index - 1, 2);
+                        gvHotkeys.Rows.Clear();
+                        FillGridViewHotKeys(gvHotkeys, items, _settings.LanguageSettings);
+                        foreach (DataGridViewRow row in gvHotkeys.Rows)
+                        {
+                            if (row.Tag == item)
+                            {
+                                row.Selected = true;
+                                gvHotkeys.CurrentCell = row.Cells[0];
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ButtonMenuItemDownClick(object sender, EventArgs e)
+        {
+            if (gvHotkeys.SelectedRows.Count > 0)
+            {
+                var items = (IList<Settings.MenuItem>)gvHotkeys.Tag;
+                var item = (Settings.MenuItem)gvHotkeys.SelectedRows[0].Tag;
+                var list = FindList(items, item);
+                if (list != null && list.Count > 1)
+                {
+                    var index = list.IndexOf(item);
+                    if (index < list.Count - 1)
+                    {
+                        ((List<Settings.MenuItem>)list).Reverse(index, 2);
+                        gvHotkeys.Rows.Clear();
+                        FillGridViewHotKeys(gvHotkeys, items, _settings.LanguageSettings);
+                        foreach (DataGridViewRow row in gvHotkeys.Rows)
+                        {
+                            if (row.Tag == item)
+                            {
+                                row.Selected = true;
+                                gvHotkeys.CurrentCell = row.Cells[0];
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -492,18 +505,12 @@ namespace SmartSystemMenu.Forms
                 }
             }
 
-
             foreach (DataGridViewRow row in gvStartProgram.Rows)
             {
                 settings.MenuItems.StartProgramItems.Add(new StartProgramMenuItem { Title = row.Cells[0].Value.ToString(), FileName = row.Cells[1].Value.ToString(), Arguments = row.Cells[2].Value.ToString() });
             }
 
-            foreach (DataGridViewRow row in gvHotkeys.Rows.OfType<DataGridViewRow>().Where(x => x.Tag is Settings.MenuItem))
-            {
-                var menuItem = (Settings.MenuItem)row.Tag;
-                settings.MenuItems.Items.Add(menuItem);
-            }
-
+            settings.MenuItems.Items = (IList<Settings.MenuItem>)gvHotkeys.Tag;
             settings.Closer.Key1 = _closerSettings.Key1;
             settings.Closer.Key2 = _closerSettings.Key2;
             settings.Closer.MouseButton = _closerSettings.MouseButton;
@@ -568,35 +575,118 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void FillGridViewRowHotkey(DataGridView gridView, SmartSystemMenuSettings settings, string itemName, string title = null, bool isPadding = false)
+        private void FillGridViewHotKeys(DataGridView gridView, IList<Settings.MenuItem> items, LanguageSettings languageSettings)
         {
-            var index = gridView.Rows.Add();
-            var row = gridView.Rows[index];
-            var menuItem = settings.MenuItems.Items.FirstOrDefault(x => x.Name == itemName);
-            title = title != null ? title : settings.LanguageSettings.GetValue(itemName);
-            row.Tag = (Settings.MenuItem)menuItem.Clone();
-            row.Cells[0].Value = title;
-            row.Cells[1].Value = menuItem == null ? "" : menuItem.ToString();
-            ((DataGridViewCheckBoxCell)row.Cells[2]).Value = menuItem.Show;
-            ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = settings.LanguageSettings.GetValue("clm_hotkeys_show_tooltip");
-            if (isPadding)
+            gridView.Tag = items;
+            foreach (var item in items)
             {
-                var padding = row.Cells[0].Style.Padding;
-                row.Cells[0].Style.Padding = new Padding(20, padding.Top, padding.Right, padding.Bottom);
+                if (item.Type == MenuItemType.Item)
+                {
+                    var index = gridView.Rows.Add();
+                    var row = gridView.Rows[index];
+                    var id = MenuItemId.GetId(item.Name);
+                    var title = GetTransparencyTitle(id, languageSettings);
+                    title = title != null ? title : languageSettings.GetValue(item.Name);
+                    row.Tag = item;
+                    row.Cells[0].Value = title;
+                    row.Cells[1].Value = item == null ? "" : item.ToString();
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
+                }
+
+                if (item.Type == MenuItemType.Separator)
+                {
+                    var index = gridView.Rows.Add();
+                    var row = gridView.Rows[index];
+                    var title = languageSettings.GetValue("separator");
+                    row.Tag = item;
+                    row.Cells[0].Value = title;
+                    row.Cells[1].Value = item == null ? "" : item.ToString();
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
+                }
+
+                if (item.Type == MenuItemType.Group)
+                {
+                    var index = gridView.Rows.Add();
+                    var row = gridView.Rows[index];
+                    row.Tag = item;
+                    row.Cells[0].Value = languageSettings.GetValue(item.Name);
+                    row.ReadOnly = true;
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
+                    ((DataGridViewDisableButtonCell)row.Cells[3]).Enabled = false;
+
+                    foreach (var subItem in item.Items)
+                    {
+                        if (subItem.Type == MenuItemType.Item)
+                        {
+                            var subItemIndex = gridView.Rows.Add();
+                            var subItemRow = gridView.Rows[subItemIndex];
+                            var id = MenuItemId.GetId(subItem.Name);
+                            var title = GetTransparencyTitle(id, languageSettings);
+                            title = title != null ? title : languageSettings.GetValue(subItem.Name);
+                            subItemRow.Tag = subItem;
+                            subItemRow.Cells[0].Value = title;
+                            subItemRow.Cells[1].Value = subItem == null ? "" : subItem.ToString();
+                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).Value = subItem.Show;
+                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
+                            var padding = subItemRow.Cells[0].Style.Padding;
+                            subItemRow.Cells[0].Style.Padding = new Padding(20, padding.Top, padding.Right, padding.Bottom);
+                        }
+
+                        if (subItem.Type == MenuItemType.Separator)
+                        {
+                            var subItemIndex = gridView.Rows.Add();
+                            var subItemRow = gridView.Rows[subItemIndex];
+                            var title = languageSettings.GetValue("separator");
+                            subItemRow.Tag = subItem;
+                            subItemRow.Cells[0].Value = title;
+                            subItemRow.Cells[1].Value = subItem == null ? "" : subItem.ToString();
+                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).Value = subItem.Show;
+                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
+                            var padding = subItemRow.Cells[0].Style.Padding;
+                            subItemRow.Cells[0].Style.Padding = new Padding(20, padding.Top, padding.Right, padding.Bottom);
+                        }
+                    }
+                }
             }
         }
 
-        private void FillGridViewGroupHotkey(DataGridView gridView, SmartSystemMenuSettings settings, string itemName)
+        private string GetTransparencyTitle(int id, LanguageSettings languageSettings)
         {
-            var index = gridView.Rows.Add();
-            var row = gridView.Rows[index];
-            var menuItem = settings.MenuItems.Items.FirstOrDefault(x => x.Name == itemName);
-            row.Tag = (Settings.MenuItem)menuItem.Clone();
-            row.Cells[0].Value = settings.LanguageSettings.GetValue(itemName);
-            row.ReadOnly = true;
-            ((DataGridViewCheckBoxCell)row.Cells[2]).Value = menuItem.Show;
-            ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = settings.LanguageSettings.GetValue("clm_hotkeys_show_tooltip");
-            ((DataGridViewDisableButtonCell)row.Cells[3]).Enabled = false;
+            switch (id)
+            {
+                case MenuItemId.SC_TRANS_00: return "0%" + languageSettings.GetValue("trans_opaque");
+                case MenuItemId.SC_TRANS_10: return "10%";
+                case MenuItemId.SC_TRANS_20: return "20%";
+                case MenuItemId.SC_TRANS_30: return "30%";
+                case MenuItemId.SC_TRANS_40: return "40%";
+                case MenuItemId.SC_TRANS_50: return "50%";
+                case MenuItemId.SC_TRANS_60: return "60%";
+                case MenuItemId.SC_TRANS_70: return "70%";
+                case MenuItemId.SC_TRANS_80: return "80%";
+                case MenuItemId.SC_TRANS_90: return "90%";
+                case MenuItemId.SC_TRANS_100: return "100%" + languageSettings.GetValue("trans_invisible");
+                default: return null;
+            }
+        }
+
+        private IList<Settings.MenuItem> FindList(IList<Settings.MenuItem> list, Settings.MenuItem element)
+        {
+            foreach (var item in list)
+            {
+                if (item == element)
+                {
+                    return list;
+                }
+
+                if (item.Items.Any(x => x == element))
+                {
+                    return item.Items;
+                }
+            }
+            return null;
         }
     }
 

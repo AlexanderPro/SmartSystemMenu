@@ -2,6 +2,7 @@
 <language>
   <items>
     <en>
+      <item name="separator" value="Separator" />
       <item name="information" value="Information" />
       <item name="roll_up" value="Roll Up" />
       <item name="aero_glass" value="Aero Glass" />
@@ -155,6 +156,8 @@
       <item name="btn_window_size_up" value="Move Up" />
       <item name="btn_window_size_down" value="Move Down" />
       <item name="btn_add_window_size" value="Add" />
+      <item name="btn_menu_item_up" value="Move Up" />
+      <item name="btn_menu_item_down" value="Move Down" />
       <item name="process_name_form" value="Process Exclusions" />
       <item name="process_lbl_file_name" value="File Name:" />
       <item name="process_btn_apply" value="Ok" />
@@ -202,6 +205,7 @@
       <item name="sizer_window_client_area" value="Window client area" />
     </en>
     <de>
+      <item name="separator" value="Separator" />
       <item name="information" value="Information" />
       <item name="roll_up" value="Verkleinern nach oben" />
       <item name="aero_glass" value="Aero Glass" />
@@ -355,6 +359,8 @@
       <item name="btn_window_size_up" value="Oben" />
       <item name="btn_window_size_down" value="Runter" />
       <item name="btn_add_window_size" value="Hinzufügen" />
+      <item name="btn_menu_item_up" value="Oben" />
+      <item name="btn_menu_item_down" value="Runter" />
       <item name="process_name_form" value="Programm der Ausnahme" />
       <item name="process_lbl_file_name" value="Dateiname:" />
       <item name="process_btn_apply" value="Ok" />
@@ -400,6 +406,7 @@
       <item name="sizer_window_client_area" value="Fensterkundenbereich" />
     </de>
     <zh_cn>
+      <item name="separator" value="分隔器" />
       <item name="information" value="信息" />
       <item name="roll_up" value="卷起" />
       <item name="aero_glass" value="毛玻璃效果" />
@@ -553,6 +560,8 @@
       <item name="btn_window_size_up" value="Move Up" />
       <item name="btn_window_size_down" value="Move Down" />
       <item name="btn_add_window_size" value="添加" />
+      <item name="btn_menu_item_up" value="Move Up" />
+      <item name="btn_menu_item_down" value="Move Down" />
       <item name="process_name_form" value="进程排除" />
       <item name="process_lbl_file_name" value="文件名称:" />
       <item name="process_btn_apply" value="确定" />
@@ -598,6 +607,7 @@
       <item name="sizer_window_client_area" value="窗口客户区" />
     </zh_cn>
     <zh_tw>
+      <item name="separator" value="分隔器" />
       <item name="information" value="資訊" />
       <item name="roll_up" value="卷起" />
       <item name="aero_glass" value="航空玻璃效果" />
@@ -751,6 +761,8 @@
       <item name="btn_window_size_up" value="Move Up" />
       <item name="btn_window_size_down" value="Move Down" />
       <item name="btn_add_window_size" value="添加" />
+      <item name="btn_menu_item_up" value="Move Up" />
+      <item name="btn_menu_item_down" value="Move Down" />
       <item name="process_name_form" value="程式排除" />
       <item name="process_lbl_file_name" value="檔案名稱:" />
       <item name="process_btn_apply" value="確定" />
@@ -796,6 +808,7 @@
       <item name="sizer_window_client_area" value="窗口客户区" />
     </zh_tw>
     <ja>
+      <item name="separator" value="セパレーター" />
       <item name="information" value="情報" />
       <item name="roll_up" value="ロールアップ" />
       <item name="aero_glass" value="Aero Glass" />
@@ -949,6 +962,8 @@
       <item name="btn_window_size_up" value="Move Up" />
       <item name="btn_window_size_down" value="Move Down" />
       <item name="btn_add_window_size" value="追加" />
+      <item name="btn_menu_item_up" value="Move Up" />
+      <item name="btn_menu_item_down" value="Move Down" />
       <item name="process_name_form" value="プロセスの除外" />
       <item name="process_lbl_file_name" value="プロセス名：" />
       <item name="process_btn_apply" value="適用" />
@@ -994,6 +1009,7 @@
       <item name="sizer_window_client_area" value="ウィンドウクライアントエリア" />
     </ja>
     <ko>
+      <item name="separator" value="분리 기호" />
       <item name="information" value="정보" />
       <item name="roll_up" value="접기" />
       <item name="aero_glass" value="에어로 글래스" />
@@ -1147,6 +1163,8 @@
       <item name="btn_window_size_up" value="Move Up" />
       <item name="btn_window_size_down" value="Move Down" />
       <item name="btn_add_window_size" value="더하다" />
+      <item name="btn_menu_item_up" value="Move Up" />
+      <item name="btn_menu_item_down" value="Move Down" />
       <item name="process_name_form" value="제외할 프로세스" />
       <item name="process_lbl_file_name" value="파일 이름:" />
       <item name="process_btn_apply" value="확인" />
@@ -1192,6 +1210,7 @@
       <item name="sizer_window_client_area" value="창 클라이언트 영역" />
     </ko>
     <ru>
+      <item name="separator" value="Разделитель" />
       <item name="information" value="Информация" />
       <item name="roll_up" value="Свернуть вверх" />
       <item name="aero_glass" value="Aero Glass" />
@@ -1345,6 +1364,8 @@
       <item name="btn_window_size_up" value="Вверх" />
       <item name="btn_window_size_down" value="Вниз" />
       <item name="btn_add_window_size" value="Добавить" />
+      <item name="btn_menu_item_up" value="Вверх" />
+      <item name="btn_menu_item_down" value="Вниз" />
       <item name="process_name_form" value="Программа исключение" />
       <item name="process_lbl_file_name" value="Имя файла:" />
       <item name="process_btn_apply" value="Ok" />
@@ -1390,6 +1411,7 @@
       <item name="sizer_window_client_area" value="Клиентская область окна" />
     </ru>
     <sr>
+      <item name="separator" value="Сепаратор" />
       <item name="information" value="Информација програма" />
       <item name="roll_up" value="Замотај" />
       <item name="aero_glass" value="Aero Glass" />
@@ -1543,6 +1565,8 @@
       <item name="btn_window_size_up" value="Премести на горе" />
       <item name="btn_window_size_down" value="Премести на доле" />
       <item name="btn_add_window_size" value="Додај" />
+      <item name="btn_menu_item_up" value="Премести на горе" />
+      <item name="btn_menu_item_down" value="Премести на доле" />
       <item name="process_name_form" value="Изузимања процеса" />
       <item name="process_lbl_file_name" value="Име датотеке:" />
       <item name="process_btn_apply" value="У реду" />
@@ -1588,6 +1612,7 @@
       <item name="sizer_window_client_area" value="Подручје клијента прозора" />
     </sr>
     <pt>
+      <item name="separator" value="Separador" />
       <item name="information" value="Informações do executável atual" />
       <item name="roll_up" value="Enrolar" />
       <item name="aero_glass" value="Aero Glass" />
@@ -1741,6 +1766,8 @@
       <item name="btn_window_size_up" value="Subir" />
       <item name="btn_window_size_down" value="Descer" />
       <item name="btn_add_window_size" value="Adicionar" />
+      <item name="btn_menu_item_up" value="Subir" />
+      <item name="btn_menu_item_down" value="Descer" />
       <item name="process_name_form" value="Executáveis de Exceção" />
       <item name="process_lbl_file_name" value="Nome do arquivo:" />
       <item name="process_btn_apply" value="Ok" />

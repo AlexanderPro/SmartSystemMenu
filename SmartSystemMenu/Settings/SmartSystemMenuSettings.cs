@@ -169,11 +169,30 @@ namespace SmartSystemMenu.Settings
             {
                 if (string.Compare(MenuItems.Items[i].Name, other.MenuItems.Items[i].Name, StringComparison.CurrentCultureIgnoreCase) != 0 ||
                     MenuItems.Items[i].Show != other.MenuItems.Items[i].Show ||
+                    MenuItems.Items[i].Type != other.MenuItems.Items[i].Type ||
                     MenuItems.Items[i].Key1 != other.MenuItems.Items[i].Key1 ||
                     MenuItems.Items[i].Key2 != other.MenuItems.Items[i].Key2 ||
                     MenuItems.Items[i].Key3 != other.MenuItems.Items[i].Key3)
                 {
                     return false;
+                }
+
+                if (MenuItems.Items[i].Items.Count != other.MenuItems.Items[i].Items.Count)
+                {
+                    return false;
+                }
+
+                for (var j = 0; j < MenuItems.Items[i].Items.Count; j++)
+                {
+                    if (string.Compare(MenuItems.Items[i].Items[j].Name, other.MenuItems.Items[i].Items[j].Name, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                        MenuItems.Items[i].Items[j].Show != other.MenuItems.Items[i].Items[j].Show ||
+                        MenuItems.Items[i].Items[j].Type != other.MenuItems.Items[i].Items[j].Type ||
+                        MenuItems.Items[i].Items[j].Key1 != other.MenuItems.Items[i].Items[j].Key1 ||
+                        MenuItems.Items[i].Items[j].Key2 != other.MenuItems.Items[i].Items[j].Key2 ||
+                        MenuItems.Items[i].Items[j].Key3 != other.MenuItems.Items[i].Items[j].Key3)
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -216,7 +235,11 @@ namespace SmartSystemMenu.Settings
 
             foreach (var item in MenuItems.Items)
             {
-                hashCode ^= item.Name.GetHashCode() ^ item.Key1.GetHashCode() ^ item.Key2.GetHashCode() ^ item.Key3.GetHashCode();
+                hashCode ^= item.Show.GetHashCode() ^ item.Type.GetHashCode() ^  item.Name.GetHashCode() ^ item.Key1.GetHashCode() ^ item.Key2.GetHashCode() ^ item.Key3.GetHashCode();
+                foreach (var subItem in item.Items)
+                {
+                    hashCode ^= subItem.Show.GetHashCode() ^ subItem.Type.GetHashCode() ^ subItem.Name.GetHashCode() ^ subItem.Key1.GetHashCode() ^ subItem.Key2.GetHashCode() ^ subItem.Key3.GetHashCode();
+                }
             }
 
             hashCode ^= Closer.Type.GetHashCode();
@@ -267,13 +290,28 @@ namespace SmartSystemMenu.Settings
 
             settings.MenuItems.Items = document
                 .XPathSelectElements("/smartSystemMenu/menuItems/items/item")
-                .Select(x => new MenuItem
-                {
-                    Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
-                    Show = x.Attribute("show") != null ? x.Attribute("show").Value.ToLower() != "false" : true,
-                    Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
-                    Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
-                    Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
+                .Select(x => {
+                    var menuItem = new MenuItem
+                    {
+                        Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
+                        Show = x.Attribute("show") != null ? x.Attribute("show").Value.ToLower() != "false" : true,
+                        Type = x.Attribute("type") != null && !string.IsNullOrEmpty(x.Attribute("type").Value) ? (MenuItemType)Enum.Parse(typeof(MenuItemType), x.Attribute("type").Value, true) : MenuItemType.Item,
+                        Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
+                        Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
+                        Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
+                    };
+                    menuItem.Items = menuItem.Type == MenuItemType.Group ?
+                    x.XPathSelectElements("./items/item")
+                    .Select(y => new MenuItem
+                    {
+                        Name = y.Attribute("name") != null ? y.Attribute("name").Value : "",
+                        Show = y.Attribute("show") != null ? y.Attribute("show").Value.ToLower() != "false" : true,
+                        Type = y.Attribute("type") != null && !string.IsNullOrEmpty(y.Attribute("type").Value) ? (MenuItemType)Enum.Parse(typeof(MenuItemType), y.Attribute("type").Value, true) : MenuItemType.Item,
+                        Key1 = y.Attribute("key1") != null && !string.IsNullOrEmpty(y.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(y.Attribute("key1").Value) : VirtualKeyModifier.None,
+                        Key2 = y.Attribute("key2") != null && !string.IsNullOrEmpty(y.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(y.Attribute("key2").Value) : VirtualKeyModifier.None,
+                        Key3 = y.Attribute("key3") != null && !string.IsNullOrEmpty(y.Attribute("key3").Value) ? (VirtualKey)int.Parse(y.Attribute("key3").Value) : VirtualKey.None
+                    }).ToList() : new List<MenuItem>();
+                    return menuItem;
                 })
                 .ToList();
 
@@ -370,11 +408,20 @@ namespace SmartSystemMenu.Settings
                                  new XElement("processExclusions", settings.ProcessExclusions.Select(x => new XElement("processName", x))),
                                  new XElement("menuItems",
                                      new XElement("items", settings.MenuItems.Items.Select(x => new XElement("item",
-                                         new XAttribute("name", x.Name),
+                                         new XAttribute("type", x.Type.ToString()),
+                                         x.Type == MenuItemType.Item || x.Type == MenuItemType.Group ? new XAttribute("name", x.Name) : null,
                                          x.Show == false ? new XAttribute("show", x.Show.ToString().ToLower()) : null,
-                                         new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
-                                         new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
-                                         new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),
+                                         x.Type == MenuItemType.Item ? new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()) : null,
+                                         x.Type == MenuItemType.Item ? new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()) : null,
+                                         x.Type == MenuItemType.Item ? new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString()) : null,
+                                         x.Items.Any() ?
+                                            new XElement("items", x.Items.Select(y => new XElement("item",
+                                            new XAttribute("type", y.Type.ToString()),
+                                            y.Type == MenuItemType.Item || y.Type == MenuItemType.Group ? new XAttribute("name", y.Name) : null,
+                                            y.Show == false ? new XAttribute("show", y.Show.ToString().ToLower()) : null,
+                                            y.Type == MenuItemType.Item ? new XAttribute("key1", y.Key1 == VirtualKeyModifier.None ? "" : ((int)y.Key1).ToString()) : null,
+                                            y.Type == MenuItemType.Item ? new XAttribute("key2", y.Key2 == VirtualKeyModifier.None ? "" : ((int)y.Key2).ToString()) : null,
+                                            y.Type == MenuItemType.Item ? new XAttribute("key3", y.Key3 == VirtualKey.None ? "" : ((int)y.Key3).ToString()) : null))) : null))),
                                      new XElement("windowSizeItems", settings.MenuItems.WindowSizeItems.Select(x => new XElement("item",
                                          new XAttribute("title", x.Title),
                                          new XAttribute("left", x.Left == null ? "" : x.Left.Value.ToString()),
