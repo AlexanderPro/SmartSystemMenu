@@ -8,6 +8,7 @@
     <processName>chrome.exe</processName>
     <processName>code.exe</processName>
     <processName>smartscreen.exe</processName>
+    <processName>msedge.exe</processName>
   </processExclusions>
   <menuItems>
     <items>
