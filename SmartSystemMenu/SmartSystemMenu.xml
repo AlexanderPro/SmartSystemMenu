@@ -9,7 +9,6 @@
     <processName>code.exe</processName>
     <processName>smartscreen.exe</processName>
     <processName>msedge.exe</processName>
-    <processName>PotPlayerMini64.exe</processName>
   </processExclusions>
   <menuItems>
     <items>
