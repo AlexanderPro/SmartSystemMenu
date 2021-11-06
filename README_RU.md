@@ -35,6 +35,11 @@ SmartSystemMenu добавляет дополнительные пункты с�
 ![alt tag](https://user-images.githubusercontent.com/8102586/104854366-4879e500-5917-11eb-91d1-e2a7c555ce39.jpg)
 ![alt tag](https://user-images.githubusercontent.com/8102586/104854373-4d3e9900-5917-11eb-9ab6-ec7e29b8f704.png)
 
+Интерфейс командной строки
+--------------------
+
+* `SmartSystemMenu -h` or `SmartSystemMenu --help`
+
 Установка
 --------------------
 

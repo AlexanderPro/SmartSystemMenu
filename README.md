@@ -35,6 +35,11 @@ Screenshots
 ![alt tag](https://user-images.githubusercontent.com/8102586/102021344-3b099200-3d90-11eb-99fd-a021ee54043f.jpg)
 ![alt tag](https://user-images.githubusercontent.com/8102586/103346844-566de000-4aa6-11eb-9f15-f0ca2ea80ee9.png)
 
+Command Line Interface
+--------------------
+
+* `SmartSystemMenu -h` or `SmartSystemMenu --help`
+
 Install
 --------------------
 
