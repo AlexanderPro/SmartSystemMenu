@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <language>
   <items>
     <en>
@@ -406,7 +406,7 @@
       <item name="sizer_window_client_area" value="Fensterkundenbereich" />
     </de>
     <zh_cn>
-      <item name="separator" value="分隔器" />
+      <item name="separator" value="分隔线" />
       <item name="information" value="信息" />
       <item name="roll_up" value="卷起" />
       <item name="aero_glass" value="毛玻璃效果" />
@@ -538,8 +538,8 @@
       <item name="btn_add_start_program" value="添加启动程序" />
       <item name="settings_btn_apply" value="确定" />
       <item name="settings_btn_cancel" value="取消" />
-      <item name="grpb_window_size" value="Window Size Menu Items" />
-      <item name="window_size_form" value="Window Size" />
+      <item name="grpb_window_size" value="窗口大小菜单项" />
+      <item name="window_size_form" value="窗口大小" />
       <item name="window_size_btn_apply" value="确定" />
       <item name="window_size_btn_cancel" value="取消" />
       <item name="clm_window_size_title" value="标题" />
@@ -557,11 +557,11 @@
       <item name="lbl_window_size_key3" value="键 3:" />
       <item name="lbl_window_size_top" value="顶部:" />
       <item name="lbl_window_size_left" value="左侧:" />
-      <item name="btn_window_size_up" value="Move Up" />
-      <item name="btn_window_size_down" value="Move Down" />
+      <item name="btn_window_size_up" value="将菜单项上移" />
+      <item name="btn_window_size_down" value="将菜单项下移" />
       <item name="btn_add_window_size" value="添加" />
-      <item name="btn_menu_item_up" value="Move Up" />
-      <item name="btn_menu_item_down" value="Move Down" />
+      <item name="btn_menu_item_up" value="将菜单项上移" />
+      <item name="btn_menu_item_down" value="将菜单项下移" />
       <item name="process_name_form" value="进程排除" />
       <item name="process_lbl_file_name" value="文件名称:" />
       <item name="process_btn_apply" value="确定" />
