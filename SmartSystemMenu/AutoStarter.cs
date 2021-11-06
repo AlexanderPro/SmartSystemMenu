@@ -42,8 +42,8 @@ namespace SmartSystemMenu
 
         public static void UnsetAutoStartByScheduler(string keyName)
         {
-            string fileName = "schtasks.exe";
-            string arguments = "/delete /tn \"{0}\" /f";
+            var fileName = "schtasks.exe";
+            var arguments = "/delete /tn \"{0}\" /f";
             arguments = string.Format(arguments, keyName);
             var scheduleProcess = new Process();
             scheduleProcess.StartInfo.CreateNoWindow = true;
@@ -62,7 +62,7 @@ namespace SmartSystemMenu
             using (var key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION))
             {
                 if (key == null) return false;
-                string value = (string)key.GetValue(keyName);
+                var value = (string)key.GetValue(keyName);
                 if (string.IsNullOrEmpty(value)) return false;
                 var result = (value == assemblyLocation);
                 return result;

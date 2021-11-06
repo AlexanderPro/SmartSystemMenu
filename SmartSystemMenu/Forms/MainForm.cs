@@ -641,7 +641,7 @@ namespace SmartSystemMenu.Forms
                                 var result = opacityForm.ShowDialog(window.Win32Window);
                                 if (result == DialogResult.OK)
                                 {
-                                    window.SetTrancparency(opacityForm.WindowTransparency);
+                                    window.SetTransparency(opacityForm.WindowTransparency);
                                     window.Menu.UncheckTransparencyMenu();
                                     window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_CUSTOM, true);
                                 }
@@ -799,7 +799,7 @@ namespace SmartSystemMenu.Forms
         {
             window.Menu.UncheckTransparencyMenu();
             window.Menu.CheckMenuItem(itemId, true);
-            window.SetTrancparency(transparency);
+            window.SetTransparency(transparency);
         }
 
         private void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)

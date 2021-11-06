@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.ComponentModel;
 using System.Windows.Automation;
 using System.IO;
 using SmartSystemMenu.Native;
@@ -174,6 +173,18 @@ namespace SmartSystemMenu
             }
         }
 
+        public Window(IntPtr windowHandle)
+        {
+            Handle = windowHandle;
+            _isManaged = true;
+            _defaultWidth = Size.Width;
+            _defaultHeight = Size.Height;
+            _defaultLeft = Size.Left;
+            _defaultTop = Size.Top;
+            _beforeRollupHeight = Size.Height;
+            _defaultTransparency = Transparency;
+        }
+
         public Window(IntPtr windowHandle, MenuItems menuItems, LanguageSettings languageSettings)
         {
             Handle = windowHandle;
@@ -198,7 +209,7 @@ namespace SmartSystemMenu
         {
             if (_isManaged)
             {
-                Menu.Destroy();
+                Menu?.Destroy();
                 //RestoreTransparency();
                 //RestoreSize();
                 RestoreFromSystemTray();
@@ -368,7 +379,7 @@ namespace SmartSystemMenu
             Process.Resume();
         }
 
-        public void SetTrancparency(int percent)
+        public void SetTransparency(int percent)
         {
             var opacity = (byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
             SetOpacity(Handle, opacity);
@@ -376,7 +387,17 @@ namespace SmartSystemMenu
 
         public void RestoreTransparency()
         {
-            SetTrancparency(_defaultTransparency);
+            SetTransparency(_defaultTransparency);
+        }
+
+        public void SetWidth(int width)
+        {
+            NativeMethods.MoveWindow(Handle, Size.Left, Size.Top, width, Size.Height, true);
+        }
+
+        public void SetHeight(int height)
+        {
+            NativeMethods.MoveWindow(Handle, Size.Left, Size.Top, Size.Width, height, true);
         }
 
         public void SetSize(int width, int height, int? left = null, int? top = null)
@@ -387,6 +408,16 @@ namespace SmartSystemMenu
         public void RestoreSize()
         {
             NativeMethods.MoveWindow(Handle, _defaultLeft, _defaultTop, _defaultWidth, _defaultHeight, true);
+        }
+
+        public void SetLeft(int left)
+        {
+            NativeMethods.MoveWindow(Handle, left, Size.Top, Size.Width, Size.Height, true);
+        }
+
+        public void SetTop(int top)
+        {
+            NativeMethods.MoveWindow(Handle, Size.Left, top, Size.Width, Size.Height, true);
         }
 
         public void SetPosition(int left, int top)
@@ -534,7 +565,7 @@ namespace SmartSystemMenu
 
         public string ExtractText()
         {
-            var text = ExtractTextFromConsole();
+            var text = WindowUtils.ExtractTextFromConsoleWindow(ProcessId);
             text = text ?? ExtractTextFromWindow();
             return text;
         }
@@ -731,52 +762,6 @@ namespace SmartSystemMenu
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Restore);
                 NativeMethods.SetForegroundWindow(Handle);
-            }
-        }
-
-        private string ExtractTextFromConsole()
-        {
-            try
-            {
-                NativeMethods.FreeConsole();
-                var result = NativeMethods.AttachConsole(ProcessId);
-                if (!result)
-                {
-                    var error = Marshal.GetLastWin32Error();
-                    throw new Win32Exception(error);
-                }
-                var handle = NativeMethods.GetStdHandle(NativeConstants.STD_OUTPUT_HANDLE);
-                if (handle == IntPtr.Zero)
-                {
-                    var error = Marshal.GetLastWin32Error();
-                    throw new Win32Exception(error);
-                }
-                ConsoleScreenBufferInfo binfo;
-                result = NativeMethods.GetConsoleScreenBufferInfo(handle, out binfo);
-                if (!result)
-                {
-                    var error = Marshal.GetLastWin32Error();
-                    throw new Win32Exception(error);
-                }
-
-                var buffer = new char[binfo.srWindow.Right];
-                var textBuilder = new StringBuilder();
-                for (var i = 0; i < binfo.dwSize.Y; i++)
-                {
-                    uint numberOfCharsRead;
-                    if (NativeMethods.ReadConsoleOutputCharacter(handle, buffer, (uint)buffer.Length, new Coord(0, (short)i), out numberOfCharsRead))
-                    {
-                        textBuilder.AppendLine(new string(buffer));
-                    }
-                }
-
-                var text = textBuilder.ToString().TrimEnd();
-                return text;
-            }
-            catch
-            {
-                NativeMethods.FreeConsole();
-                return null;
             }
         }
 
