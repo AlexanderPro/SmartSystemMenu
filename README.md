@@ -38,7 +38,43 @@ Screenshots
 Command Line Interface
 --------------------
 
-* `SmartSystemMenu -h` or `SmartSystemMenu --help`
+```bash
+-h --help             The help
+   --title            Title
+   --handle           Handle (1234567890) (0xFFFFFF)
+   --processId        PID (1234567890)
+   --left             Left
+   --top              Top
+   --width            Width
+   --height           Height
+-m --monitor          [0, 1, 2, 3, ...]
+-a --alignment        [topleft,
+                       topcenter,
+                       topright,
+                       middleleft,
+                       middlecenter,
+                       middleright,
+                       bottomleft,
+                       bottomcenter,
+                       bottomright]
+-p --priority         [realtime,
+                       high,
+                       abovenormal,
+                       normal,
+                       belownormal,
+                       idle]
+-t --transparency     [0 ... 100]
+   --alwaysontop      [on, off]
+-g --aeroglass        [on, off]
+   --sendtobottom     No params
+-o --openinexplorer   No params
+-c --copytoclipboard  No params
+   --clearclipboard   No params
+-n --nogui            No GUI
+
+Example:
+SmartSystemMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysontop on --nogui
+```
 
 Install
 --------------------
