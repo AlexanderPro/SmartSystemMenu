@@ -38,15 +38,20 @@ Screenshots
 Command Line Interface
 --------------------
 
-```bash
+```
 -h --help             The help
    --title            Title
+   --titleBegins      Title begins 
+   --titleEnds        Title ends
+   --titleContains    Title contains
    --handle           Handle (1234567890) (0xFFFFFF)
    --processId        PID (1234567890)
    --left             Left
    --top              Top
    --width            Width
    --height           Height
+-i --information      Information dialog
+-s --savescreenshot   Save Screenshot
 -m --monitor          [0, 1, 2, 3, ...]
 -a --alignment        [topleft,
                        topcenter,
