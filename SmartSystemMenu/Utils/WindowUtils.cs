@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.Text;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using SmartSystemMenu.Native;
 
 namespace SmartSystemMenu.Utils
@@ -93,9 +94,9 @@ namespace SmartSystemMenu.Utils
             }
         }
 
-        public static IntPtr FindWindowByTitle(string title, int? processId)
+        public static IList<IntPtr> FindWindowByTitle(string title, int? processId, Func<string, string, bool> compareTitle)
         {
-            var handle = IntPtr.Zero;
+            var handles = new List<IntPtr>();
             NativeMethods.EnumWindows((IntPtr hWnd, int lParam) => {
                 if (processId.HasValue)
                 {
@@ -104,10 +105,9 @@ namespace SmartSystemMenu.Utils
                     {
                         var builder = new StringBuilder(1024);
                         NativeMethods.GetWindowText(hWnd, builder, builder.Capacity);
-                        if (string.Compare(title, builder.ToString()) == 0)
+                        if (compareTitle(title, builder.ToString()))
                         {
-                            handle = hWnd;
-                            return false;
+                            handles.Add(hWnd);
                         }
                     }
                 }
@@ -115,15 +115,14 @@ namespace SmartSystemMenu.Utils
                 {
                     var builder = new StringBuilder(1024);
                     NativeMethods.GetWindowText(hWnd, builder, builder.Capacity);
-                    if (string.Compare(title, builder.ToString()) == 0)
+                    if (compareTitle(title, builder.ToString()))
                     {
-                        handle = hWnd;
-                        return false;
+                        handles.Add(hWnd);
                     }
                 }
                 return true;
             }, 0);
-            return handle;
+            return handles;
         }
     }
 }
