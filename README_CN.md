@@ -11,18 +11,18 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
 
 * **信息.** 显示一个对话框，其中包含当前窗口和进程的信息：窗口句柄、窗口标题、窗口风格、窗口类、进程名称、进程ID、进程路径。
 * **卷起.** 将当前窗口向上卷起。
-* **毛玻璃效果.** 将 "毛玻璃效果" 模糊添加到当前窗口。(Windows Vista 及更高版本。主要用于控制台窗口。)
+* **毛玻璃效果.** 将 "毛玻璃效果" 模糊添加到当前窗口。(仅 Windows Vista 及更高版本支持。主要用于控制台窗口。)
 * **窗口置顶.** 当前窗口位于所有其他窗口之上。
 * **移至最底层.** 将当前窗口发送到底部。
 * **保存窗口截图.** 将当前窗口的屏幕截图保存到文件中。
 * **在资源管理器中打开文件.** 在文件资源管理器中打开进程文件。
-* **将文本复制到剪贴板.** 复制所有窗口文本 (包括控制台、MS Office 产品等) 到剪贴板中。
 * **通过鼠标拖动.** 通过鼠标拖动当前窗口。
 * **调整窗口大小.** 更改当前窗口的大小。
 * **移动到.** 将当前窗口移动到另一个显示器。
 * **对齐.** 当前窗口与桌面上的9个位置中的任何一个对齐。
 * **透明度.** 更改当前窗口的透明度。
 * **优先级.** 更改当前窗口的程序优先级。
+* **剪贴板.** 复制所有窗口文本 (包括控制台、MS Office 产品等) 到剪贴板中，同时支持清除剪贴板。
 * **系统托盘.** 将当前窗口最小化或挂起到系统托盘。
 * **其他窗口.** 关闭和最小化系统中除当前窗口之外的所有窗口。
 * **启动程序.** 启动设置中的程序。
@@ -35,6 +35,58 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
 ![Alignment](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/20201229214127.png)
 
 ![Transparency](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/20201229214204.png)
+
+![Infomation](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/202111162001625.jpg)
+
+## 命令行接口
+
+```bash
+-h --help             The help
+   --title            Title
+   --titleBegins      Title begins 
+   --titleEnds        Title ends
+   --titleContains    Title contains
+   --handle           Handle (1234567890) (0xFFFFFF)
+   --processId        PID (1234567890)
+   --left             Left
+   --top              Top
+   --width            Width
+   --height           Height
+-i --information      Information dialog
+-s --savescreenshot   Save Screenshot
+-m --monitor          [0, 1, 2, 3, ...]
+-a --alignment        [topleft,
+                       topcenter,
+                       topright,
+                       middleleft,
+                       middlecenter,
+                       middleright,
+                       bottomleft,
+                       bottomcenter,
+                       bottomright]
+-p --priority         [realtime,
+                       high,
+                       abovenormal,
+                       normal,
+                       belownormal,
+                       idle]
+-t --transparency     [0 ... 100]
+   --alwaysontop      [on, off]
+-g --aeroglass        [on, off]
+   --sendtobottom     No params
+-o --openinexplorer   No params
+-c --copytoclipboard  No params
+   --clearclipboard   No params
+-n --nogui            No GUI
+
+Example:
+SmartSystemMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysontop on --nogui
+```
+
+## 安装方法
+
+- 下载 [SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu/releases) zip 压缩包文件
+- [Chocolatey](https://chocolatey.org/): `choco install smartsystemmenu`
 
 要求
 --------------------
