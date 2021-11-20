@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 204);
+            this.ClientSize = new System.Drawing.Size(398, 224);
             this.Controls.Add(this.btnBrowseFile);
             this.Controls.Add(this.lblArguments);
             this.Controls.Add(this.txtArguments);

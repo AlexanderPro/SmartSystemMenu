@@ -47,7 +47,7 @@
             this.lblFileName.AutoSize = true;
             this.lblFileName.Location = new System.Drawing.Point(12, 12);
             this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(57, 13);
+            this.lblFileName.Size = new System.Drawing.Size(0, 13);
             this.lblFileName.TabIndex = 0;
             // 
             // btnApply
@@ -78,11 +78,11 @@
             this.btnBrowseFile.UseVisualStyleBackColor = true;
             this.btnBrowseFile.Click += new System.EventHandler(this.ButtonBrowseFileClick);
             // 
-            // ProcessNameForm
+            // ProcessExclusionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 103);
+            this.ClientSize = new System.Drawing.Size(398, 119);
             this.Controls.Add(this.btnBrowseFile);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnApply);
@@ -92,7 +92,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ProcessNameForm";
+            this.Name = "ProcessExclusionForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

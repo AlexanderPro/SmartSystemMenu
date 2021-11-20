@@ -23,6 +23,9 @@ namespace SmartSystemMenu
         [STAThread]
         static void Main(string[] args)
         {
+            // Enable High DPI Support
+            SystemUtils.EnableHighDPISupport();
+
             // Command Line Interface
             var toggleParser = new ToggleParser(args);
             if (toggleParser.HasToggle("help"))
@@ -236,7 +239,7 @@ namespace SmartSystemMenu
                         {
                             window.AeroGlassForVistaAndSeven(enabled.Value);
                         }
-                        else if (version.Major >= 6)
+                        else if (version.Major >= 6 || (version.Major == 6 && version.Minor > 1))
                         {
                             window.AeroGlassForEightAndHigher(enabled.Value);
                         }

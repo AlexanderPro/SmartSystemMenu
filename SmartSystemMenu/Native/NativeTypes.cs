@@ -335,6 +335,21 @@ namespace SmartSystemMenu.Native
         DIRECT_IMPERSONATION = (0x0200)
     }
 
+    enum PROCESS_DPI_AWARENESS
+    {
+        Process_DPI_Unaware = 0,
+        Process_System_DPI_Aware = 1,
+        Process_Per_Monitor_DPI_Aware = 2
+    }
+
+    enum DPI_AWARENESS_CONTEXT
+    {
+        DPI_AWARENESS_CONTEXT_UNAWARE = 16,
+        DPI_AWARENESS_CONTEXT_SYSTEM_AWARE = 17,
+        DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE = 18,
+        DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = 34
+    }
+
 
     delegate int KeyboardHookProc(int code, IntPtr wParam, ref KeyboardLLHookStruct lParam);
 

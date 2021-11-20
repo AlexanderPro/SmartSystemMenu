@@ -1111,7 +1111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 686);
+            this.ClientSize = new System.Drawing.Size(729, 708);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.grpProcess);
             this.Controls.Add(this.grpWindow);

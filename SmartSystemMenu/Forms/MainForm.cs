@@ -563,7 +563,7 @@ namespace SmartSystemMenu.Forms
                                     window.AeroGlassForVistaAndSeven(!isChecked);
                                     window.Menu.CheckMenuItem(MenuItemId.SC_AERO_GLASS, !isChecked);
                                 }
-                                else if (version.Major >= 6)
+                                else if (version.Major >= 6 || (version.Major == 6 && version.Minor > 1))
                                 {
                                     window.AeroGlassForEightAndHigher(!isChecked);
                                     window.Menu.CheckMenuItem(MenuItemId.SC_AERO_GLASS, !isChecked);
