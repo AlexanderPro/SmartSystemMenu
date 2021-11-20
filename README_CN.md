@@ -41,17 +41,18 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
 ## 命令行接口
 
 ```bash
--h --help             The help
+   --help             The help
    --title            Title
    --titleBegins      Title begins 
    --titleEnds        Title ends
    --titleContains    Title contains
    --handle           Handle (1234567890) (0xFFFFFF)
    --processId        PID (1234567890)
-   --left             Left
-   --top              Top
-   --width            Width
-   --height           Height
+-d --delay            Delay in milliseconds
+-l --left             Left
+-t --top              Top
+-w --width            Width
+-h --height           Height
 -i --information      Information dialog
 -s --savescreenshot   Save Screenshot
 -m --monitor          [0, 1, 2, 3, ...]
@@ -70,7 +71,7 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
                        normal,
                        belownormal,
                        idle]
--t --transparency     [0 ... 100]
+   --transparency     [0 ... 100]
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
    --sendtobottom     No params
