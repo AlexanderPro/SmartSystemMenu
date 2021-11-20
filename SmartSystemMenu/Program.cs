@@ -25,7 +25,7 @@ namespace SmartSystemMenu
         {
             // Command Line Interface
             var toggleParser = new ToggleParser(args);
-            if (toggleParser.HasToggle("h") || toggleParser.HasToggle("help"))
+            if (toggleParser.HasToggle("help"))
             {
                 var dialog = new MessageBoxForm();
                 dialog.Message = BuildHelpString();
@@ -59,6 +59,16 @@ namespace SmartSystemMenu
 
         static void ProcessCommandLine(ToggleParser toggleParser)
         {
+            // Delay
+            if (toggleParser.HasToggle("d") || toggleParser.HasToggle("delay"))
+            {
+                var delayString = toggleParser.GetToggleValueOrDefault("d", null) ?? toggleParser.GetToggleValueOrDefault("delay", null);
+                if (int.TryParse(delayString, out var delay))
+                {
+                    Thread.Sleep(delay);
+                }
+            }
+
             // Clear Clipboard
             if (toggleParser.HasToggle("clearclipboard"))
             {
@@ -113,7 +123,7 @@ namespace SmartSystemMenu
             }
 
 
-            foreach (var windowHandle in windowHandles.Where(x => x != IntPtr.Zero))
+            foreach (var windowHandle in windowHandles.Where(x => x != IntPtr.Zero && NativeMethods.GetParent(x) == IntPtr.Zero))
             {
                 var window = new Window(windowHandle);
 
@@ -132,36 +142,40 @@ namespace SmartSystemMenu
                 }
 
                 // Set a Window width
-                if (toggleParser.HasToggle("width"))
+                if (toggleParser.HasToggle("w") || toggleParser.HasToggle("width"))
                 {
-                    if (int.TryParse(toggleParser.GetToggleValueOrDefault("width", null), out var width))
+                    var widthString = toggleParser.GetToggleValueOrDefault("w", null) ?? toggleParser.GetToggleValueOrDefault("width", null);
+                    if (int.TryParse(widthString, out var width))
                     {
                         window.SetWidth(width);
                     }
                 }
 
                 // Set a Window height
-                if (toggleParser.HasToggle("height"))
+                if (toggleParser.HasToggle("h") || toggleParser.HasToggle("height"))
                 {
-                    if (int.TryParse(toggleParser.GetToggleValueOrDefault("height", null), out var height))
+                    var heightString = toggleParser.GetToggleValueOrDefault("h", null) ?? toggleParser.GetToggleValueOrDefault("height", null);
+                    if (int.TryParse(heightString, out var height))
                     {
                         window.SetHeight(height);
                     }
                 }
 
                 // Set a Window left position
-                if (toggleParser.HasToggle("left"))
+                if (toggleParser.HasToggle("l") || toggleParser.HasToggle("left"))
                 {
-                    if (int.TryParse(toggleParser.GetToggleValueOrDefault("left", null), out var left))
+                    var leftString = toggleParser.GetToggleValueOrDefault("l", null) ?? toggleParser.GetToggleValueOrDefault("left", null);
+                    if (int.TryParse(leftString, out var left))
                     {
                         window.SetLeft(left);
                     }
                 }
 
                 // Set a Window top position
-                if (toggleParser.HasToggle("top"))
+                if (toggleParser.HasToggle("t") || toggleParser.HasToggle("top"))
                 {
-                    if (int.TryParse(toggleParser.GetToggleValueOrDefault("top", null), out var top))
+                    var topString = toggleParser.GetToggleValueOrDefault("t", null) ?? toggleParser.GetToggleValueOrDefault("top", null);
+                    if (int.TryParse(topString, out var top))
                     {
                         window.SetTop(top);
                     }
@@ -176,10 +190,9 @@ namespace SmartSystemMenu
                 }
 
                 // Set a Window transparency
-                if (toggleParser.HasToggle("t") || toggleParser.HasToggle("transparency"))
+                if (toggleParser.HasToggle("transparency"))
                 {
-                    var transparencyString = toggleParser.GetToggleValueOrDefault("t", null) ?? toggleParser.GetToggleValueOrDefault("transparency", null);
-                    if (byte.TryParse(transparencyString, out var transparency))
+                    if (byte.TryParse(toggleParser.GetToggleValueOrDefault("transparency", null), out var transparency))
                     {
                         transparency = transparency > 100 ? (byte)100 : transparency;
                         window.SetTransparency(transparency);
@@ -302,17 +315,18 @@ namespace SmartSystemMenu
         static string BuildHelpString()
         {
             var help =
-                @"-h --help             The help
+                @"   --help             The help
    --title            Title
    --titleBegins      Title begins 
    --titleEnds        Title ends
    --titleContains    Title contains
    --handle           Handle (1234567890) (0xFFFFFF)
    --processId        PID (1234567890)
-   --left             Left
-   --top              Top
-   --width            Width
-   --height           Height
+-d --delay            Delay in milliseconds
+-l --left             Left
+-t --top              Top
+-w --width            Width
+-h --height           Height
 -i --information      Information dialog
 -s --savescreenshot   Save Screenshot
 -m --monitor          [0, 1, 2, 3, ...]
@@ -331,7 +345,7 @@ namespace SmartSystemMenu
                        normal,
                        belownormal,
                        idle]
--t --transparency     [0 ... 100]
+   --transparency     [0 ... 100]
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
    --sendtobottom     No params
