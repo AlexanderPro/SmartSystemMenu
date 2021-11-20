@@ -185,6 +185,7 @@
             // 
             this.txtExtendedFrameBounds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtExtendedFrameBounds.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtExtendedFrameBounds.Location = new System.Drawing.Point(196, 103);
             this.txtExtendedFrameBounds.Name = "txtExtendedFrameBounds";
             this.txtExtendedFrameBounds.ReadOnly = true;
@@ -197,6 +198,7 @@
             // 
             this.txtWindowHandle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWindowHandle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWindowHandle.Location = new System.Drawing.Point(196, 3);
             this.txtWindowHandle.Name = "txtWindowHandle";
             this.txtWindowHandle.ReadOnly = true;
@@ -209,6 +211,7 @@
             // 
             this.txtGwlStyle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGwlStyle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGwlStyle.Location = new System.Drawing.Point(536, 3);
             this.txtGwlStyle.Name = "txtGwlStyle";
             this.txtGwlStyle.ReadOnly = true;
@@ -221,6 +224,7 @@
             // 
             this.txtParentWindowHandle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtParentWindowHandle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtParentWindowHandle.Location = new System.Drawing.Point(196, 28);
             this.txtParentWindowHandle.Name = "txtParentWindowHandle";
             this.txtParentWindowHandle.ReadOnly = true;
@@ -233,6 +237,7 @@
             // 
             this.txtGclStyle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGclStyle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGclStyle.Location = new System.Drawing.Point(536, 28);
             this.txtGclStyle.Name = "txtGclStyle";
             this.txtGclStyle.ReadOnly = true;
@@ -245,6 +250,7 @@
             // 
             this.txtGwlExStyle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGwlExStyle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGwlExStyle.Location = new System.Drawing.Point(536, 53);
             this.txtGwlExStyle.Name = "txtGwlExStyle";
             this.txtGwlExStyle.ReadOnly = true;
@@ -257,6 +263,7 @@
             // 
             this.txtWindowInfoExStyle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWindowInfoExStyle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWindowInfoExStyle.Location = new System.Drawing.Point(536, 78);
             this.txtWindowInfoExStyle.Name = "txtWindowInfoExStyle";
             this.txtWindowInfoExStyle.ReadOnly = true;
@@ -269,6 +276,7 @@
             // 
             this.txtLwaAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLwaAlpha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLwaAlpha.Location = new System.Drawing.Point(536, 103);
             this.txtLwaAlpha.Name = "txtLwaAlpha";
             this.txtLwaAlpha.ReadOnly = true;
@@ -281,6 +289,7 @@
             // 
             this.txtLwaColorKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLwaColorKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLwaColorKey.Location = new System.Drawing.Point(536, 128);
             this.txtLwaColorKey.Name = "txtLwaColorKey";
             this.txtLwaColorKey.ReadOnly = true;
@@ -293,6 +302,7 @@
             // 
             this.txtGwlUserData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGwlUserData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGwlUserData.Location = new System.Drawing.Point(536, 153);
             this.txtGwlUserData.Name = "txtGwlUserData";
             this.txtGwlUserData.ReadOnly = true;
@@ -305,6 +315,7 @@
             // 
             this.txtDwlUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDwlUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDwlUser.Location = new System.Drawing.Point(536, 178);
             this.txtDwlUser.Name = "txtDwlUser";
             this.txtDwlUser.ReadOnly = true;
@@ -417,6 +428,7 @@
             // 
             this.txtWindowSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWindowSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWindowSize.Location = new System.Drawing.Point(196, 78);
             this.txtWindowSize.Name = "txtWindowSize";
             this.txtWindowSize.ReadOnly = true;
@@ -449,6 +461,7 @@
             // 
             this.txtWindowPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWindowPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWindowPosition.Location = new System.Drawing.Point(196, 53);
             this.txtWindowPosition.Name = "txtWindowPosition";
             this.txtWindowPosition.ReadOnly = true;
@@ -461,6 +474,7 @@
             // 
             this.txtThreadId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtThreadId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtThreadId.Location = new System.Drawing.Point(196, 178);
             this.txtThreadId.Name = "txtThreadId";
             this.txtThreadId.ReadOnly = true;
@@ -483,6 +497,7 @@
             // 
             this.txtProcessId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProcessId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProcessId.Location = new System.Drawing.Point(196, 153);
             this.txtProcessId.Name = "txtProcessId";
             this.txtProcessId.ReadOnly = true;
@@ -505,6 +520,7 @@
             // 
             this.txtInstance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtInstance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtInstance.Location = new System.Drawing.Point(196, 128);
             this.txtInstance.Name = "txtInstance";
             this.txtInstance.ReadOnly = true;
@@ -617,6 +633,7 @@
             // 
             this.txtGetWindowText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGetWindowText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGetWindowText.Location = new System.Drawing.Point(196, 3);
             this.txtGetWindowText.Name = "txtGetWindowText";
             this.txtGetWindowText.ReadOnly = true;
@@ -628,6 +645,7 @@
             // 
             this.txtWmGetText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWmGetText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWmGetText.Location = new System.Drawing.Point(196, 28);
             this.txtWmGetText.Name = "txtWmGetText";
             this.txtWmGetText.ReadOnly = true;
@@ -639,6 +657,7 @@
             // 
             this.txtGetClassName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGetClassName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGetClassName.Location = new System.Drawing.Point(196, 53);
             this.txtGetClassName.Name = "txtGetClassName";
             this.txtGetClassName.ReadOnly = true;
@@ -650,6 +669,7 @@
             // 
             this.txtRealGetWindowClass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRealGetWindowClass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRealGetWindowClass.Location = new System.Drawing.Point(196, 78);
             this.txtRealGetWindowClass.Name = "txtRealGetWindowClass";
             this.txtRealGetWindowClass.ReadOnly = true;
@@ -661,6 +681,7 @@
             // 
             this.txtFontName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFontName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFontName.Location = new System.Drawing.Point(196, 103);
             this.txtFontName.Name = "txtFontName";
             this.txtFontName.ReadOnly = true;
@@ -703,6 +724,7 @@
             // 
             this.txtFileVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFileVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFileVersion.Location = new System.Drawing.Point(197, 3);
             this.txtFileVersion.Name = "txtFileVersion";
             this.txtFileVersion.ReadOnly = true;
@@ -734,6 +756,7 @@
             // 
             this.txtProductVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProductVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProductVersion.Location = new System.Drawing.Point(532, 3);
             this.txtProductVersion.Name = "txtProductVersion";
             this.txtProductVersion.ReadOnly = true;
@@ -773,6 +796,7 @@
             // 
             this.txtProductName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProductName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProductName.Location = new System.Drawing.Point(197, 3);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
@@ -784,6 +808,7 @@
             // 
             this.txtCopyright.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCopyright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopyright.Location = new System.Drawing.Point(197, 28);
             this.txtCopyright.Name = "txtCopyright";
             this.txtCopyright.ReadOnly = true;
@@ -838,6 +863,7 @@
             // 
             this.txtWorkingSetSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWorkingSetSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtWorkingSetSize.Location = new System.Drawing.Point(197, 78);
             this.txtWorkingSetSize.Name = "txtWorkingSetSize";
             this.txtWorkingSetSize.ReadOnly = true;
@@ -889,6 +915,7 @@
             // 
             this.txtStartedAt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStartedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStartedAt.Location = new System.Drawing.Point(197, 3);
             this.txtStartedAt.Name = "txtStartedAt";
             this.txtStartedAt.ReadOnly = true;
@@ -900,6 +927,7 @@
             // 
             this.txtParent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtParent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtParent.Location = new System.Drawing.Point(533, 3);
             this.txtParent.Name = "txtParent";
             this.txtParent.ReadOnly = true;
@@ -911,6 +939,7 @@
             // 
             this.txtPriority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPriority.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPriority.Location = new System.Drawing.Point(533, 28);
             this.txtPriority.Name = "txtPriority";
             this.txtPriority.ReadOnly = true;
@@ -932,6 +961,7 @@
             // 
             this.txtOwner.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOwner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOwner.Location = new System.Drawing.Point(197, 28);
             this.txtOwner.Name = "txtOwner";
             this.txtOwner.ReadOnly = true;
@@ -973,6 +1003,7 @@
             // 
             this.txtThreads.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtThreads.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtThreads.Location = new System.Drawing.Point(197, 53);
             this.txtThreads.Name = "txtThreads";
             this.txtThreads.ReadOnly = true;
@@ -984,6 +1015,7 @@
             // 
             this.txtHandles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHandles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHandles.Location = new System.Drawing.Point(533, 53);
             this.txtHandles.Name = "txtHandles";
             this.txtHandles.ReadOnly = true;
@@ -995,6 +1027,7 @@
             // 
             this.txtVirtualSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVirtualSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVirtualSize.Location = new System.Drawing.Point(533, 78);
             this.txtVirtualSize.Name = "txtVirtualSize";
             this.txtVirtualSize.ReadOnly = true;
@@ -1044,6 +1077,7 @@
             // 
             this.txtFullPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFullPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFullPath.Location = new System.Drawing.Point(197, 3);
             this.txtFullPath.Name = "txtFullPath";
             this.txtFullPath.ReadOnly = true;
@@ -1055,6 +1089,7 @@
             // 
             this.txtCommandLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCommandLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCommandLine.Location = new System.Drawing.Point(197, 28);
             this.txtCommandLine.Name = "txtCommandLine";
             this.txtCommandLine.ReadOnly = true;
