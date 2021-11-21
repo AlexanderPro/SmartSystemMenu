@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Automation;
 using System.IO;
+using System.Threading;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
@@ -625,6 +626,8 @@ namespace SmartSystemMenu
                     top = newMonitorInfo.rcWork.Top;
                 }
 
+                NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
+                Thread.Sleep(100);
                 NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
             }
         }

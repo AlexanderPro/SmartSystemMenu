@@ -78,6 +78,7 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
    --clearclipboard   No params
+   --nohighdpi        Disable High DPI Support
 -n --nogui            No GUI
 
 Example:

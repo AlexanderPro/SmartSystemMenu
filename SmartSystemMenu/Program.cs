@@ -23,11 +23,15 @@ namespace SmartSystemMenu
         [STAThread]
         static void Main(string[] args)
         {
+            var toggleParser = new ToggleParser(args);
+
             // Enable High DPI Support
-            SystemUtils.EnableHighDPISupport();
+            if (!toggleParser.HasToggle("nohighdpi"))
+            {
+                SystemUtils.EnableHighDPISupport();
+            }
 
             // Command Line Interface
-            var toggleParser = new ToggleParser(args);
             if (toggleParser.HasToggle("help"))
             {
                 var dialog = new MessageBoxForm();
@@ -355,6 +359,7 @@ namespace SmartSystemMenu
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
    --clearclipboard   No params
+   --nohighdpi        Disable High DPI Support
 -n --nogui            No GUI
 
 Example:
