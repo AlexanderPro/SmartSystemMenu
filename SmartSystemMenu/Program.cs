@@ -261,7 +261,7 @@ namespace SmartSystemMenu
                 {
                     try
                     {
-                        SystemUtils.RunAsDesktopUser("explorer.exe", "/select, " + window.Process.GetMainModuleFileName());
+                        SystemUtils.RunAs("explorer.exe", "/select, " + window.Process.GetMainModuleFileName(), true, UserType.Normal);
                     }
                     catch
                     {

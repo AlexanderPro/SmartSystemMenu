@@ -9,32 +9,42 @@ namespace SmartSystemMenu.Forms
     {
         private readonly LanguageSettings _settings;
 
-        public string Title { get; private set; }
+        public StartProgramMenuItem MenuItem { get; private set; }
 
-        public string FileName { get; private set; }
-
-        public string Arguments { get; private set; }
-
-        public StartProgramForm(string title, string processName, string arguments, LanguageSettings settings)
+        public StartProgramForm(StartProgramMenuItem menuItem, LanguageSettings settings)
         {
             _settings = settings;
 
             InitializeComponent();
-            InitializeControls(settings);
-
-            txtTitle.Text = title;
-            txtFileName.Text = processName;
-            txtArguments.Text = arguments;
+            InitializeControls(menuItem, settings);
         }
 
-        private void InitializeControls(LanguageSettings settings)
+        private void InitializeControls(StartProgramMenuItem menuItem, LanguageSettings settings)
         {
             lblTitle.Text = settings.GetValue("start_program_lbl_title");
             btnApply.Text = settings.GetValue("start_program_btn_apply");
             btnCancel.Text = settings.GetValue("start_program_btn_cancel");
             lblFileName.Text = settings.GetValue("start_program_lbl_file_name");
             lblArguments.Text = settings.GetValue("start_program_lbl_arguments");
+            lblRunAs.Text = settings.GetValue("start_program_lbl_runas");
+            lblBegin.Text = settings.GetValue("start_program_lbl_begin");
+            lblEnd.Text = settings.GetValue("start_program_lbl_end");
+            chkShowWindow.Text = settings.GetValue("start_program_show_window");
             Text = settings.GetValue("start_program_form");
+            if (menuItem != null)
+            {
+                txtTitle.Text = menuItem.Title;
+                txtFileName.Text = menuItem.FileName;
+                txtArguments.Text = menuItem.Arguments;
+                txtBegin.Text = menuItem.BeginParameter;
+                txtEnd.Text = menuItem.EndParameter;
+                txtParameter.Text = $"{menuItem.BeginParameter}{settings.GetValue("start_program_parameter")}{menuItem.EndParameter}";
+                chkShowWindow.Checked = menuItem.ShowWindow;
+                cmbRunAs.Items.Clear();
+                cmbRunAs.Items.Add(settings.GetValue("start_program_normal"));
+                cmbRunAs.Items.Add(settings.GetValue("start_program_administrator"));
+                cmbRunAs.SelectedIndex = menuItem.RunAs == UserType.Normal ? 0 : 1;
+            }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -43,6 +53,16 @@ namespace SmartSystemMenu.Forms
 
             txtTitle.SelectAll();
             txtTitle.Focus();
+        }
+
+        private void BeginParameterTextChanged(object sender, EventArgs e)
+        {
+            txtParameter.Text = $"{txtBegin.Text}{_settings.GetValue("start_program_parameter")}{txtEnd.Text}";
+        }
+
+        private void EndParameterTextChanged(object sender, EventArgs e)
+        {
+            txtParameter.Text = $"{txtBegin.Text}{_settings.GetValue("start_program_parameter")}{txtEnd.Text}";
         }
 
         private void ButtonBrowseFileClick(object sender, EventArgs e)
@@ -66,9 +86,16 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
-            Title = txtTitle.Text;
-            FileName = txtFileName.Text;
-            Arguments = txtArguments.Text;
+            MenuItem = new StartProgramMenuItem
+            {
+                Title = txtTitle.Text,
+                FileName = txtFileName.Text,
+                Arguments = txtArguments.Text,
+                BeginParameter = txtBegin.Text,
+                EndParameter = txtEnd.Text,
+                ShowWindow = chkShowWindow.Checked,
+                RunAs = cmbRunAs.SelectedIndex == 0 ? UserType.Normal : UserType.Administrator
+            };
             DialogResult = DialogResult.OK;
             Close();
         }

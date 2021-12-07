@@ -81,11 +81,18 @@
     <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Forms\MessageBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MessageBoxForm.Designer.cs">
       <DependentUpon>MessageBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ParameterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ParameterForm.Designer.cs">
+      <DependentUpon>ParameterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SettingsCloserForm.cs">
       <SubType>Form</SubType>
@@ -134,6 +141,7 @@
     <Compile Include="Settings\CloserSettings.cs" />
     <Compile Include="Settings\MenuItemType.cs" />
     <Compile Include="ToggleParser.cs" />
+    <Compile Include="UserType.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
     <Compile Include="WindowCloserType.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />
@@ -217,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MessageBoxForm.resx">
       <DependentUpon>MessageBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ParameterForm.resx">
+      <DependentUpon>ParameterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingsCloserForm.resx">
       <DependentUpon>SettingsCloserForm.cs</DependentUpon>

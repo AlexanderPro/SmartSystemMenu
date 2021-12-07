@@ -275,7 +275,7 @@ namespace SmartSystemMenu.Native
         [DllImport("advapi32.dll", CharSet = CharSet.Auto)]
         public static extern bool DuplicateTokenEx(IntPtr hExistingToken, uint dwDesiredAccess, IntPtr lpTokenAttributes, SECURITY_IMPERSONATION_LEVEL impersonationLevel, TOKEN_TYPE tokenType, out IntPtr phNewToken);
 
-        [DllImport("advapi32", CharSet = CharSet.Unicode)]
+        [DllImport("advapi32", CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern bool CreateProcessWithTokenW(IntPtr hToken, int dwLogonFlags, string lpApplicationName, string lpCommandLine, int dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
 
         [DllImport("user32.dll", SetLastError = true)]

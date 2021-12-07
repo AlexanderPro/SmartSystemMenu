@@ -87,7 +87,28 @@ namespace SmartSystemMenu
             }
         }
 
-        public static void RunAsDesktopUser(string fileName, string arguments)
+        public static void RunAs(string fileName, string arguments, bool showWindow, UserType userType)
+        {
+            if (userType == UserType.Normal)
+            {
+                RunAsDesktopUser(fileName, arguments, showWindow);
+            }
+            else
+            {
+                var process = new Process();
+                process.StartInfo.FileName = fileName;
+                process.StartInfo.Arguments = arguments;
+                if (!showWindow)
+                {
+                    process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    process.StartInfo.CreateNoWindow = true;
+                }
+                process.Start();
+            }
+        }
+
+
+        private static void RunAsDesktopUser(string fileName, string arguments, bool showWindow)
         {
             if (string.IsNullOrWhiteSpace(fileName))
             {
@@ -187,7 +208,12 @@ namespace SmartSystemMenu
                 foreach (var fullFileName in GetFullPaths(fileName))
                 {
                     var commandLine = string.Format("\"{0}\" {1}", fullFileName, arguments);
-                    if (CreateProcessWithTokenW(hPrimaryToken, 0, null, commandLine, 0, IntPtr.Zero, Path.GetDirectoryName(fullFileName), ref si, out pi))
+                    if (!showWindow)
+                    {
+                        si.wShowWindow = SW_HIDE;
+                        si.dwFlags = STARTF_USESHOWWINDOW;
+                    }
+                    if (CreateProcessWithTokenW(hPrimaryToken, 0, fullFileName, commandLine, showWindow ? 0 : CREATE_NO_WINDOW, IntPtr.Zero, Path.GetDirectoryName(fullFileName), ref si, out pi))
                     {
                         break;
                     }

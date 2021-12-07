@@ -627,7 +627,7 @@ namespace SmartSystemMenu
                 }
 
                 NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
-                Thread.Sleep(100);
+                Thread.Sleep(10);
                 NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
             }
         }

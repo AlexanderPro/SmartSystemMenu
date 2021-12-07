@@ -115,10 +115,13 @@
       <item title="1680x1050" left="" top=""  width="1680" height="1050" key1="" key2="" key3="" />
     </windowSizeItems>
     <startProgramItems>
-      <item title="Notepad" fileName="notepad.exe" arguments="" />
-      <item title="Calculator" fileName="calc.exe" arguments="" />
-      <item title="Paint" fileName="mspaint.exe" arguments="" />
-      <item title="Explorer" fileName="explorer.exe" arguments="" />
+      <item title="Notepad" fileName="notepad.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
+      <item title="Calculator" fileName="calc.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
+      <item title="Paint" fileName="mspaint.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
+      <item title="Explorer" fileName="explorer.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
+      <item title="Kill Process" fileName="taskkill.exe" arguments="/IM &quot;%Process Name%&quot; /F" runAs="administrator" showWindow="false" beginParameter="%" endParameter="%" />
+      <item title="Kill Process PID" fileName="taskkill.exe" arguments="/F /PID %PID%" runAs="administrator" showWindow="false" beginParameter="%" endParameter="%" />
+      <item title="Open Command Window" fileName="cmd.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
     </startProgramItems>
   </menuItems>
   <closer type="" key1="" key2="" mouseButton="" />

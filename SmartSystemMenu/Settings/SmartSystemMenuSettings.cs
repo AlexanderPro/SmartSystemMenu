@@ -159,7 +159,11 @@ namespace SmartSystemMenu.Settings
             {
                 if (string.Compare(MenuItems.StartProgramItems[i].Title, other.MenuItems.StartProgramItems[i].Title, StringComparison.CurrentCultureIgnoreCase) != 0 ||
                     string.Compare(MenuItems.StartProgramItems[i].FileName, other.MenuItems.StartProgramItems[i].FileName, StringComparison.CurrentCultureIgnoreCase) != 0 ||
-                    string.Compare(MenuItems.StartProgramItems[i].Arguments, other.MenuItems.StartProgramItems[i].Arguments, StringComparison.CurrentCultureIgnoreCase) != 0)
+                    string.Compare(MenuItems.StartProgramItems[i].Arguments, other.MenuItems.StartProgramItems[i].Arguments, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    string.Compare(MenuItems.StartProgramItems[i].BeginParameter, other.MenuItems.StartProgramItems[i].BeginParameter, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    string.Compare(MenuItems.StartProgramItems[i].EndParameter, other.MenuItems.StartProgramItems[i].EndParameter, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    MenuItems.StartProgramItems[i].ShowWindow != other.MenuItems.StartProgramItems[i].ShowWindow ||
+                    MenuItems.StartProgramItems[i].RunAs != other.MenuItems.StartProgramItems[i].RunAs)
                 {
                     return false;
                 }
@@ -230,7 +234,7 @@ namespace SmartSystemMenu.Settings
 
             foreach (var item in MenuItems.StartProgramItems)
             {
-                hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode();
+                hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode() ^ item.RunAs.GetHashCode() ^ item.BeginParameter.GetHashCode() ^ item.EndParameter.GetHashCode();
             }
 
             foreach (var item in MenuItems.Items)
@@ -285,6 +289,10 @@ namespace SmartSystemMenu.Settings
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
                     FileName = x.Attribute("fileName") != null ? x.Attribute("fileName").Value : "",
                     Arguments = x.Attribute("arguments") != null ? x.Attribute("arguments").Value : "",
+                    BeginParameter = x.Attribute("beginParameter") != null ? x.Attribute("beginParameter").Value : "",
+                    EndParameter = x.Attribute("endParameter") != null ? x.Attribute("endParameter").Value : "",
+                    RunAs = x.Attribute("runAs") != null && !string.IsNullOrEmpty(x.Attribute("runAs").Value) ? (UserType)Enum.Parse(typeof(UserType), x.Attribute("runAs").Value, true) : UserType.Normal,
+                    ShowWindow = x.Attribute("showWindow") != null && !string.IsNullOrEmpty(x.Attribute("showWindow").Value) ? x.Attribute("showWindow").Value.ToLower() == "true" : true
                 })
                 .ToList();
 
@@ -434,7 +442,11 @@ namespace SmartSystemMenu.Settings
                                      new XElement("startProgramItems", settings.MenuItems.StartProgramItems.Select(x => new XElement("item",
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
-                                         new XAttribute("arguments", x.Arguments))))),
+                                         new XAttribute("arguments", x.Arguments),
+                                         new XAttribute("runAs", x.RunAs.ToString().ToLower()),
+                                         new XAttribute("showWindow", x.ShowWindow.ToString().ToLower()),
+                                         new XAttribute("beginParameter", x.BeginParameter),
+                                         new XAttribute("endParameter", x.EndParameter))))),
                                  new XElement("closer",
                                      new XAttribute("type", ((int)settings.Closer.Type).ToString()),
                                      new XAttribute("key1", settings.Closer.Key1 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key1).ToString()),

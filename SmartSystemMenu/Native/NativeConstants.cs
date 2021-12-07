@@ -87,9 +87,9 @@
         public const int SC_MINIMIZE = 0xF020;
         public const int SC_MAXIMIZE = 0xF030;
         public const int SC_RESTORE = 0xF120;
+        public const int SW_HIDE = 0x0;
         public const int SW_MAXIMIZE = 0x3;
         public const int SW_MINIMIZE = 0x6;
-        public const int SW_Maxim = 0x6;
 
         public const int MSGFLT_ADD = 0x1;
 
@@ -115,5 +115,7 @@
         public const uint HC_ACTION = 0;
 
         public const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;
+        public const int CREATE_NO_WINDOW = 0x08000000;
+        public const int STARTF_USESHOWWINDOW = 0x00000001;
     }
 }

@@ -483,7 +483,7 @@ namespace SmartSystemMenu.Forms
                             {
                                 try
                                 {
-                                    SystemUtils.RunAsDesktopUser("explorer.exe", "/select, " + window.Process.GetMainModuleFileName());
+                                    SystemUtils.RunAs("explorer.exe", "/select, " + window.Process.GetMainModuleFileName(), true, UserType.Normal);
                                 }
                                 catch
                                 {
@@ -720,10 +720,35 @@ namespace SmartSystemMenu.Forms
                         {
                             try
                             {
-                                SystemUtils.RunAsDesktopUser(_settings.MenuItems.StartProgramItems[i].FileName, _settings.MenuItems.StartProgramItems[i].Arguments);
+                                var item = _settings.MenuItems.StartProgramItems[i];
+                                var arguments = item.Arguments;
+                                var argumentParameters = arguments.GetParams(item.BeginParameter, item.EndParameter);
+                                var allParametersInputed = true;
+                                foreach (var parameter in argumentParameters)
+                                {
+                                    var parameterName = parameter.TrimStart(item.BeginParameter).TrimEnd(item.EndParameter);
+                                    var parameterForm = new ParameterForm(parameterName, _settings.LanguageSettings);
+                                    var result = parameterForm.ShowDialog(window.Win32Window);
+
+                                    if (result == DialogResult.OK)
+                                    {
+                                        arguments = arguments.Replace(parameter, parameterForm.ParameterValue);
+                                    }
+                                    else
+                                    {
+                                        allParametersInputed = false;
+                                        break;
+                                    }
+                                }
+                                
+                                if (allParametersInputed)
+                                {
+                                    SystemUtils.RunAs(item.FileName, arguments, item.ShowWindow, item.RunAs);
+                                }
                             }
-                            catch
+                            catch (Exception ex)
                             {
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             break;
                         }

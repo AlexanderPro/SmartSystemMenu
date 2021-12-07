@@ -37,6 +37,14 @@
             this.lblArguments = new System.Windows.Forms.Label();
             this.txtArguments = new System.Windows.Forms.TextBox();
             this.btnBrowseFile = new System.Windows.Forms.Button();
+            this.cmbRunAs = new System.Windows.Forms.ComboBox();
+            this.lblRunAs = new System.Windows.Forms.Label();
+            this.lblBegin = new System.Windows.Forms.Label();
+            this.txtBegin = new System.Windows.Forms.TextBox();
+            this.lblEnd = new System.Windows.Forms.Label();
+            this.txtEnd = new System.Windows.Forms.TextBox();
+            this.txtParameter = new System.Windows.Forms.TextBox();
+            this.chkShowWindow = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -56,19 +64,19 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(224, 166);
+            this.btnApply.Location = new System.Drawing.Point(196, 367);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(75, 23);
-            this.btnApply.TabIndex = 7;
+            this.btnApply.Size = new System.Drawing.Size(91, 26);
+            this.btnApply.TabIndex = 15;
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(311, 166);
+            this.btnCancel.Location = new System.Drawing.Point(295, 367);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Size = new System.Drawing.Size(91, 26);
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
@@ -112,11 +120,86 @@
             this.btnBrowseFile.UseVisualStyleBackColor = true;
             this.btnBrowseFile.Click += new System.EventHandler(this.ButtonBrowseFileClick);
             // 
+            // cmbRunAs
+            // 
+            this.cmbRunAs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRunAs.FormattingEnabled = true;
+            this.cmbRunAs.Location = new System.Drawing.Point(12, 184);
+            this.cmbRunAs.Name = "cmbRunAs";
+            this.cmbRunAs.Size = new System.Drawing.Size(374, 21);
+            this.cmbRunAs.TabIndex = 8;
+            // 
+            // lblRunAs
+            // 
+            this.lblRunAs.AutoSize = true;
+            this.lblRunAs.Location = new System.Drawing.Point(12, 168);
+            this.lblRunAs.Name = "lblRunAs";
+            this.lblRunAs.Size = new System.Drawing.Size(0, 13);
+            this.lblRunAs.TabIndex = 7;
+            // 
+            // lblBegin
+            // 
+            this.lblBegin.AutoSize = true;
+            this.lblBegin.Location = new System.Drawing.Point(12, 220);
+            this.lblBegin.Name = "lblBegin";
+            this.lblBegin.Size = new System.Drawing.Size(0, 13);
+            this.lblBegin.TabIndex = 9;
+            // 
+            // txtBegin
+            // 
+            this.txtBegin.Location = new System.Drawing.Point(12, 236);
+            this.txtBegin.Name = "txtBegin";
+            this.txtBegin.Size = new System.Drawing.Size(180, 20);
+            this.txtBegin.TabIndex = 10;
+            this.txtBegin.TextChanged += new System.EventHandler(this.BeginParameterTextChanged);
+            // 
+            // lblEnd
+            // 
+            this.lblEnd.AutoSize = true;
+            this.lblEnd.Location = new System.Drawing.Point(206, 220);
+            this.lblEnd.Name = "lblEnd";
+            this.lblEnd.Size = new System.Drawing.Size(0, 13);
+            this.lblEnd.TabIndex = 11;
+            // 
+            // txtEnd
+            // 
+            this.txtEnd.Location = new System.Drawing.Point(206, 236);
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.Size = new System.Drawing.Size(180, 20);
+            this.txtEnd.TabIndex = 12;
+            this.txtEnd.TextChanged += new System.EventHandler(this.EndParameterTextChanged);
+            // 
+            // txtParameter
+            // 
+            this.txtParameter.Location = new System.Drawing.Point(12, 288);
+            this.txtParameter.Name = "txtParameter";
+            this.txtParameter.ReadOnly = true;
+            this.txtParameter.Size = new System.Drawing.Size(374, 20);
+            this.txtParameter.TabIndex = 13;
+            // 
+            // chkShowWindow
+            // 
+            this.chkShowWindow.AutoSize = true;
+            this.chkShowWindow.Location = new System.Drawing.Point(12, 340);
+            this.chkShowWindow.Name = "chkShowWindow";
+            this.chkShowWindow.Size = new System.Drawing.Size(95, 17);
+            this.chkShowWindow.TabIndex = 14;
+            this.chkShowWindow.Text = "Show Window";
+            this.chkShowWindow.UseVisualStyleBackColor = true;
+            // 
             // StartProgramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 224);
+            this.ClientSize = new System.Drawing.Size(398, 422);
+            this.Controls.Add(this.chkShowWindow);
+            this.Controls.Add(this.txtParameter);
+            this.Controls.Add(this.lblEnd);
+            this.Controls.Add(this.txtEnd);
+            this.Controls.Add(this.lblBegin);
+            this.Controls.Add(this.txtBegin);
+            this.Controls.Add(this.lblRunAs);
+            this.Controls.Add(this.cmbRunAs);
             this.Controls.Add(this.btnBrowseFile);
             this.Controls.Add(this.lblArguments);
             this.Controls.Add(this.txtArguments);
@@ -151,5 +234,13 @@
         private System.Windows.Forms.Label lblArguments;
         private System.Windows.Forms.TextBox txtArguments;
         private System.Windows.Forms.Button btnBrowseFile;
+        private System.Windows.Forms.ComboBox cmbRunAs;
+        private System.Windows.Forms.Label lblRunAs;
+        private System.Windows.Forms.Label lblBegin;
+        private System.Windows.Forms.TextBox txtBegin;
+        private System.Windows.Forms.Label lblEnd;
+        private System.Windows.Forms.TextBox txtEnd;
+        private System.Windows.Forms.TextBox txtParameter;
+        private System.Windows.Forms.CheckBox chkShowWindow;
     }
 }

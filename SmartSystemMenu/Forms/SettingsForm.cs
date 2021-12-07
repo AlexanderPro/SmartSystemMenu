@@ -104,13 +104,15 @@ namespace SmartSystemMenu.Forms
 
             foreach (var item in settings.MenuItems.StartProgramItems)
             {
+                var cloneItem = (StartProgramMenuItem)item.Clone();
                 var index = gvStartProgram.Rows.Add();
                 var row = gvStartProgram.Rows[index];
-                row.Cells[0].Value = item.Title;
-                row.Cells[1].Value = item.FileName;
-                row.Cells[2].Value = item.Arguments;
+                row.Cells[0].Value = cloneItem.Title;
+                row.Cells[1].Value = cloneItem.FileName;
+                row.Cells[2].Value = cloneItem.Arguments;
                 row.Cells[3].ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_edit");
                 row.Cells[4].ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_delete");
+                row.Tag = cloneItem;
             }
 
             cmbLanguage.DisplayMember = "Text";
@@ -174,18 +176,16 @@ namespace SmartSystemMenu.Forms
 
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                if (e.ColumnIndex == 3)
+                var row = grid.Rows[e.RowIndex];
+                if (e.ColumnIndex == 3 && row.Tag is StartProgramMenuItem menuItem)
                 {
-                    var cellTitle = grid.Rows[e.RowIndex].Cells[0];
-                    var cellFileName = grid.Rows[e.RowIndex].Cells[1];
-                    var cellArguments = grid.Rows[e.RowIndex].Cells[2];
-
-                    var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _settings.LanguageSettings);
+                    var dialog = new StartProgramForm(menuItem, _settings.LanguageSettings);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
-                        cellTitle.Value = dialog.Title;
-                        cellFileName.Value = dialog.FileName;
-                        cellArguments.Value = dialog.Arguments;
+                        row.Cells[0].Value = dialog.MenuItem.Title;
+                        row.Cells[1].Value = dialog.MenuItem.FileName;
+                        row.Cells[2].Value = dialog.MenuItem.Arguments;
+                        row.Tag = dialog.MenuItem;
                     }
                 }
 
@@ -285,18 +285,16 @@ namespace SmartSystemMenu.Forms
         private void GridViewStartProgramCellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
-            if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0)
+            var row = grid.Rows[e.RowIndex];
+            if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && row.Tag is StartProgramMenuItem menuItem)
             {
-                var row = grid.Rows[e.RowIndex];
-                var cellTitle = row.Cells[0];
-                var cellFileName = row.Cells[1];
-                var cellArguments = row.Cells[2];
-                var dialog = new StartProgramForm(cellTitle.Value.ToString(), cellFileName.Value.ToString(), cellArguments.Value.ToString(), _settings.LanguageSettings);
+                var dialog = new StartProgramForm(menuItem, _settings.LanguageSettings);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    cellTitle.Value = dialog.Title;
-                    cellFileName.Value = dialog.FileName;
-                    cellArguments.Value = dialog.Arguments;
+                    row.Cells[0].Value = dialog.MenuItem.Title;
+                    row.Cells[1].Value = dialog.MenuItem.FileName;
+                    row.Cells[2].Value = dialog.MenuItem.Arguments;
+                    row.Tag = dialog.MenuItem;
                 }
             }
         }
@@ -344,16 +342,17 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonAddStartProgramClick(object sender, EventArgs e)
         {
-            var dialog = new StartProgramForm("", "", "", _settings.LanguageSettings);
+            var dialog = new StartProgramForm(null, _settings.LanguageSettings);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvStartProgram.Rows.Add();
                 var row = gvStartProgram.Rows[index];
-                row.Cells[0].Value = dialog.Title;
-                row.Cells[1].Value = dialog.FileName;
-                row.Cells[2].Value = dialog.Arguments;
+                row.Cells[0].Value = dialog.MenuItem.Title;
+                row.Cells[1].Value = dialog.MenuItem.FileName;
+                row.Cells[2].Value = dialog.MenuItem.Arguments;
                 row.Cells[3].ToolTipText = _settings.LanguageSettings.GetValue("clm_start_program_edit");
                 row.Cells[4].ToolTipText = _settings.LanguageSettings.GetValue("clm_start_program_delete");
+                row.Tag = dialog.MenuItem;
             }
         }
 
@@ -507,7 +506,7 @@ namespace SmartSystemMenu.Forms
 
             foreach (DataGridViewRow row in gvStartProgram.Rows)
             {
-                settings.MenuItems.StartProgramItems.Add(new StartProgramMenuItem { Title = row.Cells[0].Value.ToString(), FileName = row.Cells[1].Value.ToString(), Arguments = row.Cells[2].Value.ToString() });
+                settings.MenuItems.StartProgramItems.Add((StartProgramMenuItem)row.Tag);
             }
 
             settings.MenuItems.Items = (IList<Settings.MenuItem>)gvHotkeys.Tag;

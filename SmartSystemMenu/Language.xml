@@ -167,6 +167,13 @@
       <item name="start_program_lbl_title" value="Title:" />
       <item name="start_program_lbl_file_name" value="File Name:" />
       <item name="start_program_lbl_arguments" value="Arguments:" />
+      <item name="start_program_lbl_runas" value="RunAs:" />
+      <item name="start_program_lbl_begin" value="Begin:" />
+      <item name="start_program_lbl_end" value="End:" />
+      <item name="start_program_show_window" value="Show Window" />
+      <item name="start_program_parameter" value="Parameter" />
+      <item name="start_program_normal" value="Normal" />
+      <item name="start_program_administrator" value="Administrator" />
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Cancel" />
       <item name="start_program_browse_file_filter" value="Executables (*.exe)|*.exe|All files (*.*)|*.*" />
@@ -203,6 +210,8 @@
       <item name="sizer_window_with_margins" value="Window with margins" />
       <item name="sizer_window_without_margins" value="Window without margins" />
       <item name="sizer_window_client_area" value="Window client area" />
+      <item name="parameter_btn_apply" value="Ok" />
+      <item name="parameter_form" value="Input Parameter" />
     </en>
     <de>
       <item name="separator" value="Separator" />
@@ -370,6 +379,13 @@
       <item name="start_program_lbl_title" value="Titel:" />
       <item name="start_program_lbl_file_name" value="Dateiname:" />
       <item name="start_program_lbl_arguments" value="Parameter:" />
+      <item name="start_program_lbl_runas" value="Rennen wie:" />
+      <item name="start_program_lbl_begin" value="Start:" />
+      <item name="start_program_lbl_end" value="Ende:" />
+      <item name="start_program_show_window" value="Schaufenster" />
+      <item name="start_program_parameter" value="Parameter" />
+      <item name="start_program_normal" value="Normal" />
+      <item name="start_program_administrator" value="Administrator" />
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Abbrechen" />
       <item name="start_program_browse_file_filter" value="Ausführbare Dateien (*.exe)|*.exe|Alle Dateien (*.*)|*.*" />
@@ -404,6 +420,8 @@
       <item name="sizer_window_with_margins" value="Fenster mit Rändern" />
       <item name="sizer_window_without_margins" value="Fenster ohne Ränder" />
       <item name="sizer_window_client_area" value="Fensterkundenbereich" />
+      <item name="parameter_btn_apply" value="Ok" />
+      <item name="parameter_form" value="Eingabeparameter" />
     </de>
     <zh_cn>
       <item name="separator" value="分隔线" />
@@ -571,6 +589,13 @@
       <item name="start_program_lbl_title" value="标题:" />
       <item name="start_program_lbl_file_name" value="文件名称:" />
       <item name="start_program_lbl_arguments" value="参数:" />
+      <item name="start_program_lbl_runas" value="运行方式:" />
+      <item name="start_program_lbl_begin" value="开始:" />
+      <item name="start_program_lbl_end" value="结尾:" />
+      <item name="start_program_show_window" value="橱窗" />
+      <item name="start_program_parameter" value="范围" />
+      <item name="start_program_normal" value="普通的" />
+      <item name="start_program_administrator" value="行政人员" />
       <item name="start_program_btn_apply" value="确定" />
       <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
@@ -605,6 +630,8 @@
       <item name="sizer_window_with_margins" value="有边距的窗口" />
       <item name="sizer_window_without_margins" value="没有边距的窗口" />
       <item name="sizer_window_client_area" value="窗口客户区" />
+      <item name="parameter_btn_apply" value="确定" />
+      <item name="parameter_form" value="输入参数" />
     </zh_cn>
     <zh_tw>
       <item name="separator" value="分隔器" />
@@ -772,6 +799,13 @@
       <item name="start_program_lbl_title" value="標題:" />
       <item name="start_program_lbl_file_name" value="檔案名稱:" />
       <item name="start_program_lbl_arguments" value="參數:" />
+      <item name="start_program_lbl_runas" value="运行方式:" />
+      <item name="start_program_lbl_begin" value="开始:" />
+      <item name="start_program_lbl_end" value="结尾:" />
+      <item name="start_program_show_window" value="橱窗" />
+      <item name="start_program_parameter" value="范围" />
+      <item name="start_program_normal" value="普通的" />
+      <item name="start_program_administrator" value="行政人员" />      
       <item name="start_program_btn_apply" value="確定" />
       <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可執行程式 (*.exe)|*.exe|所有檔案 (*.*)|*.*" />
@@ -806,6 +840,8 @@
       <item name="sizer_window_with_margins" value="有边距的窗口" />
       <item name="sizer_window_without_margins" value="没有边距的窗口" />
       <item name="sizer_window_client_area" value="窗口客户区" />
+      <item name="parameter_btn_apply" value="确定" />
+      <item name="parameter_form" value="输入参数" />
     </zh_tw>
     <ja>
       <item name="separator" value="セパレーター" />
@@ -973,6 +1009,13 @@
       <item name="start_program_lbl_title" value="タイトル：" />
       <item name="start_program_lbl_file_name" value="ファイル名：" />
       <item name="start_program_lbl_arguments" value="引数" />
+      <item name="start_program_lbl_runas" value="として実行:" />
+      <item name="start_program_lbl_begin" value="始める:" />
+      <item name="start_program_lbl_end" value="終わり:" />
+      <item name="start_program_show_window" value="ウィンドウを表示" />
+      <item name="start_program_parameter" value="パラメータ" />
+      <item name="start_program_normal" value="正常" />
+      <item name="start_program_administrator" value="管理者" />
       <item name="start_program_btn_apply" value="適用" />
       <item name="start_program_btn_cancel" value="キャンセル" />
       <item name="start_program_browse_file_filter" value="実行ファイル(*.exe)|*.exe|全てのファイル(*.*)|*.*" />
@@ -1007,6 +1050,8 @@
       <item name="sizer_window_with_margins" value="余白のあるウィンドウ" />
       <item name="sizer_window_without_margins" value="余白のないウィンドウ" />
       <item name="sizer_window_client_area" value="ウィンドウクライアントエリア" />
+      <item name="parameter_btn_apply" value="OK" />
+      <item name="parameter_form" value="入力パラメータ" />
     </ja>
     <ko>
       <item name="separator" value="분리 기호" />
@@ -1174,6 +1219,13 @@
       <item name="start_program_lbl_title" value="제목:" />
       <item name="start_program_lbl_file_name" value="파일 이름:" />
       <item name="start_program_lbl_arguments" value="정렬:" />
+      <item name="start_program_lbl_runas" value="실행:" />
+      <item name="start_program_lbl_begin" value="시작하다:" />
+      <item name="start_program_lbl_end" value="끝:" />
+      <item name="start_program_show_window" value="쇼 윈도우" />
+      <item name="start_program_parameter" value="매개변수" />
+      <item name="start_program_normal" value="정상" />
+      <item name="start_program_administrator" value="관리자" />
       <item name="start_program_btn_apply" value="확인" />
       <item name="start_program_btn_cancel" value="취소" />
       <item name="start_program_browse_file_filter" value="실행 파일 (*.exe)|*.exe|모든 파일 (*.*)|*.*" />
@@ -1208,6 +1260,8 @@
       <item name="sizer_window_with_margins" value="여백이 있는 창" />
       <item name="sizer_window_without_margins" value="여백 없는 창" />
       <item name="sizer_window_client_area" value="창 클라이언트 영역" />
+      <item name="parameter_btn_apply" value="확인" />
+      <item name="parameter_form" value="입력 매개변수" />
     </ko>
     <ru>
       <item name="separator" value="Разделитель" />
@@ -1375,6 +1429,13 @@
       <item name="start_program_lbl_title" value="Заголовок:" />
       <item name="start_program_lbl_file_name" value="Имя файла:" />
       <item name="start_program_lbl_arguments" value="Параметры:" />
+      <item name="start_program_lbl_runas" value="Запуск под пользователем:" />
+      <item name="start_program_lbl_begin" value="Начало:" />
+      <item name="start_program_lbl_end" value="Конец:" />
+      <item name="start_program_show_window" value="Отображать окно" />
+      <item name="start_program_parameter" value="Параметр" />
+      <item name="start_program_normal" value="Обычный" />
+      <item name="start_program_administrator" value="Администратор" />
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Cancel" />
       <item name="start_program_browse_file_filter" value="Исполняемые (*.exe)|*.exe|All files (*.*)|*.*" />
@@ -1409,6 +1470,8 @@
       <item name="sizer_window_with_margins" value="Окно с отступами" />
       <item name="sizer_window_without_margins" value="Окно без отступов" />    
       <item name="sizer_window_client_area" value="Клиентская область окна" />
+      <item name="parameter_btn_apply" value="Ok" />
+      <item name="parameter_form" value="Введите параметр" />
     </ru>
     <sr>
       <item name="separator" value="Сепаратор" />
@@ -1576,6 +1639,13 @@
       <item name="start_program_lbl_title" value="Наслов:" />
       <item name="start_program_lbl_file_name" value="Име датотеке:" />
       <item name="start_program_lbl_arguments" value="Аргументи:" />
+      <item name="start_program_lbl_runas" value="Трчати као:" />
+      <item name="start_program_lbl_begin" value="Започети:" />
+      <item name="start_program_lbl_end" value="Завршити:" />
+      <item name="start_program_show_window" value="Изложбени прозор" />
+      <item name="start_program_parameter" value="Параметар" />
+      <item name="start_program_normal" value="Нормалан" />
+      <item name="start_program_administrator" value="Администратор" />
       <item name="start_program_btn_apply" value="У реду" />
       <item name="start_program_btn_cancel" value="Откажи" />
       <item name="start_program_browse_file_filter" value="Покретљиво (*.exe)|*.exe|Све (*.*)|*.*" />
@@ -1610,6 +1680,8 @@
       <item name="sizer_window_with_margins" value="Прозор са маргинама" />
       <item name="sizer_window_without_margins" value="Прозор без маргина" />
       <item name="sizer_window_client_area" value="Подручје клијента прозора" />
+      <item name="parameter_btn_apply" value="У реду" />
+      <item name="parameter_form" value="Улазни параметар" />
     </sr>
     <pt>
       <item name="separator" value="Separador" />
@@ -1777,6 +1849,13 @@
       <item name="start_program_lbl_title" value="Nome:" />
       <item name="start_program_lbl_file_name" value="Nome do arquivo:" />
       <item name="start_program_lbl_arguments" value="Parâmetros:" />
+      <item name="start_program_lbl_runas" value="Correr como:" />
+      <item name="start_program_lbl_begin" value="Começar:" />
+      <item name="start_program_lbl_end" value="Fim:" />
+      <item name="start_program_show_window" value="Mostrar janela" />
+      <item name="start_program_parameter" value="Parâmetro" />
+      <item name="start_program_normal" value="Normal" />
+      <item name="start_program_administrator" value="Administrador" />
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Cancelar" />
       <item name="start_program_browse_file_filter" value="Executáveis (*.exe)|*.exe|Todos os arquivos (*.*)|*.*" />
@@ -1811,6 +1890,8 @@
       <item name="sizer_window_with_margins" value="Janela com margens" />
       <item name="sizer_window_without_margins" value="Janela sem margens" />
       <item name="sizer_window_client_area" value="Área do cliente da janela" />
+      <item name="parameter_btn_apply" value="Ok" />
+      <item name="parameter_form" value="Parâmetro de entrada" />
     </pt>
   </items>
 </language>

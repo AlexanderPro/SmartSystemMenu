@@ -31,11 +31,11 @@ namespace SmartSystemMenu.Forms
             try
             {
                 var controlName = ((LinkLabel)sender).Name;
-                SystemUtils.RunAsDesktopUser(SystemUtils.GetDefaultBrowserModuleName(),
+                SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(),
                     controlName == "linkLightAPIs" ? URL_LIGHT_APIS :
                     controlName == "linkWengh" ? URL_WENGH :
                     controlName == "linkJaehyungLee" ? URL_JAEHYUNG_LEE :
-                    URL_SMART_SYSTEM_MENU);
+                    URL_SMART_SYSTEM_MENU, true, UserType.Normal);
             }
             catch
             {
