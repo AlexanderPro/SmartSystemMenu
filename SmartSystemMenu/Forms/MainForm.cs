@@ -727,6 +727,24 @@ namespace SmartSystemMenu.Forms
                                 foreach (var parameter in argumentParameters)
                                 {
                                     var parameterName = parameter.TrimStart(item.BeginParameter).TrimEnd(item.EndParameter);
+                                    if (string.Compare(parameterName, StartProgramMenuItem.PARAMETER_PROCESS_ID, true) == 0)
+                                    {
+                                        arguments = arguments.Replace(parameter, window.Process?.Id.ToString() ?? string.Empty);
+                                        continue;
+                                    }
+
+                                    if (string.Compare(parameterName, StartProgramMenuItem.PARAMETER_PROCESS_NAME, true) == 0)
+                                    {
+                                        arguments = arguments.Replace(parameter, Path.GetFileName(window.Process?.GetMainModuleFileName() ?? string.Empty));
+                                        continue;
+                                    }
+
+                                    if (string.Compare(parameterName, StartProgramMenuItem.PARAMETER_WINDOW_TITLE, true) == 0)
+                                    {
+                                        arguments = arguments.Replace(parameter, window.GetWindowText());
+                                        continue;
+                                    }
+
                                     var parameterForm = new ParameterForm(parameterName, _settings.LanguageSettings);
                                     var result = parameterForm.ShowDialog(window.Win32Window);
 

@@ -119,9 +119,10 @@
       <item title="Calculator" fileName="calc.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
       <item title="Paint" fileName="mspaint.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
       <item title="Explorer" fileName="explorer.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
-      <item title="Kill Process" fileName="taskkill.exe" arguments="/IM &quot;%Process Name%&quot; /F" runAs="administrator" showWindow="false" beginParameter="%" endParameter="%" />
-      <item title="Kill Process PID" fileName="taskkill.exe" arguments="/F /PID %PID%" runAs="administrator" showWindow="false" beginParameter="%" endParameter="%" />
       <item title="Open Command Window" fileName="cmd.exe" arguments="" runAs="normal" showWindow="true" beginParameter="%" endParameter="%" />
+      <item title="Kill This Process" fileName="taskkill.exe" arguments="/F /PID %process_id%" runAs="administrator" showWindow="false" beginParameter="%" endParameter="%" />
+      <item title="Kill Process By PID" fileName="taskkill.exe" arguments="/F /PID %PID%" runAs="administrator" showWindow="false" beginParameter="%" endParameter="%" />
+      <item title="Kill Process By Name" fileName="taskkill.exe" arguments="/IM &quot;%Process Name%&quot; /F" runAs="administrator" showWindow="false" beginParameter="%" endParameter="%" />
     </startProgramItems>
   </menuItems>
   <closer type="" key1="" key2="" mouseButton="" />

@@ -4,6 +4,10 @@ namespace SmartSystemMenu.Settings
 {
     public class StartProgramMenuItem : ICloneable
     {
+        public const string PARAMETER_PROCESS_ID = "process_id";
+        public const string PARAMETER_PROCESS_NAME = "process_name";
+        public const string PARAMETER_WINDOW_TITLE = "window_title";
+
         public string Title { get; set; }
 
         public string FileName { get; set; }

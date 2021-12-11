@@ -334,7 +334,7 @@ namespace SmartSystemMenu
 
             try
             {
-                info.Parent = Path.GetFileName(process.GetParentProcess().MainModule.FileName);
+                info.Parent = Path.GetFileName(process.GetParentProcess().GetMainModuleFileName());
             }
             catch
             {
