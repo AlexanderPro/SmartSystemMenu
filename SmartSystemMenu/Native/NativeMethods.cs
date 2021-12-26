@@ -319,5 +319,15 @@ namespace SmartSystemMenu.Native
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool SetProcessDPIAware();
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern IntPtr GetAncestor(IntPtr hwnd, GetAncestorFlags flags);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetLastActivePopup(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetTitleBarInfo(IntPtr hwnd, ref TITLEBARINFO pti);
     }
 }

@@ -40,6 +40,7 @@
         // WindowStyle
         public const int WS_EX_LAYERED = 0x00080000;
         public const int WS_EX_TOPMOST = 0x00000008;
+        public const int WS_EX_TOOLWINDOW = 0x00000080;
 
         // Window Messages
         public const int WM_CREATE = 0x0001;
@@ -117,5 +118,7 @@
         public const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;
         public const int CREATE_NO_WINDOW = 0x08000000;
         public const int STARTF_USESHOWWINDOW = 0x00000001;
+
+        public const int STATE_SYSTEM_INVISIBLE = 0x00008000;
     }
 }

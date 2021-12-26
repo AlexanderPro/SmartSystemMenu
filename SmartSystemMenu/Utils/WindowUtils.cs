@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.NativeMethods;
+using static SmartSystemMenu.Native.NativeConstants;
 
 namespace SmartSystemMenu.Utils
 {
@@ -14,7 +16,7 @@ namespace SmartSystemMenu.Utils
         public static Bitmap PrintWindow(IntPtr hWnd)
         {
             Rect rect;
-            NativeMethods.GetWindowRect(hWnd, out rect);
+            GetWindowRect(hWnd, out rect);
             var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             using (var graphics = Graphics.FromImage(bitmap))
             {
@@ -29,7 +31,7 @@ namespace SmartSystemMenu.Utils
         {
             var resultHwnd = hWnd;
             var parentHwnd = IntPtr.Zero;
-            while ((parentHwnd = NativeMethods.GetParent(resultHwnd)) != IntPtr.Zero)
+            while ((parentHwnd = GetParent(resultHwnd)) != IntPtr.Zero)
             {
                 resultHwnd = parentHwnd;
             }
@@ -38,13 +40,13 @@ namespace SmartSystemMenu.Utils
 
         public static uint GetThreadId(IntPtr hWnd)
         {
-            uint threadId = NativeMethods.GetWindowThreadProcessId(hWnd, out var processId);
+            uint threadId = GetWindowThreadProcessId(hWnd, out var processId);
             return threadId;
         }
 
         public static int GetProcessId(IntPtr hWnd)
         {
-            NativeMethods.GetWindowThreadProcessId(hWnd, out var processId);
+            GetWindowThreadProcessId(hWnd, out var processId);
             return processId;
         }
 
@@ -52,21 +54,21 @@ namespace SmartSystemMenu.Utils
         {
             try
             {
-                NativeMethods.FreeConsole();
-                var result = NativeMethods.AttachConsole(processId);
+                FreeConsole();
+                var result = AttachConsole(processId);
                 if (!result)
                 {
                     var error = Marshal.GetLastWin32Error();
                     throw new Win32Exception(error);
                 }
-                var handle = NativeMethods.GetStdHandle(NativeConstants.STD_OUTPUT_HANDLE);
+                var handle = GetStdHandle(NativeConstants.STD_OUTPUT_HANDLE);
                 if (handle == IntPtr.Zero)
                 {
                     var error = Marshal.GetLastWin32Error();
                     throw new Win32Exception(error);
                 }
                 ConsoleScreenBufferInfo binfo;
-                result = NativeMethods.GetConsoleScreenBufferInfo(handle, out binfo);
+                result = GetConsoleScreenBufferInfo(handle, out binfo);
                 if (!result)
                 {
                     var error = Marshal.GetLastWin32Error();
@@ -78,7 +80,7 @@ namespace SmartSystemMenu.Utils
                 for (var i = 0; i < binfo.dwSize.Y; i++)
                 {
                     uint numberOfCharsRead;
-                    if (NativeMethods.ReadConsoleOutputCharacter(handle, buffer, (uint)buffer.Length, new Coord(0, (short)i), out numberOfCharsRead))
+                    if (ReadConsoleOutputCharacter(handle, buffer, (uint)buffer.Length, new Coord(0, (short)i), out numberOfCharsRead))
                     {
                         textBuilder.AppendLine(new string(buffer));
                     }
@@ -89,7 +91,7 @@ namespace SmartSystemMenu.Utils
             }
             catch
             {
-                NativeMethods.FreeConsole();
+                FreeConsole();
                 return null;
             }
         }
@@ -97,14 +99,14 @@ namespace SmartSystemMenu.Utils
         public static IList<IntPtr> FindWindowByTitle(string title, int? processId, Func<string, string, bool> compareTitle)
         {
             var handles = new List<IntPtr>();
-            NativeMethods.EnumWindows((IntPtr hWnd, int lParam) => {
+            EnumWindows((IntPtr hWnd, int lParam) => {
                 if (processId.HasValue)
                 {
-                    NativeMethods.GetWindowThreadProcessId(hWnd, out var pid);
+                    GetWindowThreadProcessId(hWnd, out var pid);
                     if (processId.Value == pid)
                     {
                         var builder = new StringBuilder(1024);
-                        NativeMethods.GetWindowText(hWnd, builder, builder.Capacity);
+                        GetWindowText(hWnd, builder, builder.Capacity);
                         if (compareTitle(title, builder.ToString()))
                         {
                             handles.Add(hWnd);
@@ -114,7 +116,7 @@ namespace SmartSystemMenu.Utils
                 else
                 {
                     var builder = new StringBuilder(1024);
-                    NativeMethods.GetWindowText(hWnd, builder, builder.Capacity);
+                    GetWindowText(hWnd, builder, builder.Capacity);
                     if (compareTitle(title, builder.ToString()))
                     {
                         handles.Add(hWnd);
@@ -123,6 +125,46 @@ namespace SmartSystemMenu.Utils
                 return true;
             }, 0);
             return handles;
+        }
+
+        public static bool IsAltTabWindow(IntPtr hWnd)
+        {
+            if (!IsWindowVisible(hWnd))
+            {
+                return false;
+            }
+
+            var hwndWalk = IntPtr.Zero;
+            var hwndTry = GetAncestor(hWnd, GetAncestorFlags.GetRootOwner);
+            while (hwndTry != hwndWalk)
+            {
+                hwndWalk = hwndTry;
+                hwndTry = GetLastActivePopup(hwndWalk);
+                if (IsWindowVisible(hwndTry))
+                {
+                    break;
+                }
+            }
+
+            if (hwndWalk != hWnd)
+            {
+                return false;
+            }
+
+            var ti = new TITLEBARINFO();
+            ti.cbSize = (uint)Marshal.SizeOf(ti);
+            GetTitleBarInfo(hWnd, ref ti);
+            if ((ti.rgstate[0] & STATE_SYSTEM_INVISIBLE) != 0)
+            {
+                return false;
+            }
+
+            if ((GetWindowLong(hWnd, GWL_EXSTYLE) & WS_EX_TOOLWINDOW) != 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

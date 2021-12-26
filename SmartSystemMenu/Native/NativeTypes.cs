@@ -350,6 +350,22 @@ namespace SmartSystemMenu.Native
         DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = 34
     }
 
+    enum GetAncestorFlags
+    {
+        GetParent = 1,
+        GetRoot = 2,
+        GetRootOwner = 3
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct TITLEBARINFO
+    {
+        public const int CCHILDREN_TITLEBAR = 5;
+        public uint cbSize;
+        public Rect rcTitleBar;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = CCHILDREN_TITLEBAR + 1)]
+        public uint[] rgstate;
+    }
 
     delegate int KeyboardHookProc(int code, IntPtr wParam, ref KeyboardLLHookStruct lParam);
 

@@ -494,49 +494,21 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_MINIMIZE_OTHER_WINDOWS:
                         case MenuItemId.SC_CLOSE_OTHER_WINDOWS:
                             {
-                                foreach (var process in Process.GetProcesses())
+                                NativeMethods.EnumWindows((IntPtr handle, int lParam) =>
                                 {
-                                    try
+                                    if (handle != IntPtr.Zero && handle != Handle && handle != window.Handle && WindowUtils.IsAltTabWindow(handle))
                                     {
-                                        if (process.MainWindowHandle != IntPtr.Zero && process.MainWindowHandle != Handle && process.MainWindowHandle != window.Handle)
+                                        if (lowOrder == MenuItemId.SC_CLOSE_OTHER_WINDOWS)
                                         {
-                                            if (process.ProcessName.ToLower() == "explorer")
-                                            {
-                                                foreach (var handle in process.GetWindowHandles().Where(x => x != window.Handle).ToList())
-                                                {
-                                                    var builder = new StringBuilder(1024);
-                                                    NativeMethods.GetClassName(handle, builder, builder.Capacity);
-                                                    var className = builder.ToString().Trim();
-                                                    if (className == "CabinetWClass" || className == "ExplorerWClass")
-                                                    {
-                                                        if (lowOrder == MenuItemId.SC_CLOSE_OTHER_WINDOWS)
-                                                        {
-                                                            NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
-                                                        }
-                                                        else
-                                                        {
-                                                            NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, NativeConstants.SC_MINIMIZE, 0);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                if (lowOrder == MenuItemId.SC_CLOSE_OTHER_WINDOWS)
-                                                {
-                                                    NativeMethods.PostMessage(process.MainWindowHandle, NativeConstants.WM_CLOSE, 0, 0);
-                                                }
-                                                else
-                                                {
-                                                    NativeMethods.PostMessage(process.MainWindowHandle, NativeConstants.WM_SYSCOMMAND, NativeConstants.SC_MINIMIZE, 0);
-                                                }
-                                            }
+                                            NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                                        }
+                                        else
+                                        {
+                                            NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, NativeConstants.SC_MINIMIZE, 0);
                                         }
                                     }
-                                    catch
-                                    {
-                                    }
-                                }
+                                    return true;
+                                }, 0);
                             }
                             break;
 
