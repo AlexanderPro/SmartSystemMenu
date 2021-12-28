@@ -592,10 +592,10 @@
       <item name="start_program_lbl_runas" value="运行方式:" />
       <item name="start_program_lbl_begin" value="开始:" />
       <item name="start_program_lbl_end" value="结尾:" />
-      <item name="start_program_show_window" value="橱窗" />
+      <item name="start_program_show_window" value="显示窗口" />
       <item name="start_program_parameter" value="范围" />
-      <item name="start_program_normal" value="普通的" />
-      <item name="start_program_administrator" value="行政人员" />
+      <item name="start_program_normal" value="以普通账户运行" />
+      <item name="start_program_administrator" value="以管理员账户运行" />
       <item name="start_program_btn_apply" value="确定" />
       <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可执行文件 (*.exe)|*.exe|所有文件 (*.*)|*.*" />
