@@ -1281,7 +1281,7 @@
       <item name="size_custom" value="Настроить..." />
       <item name="move_to" value="Переместить" />
       <item name="monitor" value="Монитор " />
-      <item name="alignment" value="Выравнить" />
+      <item name="alignment" value="Выравнивание" />
       <item name="align_top_left" value="верх-лево" />
       <item name="align_top_center" value="верх-центр" />
       <item name="align_top_right" value="верх-право" />
