@@ -20,6 +20,8 @@ namespace SmartSystemMenu.Settings
 
         public bool ShowSystemTrayIcon { get; private set; }
 
+        public bool EnableHighDPI { get; set; }
+
         public WindowSizerType Sizer { get; set; }
 
         public string LanguageName { get; set; }
@@ -33,6 +35,7 @@ namespace SmartSystemMenu.Settings
             Closer = new CloserSettings();
             Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
+            EnableHighDPI = false;
             LanguageName = "";
             LanguageSettings = new LanguageSettings();
         }
@@ -71,6 +74,8 @@ namespace SmartSystemMenu.Settings
             settings.Closer.Key2 = Closer.Key2;
             settings.Closer.MouseButton = Closer.MouseButton;
             settings.Sizer = Sizer;
+            settings.ShowSystemTrayIcon = ShowSystemTrayIcon;
+            settings.EnableHighDPI = EnableHighDPI;
             settings.LanguageName = LanguageName;
             return settings;
         }
@@ -210,6 +215,16 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
+            if (ShowSystemTrayIcon != other.ShowSystemTrayIcon)
+            {
+                return false;
+            }
+
+            if (EnableHighDPI != other.EnableHighDPI)
+            {
+                return false;
+            }
+
             if (string.Compare(LanguageName, other.LanguageName, StringComparison.CurrentCultureIgnoreCase) != 0)
             {
                 return false;
@@ -252,6 +267,8 @@ namespace SmartSystemMenu.Settings
             hashCode ^= Closer.MouseButton.GetHashCode();
             hashCode ^= Sizer.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
+            hashCode ^= ShowSystemTrayIcon.GetHashCode();
+            hashCode ^= EnableHighDPI.GetHashCode();
             return hashCode;
         }
 
@@ -336,6 +353,12 @@ namespace SmartSystemMenu.Settings
             if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
             {
                 settings.ShowSystemTrayIcon = false;
+            }
+
+            var displayElement = document.XPathSelectElement("/smartSystemMenu/display");
+            if (displayElement != null && displayElement.Attribute("highDPI") != null && displayElement.Attribute("highDPI").Value != null && displayElement.Attribute("highDPI").Value.ToLower() == "true")
+            {
+                settings.EnableHighDPI = true;
             }
 
             var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
@@ -458,6 +481,9 @@ namespace SmartSystemMenu.Settings
                                  ),
                                  new XElement("systemTrayIcon",
                                      new XAttribute("show", settings.ShowSystemTrayIcon.ToString().ToLower())
+                                 ),
+                                 new XElement("display",
+                                     new XAttribute("highDPI", settings.EnableHighDPI.ToString().ToLower())
                                  ),
                                  new XElement("language",
                                      new XAttribute("name", settings.LanguageName.ToLower())

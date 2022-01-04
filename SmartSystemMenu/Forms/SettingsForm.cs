@@ -45,6 +45,8 @@ namespace SmartSystemMenu.Forms
             grpbWindowSize.Text = settings.LanguageSettings.GetValue("grpb_window_size");
             grpbCloser.Text = settings.LanguageSettings.GetValue("grpb_closer");
             grpbSizer.Text = settings.LanguageSettings.GetValue("grpb_sizer");
+            grpbDisplay.Text = settings.LanguageSettings.GetValue("grpb_display");
+            chkEnableHighDPI.Text = settings.LanguageSettings.GetValue("chk_enable_high_dpi");
             clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
             clmProcessExclusionEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
             clmProcessExcusionDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
@@ -138,6 +140,7 @@ namespace SmartSystemMenu.Forms
             cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_without_margins"));
             cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_client_area"));
             cmbSizer.SelectedIndex = (int)settings.Sizer;
+            chkEnableHighDPI.Checked = settings.EnableHighDPI;
 
             var items = new List<Settings.MenuItem>();
             foreach(var item in settings.MenuItems.Items)
@@ -515,6 +518,7 @@ namespace SmartSystemMenu.Forms
             settings.Closer.MouseButton = _closerSettings.MouseButton;
             settings.Closer.Type = _closerSettings.Type;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
+            settings.EnableHighDPI = chkEnableHighDPI.Checked;
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 
             if (!settings.Equals(_settings))

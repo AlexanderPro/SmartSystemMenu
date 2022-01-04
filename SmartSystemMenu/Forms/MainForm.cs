@@ -36,11 +36,11 @@ namespace SmartSystemMenu.Forms
         private Process _64BitProcess;
 #endif
 
-        public MainForm()
+        public MainForm(SmartSystemMenuSettings settings)
         {
             InitializeComponent();
 
-            _settings = new SmartSystemMenuSettings();
+            _settings = settings;
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
         }
@@ -49,12 +49,6 @@ namespace SmartSystemMenu.Forms
         {
             base.OnLoad(e);
 
-            var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
-            var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
-            if (File.Exists(settingsFileName) && File.Exists(languageFileName))
-            {
-                _settings = SmartSystemMenuSettings.Read(settingsFileName, languageFileName);
-            }
 #if WIN32
             if (Environment.Is64BitOperatingSystem)
             {

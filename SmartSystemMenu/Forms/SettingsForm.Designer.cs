@@ -85,6 +85,8 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
+            this.grpbDisplay = new System.Windows.Forms.GroupBox();
+            this.chkEnableHighDPI = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbCloser.SuspendLayout();
@@ -101,6 +103,7 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
+            this.grpbDisplay.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -118,6 +121,7 @@ namespace SmartSystemMenu.Forms
             // 
             // tabpGeneral
             // 
+            this.tabpGeneral.Controls.Add(this.grpbDisplay);
             this.tabpGeneral.Controls.Add(this.grpbCloser);
             this.tabpGeneral.Controls.Add(this.grpbLanguage);
             this.tabpGeneral.Controls.Add(this.grpbProcessExclusions);
@@ -133,7 +137,7 @@ namespace SmartSystemMenu.Forms
             this.grpbCloser.Controls.Add(this.btnCloser);
             this.grpbCloser.Location = new System.Drawing.Point(8, 87);
             this.grpbCloser.Name = "grpbCloser";
-            this.grpbCloser.Size = new System.Drawing.Size(497, 69);
+            this.grpbCloser.Size = new System.Drawing.Size(240, 69);
             this.grpbCloser.TabIndex = 1;
             this.grpbCloser.TabStop = false;
             // 
@@ -173,7 +177,7 @@ namespace SmartSystemMenu.Forms
             this.grpbProcessExclusions.Location = new System.Drawing.Point(8, 160);
             this.grpbProcessExclusions.Name = "grpbProcessExclusions";
             this.grpbProcessExclusions.Size = new System.Drawing.Size(497, 224);
-            this.grpbProcessExclusions.TabIndex = 2;
+            this.grpbProcessExclusions.TabIndex = 3;
             this.grpbProcessExclusions.TabStop = false;
             // 
             // btnProcessExclusionDown
@@ -668,6 +672,24 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
+            // grpbDisplay
+            // 
+            this.grpbDisplay.Controls.Add(this.chkEnableHighDPI);
+            this.grpbDisplay.Location = new System.Drawing.Point(265, 87);
+            this.grpbDisplay.Name = "grpbDisplay";
+            this.grpbDisplay.Size = new System.Drawing.Size(240, 69);
+            this.grpbDisplay.TabIndex = 2;
+            this.grpbDisplay.TabStop = false;
+            // 
+            // chkEnableHighDPI
+            // 
+            this.chkEnableHighDPI.AutoSize = true;
+            this.chkEnableHighDPI.Location = new System.Drawing.Point(6, 28);
+            this.chkEnableHighDPI.Name = "chkEnableHighDPI";
+            this.chkEnableHighDPI.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableHighDPI.TabIndex = 0;
+            this.chkEnableHighDPI.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -699,6 +721,8 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
+            this.grpbDisplay.ResumeLayout(false);
+            this.grpbDisplay.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -758,5 +782,7 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeDelete;
         private System.Windows.Forms.Button btnMenuItemDown;
         private System.Windows.Forms.Button btnMenuItemUp;
+        private System.Windows.Forms.GroupBox grpbDisplay;
+        private System.Windows.Forms.CheckBox chkEnableHighDPI;
     }
 }

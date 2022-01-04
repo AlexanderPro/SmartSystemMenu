@@ -76,7 +76,6 @@ Command Line Interface
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
    --clearclipboard   No params
-   --nohighdpi        Disable High DPI Support
 -n --nogui            No GUI
 
 Example:

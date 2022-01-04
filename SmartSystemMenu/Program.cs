@@ -23,15 +23,18 @@ namespace SmartSystemMenu
         [STAThread]
         static void Main(string[] args)
         {
-            var toggleParser = new ToggleParser(args);
+            var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
+            var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
+            var settings = File.Exists(settingsFileName) && File.Exists(languageFileName) ? SmartSystemMenuSettings.Read(settingsFileName, languageFileName) : new SmartSystemMenuSettings();
 
             // Enable High DPI Support
-            if (!toggleParser.HasToggle("nohighdpi"))
+            if (settings.EnableHighDPI)
             {
                 SystemUtils.EnableHighDPISupport();
             }
 
             // Command Line Interface
+            var toggleParser = new ToggleParser(args);
             if (toggleParser.HasToggle("help"))
             {
                 var dialog = new MessageBoxForm();
@@ -41,7 +44,7 @@ namespace SmartSystemMenu
                 return;
             }
 
-            ProcessCommandLine(toggleParser);
+            ProcessCommandLine(toggleParser, settings);
 
             if (toggleParser.HasToggle("n") || toggleParser.HasToggle("nogui"))
             {
@@ -61,10 +64,10 @@ namespace SmartSystemMenu
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(settings));
         }
 
-        static void ProcessCommandLine(ToggleParser toggleParser)
+        static void ProcessCommandLine(ToggleParser toggleParser, SmartSystemMenuSettings settings)
         {
             // Delay
             if (toggleParser.HasToggle("d") || toggleParser.HasToggle("delay"))
@@ -281,9 +284,6 @@ namespace SmartSystemMenu
                 //Information dialog
                 if (toggleParser.HasToggle("i") || toggleParser.HasToggle("information"))
                 {
-                    var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
-                    var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
-                    var settings = SmartSystemMenuSettings.Read(settingsFileName, languageFileName);
                     var dialog = new InfoForm(window.GetWindowInfo(), settings.LanguageSettings);
                     dialog.ShowDialog();
                 }
@@ -291,9 +291,6 @@ namespace SmartSystemMenu
                 //Save Screenshot
                 if (toggleParser.HasToggle("s") || toggleParser.HasToggle("savescreenshot"))
                 {
-                    var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
-                    var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
-                    var settings = SmartSystemMenuSettings.Read(settingsFileName, languageFileName);
                     var bitmap = WindowUtils.PrintWindow(window.Handle);
                     var dialog = new SaveFileDialog
                     {
@@ -359,7 +356,6 @@ namespace SmartSystemMenu
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
    --clearclipboard   No params
-   --nohighdpi        Disable High DPI Support
 -n --nogui            No GUI
 
 Example:

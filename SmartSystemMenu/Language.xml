@@ -207,6 +207,8 @@
       <item name="closer_kill_process_with_foreground_window" value="Kill process with foreground window" />
       <item name="closer_kill_process_with_window_under_cursor" value="Kill process with window under cursor" />
       <item name="grpb_sizer" value="How to set window size" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="Window with margins" />
       <item name="sizer_window_without_margins" value="Window without margins" />
       <item name="sizer_window_client_area" value="Window client area" />
@@ -417,6 +419,8 @@
       <item name="closer_kill_process_with_foreground_window" value="Prozess mit Vordergrundfenster beenden" />
       <item name="closer_kill_process_with_window_under_cursor" value="Prozess mit Fenster unter Cursor beenden" />
       <item name="grpb_sizer" value="Fenstergröße einstellen window" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="Fenster mit Rändern" />
       <item name="sizer_window_without_margins" value="Fenster ohne Ränder" />
       <item name="sizer_window_client_area" value="Fensterkundenbereich" />
@@ -627,6 +631,8 @@
       <item name="closer_kill_process_with_foreground_window" value="终止带有前台窗口的进程" />
       <item name="closer_kill_process_with_window_under_cursor" value="终止光标下窗口的进程" />
       <item name="grpb_sizer" value="如何设置窗口大小" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="有边距的窗口" />
       <item name="sizer_window_without_margins" value="没有边距的窗口" />
       <item name="sizer_window_client_area" value="窗口工作区" />
@@ -837,6 +843,8 @@
       <item name="closer_kill_process_with_foreground_window" value="終止帶有前景視窗的程式" />
       <item name="closer_kill_process_with_window_under_cursor" value="終止游標下視窗的程式" />
       <item name="grpb_sizer" value="如何設定視窗大小" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="有邊界的視窗" />
       <item name="sizer_window_without_margins" value="沒有邊界的視窗" />
       <item name="sizer_window_client_area" value="窗口工作區" />
@@ -1047,6 +1055,8 @@
       <item name="closer_kill_process_with_foreground_window" value="フォアグラウンドウィンドウでプロセスを強制終了します" />
       <item name="closer_kill_process_with_window_under_cursor" value="カーソルの下のウィンドウでプロセスを強制終了します" />
       <item name="grpb_sizer" value="ウィンドウサイズの設定方法" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="余白のあるウィンドウ" />
       <item name="sizer_window_without_margins" value="余白のないウィンドウ" />
       <item name="sizer_window_client_area" value="ウィンドウクライアントエリア" />
@@ -1257,6 +1267,8 @@
       <item name="closer_kill_process_with_foreground_window" value="전경 창으로 프로세스 종료" />
       <item name="closer_kill_process_with_window_under_cursor" value="커서 아래 창으로 프로세스 종료" />
       <item name="grpb_sizer" value="창 크기를 설정하는 방법" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="여백이 있는 창" />
       <item name="sizer_window_without_margins" value="여백 없는 창" />
       <item name="sizer_window_client_area" value="창 클라이언트 영역" />
@@ -1467,6 +1479,8 @@
       <item name="closer_kill_process_with_foreground_window" value="Убить процесс с передним окном" />
       <item name="closer_kill_process_with_window_under_cursor" value="Убить процесс с окном под курсором" />
       <item name="grpb_sizer" value="Как устанавливать размер окна" />
+      <item name="grpb_display" value="Экран" />
+      <item name="chk_enable_high_dpi" value="Включить поддержку High DPI" />
       <item name="sizer_window_with_margins" value="Окно с отступами" />
       <item name="sizer_window_without_margins" value="Окно без отступов" />    
       <item name="sizer_window_client_area" value="Клиентская область окна" />
@@ -1677,6 +1691,8 @@
       <item name="closer_kill_process_with_foreground_window" value="Процес убијања помоћу прозора у првом плану" />
       <item name="closer_kill_process_with_window_under_cursor" value="Процес убијања помоћу прозора испод курсора" />
       <item name="grpb_sizer" value="Како поставити величину прозора" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="Прозор са маргинама" />
       <item name="sizer_window_without_margins" value="Прозор без маргина" />
       <item name="sizer_window_client_area" value="Подручје клијента прозора" />
@@ -1887,6 +1903,8 @@
       <item name="closer_kill_process_with_foreground_window" value="Encerrar executável com janela em primeiro plano" />
       <item name="closer_kill_process_with_window_under_cursor" value="Encerrar executável com janela sob o cursor" />
       <item name="grpb_sizer" value="Como definir o tamanho da janela" />
+      <item name="grpb_display" value="Display" />
+      <item name="chk_enable_high_dpi" value="Enable High DPI" />
       <item name="sizer_window_with_margins" value="Janela com margens" />
       <item name="sizer_window_without_margins" value="Janela sem margens" />
       <item name="sizer_window_client_area" value="Área do cliente da janela" />
