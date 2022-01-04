@@ -95,15 +95,19 @@ namespace SmartSystemMenu
             }
             else
             {
-                var process = new Process();
-                process.StartInfo.FileName = fileName;
-                process.StartInfo.Arguments = arguments;
-                if (!showWindow)
+                foreach (var fullFileName in GetFullPaths(fileName))
                 {
-                    process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    process.StartInfo.CreateNoWindow = true;
+                    var process = new Process();
+                    process.StartInfo.FileName = fullFileName;
+                    process.StartInfo.Arguments = arguments;
+                    process.StartInfo.WorkingDirectory = Path.GetDirectoryName(fullFileName);
+                    if (!showWindow)
+                    {
+                        process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                        process.StartInfo.CreateNoWindow = true;
+                    }
+                    process.Start();
                 }
-                process.Start();
             }
         }
 

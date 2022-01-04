@@ -31,6 +31,9 @@ namespace SmartSystemMenu.Forms
             lblEnd.Text = settings.GetValue("start_program_lbl_end");
             chkShowWindow.Text = settings.GetValue("start_program_show_window");
             Text = settings.GetValue("start_program_form");
+            cmbRunAs.Items.Clear();
+            cmbRunAs.Items.Add(settings.GetValue("start_program_normal"));
+            cmbRunAs.Items.Add(settings.GetValue("start_program_administrator"));
             if (menuItem != null)
             {
                 txtTitle.Text = menuItem.Title;
@@ -40,9 +43,6 @@ namespace SmartSystemMenu.Forms
                 txtEnd.Text = menuItem.EndParameter;
                 txtParameter.Text = $"{menuItem.BeginParameter}{settings.GetValue("start_program_parameter")}{menuItem.EndParameter}";
                 chkShowWindow.Checked = menuItem.ShowWindow;
-                cmbRunAs.Items.Clear();
-                cmbRunAs.Items.Add(settings.GetValue("start_program_normal"));
-                cmbRunAs.Items.Add(settings.GetValue("start_program_administrator"));
                 cmbRunAs.SelectedIndex = menuItem.RunAs == UserType.Normal ? 0 : 1;
             }
         }
