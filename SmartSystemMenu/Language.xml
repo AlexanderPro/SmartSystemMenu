@@ -621,15 +621,15 @@
       <item name="closer_lbl_key1" value="键 1" />
       <item name="closer_lbl_key2" value="键 2" />
       <item name="closer_lbl_mouse_button" value="鼠标按钮" />
-      <item name="closer_lbl_action" value="行动" />
-      <item name="closer_close_foreground_window" value="关闭前景窗口" />
+      <item name="closer_lbl_action" value="动作" />
+      <item name="closer_close_foreground_window" value="关闭前台窗口" />
       <item name="closer_close_window_under_cursor" value="关闭光标下的窗口" />
-      <item name="closer_kill_process_with_foreground_window" value="使用前台窗口杀死进程" />
-      <item name="closer_kill_process_with_window_under_cursor" value="用光标下的窗口杀死进程" />
+      <item name="closer_kill_process_with_foreground_window" value="终止带有前台窗口的进程" />
+      <item name="closer_kill_process_with_window_under_cursor" value="终止光标下窗口的进程" />
       <item name="grpb_sizer" value="如何设置窗口大小" />
       <item name="sizer_window_with_margins" value="有边距的窗口" />
       <item name="sizer_window_without_margins" value="没有边距的窗口" />
-      <item name="sizer_window_client_area" value="窗口客户区" />
+      <item name="sizer_window_client_area" value="窗口工作区" />
       <item name="parameter_btn_apply" value="确定" />
       <item name="parameter_form" value="输入参数" />
     </zh_cn>
@@ -722,7 +722,7 @@
       <item name="lbl_copyright" value="版權:" />
       <item name="lbl_file_version" value="檔案版本:" />
       <item name="lbl_product_version" value="產品版本:" />
-      <item name="information_btn_apply" value="確定" />
+      <item name="information_btn_apply" value="套用" />
       <item name="save_screenshot_title" value="儲存視窗擷圖" />
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
@@ -744,7 +744,7 @@
       <item name="mi_about" value="關於" />
       <item name="mi_exit" value="結束" />
       <item name="about_form" value="關於 " />
-      <item name="about_btn_ok" value="確定" />
+      <item name="about_btn_ok" value="套用" />
       <item name="settings_form" value="設定" />
       <item name="tab_settings_general" value="一般" />
       <item name="grpb_process_exclusions" value="程式排除" />
@@ -764,17 +764,17 @@
       <item name="btn_start_program_up" value="上移程式" />
       <item name="btn_start_program_down" value="下移程式" />
       <item name="btn_add_start_program" value="新增啟動程式" />
-      <item name="settings_btn_apply" value="確定" />
+      <item name="settings_btn_apply" value="套用" />
       <item name="settings_btn_cancel" value="取消" />
-      <item name="grpb_window_size" value="Window Size Menu Items" />
-      <item name="window_size_form" value="Window Size" />
-      <item name="window_size_btn_apply" value="確定" />
+      <item name="grpb_window_size" value="視窗大小功能表項目" />
+      <item name="window_size_form" value="視窗大小" />
+      <item name="window_size_btn_apply" value="套用" />
       <item name="window_size_btn_cancel" value="取消" />
       <item name="clm_window_size_title" value="標題" />
       <item name="clm_window_size_width" value="寬度" />
       <item name="clm_window_size_height" value="高度" />
       <item name="clm_window_size_top" value="頂部" />
-      <item name="clm_window_size_left" value="左侧" />
+      <item name="clm_window_size_left" value="左邊" />
       <item name="clm_window_size_edit" value="編輯" />
       <item name="clm_window_size_delete" value="刪除" />
       <item name="lbl_window_size_title" value="標題:" />
@@ -784,64 +784,64 @@
       <item name="lbl_window_size_key2" value="鍵 2:" />
       <item name="lbl_window_size_key3" value="鍵 3:" />
       <item name="lbl_window_size_top" value="頂部:" />
-      <item name="lbl_window_size_left" value="左侧:" />
-      <item name="btn_window_size_up" value="Move Up" />
-      <item name="btn_window_size_down" value="Move Down" />
-      <item name="btn_add_window_size" value="添加" />
-      <item name="btn_menu_item_up" value="Move Up" />
-      <item name="btn_menu_item_down" value="Move Down" />
+      <item name="lbl_window_size_left" value="左邊:" />
+      <item name="btn_window_size_up" value="上移菜單鍵" />
+      <item name="btn_window_size_down" value="下移菜單鍵" />
+      <item name="btn_add_window_size" value="新增" />
+      <item name="btn_menu_item_up" value="上移菜單鍵" />
+      <item name="btn_menu_item_down" value="下移菜單鍵" />
       <item name="process_name_form" value="程式排除" />
       <item name="process_lbl_file_name" value="檔案名稱:" />
-      <item name="process_btn_apply" value="確定" />
+      <item name="process_btn_apply" value="套用" />
       <item name="process_btn_cancel" value="取消" />
       <item name="process_browse_file_filter" value="可執行程式 (*.exe)|*.exe|所有檔案 (*.*)|*.*" />
       <item name="start_program_form" value="啟動程式" />
       <item name="start_program_lbl_title" value="標題:" />
       <item name="start_program_lbl_file_name" value="檔案名稱:" />
       <item name="start_program_lbl_arguments" value="參數:" />
-      <item name="start_program_lbl_runas" value="运行方式:" />
-      <item name="start_program_lbl_begin" value="开始:" />
-      <item name="start_program_lbl_end" value="结尾:" />
-      <item name="start_program_show_window" value="橱窗" />
-      <item name="start_program_parameter" value="范围" />
-      <item name="start_program_normal" value="普通的" />
-      <item name="start_program_administrator" value="行政人员" />      
-      <item name="start_program_btn_apply" value="確定" />
+      <item name="start_program_lbl_runas" value="執行方式:" />
+      <item name="start_program_lbl_begin" value="開始:" />
+      <item name="start_program_lbl_end" value="結尾:" />
+      <item name="start_program_show_window" value="顯示視窗" />
+      <item name="start_program_parameter" value="範圍" />
+      <item name="start_program_normal" value="使用者" />
+      <item name="start_program_administrator" value="系統管理員" />      
+      <item name="start_program_btn_apply" value="套用" />
       <item name="start_program_btn_cancel" value="取消" />
       <item name="start_program_browse_file_filter" value="可執行程式 (*.exe)|*.exe|所有檔案 (*.*)|*.*" />
       <item name="grpb_language" value="語言" />
       <item name="message_box_attention_title" value="注意" />
-      <item name="message_box_attention_content" value="您應該手動重新啟動應用程序以應用設定。" />
+      <item name="message_box_attention_content" value="您應該手動重新啟動應用程式以套用設定。" />
       <item name="hotkeys_form" value="快速鍵" />
       <item name="hotkeys_lbl_key1" value="鍵 1" />
       <item name="hotkeys_lbl_key2" value="鍵 2" />
       <item name="hotkeys_lbl_key3" value="鍵 3" />
-      <item name="hotkeys_btn_apply" value="確定" />
+      <item name="hotkeys_btn_apply" value="套用" />
       <item name="hotkeys_btn_cancel" value="取消" />
       <item name="tab_settings_hotkeys" value="快速鍵" />
       <item name="clm_hotkeys_name" value="名稱" />
       <item name="clm_hotkeys_show_tooltip" value="顯示菜單項" />
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
       <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
-      <item name="grpb_closer" value="通过鼠标单击关闭窗口" />
+      <item name="grpb_closer" value="通過滑鼠單擊關閉視窗" />
       <item name="closer_button_name" value="設定..." />
       <item name="closer_form" value="設定" />
-      <item name="closer_btn_apply" value="確定" />
+      <item name="closer_btn_apply" value="套用" />
       <item name="closer_btn_cancel" value="取消" />
       <item name="closer_lbl_key1" value="鍵 1" />
       <item name="closer_lbl_key2" value="鍵 2" />
-      <item name="closer_lbl_mouse_button" value="鼠标按钮" />
-      <item name="closer_lbl_action" value="行动" />
-      <item name="closer_close_foreground_window" value="关闭前景窗口" />
-      <item name="closer_close_window_under_cursor" value="关闭光标下的窗口" />
-      <item name="closer_kill_process_with_foreground_window" value="使用前台窗口杀死进程" />
-      <item name="closer_kill_process_with_window_under_cursor" value="用光标下的窗口杀死进程" />
-      <item name="grpb_sizer" value="如何设置窗口大小" />
-      <item name="sizer_window_with_margins" value="有边距的窗口" />
-      <item name="sizer_window_without_margins" value="没有边距的窗口" />
-      <item name="sizer_window_client_area" value="窗口客户区" />
-      <item name="parameter_btn_apply" value="确定" />
-      <item name="parameter_form" value="输入参数" />
+      <item name="closer_lbl_mouse_button" value="滑鼠按鈕" />
+      <item name="closer_lbl_action" value="動作" />
+      <item name="closer_close_foreground_window" value="關閉前景視窗" />
+      <item name="closer_close_window_under_cursor" value="關閉游標下的視窗" />
+      <item name="closer_kill_process_with_foreground_window" value="終止帶有前景視窗的程式" />
+      <item name="closer_kill_process_with_window_under_cursor" value="終止游標下視窗的程式" />
+      <item name="grpb_sizer" value="如何設定視窗大小" />
+      <item name="sizer_window_with_margins" value="有邊界的視窗" />
+      <item name="sizer_window_without_margins" value="沒有邊界的視窗" />
+      <item name="sizer_window_client_area" value="窗口工作區" />
+      <item name="parameter_btn_apply" value="套用" />
+      <item name="parameter_form" value="輸入參數" />
     </zh_tw>
     <ja>
       <item name="separator" value="セパレーター" />
