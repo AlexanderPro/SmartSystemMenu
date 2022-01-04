@@ -759,7 +759,10 @@ namespace SmartSystemMenu
             if (e.Button == MouseButtons.Left)
             {
                 if (_suspended)
+                {
                     Resume();
+                    Thread.Sleep(100);
+                }
 
                 _systemTrayIcon.Visible = false;
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);

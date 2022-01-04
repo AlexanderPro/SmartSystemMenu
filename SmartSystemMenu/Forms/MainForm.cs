@@ -413,6 +413,7 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_SUSPEND_TO_SYSTEMTRAY:
                             {
                                 window.MinimizeToSystemTray();
+                                Thread.Sleep(100);
                                 window.Suspend();
                             }
                             break;

@@ -70,9 +70,10 @@ namespace SmartSystemMenu.Extensions
                 var pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                 if (pOpenThread == IntPtr.Zero)
                 {
-                    break;
+                    continue;
                 }
                 SuspendThread(pOpenThread);
+                CloseHandle(pOpenThread);
             }
         }
 
@@ -83,9 +84,16 @@ namespace SmartSystemMenu.Extensions
                 var pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)thread.Id);
                 if (pOpenThread == IntPtr.Zero)
                 {
-                    break;
+                    continue;
                 }
-                ResumeThread(pOpenThread);
+
+                var suspendCount = 0;
+                do
+                {
+                    suspendCount = ResumeThread(pOpenThread);
+                } while (suspendCount > 0);
+
+                CloseHandle(pOpenThread);
             }
         }
 
