@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Automation;
 using System.IO;
 using System.Threading;
+using System.ComponentModel;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
@@ -25,7 +26,9 @@ namespace SmartSystemMenu
         private int _beforeRollupHeight;
         private bool _suspended;
         private NotifyIcon _systemTrayIcon;
-
+        private ToolStripMenuItem _menuItemRestore;
+        private ToolStripMenuItem _menuItemClose;
+        private ContextMenuStrip _systemTrayMenu;
 
         public IntPtr Handle { get; private set; }
 
@@ -196,6 +199,21 @@ namespace SmartSystemMenu
             _defaultTop = Size.Top;
             _beforeRollupHeight = Size.Height;
             _defaultTransparency = Transparency;
+            _menuItemRestore = new ToolStripMenuItem();
+            _menuItemRestore.Size = new Size(175, 22);
+            _menuItemRestore.Name = $"miRestore_{Handle}";
+            _menuItemRestore.Text = languageSettings.GetValue("mi_restore");
+            _menuItemRestore.Click += _menuItemRestore_Click;
+            _menuItemClose = new ToolStripMenuItem();
+            _menuItemClose.Size = new Size(175, 22);
+            _menuItemClose.Name = $"miClose_{Handle}";
+            _menuItemClose.Text = languageSettings.GetValue("mi_close");
+            _menuItemClose.Click += _menuItemClose_Click;
+            var components = new Container();
+            _systemTrayMenu = new ContextMenuStrip(components);
+            _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemRestore, _menuItemClose });
+            _systemTrayMenu.Name = $"systemTrayMenu_{Handle}";
+            _systemTrayMenu.Size = new Size(176, 80);
             Menu = new SystemMenu(windowHandle, menuItems, languageSettings);
 
             //Menu.Create();
@@ -210,10 +228,12 @@ namespace SmartSystemMenu
         {
             if (_isManaged)
             {
-                Menu?.Destroy();
-                //RestoreTransparency();
-                //RestoreSize();
                 RestoreFromSystemTray();
+                Menu?.Destroy();
+                _menuItemRestore?.Dispose();
+                _menuItemClose?.Dispose();
+                _systemTrayMenu?.Dispose();
+                _systemTrayIcon?.Dispose();
             }
             _isManaged = false;
         }
@@ -528,8 +548,8 @@ namespace SmartSystemMenu
 
         public void MakeTopMost(bool topMost)
         {
-            IntPtr handleTopMost = (IntPtr)(-1);
-            IntPtr handleNotTopMost = (IntPtr)(-2);
+            var handleTopMost = (IntPtr)(-1);
+            var handleNotTopMost = (IntPtr)(-2);
             NativeMethods.SetWindowPos(Handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
         }
 
@@ -646,9 +666,9 @@ namespace SmartSystemMenu
 
         public static void ForceForegroundWindow(IntPtr handle)
         {
-            IntPtr foreHandle = NativeMethods.GetForegroundWindow();
-            uint foreThread = NativeMethods.GetWindowThreadProcessId(foreHandle, IntPtr.Zero);
-            uint appThread = NativeMethods.GetCurrentThreadId();
+            var foreHandle = NativeMethods.GetForegroundWindow();
+            var foreThread = NativeMethods.GetWindowThreadProcessId(foreHandle, IntPtr.Zero);
+            var appThread = NativeMethods.GetCurrentThreadId();
             if (foreThread != appThread)
             {
                 NativeMethods.AttachThreadInput(foreThread, appThread, true);
@@ -669,6 +689,16 @@ namespace SmartSystemMenu
             NativeMethods.SendMessageTimeout((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
         }
 
+        private void _menuItemRestore_Click(object sender, EventArgs e)
+        {
+            RestoreFromSystemTray();
+        }
+
+        private void _menuItemClose_Click(object sender, EventArgs e)
+        {
+            RestoreFromSystemTray();
+            NativeMethods.PostMessage(Handle, NativeConstants.WM_CLOSE, 0, 0);
+        }
 
         private string GetFontName()
         {
@@ -686,7 +716,7 @@ namespace SmartSystemMenu
             var titleSize = NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXTLENGTH, 0, 0);
             if (titleSize.ToInt32() == 0)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             var title = new StringBuilder(titleSize.ToInt32() + 1);
@@ -704,6 +734,12 @@ namespace SmartSystemMenu
         {
             if (_systemTrayIcon != null && _systemTrayIcon.Visible)
             {
+                if (_suspended)
+                {
+                    Resume();
+                    Thread.Sleep(100);
+                }
+
                 _systemTrayIcon.Visible = false;
 
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
@@ -757,11 +793,14 @@ namespace SmartSystemMenu
 
         private void CreateIconInSystemTray()
         {
-            _systemTrayIcon = _systemTrayIcon ?? new NotifyIcon();
-            _systemTrayIcon.MouseClick -= SystemTrayIconClick;
-            _systemTrayIcon.MouseClick += SystemTrayIconClick;
+            if (_systemTrayIcon == null)
+            {
+                _systemTrayIcon = new NotifyIcon();
+                _systemTrayIcon.ContextMenuStrip = _systemTrayMenu;
+                _systemTrayIcon.MouseClick += SystemTrayIconClick;
+            }
             _systemTrayIcon.Icon = GetWindowIcon();
-            string windowText = GetWindowText();
+            var windowText = GetWindowText();
             _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;
             _systemTrayIcon.Visible = true;
         }
@@ -770,16 +809,7 @@ namespace SmartSystemMenu
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (_suspended)
-                {
-                    Resume();
-                    Thread.Sleep(100);
-                }
-
-                _systemTrayIcon.Visible = false;
-                NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
-                NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Restore);
-                NativeMethods.SetForegroundWindow(Handle);
+                RestoreFromSystemTray();
             }
         }
 

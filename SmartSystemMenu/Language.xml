@@ -109,6 +109,8 @@
       <item name="align_btn_apply" value="Apply" />
       <item name="lbl_top" value="Top:" />
       <item name="lbl_left" value="Left:" />
+      <item name="mi_restore" value="Restore" />
+      <item name="mi_close" value="Close" />
       <item name="mi_auto_start" value="Auto start program" />
       <item name="mi_settings" value="Settings..." />
       <item name="mi_about" value="About" />
@@ -325,6 +327,8 @@
       <item name="align_btn_apply" value="Übernehmen" />
       <item name="lbl_top" value="Oben:" />
       <item name="lbl_left" value="Links:" />
+      <item name="mi_restore" value="Wiederherstellen" />
+      <item name="mi_close" value="Schlieβen" />
       <item name="mi_auto_start" value="Auto-Start" />
       <item name="mi_settings" value="Einstellungen..." />
       <item name="mi_about" value="Über das Programm" />
@@ -539,6 +543,8 @@
       <item name="align_btn_apply" value="应用" />
       <item name="lbl_top" value="顶部:" />
       <item name="lbl_left" value="左侧:" />
+      <item name="mi_restore" value="恢復" />
+      <item name="mi_close" value="关闭" />
       <item name="mi_auto_start" value="自动启动程序" />
       <item name="mi_settings" value="设置..." />
       <item name="mi_about" value="关于" />
@@ -753,6 +759,8 @@
       <item name="align_btn_apply" value="應用" />
       <item name="lbl_top" value="頂部:" />
       <item name="lbl_left" value="左邊:" />
+      <item name="mi_restore" value="恢復" />
+      <item name="mi_close" value="關閉" />
       <item name="mi_auto_start" value="自動啟動程式" />
       <item name="mi_settings" value="設定..." />
       <item name="mi_about" value="關於" />
@@ -967,6 +975,8 @@
       <item name="align_btn_apply" value="適用" />
       <item name="lbl_top" value="上:" />
       <item name="lbl_left" value="左:" />
+      <item name="mi_restore" value="戻す" />
+      <item name="mi_close" value="閉じる" />
       <item name="mi_auto_start" value="自動起動" />
       <item name="mi_settings" value="設定..." />
       <item name="mi_about" value="プログラム関連情報" />
@@ -1181,6 +1191,8 @@
       <item name="align_btn_apply" value="적용" />
       <item name="lbl_top" value="위:" />
       <item name="lbl_left" value="왼쪽:" />
+      <item name="mi_restore" value="복원" />
+      <item name="mi_close" value="닫기" />
       <item name="mi_auto_start" value="프로그램 자동 시작" />
       <item name="mi_settings" value="설정..." />
       <item name="mi_about" value="정보" />
@@ -1395,6 +1407,8 @@
       <item name="align_btn_apply" value="Применить" />
       <item name="lbl_top" value="Верх:" />
       <item name="lbl_left" value="Лево:" />
+      <item name="mi_restore" value="Восстановить" />
+      <item name="mi_close" value="Закрыть" />
       <item name="mi_auto_start" value="Автозапуск" />
       <item name="mi_settings" value="Настройки..." />
       <item name="mi_about" value="О программе" />
@@ -1609,6 +1623,8 @@
       <item name="align_btn_apply" value="Примени" />
       <item name="lbl_top" value="Горе:" />
       <item name="lbl_left" value="Лево:" />
+      <item name="mi_restore" value="Врати" />
+      <item name="mi_close" value="Затвори" />
       <item name="mi_auto_start" value="Ауто-покрени програм" />
       <item name="mi_settings" value="Подешавања..." />
       <item name="mi_about" value="О програму" />
@@ -1823,6 +1839,8 @@
       <item name="align_btn_apply" value="Aplicar" />
       <item name="lbl_top" value="Em cima:" />
       <item name="lbl_left" value="À esquerda:" />
+      <item name="mi_restore" value="Restaurar" />
+      <item name="mi_close" value="Fechar" />
       <item name="mi_auto_start" value="Abrir com o Windows" />
       <item name="mi_settings" value="Configuração..." />
       <item name="mi_about" value="Sobre" />
