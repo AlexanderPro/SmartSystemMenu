@@ -29,6 +29,8 @@
       <item name="align_bottom_left" value="bottom-left" />
       <item name="align_bottom_center" value="bottom-center" />
       <item name="align_bottom_right" value="bottom-right" />
+      <item name="align_center_horizontally" value="Centre horizontally" />
+      <item name="align_center_vertically" value="Centre vertically" />
       <item name="align_default" value="Default" />
       <item name="align_custom" value="Custom..." />
       <item name="transparency" value="Transparency" />
@@ -243,6 +245,8 @@
       <item name="align_bottom_left" value="unten-links" />
       <item name="align_bottom_center" value="unten-mittig" />
       <item name="align_bottom_right" value="unten-rechts" />
+      <item name="align_center_horizontally" value="Waagerecht zentrieren" />
+      <item name="align_center_vertically" value="Vertikal zentrieren" />
       <item name="align_default" value="Standardmäβig" />
       <item name="align_custom" value="Benutzerdefinierte Position…" />
       <item name="transparency" value="Transparenz" />
@@ -455,6 +459,8 @@
       <item name="align_bottom_left" value="左下角" />
       <item name="align_bottom_center" value="底部中心" />
       <item name="align_bottom_right" value="右下角" />
+      <item name="align_center_horizontally" value="水平居中" />
+      <item name="align_center_vertically" value="垂直居中" />
       <item name="align_default" value="默认" />
       <item name="align_custom" value="自定义..." />
       <item name="transparency" value="透明度" />
@@ -667,6 +673,8 @@
       <item name="align_bottom_left" value="左下角" />
       <item name="align_bottom_center" value="底部居中" />
       <item name="align_bottom_right" value="右下角" />
+      <item name="align_center_horizontally" value="水平居中" />
+      <item name="align_center_vertically" value="垂直居中" />
       <item name="align_default" value="預設" />
       <item name="align_custom" value="自訂..." />
       <item name="transparency" value="透明度" />
@@ -879,6 +887,8 @@
       <item name="align_bottom_left" value="左下" />
       <item name="align_bottom_center" value="下" />
       <item name="align_bottom_right" value="右下" />
+      <item name="align_center_horizontally" value="水平方向に中央に配置" />
+      <item name="align_center_vertically" value="垂直方向に中央に配置" />
       <item name="align_default" value="デフォルト" />
       <item name="align_custom" value="カストム" />
       <item name="transparency" value="透明度" />
@@ -1091,6 +1101,8 @@
       <item name="align_bottom_left" value="하단 왼쪽" />
       <item name="align_bottom_center" value="하단 가운데" />
       <item name="align_bottom_right" value="하단 오른쪽" />
+      <item name="align_center_horizontally" value="수평 중앙" />
+      <item name="align_center_vertically" value="세로 중앙" />
       <item name="align_default" value="기본" />
       <item name="align_custom" value="사용자 정의..." />
       <item name="transparency" value="투명도" />
@@ -1303,6 +1315,8 @@
       <item name="align_bottom_left" value="низ-лево" />
       <item name="align_bottom_center" value="низ-центр" />
       <item name="align_bottom_right" value="низ-право" />
+      <item name="align_center_horizontally" value="Горизонтально по центру" />
+      <item name="align_center_vertically" value="Вертикально по центру" />
       <item name="align_default" value="По умолчанию" />
       <item name="align_custom" value="Настроить..." />
       <item name="transparency" value="Прозрачность" />
@@ -1515,6 +1529,8 @@
       <item name="align_bottom_left" value="доле-лево" />
       <item name="align_bottom_center" value="доле-центар" />
       <item name="align_bottom_right" value="доле-десно" />
+      <item name="align_center_horizontally" value="Центрирајте хоризонтално" />
+      <item name="align_center_vertically" value="Центрирајте вертикално" />
       <item name="align_default" value="Подразумевано" />
       <item name="align_custom" value="Прилагоди..." />
       <item name="transparency" value="Провидност" />
@@ -1727,6 +1743,8 @@
       <item name="align_bottom_left" value="embaixo, à esquerda" />
       <item name="align_bottom_center" value="embaixo, ao centro" />
       <item name="align_bottom_right" value="embaixo, à direita" />
+      <item name="align_center_horizontally" value="Centralizar horizontalmente" />
+      <item name="align_center_vertically" value="Centralizar verticalmente" />
       <item name="align_default" value="Padrão" />
       <item name="align_custom" value="Personalizar..." />
       <item name="transparency" value="Transparência" />

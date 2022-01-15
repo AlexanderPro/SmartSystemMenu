@@ -192,6 +192,8 @@ namespace SmartSystemMenu
             CheckMenuItem(MenuItemId.SC_ALIGN_BOTTOM_LEFT, false);
             CheckMenuItem(MenuItemId.SC_ALIGN_BOTTOM_CENTER, false);
             CheckMenuItem(MenuItemId.SC_ALIGN_BOTTOM_RIGHT, false);
+            CheckMenuItem(MenuItemId.SC_ALIGN_CENTER_HORIZONTALLY, false);
+            CheckMenuItem(MenuItemId.SC_ALIGN_CENTER_VERTICALLY, false);
             CheckMenuItem(MenuItemId.SC_ALIGN_DEFAULT, false);
             CheckMenuItem(MenuItemId.SC_ALIGN_CUSTOM, false);
         }

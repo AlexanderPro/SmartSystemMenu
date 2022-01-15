@@ -40,8 +40,10 @@ namespace SmartSystemMenu
         public const int SC_ALIGN_BOTTOM_LEFT = 0x4796;
         public const int SC_ALIGN_BOTTOM_CENTER = 0x4797;
         public const int SC_ALIGN_BOTTOM_RIGHT = 0x4798;
-        public const int SC_ALIGN_DEFAULT = 0x4799;
-        public const int SC_ALIGN_CUSTOM = 0x4800;
+        public const int SC_ALIGN_CENTER_HORIZONTALLY = 0x4799;
+        public const int SC_ALIGN_CENTER_VERTICALLY = 0x479A;
+        public const int SC_ALIGN_DEFAULT = 0x479B;
+        public const int SC_ALIGN_CUSTOM = 0x479C;
         public const int SC_SAVE_SCREEN_SHOT = 0x4802;
         public const int SC_OPEN_FILE_IN_EXPLORER = 0x4804;
         public const int SC_CLOSE_OTHER_WINDOWS = 0x4805;
@@ -80,6 +82,8 @@ namespace SmartSystemMenu
             NameToId["align_bottom_left"] = SC_ALIGN_BOTTOM_LEFT;
             NameToId["align_bottom_center"] = SC_ALIGN_BOTTOM_CENTER;
             NameToId["align_bottom_right"] = SC_ALIGN_BOTTOM_RIGHT;
+            NameToId["align_center_horizontally"] = SC_ALIGN_CENTER_HORIZONTALLY;
+            NameToId["align_center_vertically"] = SC_ALIGN_CENTER_VERTICALLY;
             NameToId["align_default"] = SC_ALIGN_DEFAULT;
             NameToId["align_custom"] = SC_ALIGN_CUSTOM;
             NameToId["trans_opaque"] = SC_TRANS_00;

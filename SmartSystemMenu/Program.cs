@@ -342,7 +342,9 @@ namespace SmartSystemMenu
                        middleright,
                        bottomleft,
                        bottomcenter,
-                       bottomright]
+                       bottomright,
+                       centerhorizontally,
+                       centervertically]
 -p --priority         [realtime,
                        high,
                        abovenormal,

@@ -64,7 +64,9 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
                        middleright,
                        bottomleft,
                        bottomcenter,
-                       bottomright]
+                       bottomright,
+                       centerhorizontally,
+                       centervertically]
 -p --priority         [realtime,
                        high,
                        abovenormal,

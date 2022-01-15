@@ -666,6 +666,8 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_ALIGN_BOTTOM_LEFT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_BOTTOM_LEFT, WindowAlignment.BottomLeft); break;
                         case MenuItemId.SC_ALIGN_BOTTOM_CENTER: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_BOTTOM_CENTER, WindowAlignment.BottomCenter); break;
                         case MenuItemId.SC_ALIGN_BOTTOM_RIGHT: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_BOTTOM_RIGHT, WindowAlignment.BottomRight); break;
+                        case MenuItemId.SC_ALIGN_CENTER_HORIZONTALLY: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_CENTER_HORIZONTALLY, WindowAlignment.CenterHorizontally); break;
+                        case MenuItemId.SC_ALIGN_CENTER_VERTICALLY: SetAlignmentMenuItem(window, MenuItemId.SC_ALIGN_CENTER_VERTICALLY, WindowAlignment.CenterVertically); break;
                     }
 
                     var moveToSubMenuItem = (int)lowOrder - MenuItemId.SC_MOVE_TO;

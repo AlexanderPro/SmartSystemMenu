@@ -10,6 +10,8 @@
         MiddleRight = 6,
         BottomLeft = 7,
         BottomCenter = 8,
-        BottomRight = 9
+        BottomRight = 9,
+        CenterHorizontally = 10,
+        CenterVertically = 11
     }
 }

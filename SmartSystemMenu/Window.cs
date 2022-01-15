@@ -446,6 +446,18 @@ namespace SmartSystemMenu
             var screen = Screen.FromHandle(Handle).WorkingArea;
             var window = Size;
 
+            if (alignment == WindowAlignment.CenterHorizontally)
+            {
+                SetLeft(((screen.Width - window.Width) / 2) + screen.X);
+                return;
+            }
+
+            if (alignment == WindowAlignment.CenterVertically)
+            {
+                SetTop(((screen.Height - window.Height) / 2) + screen.Y);
+                return;
+            }
+
             switch (alignment)
             {
                 case WindowAlignment.TopLeft:

@@ -41,6 +41,9 @@
           <item type="item" name="align_bottom_center" key1="18" key2="" key3="98" />
           <item type="item" name="align_bottom_right" key1="18" key2="" key3="99" />
           <item type="separator" />
+          <item type="item" name="align_center_horizontally" key1="" key2="" key3="" />
+          <item type="item" name="align_center_vertically" key1="" key2="" key3="" />
+          <item type="separator" />
           <item type="item" name="align_default" key1="" key2="" key3="" />
           <item type="separator" />
           <item type="item" name="align_custom" key1="" key2="" key3="" />
