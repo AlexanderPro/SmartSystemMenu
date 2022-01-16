@@ -543,7 +543,7 @@
       <item name="align_btn_apply" value="应用" />
       <item name="lbl_top" value="顶部:" />
       <item name="lbl_left" value="左侧:" />
-      <item name="mi_restore" value="恢復" />
+      <item name="mi_restore" value="恢复" />
       <item name="mi_close" value="关闭" />
       <item name="mi_auto_start" value="自动启动程序" />
       <item name="mi_settings" value="设置..." />
@@ -674,13 +674,13 @@
       <item name="align_top_center" value="上止點" />
       <item name="align_top_right" value="右上角" />
       <item name="align_middle_left" value="中間偏左" />
-      <item name="align_middle_center" value="居中" />
+      <item name="align_middle_center" value="置中" />
       <item name="align_middle_right" value="中間偏右" />
       <item name="align_bottom_left" value="左下角" />
-      <item name="align_bottom_center" value="底部居中" />
+      <item name="align_bottom_center" value="底部置中" />
       <item name="align_bottom_right" value="右下角" />
-      <item name="align_center_horizontally" value="水平居中" />
-      <item name="align_center_vertically" value="垂直居中" />
+      <item name="align_center_horizontally" value="水平置中" />
+      <item name="align_center_vertically" value="垂直置中" />
       <item name="align_default" value="預設" />
       <item name="align_custom" value="自訂..." />
       <item name="transparency" value="透明度" />
