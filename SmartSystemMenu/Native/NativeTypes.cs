@@ -69,7 +69,7 @@ namespace SmartSystemMenu.Native
     struct MenuItemInfo
     {
         public uint cbSize;
-        public uint fMask;
+        public MIIM fMask;
         public uint fType;
         public uint fState;
         public uint wID;
@@ -312,6 +312,20 @@ namespace SmartSystemMenu.Native
         public int cyWindowBorders;
         public ushort atomWindowType;
         public ushort wCreatorVersion;
+    }
+
+    [Flags]
+    enum MIIM
+    {
+        BITMAP = 0x00000080,
+        CHECKMARKS = 0x00000008,
+        DATA = 0x00000020,
+        FTYPE = 0x00000100,
+        ID = 0x00000002,
+        STATE = 0x00000001,
+        STRING = 0x00000040,
+        SUBMENU = 0x00000004,
+        TYPE = 0x00000010
     }
 
     [Flags]

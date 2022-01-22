@@ -51,6 +51,9 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern IntPtr GetSubMenu(IntPtr handle, int pos);
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern bool AppendMenu(IntPtr hMenu, int uFlags, int uIDNewItem, string lpNewItem);
+
         [DllImport("user32.dll", EntryPoint = "InsertMenuW", CharSet = CharSet.Unicode)]
         public static extern bool InsertMenu(IntPtr hMenu, int uPosition, int uFlags, IntPtr uIDNewItem, string lpNewItem);
 
@@ -64,6 +67,9 @@ namespace SmartSystemMenu.Native
         public static extern bool DeleteMenu(IntPtr hMenu, int uPosition, int uFlags);
 
         [DllImport("user32.dll")]
+        public static extern bool DeleteMenu(IntPtr hMenu, IntPtr uIDNewItem, int uFlags);
+
+        [DllImport("user32.dll")]
         public static extern int CheckMenuItem(IntPtr hMenu, int uIDCheckItem, int uFlags);
 
         [DllImport("user32.dll")]
@@ -71,6 +77,9 @@ namespace SmartSystemMenu.Native
 
         [DllImport("user32.dll")]
         public static extern int GetMenuState(IntPtr hMenu, int uIdItem, int uFlags);
+
+        [DllImport("user32.dll")]
+        public static extern bool GetMenuItemInfo(IntPtr hMenu, int uIdItem, bool fByPosition, ref MenuItemInfo lpmii);
 
         [DllImport("User32.dll")]
         public static extern bool SetMenuItemInfo(IntPtr hMenu, int uIdItem, bool fByPosition, ref MenuItemInfo lpmii);

@@ -46,8 +46,20 @@ namespace SmartSystemMenu
 
         private static bool EnumWindowCallback(IntPtr hwnd, int lParam)
         {
-            if (_filterHandles.Any(h => h == hwnd)) return true;
-            if (_windows.Any(w => w.Handle == hwnd)) return true;
+            if (!NativeMethods.IsWindowVisible(hwnd))
+            {
+                return true;
+            }
+
+            if (_filterHandles.Any(h => h == hwnd))
+            {
+                return true;
+            }
+
+            if (_windows.Any(w => w.Handle == hwnd))
+            {
+                return true;
+            }
 
             int pid;
             bool isAdd;
@@ -59,7 +71,10 @@ namespace SmartSystemMenu
             isAdd = Environment.Is64BitOperatingSystem && !SystemUtils.IsWow64Process(pid);
 #endif
 
-            if (!isAdd) return true;
+            if (!isAdd)
+            {
+                return true;
+            }
 
             var window = new Window(hwnd, _menuItems, _languageSettings);
 
@@ -77,6 +92,7 @@ namespace SmartSystemMenu
             {
                 _windows.Add(window);
             }
+
             return true;
         }
     }

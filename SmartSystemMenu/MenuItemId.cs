@@ -5,6 +5,8 @@ namespace SmartSystemMenu
     internal static class MenuItemId
     {
         public const int SC_CLOSE = 0xF060;
+        public const int SC_SEPARATOR = 0x2430;
+        public const int SC_TRANS = 0x474F;
         public const int SC_TRANS_100 = 0x4740;
         public const int SC_TRANS_90 = 0x4742;
         public const int SC_TRANS_80 = 0x4744;
@@ -19,18 +21,21 @@ namespace SmartSystemMenu
         public const int SC_TRANS_CUSTOM = 0x4761;
         public const int SC_TRANS_DEFAULT = 0x4762;
         public const int SC_TOPMOST = 0x4763;
+        public const int SC_SIZE = 0x477F;
         public const int SC_SIZE_DEFAULT = 0x4778;
         public const int SC_SIZE_CUSTOM = 0x4779;
         public const int SC_MINIMIZE_TO_SYSTEMTRAY = 0x4780;
         public const int SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY = 0x4781;
         public const int SC_INFORMATION = 0x4782;
         public const int SC_ROLLUP = 0x4783;
+        public const int SC_PRIORITY = 0x478F;
         public const int SC_PRIORITY_REAL_TIME = 0x4784;
         public const int SC_PRIORITY_HIGH = 0x4785;
         public const int SC_PRIORITY_ABOVE_NORMAL = 0x4786;
         public const int SC_PRIORITY_NORMAL = 0x4787;
         public const int SC_PRIORITY_BELOW_NORMAL = 0x4788;
         public const int SC_PRIORITY_IDLE = 0x4789;
+        public const int SC_ALIGN = 0x479F;
         public const int SC_ALIGN_TOP_LEFT = 0x4790;
         public const int SC_ALIGN_TOP_CENTER = 0x4791;
         public const int SC_ALIGN_TOP_RIGHT = 0x4792;
@@ -46,14 +51,18 @@ namespace SmartSystemMenu
         public const int SC_ALIGN_CUSTOM = 0x479C;
         public const int SC_SAVE_SCREEN_SHOT = 0x4802;
         public const int SC_OPEN_FILE_IN_EXPLORER = 0x4804;
+        public const int SC_OTHER_WINDOWS = 0x480F;
         public const int SC_CLOSE_OTHER_WINDOWS = 0x4805;
         public const int SC_MINIMIZE_OTHER_WINDOWS = 0x4806;
         public const int SC_AERO_GLASS = 0x4807;
         public const int SC_SEND_TO_BOTTOM = 0x4808;
         public const int SC_DRAG_BY_MOUSE = 0x4809;
-        public const int SC_SUSPEND_TO_SYSTEMTRAY = 0x4810;
+        public const int SC_SYSTEMTRAY = 0x4810;
+        public const int SC_SUSPEND_TO_SYSTEMTRAY = 0x481F;
+        public const int SC_CLIPBOARD = 0x482F;
         public const int SC_COPY_TEXT_TO_CLIPBOARD = 0x4811;
         public const int SC_CLEAR_CLIPBOARD = 0x4812;
+        public const int SC_START = 0x4813;
         public const int SC_START_PROGRAM = 0x4900;
         public const int SC_MOVE_TO = 0x5000;
         public const int SC_SIZE_DEFINED = 0x5100;
@@ -71,8 +80,11 @@ namespace SmartSystemMenu
             NameToId["save_screenshot"] = SC_SAVE_SCREEN_SHOT;
             NameToId["open_file_in_explorer"] = SC_OPEN_FILE_IN_EXPLORER;
             NameToId["drag_by_mouse"] = SC_DRAG_BY_MOUSE;
+            NameToId["size"] = SC_SIZE;
             NameToId["size_default"] = SC_SIZE_DEFAULT;
             NameToId["size_custom"] = SC_SIZE_CUSTOM;
+            NameToId["move_to"] = SC_MOVE_TO;
+            NameToId["alignment"] = SC_ALIGN;
             NameToId["align_top_left"] = SC_ALIGN_TOP_LEFT;
             NameToId["align_top_center"] = SC_ALIGN_TOP_CENTER;
             NameToId["align_top_right"] = SC_ALIGN_TOP_RIGHT;
@@ -86,6 +98,7 @@ namespace SmartSystemMenu
             NameToId["align_center_vertically"] = SC_ALIGN_CENTER_VERTICALLY;
             NameToId["align_default"] = SC_ALIGN_DEFAULT;
             NameToId["align_custom"] = SC_ALIGN_CUSTOM;
+            NameToId["transparency"] = SC_TRANS;
             NameToId["trans_opaque"] = SC_TRANS_00;
             NameToId["10%"] = SC_TRANS_10;
             NameToId["20%"] = SC_TRANS_20;
@@ -99,19 +112,24 @@ namespace SmartSystemMenu
             NameToId["trans_invisible"] = SC_TRANS_100;
             NameToId["trans_default"] = SC_TRANS_DEFAULT;
             NameToId["trans_custom"] = SC_TRANS_CUSTOM;
+            NameToId["priority"] = SC_PRIORITY;
             NameToId["priority_real_time"] = SC_PRIORITY_REAL_TIME;
             NameToId["priority_high"] = SC_PRIORITY_HIGH;
             NameToId["priority_above_normal"] = SC_PRIORITY_ABOVE_NORMAL;
             NameToId["priority_normal"] = SC_PRIORITY_NORMAL;
             NameToId["priority_below_normal"] = SC_PRIORITY_BELOW_NORMAL;
             NameToId["priority_idle"] = SC_PRIORITY_IDLE;
+            NameToId["clipboard"] = SC_CLIPBOARD;
             NameToId["copy_text_to_clipboard"] = SC_COPY_TEXT_TO_CLIPBOARD;
             NameToId["clear_clipboard"] = SC_CLEAR_CLIPBOARD;
+            NameToId["system_tray"] = SC_SYSTEMTRAY;
             NameToId["minimize_to_systemtray"] = SC_MINIMIZE_TO_SYSTEMTRAY;
             NameToId["suspend_to_systemtray"] = SC_SUSPEND_TO_SYSTEMTRAY;
             NameToId["minimize_always_to_systemtray"] = SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY;
             NameToId["minimize_other_windows"] = SC_MINIMIZE_OTHER_WINDOWS;
             NameToId["close_other_windows"] = SC_CLOSE_OTHER_WINDOWS;
+            NameToId["other_windows"] = SC_OTHER_WINDOWS;
+            NameToId["start_program"] = SC_START;
 
             foreach (var pair in NameToId)
             {

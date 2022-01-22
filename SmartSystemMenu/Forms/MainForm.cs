@@ -21,6 +21,7 @@ namespace SmartSystemMenu.Forms
     {
         private const string SHELL_WINDOW_NAME = "Program Manager";
         private List<Window> _windows;
+        private CallWndProcHook _callWndProcHook;
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
         private CBTHook _cbtHook;
@@ -52,10 +53,10 @@ namespace SmartSystemMenu.Forms
 #if WIN32
             if (Environment.Is64BitOperatingSystem)
             {
-                string resourceName = "SmartSystemMenu.SmartSystemMenu64.exe";
-                string fileName = "SmartSystemMenu64.exe";
-                string directoryName = Path.GetDirectoryName(AssemblyUtils.AssemblyLocation);
-                string filePath = Path.Combine(directoryName, fileName);
+                var resourceName = "SmartSystemMenu.SmartSystemMenu64.exe";
+                var fileName = "SmartSystemMenu64.exe";
+                var directoryName = Path.GetDirectoryName(AssemblyUtils.AssemblyLocation);
+                var filePath = Path.Combine(directoryName, fileName);
                 try
                 {
                     if (!File.Exists(filePath))
@@ -126,6 +127,10 @@ namespace SmartSystemMenu.Forms
                 if (window.AlwaysOnTop) window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
             }
 
+            _callWndProcHook = new CallWndProcHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
+            _callWndProcHook.CallWndProc += WindowProc;
+            _callWndProcHook.Start();
+
             _getMsgHook = new GetMsgHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             _getMsgHook.GetMsg += WindowGetMsg;
             _getMsgHook.Start();
@@ -141,6 +146,7 @@ namespace SmartSystemMenu.Forms
             _cbtHook.MoveSize += WindowMoveSize;
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Start();
+
 
             _mouseHook = new Hooks.MouseHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
             var dragByMouseItemName = MenuItemId.GetName(MenuItemId.SC_DRAG_BY_MOUSE);
@@ -182,6 +188,8 @@ namespace SmartSystemMenu.Forms
 
         protected override void OnClosed(EventArgs e)
         {
+            _callWndProcHook?.Stop();
+            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
             _getMsgHook?.Stop();
             NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
             _shellHook?.Stop();
@@ -232,6 +240,7 @@ namespace SmartSystemMenu.Forms
         {
             _shellHook?.ProcessWindowMessage(ref m);
             _cbtHook?.ProcessWindowMessage(ref m);
+            _callWndProcHook?.ProcessWindowMessage(ref m);
             _getMsgHook?.ProcessWindowMessage(ref m);
             
             base.WndProc(ref m);
@@ -290,7 +299,7 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems, _settings.LanguageSettings).Exists && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && NativeMethods.IsWindowVisible(e.Handle) && !_windows.Any(w => w.Handle == e.Handle))
             {
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out int processId);
                 IList<Window> windows = new List<Window>();
@@ -376,6 +385,11 @@ namespace SmartSystemMenu.Forms
                     window?.MinimizeToSystemTray();
                 }
             }
+        }
+
+        private void WindowProc(object sender, WndProcEventArgs e)
+        {
+            WindowGetMsg(sender, new WndProcEventArgs(e.Handle, e.Message, e.WParam, e.LParam));
         }
 
         private void WindowGetMsg(object sender, WndProcEventArgs e)

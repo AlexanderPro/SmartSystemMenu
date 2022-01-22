@@ -34,7 +34,11 @@ namespace SmartSystemMenu.Forms
             cmbRunAs.Items.Clear();
             cmbRunAs.Items.Add(settings.GetValue("start_program_normal"));
             cmbRunAs.Items.Add(settings.GetValue("start_program_administrator"));
-            if (menuItem != null)
+            if (menuItem == null)
+            {
+                cmbRunAs.SelectedIndex = 0;
+            }
+            else
             {
                 txtTitle.Text = menuItem.Title;
                 txtFileName.Text = menuItem.FileName;

@@ -5,14 +5,12 @@
     <processName>slack.exe</processName>
     <processName>dllhost.exe</processName>
     <processName>sihost.exe</processName>
-    <processName>chrome.exe</processName>
     <processName>code.exe</processName>
     <processName>smartscreen.exe</processName>
-    <processName>msedge.exe</processName>
   </processExclusions>
   <menuItems>
     <items>
-      <item type="item" name="information" key1="17" key2="16" key3="73" />
+      <item type="item" name="information" key1="" key2="" key3="" />
       <item type="item" name="roll_up" key1="" key2="" key3="" />
       <item type="item" name="aero_glass" key1="" key2="" key3="" />
       <item type="item" name="always_on_top" key1="" key2="" key3="" />
