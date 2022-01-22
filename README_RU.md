@@ -108,11 +108,6 @@ SmartSystemMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysonto
 
 Программа состоит из SmartSystemMenu.exe and SmartSystemMenuHook.dll модулей для x86 систем, SmartSystemMenu64.exe и SmartSystemMenuHook64.dll модулей для x64 систем. Когда запускается процесс SmartSystemMenu.exe, он так же стартует SmartSystemMenu64.exe процесс. Эти два процесса загружают хуки (SmartSystemMenuHook.dll и SmartSystemMenuHook64.dll) во все процессы системы. Когда выбирается один из добавленных пунктов меню, хук пересылает информацию об этом в основной процесс SmartSystemMenu.exe (SmartSystemMenu64.exe) и уже сам процесс выполняет действие.
 
-Ограничения
---------------------
-
-Утилита не может добавлять пункты в системные меню окон, которые не имеют его или которые создают своё собственное системное меню, такие как IE 9 и выше, Chrome 29 и выше, окна Delphi процессов и т.д.
-
 Примечание
 --------------------
 

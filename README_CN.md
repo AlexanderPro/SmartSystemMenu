@@ -109,11 +109,6 @@ SmartSystemMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysonto
 
 此程序具有用于 x86 进程的 SmartSystemMenu.exe 和 SmartSystemMenuHook.dll 模块，用于 x64 进程的 SmartSystemMenu64.exe 和 SmartSystemMenuHook64.dll 模块。当您运行 SmartSystemMenu.exe 时，它还会运行 SmartSystemMenu64.exe。 这两个可执行模块将挂钩 (SmartSystemMenuHook.dll 和 SmartSystemMenuHook64.dll) 加载到所有进程。 当您在系统菜单中选择一项时，挂钩会向可执行模块发送一条消息。之后，模块执行选定的操作：更改窗口的透明度、更改窗口的大小等等。
 
-局限性
---------------------
-
-此工具无法在系统菜单由其自己的进程管理的窗口上正常工作，例如 IE9 及更高版本、Chrome 29 及更高版本等。此外，该工具不能与 Delphi 进程的窗口一起正常工作，因为 Delphi 窗口有一个父 TApplication 窗口。
-
 提示
 --------------------
 
