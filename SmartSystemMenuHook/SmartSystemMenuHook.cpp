@@ -432,15 +432,18 @@ static LRESULT CALLBACK CallWndProcHookCallback(int code, WPARAM wparam, LPARAM 
 {
     if (code >= 0)
     {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC");
-        UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_PARAMS");
+		CWPSTRUCT* pCwpStruct = (CWPSTRUCT*)lparam;
+		if (pCwpStruct->message == WM_SYSCOMMAND)
+		{
+			UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC");
+			UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_PARAMS");
 
-        CWPSTRUCT* pCwpStruct = (CWPSTRUCT*)lparam;
-        if (msg != 0 && pCwpStruct->message != msg && pCwpStruct->message != msg2)
-        {
-            SendNotifyMessage(hwndMain, msg, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
-            SendNotifyMessage(hwndMain, msg2, pCwpStruct->wParam, pCwpStruct->lParam);
-        }
+			if (msg != 0 && pCwpStruct->message != msg && pCwpStruct->message != msg2)
+			{
+				SendNotifyMessage(hwndMain, msg, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
+				SendNotifyMessage(hwndMain, msg2, pCwpStruct->wParam, pCwpStruct->lParam);
+			}
+		}
     }
 
     return CallNextHookEx(hookCallWndProc, code, wparam, lparam);
@@ -481,21 +484,21 @@ static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lpara
 {
     if (code >= 0)
     {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG");
-        UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG_PARAMS");
-
         MSG* pMsg = (MSG*)lparam;
-        if (msg != 0 && pMsg->message != msg && pMsg->message != msg2 && wparam == PM_REMOVE)
+        if (pMsg->message == WM_SYSCOMMAND && wparam == PM_REMOVE)
         {
-            if(pMsg->message == WM_SYSCOMMAND)
-            {
+			UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG");
+			UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG_PARAMS");
+
+			if (msg != 0 && pMsg->message != msg && pMsg->message != msg2)
+			{
 				//TCHAR buf[256];
 				//int error = GetLastError();
 				//wsprintf(buf, L"WM_SYSCOMMAND, Hook, WParam = %d", pMsg->wParam);
 				//OutputDebugString(buf);
 				SendNotifyMessage(hwndMain, msg, (WPARAM)pMsg->hwnd, pMsg->message);
-                SendNotifyMessage(hwndMain, msg2, pMsg->wParam, pMsg->lParam);
-            }
+				SendNotifyMessage(hwndMain, msg2, pMsg->wParam, pMsg->lParam);
+			}
         }
     }
 
