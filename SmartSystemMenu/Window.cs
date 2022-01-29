@@ -290,8 +290,7 @@ namespace SmartSystemMenu
             info.GCL_WNDPROC = NativeMethods.GetClassLong(Handle, NativeConstants.GCL_WNDPROC);
             info.DWL_DLGPROC = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_DLGPROC);
             info.DWL_USER = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_USER);
-            info.FullPath = process == null ? "" : process.GetMainModuleFileName();
-            info.FullPath = info.FullPath == null ? "" : info.FullPath;
+            info.FullPath = process?.GetMainModuleFileName() ?? "";
             info.Priority = ProcessPriority;
             info.StartTime = process == null ? (DateTime?)null : process.StartTime;
 

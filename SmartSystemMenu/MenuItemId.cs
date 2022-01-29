@@ -60,9 +60,11 @@ namespace SmartSystemMenu
         public const int SC_SYSTEMTRAY = 0x4810;
         public const int SC_SUSPEND_TO_SYSTEMTRAY = 0x481F;
         public const int SC_CLIPBOARD = 0x482F;
-        public const int SC_COPY_TEXT_TO_CLIPBOARD = 0x4811;
-        public const int SC_CLEAR_CLIPBOARD = 0x4812;
-        public const int SC_START = 0x4813;
+        public const int SC_COPY_WINDOW_TEXT = 0x4811;
+        public const int SC_COPY_WINDOW_TITLE = 0x4812;
+        public const int SC_COPY_FULL_PROCESS_PATH = 0x4813;
+        public const int SC_CLEAR_CLIPBOARD = 0x4814;
+        public const int SC_START = 0x4815;
         public const int SC_START_PROGRAM = 0x4900;
         public const int SC_MOVE_TO = 0x5000;
         public const int SC_SIZE_DEFINED = 0x5100;
@@ -120,7 +122,9 @@ namespace SmartSystemMenu
             NameToId["priority_below_normal"] = SC_PRIORITY_BELOW_NORMAL;
             NameToId["priority_idle"] = SC_PRIORITY_IDLE;
             NameToId["clipboard"] = SC_CLIPBOARD;
-            NameToId["copy_text_to_clipboard"] = SC_COPY_TEXT_TO_CLIPBOARD;
+            NameToId["copy_window_text"] = SC_COPY_WINDOW_TEXT;
+            NameToId["copy_window_title"] = SC_COPY_WINDOW_TITLE;
+            NameToId["copy_full_process_path"] = SC_COPY_FULL_PROCESS_PATH;
             NameToId["clear_clipboard"] = SC_CLEAR_CLIPBOARD;
             NameToId["system_tray"] = SC_SYSTEMTRAY;
             NameToId["minimize_to_systemtray"] = SC_MINIMIZE_TO_SYSTEMTRAY;

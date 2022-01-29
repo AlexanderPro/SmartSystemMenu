@@ -465,12 +465,32 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
-                        case MenuItemId.SC_COPY_TEXT_TO_CLIPBOARD:
+                        case MenuItemId.SC_COPY_WINDOW_TEXT:
                             {
                                 var text = window.ExtractText();
-                                if (text != null)
+                                if (!string.IsNullOrEmpty(text))
                                 {
                                     Clipboard.SetText(text);
+                                }
+                            }
+                            break;
+
+                        case MenuItemId.SC_COPY_WINDOW_TITLE:
+                            {
+                                var text = window.GetWindowText();
+                                if (!string.IsNullOrEmpty(text))
+                                {
+                                    Clipboard.SetText(text);
+                                }
+                            }
+                            break;
+
+                        case MenuItemId.SC_COPY_FULL_PROCESS_PATH:
+                            {
+                                var path = window.Process?.GetMainModuleFileName();
+                                if (!string.IsNullOrEmpty(path))
+                                {
+                                    Clipboard.SetText(path);
                                 }
                             }
                             break;
