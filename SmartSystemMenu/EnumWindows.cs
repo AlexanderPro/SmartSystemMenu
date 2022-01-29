@@ -46,11 +46,6 @@ namespace SmartSystemMenu
 
         private static bool EnumWindowCallback(IntPtr hwnd, int lParam)
         {
-            if (!NativeMethods.IsWindowVisible(hwnd))
-            {
-                return true;
-            }
-
             if (_filterHandles.Any(h => h == hwnd))
             {
                 return true;
