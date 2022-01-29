@@ -7,11 +7,9 @@ namespace SmartSystemMenu.Hooks
     {
         private int _msgIdGetMsg;
         private int _msgIdGetMsgParams;
-        private int _msgIdGetMsgHookReplaced;
         private IntPtr _cacheHandle;
         private IntPtr _cacheMessage;
 
-        public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<WndProcEventArgs> GetMsg;
 
         public GetMsgHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
@@ -20,13 +18,11 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdGetMsgHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG_REPLACED");
             _msgIdGetMsg = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG");
             _msgIdGetMsgParams = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_GETMSG_PARAMS");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(_msgIdGetMsgHookReplaced, NativeConstants.MSGFLT_ADD);
                 NativeMethods.ChangeWindowMessageFilter(_msgIdGetMsg, NativeConstants.MSGFLT_ADD);
                 NativeMethods.ChangeWindowMessageFilter(_msgIdGetMsgParams, NativeConstants.MSGFLT_ADD);
             }
@@ -64,10 +60,6 @@ namespace SmartSystemMenu.Hooks
                 }
                 _cacheHandle = IntPtr.Zero;
                 _cacheMessage = IntPtr.Zero;
-            }
-            else if (m.Msg == _msgIdGetMsgHookReplaced)
-            {
-                  RaiseEvent(HookReplaced, EventArgs.Empty);
             }
         }
     }

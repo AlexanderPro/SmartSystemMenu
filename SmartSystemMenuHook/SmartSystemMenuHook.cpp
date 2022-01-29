@@ -54,15 +54,6 @@ DLLEXPORT bool __stdcall InitializeCbtHook(int threadID, HWND destination, int d
         return false;
     }
 
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CBT_REPLACED");
-        if (msg != 0)
-        {
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
-    }
-
     hwndMain = destination;
 	scDragByMouseMenuItem = dragByMouseMenuItem;
     hookCbt = SetWindowsHookEx(WH_CBT, (HOOKPROC)CbtHookCallback, g_appInstance, threadID);
@@ -84,9 +75,7 @@ static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam)
     {
         UINT msg = 0;
 
-        if (code == HCBT_ACTIVATE)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_ACTIVATE");
-        else if (code == HCBT_CREATEWND)
+        if (code == HCBT_CREATEWND)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_CREATEWND");
         else if (code == HCBT_DESTROYWND)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
@@ -94,10 +83,6 @@ static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
         else if (code == HCBT_MOVESIZE)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
-        else if (code == HCBT_SETFOCUS)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_SETFOCUS");
-        else if (code == HCBT_SYSCOMMAND)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_SYSCOMMAND");
 
         if (msg != 0)
         {
@@ -113,15 +98,6 @@ DLLEXPORT bool __stdcall InitializeShellHook(int threadID, HWND destination, int
     if (g_appInstance == NULL)
     {
         return false;
-    }
-
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_SHELL_REPLACED");
-        if (msg != 0)
-        {
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
     }
 
     hwndMain = destination;
@@ -145,19 +121,7 @@ static LRESULT CALLBACK ShellHookCallback(int code, WPARAM wparam, LPARAM lparam
     {
         UINT msg = 0;
 
-        if (code == HSHELL_ACTIVATESHELLWINDOW)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_ACTIVATESHELLWINDOW");
-        else if (code == HSHELL_GETMINRECT)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_GETMINRECT");
-        else if (code == HSHELL_LANGUAGE)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_LANGUAGE");
-        else if (code == HSHELL_REDRAW)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_REDRAW");
-        else if (code == HSHELL_TASKMAN)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_TASKMAN");
-        else if (code == HSHELL_WINDOWACTIVATED)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWACTIVATED");
-        else if (code == HSHELL_WINDOWCREATED)
+        if (code == HSHELL_WINDOWCREATED)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWCREATED");
         else if (code == HSHELL_WINDOWDESTROYED)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWDESTROYED");
@@ -176,15 +140,6 @@ DLLEXPORT bool __stdcall InitializeKeyboardHook(int threadID, HWND destination, 
     if (g_appInstance == NULL)
     {
         return false;
-    }
-
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARD_REPLACED");
-        if (msg != 0)
-        {            
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
     }
 
     hwndMain = destination;
@@ -223,15 +178,6 @@ DLLEXPORT bool __stdcall InitializeMouseHook(int threadID, HWND destination, int
     if (g_appInstance == NULL)
     {
         return false;
-    }
-
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSE_REPLACED");
-        if (msg != 0)
-        {            
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
     }
 
     hwndMain = destination;
@@ -313,15 +259,6 @@ DLLEXPORT bool __stdcall InitializeKeyboardLLHook(int threadID, HWND destination
         return false;
     }
 
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARDLL_REPLACED");
-        if (msg != 0)
-        {
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
-    }
-
     hwndMain = destination;
 	scDragByMouseMenuItem = dragByMouseMenuItem;
     hookKeyboardLL = SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)KeyboardLLHookCallback, g_appInstance, threadID);
@@ -359,15 +296,6 @@ DLLEXPORT bool __stdcall InitializeMouseLLHook(int threadID, HWND destination, i
         return false;
     }
 
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSELL_REPLACED");
-        if (msg != 0)
-        {
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
-    }
-
     hwndMain = destination;
 	scDragByMouseMenuItem = dragByMouseMenuItem;
     hookMouseLL = SetWindowsHookEx(WH_MOUSE_LL, (HOOKPROC)MouseLLHookCallback, g_appInstance, threadID);
@@ -402,15 +330,6 @@ DLLEXPORT bool __stdcall InitializeCallWndProcHook(int threadID, HWND destinatio
     if (g_appInstance == NULL)
     {
         return false;
-    }
-
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_REPLACED");
-        if (msg != 0)
-        {
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
     }
 
     hwndMain = destination;
@@ -454,15 +373,6 @@ DLLEXPORT bool __stdcall InitializeGetMsgHook(int threadID, HWND destination, in
     if (g_appInstance == NULL)
     {
         return false;
-    }
-
-    if (hwndMain != NULL)
-    {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG_REPLACED");
-        if (msg != 0)
-        {            
-            SendNotifyMessage(hwndMain, msg, 0, 0);
-        }
     }
 
     hwndMain = destination;
