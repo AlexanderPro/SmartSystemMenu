@@ -87,11 +87,11 @@ namespace SmartSystemMenu
             }
         }
 
-        public static void RunAs(string fileName, string arguments, bool showWindow, UserType userType)
+        public static void RunAs(string fileName, string arguments, bool showWindow, UserType userType, string workinDirectory = null)
         {
             if (userType == UserType.Normal)
             {
-                RunAsDesktopUser(fileName, arguments, showWindow);
+                RunAsDesktopUser(fileName, arguments, showWindow, workinDirectory);
             }
             else
             {
@@ -100,7 +100,7 @@ namespace SmartSystemMenu
                     var process = new Process();
                     process.StartInfo.FileName = fullFileName;
                     process.StartInfo.Arguments = arguments;
-                    process.StartInfo.WorkingDirectory = Path.GetDirectoryName(fullFileName);
+                    process.StartInfo.WorkingDirectory = !string.IsNullOrEmpty(workinDirectory) ? workinDirectory : Path.GetDirectoryName(fullFileName);
                     if (!showWindow)
                     {
                         process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -112,7 +112,7 @@ namespace SmartSystemMenu
         }
 
 
-        private static void RunAsDesktopUser(string fileName, string arguments, bool showWindow)
+        private static void RunAsDesktopUser(string fileName, string arguments, bool showWindow, string workinDirectory)
         {
             if (string.IsNullOrWhiteSpace(fileName))
             {
@@ -217,7 +217,7 @@ namespace SmartSystemMenu
                         si.wShowWindow = SW_HIDE;
                         si.dwFlags = STARTF_USESHOWWINDOW;
                     }
-                    if (CreateProcessWithTokenW(hPrimaryToken, 0, fullFileName, commandLine, showWindow ? 0 : CREATE_NO_WINDOW, IntPtr.Zero, Path.GetDirectoryName(fullFileName), ref si, out pi))
+                    if (CreateProcessWithTokenW(hPrimaryToken, 0, fullFileName, commandLine, showWindow ? 0 : CREATE_NO_WINDOW, IntPtr.Zero, !string.IsNullOrEmpty(workinDirectory) ? workinDirectory : Path.GetDirectoryName(fullFileName), ref si, out pi))
                     {
                         break;
                     }

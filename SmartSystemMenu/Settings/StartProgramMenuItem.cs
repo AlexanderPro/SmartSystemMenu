@@ -14,6 +14,8 @@ namespace SmartSystemMenu.Settings
 
         public string Arguments { get; set; }
 
+        public bool UseWindowWorkingDirectory { get; set; }
+
         public UserType RunAs { get; set; }
 
         public bool ShowWindow { get; set; }
@@ -27,6 +29,7 @@ namespace SmartSystemMenu.Settings
             Title = string.Empty;
             FileName = string.Empty;
             Arguments = string.Empty;
+            UseWindowWorkingDirectory = false;
             RunAs = UserType.Normal;
             ShowWindow = true;
             BeginParameter = string.Empty;

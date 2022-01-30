@@ -45,6 +45,7 @@
             this.txtEnd = new System.Windows.Forms.TextBox();
             this.txtParameter = new System.Windows.Forms.TextBox();
             this.chkShowWindow = new System.Windows.Forms.CheckBox();
+            this.chkUseWindowWorkingDirectory = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -64,19 +65,19 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(196, 367);
+            this.btnApply.Location = new System.Drawing.Point(196, 407);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(91, 26);
-            this.btnApply.TabIndex = 15;
+            this.btnApply.TabIndex = 0;
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(295, 367);
+            this.btnCancel.Location = new System.Drawing.Point(295, 407);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 26);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
@@ -101,21 +102,21 @@
             this.lblArguments.Location = new System.Drawing.Point(12, 116);
             this.lblArguments.Name = "lblArguments";
             this.lblArguments.Size = new System.Drawing.Size(0, 13);
-            this.lblArguments.TabIndex = 5;
+            this.lblArguments.TabIndex = 6;
             // 
             // txtArguments
             // 
             this.txtArguments.Location = new System.Drawing.Point(12, 132);
             this.txtArguments.Name = "txtArguments";
             this.txtArguments.Size = new System.Drawing.Size(374, 20);
-            this.txtArguments.TabIndex = 6;
+            this.txtArguments.TabIndex = 7;
             // 
             // btnBrowseFile
             // 
             this.btnBrowseFile.Location = new System.Drawing.Point(351, 78);
             this.btnBrowseFile.Name = "btnBrowseFile";
             this.btnBrowseFile.Size = new System.Drawing.Size(35, 23);
-            this.btnBrowseFile.TabIndex = 4;
+            this.btnBrowseFile.TabIndex = 5;
             this.btnBrowseFile.Text = "...";
             this.btnBrowseFile.UseVisualStyleBackColor = true;
             this.btnBrowseFile.Click += new System.EventHandler(this.ButtonBrowseFileClick);
@@ -127,7 +128,7 @@
             this.cmbRunAs.Location = new System.Drawing.Point(12, 184);
             this.cmbRunAs.Name = "cmbRunAs";
             this.cmbRunAs.Size = new System.Drawing.Size(374, 21);
-            this.cmbRunAs.TabIndex = 8;
+            this.cmbRunAs.TabIndex = 9;
             // 
             // lblRunAs
             // 
@@ -135,7 +136,7 @@
             this.lblRunAs.Location = new System.Drawing.Point(12, 168);
             this.lblRunAs.Name = "lblRunAs";
             this.lblRunAs.Size = new System.Drawing.Size(0, 13);
-            this.lblRunAs.TabIndex = 7;
+            this.lblRunAs.TabIndex = 8;
             // 
             // lblBegin
             // 
@@ -143,14 +144,14 @@
             this.lblBegin.Location = new System.Drawing.Point(12, 220);
             this.lblBegin.Name = "lblBegin";
             this.lblBegin.Size = new System.Drawing.Size(0, 13);
-            this.lblBegin.TabIndex = 9;
+            this.lblBegin.TabIndex = 10;
             // 
             // txtBegin
             // 
             this.txtBegin.Location = new System.Drawing.Point(12, 236);
             this.txtBegin.Name = "txtBegin";
             this.txtBegin.Size = new System.Drawing.Size(180, 20);
-            this.txtBegin.TabIndex = 10;
+            this.txtBegin.TabIndex = 12;
             this.txtBegin.TextChanged += new System.EventHandler(this.BeginParameterTextChanged);
             // 
             // lblEnd
@@ -159,14 +160,14 @@
             this.lblEnd.Location = new System.Drawing.Point(206, 220);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(0, 13);
-            this.lblEnd.TabIndex = 11;
+            this.lblEnd.TabIndex = 13;
             // 
             // txtEnd
             // 
             this.txtEnd.Location = new System.Drawing.Point(206, 236);
             this.txtEnd.Name = "txtEnd";
             this.txtEnd.Size = new System.Drawing.Size(180, 20);
-            this.txtEnd.TabIndex = 12;
+            this.txtEnd.TabIndex = 14;
             this.txtEnd.TextChanged += new System.EventHandler(this.EndParameterTextChanged);
             // 
             // txtParameter
@@ -175,7 +176,7 @@
             this.txtParameter.Name = "txtParameter";
             this.txtParameter.ReadOnly = true;
             this.txtParameter.Size = new System.Drawing.Size(374, 20);
-            this.txtParameter.TabIndex = 13;
+            this.txtParameter.TabIndex = 15;
             // 
             // chkShowWindow
             // 
@@ -183,15 +184,26 @@
             this.chkShowWindow.Location = new System.Drawing.Point(12, 340);
             this.chkShowWindow.Name = "chkShowWindow";
             this.chkShowWindow.Size = new System.Drawing.Size(95, 17);
-            this.chkShowWindow.TabIndex = 14;
+            this.chkShowWindow.TabIndex = 16;
             this.chkShowWindow.Text = "Show Window";
             this.chkShowWindow.UseVisualStyleBackColor = true;
+            // 
+            // chkUseWindowWorkingDirectory
+            // 
+            this.chkUseWindowWorkingDirectory.AutoSize = true;
+            this.chkUseWindowWorkingDirectory.Location = new System.Drawing.Point(12, 377);
+            this.chkUseWindowWorkingDirectory.Name = "chkUseWindowWorkingDirectory";
+            this.chkUseWindowWorkingDirectory.Size = new System.Drawing.Size(176, 17);
+            this.chkUseWindowWorkingDirectory.TabIndex = 17;
+            this.chkUseWindowWorkingDirectory.Text = "Use a window working directory";
+            this.chkUseWindowWorkingDirectory.UseVisualStyleBackColor = true;
             // 
             // StartProgramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 422);
+            this.ClientSize = new System.Drawing.Size(398, 464);
+            this.Controls.Add(this.chkUseWindowWorkingDirectory);
             this.Controls.Add(this.chkShowWindow);
             this.Controls.Add(this.txtParameter);
             this.Controls.Add(this.lblEnd);
@@ -242,5 +254,6 @@
         private System.Windows.Forms.TextBox txtEnd;
         private System.Windows.Forms.TextBox txtParameter;
         private System.Windows.Forms.CheckBox chkShowWindow;
+        private System.Windows.Forms.CheckBox chkUseWindowWorkingDirectory;
     }
 }

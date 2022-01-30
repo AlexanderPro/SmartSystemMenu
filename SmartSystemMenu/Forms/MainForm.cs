@@ -727,6 +727,7 @@ namespace SmartSystemMenu.Forms
                                 var arguments = item.Arguments;
                                 var argumentParameters = arguments.GetParams(item.BeginParameter, item.EndParameter);
                                 var allParametersInputed = true;
+                                var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
                                 foreach (var parameter in argumentParameters)
                                 {
                                     var parameterName = parameter.TrimStart(item.BeginParameter).TrimEnd(item.EndParameter);
@@ -738,7 +739,7 @@ namespace SmartSystemMenu.Forms
 
                                     if (string.Compare(parameterName, StartProgramMenuItem.PARAMETER_PROCESS_NAME, true) == 0)
                                     {
-                                        arguments = arguments.Replace(parameter, Path.GetFileName(window.Process?.GetMainModuleFileName() ?? string.Empty));
+                                        arguments = arguments.Replace(parameter, Path.GetFileName(processPath));
                                         continue;
                                     }
 
@@ -764,7 +765,7 @@ namespace SmartSystemMenu.Forms
                                 
                                 if (allParametersInputed)
                                 {
-                                    SystemUtils.RunAs(item.FileName, arguments, item.ShowWindow, item.RunAs);
+                                    SystemUtils.RunAs(item.FileName, arguments, item.ShowWindow, item.RunAs, item.UseWindowWorkingDirectory ? Path.GetDirectoryName(processPath) : null);
                                 }
                             }
                             catch (Exception ex)

@@ -177,6 +177,7 @@
       <item name="start_program_lbl_begin" value="Begin:" />
       <item name="start_program_lbl_end" value="End:" />
       <item name="start_program_show_window" value="Show Window" />
+      <item name="start_program_use_window_working_directory" value="Use a window working directory" />
       <item name="start_program_parameter" value="Parameter" />
       <item name="start_program_normal" value="Normal" />
       <item name="start_program_administrator" value="Administrator" />
@@ -397,6 +398,7 @@
       <item name="start_program_lbl_begin" value="Start:" />
       <item name="start_program_lbl_end" value="Ende:" />
       <item name="start_program_show_window" value="Schaufenster" />
+      <item name="start_program_use_window_working_directory" value="Verwenden Sie ein Windows-Arbeitsverzeichnis" />
       <item name="start_program_parameter" value="Parameter" />
       <item name="start_program_normal" value="Normal" />
       <item name="start_program_administrator" value="Administrator" />
@@ -615,6 +617,7 @@
       <item name="start_program_lbl_begin" value="开始:" />
       <item name="start_program_lbl_end" value="结尾:" />
       <item name="start_program_show_window" value="显示窗口" />
+      <item name="start_program_use_window_working_directory" value="使用窗口工作目錄" />
       <item name="start_program_parameter" value="范围" />
       <item name="start_program_normal" value="以普通账户运行" />
       <item name="start_program_administrator" value="以管理员账户运行" />
@@ -833,6 +836,7 @@
       <item name="start_program_lbl_begin" value="開始:" />
       <item name="start_program_lbl_end" value="結尾:" />
       <item name="start_program_show_window" value="顯示視窗" />
+      <item name="start_program_use_window_working_directory" value="使用窗口工作目錄" />
       <item name="start_program_parameter" value="範圍" />
       <item name="start_program_normal" value="使用者" />
       <item name="start_program_administrator" value="系統管理員" />      
@@ -1051,6 +1055,7 @@
       <item name="start_program_lbl_begin" value="始める:" />
       <item name="start_program_lbl_end" value="終わり:" />
       <item name="start_program_show_window" value="ウィンドウを表示" />
+      <item name="start_program_use_window_working_directory" value="ウィンドウの作業ディレクトリを使用する" />
       <item name="start_program_parameter" value="パラメータ" />
       <item name="start_program_normal" value="正常" />
       <item name="start_program_administrator" value="管理者" />
@@ -1269,6 +1274,7 @@
       <item name="start_program_lbl_begin" value="시작하다:" />
       <item name="start_program_lbl_end" value="끝:" />
       <item name="start_program_show_window" value="쇼 윈도우" />
+      <item name="start_program_use_window_working_directory" value="창 작업 디렉토리 사용" />
       <item name="start_program_parameter" value="매개변수" />
       <item name="start_program_normal" value="정상" />
       <item name="start_program_administrator" value="관리자" />
@@ -1487,6 +1493,7 @@
       <item name="start_program_lbl_begin" value="Начало:" />
       <item name="start_program_lbl_end" value="Конец:" />
       <item name="start_program_show_window" value="Отображать окно" />
+      <item name="start_program_use_window_working_directory" value="Использовать рабочий каталог окна" />
       <item name="start_program_parameter" value="Параметр" />
       <item name="start_program_normal" value="Обычный" />
       <item name="start_program_administrator" value="Администратор" />
@@ -1705,6 +1712,7 @@
       <item name="start_program_lbl_begin" value="Започети:" />
       <item name="start_program_lbl_end" value="Завршити:" />
       <item name="start_program_show_window" value="Изложбени прозор" />
+      <item name="start_program_use_window_working_directory" value="Користите радни директоријум прозора" />
       <item name="start_program_parameter" value="Параметар" />
       <item name="start_program_normal" value="Нормалан" />
       <item name="start_program_administrator" value="Администратор" />
@@ -1923,6 +1931,7 @@
       <item name="start_program_lbl_begin" value="Começar:" />
       <item name="start_program_lbl_end" value="Fim:" />
       <item name="start_program_show_window" value="Mostrar janela" />
+      <item name="start_program_use_window_working_directory" value="Use um diretório de trabalho da janela" />
       <item name="start_program_parameter" value="Parâmetro" />
       <item name="start_program_normal" value="Normal" />
       <item name="start_program_administrator" value="Administrador" />

@@ -30,6 +30,7 @@ namespace SmartSystemMenu.Forms
             lblBegin.Text = settings.GetValue("start_program_lbl_begin");
             lblEnd.Text = settings.GetValue("start_program_lbl_end");
             chkShowWindow.Text = settings.GetValue("start_program_show_window");
+            chkUseWindowWorkingDirectory.Text = settings.GetValue("start_program_use_window_working_directory");
             Text = settings.GetValue("start_program_form");
             cmbRunAs.Items.Clear();
             cmbRunAs.Items.Add(settings.GetValue("start_program_normal"));
@@ -47,6 +48,7 @@ namespace SmartSystemMenu.Forms
                 txtEnd.Text = menuItem.EndParameter;
                 txtParameter.Text = $"{menuItem.BeginParameter}{settings.GetValue("start_program_parameter")}{menuItem.EndParameter}";
                 chkShowWindow.Checked = menuItem.ShowWindow;
+                chkUseWindowWorkingDirectory.Checked = menuItem.UseWindowWorkingDirectory;
                 cmbRunAs.SelectedIndex = menuItem.RunAs == UserType.Normal ? 0 : 1;
             }
         }
@@ -98,6 +100,7 @@ namespace SmartSystemMenu.Forms
                 BeginParameter = txtBegin.Text,
                 EndParameter = txtEnd.Text,
                 ShowWindow = chkShowWindow.Checked,
+                UseWindowWorkingDirectory = chkUseWindowWorkingDirectory.Checked,
                 RunAs = cmbRunAs.SelectedIndex == 0 ? UserType.Normal : UserType.Administrator
             };
             DialogResult = DialogResult.OK;

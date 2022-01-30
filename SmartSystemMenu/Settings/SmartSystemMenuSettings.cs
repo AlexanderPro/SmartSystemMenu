@@ -168,7 +168,8 @@ namespace SmartSystemMenu.Settings
                     string.Compare(MenuItems.StartProgramItems[i].BeginParameter, other.MenuItems.StartProgramItems[i].BeginParameter, StringComparison.CurrentCultureIgnoreCase) != 0 ||
                     string.Compare(MenuItems.StartProgramItems[i].EndParameter, other.MenuItems.StartProgramItems[i].EndParameter, StringComparison.CurrentCultureIgnoreCase) != 0 ||
                     MenuItems.StartProgramItems[i].ShowWindow != other.MenuItems.StartProgramItems[i].ShowWindow ||
-                    MenuItems.StartProgramItems[i].RunAs != other.MenuItems.StartProgramItems[i].RunAs)
+                    MenuItems.StartProgramItems[i].RunAs != other.MenuItems.StartProgramItems[i].RunAs ||
+                    MenuItems.StartProgramItems[i].UseWindowWorkingDirectory != other.MenuItems.StartProgramItems[i].UseWindowWorkingDirectory)
                 {
                     return false;
                 }
@@ -249,7 +250,7 @@ namespace SmartSystemMenu.Settings
 
             foreach (var item in MenuItems.StartProgramItems)
             {
-                hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode() ^ item.RunAs.GetHashCode() ^ item.BeginParameter.GetHashCode() ^ item.EndParameter.GetHashCode();
+                hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode() ^ item.UseWindowWorkingDirectory.GetHashCode() ^ item.RunAs.GetHashCode() ^ item.BeginParameter.GetHashCode() ^ item.EndParameter.GetHashCode();
             }
 
             foreach (var item in MenuItems.Items)
@@ -309,7 +310,8 @@ namespace SmartSystemMenu.Settings
                     BeginParameter = x.Attribute("beginParameter") != null ? x.Attribute("beginParameter").Value : "",
                     EndParameter = x.Attribute("endParameter") != null ? x.Attribute("endParameter").Value : "",
                     RunAs = x.Attribute("runAs") != null && !string.IsNullOrEmpty(x.Attribute("runAs").Value) ? (UserType)Enum.Parse(typeof(UserType), x.Attribute("runAs").Value, true) : UserType.Normal,
-                    ShowWindow = x.Attribute("showWindow") != null && !string.IsNullOrEmpty(x.Attribute("showWindow").Value) ? x.Attribute("showWindow").Value.ToLower() == "true" : true
+                    ShowWindow = x.Attribute("showWindow") != null && !string.IsNullOrEmpty(x.Attribute("showWindow").Value) ? x.Attribute("showWindow").Value.ToLower() == "true" : true,
+                    UseWindowWorkingDirectory = x.Attribute("useWindowWorkingDirectory") != null && !string.IsNullOrEmpty(x.Attribute("useWindowWorkingDirectory").Value) ? x.Attribute("useWindowWorkingDirectory").Value.ToLower() == "true" : false
                 })
                 .ToList();
 
@@ -466,6 +468,7 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
                                          new XAttribute("arguments", x.Arguments),
+                                         new XAttribute("useWindowWorkingDirectory", x.UseWindowWorkingDirectory.ToString().ToLower()),
                                          new XAttribute("runAs", x.RunAs.ToString().ToLower()),
                                          new XAttribute("showWindow", x.ShowWindow.ToString().ToLower()),
                                          new XAttribute("beginParameter", x.BeginParameter),
