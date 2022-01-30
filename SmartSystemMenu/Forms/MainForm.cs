@@ -299,7 +299,7 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && new SystemMenu(e.Handle, _settings.MenuItems, _settings.LanguageSettings).Exists && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && WindowUtils.IsWindowVisibleOrConsole(e.Handle) && !_windows.Any(w => w.Handle == e.Handle))
             {
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out int processId);
                 IList<Window> windows = new List<Window>();

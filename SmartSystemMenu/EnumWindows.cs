@@ -4,6 +4,7 @@ using System.Linq;
 using System.Diagnostics;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Native;
+using SmartSystemMenu.Utils;
 
 namespace SmartSystemMenu
 {
@@ -46,6 +47,11 @@ namespace SmartSystemMenu
 
         private static bool EnumWindowCallback(IntPtr hwnd, int lParam)
         {
+            if (!WindowUtils.IsWindowVisibleOrConsole(hwnd))
+            {
+                return true;
+            }
+
             if (_filterHandles.Any(h => h == hwnd))
             {
                 return true;

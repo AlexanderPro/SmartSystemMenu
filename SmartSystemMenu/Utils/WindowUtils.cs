@@ -13,6 +13,19 @@ namespace SmartSystemMenu.Utils
 {
     static class WindowUtils
     {
+        public static string GetClassName(IntPtr hWnd)
+        {
+            var builder = new StringBuilder(1024);
+            NativeMethods.GetClassName(hWnd, builder, builder.Capacity);
+            var className = builder.ToString();
+            return className;
+        }
+
+        public static bool IsWindowVisibleOrConsole(IntPtr hWnd)
+        {
+            return IsWindowVisible(hWnd) || GetClassName(hWnd) == "ConsoleWindowClass";
+        }
+
         public static Bitmap PrintWindow(IntPtr hWnd)
         {
             Rect rect;
