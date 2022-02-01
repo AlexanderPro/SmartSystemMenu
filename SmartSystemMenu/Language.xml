@@ -451,16 +451,16 @@
       <item name="save_screenshot" value="保存窗口截图" />
       <item name="open_file_in_explorer" value="在资源管理器中打开文件" />
       <item name="clipboard" value="剪贴板" />
-      <item name="copy_window_text" value="複製窗口文本" />
-      <item name="copy_window_title" value="複製窗口標題" />
-      <item name="copy_full_process_path" value="複製完整的進程路徑" />
+      <item name="copy_window_text" value="复制窗口文本" />
+      <item name="copy_window_title" value="复制窗口标题" />
+      <item name="copy_full_process_path" value="复制完整的进程路径" />
       <item name="clear_clipboard" value="清除" />
       <item name="drag_by_mouse" value="通过鼠标拖动" />
       <item name="size" value="调整窗口大小" />
       <item name="size_default" value="默认" />
       <item name="size_custom" value="自定义..." />
       <item name="move_to" value="移动到" />
-      <item name="monitor" value="显示器 " />
+      <item name="monitor" value="显示器" />
       <item name="alignment" value="对齐" />
       <item name="align_top_left" value="左上角" />
       <item name="align_top_center" value="顶部中心" />
@@ -617,7 +617,7 @@
       <item name="start_program_lbl_begin" value="开始:" />
       <item name="start_program_lbl_end" value="结尾:" />
       <item name="start_program_show_window" value="显示窗口" />
-      <item name="start_program_use_window_working_directory" value="使用窗口工作目錄" />
+      <item name="start_program_use_window_working_directory" value="使用窗口工作目录" />
       <item name="start_program_parameter" value="范围" />
       <item name="start_program_normal" value="以普通账户运行" />
       <item name="start_program_administrator" value="以管理员账户运行" />
@@ -652,8 +652,8 @@
       <item name="closer_kill_process_with_foreground_window" value="终止带有前台窗口的进程" />
       <item name="closer_kill_process_with_window_under_cursor" value="终止光标下窗口的进程" />
       <item name="grpb_sizer" value="如何设置窗口大小" />
-      <item name="grpb_display" value="Display" />
-      <item name="chk_enable_high_dpi" value="Enable High DPI" />
+      <item name="grpb_display" value="显示" />
+      <item name="chk_enable_high_dpi" value="启用高 DPI 显示" />
       <item name="sizer_window_with_margins" value="有边距的窗口" />
       <item name="sizer_window_without_margins" value="没有边距的窗口" />
       <item name="sizer_window_client_area" value="窗口工作区" />
