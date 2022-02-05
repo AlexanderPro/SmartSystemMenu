@@ -299,19 +299,19 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && WindowUtils.IsWindowVisibleOrConsole(e.Handle) && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && !_windows.Any(w => w.Handle == e.Handle))
             {
                 NativeMethods.GetWindowThreadProcessId(e.Handle, out int processId);
-                IList<Window> windows = new List<Window>();
-                try
-                {
-                    windows = EnumWindows.EnumProcessWindows(processId, _windows.Select(w => w.Handle).ToArray(), _settings.MenuItems, _settings.LanguageSettings, new string[] { SHELL_WINDOW_NAME });
-                }
-                catch
-                {
-                }
+                var window = new Window(e.Handle, _settings.MenuItems, _settings.LanguageSettings);
+                var filterTitles = new string[] { SHELL_WINDOW_NAME };
+                bool isWriteProcess;
+#if WIN32
+                isWriteProcess = !Environment.Is64BitOperatingSystem || SystemUtils.IsWow64Process(processId);
+#else
+                isWriteProcess = Environment.Is64BitOperatingSystem && !SystemUtils.IsWow64Process(processId);
+#endif
 
-                foreach (var window in windows)
+                if (isWriteProcess && !filterTitles.Any(s => window.GetWindowText() == s))
                 {
                     var processName = "";
 
@@ -325,14 +325,20 @@ namespace SmartSystemMenu.Forms
 
                     if (string.IsNullOrEmpty(processName) || _settings.ProcessExclusions.Contains(processName.ToLower()))
                     {
-                        continue;
+                        return;
                     }
 
-                    window.Menu.Create();
-                    int menuItemId = window.ProcessPriority.GetMenuItemId();
-                    window.Menu.CheckMenuItem(menuItemId, true);
-                    if (window.AlwaysOnTop) window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
-                    _windows.Add(window);
+                    var isAdded = window.Menu.Create();
+                    if (isAdded)
+                    {
+                        var menuItemId = window.ProcessPriority.GetMenuItemId();
+                        window.Menu.CheckMenuItem(menuItemId, true);
+                        if (window.AlwaysOnTop)
+                        {
+                            window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
+                        }
+                        _windows.Add(window);
+                    }
                 }
             }
         }

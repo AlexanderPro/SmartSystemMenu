@@ -36,9 +36,13 @@ namespace SmartSystemMenu
             MoveToMenuItems = SystemUtils.GetMonitors().Select((x, i) => new KeyValuePair<int, IntPtr>(i + 1, x)).ToDictionary(x => x.Key, y => y.Value);
         }
 
-        public void Create()
+        public bool Create()
         {
             var menuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            if (menuHandle == IntPtr.Zero)
+            {
+                return false;
+            }
 
             foreach (var item in _menuItems.Items)
             {
@@ -117,6 +121,7 @@ namespace SmartSystemMenu
             }
 
             NativeMethods.InsertMenu(menuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
+            return true;
         }
 
         public void Destroy()

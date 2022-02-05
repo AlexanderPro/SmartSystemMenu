@@ -27,31 +27,8 @@ namespace SmartSystemMenu
             return _windows;
         }
 
-        public static IList<Window> EnumProcessWindows(int processId, IntPtr[] filterHandles, MenuItems menuItems, LanguageSettings languageSettings, params string[] filterTitles)
-        {
-            _filterTitles = filterTitles ?? new string[0];
-            _filterHandles = filterHandles ?? new IntPtr[0];
-            _windows = new List<Window>();
-            _menuItems = menuItems;
-            _languageSettings = languageSettings;
-            var process = SystemUtils.GetProcessByIdSafely(processId);
-            if (process != null)
-            {
-                foreach (ProcessThread thread in process.Threads)
-                {
-                    NativeMethods.EnumThreadWindows(thread.Id, EnumWindowCallback, 0);
-                }
-            }
-            return _windows;
-        }
-
         private static bool EnumWindowCallback(IntPtr hwnd, int lParam)
         {
-            if (!WindowUtils.IsWindowVisibleOrConsole(hwnd))
-            {
-                return true;
-            }
-
             if (_filterHandles.Any(h => h == hwnd))
             {
                 return true;
