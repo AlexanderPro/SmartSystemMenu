@@ -103,7 +103,7 @@
       <item name="size_btn_apply" value="Apply" />
       <item name="lbl_size_form_height" value="Height:" />
       <item name="lbl_size_form_width" value="Width:" />
-      <item name="lbl_size_form_top" value="Top:" />      
+      <item name="lbl_size_form_top" value="Top:" />
       <item name="lbl_size_form_left" value="Left:" />
       <item name="trans_form" value="Set Transparency" />
       <item name="trans_btn_apply" value="Apply" />
@@ -369,7 +369,7 @@
       <item name="clm_window_size_width" value="Breite" />
       <item name="clm_window_size_height" value="Höhe" />
       <item name="clm_window_size_top" value="Oben" />
-      <item name="clm_window_size_left" value="Links" />      
+      <item name="clm_window_size_left" value="Links" />
       <item name="clm_window_size_edit" value="Ändern" />
       <item name="clm_window_size_delete" value="Löschen" />
       <item name="lbl_window_size_title" value="Titel:" />
@@ -661,7 +661,7 @@
       <item name="parameter_form" value="输入参数" />
     </zh_cn>
     <zh_tw>
-     <item name="separator" value="分隔線" />
+      <item name="separator" value="分隔線" />
       <item name="information" value="資訊" />
       <item name="roll_up" value="縮合" />
       <item name="aero_glass" value="Aero 半透明效果" />
@@ -762,7 +762,7 @@
       <item name="size_btn_apply" value="套用" />
       <item name="lbl_size_form_height" value="高度:" />
       <item name="lbl_size_form_width" value="寬度:" />
-      <item name="lbl_size_form_top" value="頂部:" />      
+      <item name="lbl_size_form_top" value="頂部:" />
       <item name="lbl_size_form_left" value="左側:" />
       <item name="trans_form" value="設定透明度" />
       <item name="trans_btn_apply" value="套用" />
@@ -1533,7 +1533,7 @@
       <item name="grpb_display" value="Экран" />
       <item name="chk_enable_high_dpi" value="Включить поддержку High DPI" />
       <item name="sizer_window_with_margins" value="Окно с отступами" />
-      <item name="sizer_window_without_margins" value="Окно без отступов" />    
+      <item name="sizer_window_without_margins" value="Окно без отступов" />
       <item name="sizer_window_client_area" value="Клиентская область окна" />
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Введите параметр" />
