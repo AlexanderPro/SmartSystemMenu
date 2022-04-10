@@ -1,39 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Native;
-using SmartSystemMenu.Utils;
 
 namespace SmartSystemMenu
 {
     static class EnumWindows
     {
         private static string[] _filterTitles;
-        private static IntPtr[] _filterHandles;
         private static IList<Window> _windows;
-        private static MenuItems _menuItems;
-        private static LanguageSettings _languageSettings;
+        private static SmartSystemMenuSettings _settings;
+        private static WindowSettings _windowSettings;
 
-        public static IList<Window> EnumAllWindows(MenuItems menuItems, LanguageSettings languageSettings, params string[] filterTitles)
+        public static IList<Window> EnumAllWindows(SmartSystemMenuSettings settings, WindowSettings windowSettings, params string[] filterTitles)
         {
             _filterTitles = filterTitles ?? new string[0];
-            _filterHandles = new IntPtr[0];
             _windows = new List<Window>();
-            _menuItems = menuItems;
-            _languageSettings = languageSettings;
+            _settings = settings;
+            _windowSettings = windowSettings;
             NativeMethods.EnumWindows(EnumWindowCallback, 0);
             return _windows;
         }
 
         private static bool EnumWindowCallback(IntPtr hwnd, int lParam)
         {
-            if (_filterHandles.Any(h => h == hwnd))
-            {
-                return true;
-            }
-
             if (_windows.Any(w => w.Handle == hwnd))
             {
                 return true;
@@ -54,7 +45,7 @@ namespace SmartSystemMenu
                 return true;
             }
 
-            var window = new Window(hwnd, _menuItems, _languageSettings);
+            var window = new Window(hwnd, _settings.MenuItems, _settings.Language);
 
             if (!window.Menu.Exists)
             {

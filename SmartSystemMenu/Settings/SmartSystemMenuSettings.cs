@@ -7,6 +7,7 @@ using System.Xml.XPath;
 using System.Text;
 using System.Threading;
 using SmartSystemMenu.HotKeys;
+using SmartSystemMenu.Utils;
 
 namespace SmartSystemMenu.Settings
 {
@@ -16,7 +17,9 @@ namespace SmartSystemMenu.Settings
 
         public MenuItems MenuItems { get; private set; }
 
-        public CloserSettings Closer { get; private set; }        
+        public CloserSettings Closer { get; private set; }
+
+        public SaveSelectedItemsSettings SaveSelectedItems { get; set; }
 
         public bool ShowSystemTrayIcon { get; private set; }
 
@@ -26,18 +29,20 @@ namespace SmartSystemMenu.Settings
 
         public string LanguageName { get; set; }
 
-        public LanguageSettings LanguageSettings { get; set; }
+        public LanguageSettings Language { get; set; }
+
 
         public SmartSystemMenuSettings()
         {
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
             Closer = new CloserSettings();
+            SaveSelectedItems = new SaveSelectedItemsSettings();
             Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
             EnableHighDPI = false;
             LanguageName = "";
-            LanguageSettings = new LanguageSettings();
+            Language = new LanguageSettings();
         }
 
         public object Clone()
@@ -64,15 +69,13 @@ namespace SmartSystemMenu.Settings
                 settings.MenuItems.Items.Add(new MenuItem { Name = menuItem.Name, Key1 = menuItem.Key1, Key2 = menuItem.Key2, Key3 = menuItem.Key3 });
             }
 
-            foreach (var languageItem in LanguageSettings.Items)
+            foreach (var languageItem in Language.Items)
             {
-                settings.LanguageSettings.Items.Add(new LanguageItem { Name = languageItem.Name, Value = languageItem.Value });
+                settings.Language.Items.Add(new LanguageItem { Name = languageItem.Name, Value = languageItem.Value });
             }
 
-            settings.Closer.Type = Closer.Type;
-            settings.Closer.Key1 = Closer.Key1;
-            settings.Closer.Key2 = Closer.Key2;
-            settings.Closer.MouseButton = Closer.MouseButton;
+            settings.Closer= (CloserSettings)Closer.Clone();
+            settings.SaveSelectedItems = (SaveSelectedItemsSettings)SaveSelectedItems.Clone();
             settings.Sizer = Sizer;
             settings.ShowSystemTrayIcon = ShowSystemTrayIcon;
             settings.EnableHighDPI = EnableHighDPI;
@@ -211,6 +214,16 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
+            if (SaveSelectedItems.AeroGlass != other.SaveSelectedItems.AeroGlass ||
+                SaveSelectedItems.AlwaysOnTop != other.SaveSelectedItems.AlwaysOnTop ||
+                SaveSelectedItems.Alignment != other.SaveSelectedItems.Alignment ||
+                SaveSelectedItems.Transparency != other.SaveSelectedItems.Transparency ||
+                SaveSelectedItems.Priority != other.SaveSelectedItems.Priority ||
+                SaveSelectedItems.MinimizeToTrayAlways != other.SaveSelectedItems.MinimizeToTrayAlways)
+            {
+                return false;
+            }
+
             if (Sizer != other.Sizer)
             {
                 return false;
@@ -266,6 +279,12 @@ namespace SmartSystemMenu.Settings
             hashCode ^= Closer.Key1.GetHashCode();
             hashCode ^= Closer.Key2.GetHashCode();
             hashCode ^= Closer.MouseButton.GetHashCode();
+            hashCode ^= SaveSelectedItems.AeroGlass.GetHashCode();
+            hashCode ^= SaveSelectedItems.AlwaysOnTop.GetHashCode();
+            hashCode ^= SaveSelectedItems.Alignment.GetHashCode();
+            hashCode ^= SaveSelectedItems.Transparency.GetHashCode();
+            hashCode ^= SaveSelectedItems.Priority.GetHashCode();
+            hashCode ^= SaveSelectedItems.MinimizeToTrayAlways.GetHashCode();
             hashCode ^= Sizer.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
             hashCode ^= ShowSystemTrayIcon.GetHashCode();
@@ -348,6 +367,14 @@ namespace SmartSystemMenu.Settings
             settings.Closer.Key2 = closerElement.Attribute("key2") != null && !string.IsNullOrEmpty(closerElement.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(closerElement.Attribute("key2").Value) : VirtualKeyModifier.None;
             settings.Closer.MouseButton = closerElement.Attribute("mouseButton") != null && !string.IsNullOrEmpty(closerElement.Attribute("mouseButton").Value) ? (MouseButton)int.Parse(closerElement.Attribute("mouseButton").Value) : MouseButton.None;
 
+            var saveSelectedItemsElement = document.XPathSelectElement("/smartSystemMenu/saveSelectedItems");
+            settings.SaveSelectedItems.AeroGlass = saveSelectedItemsElement.Attribute("aeroGlass") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("aeroGlass").Value) ? saveSelectedItemsElement.Attribute("aeroGlass").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.AlwaysOnTop = saveSelectedItemsElement.Attribute("alwaysOnTop") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("alwaysOnTop").Value) ? saveSelectedItemsElement.Attribute("alwaysOnTop").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.Alignment = saveSelectedItemsElement.Attribute("alignment") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("alignment").Value) ? saveSelectedItemsElement.Attribute("alignment").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.Transparency = saveSelectedItemsElement.Attribute("transparency") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("transparency").Value) ? saveSelectedItemsElement.Attribute("transparency").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.Priority = saveSelectedItemsElement.Attribute("priority") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("priority").Value) ? saveSelectedItemsElement.Attribute("priority").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.MinimizeToTrayAlways = saveSelectedItemsElement.Attribute("minimizeToTrayAlways") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value) ? saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true" : true;
+
             var sizerElement = document.XPathSelectElement("/smartSystemMenu/sizer");
             settings.Sizer = sizerElement.Attribute("type") != null && !string.IsNullOrEmpty(sizerElement.Attribute("type").Value) ? (WindowSizerType)int.Parse(sizerElement.Attribute("type").Value) : WindowSizerType.WindowWithMargins;
 
@@ -422,7 +449,7 @@ namespace SmartSystemMenu.Settings
             }
 
             var languageItemPath = "/language/items/" + languageName + "/item";
-            settings.LanguageSettings.Items = languageDocument
+            settings.Language.Items = languageDocument
                 .XPathSelectElements(languageItemPath)
                 .Select(x => new LanguageItem
                 {
@@ -479,6 +506,14 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("key2", settings.Closer.Key2 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key2).ToString()),
                                      new XAttribute("mouseButton", settings.Closer.MouseButton == MouseButton.None ? "" : ((int)settings.Closer.MouseButton).ToString())
                                  ),
+                                 new XElement("saveSelectedItems",
+                                     new XAttribute("aeroGlass", settings.SaveSelectedItems.AeroGlass.ToString().ToLower()),
+                                     new XAttribute("alwaysOnTop", settings.SaveSelectedItems.AlwaysOnTop.ToString().ToLower()),
+                                     new XAttribute("alignment", settings.SaveSelectedItems.Alignment.ToString().ToLower()),
+                                     new XAttribute("transparency", settings.SaveSelectedItems.Transparency.ToString().ToLower()),
+                                     new XAttribute("priority", settings.SaveSelectedItems.Priority.ToString().ToLower()),
+                                     new XAttribute("minimizeToTrayAlways", settings.SaveSelectedItems.MinimizeToTrayAlways.ToString().ToLower())
+                                 ),
                                  new XElement("sizer",
                                      new XAttribute("type", ((int)settings.Sizer).ToString())
                                  ),
@@ -491,21 +526,7 @@ namespace SmartSystemMenu.Settings
                                  new XElement("language",
                                      new XAttribute("name", settings.LanguageName.ToLower())
                                  )));
-            Save(fileName, document);
-        }
-
-        private static void Save(string fileName, XDocument document)
-        {
-            using (TextWriter writer = new Utf8StringWriter())
-            {
-                document.Save(writer, SaveOptions.None);
-                File.WriteAllText(fileName, writer.ToString());
-            }
-        }
-
-        private class Utf8StringWriter : StringWriter
-        {
-            public override Encoding Encoding { get { return Encoding.UTF8; } }
+            FileUtils.Save(fileName, document);
         }
     }
 }

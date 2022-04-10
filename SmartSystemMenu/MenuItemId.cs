@@ -4,8 +4,15 @@ namespace SmartSystemMenu
 {
     internal static class MenuItemId
     {
+        public const int SC_MOVE = 0xF010;
+        public const int SC_MINIMIZE = 0xF020;
+        public const int SC_MAXIMIZE = 0xF030;
+        public const int SC_RESTORE = 0xF120;
+        public const int SC_RESIZE = 0xF000;
         public const int SC_CLOSE = 0xF060;
+
         public const int SC_SEPARATOR = 0x2430;
+        public const int SC_SEPARATOR_BOTTOM = 0x2431;
         public const int SC_TRANS = 0x474F;
         public const int SC_TRANS_100 = 0x4740;
         public const int SC_TRANS_90 = 0x4742;
@@ -68,6 +75,7 @@ namespace SmartSystemMenu
         public const int SC_START_PROGRAM = 0x4900;
         public const int SC_MOVE_TO = 0x5000;
         public const int SC_SIZE_DEFINED = 0x5100;
+        public const int SC_SAVE_SELECTED_ITEMS = 0x4816;
 
         private static readonly Dictionary<string, int> NameToId = new Dictionary<string, int>();
         private static readonly Dictionary<int, string> IdToName = new Dictionary<int, string>();
@@ -134,6 +142,7 @@ namespace SmartSystemMenu
             NameToId["close_other_windows"] = SC_CLOSE_OTHER_WINDOWS;
             NameToId["other_windows"] = SC_OTHER_WINDOWS;
             NameToId["start_program"] = SC_START;
+            NameToId["save_selected_items"] = SC_SAVE_SELECTED_ITEMS;
 
             foreach (var pair in NameToId)
             {

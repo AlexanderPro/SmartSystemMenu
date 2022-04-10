@@ -85,9 +85,6 @@
         public const int GCLP_HICONSM = -34;
         public const string IDI_APPLICATION = "#32512";
 
-        public const int SC_MINIMIZE = 0xF020;
-        public const int SC_MAXIMIZE = 0xF030;
-        public const int SC_RESTORE = 0xF120;
         public const int SW_HIDE = 0x0;
         public const int SW_MAXIMIZE = 0x3;
         public const int SW_MINIMIZE = 0x6;

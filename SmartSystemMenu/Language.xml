@@ -55,6 +55,7 @@
       <item name="minimize_other_windows" value="Minimize" />
       <item name="close_other_windows" value="Close" />
       <item name="start_program" value="Start Program" />
+      <item name="save_selected_items" value="Save" />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -198,6 +199,7 @@
       <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
       <item name="tab_settings_menu_start" value="Menu (Start Program)" />
       <item name="tab_settings_menu_size" value="Menu (Resize)" />
+      <item name="tab_settings_menu_save" value="Menu (Save)" />
       <item name="grpb_closer" value="Close Window By Mouse Click" />
       <item name="closer_button_name" value="Settings..." />
       <item name="closer_form" value="Settings" />
@@ -276,6 +278,7 @@
       <item name="minimize_other_windows" value="Minimieren" />
       <item name="close_other_windows" value="Schlieβen" />
       <item name="start_program" value="Programm ausführen" />
+      <item name="save_selected_items" value="Speichern" />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -419,6 +422,7 @@
       <item name="clm_hotkeys_show_tooltip" value="Menüpunkt anzeigen" />
       <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
       <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
+      <item name="tab_settings_menu_save" value="Menü (Speichern)" />
       <item name="grpb_closer" value="Fenster per Mausklick schließen" />
       <item name="closer_button_name" value="Einstellungen..." />
       <item name="closer_form" value="Einstellungen" />
@@ -495,6 +499,7 @@
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="关闭" />
       <item name="start_program" value="启动程序" />
+      <item name="save_selected_items" value="保存" />
       <item name="grp_window" value="窗口" />
       <item name="grp_process" value="进程" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -638,6 +643,7 @@
       <item name="clm_hotkeys_show_tooltip" value="显示菜单项" />
       <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
       <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
+      <item name="tab_settings_menu_save" value="菜单 (保存)" />
       <item name="grpb_closer" value="通过鼠标单击关闭窗口" />
       <item name="closer_button_name" value="设置..." />
       <item name="closer_form" value="设置." />
@@ -714,6 +720,7 @@
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="關閉" />
       <item name="start_program" value="啟動程式" />
+      <item name="save_selected_items" value="保存" />
       <item name="grp_window" value="視窗" />
       <item name="grp_process" value="處理程序" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -857,6 +864,7 @@
       <item name="clm_hotkeys_show_tooltip" value="顯示選單項目" />
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
       <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
+      <item name="tab_settings_menu_save" value="選單 (保存)" />
       <item name="grpb_closer" value="透過滑鼠按一下關閉視窗" />
       <item name="closer_button_name" value="設定..." />
       <item name="closer_form" value="設定." />
@@ -935,6 +943,7 @@
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="閉じる" />
       <item name="start_program" value="起動プログラム" />
+      <item name="save_selected_items" value="保存" />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1078,6 +1087,7 @@
       <item name="clm_hotkeys_show_tooltip" value="メニュー項目を表示" />
       <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
       <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
+      <item name="tab_settings_menu_save" value="メニュー (保存)" />
       <item name="grpb_closer" value="マウスクリックでウィンドウを閉じる" />
       <item name="closer_button_name" value="設定..." />
       <item name="closer_form" value="設定" />
@@ -1154,6 +1164,7 @@
       <item name="minimize_other_windows" value="최소화" />
       <item name="close_other_windows" value="닫기" />
       <item name="start_program" value="시작할 프로그램" />
+      <item name="save_selected_items" value="구하다" />
       <item name="grp_window" value="창" />
       <item name="grp_process" value="프로세스" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1297,6 +1308,7 @@
       <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
       <item name="tab_settings_menu_start" value="메뉴 (시작할 프로그램)" />
       <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
+      <item name="tab_settings_menu_save" value="메뉴 (구하다)" />
       <item name="grpb_closer" value="마우스 클릭으로 창 닫기" />
       <item name="closer_button_name" value="설정..." />
       <item name="closer_form" value="설정" />
@@ -1373,6 +1385,7 @@
       <item name="minimize_other_windows" value="Минимизировать" />
       <item name="close_other_windows" value="Закрыть" />
       <item name="start_program" value="Пуск" />
+      <item name="save_selected_items" value="Сохранить" />
       <item name="grp_window" value="Окно" />
       <item name="grp_process" value="Процесс" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1516,6 +1529,7 @@
       <item name="clm_hotkeys_show_tooltip" value="Отобразить или скрыть пункт меню" />
       <item name="tab_settings_menu_start" value="Меню (Пуск)" />
       <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
+      <item name="tab_settings_menu_save" value="Меню (Сохранить)" />
       <item name="grpb_closer" value="Закрытие окна кнопкой мышки" />
       <item name="closer_button_name" value="Настройки..." />
       <item name="closer_form" value="Настройки" />
@@ -1592,6 +1606,7 @@
       <item name="minimize_other_windows" value="Умањи" />
       <item name="close_other_windows" value="Затвори" />
       <item name="start_program" value="Покренути програм" />
+      <item name="save_selected_items" value="Сачувати" />
       <item name="grp_window" value="Прозор" />
       <item name="grp_process" value="Процес" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1735,6 +1750,7 @@
       <item name="clm_hotkeys_show_tooltip" value="Прикажи ставку менија" />
       <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
       <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
+      <item name="tab_settings_menu_save" value="Мени (Сачувати)" />
       <item name="grpb_closer" value="Затворите прозор кликом миша" />
       <item name="closer_button_name" value="Подешавања..." />
       <item name="closer_form" value="Подешавања" />
@@ -1811,6 +1827,7 @@
       <item name="minimize_other_windows" value="Minimizar" />
       <item name="close_other_windows" value="Fechar" />
       <item name="start_program" value="Executar programa" />
+      <item name="save_selected_items" value="Salvar" />
       <item name="grp_window" value="Janela" />
       <item name="grp_process" value="Executável" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1954,6 +1971,7 @@
       <item name="clm_hotkeys_show_tooltip" value="Exibir item do menu" />
       <item name="tab_settings_menu_start" value="Menu (Executar programa)" />
       <item name="tab_settings_menu_size" value="Menu (Redimensionar)" />
+      <item name="tab_settings_menu_save" value="Menu (Salvar)" />
       <item name="grpb_closer" value="Fechar janela com clique do mouse" />
       <item name="closer_button_name" value="Configuração..." />
       <item name="closer_form" value="Configuração" />

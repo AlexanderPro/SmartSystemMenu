@@ -17,8 +17,8 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(Window window, SmartSystemMenuSettings settings)
         {
-            btnApply.Text = settings.LanguageSettings.GetValue("trans_btn_apply");
-            Text = settings.LanguageSettings.GetValue("trans_form");
+            btnApply.Text = settings.Language.GetValue("trans_btn_apply");
+            Text = settings.Language.GetValue("trans_form");
             numericTransparency.Value = window.Transparency;
             DialogResult = DialogResult.Cancel;
         }

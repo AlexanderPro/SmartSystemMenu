@@ -115,12 +115,19 @@ namespace SmartSystemMenu
                     }
 
                     var id = MenuItemId.GetId(item.Name);
-                    InsertSubMenu(menuHandle, subMenuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_POPUP, (uint)id, GetTitle(item.Name, null, true));
+                    if (!IsMenuItem(menuHandle, id))
+                    {
+                        InsertSubMenu(menuHandle, subMenuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_POPUP, (uint)id, GetTitle(item.Name, null, true));
+                    }
                     subMenuHandle = IntPtr.Zero;
                 }
             }
 
-            NativeMethods.InsertMenu(menuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
+            if (!IsMenuItem(menuHandle, MenuItemId.SC_SEPARATOR_BOTTOM))
+            {
+                NativeMethods.InsertMenu(menuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR_BOTTOM, null);
+            }
+
             return true;
         }
 
@@ -137,7 +144,7 @@ namespace SmartSystemMenu
                 }
             }
 
-            NativeMethods.DeleteMenu(menuHandle, MenuItemId.SC_SEPARATOR, NativeConstants.MF_BYCOMMAND);
+            NativeMethods.DeleteMenu(menuHandle, MenuItemId.SC_SEPARATOR_BOTTOM, NativeConstants.MF_BYCOMMAND);
 
             var numberItems = NativeMethods.GetMenuItemCount(menuHandle);
             if (numberItems == DEFAULT_SYSTEM_MENU_NUMBER_ITEMS)

@@ -55,7 +55,7 @@ namespace SmartSystemMenu.Native
         REALTIME_PRIORITY_CLASS = 0x100
     }
 
-    enum Priority :int
+    public enum Priority :int
     {
         RealTime = 24,
         High = 13,

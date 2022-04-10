@@ -1,6 +1,8 @@
 using System;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -30,9 +32,13 @@ namespace SmartSystemMenu
         private ToolStripMenuItem _menuItemClose;
         private ContextMenuStrip _systemTrayMenu;
 
+        public const string ConsoleClassName = "ConsoleWindowClass";
+
         public IntPtr Handle { get; private set; }
 
-        public SystemMenu Menu { get; private set; }        
+        public SystemMenu Menu { get; private set; }
+
+        public WindowState State { get; private set; }
 
         public Rect Size
         {
@@ -181,11 +187,12 @@ namespace SmartSystemMenu
         {
             Handle = windowHandle;
             _isManaged = true;
-            _defaultWidth = Size.Width;
-            _defaultHeight = Size.Height;
-            _defaultLeft = Size.Left;
-            _defaultTop = Size.Top;
-            _beforeRollupHeight = Size.Height;
+            var size = Size;
+            _defaultWidth = size.Width;
+            _defaultHeight = size.Height;
+            _defaultLeft = size.Left;
+            _defaultTop = size.Top;
+            _beforeRollupHeight = size.Height;
             _defaultTransparency = Transparency;
         }
 
@@ -193,12 +200,20 @@ namespace SmartSystemMenu
         {
             Handle = windowHandle;
             _isManaged = true;
-            _defaultWidth = Size.Width;
-            _defaultHeight = Size.Height;
-            _defaultLeft = Size.Left;
-            _defaultTop = Size.Top;
-            _beforeRollupHeight = Size.Height;
+            var size = Size;
+            _defaultWidth = size.Width;
+            _defaultHeight = size.Height;
+            _defaultLeft = size.Left;
+            _defaultTop = size.Top;
+            _beforeRollupHeight = size.Height;
             _defaultTransparency = Transparency;
+            State = new WindowState();
+            State.Left = size.Left;
+            State.Top = size.Top;
+            State.Width = size.Width;
+            State.Height = size.Height;
+            State.ClassName = GetClassName();
+            State.ProcessName = Process?.GetMainModuleFileName() ?? string.Empty;
             _menuItemRestore = new ToolStripMenuItem();
             _menuItemRestore.Size = new Size(175, 22);
             _menuItemRestore.Name = $"miRestore_{Handle}";
@@ -233,7 +248,6 @@ namespace SmartSystemMenu
                 _menuItemRestore?.Dispose();
                 _menuItemClose?.Dispose();
                 _systemTrayMenu?.Dispose();
-                _systemTrayIcon?.Dispose();
             }
             _isManaged = false;
         }
@@ -403,59 +417,95 @@ namespace SmartSystemMenu
         {
             var opacity = (byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
             SetOpacity(Handle, opacity);
+            State.Transparency = percent;
         }
 
         public void RestoreTransparency()
         {
             SetTransparency(_defaultTransparency);
+            State.Transparency = null;
         }
 
         public void SetWidth(int width)
         {
-            NativeMethods.MoveWindow(Handle, Size.Left, Size.Top, width, Size.Height, true);
+            var size = Size;
+            NativeMethods.MoveWindow(Handle, size.Left, size.Top, width, size.Height, true);
         }
 
         public void SetHeight(int height)
         {
-            NativeMethods.MoveWindow(Handle, Size.Left, Size.Top, Size.Width, height, true);
+            var size = Size;
+            NativeMethods.MoveWindow(Handle, size.Left, size.Top, size.Width, height, true);
         }
 
         public void SetSize(int width, int height, int? left = null, int? top = null)
         {
-            NativeMethods.MoveWindow(Handle, left == null ? Size.Left : left.Value, top == null ? Size.Top : top.Value, width, height, true);
+            var size = Size;
+            var sizeLeft = left == null ? size.Left : left.Value;
+            var sizeTop = top == null ? Size.Top : top.Value;
+            State.Left = sizeLeft;
+            State.Top = sizeTop;
+            State.Width = width;
+            State.Height = height;
+            NativeMethods.MoveWindow(Handle, sizeLeft, sizeTop, width, height, true);
         }
 
         public void RestoreSize()
         {
+            State.Left = _defaultLeft;
+            State.Top = _defaultTop;
+            State.Width = _defaultWidth;
+            State.Height = _defaultHeight;
             NativeMethods.MoveWindow(Handle, _defaultLeft, _defaultTop, _defaultWidth, _defaultHeight, true);
         }
 
         public void SetLeft(int left)
         {
-            NativeMethods.MoveWindow(Handle, left, Size.Top, Size.Width, Size.Height, true);
+            var size = Size;
+            State.Left = left;
+            State.Top = size.Top;
+            State.Width = size.Width;
+            State.Height = size.Height;
+            NativeMethods.MoveWindow(Handle, left, size.Top, size.Width, size.Height, true);
         }
 
         public void SetTop(int top)
         {
-            NativeMethods.MoveWindow(Handle, Size.Left, top, Size.Width, Size.Height, true);
+            var size = Size;
+            State.Left = size.Left;
+            State.Top = top;
+            State.Width = size.Width;
+            State.Height = size.Height;
+            NativeMethods.MoveWindow(Handle, size.Left, top, size.Width, size.Height, true);
         }
 
         public void SetPosition(int left, int top)
         {
-            NativeMethods.MoveWindow(Handle, left, top, Size.Width, Size.Height, true);
+            var size = Size;
+            State.Left = left;
+            State.Top = top;
+            State.Width = size.Width;
+            State.Height = size.Height;
+            NativeMethods.MoveWindow(Handle, left, top, size.Width, size.Height, true);
         }
 
         public void RestorePosition()
         {
-            NativeMethods.MoveWindow(Handle, _defaultLeft, _defaultTop, Size.Width, Size.Height, true);
+            var size = Size;
+            State.Left = _defaultLeft;
+            State.Top = _defaultTop;
+            State.Width = size.Width;
+            State.Height = size.Height;
+            NativeMethods.MoveWindow(Handle, _defaultLeft, _defaultTop, size.Width, size.Height, true);
         }
 
         public void SaveDefaultSizePosition()
         {
-            _defaultLeft = Size.Left;
-            _defaultTop = Size.Top;
-            _defaultWidth = Size.Width;
-            _defaultHeight = Size.Height;
+            var size = Size;
+            _defaultLeft = size.Left;
+            _defaultTop = size.Top;
+            _defaultWidth = size.Width;
+            _defaultHeight = size.Height;
         }
 
         public void SetAlignment(WindowAlignment alignment)
@@ -465,6 +515,7 @@ namespace SmartSystemMenu
             var screen = Screen.FromHandle(Handle).WorkingArea;
             var window = Size;
 
+            State.Alignment = alignment;
             if (alignment == WindowAlignment.CenterHorizontally)
             {
                 SetLeft(((screen.Width - window.Width) / 2) + screen.X);
@@ -550,6 +601,7 @@ namespace SmartSystemMenu
             var handleTopMost = (IntPtr)(-1);
             var handleNotTopMost = (IntPtr)(-2);
             NativeMethods.SetWindowPos(Handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
+            State.AlwaysOnTop = topMost;
         }
 
         public void SendToBottom()
@@ -593,6 +645,7 @@ namespace SmartSystemMenu
             {
                 NativeMethods.SetPriorityClass(process.GetHandle(), priority.GetPriorityClass());
             }
+            State.Priority = priority;
         }
 
         public string ExtractText()
@@ -600,6 +653,19 @@ namespace SmartSystemMenu
             var text = WindowUtils.ExtractTextFromConsoleWindow(ProcessId);
             text = text ?? ExtractTextFromWindow();
             return text;
+        }
+
+        public void AeroGlass(bool enable)
+        {
+            var version = Environment.OSVersion.Version;
+            if (version.Major == 6 && (version.Minor == 0 || version.Minor == 1))
+            {
+                AeroGlassForVistaAndSeven(enable);
+            }
+            else if (version.Major >= 6 || (version.Major == 6 && version.Minor > 1))
+            {
+                AeroGlassForEightAndHigher(enable);
+            }
         }
 
         public void AeroGlassForVistaAndSeven(bool enable)
@@ -612,6 +678,7 @@ namespace SmartSystemMenu
                 fTransitionOnMaximized = false
             };
             NativeMethods.DwmEnableBlurBehindWindow(Handle, ref blurBehind);
+            State.AeroGlass = enable;
         }
 
         public void AeroGlassForEightAndHigher(bool enable)
@@ -628,6 +695,7 @@ namespace SmartSystemMenu
                 data.SizeOfData = accentStructSize;
                 data.Data = accentPtr;
                 NativeMethods.SetWindowCompositionAttribute(Handle, ref data);
+                State.AeroGlass = enable;
             }
             finally
             {
@@ -660,6 +728,68 @@ namespace SmartSystemMenu
                 NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
                 Thread.Sleep(10);
                 NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
+
+                State.Left = left;
+                State.Top = top;
+                State.Width = windowRect.Width;
+                State.Height = windowRect.Height;
+            }
+        }
+
+        public void SetStateMinimizeToTrayAlways(bool minimizeAlways)
+        {
+            State.MinimizeToTrayAlways = minimizeAlways;
+        }
+
+        public void ApplyState(WindowState state, SaveSelectedItemsSettings settings, IList<WindowSizeMenuItem> sizeItems)
+        {
+            SetSize(state.Width, state.Height, state.Left, state.Top);
+
+            var sizeItem = sizeItems.FirstOrDefault(x => x.Width == state.Width && x.Height == state.Height);
+            if (sizeItem != null)
+            {
+                Menu.CheckMenuItem(sizeItem.Id, true);
+            }
+
+            if (settings.AeroGlass && state.AeroGlass.HasValue)
+            {
+                AeroGlass(state.AeroGlass.Value);
+                Menu.CheckMenuItem(MenuItemId.SC_AERO_GLASS, state.AeroGlass.Value);
+            }
+
+            if (settings.AlwaysOnTop && state.AlwaysOnTop.HasValue)
+            {
+                MakeTopMost(state.AlwaysOnTop.Value);
+                Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, state.AlwaysOnTop.Value);
+            }
+
+            if (settings.Alignment && state.Alignment.HasValue)
+            {
+                SetAlignment(state.Alignment.Value);
+                Menu.CheckMenuItem(state.Alignment.Value.GetMenuItemId(), true);
+            }
+
+            if (settings.Transparency && state.Transparency.HasValue)
+            {
+                SetTransparency(state.Transparency.Value);
+                var menuItemId = EnumUtils.GetTransparencyMenuItemId(state.Transparency.Value);
+                if (menuItemId.HasValue)
+                {
+                    Menu.CheckMenuItem(menuItemId.Value, true);
+                }
+            }
+
+            if (settings.Priority && state.Priority.HasValue)
+            {
+                SetPriority(state.Priority.Value);
+                Menu.UncheckPriorityMenu();
+                Menu.CheckMenuItem(state.Priority.Value.GetMenuItemId(), true);
+            }
+
+            if (settings.MinimizeToTrayAlways && state.MinimizeToTrayAlways.HasValue)
+            {
+                SetStateMinimizeToTrayAlways(state.MinimizeToTrayAlways.Value);
+                Menu.CheckMenuItem(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, state.MinimizeToTrayAlways.Value);
             }
         }
 
@@ -686,6 +816,11 @@ namespace SmartSystemMenu
         {
             uint result;
             NativeMethods.SendMessageTimeout((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
+        }
+
+        public void RefreshProcessNameState()
+        {
+            State.ProcessName = Process?.GetMainModuleFileName() ?? string.Empty;
         }
 
         private void _menuItemRestore_Click(object sender, EventArgs e)
@@ -723,7 +858,7 @@ namespace SmartSystemMenu
             return title.ToString();
         }
 
-        private void SetOpacity(IntPtr handle, Byte opacity)
+        private void SetOpacity(IntPtr handle, byte opacity)
         {
             NativeMethods.SetWindowLong(handle, NativeConstants.GWL_EXSTYLE, NativeMethods.GetWindowLong(handle, NativeConstants.GWL_EXSTYLE) | NativeConstants.WS_EX_LAYERED);
             NativeMethods.SetLayeredWindowAttributes(handle, 0, opacity, NativeConstants.LWA_ALPHA);
@@ -740,6 +875,8 @@ namespace SmartSystemMenu
                 }
 
                 _systemTrayIcon.Visible = false;
+                _systemTrayIcon.Dispose();
+                _systemTrayIcon = null;
 
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Restore);
@@ -798,6 +935,7 @@ namespace SmartSystemMenu
                 _systemTrayIcon.ContextMenuStrip = _systemTrayMenu;
                 _systemTrayIcon.MouseClick += SystemTrayIconClick;
             }
+
             _systemTrayIcon.Icon = GetWindowIcon();
             var windowText = GetWindowText();
             _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;

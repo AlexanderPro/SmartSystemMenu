@@ -16,7 +16,7 @@ namespace SmartSystemMenu.Forms
         public event EventHandler<SmartSystemMenuSettingsEventArgs> OkClick;
 
         public SettingsForm(SmartSystemMenuSettings settings)
-        {
+        {            
             InitializeComponent();
 
             try
@@ -35,58 +35,65 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(SmartSystemMenuSettings settings)
         {
-            tabpGeneral.Text = settings.LanguageSettings.GetValue("tab_settings_general");
-            tabpMenuStart.Text = settings.LanguageSettings.GetValue("tab_settings_menu_start");
-            tabpMenuSize.Text = settings.LanguageSettings.GetValue("tab_settings_menu_size");
-            tabpMenu.Text = settings.LanguageSettings.GetValue("tab_settings_menu");
-            grpbLanguage.Text = settings.LanguageSettings.GetValue("grpb_language");
-            grpbProcessExclusions.Text = settings.LanguageSettings.GetValue("grpb_process_exclusions");
-            grpbStartProgram.Text = settings.LanguageSettings.GetValue("grpb_start_program");
-            grpbWindowSize.Text = settings.LanguageSettings.GetValue("grpb_window_size");
-            grpbCloser.Text = settings.LanguageSettings.GetValue("grpb_closer");
-            grpbSizer.Text = settings.LanguageSettings.GetValue("grpb_sizer");
-            grpbDisplay.Text = settings.LanguageSettings.GetValue("grpb_display");
-            chkEnableHighDPI.Text = settings.LanguageSettings.GetValue("chk_enable_high_dpi");
-            clmProcessExclusionName.HeaderText = settings.LanguageSettings.GetValue("clm_process_exclusion_name");
-            clmProcessExclusionEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
-            clmProcessExcusionDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
-            clmStartProgramTitle.HeaderText = settings.LanguageSettings.GetValue("clm_start_program_title");
-            clmStartProgramPath.HeaderText = settings.LanguageSettings.GetValue("clm_start_program_path");
-            clmStartProgramArguments.HeaderText = settings.LanguageSettings.GetValue("clm_start_program_arguments");
-            clmStartProgramEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_edit");
-            clmStartProgramDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_delete");
-            clmWindowSizeTitle.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_title");
-            clmWindowSizeLeft.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_left");
-            clmWindowSizeTop.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_top");
-            clmWindowSizeWidth.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_width");
-            clmWindowSizeHeight.HeaderText = settings.LanguageSettings.GetValue("clm_window_size_height");
-            clmWindowSizeEdit.ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_edit");
-            clmWindowSizeDelete.ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_delete");
-            clmnMenuItemName.HeaderText = settings.LanguageSettings.GetValue("clm_hotkeys_name");
-            clmnHotkeys.HeaderText = settings.LanguageSettings.GetValue("clm_hotkeys_keys");
-            toolTipAddProcessName.SetToolTip(btnProcessExclusionDown, settings.LanguageSettings.GetValue("btn_process_exclusion_down"));
-            toolTipAddProcessName.SetToolTip(btnProcessExclusionUp, settings.LanguageSettings.GetValue("btn_process_exclusion_up"));
-            toolTipAddProcessName.SetToolTip(btnAddProcessExclusion, settings.LanguageSettings.GetValue("btn_add_process_exclusion"));
-            toolTipAddProcessName.SetToolTip(btnAddStartProgram, settings.LanguageSettings.GetValue("btn_add_start_program"));
-            toolTipAddProcessName.SetToolTip(btnStartProgramDown, settings.LanguageSettings.GetValue("btn_start_program_down"));
-            toolTipAddProcessName.SetToolTip(btnStartProgramUp, settings.LanguageSettings.GetValue("btn_start_program_up"));
-            toolTipAddProcessName.SetToolTip(btnAddWindowSize, settings.LanguageSettings.GetValue("btn_add_window_size"));
-            toolTipAddProcessName.SetToolTip(btnWindowSizeDown, settings.LanguageSettings.GetValue("btn_window_size_down"));
-            toolTipAddProcessName.SetToolTip(btnWindowSizeUp, settings.LanguageSettings.GetValue("btn_window_size_up"));
-            toolTipAddProcessName.SetToolTip(btnMenuItemDown, settings.LanguageSettings.GetValue("btn_menu_item_down"));
-            toolTipAddProcessName.SetToolTip(btnMenuItemUp, settings.LanguageSettings.GetValue("btn_menu_item_up"));
-            btnCloser.Text = settings.LanguageSettings.GetValue("closer_button_name");
-            btnApply.Text = settings.LanguageSettings.GetValue("settings_btn_apply");
-            btnCancel.Text = settings.LanguageSettings.GetValue("settings_btn_cancel");
-            Text = settings.LanguageSettings.GetValue("settings_form");
+            tabpGeneral.Text = settings.Language.GetValue("tab_settings_general");
+            tabpMenuStart.Text = settings.Language.GetValue("tab_settings_menu_start");
+            tabpMenuSize.Text = settings.Language.GetValue("tab_settings_menu_size");
+            tabpMenu.Text = settings.Language.GetValue("tab_settings_menu");
+            tabpMenuSaveSelectedItems.Text = settings.Language.GetValue("tab_settings_menu_save");
+            grpbLanguage.Text = settings.Language.GetValue("grpb_language");
+            grpbProcessExclusions.Text = settings.Language.GetValue("grpb_process_exclusions");
+            grpbStartProgram.Text = settings.Language.GetValue("grpb_start_program");
+            grpbWindowSize.Text = settings.Language.GetValue("grpb_window_size");
+            grpbCloser.Text = settings.Language.GetValue("grpb_closer");
+            grpbSizer.Text = settings.Language.GetValue("grpb_sizer");
+            grpbDisplay.Text = settings.Language.GetValue("grpb_display");
+            chkEnableHighDPI.Text = settings.Language.GetValue("chk_enable_high_dpi");
+            clmProcessExclusionName.HeaderText = settings.Language.GetValue("clm_process_exclusion_name");
+            clmProcessExclusionEdit.ToolTipText = settings.Language.GetValue("clm_process_exclusion_edit");
+            clmProcessExcusionDelete.ToolTipText = settings.Language.GetValue("clm_process_exclusion_delete");
+            clmStartProgramTitle.HeaderText = settings.Language.GetValue("clm_start_program_title");
+            clmStartProgramPath.HeaderText = settings.Language.GetValue("clm_start_program_path");
+            clmStartProgramArguments.HeaderText = settings.Language.GetValue("clm_start_program_arguments");
+            clmStartProgramEdit.ToolTipText = settings.Language.GetValue("clm_start_program_edit");
+            clmStartProgramDelete.ToolTipText = settings.Language.GetValue("clm_start_program_delete");
+            clmWindowSizeTitle.HeaderText = settings.Language.GetValue("clm_window_size_title");
+            clmWindowSizeLeft.HeaderText = settings.Language.GetValue("clm_window_size_left");
+            clmWindowSizeTop.HeaderText = settings.Language.GetValue("clm_window_size_top");
+            clmWindowSizeWidth.HeaderText = settings.Language.GetValue("clm_window_size_width");
+            clmWindowSizeHeight.HeaderText = settings.Language.GetValue("clm_window_size_height");
+            clmWindowSizeEdit.ToolTipText = settings.Language.GetValue("clm_window_size_edit");
+            clmWindowSizeDelete.ToolTipText = settings.Language.GetValue("clm_window_size_delete");
+            clmnMenuItemName.HeaderText = settings.Language.GetValue("clm_hotkeys_name");
+            clmnHotkeys.HeaderText = settings.Language.GetValue("clm_hotkeys_keys");
+            toolTipAddProcessName.SetToolTip(btnProcessExclusionDown, settings.Language.GetValue("btn_process_exclusion_down"));
+            toolTipAddProcessName.SetToolTip(btnProcessExclusionUp, settings.Language.GetValue("btn_process_exclusion_up"));
+            toolTipAddProcessName.SetToolTip(btnAddProcessExclusion, settings.Language.GetValue("btn_add_process_exclusion"));
+            toolTipAddProcessName.SetToolTip(btnAddStartProgram, settings.Language.GetValue("btn_add_start_program"));
+            toolTipAddProcessName.SetToolTip(btnStartProgramDown, settings.Language.GetValue("btn_start_program_down"));
+            toolTipAddProcessName.SetToolTip(btnStartProgramUp, settings.Language.GetValue("btn_start_program_up"));
+            toolTipAddProcessName.SetToolTip(btnAddWindowSize, settings.Language.GetValue("btn_add_window_size"));
+            toolTipAddProcessName.SetToolTip(btnWindowSizeDown, settings.Language.GetValue("btn_window_size_down"));
+            toolTipAddProcessName.SetToolTip(btnWindowSizeUp, settings.Language.GetValue("btn_window_size_up"));
+            toolTipAddProcessName.SetToolTip(btnMenuItemDown, settings.Language.GetValue("btn_menu_item_down"));
+            toolTipAddProcessName.SetToolTip(btnMenuItemUp, settings.Language.GetValue("btn_menu_item_up"));
+            chkAeroGlass.Text = settings.Language.GetValue("aero_glass");
+            chkAlwaysOnTop.Text = settings.Language.GetValue("always_on_top");
+            chkAlignment.Text = settings.Language.GetValue("alignment");
+            chkTransparency.Text = settings.Language.GetValue("transparency");
+            chkPriority.Text = settings.Language.GetValue("priority");
+            chkMinimizeToTrayAlways.Text = settings.Language.GetValue("minimize_always_to_systemtray");
+            btnCloser.Text = settings.Language.GetValue("closer_button_name");
+            btnApply.Text = settings.Language.GetValue("settings_btn_apply");
+            btnCancel.Text = settings.Language.GetValue("settings_btn_cancel");
+            Text = settings.Language.GetValue("settings_form");
 
             foreach (var processExclusion in settings.ProcessExclusions)
             {
                 var index = gvProcessExclusions.Rows.Add();
                 var row = gvProcessExclusions.Rows[index];
                 row.Cells[0].Value = processExclusion;
-                row.Cells[1].ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
-                row.Cells[2].ToolTipText = settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
+                row.Cells[1].ToolTipText = settings.Language.GetValue("clm_process_exclusion_edit");
+                row.Cells[2].ToolTipText = settings.Language.GetValue("clm_process_exclusion_delete");
             }
 
             foreach (var item in settings.MenuItems.WindowSizeItems)
@@ -100,8 +107,8 @@ namespace SmartSystemMenu.Forms
                 row.Cells[3].Value = item.Width.ToString();
                 row.Cells[4].Value = item.Height.ToString();
                 row.Cells[5].Value = item.ToString();
-                row.Cells[6].ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_edit");
-                row.Cells[7].ToolTipText = settings.LanguageSettings.GetValue("clm_window_size_delete");
+                row.Cells[6].ToolTipText = settings.Language.GetValue("clm_window_size_edit");
+                row.Cells[7].ToolTipText = settings.Language.GetValue("clm_window_size_delete");
             }
 
             foreach (var item in settings.MenuItems.StartProgramItems)
@@ -112,8 +119,8 @@ namespace SmartSystemMenu.Forms
                 row.Cells[0].Value = cloneItem.Title;
                 row.Cells[1].Value = cloneItem.FileName;
                 row.Cells[2].Value = cloneItem.Arguments;
-                row.Cells[3].ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_edit");
-                row.Cells[4].ToolTipText = settings.LanguageSettings.GetValue("clm_start_program_delete");
+                row.Cells[3].ToolTipText = settings.Language.GetValue("clm_start_program_edit");
+                row.Cells[4].ToolTipText = settings.Language.GetValue("clm_start_program_delete");
                 row.Tag = cloneItem;
             }
 
@@ -136,18 +143,24 @@ namespace SmartSystemMenu.Forms
             cmbLanguage.DataSource = languageItems;
             cmbLanguage.SelectedValue = settings.LanguageName;
 
-            cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_with_margins"));
-            cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_without_margins"));
-            cmbSizer.Items.Add(settings.LanguageSettings.GetValue("sizer_window_client_area"));
+            cmbSizer.Items.Add(settings.Language.GetValue("sizer_window_with_margins"));
+            cmbSizer.Items.Add(settings.Language.GetValue("sizer_window_without_margins"));
+            cmbSizer.Items.Add(settings.Language.GetValue("sizer_window_client_area"));
             cmbSizer.SelectedIndex = (int)settings.Sizer;
             chkEnableHighDPI.Checked = settings.EnableHighDPI;
+            chkAeroGlass.Checked = settings.SaveSelectedItems.AeroGlass;
+            chkAlwaysOnTop.Checked = settings.SaveSelectedItems.AlwaysOnTop;
+            chkAlignment.Checked = settings.SaveSelectedItems.Alignment;
+            chkTransparency.Checked = settings.SaveSelectedItems.Transparency;
+            chkPriority.Checked = settings.SaveSelectedItems.Priority;
+            chkMinimizeToTrayAlways.Checked = settings.SaveSelectedItems.MinimizeToTrayAlways;
 
             var items = new List<Settings.MenuItem>();
             foreach(var item in settings.MenuItems.Items)
             {
                 items.Add((Settings.MenuItem)item.Clone());
             }
-            FillGridViewHotKeys(gvHotkeys, items, settings.LanguageSettings);
+            FillGridViewHotKeys(gvHotkeys, items, settings.Language);
         }
 
         private void GridViewProcessExclusionsCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -159,7 +172,7 @@ namespace SmartSystemMenu.Forms
                 if (e.ColumnIndex == 1)
                 {
                     var cell = grid.Rows[e.RowIndex].Cells[0];
-                    var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings.LanguageSettings);
+                    var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings.Language);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         cell.Value = dialog.ProcessName;
@@ -182,7 +195,7 @@ namespace SmartSystemMenu.Forms
                 var row = grid.Rows[e.RowIndex];
                 if (e.ColumnIndex == 3 && row.Tag is StartProgramMenuItem menuItem)
                 {
-                    var dialog = new StartProgramForm(menuItem, _settings.LanguageSettings);
+                    var dialog = new StartProgramForm(menuItem, _settings.Language);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         row.Cells[0].Value = dialog.MenuItem.Title;
@@ -207,7 +220,7 @@ namespace SmartSystemMenu.Forms
             {
                 if (e.ColumnIndex == 6 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem menuItem)
                 {
-                    var dialog = new SettingsSizeForm(_settings.LanguageSettings, menuItem);
+                    var dialog = new SettingsSizeForm(_settings.Language, menuItem);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         var row = grid.Rows[e.RowIndex];
@@ -242,7 +255,7 @@ namespace SmartSystemMenu.Forms
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
                 var cell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings.LanguageSettings);
+                var dialog = new ProcessExclusionForm(cell.Value.ToString(), _settings.Language);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     cell.Value = dialog.ProcessName;
@@ -291,7 +304,7 @@ namespace SmartSystemMenu.Forms
             var row = grid.Rows[e.RowIndex];
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && row.Tag is StartProgramMenuItem menuItem)
             {
-                var dialog = new StartProgramForm(menuItem, _settings.LanguageSettings);
+                var dialog = new StartProgramForm(menuItem, _settings.Language);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     row.Cells[0].Value = dialog.MenuItem.Title;
@@ -307,7 +320,7 @@ namespace SmartSystemMenu.Forms
             var grid = (DataGridView)sender;
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 5) && e.RowIndex >= 0 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem menuItem)
             {
-                var dialog = new SettingsSizeForm(_settings.LanguageSettings, menuItem);
+                var dialog = new SettingsSizeForm(_settings.Language, menuItem);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     var row = grid.Rows[e.RowIndex];
@@ -332,20 +345,20 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonAddProcessExclusionClick(object sender, EventArgs e)
         {
-            var dialog = new ProcessExclusionForm("", _settings.LanguageSettings);
+            var dialog = new ProcessExclusionForm("", _settings.Language);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvProcessExclusions.Rows.Add();
                 var row = gvProcessExclusions.Rows[index];
                 row.Cells[0].Value = dialog.ProcessName;
-                row.Cells[1].ToolTipText = _settings.LanguageSettings.GetValue("clm_process_exclusion_edit");
-                row.Cells[2].ToolTipText = _settings.LanguageSettings.GetValue("clm_process_exclusion_delete");
+                row.Cells[1].ToolTipText = _settings.Language.GetValue("clm_process_exclusion_edit");
+                row.Cells[2].ToolTipText = _settings.Language.GetValue("clm_process_exclusion_delete");
             }
         }
 
         private void ButtonAddStartProgramClick(object sender, EventArgs e)
         {
-            var dialog = new StartProgramForm(null, _settings.LanguageSettings);
+            var dialog = new StartProgramForm(null, _settings.Language);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvStartProgram.Rows.Add();
@@ -353,15 +366,15 @@ namespace SmartSystemMenu.Forms
                 row.Cells[0].Value = dialog.MenuItem.Title;
                 row.Cells[1].Value = dialog.MenuItem.FileName;
                 row.Cells[2].Value = dialog.MenuItem.Arguments;
-                row.Cells[3].ToolTipText = _settings.LanguageSettings.GetValue("clm_start_program_edit");
-                row.Cells[4].ToolTipText = _settings.LanguageSettings.GetValue("clm_start_program_delete");
+                row.Cells[3].ToolTipText = _settings.Language.GetValue("clm_start_program_edit");
+                row.Cells[4].ToolTipText = _settings.Language.GetValue("clm_start_program_delete");
                 row.Tag = dialog.MenuItem;
             }
         }
 
         private void ButtonAddWindowSizeClick(object sender, EventArgs e)
         {
-            var dialog = new SettingsSizeForm(_settings.LanguageSettings, new WindowSizeMenuItem { Width = 1, Height = 1 });
+            var dialog = new SettingsSizeForm(_settings.Language, new WindowSizeMenuItem { Width = 1, Height = 1 });
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvWindowSize.Rows.Add();
@@ -372,8 +385,8 @@ namespace SmartSystemMenu.Forms
                 row.Cells[3].Value = dialog.MenuItem.Width.ToString();
                 row.Cells[4].Value = dialog.MenuItem.Height.ToString();
                 row.Cells[5].Value = dialog.MenuItem.ToString();
-                row.Cells[6].ToolTipText = _settings.LanguageSettings.GetValue("clm_window_size_edit");
-                row.Cells[7].ToolTipText = _settings.LanguageSettings.GetValue("clm_window_size_delete");
+                row.Cells[6].ToolTipText = _settings.Language.GetValue("clm_window_size_edit");
+                row.Cells[7].ToolTipText = _settings.Language.GetValue("clm_window_size_delete");
                 row.Tag = dialog.MenuItem;
             }
         }
@@ -412,7 +425,7 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonWindowCloserClick(object sender, EventArgs e)
         {
-            var dialog = new SettingsCloserForm(_settings.LanguageSettings, _closerSettings.Key1, _closerSettings.Key2, _closerSettings.MouseButton, _closerSettings.Type);
+            var dialog = new SettingsCloserForm(_settings.Language, _closerSettings.Key1, _closerSettings.Key2, _closerSettings.MouseButton, _closerSettings.Type);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 _closerSettings.Key1 = dialog.Key1;
@@ -436,7 +449,7 @@ namespace SmartSystemMenu.Forms
                     {
                         ((List<Settings.MenuItem>)list).Reverse(index - 1, 2);
                         gvHotkeys.Rows.Clear();
-                        FillGridViewHotKeys(gvHotkeys, items, _settings.LanguageSettings);
+                        FillGridViewHotKeys(gvHotkeys, items, _settings.Language);
                         foreach (DataGridViewRow row in gvHotkeys.Rows)
                         {
                             if (row.Tag == item)
@@ -465,7 +478,7 @@ namespace SmartSystemMenu.Forms
                     {
                         ((List<Settings.MenuItem>)list).Reverse(index, 2);
                         gvHotkeys.Rows.Clear();
-                        FillGridViewHotKeys(gvHotkeys, items, _settings.LanguageSettings);
+                        FillGridViewHotKeys(gvHotkeys, items, _settings.Language);
                         foreach (DataGridViewRow row in gvHotkeys.Rows)
                         {
                             if (row.Tag == item)
@@ -517,17 +530,23 @@ namespace SmartSystemMenu.Forms
             settings.Closer.Key2 = _closerSettings.Key2;
             settings.Closer.MouseButton = _closerSettings.MouseButton;
             settings.Closer.Type = _closerSettings.Type;
+            settings.SaveSelectedItems.AeroGlass = chkAeroGlass.Checked;
+            settings.SaveSelectedItems.AlwaysOnTop = chkAlwaysOnTop.Checked;
+            settings.SaveSelectedItems.Alignment = chkAlignment.Checked;
+            settings.SaveSelectedItems.Transparency = chkTransparency.Checked;
+            settings.SaveSelectedItems.Priority = chkPriority.Checked;
+            settings.SaveSelectedItems.MinimizeToTrayAlways = chkMinimizeToTrayAlways.Checked;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 
             if (!settings.Equals(_settings))
             {
-                MessageBox.Show(_settings.LanguageSettings.GetValue("message_box_attention_content"), _settings.LanguageSettings.GetValue("message_box_attention_title"), MessageBoxButtons.OK);
+                MessageBox.Show(_settings.Language.GetValue("message_box_attention_content"), _settings.Language.GetValue("message_box_attention_title"), MessageBoxButtons.OK);
 
                 try
                 {
-                    settings.LanguageSettings = _settings.LanguageSettings;
+                    settings.Language = _settings.Language;
 
                     var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
                     SmartSystemMenuSettings.Save(settingsFileName, settings);
@@ -566,7 +585,7 @@ namespace SmartSystemMenu.Forms
         private void ShowHotkeysForm(DataGridViewRow row)
         {
             var menuItem = (Settings.MenuItem)row.Tag;
-            var form = new HotkeysForm(_settings.LanguageSettings, menuItem);
+            var form = new HotkeysForm(_settings.Language, menuItem);
             var result = form.ShowDialog(this);
             if (result == DialogResult.OK)
             {

@@ -34,6 +34,8 @@ namespace SmartSystemMenu.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabpGeneral = new System.Windows.Forms.TabPage();
+            this.grpbDisplay = new System.Windows.Forms.GroupBox();
+            this.chkEnableHighDPI = new System.Windows.Forms.CheckBox();
             this.grpbCloser = new System.Windows.Forms.GroupBox();
             this.btnCloser = new System.Windows.Forms.Button();
             this.grpbLanguage = new System.Windows.Forms.GroupBox();
@@ -82,13 +84,20 @@ namespace SmartSystemMenu.Forms
             this.clmStartProgramArguments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStartProgramEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.clmStartProgramDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabpMenuSaveSelectedItems = new System.Windows.Forms.TabPage();
+            this.grpbSaveSelectedItems = new System.Windows.Forms.GroupBox();
+            this.chkMinimizeToTrayAlways = new System.Windows.Forms.CheckBox();
+            this.chkPriority = new System.Windows.Forms.CheckBox();
+            this.chkTransparency = new System.Windows.Forms.CheckBox();
+            this.chkAlignment = new System.Windows.Forms.CheckBox();
+            this.chkAlwaysOnTop = new System.Windows.Forms.CheckBox();
+            this.chkAeroGlass = new System.Windows.Forms.CheckBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
-            this.grpbDisplay = new System.Windows.Forms.GroupBox();
-            this.chkEnableHighDPI = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
+            this.grpbDisplay.SuspendLayout();
             this.grpbCloser.SuspendLayout();
             this.grpbLanguage.SuspendLayout();
             this.grpbProcessExclusions.SuspendLayout();
@@ -103,7 +112,8 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
-            this.grpbDisplay.SuspendLayout();
+            this.tabpMenuSaveSelectedItems.SuspendLayout();
+            this.grpbSaveSelectedItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -112,6 +122,7 @@ namespace SmartSystemMenu.Forms
             this.tabMain.Controls.Add(this.tabpMenu);
             this.tabMain.Controls.Add(this.tabpMenuSize);
             this.tabMain.Controls.Add(this.tabpMenuStart);
+            this.tabMain.Controls.Add(this.tabpMenuSaveSelectedItems);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabMain.Location = new System.Drawing.Point(0, 0);
             this.tabMain.Name = "tabMain";
@@ -131,6 +142,24 @@ namespace SmartSystemMenu.Forms
             this.tabpGeneral.Size = new System.Drawing.Size(513, 390);
             this.tabpGeneral.TabIndex = 0;
             this.tabpGeneral.UseVisualStyleBackColor = true;
+            // 
+            // grpbDisplay
+            // 
+            this.grpbDisplay.Controls.Add(this.chkEnableHighDPI);
+            this.grpbDisplay.Location = new System.Drawing.Point(265, 87);
+            this.grpbDisplay.Name = "grpbDisplay";
+            this.grpbDisplay.Size = new System.Drawing.Size(240, 69);
+            this.grpbDisplay.TabIndex = 2;
+            this.grpbDisplay.TabStop = false;
+            // 
+            // chkEnableHighDPI
+            // 
+            this.chkEnableHighDPI.AutoSize = true;
+            this.chkEnableHighDPI.Location = new System.Drawing.Point(6, 28);
+            this.chkEnableHighDPI.Name = "chkEnableHighDPI";
+            this.chkEnableHighDPI.Size = new System.Drawing.Size(15, 14);
+            this.chkEnableHighDPI.TabIndex = 0;
+            this.chkEnableHighDPI.UseVisualStyleBackColor = true;
             // 
             // grpbCloser
             // 
@@ -654,6 +683,90 @@ namespace SmartSystemMenu.Forms
             this.clmStartProgramDelete.UseColumnTextForButtonValue = true;
             this.clmStartProgramDelete.Width = 30;
             // 
+            // tabpMenuSaveSelectedItems
+            // 
+            this.tabpMenuSaveSelectedItems.Controls.Add(this.grpbSaveSelectedItems);
+            this.tabpMenuSaveSelectedItems.Location = new System.Drawing.Point(4, 22);
+            this.tabpMenuSaveSelectedItems.Name = "tabpMenuSaveSelectedItems";
+            this.tabpMenuSaveSelectedItems.Padding = new System.Windows.Forms.Padding(3);
+            this.tabpMenuSaveSelectedItems.Size = new System.Drawing.Size(513, 390);
+            this.tabpMenuSaveSelectedItems.TabIndex = 4;
+            this.tabpMenuSaveSelectedItems.UseVisualStyleBackColor = true;
+            // 
+            // grpbSaveSelectedItems
+            // 
+            this.grpbSaveSelectedItems.Controls.Add(this.chkMinimizeToTrayAlways);
+            this.grpbSaveSelectedItems.Controls.Add(this.chkPriority);
+            this.grpbSaveSelectedItems.Controls.Add(this.chkTransparency);
+            this.grpbSaveSelectedItems.Controls.Add(this.chkAlignment);
+            this.grpbSaveSelectedItems.Controls.Add(this.chkAlwaysOnTop);
+            this.grpbSaveSelectedItems.Controls.Add(this.chkAeroGlass);
+            this.grpbSaveSelectedItems.Location = new System.Drawing.Point(8, 16);
+            this.grpbSaveSelectedItems.Name = "grpbSaveSelectedItems";
+            this.grpbSaveSelectedItems.Size = new System.Drawing.Size(497, 368);
+            this.grpbSaveSelectedItems.TabIndex = 1;
+            this.grpbSaveSelectedItems.TabStop = false;
+            // 
+            // chkMinimizeToTrayAlways
+            // 
+            this.chkMinimizeToTrayAlways.AutoSize = true;
+            this.chkMinimizeToTrayAlways.Location = new System.Drawing.Point(6, 178);
+            this.chkMinimizeToTrayAlways.Name = "chkMinimizeToTrayAlways";
+            this.chkMinimizeToTrayAlways.Size = new System.Drawing.Size(142, 17);
+            this.chkMinimizeToTrayAlways.TabIndex = 6;
+            this.chkMinimizeToTrayAlways.Text = "Minimize To Tray Always";
+            this.chkMinimizeToTrayAlways.UseVisualStyleBackColor = true;
+            // 
+            // chkPriority
+            // 
+            this.chkPriority.AutoSize = true;
+            this.chkPriority.Location = new System.Drawing.Point(6, 148);
+            this.chkPriority.Name = "chkPriority";
+            this.chkPriority.Size = new System.Drawing.Size(57, 17);
+            this.chkPriority.TabIndex = 5;
+            this.chkPriority.Text = "Priority";
+            this.chkPriority.UseVisualStyleBackColor = true;
+            // 
+            // chkTransparency
+            // 
+            this.chkTransparency.AutoSize = true;
+            this.chkTransparency.Location = new System.Drawing.Point(6, 118);
+            this.chkTransparency.Name = "chkTransparency";
+            this.chkTransparency.Size = new System.Drawing.Size(91, 17);
+            this.chkTransparency.TabIndex = 4;
+            this.chkTransparency.Text = "Transparency";
+            this.chkTransparency.UseVisualStyleBackColor = true;
+            // 
+            // chkAlignment
+            // 
+            this.chkAlignment.AutoSize = true;
+            this.chkAlignment.Location = new System.Drawing.Point(6, 88);
+            this.chkAlignment.Name = "chkAlignment";
+            this.chkAlignment.Size = new System.Drawing.Size(72, 17);
+            this.chkAlignment.TabIndex = 3;
+            this.chkAlignment.Text = "Alignment";
+            this.chkAlignment.UseVisualStyleBackColor = true;
+            // 
+            // chkAlwaysOnTop
+            // 
+            this.chkAlwaysOnTop.AutoSize = true;
+            this.chkAlwaysOnTop.Location = new System.Drawing.Point(6, 58);
+            this.chkAlwaysOnTop.Name = "chkAlwaysOnTop";
+            this.chkAlwaysOnTop.Size = new System.Drawing.Size(98, 17);
+            this.chkAlwaysOnTop.TabIndex = 2;
+            this.chkAlwaysOnTop.Text = "Always On Top";
+            this.chkAlwaysOnTop.UseVisualStyleBackColor = true;
+            // 
+            // chkAeroGlass
+            // 
+            this.chkAeroGlass.AutoSize = true;
+            this.chkAeroGlass.Location = new System.Drawing.Point(6, 28);
+            this.chkAeroGlass.Name = "chkAeroGlass";
+            this.chkAeroGlass.Size = new System.Drawing.Size(77, 17);
+            this.chkAeroGlass.TabIndex = 1;
+            this.chkAeroGlass.Text = "Aero Glass";
+            this.chkAeroGlass.UseVisualStyleBackColor = true;
+            // 
             // btnApply
             // 
             this.btnApply.Location = new System.Drawing.Point(340, 422);
@@ -672,24 +785,6 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
-            // grpbDisplay
-            // 
-            this.grpbDisplay.Controls.Add(this.chkEnableHighDPI);
-            this.grpbDisplay.Location = new System.Drawing.Point(265, 87);
-            this.grpbDisplay.Name = "grpbDisplay";
-            this.grpbDisplay.Size = new System.Drawing.Size(240, 69);
-            this.grpbDisplay.TabIndex = 2;
-            this.grpbDisplay.TabStop = false;
-            // 
-            // chkEnableHighDPI
-            // 
-            this.chkEnableHighDPI.AutoSize = true;
-            this.chkEnableHighDPI.Location = new System.Drawing.Point(6, 28);
-            this.chkEnableHighDPI.Name = "chkEnableHighDPI";
-            this.chkEnableHighDPI.Size = new System.Drawing.Size(15, 14);
-            this.chkEnableHighDPI.TabIndex = 0;
-            this.chkEnableHighDPI.UseVisualStyleBackColor = true;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,6 +802,8 @@ namespace SmartSystemMenu.Forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.tabMain.ResumeLayout(false);
             this.tabpGeneral.ResumeLayout(false);
+            this.grpbDisplay.ResumeLayout(false);
+            this.grpbDisplay.PerformLayout();
             this.grpbCloser.ResumeLayout(false);
             this.grpbLanguage.ResumeLayout(false);
             this.grpbProcessExclusions.ResumeLayout(false);
@@ -721,8 +818,9 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
-            this.grpbDisplay.ResumeLayout(false);
-            this.grpbDisplay.PerformLayout();
+            this.tabpMenuSaveSelectedItems.ResumeLayout(false);
+            this.grpbSaveSelectedItems.ResumeLayout(false);
+            this.grpbSaveSelectedItems.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -784,5 +882,13 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.Button btnMenuItemUp;
         private System.Windows.Forms.GroupBox grpbDisplay;
         private System.Windows.Forms.CheckBox chkEnableHighDPI;
+        private System.Windows.Forms.TabPage tabpMenuSaveSelectedItems;
+        private System.Windows.Forms.GroupBox grpbSaveSelectedItems;
+        private System.Windows.Forms.CheckBox chkAeroGlass;
+        private System.Windows.Forms.CheckBox chkAlwaysOnTop;
+        private System.Windows.Forms.CheckBox chkAlignment;
+        private System.Windows.Forms.CheckBox chkTransparency;
+        private System.Windows.Forms.CheckBox chkPriority;
+        private System.Windows.Forms.CheckBox chkMinimizeToTrayAlways;
     }
 }

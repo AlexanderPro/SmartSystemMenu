@@ -25,7 +25,9 @@ namespace SmartSystemMenu
         {
             var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
             var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
+            var windowFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window.xml");
             var settings = File.Exists(settingsFileName) && File.Exists(languageFileName) ? SmartSystemMenuSettings.Read(settingsFileName, languageFileName) : new SmartSystemMenuSettings();
+            var windowSettings = File.Exists(windowFileName) ? WindowSettings.Read(windowFileName) : new WindowSettings();
 
             // Enable High DPI Support
             if (settings.EnableHighDPI)
@@ -64,7 +66,7 @@ namespace SmartSystemMenu
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(settings));
+            Application.Run(new MainForm(settings, windowSettings));
         }
 
         static void ProcessCommandLine(ToggleParser toggleParser, SmartSystemMenuSettings settings)
@@ -284,7 +286,7 @@ namespace SmartSystemMenu
                 //Information dialog
                 if (toggleParser.HasToggle("i") || toggleParser.HasToggle("information"))
                 {
-                    var dialog = new InfoForm(window.GetWindowInfo(), settings.LanguageSettings);
+                    var dialog = new InfoForm(window.GetWindowInfo(), settings.Language);
                     dialog.ShowDialog();
                 }
 
@@ -296,11 +298,11 @@ namespace SmartSystemMenu
                     {
                         OverwritePrompt = true,
                         ValidateNames = true,
-                        Title = settings.LanguageSettings.GetValue("save_screenshot_title"),
-                        FileName = settings.LanguageSettings.GetValue("save_screenshot_filename"),
-                        DefaultExt = settings.LanguageSettings.GetValue("save_screenshot_default_ext"),
+                        Title = settings.Language.GetValue("save_screenshot_title"),
+                        FileName = settings.Language.GetValue("save_screenshot_filename"),
+                        DefaultExt = settings.Language.GetValue("save_screenshot_default_ext"),
                         RestoreDirectory = false,
-                        Filter = settings.LanguageSettings.GetValue("save_screenshot_filter")
+                        Filter = settings.Language.GetValue("save_screenshot_filter")
                     };
                     if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
                     {

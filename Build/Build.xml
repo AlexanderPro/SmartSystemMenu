@@ -23,6 +23,8 @@
     <SmartSystemMenuConfigurationDestFile Include="$(ApplicationPath)\SmartSystemMenu.xml" />
     <SmartSystemMenuLanguageSourceFile Include="$(SmartSystemMenuProjectPath)\Language.xml" />
     <SmartSystemMenuLanguageDestFile Include="$(ApplicationPath)\Language.xml" />
+    <SmartSystemMenuWindowSourceFile Include="$(SmartSystemMenuProjectPath)\Window.xml" />
+    <SmartSystemMenuWindowDestFile Include="$(ApplicationPath)\Window.xml" />
     <EmptyTextForFile Include="Empty File" />
   </ItemGroup>
 
@@ -38,6 +40,7 @@
     <CallTarget Targets="Copy_Release_x32_SmartSystemMenu" />
     <CallTarget Targets="CopySmartSystemMenuConfigurationFile" />
     <CallTarget Targets="CopySmartSystemMenuLanguageFile" />
+    <CallTarget Targets="CopySmartSystemMenuWindowFile" />
   </Target>
 
   <Target Name="Build_Release_x32_SmartSystemMenuHook">
@@ -106,5 +109,10 @@
   <Target Name="CopySmartSystemMenuLanguageFile">
     <Message Text="Copy $(SmartSystemMenuLanguageSourceFile) to $(SmartSystemMenuProjectName)" />
     <Copy SourceFiles="@(SmartSystemMenuLanguageSourceFile)" DestinationFiles="@(SmartSystemMenuLanguageDestFile)" />
+  </Target>
+
+  <Target Name="CopySmartSystemMenuWindowFile">
+    <Message Text="Copy $(SmartSystemMenuWindowSourceFile) to $(SmartSystemMenuProjectName)" />
+    <Copy SourceFiles="@(SmartSystemMenuWindowSourceFile)" DestinationFiles="@(SmartSystemMenuWindowDestFile)" />
   </Target>
 </Project>

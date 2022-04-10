@@ -8,13 +8,13 @@ namespace SmartSystemMenu.Extensions
         {
             switch (priority)
             {
-                case Priority.RealTime: return (int)MenuItemId.SC_PRIORITY_REAL_TIME;
-                case Priority.High: return (int)MenuItemId.SC_PRIORITY_HIGH;
-                case Priority.AboveNormal: return (int)MenuItemId.SC_PRIORITY_ABOVE_NORMAL;
-                case Priority.Normal: return (int)MenuItemId.SC_PRIORITY_NORMAL;
-                case Priority.BelowNormal: return (int)MenuItemId.SC_PRIORITY_BELOW_NORMAL;
-                case Priority.Idle: return (int)MenuItemId.SC_PRIORITY_IDLE;
-                default: return (int)MenuItemId.SC_PRIORITY_NORMAL;
+                case Priority.RealTime: return MenuItemId.SC_PRIORITY_REAL_TIME;
+                case Priority.High: return MenuItemId.SC_PRIORITY_HIGH;
+                case Priority.AboveNormal: return MenuItemId.SC_PRIORITY_ABOVE_NORMAL;
+                case Priority.Normal: return MenuItemId.SC_PRIORITY_NORMAL;
+                case Priority.BelowNormal: return MenuItemId.SC_PRIORITY_BELOW_NORMAL;
+                case Priority.Idle: return MenuItemId.SC_PRIORITY_IDLE;
+                default: return MenuItemId.SC_PRIORITY_NORMAL;
             }
         }
 

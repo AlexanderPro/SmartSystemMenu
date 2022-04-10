@@ -82,6 +82,7 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\WindowAlignmentExtensions.cs" />
     <Compile Include="Forms\MessageBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,9 +140,13 @@
     <Compile Include="HotKeys\VirtualKeyModifier.cs" />
     <Compile Include="MenuItemId.cs" />
     <Compile Include="Settings\CloserSettings.cs" />
+    <Compile Include="Settings\SaveSelectedItemsSettings.cs" />
+    <Compile Include="Settings\WindowSettings.cs" />
     <Compile Include="Settings\MenuItemType.cs" />
     <Compile Include="ToggleParser.cs" />
     <Compile Include="UserType.cs" />
+    <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Utils\FileUtils.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
     <Compile Include="WindowCloserType.cs" />
     <Compile Include="Settings\LanguageSettings.cs" />
@@ -219,6 +224,7 @@
     <Compile Include="Window.cs" />
     <Compile Include="WindowInfo.cs" />
     <Compile Include="WindowSizerType.cs" />
+    <Compile Include="WindowState.cs" />
     <Compile Include="WmiProcessInfo.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -285,6 +291,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Window.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
     <Content Include="ArrowDown.png" />
     <Content Include="ArrowUp.png" />

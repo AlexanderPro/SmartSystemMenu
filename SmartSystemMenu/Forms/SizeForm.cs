@@ -18,7 +18,7 @@ namespace SmartSystemMenu.Forms
         public SizeForm(Window window, SmartSystemMenuSettings settings)
         {
             InitializeComponent();
-            InitializeControls(window, settings.LanguageSettings);
+            InitializeControls(window, settings.Language);
         }
 
         private void InitializeControls(Window window, LanguageSettings settings)

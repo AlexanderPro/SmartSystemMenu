@@ -1,6 +1,6 @@
 ﻿namespace SmartSystemMenu
 {
-    enum WindowAlignment
+    public enum WindowAlignment
     {
         TopLeft = 1,
         TopCenter = 2,

@@ -23,7 +23,7 @@ namespace SmartSystemMenu.Settings
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 }
