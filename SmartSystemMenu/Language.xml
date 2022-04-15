@@ -1123,7 +1123,7 @@
       <item name="copy_window_text" value="창 텍스트 복사" />
       <item name="copy_window_title" value="창 제목 복사" />
       <item name="copy_full_process_path" value="전체 프로세스 경로 복사" />
-      <item name="clear_clipboard" value="분명한" />
+      <item name="clear_clipboard" value="지우기" />
       <item name="drag_by_mouse" value="마우스로 드래그" />
       <item name="size" value="크기 변경" />
       <item name="size_default" value="기본" />
@@ -1140,8 +1140,8 @@
       <item name="align_bottom_left" value="하단 왼쪽" />
       <item name="align_bottom_center" value="하단 가운데" />
       <item name="align_bottom_right" value="하단 오른쪽" />
-      <item name="align_center_horizontally" value="수평 중앙" />
-      <item name="align_center_vertically" value="세로 중앙" />
+      <item name="align_center_horizontally" value="가로 가운데" />
+      <item name="align_center_vertically" value="세로 가운데" />
       <item name="align_default" value="기본" />
       <item name="align_custom" value="사용자 정의..." />
       <item name="transparency" value="투명도" />
@@ -1159,12 +1159,12 @@
       <item name="system_tray" value="시스템 트레이" />
       <item name="minimize_to_systemtray" value="트레이로 최소화" />
       <item name="minimize_always_to_systemtray" value="항상 트레이로 최소화" />
-      <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
+      <item name="suspend_to_systemtray" value="일시 중단 및 트레이 최소화" />
       <item name="other_windows" value="다른 창" />
-      <item name="minimize_other_windows" value="최소화" />
-      <item name="close_other_windows" value="닫기" />
-      <item name="start_program" value="시작할 프로그램" />
-      <item name="save_selected_items" value="구하다" />
+      <item name="minimize_other_windows" value="다른 창 최소화" />
+      <item name="close_other_windows" value="다른 창 닫기" />
+      <item name="start_program" value="프로그램 실행" />
+      <item name="save_selected_items" value="저장" />
       <item name="grp_window" value="창" />
       <item name="grp_process" value="프로세스" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1176,7 +1176,7 @@
       <item name="lbl_parent_window_handle" value="부모 창 핸들:" />
       <item name="lbl_window_size" value="창 크기:" />
       <item name="lbl_window_position" value="창 위치:" />
-      <item name="lbl_extended_frame_bounds" value="Extended Frame Bounds:" />
+      <item name="lbl_extended_frame_bounds" value="확장된 프레임 경계:" />
       <item name="lbl_instance" value="인스턴스:" />
       <item name="lbl_process_id" value="프로세스 ID:" />
       <item name="lbl_thread_id" value="스레드 ID:" />
@@ -1209,7 +1209,7 @@
       <item name="save_screenshot_filename" value="창 스크린샷" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap 이미지 (*.bmp)|*.bmp|Gif 이미지 (*.gif)|*.gif|JPEG 이미지 (*.jpeg)|*.jpeg|Png 이미지 (*.png)|*.png|Tiff 이미지 (*.tiff)|*.tiff|Wmf 이미지 (*.wmf)|*.wmf" />
-      <item name="size_form" value="크기 저장" />
+      <item name="size_form" value="크기 설정" />
       <item name="size_btn_apply" value="적용" />
       <item name="lbl_size_form_height" value="높이:" />
       <item name="lbl_size_form_width" value="너비:" />
@@ -1231,7 +1231,7 @@
       <item name="about_btn_ok" value="확인" />
       <item name="settings_form" value="설정" />
       <item name="tab_settings_general" value="일반" />
-      <item name="grpb_process_exclusions" value="제외할 프로세스" />
+      <item name="grpb_process_exclusions" value="프로세스 제외" />
       <item name="clm_process_exclusion_name" value="파일 이름" />
       <item name="clm_process_exclusion_edit" value="편집" />
       <item name="clm_process_exclusion_delete" value="삭제" />
@@ -1239,7 +1239,7 @@
       <item name="btn_process_exclusion_down" value="프로세스 아래로 이동" />
       <item name="btn_add_process_exclusion" value="프로세스 이름 추가" />
       <item name="tab_settings_menu" value="메뉴" />
-      <item name="grpb_start_program" value="SmartSystemMenu 메뉴 항목 시작" />
+      <item name="grpb_start_program" value="프로그램 실행 메뉴 항목" />
       <item name="clm_start_program_title" value="제목" />
       <item name="clm_start_program_path" value="파일 이름" />
       <item name="clm_start_program_arguments" value="정렬" />
@@ -1247,11 +1247,11 @@
       <item name="clm_start_program_delete" value="삭제" />
       <item name="btn_start_program_up" value="프로그램 위로 이동" />
       <item name="btn_start_program_down" value="프로그램 아래로 이동" />
-      <item name="btn_add_start_program" value="시작할 프로그램 추가" />
+      <item name="btn_add_start_program" value="프로그램 실행 추가" />
       <item name="settings_btn_apply" value="확인" />
       <item name="settings_btn_cancel" value="취소" />
-      <item name="grpb_window_size" value="Window Size Menu Items" />
-      <item name="window_size_form" value="Window Size" />
+      <item name="grpb_window_size" value="Window 크기 메뉴 항목" />
+      <item name="window_size_form" value="창 크기" />
       <item name="window_size_btn_apply" value="확인" />
       <item name="window_size_btn_cancel" value="취소" />
       <item name="clm_window_size_title" value="제목" />
@@ -1269,27 +1269,27 @@
       <item name="lbl_window_size_key3" value="키 3:" />
       <item name="lbl_window_size_top" value="위:" />
       <item name="lbl_window_size_left" value="왼쪽:" />
-      <item name="btn_window_size_up" value="Move Up" />
-      <item name="btn_window_size_down" value="Move Down" />
-      <item name="btn_add_window_size" value="더하다" />
-      <item name="btn_menu_item_up" value="Move Up" />
-      <item name="btn_menu_item_down" value="Move Down" />
-      <item name="process_name_form" value="제외할 프로세스" />
+      <item name="btn_window_size_up" value="위로 이동" />
+      <item name="btn_window_size_down" value="아래로 이동" />
+      <item name="btn_add_window_size" value="추가" />
+      <item name="btn_menu_item_up" value="위로 이동" />
+      <item name="btn_menu_item_down" value="아래로 이동" />
+      <item name="process_name_form" value="프로세스 제외" />
       <item name="process_lbl_file_name" value="파일 이름:" />
       <item name="process_btn_apply" value="확인" />
       <item name="process_btn_cancel" value="취소" />
       <item name="process_browse_file_filter" value="실행 파일 (*.exe)|*.exe|모든 파일 (*.*)|*.*" />
-      <item name="start_program_form" value="시작할 프로그램" />
+      <item name="start_program_form" value="프로그램 실행" />
       <item name="start_program_lbl_title" value="제목:" />
       <item name="start_program_lbl_file_name" value="파일 이름:" />
       <item name="start_program_lbl_arguments" value="정렬:" />
       <item name="start_program_lbl_runas" value="실행:" />
-      <item name="start_program_lbl_begin" value="시작하다:" />
-      <item name="start_program_lbl_end" value="끝:" />
-      <item name="start_program_show_window" value="쇼 윈도우" />
-      <item name="start_program_use_window_working_directory" value="창 작업 디렉토리 사용" />
-      <item name="start_program_parameter" value="매개변수" />
-      <item name="start_program_normal" value="정상" />
+      <item name="start_program_lbl_begin" value="시작:" />
+      <item name="start_program_lbl_end" value="종료:" />
+      <item name="start_program_show_window" value="창 표시" />
+      <item name="start_program_use_window_working_directory" value="창 작업 디렉터리 사용" />
+      <item name="start_program_parameter" value="매개 변수" />
+      <item name="start_program_normal" value="일반" />
       <item name="start_program_administrator" value="관리자" />
       <item name="start_program_btn_apply" value="확인" />
       <item name="start_program_btn_cancel" value="취소" />
@@ -1306,9 +1306,9 @@
       <item name="tab_settings_hotkeys" value="단축키" />
       <item name="clm_hotkeys_name" value="이름" />
       <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
-      <item name="tab_settings_menu_start" value="메뉴 (시작할 프로그램)" />
+      <item name="tab_settings_menu_start" value="메뉴 (프로그램 실행)" />
       <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
-      <item name="tab_settings_menu_save" value="메뉴 (구하다)" />
+      <item name="tab_settings_menu_save" value="메뉴 (저장)" />
       <item name="grpb_closer" value="마우스 클릭으로 창 닫기" />
       <item name="closer_button_name" value="설정..." />
       <item name="closer_form" value="설정" />
@@ -1323,13 +1323,13 @@
       <item name="closer_kill_process_with_foreground_window" value="전경 창으로 프로세스 종료" />
       <item name="closer_kill_process_with_window_under_cursor" value="커서 아래 창으로 프로세스 종료" />
       <item name="grpb_sizer" value="창 크기를 설정하는 방법" />
-      <item name="grpb_display" value="Display" />
-      <item name="chk_enable_high_dpi" value="Enable High DPI" />
-      <item name="sizer_window_with_margins" value="여백이 있는 창" />
+      <item name="grpb_display" value="표시" />
+      <item name="chk_enable_high_dpi" value="높은 DPI 사용" />
+      <item name="sizer_window_with_margins" value="여백 있는 창" />
       <item name="sizer_window_without_margins" value="여백 없는 창" />
       <item name="sizer_window_client_area" value="창 클라이언트 영역" />
       <item name="parameter_btn_apply" value="확인" />
-      <item name="parameter_form" value="입력 매개변수" />
+      <item name="parameter_form" value="입력 매개 변수" />
     </ko>
     <ru>
       <item name="separator" value="Разделитель" />
