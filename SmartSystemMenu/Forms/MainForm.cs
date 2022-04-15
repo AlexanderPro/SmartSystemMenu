@@ -107,10 +107,10 @@ namespace SmartSystemMenu.Forms
             foreach (var window in _windows)
             {
                 var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
-                var fileName = Path.GetFileName(processPath).ToLower();
-                if (!string.IsNullOrEmpty(fileName) && _settings.ProcessExclusions.Contains(fileName))
+                var fileName = Path.GetFileName(processPath);
+                if (!string.IsNullOrEmpty(fileName) && _settings.ProcessExclusions.Contains(fileName.ToLower()))
                 {
-                    return;
+                    continue;
                 }
 
                 var isAdded = window.Menu.Create();
@@ -319,8 +319,8 @@ namespace SmartSystemMenu.Forms
                 if (isWriteProcess && !filterTitles.Any(s => window.GetWindowText() == s))
                 {
                     var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
-                    var fileName = Path.GetFileName(processPath).ToLower();
-                    if (!string.IsNullOrEmpty(fileName) && _settings.ProcessExclusions.Contains(fileName))
+                    var fileName = Path.GetFileName(processPath);
+                    if (!string.IsNullOrEmpty(fileName) && _settings.ProcessExclusions.Contains(fileName.ToLower()))
                     {
                         return;
                     }
@@ -807,7 +807,11 @@ namespace SmartSystemMenu.Forms
                                 _windowSettings.Items.Add((WindowState)window.State.Clone());
                             }
 
+#if WIN32
                             var fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window.xml");
+#else
+                            var fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window64.xml");
+#endif
                             WindowSettings.Save(fileName, _windowSettings);
                         }
                     }
@@ -831,7 +835,11 @@ namespace SmartSystemMenu.Forms
                             }
 
                             _windowSettings.Items.Add((WindowState)window.State.Clone());
+#if WIN32
                             var fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window.xml");
+#else
+                            var fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window64.xml");
+#endif
                             WindowSettings.Save(fileName, _windowSettings);
                         }
                     }

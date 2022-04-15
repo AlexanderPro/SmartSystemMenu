@@ -25,7 +25,12 @@ namespace SmartSystemMenu
         {
             var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
             var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
+#if WIN32
             var windowFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window.xml");
+#else
+            var windowFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window64.xml");
+#endif
+
             var settings = File.Exists(settingsFileName) && File.Exists(languageFileName) ? SmartSystemMenuSettings.Read(settingsFileName, languageFileName) : new SmartSystemMenuSettings();
             var windowSettings = File.Exists(windowFileName) ? WindowSettings.Read(windowFileName) : new WindowSettings();
 

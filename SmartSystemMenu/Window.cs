@@ -224,11 +224,6 @@ namespace SmartSystemMenu
             _menuItemClose.Name = $"miClose_{Handle}";
             _menuItemClose.Text = languageSettings.GetValue("mi_close");
             _menuItemClose.Click += _menuItemClose_Click;
-            var components = new Container();
-            _systemTrayMenu = new ContextMenuStrip(components);
-            _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemRestore, _menuItemClose });
-            _systemTrayMenu.Name = $"systemTrayMenu_{Handle}";
-            _systemTrayMenu.Size = new Size(176, 80);
             Menu = new SystemMenu(windowHandle, menuItems, languageSettings);
 
             //Menu.Create();
@@ -875,8 +870,10 @@ namespace SmartSystemMenu
                 }
 
                 _systemTrayIcon.Visible = false;
-                _systemTrayIcon.Dispose();
-                _systemTrayIcon = null;
+                /*_systemTrayMenu?.Dispose();
+                _systemTrayIcon?.Dispose();
+                _systemTrayMenu = null;
+                _systemTrayIcon = null;*/
 
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
                 NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Restore);
@@ -929,13 +926,8 @@ namespace SmartSystemMenu
 
         private void CreateIconInSystemTray()
         {
-            if (_systemTrayIcon == null)
-            {
-                _systemTrayIcon = new NotifyIcon();
-                _systemTrayIcon.ContextMenuStrip = _systemTrayMenu;
-                _systemTrayIcon.MouseClick += SystemTrayIconClick;
-            }
-
+            _systemTrayMenu = _systemTrayMenu ?? CreateSystemTrayMenu();
+            _systemTrayIcon = _systemTrayIcon ?? CreateNotifyIcon(_systemTrayMenu);
             _systemTrayIcon.Icon = GetWindowIcon();
             var windowText = GetWindowText();
             _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;
@@ -1012,6 +1004,24 @@ namespace SmartSystemMenu
                 Right = Size.Right - withMargin.Right,
                 Bottom = Size.Bottom - withMargin.Bottom
             };
+        }
+
+        private ContextMenuStrip CreateSystemTrayMenu()
+        {
+            var components = new Container();
+            var menu = new ContextMenuStrip(components);
+            menu.Items.AddRange(new ToolStripItem[] { _menuItemRestore, _menuItemClose });
+            menu.Name = $"systemTrayMenu_{Handle}";
+            menu.Size = new Size(176, 80);
+            return menu;
+        }
+
+        private NotifyIcon CreateNotifyIcon(ContextMenuStrip contextMenuStrip)
+        {
+            var icon = new NotifyIcon();
+            icon.ContextMenuStrip = contextMenuStrip;
+            icon.MouseClick += SystemTrayIconClick;
+            return icon;
         }
     }
 }

@@ -291,9 +291,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Window.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
     <Content Include="ArrowDown.png" />
     <Content Include="ArrowUp.png" />
