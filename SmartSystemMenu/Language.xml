@@ -720,7 +720,7 @@
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="關閉" />
       <item name="start_program" value="啟動程式" />
-      <item name="save_selected_items" value="保存" />
+      <item name="save_selected_items" value="儲存" />
       <item name="grp_window" value="視窗" />
       <item name="grp_process" value="處理程序" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -864,7 +864,7 @@
       <item name="clm_hotkeys_show_tooltip" value="顯示選單項目" />
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
       <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
-      <item name="tab_settings_menu_save" value="選單 (保存)" />
+      <item name="tab_settings_menu_save" value="選單 (儲存)" />
       <item name="grpb_closer" value="透過滑鼠按一下關閉視窗" />
       <item name="closer_button_name" value="設定..." />
       <item name="closer_form" value="設定." />
