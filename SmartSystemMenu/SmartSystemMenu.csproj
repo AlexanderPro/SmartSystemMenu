@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>SmartSystemMenu.ico</ApplicationIcon>
+    <ApplicationIcon>Images\SmartSystemMenu.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -181,6 +181,11 @@
     <Compile Include="Native\Structs\WindowCompositionAttributeData.cs" />
     <Compile Include="Native\Structs\WINDOW_INFO.cs" />
     <Compile Include="Native\User32.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings\CloserSettings.cs" />
     <Compile Include="Settings\SaveSelectedItemsSettings.cs" />
     <Compile Include="Settings\WindowSettings.cs" />
@@ -307,14 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\SizeForm.resx">
       <DependentUpon>SizeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,17 +332,17 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SmartSystemMenu64.exe" />
-    <Content Include="ArrowDown.png" />
-    <Content Include="ArrowUp.png" />
+    <Content Include="Images\ArrowDown.png" />
+    <Content Include="Images\ArrowUp.png" />
     <Content Include="Language.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="SmartSystemMenu.png" />
+    <Content Include="Images\SmartSystemMenu.png" />
     <Content Include="SmartSystemMenu.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SmartSystemMenu.ico" />
+    <Content Include="Images\SmartSystemMenu.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
