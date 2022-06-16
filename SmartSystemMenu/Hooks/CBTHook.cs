@@ -1,5 +1,6 @@
 ﻿using System;
 using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.User32;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -21,17 +22,17 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdCbtCreateWnd = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_CREATEWND");
-            _msgIdCbtDestroyWnd = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
-            _msgIdCbtMinMax = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
-            _msgIdCbtMoveSize = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
+            _msgIdCbtCreateWnd = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_CREATEWND");
+            _msgIdCbtDestroyWnd = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
+            _msgIdCbtMinMax = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
+            _msgIdCbtMoveSize = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtCreateWnd, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtDestroyWnd, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtMinMax, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(_msgIdCbtMoveSize, NativeConstants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdCbtCreateWnd, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdCbtDestroyWnd, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdCbtMinMax, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdCbtMoveSize, Constants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeCbtHook(0, _handle, _dragByMouseMenuItem);
         }

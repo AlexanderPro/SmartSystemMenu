@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
-using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Structs;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
-using static SmartSystemMenu.Native.NativeMethods;
-using static SmartSystemMenu.Native.NativeConstants;
+using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Kernel32;
+using static SmartSystemMenu.Native.Constants;
 
 
 namespace SmartSystemMenu.HotKeys

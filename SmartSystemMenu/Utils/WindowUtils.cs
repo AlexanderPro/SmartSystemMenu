@@ -6,8 +6,11 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using SmartSystemMenu.Native;
-using static SmartSystemMenu.Native.NativeMethods;
-using static SmartSystemMenu.Native.NativeConstants;
+using SmartSystemMenu.Native.Enums;
+using SmartSystemMenu.Native.Structs;
+using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Kernel32;
+using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu.Utils
 {
@@ -21,7 +24,7 @@ namespace SmartSystemMenu.Utils
             using (var graphics = Graphics.FromImage(bitmap))
             {
                 var hdc = graphics.GetHdc();
-                NativeMethods.PrintWindow(hWnd, hdc, 0);
+                User32.PrintWindow(hWnd, hdc, 0);
                 graphics.ReleaseHdc(hdc);
             }
             return bitmap;
@@ -61,7 +64,7 @@ namespace SmartSystemMenu.Utils
                     var error = Marshal.GetLastWin32Error();
                     throw new Win32Exception(error);
                 }
-                var handle = GetStdHandle(NativeConstants.STD_OUTPUT_HANDLE);
+                var handle = GetStdHandle(STD_OUTPUT_HANDLE);
                 if (handle == IntPtr.Zero)
                 {
                     var error = Marshal.GetLastWin32Error();

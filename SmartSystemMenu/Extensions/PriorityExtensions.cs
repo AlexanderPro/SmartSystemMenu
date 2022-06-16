@@ -1,4 +1,4 @@
-﻿using SmartSystemMenu.Native;
+﻿using SmartSystemMenu.Native.Enums;
 
 namespace SmartSystemMenu.Extensions
 {

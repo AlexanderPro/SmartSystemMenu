@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using SmartSystemMenu.Forms;
 using SmartSystemMenu.Utils;
 using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Enums;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
 
@@ -140,7 +141,7 @@ namespace SmartSystemMenu
             }
 
 
-            foreach (var windowHandle in windowHandles.Where(x => x != IntPtr.Zero && NativeMethods.GetParent(x) == IntPtr.Zero))
+            foreach (var windowHandle in windowHandles.Where(x => x != IntPtr.Zero && User32.GetParent(x) == IntPtr.Zero))
             {
                 var window = new Window(windowHandle);
 

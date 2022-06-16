@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using SmartSystemMenu.Native;
-using static SmartSystemMenu.Native.NativeMethods;
-using static SmartSystemMenu.Native.NativeConstants;
+using SmartSystemMenu.Native.Structs;
+using static SmartSystemMenu.Native.Kernel32;
+using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu.HotKeys
 {

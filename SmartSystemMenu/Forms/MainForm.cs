@@ -6,12 +6,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Threading;
-using SmartSystemMenu.Native;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Utils;
 using SmartSystemMenu.Hooks;
 using SmartSystemMenu.HotKeys;
 using SmartSystemMenu.Settings;
+using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu.Forms
 {
@@ -167,24 +168,24 @@ namespace SmartSystemMenu.Forms
         {
             if (_settings.Closer.Type == WindowCloserType.CloseForegroundWindow)
             {
-                var handle = NativeMethods.GetForegroundWindow();
-                NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                var handle = GetForegroundWindow();
+                PostMessage(handle, WM_CLOSE, 0, 0);
             }
             else if (_settings.Closer.Type == WindowCloserType.CloseWindowUnderCursor)
             {
-                var handle = NativeMethods.WindowFromPoint(e.Point);
+                var handle = WindowFromPoint(e.Point);
                 handle = WindowUtils.GetParentWindow(handle);
-                NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                PostMessage(handle, WM_CLOSE, 0, 0);
             }
             else if (_settings.Closer.Type == WindowCloserType.KillProcessWithForegroundWindow)
             {
-                var handle = NativeMethods.GetForegroundWindow();
+                var handle = GetForegroundWindow();
                 var processId = WindowUtils.GetProcessId(handle);
                 SystemUtils.TerminateProcess(processId, 0);
             }
             else if (_settings.Closer.Type == WindowCloserType.KillProcessWithWindowUnderCursor)
             {
-                var handle = NativeMethods.WindowFromPoint(e.Point);
+                var handle = WindowFromPoint(e.Point);
                 handle = WindowUtils.GetParentWindow(handle);
                 var processId = WindowUtils.GetProcessId(handle);
                 SystemUtils.TerminateProcess(processId, 0);
@@ -194,13 +195,13 @@ namespace SmartSystemMenu.Forms
         protected override void OnClosed(EventArgs e)
         {
             _callWndProcHook?.Stop();
-            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
+            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             _getMsgHook?.Stop();
-            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
+            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             _shellHook?.Stop();
-            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
+            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             _cbtHook?.Stop();
-            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
+            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
 
             if (_windows != null)
             {
@@ -220,7 +221,7 @@ namespace SmartSystemMenu.Forms
             {
                 foreach (var handle in _64BitProcess.GetWindowHandles())
                 {
-                    NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                    PostMessage(handle, WM_CLOSE, 0, 0);
                 }
 
                 if (!_64BitProcess.WaitForExit(5000))
@@ -238,7 +239,7 @@ namespace SmartSystemMenu.Forms
             }
 #endif
             base.OnClosed(e);
-            NativeMethods.SendNotifyMessage((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0);
+            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
         }
 
         protected override void WndProc(ref Message m)
@@ -306,7 +307,7 @@ namespace SmartSystemMenu.Forms
         {
             if (e.Handle != IntPtr.Zero && !_windows.Any(w => w.Handle == e.Handle))
             {
-                NativeMethods.GetWindowThreadProcessId(e.Handle, out int processId);
+                GetWindowThreadProcessId(e.Handle, out int processId);
                 var window = new Window(e.Handle, _settings.MenuItems, _settings.Language);
                 var filterTitles = new string[] { SHELL_WINDOW_NAME };
                 bool isWriteProcess;
@@ -364,11 +365,11 @@ namespace SmartSystemMenu.Forms
             var window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
             if (window != null)
             {
-                if (e.LParam.ToInt64() == NativeConstants.SW_MAXIMIZE)
+                if (e.LParam.ToInt64() == SW_MAXIMIZE)
                 {
                     window.Menu.UncheckSizeMenu();
                 }
-                if (e.LParam.ToInt64() == NativeConstants.SW_MINIMIZE && window.Menu.IsMenuItemChecked(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
+                if (e.LParam.ToInt64() == SW_MINIMIZE && window.Menu.IsMenuItemChecked(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
                 {
                     window.MoveToSystemTray();
                 }
@@ -384,15 +385,15 @@ namespace SmartSystemMenu.Forms
         private void WindowKeyboardEvent(object sender, BasicHookEventArgs e)
         {
             var wParam = e.WParam.ToInt64();
-            if (wParam == NativeConstants.VK_DOWN)
+            if (wParam == VK_DOWN)
             {
-                var controlState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_CONTROL) & 0x8000;
-                var shiftState = NativeMethods.GetAsyncKeyState(NativeConstants.VK_SHIFT) & 0x8000;
+                var controlState = GetAsyncKeyState(VK_CONTROL) & 0x8000;
+                var shiftState = GetAsyncKeyState(VK_SHIFT) & 0x8000;
                 var controlKey = Convert.ToBoolean(controlState);
                 var shiftKey = Convert.ToBoolean(shiftState);
                 if (controlKey && shiftKey)
                 {
-                    IntPtr handle = NativeMethods.GetForegroundWindow();
+                    IntPtr handle = GetForegroundWindow();
                     Window window = _windows.FirstOrDefault(w => w.Handle == handle);
                     window?.MinimizeToSystemTray();
                 }
@@ -407,7 +408,7 @@ namespace SmartSystemMenu.Forms
         private void WindowGetMsg(object sender, WndProcEventArgs e)
         {
             var message = e.Message.ToInt64();
-            if (message == NativeConstants.WM_SYSCOMMAND)
+            if (message == WM_SYSCOMMAND)
             {
                 //string dbgMessage = string.Format("WM_SYSCOMMAND, Form, Handle = {0}, WParam = {1}", e.Handle, e.WParam);
                 //System.Diagnostics.Trace.WriteLine(dbgMessage);
@@ -536,17 +537,17 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_MINIMIZE_OTHER_WINDOWS:
                         case MenuItemId.SC_CLOSE_OTHER_WINDOWS:
                             {
-                                NativeMethods.EnumWindows((IntPtr handle, int lParam) =>
+                                EnumWindows((IntPtr handle, int lParam) =>
                                 {
                                     if (handle != IntPtr.Zero && handle != Handle && handle != window.Handle && WindowUtils.IsAltTabWindow(handle))
                                     {
                                         if (lowOrder == MenuItemId.SC_CLOSE_OTHER_WINDOWS)
                                         {
-                                            NativeMethods.PostMessage(handle, NativeConstants.WM_CLOSE, 0, 0);
+                                            PostMessage(handle, WM_CLOSE, 0, 0);
                                         }
                                         else
                                         {
-                                            NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, MenuItemId.SC_MINIMIZE, 0);
+                                            PostMessage(handle, WM_SYSCOMMAND, MenuItemId.SC_MINIMIZE, 0);
                                         }
                                     }
                                     return true;
@@ -849,8 +850,8 @@ namespace SmartSystemMenu.Forms
 
         private void HotKeyHooked(object sender, HotKeyEventArgs e)
         {
-            var handle = NativeMethods.GetForegroundWindow();
-            var systemMenuHandle = NativeMethods.GetSystemMenu(handle, false);
+            var handle = GetForegroundWindow();
+            var systemMenuHandle = GetSystemMenu(handle, false);
 
             if (handle != null && handle != IntPtr.Zero && systemMenuHandle != null && systemMenuHandle != IntPtr.Zero)
             {
@@ -858,7 +859,7 @@ namespace SmartSystemMenu.Forms
 
                 try
                 {
-                    NativeMethods.GetWindowThreadProcessId(handle, out var processId);
+                    GetWindowThreadProcessId(handle, out var processId);
                     var process = SystemUtils.GetProcessByIdSafely(processId);
                     processName = Path.GetFileName(process.GetMainModuleFileName());
                 }
@@ -868,7 +869,7 @@ namespace SmartSystemMenu.Forms
 
                 if (!_settings.ProcessExclusions.Contains(processName.ToLower()))
                 {
-                    NativeMethods.PostMessage(handle, NativeConstants.WM_SYSCOMMAND, (uint)e.MenuItemId, 0);
+                    PostMessage(handle, WM_SYSCOMMAND, (uint)e.MenuItemId, 0);
                     e.Succeeded = true;
                 }
             }

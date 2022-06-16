@@ -1,10 +1,12 @@
-using System;
+﻿using System;
 using System.Text;
 using System.Runtime.InteropServices;
+using SmartSystemMenu.Native.Enums;
+using SmartSystemMenu.Native.Structs;
 
 namespace SmartSystemMenu.Native
 {
-    static class NativeMethods
+    static class User32
     {
         public delegate bool EnumWindowDelegate(IntPtr hwnd, int lParam);
 
@@ -81,7 +83,7 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern bool GetMenuItemInfo(IntPtr hMenu, int uIdItem, bool fByPosition, ref MenuItemInfo lpmii);
 
-        [DllImport("User32.dll")]
+        [DllImport("user32.dll")]
         public static extern bool SetMenuItemInfo(IntPtr hMenu, int uIdItem, bool fByPosition, ref MenuItemInfo lpmii);
 
         [DllImport("user32.dll")]
@@ -108,12 +110,6 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetWindowInfo([In] IntPtr hWnd, [In, Out] ref WINDOW_INFO rect);
-
-        [DllImport("kernel32.dll")]
-        public static extern bool SetPriorityClass(IntPtr hProcess, PriorityClass priorityClass);
-
-        [DllImport("kernel32.dll")]
-        public static extern PriorityClass GetPriorityClass(IntPtr hProcess);
 
         [DllImport("user32.dll")]
         public static extern IntPtr CreateMenu();
@@ -181,20 +177,11 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
-
-        [DllImport("kernel32.dll")]
-        public static extern bool CloseHandle(IntPtr hObject);
-
         [DllImport("user32.dll", SetLastError = true)]
         public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr processId);
-
-        [DllImport("kernel32.dll")]
-        public static extern uint GetCurrentThreadId();
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
@@ -205,10 +192,6 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern bool BringWindowToTop(IntPtr hWnd);
 
-        [DllImport("kernel32.dll", SetLastError = true, CallingConvention = CallingConvention.Winapi)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool IsWow64Process(IntPtr hProcess, out bool wow64Process);
-
         [DllImport("user32.dll", EntryPoint = "GetClassLong")]
         public static extern uint GetClassLongPtr32(IntPtr hWnd, int nIndex);
 
@@ -218,37 +201,8 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern IntPtr GetThreadDesktop(int threadId);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern bool AttachConsole(int processID);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern uint GetConsoleOutputCP();
-
-        [DllImport("kernel32.dll")]
-        public static extern bool FreeConsole();
-
-        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern bool ReadConsoleOutputCharacter(IntPtr hConsoleOutput, [Out] char[] lpCharacter, uint nLength, Coord dwReadCoord, out uint lpNumberOfCharsRead);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern bool GetConsoleScreenBufferInfo(IntPtr hConsoleOutput, out ConsoleScreenBufferInfo lpConsoleScreenBufferInfo);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern IntPtr GetStdHandle(int nStdHandle);
-
-        [DllImport("kernel32.dll")]
-        public static extern bool QueryFullProcessImageName([In] IntPtr hProcess, [In] uint dwFlags, [Out] StringBuilder lpExeName, [In, Out] ref uint lpdwSize);
-
-        [DllImport("dwmapi.dll")]
-        public static extern void DwmEnableBlurBehindWindow(IntPtr hwnd, ref DWM_BLURBEHIND blurBehind);
-
         [DllImport("user32.dll")]
         public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
-
-        public static IntPtr GetClassLongPtr(IntPtr hWnd, int nIndex)
-        {
-            return IntPtr.Size > 4 ? GetClassLongPtr64(hWnd, nIndex) : new IntPtr(GetClassLongPtr32(hWnd, nIndex));
-        }
 
         [DllImport("user32")]
         public static extern bool GetMonitorInfo(IntPtr hMonitor, ref MonitorInfo info);
@@ -259,33 +213,8 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern IntPtr WindowFromPoint(Point p);
 
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr GetCurrentProcess();
-
-        [DllImport("advapi32.dll")]
-        public static extern bool OpenProcessToken(IntPtr h, int acc, ref IntPtr phtok);
-
-        [DllImport("advapi32.dll")]
-        public static extern bool LookupPrivilegeValue(string host, string name, ref LUID pluid);
-
-        [DllImport("advapi32.dll")]
-        public static extern bool AdjustTokenPrivileges(IntPtr htok, bool disall, ref TOKEN_PRIVILEGES newst, int len, IntPtr prev, IntPtr relen);
-
         [DllImport("user32.dll")]
         public static extern IntPtr GetShellWindow();
-
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr OpenProcess(ProcessAccessFlags processAccess, bool bInheritHandle, int processId);
-
-        [DllImport("kernel32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool TerminateProcess(IntPtr hProcess, uint uExitCode);
-
-        [DllImport("advapi32.dll", CharSet = CharSet.Auto)]
-        public static extern bool DuplicateTokenEx(IntPtr hExistingToken, uint dwDesiredAccess, IntPtr lpTokenAttributes, SECURITY_IMPERSONATION_LEVEL impersonationLevel, TOKEN_TYPE tokenType, out IntPtr phNewToken);
-
-        [DllImport("advapi32", CharSet = CharSet.Unicode, SetLastError = true)]
-        public static extern bool CreateProcessWithTokenW(IntPtr hToken, int dwLogonFlags, string lpApplicationName, string lpCommandLine, int dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory, [In] ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr SetWindowsHookEx(int idHook, KeyboardHookProc callback, IntPtr hModule, uint threadId);
@@ -302,29 +231,8 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern int CallNextHookEx(IntPtr handleHook, int nCode, int wParam, IntPtr lParam);
 
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr GetModuleHandle(string name);
-
-        [DllImport("ntdll.dll")]
-        public static extern int NtQueryInformationProcess(IntPtr processHandle, int processInformationClass, ref PROCESS_BASIC_INFORMATION pbi, int processInformationLength, out int returnLength);
-
-        [DllImport("kernel32.dll")]
-        public static extern IntPtr OpenThread(ThreadAccess dwDesiredAccess, bool bInheritHandle, uint dwThreadId);
-
-        [DllImport("kernel32.dll")]
-        public static extern uint SuspendThread(IntPtr hThread);
-
-        [DllImport("kernel32.dll")]
-        public static extern int ResumeThread(IntPtr hThread);
-
-        [DllImport("dwmapi.dll")]
-        public static extern int DwmGetWindowAttribute(IntPtr hwnd, int dwAttribute, out Rect pvAttribute, int cbAttribute);
-
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool SetProcessDpiAwarenessContext(int dpiFlag);
-
-        [DllImport("SHCore.dll", SetLastError = true)]
-        public static extern bool SetProcessDpiAwareness(PROCESS_DPI_AWARENESS awareness);
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool SetProcessDPIAware();
@@ -338,5 +246,7 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetTitleBarInfo(IntPtr hwnd, ref TITLEBARINFO pti);
+
+        public static IntPtr GetClassLongPtr(IntPtr hWnd, int nIndex) => IntPtr.Size > 4 ? GetClassLongPtr64(hWnd, nIndex) : new IntPtr(GetClassLongPtr32(hWnd, nIndex));
     }
 }

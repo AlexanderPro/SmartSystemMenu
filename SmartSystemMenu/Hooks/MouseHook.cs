@@ -1,5 +1,6 @@
 ﻿using System;
 using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.User32;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -17,13 +18,13 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdMouse = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE");
-            _msgIdMouseHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE_REPLACED");
+            _msgIdMouse = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE");
+            _msgIdMouseHookReplaced = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSE_REPLACED");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(_msgIdMouse, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(_msgIdMouseHookReplaced, NativeConstants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdMouse, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdMouseHookReplaced, Constants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeMouseHook(0, _handle, _dragByMouseMenuItem);
         }

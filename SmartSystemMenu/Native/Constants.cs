@@ -1,6 +1,6 @@
 ﻿namespace SmartSystemMenu.Native
 {
-    static class NativeConstants
+    static class Constants
     {
         // Menus
         public const int MF_UNCHECKED = 0x00000000;
@@ -61,6 +61,7 @@
         public const int WM_GETTEXTLENGTH = 0x000E;
         public const int WM_GETFONT = 0x0031;
 
+        public const int WM_MOUSEMOVE = 0x0200;
         public const int WM_LBUTTONDOWN = 0x0201;
         public const int WM_LBUTTONUP = 0x0202;
         public const int WM_RBUTTONDOWN = 0x0204;

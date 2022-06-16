@@ -1,5 +1,5 @@
 ﻿using System;
-using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Structs;
 
 namespace SmartSystemMenu.HotKeys
 {

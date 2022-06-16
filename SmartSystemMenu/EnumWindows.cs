@@ -19,7 +19,7 @@ namespace SmartSystemMenu
             _windows = new List<Window>();
             _settings = settings;
             _windowSettings = windowSettings;
-            NativeMethods.EnumWindows(EnumWindowCallback, 0);
+            User32.EnumWindows(EnumWindowCallback, 0);
             return _windows;
         }
 
@@ -32,7 +32,7 @@ namespace SmartSystemMenu
 
             int pid;
             bool isAdd;
-            NativeMethods.GetWindowThreadProcessId(hwnd, out pid);
+            User32.GetWindowThreadProcessId(hwnd, out pid);
 
 #if WIN32
             isAdd = !Environment.Is64BitOperatingSystem || SystemUtils.IsWow64Process(pid);

@@ -1,5 +1,6 @@
 ﻿using System;
 using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.User32;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -18,13 +19,13 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdCallWndProc = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_CALLWNDPROC");
-            _msgIdCallWndProcParams = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_PARAMS");
+            _msgIdCallWndProc = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_CALLWNDPROC");
+            _msgIdCallWndProcParams = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_PARAMS");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(_msgIdCallWndProc, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(_msgIdCallWndProcParams, NativeConstants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdCallWndProc, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdCallWndProcParams, Constants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeCallWndProcHook(0, _handle, _dragByMouseMenuItem);
         }

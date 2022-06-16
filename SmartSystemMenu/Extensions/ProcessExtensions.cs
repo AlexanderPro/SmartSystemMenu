@@ -4,8 +4,11 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using SmartSystemMenu.Native;
-using static SmartSystemMenu.Native.NativeMethods;
-using static SmartSystemMenu.Native.NativeConstants;
+using SmartSystemMenu.Native.Enums;
+using SmartSystemMenu.Native.Structs;
+using static SmartSystemMenu.Native.Kernel32;
+using static SmartSystemMenu.Native.Ntdll;
+using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu.Extensions
 {
@@ -38,7 +41,7 @@ namespace SmartSystemMenu.Extensions
             var handles = new List<IntPtr>();
             foreach (ProcessThread thread in process.Threads)
             {
-                EnumThreadWindows(thread.Id, (hwnd, lParam) => { handles.Add(hwnd); return true; }, 0);
+                User32.EnumThreadWindows(thread.Id, (hwnd, lParam) => { handles.Add(hwnd); return true; }, 0);
             }
             return handles;
         }

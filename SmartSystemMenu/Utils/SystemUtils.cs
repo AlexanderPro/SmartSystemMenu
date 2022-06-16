@@ -6,9 +6,14 @@ using System.IO;
 using System.Management;
 using Microsoft.Win32;
 using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Enums;
+using SmartSystemMenu.Native.Structs;
 using SmartSystemMenu.Extensions;
-using static SmartSystemMenu.Native.NativeMethods;
-using static SmartSystemMenu.Native.NativeConstants;
+using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Kernel32;
+using static SmartSystemMenu.Native.Advapi32;
+using static SmartSystemMenu.Native.SHCore;
+using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu
 {
@@ -22,7 +27,7 @@ namespace SmartSystemMenu
                 if (process != null)
                 {
                     bool retVal;
-                    if (!NativeMethods.IsWow64Process(process.GetHandle(), out retVal))
+                    if (!Kernel32.IsWow64Process(process.GetHandle(), out retVal))
                     {
                         return false;
                     }
@@ -301,7 +306,7 @@ namespace SmartSystemMenu
             {
                 try
                 {
-                    return NativeMethods.TerminateProcess(hProcess, exitCode);
+                    return Kernel32.TerminateProcess(hProcess, exitCode);
                 }
                 catch
                 {

@@ -11,9 +11,13 @@ using System.IO;
 using System.Threading;
 using System.ComponentModel;
 using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Enums;
+using SmartSystemMenu.Native.Structs;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Utils;
+using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu
 {
@@ -45,7 +49,7 @@ namespace SmartSystemMenu
             get
             {
                 Rect size;
-                NativeMethods.GetWindowRect(Handle, out size);
+                GetWindowRect(Handle, out size);
                 return size;
             }
         }
@@ -55,7 +59,7 @@ namespace SmartSystemMenu
             get
             {
                 Rect size;
-                NativeMethods.GetClientRect(Handle, out size);
+                GetClientRect(Handle, out size);
                 return size;
             }
         }
@@ -64,10 +68,10 @@ namespace SmartSystemMenu
         {
             get
             {
-                var monitorHandle = NativeMethods.MonitorFromWindow(Handle, NativeConstants.MONITOR_DEFAULTTONEAREST);
+                var monitorHandle = MonitorFromWindow(Handle, MONITOR_DEFAULTTONEAREST);
                 var monitorInfo = new MonitorInfo();
                 monitorInfo.Init();
-                NativeMethods.GetMonitorInfo(monitorHandle, ref monitorInfo);
+                GetMonitorInfo(monitorHandle, ref monitorInfo);
 
                 var size = new Rect()
                 {
@@ -85,7 +89,7 @@ namespace SmartSystemMenu
             get
             {
                 int processId;
-                NativeMethods.GetWindowThreadProcessId(Handle, out processId);
+                GetWindowThreadProcessId(Handle, out processId);
                 return processId;
             }
         }
@@ -108,7 +112,7 @@ namespace SmartSystemMenu
                     return Priority.Normal;
                 }
 
-                var priorityClass = NativeMethods.GetPriorityClass(process.GetHandle());
+                var priorityClass = Kernel32.GetPriorityClass(process.GetHandle());
                 switch (priorityClass)
                 {
                     case PriorityClass.REALTIME_PRIORITY_CLASS: return Priority.RealTime;
@@ -126,7 +130,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                bool isVisible = NativeMethods.IsWindowVisible(Handle);
+                bool isVisible = IsWindowVisible(Handle);
                 return isVisible;
             }
         }
@@ -135,13 +139,13 @@ namespace SmartSystemMenu
         {
             get
             {
-                int style = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_EXSTYLE);
-                bool isLayeredWindow = (style & NativeConstants.WS_EX_LAYERED) == NativeConstants.WS_EX_LAYERED;
+                int style = GetWindowLong(Handle, GWL_EXSTYLE);
+                bool isLayeredWindow = (style & WS_EX_LAYERED) == WS_EX_LAYERED;
                 if (!isLayeredWindow) return 0;
                 uint key;
                 Byte alpha;
                 uint flags;
-                NativeMethods.GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
                 int transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
                 return transparency;
             }
@@ -151,8 +155,8 @@ namespace SmartSystemMenu
         {
             get
             {
-                int style = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_EXSTYLE);
-                bool isAlwaysOnTop = (style & NativeConstants.WS_EX_TOPMOST) == NativeConstants.WS_EX_TOPMOST;
+                int style = GetWindowLong(Handle, GWL_EXSTYLE);
+                bool isAlwaysOnTop = (style & WS_EX_TOPMOST) == WS_EX_TOPMOST;
                 return isAlwaysOnTop;
             }
         }
@@ -161,7 +165,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                IntPtr owner = NativeMethods.GetWindow(Handle, NativeConstants.GW_OWNER);
+                IntPtr owner = GetWindow(Handle, GW_OWNER);
                 return owner;
             }
         }
@@ -255,7 +259,7 @@ namespace SmartSystemMenu
         public string GetWindowText()
         {
             var builder = new StringBuilder(1024);
-            NativeMethods.GetWindowText(Handle, builder, builder.Capacity);
+            User32.GetWindowText(Handle, builder, builder.Capacity);
             var windowText = builder.ToString();
             return windowText;
         }
@@ -263,7 +267,7 @@ namespace SmartSystemMenu
         public string GetClassName()
         {
             var builder = new StringBuilder(1024);
-            NativeMethods.GetClassName(Handle, builder, builder.Capacity);
+            User32.GetClassName(Handle, builder, builder.Capacity);
             var className = builder.ToString();
             return className;
         }
@@ -271,7 +275,7 @@ namespace SmartSystemMenu
         private string RealGetWindowClass()
         {
             var builder = new StringBuilder(1024);
-            NativeMethods.RealGetWindowClass(Handle, builder, builder.Capacity);
+            User32.RealGetWindowClass(Handle, builder, builder.Capacity);
             var className = builder.ToString();
             return className;
         }
@@ -285,20 +289,20 @@ namespace SmartSystemMenu
             info.GetClassName = GetClassName();
             info.RealGetWindowClass = RealGetWindowClass();
             info.Handle = Handle;
-            info.ParentHandle = NativeMethods.GetParent(Handle);
+            info.ParentHandle = GetParent(Handle);
             info.Size = Size;
             info.ClientSize = ClientSize;
             info.FrameBounds = GetSystemMargins();
             info.ProcessId = ProcessId;
             info.ThreadId = WindowUtils.GetThreadId(Handle);
-            info.GWL_STYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_STYLE);
-            info.GWL_EXSTYLE = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_EXSTYLE);
-            info.GWL_ID = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_ID);
-            info.GWL_USERDATA = NativeMethods.GetWindowLong(Handle, NativeConstants.GWL_USERDATA);
-            info.GCL_STYLE = NativeMethods.GetClassLong(Handle, NativeConstants.GCL_STYLE);
-            info.GCL_WNDPROC = NativeMethods.GetClassLong(Handle, NativeConstants.GCL_WNDPROC);
-            info.DWL_DLGPROC = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_DLGPROC);
-            info.DWL_USER = NativeMethods.GetClassLong(Handle, NativeConstants.DWL_USER);
+            info.GWL_STYLE = GetWindowLong(Handle, GWL_STYLE);
+            info.GWL_EXSTYLE = GetWindowLong(Handle, GWL_EXSTYLE);
+            info.GWL_ID = GetWindowLong(Handle, GWL_ID);
+            info.GWL_USERDATA = GetWindowLong(Handle, GWL_USERDATA);
+            info.GCL_STYLE = GetClassLong(Handle, GCL_STYLE);
+            info.GCL_WNDPROC = GetClassLong(Handle, GCL_WNDPROC);
+            info.DWL_DLGPROC = GetClassLong(Handle, DWL_DLGPROC);
+            info.DWL_USER = GetClassLong(Handle, DWL_USER);
             info.FullPath = process?.GetMainModuleFileName() ?? "";
             info.Priority = ProcessPriority;
             info.StartTime = process == null ? (DateTime?)null : process.StartTime;
@@ -329,7 +333,7 @@ namespace SmartSystemMenu
             {
                 var windowInfo = new WINDOW_INFO();
                 windowInfo.cbSize = Marshal.SizeOf(windowInfo);
-                if (NativeMethods.GetWindowInfo(Handle, ref windowInfo))
+                if (User32.GetWindowInfo(Handle, ref windowInfo))
                 {
                     info.WindowInfoExStyle = windowInfo.dwExStyle;
                 }
@@ -343,7 +347,7 @@ namespace SmartSystemMenu
                 uint key;
                 Byte alpha;
                 uint flags;
-                var result = NativeMethods.GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                var result = GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
                 var layeredWindow = (LayeredWindow)flags;
                 info.LWA_ALPHA = layeredWindow.HasFlag(LayeredWindow.LWA_ALPHA);
                 info.LWA_COLORKEY = layeredWindow.HasFlag(LayeredWindow.LWA_COLORKEY);
@@ -424,13 +428,13 @@ namespace SmartSystemMenu
         public void SetWidth(int width)
         {
             var size = Size;
-            NativeMethods.MoveWindow(Handle, size.Left, size.Top, width, size.Height, true);
+            MoveWindow(Handle, size.Left, size.Top, width, size.Height, true);
         }
 
         public void SetHeight(int height)
         {
             var size = Size;
-            NativeMethods.MoveWindow(Handle, size.Left, size.Top, size.Width, height, true);
+            MoveWindow(Handle, size.Left, size.Top, size.Width, height, true);
         }
 
         public void SetSize(int width, int height, int? left = null, int? top = null)
@@ -442,7 +446,7 @@ namespace SmartSystemMenu
             State.Top = sizeTop;
             State.Width = width;
             State.Height = height;
-            NativeMethods.MoveWindow(Handle, sizeLeft, sizeTop, width, height, true);
+            MoveWindow(Handle, sizeLeft, sizeTop, width, height, true);
         }
 
         public void RestoreSize()
@@ -451,7 +455,7 @@ namespace SmartSystemMenu
             State.Top = _defaultTop;
             State.Width = _defaultWidth;
             State.Height = _defaultHeight;
-            NativeMethods.MoveWindow(Handle, _defaultLeft, _defaultTop, _defaultWidth, _defaultHeight, true);
+            MoveWindow(Handle, _defaultLeft, _defaultTop, _defaultWidth, _defaultHeight, true);
         }
 
         public void SetLeft(int left)
@@ -461,7 +465,7 @@ namespace SmartSystemMenu
             State.Top = size.Top;
             State.Width = size.Width;
             State.Height = size.Height;
-            NativeMethods.MoveWindow(Handle, left, size.Top, size.Width, size.Height, true);
+            MoveWindow(Handle, left, size.Top, size.Width, size.Height, true);
         }
 
         public void SetTop(int top)
@@ -471,7 +475,7 @@ namespace SmartSystemMenu
             State.Top = top;
             State.Width = size.Width;
             State.Height = size.Height;
-            NativeMethods.MoveWindow(Handle, size.Left, top, size.Width, size.Height, true);
+            MoveWindow(Handle, size.Left, top, size.Width, size.Height, true);
         }
 
         public void SetPosition(int left, int top)
@@ -481,7 +485,7 @@ namespace SmartSystemMenu
             State.Top = top;
             State.Width = size.Width;
             State.Height = size.Height;
-            NativeMethods.MoveWindow(Handle, left, top, size.Width, size.Height, true);
+            MoveWindow(Handle, left, top, size.Width, size.Height, true);
         }
 
         public void RestorePosition()
@@ -491,7 +495,7 @@ namespace SmartSystemMenu
             State.Top = _defaultTop;
             State.Width = size.Width;
             State.Height = size.Height;
-            NativeMethods.MoveWindow(Handle, _defaultLeft, _defaultTop, size.Width, size.Height, true);
+            MoveWindow(Handle, _defaultLeft, _defaultTop, size.Width, size.Height, true);
         }
 
         public void SaveDefaultSizePosition()
@@ -595,31 +599,31 @@ namespace SmartSystemMenu
         {
             var handleTopMost = (IntPtr)(-1);
             var handleNotTopMost = (IntPtr)(-2);
-            NativeMethods.SetWindowPos(Handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
+            SetWindowPos(Handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
             State.AlwaysOnTop = topMost;
         }
 
         public void SendToBottom()
         {
-            NativeMethods.SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, NativeConstants.SWP_NOSIZE | NativeConstants.SWP_NOMOVE);
+            SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
         }
 
         public void MinimizeToSystemTray()
         {
             CreateIconInSystemTray();
-            NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Minimize);
-            NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Hide);
+            ShowWindowAsync(Handle, (int)WindowShowStyle.Minimize);
+            ShowWindowAsync(Handle, (int)WindowShowStyle.Hide);
         }
 
         public void MoveToSystemTray()
         {
             CreateIconInSystemTray();
-            NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Hide);
+            ShowWindowAsync(Handle, (int)WindowShowStyle.Hide);
         }
 
         public void ShowNormal()
         {
-            NativeMethods.ShowWindow(Handle, (int)WindowShowStyle.Normal);
+            ShowWindow(Handle, (int)WindowShowStyle.Normal);
         }
 
         public void RollUp()
@@ -638,7 +642,7 @@ namespace SmartSystemMenu
             var process = Process;
             if (process != null)
             {
-                NativeMethods.SetPriorityClass(process.GetHandle(), priority.GetPriorityClass());
+                Kernel32.SetPriorityClass(process.GetHandle(), priority.GetPriorityClass());
             }
             State.Priority = priority;
         }
@@ -672,7 +676,7 @@ namespace SmartSystemMenu
                 hRgnBlur = IntPtr.Zero,
                 fTransitionOnMaximized = false
             };
-            NativeMethods.DwmEnableBlurBehindWindow(Handle, ref blurBehind);
+            Dwmapi.DwmEnableBlurBehindWindow(Handle, ref blurBehind);
             State.AeroGlass = enable;
         }
 
@@ -689,7 +693,7 @@ namespace SmartSystemMenu
                 data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
                 data.SizeOfData = accentStructSize;
                 data.Data = accentPtr;
-                NativeMethods.SetWindowCompositionAttribute(Handle, ref data);
+                SetWindowCompositionAttribute(Handle, ref data);
                 State.AeroGlass = enable;
             }
             finally
@@ -700,17 +704,17 @@ namespace SmartSystemMenu
 
         public void MoveToMonitor(IntPtr monitorHandle)
         {
-            var currentMonitorHandle = NativeMethods.MonitorFromWindow(Handle, NativeConstants.MONITOR_DEFAULTTONEAREST);
+            var currentMonitorHandle = MonitorFromWindow(Handle, MONITOR_DEFAULTTONEAREST);
             if (currentMonitorHandle != monitorHandle)
             {
                 var currentMonitorInfo = new MonitorInfo();
                 currentMonitorInfo.Init();
-                NativeMethods.GetMonitorInfo(currentMonitorHandle, ref currentMonitorInfo);
+                GetMonitorInfo(currentMonitorHandle, ref currentMonitorInfo);
 
                 var newMonitorInfo = new MonitorInfo();
                 newMonitorInfo.Init();
-                NativeMethods.GetMonitorInfo(monitorHandle, ref newMonitorInfo);
-                NativeMethods.GetWindowRect(Handle, out Rect windowRect);
+                GetMonitorInfo(monitorHandle, ref newMonitorInfo);
+                GetWindowRect(Handle, out Rect windowRect);
 
                 var left = newMonitorInfo.rcWork.Left + windowRect.Left - currentMonitorInfo.rcWork.Left;
                 var top = newMonitorInfo.rcWork.Top + windowRect.Top - currentMonitorInfo.rcWork.Top;
@@ -720,9 +724,9 @@ namespace SmartSystemMenu
                     top = newMonitorInfo.rcWork.Top;
                 }
 
-                NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
+                MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
                 Thread.Sleep(10);
-                NativeMethods.MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
+                MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
 
                 State.Left = left;
                 State.Top = top;
@@ -790,27 +794,27 @@ namespace SmartSystemMenu
 
         public static void ForceForegroundWindow(IntPtr handle)
         {
-            var foreHandle = NativeMethods.GetForegroundWindow();
-            var foreThread = NativeMethods.GetWindowThreadProcessId(foreHandle, IntPtr.Zero);
-            var appThread = NativeMethods.GetCurrentThreadId();
+            var foreHandle = GetForegroundWindow();
+            var foreThread = GetWindowThreadProcessId(foreHandle, IntPtr.Zero);
+            var appThread = Kernel32.GetCurrentThreadId();
             if (foreThread != appThread)
             {
-                NativeMethods.AttachThreadInput(foreThread, appThread, true);
-                NativeMethods.BringWindowToTop(handle);
-                NativeMethods.ShowWindow(handle, (int)WindowShowStyle.Show);
-                NativeMethods.AttachThreadInput(foreThread, appThread, false);
+                AttachThreadInput(foreThread, appThread, true);
+                BringWindowToTop(handle);
+                ShowWindow(handle, (int)WindowShowStyle.Show);
+                AttachThreadInput(foreThread, appThread, false);
             }
             else
             {
-                NativeMethods.BringWindowToTop(handle);
-                NativeMethods.ShowWindow(handle, (int)WindowShowStyle.Show);
+                BringWindowToTop(handle);
+                ShowWindow(handle, (int)WindowShowStyle.Show);
             }
         }
 
         public static void ForceAllMessageLoopsToWakeUp()
         {
             uint result;
-            NativeMethods.SendMessageTimeout((IntPtr)NativeConstants.HWND_BROADCAST, NativeConstants.WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
+            SendMessageTimeout((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
         }
 
         public void RefreshProcessNameState()
@@ -826,12 +830,12 @@ namespace SmartSystemMenu
         private void _menuItemClose_Click(object sender, EventArgs e)
         {
             RestoreFromSystemTray();
-            NativeMethods.PostMessage(Handle, NativeConstants.WM_CLOSE, 0, 0);
+            PostMessage(Handle, WM_CLOSE, 0, 0);
         }
 
         private string GetFontName()
         {
-            var hFont = NativeMethods.SendMessage(Handle, NativeConstants.WM_GETFONT, 0, 0);
+            var hFont = SendMessage(Handle, WM_GETFONT, 0, 0);
             if (hFont == IntPtr.Zero)
             {
                 return "Default system font";
@@ -842,21 +846,21 @@ namespace SmartSystemMenu
 
         private string GetWmGettext()
         {
-            var titleSize = NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXTLENGTH, 0, 0);
+            var titleSize = SendMessage(Handle, WM_GETTEXTLENGTH, 0, 0);
             if (titleSize.ToInt32() == 0)
             {
                 return string.Empty;
             }
 
             var title = new StringBuilder(titleSize.ToInt32() + 1);
-            NativeMethods.SendMessage(Handle, NativeConstants.WM_GETTEXT, title.Capacity, title);
+            SendMessage(Handle, WM_GETTEXT, title.Capacity, title);
             return title.ToString();
         }
 
         private void SetOpacity(IntPtr handle, byte opacity)
         {
-            NativeMethods.SetWindowLong(handle, NativeConstants.GWL_EXSTYLE, NativeMethods.GetWindowLong(handle, NativeConstants.GWL_EXSTYLE) | NativeConstants.WS_EX_LAYERED);
-            NativeMethods.SetLayeredWindowAttributes(handle, 0, opacity, NativeConstants.LWA_ALPHA);
+            SetWindowLong(handle, GWL_EXSTYLE, GetWindowLong(handle, GWL_EXSTYLE) | WS_EX_LAYERED);
+            SetLayeredWindowAttributes(handle, 0, opacity, LWA_ALPHA);
         }
 
         private void RestoreFromSystemTray()
@@ -875,9 +879,9 @@ namespace SmartSystemMenu
                 _systemTrayMenu = null;
                 _systemTrayIcon = null;*/
 
-                NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
-                NativeMethods.ShowWindowAsync(Handle, (int)WindowShowStyle.Restore);
-                NativeMethods.SetForegroundWindow(Handle);
+                ShowWindowAsync(Handle, (int)WindowShowStyle.Show);
+                ShowWindowAsync(Handle, (int)WindowShowStyle.Restore);
+                SetForegroundWindow(Handle);
             }
         }
 
@@ -887,39 +891,39 @@ namespace SmartSystemMenu
             try
             {
                 uint result;
-                NativeMethods.SendMessageTimeout(Handle, NativeConstants.WM_GETICON, NativeConstants.ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
+                SendMessageTimeout(Handle, WM_GETICON, ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
                 icon = new IntPtr(result);
 
                 if (icon == IntPtr.Zero)
                 {
-                    NativeMethods.SendMessageTimeout(Handle, NativeConstants.WM_GETICON, NativeConstants.ICON_SMALL, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
+                    SendMessageTimeout(Handle, WM_GETICON, ICON_SMALL, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
                     icon = new IntPtr(result);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    NativeMethods.SendMessageTimeout(Handle, NativeConstants.WM_GETICON, NativeConstants.ICON_BIG, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
+                    SendMessageTimeout(Handle, WM_GETICON, ICON_BIG, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
                     icon = new IntPtr(result);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    icon = NativeMethods.GetClassLongPtr(Handle, NativeConstants.GCLP_HICONSM);
+                    icon = GetClassLongPtr(Handle, GCLP_HICONSM);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    icon = NativeMethods.GetClassLongPtr(Handle, NativeConstants.GCLP_HICON);
+                    icon = GetClassLongPtr(Handle, GCLP_HICON);
                 }
 
                 if (icon == IntPtr.Zero)
                 {
-                    icon = NativeMethods.LoadIcon(IntPtr.Zero, NativeConstants.IDI_APPLICATION);
+                    icon = LoadIcon(IntPtr.Zero, IDI_APPLICATION);
                 }
             }
             catch
             {
-                icon = NativeMethods.LoadIcon(IntPtr.Zero, NativeConstants.IDI_APPLICATION);
+                icon = LoadIcon(IntPtr.Zero, IDI_APPLICATION);
             }
             return Icon.FromHandle(icon);
         }
@@ -985,11 +989,11 @@ namespace SmartSystemMenu
             Rect size;
             if (Environment.OSVersion.Version.Major < 6)
             {
-                NativeMethods.GetWindowRect(Handle, out size);
+                GetWindowRect(Handle, out size);
             }
-            else if (NativeMethods.DwmGetWindowAttribute(Handle, NativeConstants.DWMWA_EXTENDED_FRAME_BOUNDS, out size, Marshal.SizeOf(typeof(Rect))) != 0)
+            else if (Dwmapi.DwmGetWindowAttribute(Handle, DWMWA_EXTENDED_FRAME_BOUNDS, out size, Marshal.SizeOf(typeof(Rect))) != 0)
             {
-                NativeMethods.GetWindowRect(Handle, out size);
+                GetWindowRect(Handle, out size);
             }
             return size;
         }

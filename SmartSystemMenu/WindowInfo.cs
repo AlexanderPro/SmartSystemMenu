@@ -1,5 +1,6 @@
 ﻿using System;
-using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Enums;
+using SmartSystemMenu.Native.Structs;
 
 namespace SmartSystemMenu
 {

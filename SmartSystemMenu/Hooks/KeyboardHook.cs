@@ -1,5 +1,6 @@
 ﻿using System;
 using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.User32;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -17,13 +18,13 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdKeyboard = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARD");
-            _msgIdKeyboardHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARD_REPLACED");
+            _msgIdKeyboard = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARD");
+            _msgIdKeyboardHookReplaced = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_KEYBOARD_REPLACED");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(_msgIdKeyboard, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(_msgIdKeyboardHookReplaced, NativeConstants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdKeyboard, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdKeyboardHookReplaced, Constants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeKeyboardHook(0, _handle, _dragByMouseMenuItem);
         }

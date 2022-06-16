@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using SmartSystemMenu.Utils;
-using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Enums;
 
 namespace SmartSystemMenu.Settings
 {

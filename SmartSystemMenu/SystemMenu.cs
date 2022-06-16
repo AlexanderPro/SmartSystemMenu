@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using SmartSystemMenu.Native;
+using SmartSystemMenu.Native.Enums;
+using SmartSystemMenu.Native.Structs;
 using SmartSystemMenu.Settings;
+using static SmartSystemMenu.Native.User32;
 
 namespace SmartSystemMenu
 {
@@ -22,7 +25,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+                var windowMenuHandle = GetSystemMenu(WindowHandle, false);
                 var existsWindowMenu = windowMenuHandle != IntPtr.Zero;
                 return existsWindowMenu;
             }
@@ -38,7 +41,7 @@ namespace SmartSystemMenu
 
         public bool Create()
         {
-            var menuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
             if (menuHandle == IntPtr.Zero)
             {
                 return false;
@@ -53,18 +56,18 @@ namespace SmartSystemMenu
                     title = GetTitle(item.Name, title, true);
                     if (!IsMenuItem(menuHandle, id))
                     {
-                        NativeMethods.InsertMenu(menuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND, id, title);
+                        InsertMenu(menuHandle, MenuItemId.SC_CLOSE, Constants.MF_BYCOMMAND, id, title);
                     }
                 }
 
                 if (item.Type == MenuItemType.Separator && item.Show)
                 {
-                    NativeMethods.InsertMenu(menuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
+                    InsertMenu(menuHandle, MenuItemId.SC_CLOSE, Constants.MF_BYCOMMAND | Constants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
                 }
 
                 if (item.Type == MenuItemType.Group && item.Show)
                 {
-                    var subMenuHandle = NativeMethods.CreateMenu();
+                    var subMenuHandle = CreateMenu();
 
                     if (item.Name.ToLower() == "size")
                     {
@@ -74,7 +77,7 @@ namespace SmartSystemMenu
                             _menuItems.WindowSizeItems[i].Id = subItemId;
                             if (!IsMenuItem(subMenuHandle, subItemId))
                             {
-                                NativeMethods.AppendMenu(subMenuHandle, NativeConstants.MF_BYCOMMAND, subItemId, GetTitle(_menuItems.WindowSizeItems[i]));
+                                AppendMenu(subMenuHandle, Constants.MF_BYCOMMAND, subItemId, GetTitle(_menuItems.WindowSizeItems[i]));
                             }
                         }
                     }
@@ -83,7 +86,7 @@ namespace SmartSystemMenu
                     {
                         foreach (var moveToMenuItem in MoveToMenuItems)
                         {
-                            NativeMethods.AppendMenu(subMenuHandle, NativeConstants.MF_BYCOMMAND, MenuItemId.SC_MOVE_TO + moveToMenuItem.Key, GetTitle("monitor") + moveToMenuItem.Key);
+                            AppendMenu(subMenuHandle, Constants.MF_BYCOMMAND, MenuItemId.SC_MOVE_TO + moveToMenuItem.Key, GetTitle("monitor") + moveToMenuItem.Key);
                         }
                     }
 
@@ -91,7 +94,7 @@ namespace SmartSystemMenu
                     {
                         for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
                         {
-                            NativeMethods.AppendMenu(subMenuHandle, NativeConstants.MF_BYCOMMAND, MenuItemId.SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
+                            AppendMenu(subMenuHandle, Constants.MF_BYCOMMAND, MenuItemId.SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
                         }
                     }
 
@@ -104,20 +107,20 @@ namespace SmartSystemMenu
                             title = GetTitle(subItem.Name, title, true);
                             if (!IsMenuItem(subMenuHandle, subItemId))
                             {
-                                NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYCOMMAND, subItemId, title);
+                                InsertMenu(subMenuHandle, -1, Constants.MF_BYCOMMAND, subItemId, title);
                             }
                         }
 
                         if (subItem.Type == MenuItemType.Separator && subItem.Show)
                         {
-                            NativeMethods.InsertMenu(subMenuHandle, -1, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
+                            InsertMenu(subMenuHandle, -1, Constants.MF_BYCOMMAND | Constants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
                         }
                     }
 
                     var id = MenuItemId.GetId(item.Name);
                     if (!IsMenuItem(menuHandle, id))
                     {
-                        InsertSubMenu(menuHandle, subMenuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_POPUP, (uint)id, GetTitle(item.Name, null, true));
+                        InsertSubMenu(menuHandle, subMenuHandle, MenuItemId.SC_CLOSE, Constants.MF_BYCOMMAND | Constants.MF_POPUP, (uint)id, GetTitle(item.Name, null, true));
                     }
                     subMenuHandle = IntPtr.Zero;
                 }
@@ -125,7 +128,7 @@ namespace SmartSystemMenu
 
             if (!IsMenuItem(menuHandle, MenuItemId.SC_SEPARATOR_BOTTOM))
             {
-                NativeMethods.InsertMenu(menuHandle, MenuItemId.SC_CLOSE, NativeConstants.MF_BYCOMMAND | NativeConstants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR_BOTTOM, null);
+                InsertMenu(menuHandle, MenuItemId.SC_CLOSE, Constants.MF_BYCOMMAND | Constants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR_BOTTOM, null);
             }
 
             return true;
@@ -133,46 +136,46 @@ namespace SmartSystemMenu
 
         public void Destroy()
         {
-            var menuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
 
             foreach (var item in _menuItems.Items.Where(x => x.Show))
             {
                 var id = MenuItemId.GetId(item.Name);
                 if (id > 0)
                 {
-                    NativeMethods.DeleteMenu(menuHandle, id, NativeConstants.MF_BYCOMMAND);
+                    DeleteMenu(menuHandle, id, Constants.MF_BYCOMMAND);
                 }
             }
 
-            NativeMethods.DeleteMenu(menuHandle, MenuItemId.SC_SEPARATOR_BOTTOM, NativeConstants.MF_BYCOMMAND);
+            DeleteMenu(menuHandle, MenuItemId.SC_SEPARATOR_BOTTOM, Constants.MF_BYCOMMAND);
 
-            var numberItems = NativeMethods.GetMenuItemCount(menuHandle);
+            var numberItems = GetMenuItemCount(menuHandle);
             if (numberItems == DEFAULT_SYSTEM_MENU_NUMBER_ITEMS)
             {
-                NativeMethods.GetSystemMenu(WindowHandle, true);
+                GetSystemMenu(WindowHandle, true);
             }
         }
 
         public void CheckMenuItem(int id, bool check)
         {
-            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            NativeMethods.CheckMenuItem(windowMenuHandle, id, check ? NativeConstants.MF_CHECKED : NativeConstants.MF_UNCHECKED);
+            var windowMenuHandle = GetSystemMenu(WindowHandle, false);
+            User32.CheckMenuItem(windowMenuHandle, id, check ? Constants.MF_CHECKED : Constants.MF_UNCHECKED);
         }
 
         public void UncheckMenuItems(params int[] ids)
         {
-            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
+            var windowMenuHandle = GetSystemMenu(WindowHandle, false);
             foreach (var id in ids)
             {
-                NativeMethods.CheckMenuItem(windowMenuHandle, id, NativeConstants.MF_UNCHECKED);
+                User32.CheckMenuItem(windowMenuHandle, id, Constants.MF_UNCHECKED);
             }
         }
 
         public bool IsMenuItemChecked(int id)
         {
-            var windowMenuHandle = NativeMethods.GetSystemMenu(WindowHandle, false);
-            var flags = NativeMethods.GetMenuState(windowMenuHandle, id, NativeConstants.MF_BYCOMMAND);
-            var isChecked = flags != -1 && (flags & NativeConstants.MF_CHECKED) != 0;
+            var windowMenuHandle = GetSystemMenu(WindowHandle, false);
+            var flags = GetMenuState(windowMenuHandle, id, Constants.MF_BYCOMMAND);
+            var isChecked = flags != -1 && (flags & Constants.MF_CHECKED) != 0;
             return isChecked;
         }
 
@@ -269,13 +272,13 @@ namespace SmartSystemMenu
 
         private bool InsertSubMenu(IntPtr menuHandle, IntPtr subMenuHandle, int uPosition, int uFlags, uint uIDNewItem, string lpNewItem)
         {
-            if (NativeMethods.InsertMenu(menuHandle, uPosition, uFlags, subMenuHandle, lpNewItem))
+            if (InsertMenu(menuHandle, uPosition, uFlags, subMenuHandle, lpNewItem))
             {
                 var mmi = new MenuItemInfo();
                 mmi.cbSize = (uint)Marshal.SizeOf(mmi);
                 mmi.fMask = MIIM.ID;
                 mmi.wID = uIDNewItem;
-                return NativeMethods.SetMenuItemInfo(menuHandle, subMenuHandle.ToInt32(), false, ref mmi);
+                return SetMenuItemInfo(menuHandle, subMenuHandle.ToInt32(), false, ref mmi);
             }
 
             return true;
@@ -286,7 +289,7 @@ namespace SmartSystemMenu
             var mmi = new MenuItemInfo();
             mmi.cbSize = (uint)Marshal.SizeOf(mmi);
             mmi.fMask = MIIM.ID;
-            return NativeMethods.GetMenuItemInfo(menuHandle, item, false, ref mmi);
+            return GetMenuItemInfo(menuHandle, item, false, ref mmi);
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -9,18 +10,6 @@ namespace SmartSystemMenu.Hooks
     {
         private int _msgIdMouseLL;
         private int _msgIdMouseLLHookReplaced;
-
-        private const int WM_MOUSEMOVE = 0x0200;
-        private const int WM_LBUTTONDOWN = 0x0201;
-        private const int WM_LBUTTONUP = 0x0202;
-        private const int WM_LBUTTONDBLCLK = 0x0203;
-        private const int WM_RBUTTONDOWN = 0x0204;
-        private const int WM_RBUTTONUP = 0x0205;
-        private const int WM_RBUTTONDBLCLK = 0x0206;
-        private const int WM_MBUTTONDOWN = 0x0207;
-        private const int WM_MBUTTONUP = 0x0208;
-        private const int WM_MBUTTONDBLCLK = 0x0209;
-        private const int WM_MOUSEWHEEL = 0x020A;
 
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<BasicHookEventArgs> MouseLLEvent;
@@ -47,13 +36,13 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdMouseLL = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL");
-            _msgIdMouseLLHookReplaced = NativeMethods.RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL_REPLACED");
+            _msgIdMouseLL = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL");
+            _msgIdMouseLLHookReplaced = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL_REPLACED");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                NativeMethods.ChangeWindowMessageFilter(_msgIdMouseLL, NativeConstants.MSGFLT_ADD);
-                NativeMethods.ChangeWindowMessageFilter(_msgIdMouseLLHookReplaced, NativeConstants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdMouseLL, MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdMouseLLHookReplaced, MSGFLT_ADD);
             }
             NativeHookMethods.InitializeMouseLLHook(0, _handle, _dragByMouseMenuItem);
         }
