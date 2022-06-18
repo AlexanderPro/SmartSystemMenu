@@ -81,6 +81,7 @@
     <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\PriorityClassExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WindowAlignmentExtensions.cs" />
     <Compile Include="Forms\MessageBoxForm.cs">

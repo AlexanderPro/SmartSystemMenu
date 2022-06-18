@@ -1,12 +1,10 @@
 using System;
-using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Windows.Automation;
 using System.IO;
 using System.Threading;
 using System.ComponentModel;
@@ -106,23 +104,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                var process = Process;
-                if (process == null)
-                {
-                    return Priority.Normal;
-                }
-
-                var priorityClass = Kernel32.GetPriorityClass(process.GetHandle());
-                switch (priorityClass)
-                {
-                    case PriorityClass.REALTIME_PRIORITY_CLASS: return Priority.RealTime;
-                    case PriorityClass.HIGH_PRIORITY_CLASS: return Priority.High;
-                    case PriorityClass.ABOVE_NORMAL_PRIORITY_CLASS: return Priority.AboveNormal;
-                    case PriorityClass.NORMAL_PRIORITY_CLASS: return Priority.Normal;
-                    case PriorityClass.BELOW_NORMAL_PRIORITY_CLASS: return Priority.BelowNormal;
-                    case PriorityClass.IDLE_PRIORITY_CLASS: return Priority.Idle;
-                    default: return Priority.Normal;
-                }
+                return Process.GetPriority();
             }
         }
 
@@ -155,9 +137,17 @@ namespace SmartSystemMenu
         {
             get
             {
-                int style = GetWindowLong(Handle, GWL_EXSTYLE);
-                bool isAlwaysOnTop = (style & WS_EX_TOPMOST) == WS_EX_TOPMOST;
+                bool isAlwaysOnTop = WindowUtils.IsAlwaysOnTop(Handle);
                 return isAlwaysOnTop;
+            }
+        }
+
+        public bool IsExToolWindow
+        {
+            get
+            {
+                bool isExToolWindow = WindowUtils.IsExToolWindow(Handle);
+                return isExToolWindow;
             }
         }
 
@@ -251,41 +241,20 @@ namespace SmartSystemMenu
             _isManaged = false;
         }
 
-        public override string ToString()
-        {
-            return GetWindowText();
-        }
+        public override string ToString() => WindowUtils.GetWindowText(Handle);
 
-        public string GetWindowText()
-        {
-            var builder = new StringBuilder(1024);
-            User32.GetWindowText(Handle, builder, builder.Capacity);
-            var windowText = builder.ToString();
-            return windowText;
-        }
+        public string GetWindowText() => WindowUtils.GetWindowText(Handle);
 
-        public string GetClassName()
-        {
-            var builder = new StringBuilder(1024);
-            User32.GetClassName(Handle, builder, builder.Capacity);
-            var className = builder.ToString();
-            return className;
-        }
+        public string GetClassName() => WindowUtils.GetClassName(Handle);
 
-        private string RealGetWindowClass()
-        {
-            var builder = new StringBuilder(1024);
-            User32.RealGetWindowClass(Handle, builder, builder.Capacity);
-            var className = builder.ToString();
-            return className;
-        }
+        private string RealGetWindowClass() => WindowUtils.RealGetWindowClass(Handle);
 
         public WindowInfo GetWindowInfo()
         {
             var process = Process;
             var info = new WindowInfo();
             info.GetWindowText = GetWindowText();
-            info.WM_GETTEXT = GetWmGettext();
+            info.WM_GETTEXT = WindowUtils.GetWmGettext(Handle);
             info.GetClassName = GetClassName();
             info.RealGetWindowClass = RealGetWindowClass();
             info.Handle = Handle;
@@ -323,7 +292,7 @@ namespace SmartSystemMenu
 
             try
             {
-                info.FontName = GetFontName();
+                info.FontName = WindowUtils.GetFontName(Handle);
             }
             catch
             {
@@ -415,7 +384,7 @@ namespace SmartSystemMenu
         public void SetTransparency(int percent)
         {
             var opacity = (byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
-            SetOpacity(Handle, opacity);
+            WindowUtils.SetOpacity(Handle, opacity);
             State.Transparency = percent;
         }
 
@@ -603,6 +572,19 @@ namespace SmartSystemMenu
             State.AlwaysOnTop = topMost;
         }
 
+        public void HideForAltTab(bool enable)
+        {
+            if (enable)
+            {
+                WindowUtils.SetExToolWindow(Handle);
+            }
+            else
+            {
+                WindowUtils.UnsetExToolWindow(Handle);
+            }
+            State.HideForAltTab = enable;
+        }
+
         public void SendToBottom()
         {
             SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
@@ -650,7 +632,7 @@ namespace SmartSystemMenu
         public string ExtractText()
         {
             var text = WindowUtils.ExtractTextFromConsoleWindow(ProcessId);
-            text = text ?? ExtractTextFromWindow();
+            text = text ?? WindowUtils.ExtractTextFromWindow(Handle);
             return text;
         }
 
@@ -659,46 +641,13 @@ namespace SmartSystemMenu
             var version = Environment.OSVersion.Version;
             if (version.Major == 6 && (version.Minor == 0 || version.Minor == 1))
             {
-                AeroGlassForVistaAndSeven(enable);
+                WindowUtils.AeroGlassForVistaAndSeven(Handle, enable);
+                State.AeroGlass = enable;
             }
             else if (version.Major >= 6 || (version.Major == 6 && version.Minor > 1))
             {
-                AeroGlassForEightAndHigher(enable);
-            }
-        }
-
-        public void AeroGlassForVistaAndSeven(bool enable)
-        {
-            var blurBehind = new DWM_BLURBEHIND()
-            {
-                dwFlags = DWM_BB.Enable,
-                fEnable = enable,
-                hRgnBlur = IntPtr.Zero,
-                fTransitionOnMaximized = false
-            };
-            Dwmapi.DwmEnableBlurBehindWindow(Handle, ref blurBehind);
-            State.AeroGlass = enable;
-        }
-
-        public void AeroGlassForEightAndHigher(bool enable)
-        {
-            var accent = new AccentPolicy();
-            var accentStructSize = Marshal.SizeOf(accent);
-            accent.AccentState = enable ? AccentState.ACCENT_ENABLE_BLURBEHIND : AccentState.ACCENT_DISABLED;
-            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
-            try
-            {
-                Marshal.StructureToPtr(accent, accentPtr, false);
-                var data = new WindowCompositionAttributeData();
-                data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
-                data.SizeOfData = accentStructSize;
-                data.Data = accentPtr;
-                SetWindowCompositionAttribute(Handle, ref data);
+                WindowUtils.AeroGlassForEightAndHigher(Handle, enable);
                 State.AeroGlass = enable;
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(accentPtr);
             }
         }
 
@@ -742,7 +691,10 @@ namespace SmartSystemMenu
 
         public void ApplyState(WindowState state, SaveSelectedItemsSettings settings, IList<WindowSizeMenuItem> sizeItems)
         {
-            SetSize(state.Width, state.Height, state.Left, state.Top);
+            if (state.Width > 0 && state.Height > 0)
+            {
+                SetSize(state.Width, state.Height, state.Left, state.Top);
+            }
 
             var sizeItem = sizeItems.FirstOrDefault(x => x.Width == state.Width && x.Height == state.Height);
             if (sizeItem != null)
@@ -760,6 +712,12 @@ namespace SmartSystemMenu
             {
                 MakeTopMost(state.AlwaysOnTop.Value);
                 Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, state.AlwaysOnTop.Value);
+            }
+
+            if (settings.HideForAltTab && state.HideForAltTab.HasValue)
+            {
+                HideForAltTab(state.HideForAltTab.Value);
+                Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, state.HideForAltTab.Value);
             }
 
             if (settings.Alignment && state.Alignment.HasValue)
@@ -792,34 +750,25 @@ namespace SmartSystemMenu
             }
         }
 
-        public static void ForceForegroundWindow(IntPtr handle)
+        public void RefreshState()
         {
-            var foreHandle = GetForegroundWindow();
-            var foreThread = GetWindowThreadProcessId(foreHandle, IntPtr.Zero);
-            var appThread = Kernel32.GetCurrentThreadId();
-            if (foreThread != appThread)
-            {
-                AttachThreadInput(foreThread, appThread, true);
-                BringWindowToTop(handle);
-                ShowWindow(handle, (int)WindowShowStyle.Show);
-                AttachThreadInput(foreThread, appThread, false);
-            }
-            else
-            {
-                BringWindowToTop(handle);
-                ShowWindow(handle, (int)WindowShowStyle.Show);
-            }
-        }
-
-        public static void ForceAllMessageLoopsToWakeUp()
-        {
-            uint result;
-            SendMessageTimeout((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out result);
-        }
-
-        public void RefreshProcessNameState()
-        {
+            var size = Size;
+            State.Left = size.Left;
+            State.Top = size.Top;
+            State.Width = size.Width;
+            State.Height = size.Height;
             State.ProcessName = Process?.GetMainModuleFileName() ?? string.Empty;
+            var alwaysOnTop = AlwaysOnTop;
+            if (alwaysOnTop)
+            {
+                State.AlwaysOnTop = alwaysOnTop;
+            }
+
+            var isExToolWindow = IsExToolWindow;
+            if (isExToolWindow)
+            {
+                State.HideForAltTab = isExToolWindow;
+            }
         }
 
         private void _menuItemRestore_Click(object sender, EventArgs e)
@@ -831,36 +780,6 @@ namespace SmartSystemMenu
         {
             RestoreFromSystemTray();
             PostMessage(Handle, WM_CLOSE, 0, 0);
-        }
-
-        private string GetFontName()
-        {
-            var hFont = SendMessage(Handle, WM_GETFONT, 0, 0);
-            if (hFont == IntPtr.Zero)
-            {
-                return "Default system font";
-            }
-            var font = Font.FromHfont(hFont);
-            return font.Name;
-        }
-
-        private string GetWmGettext()
-        {
-            var titleSize = SendMessage(Handle, WM_GETTEXTLENGTH, 0, 0);
-            if (titleSize.ToInt32() == 0)
-            {
-                return string.Empty;
-            }
-
-            var title = new StringBuilder(titleSize.ToInt32() + 1);
-            SendMessage(Handle, WM_GETTEXT, title.Capacity, title);
-            return title.ToString();
-        }
-
-        private void SetOpacity(IntPtr handle, byte opacity)
-        {
-            SetWindowLong(handle, GWL_EXSTYLE, GetWindowLong(handle, GWL_EXSTYLE) | WS_EX_LAYERED);
-            SetLayeredWindowAttributes(handle, 0, opacity, LWA_ALPHA);
         }
 
         private void RestoreFromSystemTray()
@@ -885,54 +804,11 @@ namespace SmartSystemMenu
             }
         }
 
-        private Icon GetWindowIcon()
-        {
-            IntPtr icon;
-            try
-            {
-                uint result;
-                SendMessageTimeout(Handle, WM_GETICON, ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
-                icon = new IntPtr(result);
-
-                if (icon == IntPtr.Zero)
-                {
-                    SendMessageTimeout(Handle, WM_GETICON, ICON_SMALL, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
-                    icon = new IntPtr(result);
-                }
-
-                if (icon == IntPtr.Zero)
-                {
-                    SendMessageTimeout(Handle, WM_GETICON, ICON_BIG, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
-                    icon = new IntPtr(result);
-                }
-
-                if (icon == IntPtr.Zero)
-                {
-                    icon = GetClassLongPtr(Handle, GCLP_HICONSM);
-                }
-
-                if (icon == IntPtr.Zero)
-                {
-                    icon = GetClassLongPtr(Handle, GCLP_HICON);
-                }
-
-                if (icon == IntPtr.Zero)
-                {
-                    icon = LoadIcon(IntPtr.Zero, IDI_APPLICATION);
-                }
-            }
-            catch
-            {
-                icon = LoadIcon(IntPtr.Zero, IDI_APPLICATION);
-            }
-            return Icon.FromHandle(icon);
-        }
-
         private void CreateIconInSystemTray()
         {
             _systemTrayMenu = _systemTrayMenu ?? CreateSystemTrayMenu();
             _systemTrayIcon = _systemTrayIcon ?? CreateNotifyIcon(_systemTrayMenu);
-            _systemTrayIcon.Icon = GetWindowIcon();
+            _systemTrayIcon.Icon = WindowUtils.GetIcon(Handle);
             var windowText = GetWindowText();
             _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;
             _systemTrayIcon.Visible = true;
@@ -943,44 +819,6 @@ namespace SmartSystemMenu
             if (e.Button == MouseButtons.Left)
             {
                 RestoreFromSystemTray();
-            }
-        }
-
-        private string ExtractTextFromWindow()
-        {
-            try
-            {
-                var builder = new StringBuilder();
-                foreach (AutomationElement window in AutomationElement.FromHandle(Handle).FindAll(TreeScope.Descendants, Condition.TrueCondition))
-                {
-                    try
-                    {
-                        if (window.Current.IsEnabled && !string.IsNullOrEmpty(window.Current.Name))
-                        {
-                            builder.AppendLine(window.Current.Name).AppendLine();
-
-                            object pattern;
-                            if (!string.IsNullOrEmpty(window.Current.ClassName) && window.TryGetCurrentPattern(TextPattern.Pattern, out pattern) && pattern is TextPattern)
-                            {
-                                var text = ((TextPattern)pattern).DocumentRange.GetText(-1);
-                                if (!string.IsNullOrEmpty(text))
-                                {
-                                    builder.AppendLine(text).AppendLine();
-                                }
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        continue;
-                    }
-                }
-
-                return builder.ToString();
-            }
-            catch
-            {
-                return null;
             }
         }
 

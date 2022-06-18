@@ -75,6 +75,5 @@ namespace SmartSystemMenu.Utils
                 default: return null;
             }
         }
-
     }
 }

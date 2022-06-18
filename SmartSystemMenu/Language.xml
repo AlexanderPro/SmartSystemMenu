@@ -16,6 +16,7 @@
       <item name="copy_full_process_path" value="Copy Full Process Path" />
       <item name="clear_clipboard" value="Clear" />
       <item name="drag_by_mouse" value="Drag By Mouse" />
+      <item name="hide_for_alt_tab" value="Hide For Alt+Tab" />
       <item name="size" value="Resize" />
       <item name="size_default" value="Default" />
       <item name="size_custom" value="Custom..." />
@@ -239,6 +240,7 @@
       <item name="copy_full_process_path" value="Vollständigen Prozesspfad kopieren" />
       <item name="clear_clipboard" value="Löschen" />
       <item name="drag_by_mouse" value="Ziehen mit der Maus" />
+      <item name="hide_for_alt_tab" value="Ausblenden für Alt+Tab" />
       <item name="size" value="Fenstergröβe ändern" />
       <item name="size_default" value="Standardmäβig" />
       <item name="size_custom" value="Benutzerdefinierter Wert…" />
@@ -460,6 +462,7 @@
       <item name="copy_full_process_path" value="复制完整的进程路径" />
       <item name="clear_clipboard" value="清除" />
       <item name="drag_by_mouse" value="通过鼠标拖动" />
+      <item name="hide_for_alt_tab" value="隱藏 Alt+Tab" />
       <item name="size" value="调整窗口大小" />
       <item name="size_default" value="默认" />
       <item name="size_custom" value="自定义..." />
@@ -681,6 +684,7 @@
       <item name="copy_full_process_path" value="複製完整的處理程序路徑" />
       <item name="clear_clipboard" value="清除" />
       <item name="drag_by_mouse" value="透過滑鼠拖曳" />
+      <item name="hide_for_alt_tab" value="隱藏 Alt+Tab" />
       <item name="size" value="調整視窗大小" />
       <item name="size_default" value="預設" />
       <item name="size_custom" value="自訂..." />
@@ -904,6 +908,7 @@
       <item name="copy_full_process_path" value="フルプロセスパスをコピー" />
       <item name="clear_clipboard" value="クリア" />
       <item name="drag_by_mouse" value="マウスでドラッグする" />
+      <item name="hide_for_alt_tab" value="Alt+Tabで非表示" />
       <item name="size" value="サイズ変更" />
       <item name="size_default" value="デフォルト" />
       <item name="size_custom" value="カストム" />
@@ -1125,6 +1130,7 @@
       <item name="copy_full_process_path" value="전체 프로세스 경로 복사" />
       <item name="clear_clipboard" value="지우기" />
       <item name="drag_by_mouse" value="마우스로 드래그" />
+      <item name="hide_for_alt_tab" value="Alt+Tab에서 숨기기" />
       <item name="size" value="크기 변경" />
       <item name="size_default" value="기본" />
       <item name="size_custom" value="사용자 정의..." />
@@ -1346,6 +1352,7 @@
       <item name="copy_full_process_path" value="Скопировать полный путь к процессу" />
       <item name="clear_clipboard" value="Очистить" />
       <item name="drag_by_mouse" value="Перетащить мышкой" />
+      <item name="hide_for_alt_tab" value="Скрыть для Alt+Tab" />
       <item name="size" value="Изменить размер" />
       <item name="size_default" value="По умолчанию" />
       <item name="size_custom" value="Настроить..." />
@@ -1567,6 +1574,7 @@
       <item name="copy_full_process_path" value="Копирај пуну путању процеса" />
       <item name="clear_clipboard" value="Обриши" />
       <item name="drag_by_mouse" value="Премести са мишем" />
+      <item name="hide_for_alt_tab" value="Сакриј за Alt+Tab" />
       <item name="size" value="Промени величину" />
       <item name="size_default" value="Подразумевано" />
       <item name="size_custom" value="Прилагоди..." />
@@ -1788,6 +1796,7 @@
       <item name="copy_full_process_path" value="Copiar caminho completo do processo" />
       <item name="clear_clipboard" value="Limpar" />
       <item name="drag_by_mouse" value="Arrastar com o mouse" />
+      <item name="hide_for_alt_tab" value="Ocultar para Alt+Tab" />
       <item name="size" value="Redimensionar" />
       <item name="size_default" value="Padrão" />
       <item name="size_custom" value="Personalizar..." />
@@ -2009,6 +2018,7 @@
       <item name="copy_full_process_path" value="Copia intero percorso del programma" />
       <item name="clear_clipboard" value="Pulisci" />
       <item name="drag_by_mouse" value="Trascinabile" />
+      <item name="hide_for_alt_tab" value="Nascondi per Alt+Tab" />
       <item name="size" value="Ridimensiona" />
       <item name="size_default" value="Predefinito" />
       <item name="size_custom" value="Personalizza..." />

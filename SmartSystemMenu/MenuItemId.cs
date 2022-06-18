@@ -57,7 +57,8 @@ namespace SmartSystemMenu
         public const int SC_ALIGN_DEFAULT = 0x479B;
         public const int SC_ALIGN_CUSTOM = 0x479C;
         public const int SC_SAVE_SCREEN_SHOT = 0x4802;
-        public const int SC_OPEN_FILE_IN_EXPLORER = 0x4804;
+        public const int SC_OPEN_FILE_IN_EXPLORER = 0x4803;
+        public const int SC_HIDE_FOR_ALT_TAB = 0x4804;
         public const int SC_OTHER_WINDOWS = 0x480F;
         public const int SC_CLOSE_OTHER_WINDOWS = 0x4805;
         public const int SC_MINIMIZE_OTHER_WINDOWS = 0x4806;
@@ -90,6 +91,7 @@ namespace SmartSystemMenu
             NameToId["save_screenshot"] = SC_SAVE_SCREEN_SHOT;
             NameToId["open_file_in_explorer"] = SC_OPEN_FILE_IN_EXPLORER;
             NameToId["drag_by_mouse"] = SC_DRAG_BY_MOUSE;
+            NameToId["hide_for_alt_tab"] = SC_HIDE_FOR_ALT_TAB;
             NameToId["size"] = SC_SIZE;
             NameToId["size_default"] = SC_SIZE_DEFAULT;
             NameToId["size_custom"] = SC_SIZE_CUSTOM;

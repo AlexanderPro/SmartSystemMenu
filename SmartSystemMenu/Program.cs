@@ -252,11 +252,11 @@ namespace SmartSystemMenu
                         var version = Environment.OSVersion.Version;
                         if (version.Major == 6 && (version.Minor == 0 || version.Minor == 1))
                         {
-                            window.AeroGlassForVistaAndSeven(enabled.Value);
+                            WindowUtils.AeroGlassForVistaAndSeven(window.Handle, enabled.Value);
                         }
                         else if (version.Major >= 6 || (version.Major == 6 && version.Minor > 1))
                         {
-                            window.AeroGlassForEightAndHigher(enabled.Value);
+                            WindowUtils.AeroGlassForEightAndHigher(window.Handle, enabled.Value);
                         }
                     }
                 }

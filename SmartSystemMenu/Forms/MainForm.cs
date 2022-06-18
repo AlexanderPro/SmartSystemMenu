@@ -123,6 +123,11 @@ namespace SmartSystemMenu.Forms
                         window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
                     }
 
+                    if (window.IsExToolWindow)
+                    {
+                        window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, true);
+                    }
+
                     var windowClassName = window.GetClassName();
                     var states = _windowSettings.Find(windowClassName, processPath);
                     if (states.Any())
@@ -211,7 +216,7 @@ namespace SmartSystemMenu.Forms
                 }
             }
 
-            Window.ForceAllMessageLoopsToWakeUp();
+            WindowUtils.ForceAllMessageLoopsToWakeUp();
 
 #if WIN32
             _systemTrayMenu?.Dispose();
@@ -335,6 +340,12 @@ namespace SmartSystemMenu.Forms
                         {
                             window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
                         }
+
+                        if (window.IsExToolWindow)
+                        {
+                            window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, true);
+                        }
+
                         _windows.Add(window);
 
                         var windowClassName = window.GetClassName();
@@ -560,6 +571,14 @@ namespace SmartSystemMenu.Forms
                                 var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_TOPMOST);
                                 window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, !isChecked);
                                 window.MakeTopMost(!isChecked);
+                            }
+                            break;
+
+                        case MenuItemId.SC_HIDE_FOR_ALT_TAB:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_HIDE_FOR_ALT_TAB);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, !isChecked);
+                                window.HideForAltTab(!isChecked);
                             }
                             break;
 
@@ -792,7 +811,7 @@ namespace SmartSystemMenu.Forms
                     {
                         isSaveItemChecked = !isSaveItemChecked;
                         window.Menu.CheckMenuItem(MenuItemId.SC_SAVE_SELECTED_ITEMS, isSaveItemChecked);
-                        window.RefreshProcessNameState();
+                        window.RefreshState();
                         var windowClassName = window.GetClassName();
                         var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
                         if (!string.IsNullOrEmpty(windowClassName) && !string.IsNullOrEmpty(processPath))
@@ -824,7 +843,7 @@ namespace SmartSystemMenu.Forms
                              lowOrder != MenuItemId.SC_RESIZE && 
                              lowOrder != MenuItemId.SC_CLOSE)
                     {
-                        window.RefreshProcessNameState();
+                        window.RefreshState();
                         var windowClassName = window.GetClassName();
                         var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
                         if (!string.IsNullOrEmpty(windowClassName) && !string.IsNullOrEmpty(processPath))

@@ -95,6 +95,7 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
+            this.chkHideForAltTab = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -695,6 +696,7 @@ namespace SmartSystemMenu.Forms
             // 
             // grpbSaveSelectedItems
             // 
+            this.grpbSaveSelectedItems.Controls.Add(this.chkHideForAltTab);
             this.grpbSaveSelectedItems.Controls.Add(this.chkMinimizeToTrayAlways);
             this.grpbSaveSelectedItems.Controls.Add(this.chkPriority);
             this.grpbSaveSelectedItems.Controls.Add(this.chkTransparency);
@@ -704,13 +706,13 @@ namespace SmartSystemMenu.Forms
             this.grpbSaveSelectedItems.Location = new System.Drawing.Point(8, 16);
             this.grpbSaveSelectedItems.Name = "grpbSaveSelectedItems";
             this.grpbSaveSelectedItems.Size = new System.Drawing.Size(497, 368);
-            this.grpbSaveSelectedItems.TabIndex = 1;
+            this.grpbSaveSelectedItems.TabIndex = 0;
             this.grpbSaveSelectedItems.TabStop = false;
             // 
             // chkMinimizeToTrayAlways
             // 
             this.chkMinimizeToTrayAlways.AutoSize = true;
-            this.chkMinimizeToTrayAlways.Location = new System.Drawing.Point(6, 178);
+            this.chkMinimizeToTrayAlways.Location = new System.Drawing.Point(6, 208);
             this.chkMinimizeToTrayAlways.Name = "chkMinimizeToTrayAlways";
             this.chkMinimizeToTrayAlways.Size = new System.Drawing.Size(142, 17);
             this.chkMinimizeToTrayAlways.TabIndex = 6;
@@ -720,7 +722,7 @@ namespace SmartSystemMenu.Forms
             // chkPriority
             // 
             this.chkPriority.AutoSize = true;
-            this.chkPriority.Location = new System.Drawing.Point(6, 148);
+            this.chkPriority.Location = new System.Drawing.Point(6, 178);
             this.chkPriority.Name = "chkPriority";
             this.chkPriority.Size = new System.Drawing.Size(57, 17);
             this.chkPriority.TabIndex = 5;
@@ -730,7 +732,7 @@ namespace SmartSystemMenu.Forms
             // chkTransparency
             // 
             this.chkTransparency.AutoSize = true;
-            this.chkTransparency.Location = new System.Drawing.Point(6, 118);
+            this.chkTransparency.Location = new System.Drawing.Point(6, 148);
             this.chkTransparency.Name = "chkTransparency";
             this.chkTransparency.Size = new System.Drawing.Size(91, 17);
             this.chkTransparency.TabIndex = 4;
@@ -740,7 +742,7 @@ namespace SmartSystemMenu.Forms
             // chkAlignment
             // 
             this.chkAlignment.AutoSize = true;
-            this.chkAlignment.Location = new System.Drawing.Point(6, 88);
+            this.chkAlignment.Location = new System.Drawing.Point(6, 118);
             this.chkAlignment.Name = "chkAlignment";
             this.chkAlignment.Size = new System.Drawing.Size(72, 17);
             this.chkAlignment.TabIndex = 3;
@@ -753,7 +755,7 @@ namespace SmartSystemMenu.Forms
             this.chkAlwaysOnTop.Location = new System.Drawing.Point(6, 58);
             this.chkAlwaysOnTop.Name = "chkAlwaysOnTop";
             this.chkAlwaysOnTop.Size = new System.Drawing.Size(98, 17);
-            this.chkAlwaysOnTop.TabIndex = 2;
+            this.chkAlwaysOnTop.TabIndex = 1;
             this.chkAlwaysOnTop.Text = "Always On Top";
             this.chkAlwaysOnTop.UseVisualStyleBackColor = true;
             // 
@@ -763,7 +765,7 @@ namespace SmartSystemMenu.Forms
             this.chkAeroGlass.Location = new System.Drawing.Point(6, 28);
             this.chkAeroGlass.Name = "chkAeroGlass";
             this.chkAeroGlass.Size = new System.Drawing.Size(77, 17);
-            this.chkAeroGlass.TabIndex = 1;
+            this.chkAeroGlass.TabIndex = 0;
             this.chkAeroGlass.Text = "Aero Glass";
             this.chkAeroGlass.UseVisualStyleBackColor = true;
             // 
@@ -784,6 +786,16 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.TabIndex = 2;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
+            // 
+            // chkHideForAltTab
+            // 
+            this.chkHideForAltTab.AutoSize = true;
+            this.chkHideForAltTab.Location = new System.Drawing.Point(6, 88);
+            this.chkHideForAltTab.Name = "chkHideForAltTab";
+            this.chkHideForAltTab.Size = new System.Drawing.Size(103, 17);
+            this.chkHideForAltTab.TabIndex = 2;
+            this.chkHideForAltTab.Text = "Hide For Alt Tab";
+            this.chkHideForAltTab.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -890,5 +902,6 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.CheckBox chkTransparency;
         private System.Windows.Forms.CheckBox chkPriority;
         private System.Windows.Forms.CheckBox chkMinimizeToTrayAlways;
+        private System.Windows.Forms.CheckBox chkHideForAltTab;
     }
 }

@@ -3,6 +3,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using SmartSystemMenu.Utils;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Native.Enums;
 using SmartSystemMenu.Native.Structs;
@@ -104,6 +105,17 @@ namespace SmartSystemMenu.Extensions
         {
             return process.Threads[0].ThreadState == ThreadState.Wait
                 && process.Threads[0].WaitReason == ThreadWaitReason.Suspended;
+        }
+
+        public static Priority GetPriority(this Process process)
+        {
+            if (process == null)
+            {
+                return Priority.Normal;
+            }
+
+            var priorityClass = GetPriorityClass(process.GetHandle());
+            return priorityClass.GetPriority();
         }
     }
 }

@@ -21,6 +21,8 @@ namespace SmartSystemMenu
 
         public bool? AlwaysOnTop { get; set; }
 
+        public bool? HideForAltTab { get; set; }
+
         public WindowAlignment? Alignment { get; set; }
 
         public int? Transparency { get; set; }

@@ -18,6 +18,7 @@
       <item type="item" name="save_screenshot" key1="" key2="" key3="" />
       <item type="item" name="open_file_in_explorer" key1="" key2="" key3="" />
       <item type="item" name="drag_by_mouse" key1="" key2="" key3="" />
+      <item type="item" name="hide_for_alt_tab" key1="" key2="" key3="" />
       <item type="group" name="size">
         <items>
           <item type="separator" />
@@ -130,7 +131,7 @@
     </startProgramItems>
   </menuItems>
   <closer type="" key1="" key2="" mouseButton="" />
-  <saveSelectedItems aeroGlass="true" alwaysOnTop="true" alignment="true" transparency="true" priority="true" minimizeToTrayAlways="true" />
+  <saveSelectedItems aeroGlass="true" alwaysOnTop="true" hideForAltTab="true" alignment="true" transparency="true" priority="true" minimizeToTrayAlways="true" />
   <sizer type="" />
   <systemTrayIcon show="true" />
   <display highDPI="false" />

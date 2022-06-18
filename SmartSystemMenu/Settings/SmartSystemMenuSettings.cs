@@ -216,6 +216,7 @@ namespace SmartSystemMenu.Settings
 
             if (SaveSelectedItems.AeroGlass != other.SaveSelectedItems.AeroGlass ||
                 SaveSelectedItems.AlwaysOnTop != other.SaveSelectedItems.AlwaysOnTop ||
+                SaveSelectedItems.HideForAltTab != other.SaveSelectedItems.HideForAltTab ||
                 SaveSelectedItems.Alignment != other.SaveSelectedItems.Alignment ||
                 SaveSelectedItems.Transparency != other.SaveSelectedItems.Transparency ||
                 SaveSelectedItems.Priority != other.SaveSelectedItems.Priority ||
@@ -281,6 +282,7 @@ namespace SmartSystemMenu.Settings
             hashCode ^= Closer.MouseButton.GetHashCode();
             hashCode ^= SaveSelectedItems.AeroGlass.GetHashCode();
             hashCode ^= SaveSelectedItems.AlwaysOnTop.GetHashCode();
+            hashCode ^= SaveSelectedItems.HideForAltTab.GetHashCode();
             hashCode ^= SaveSelectedItems.Alignment.GetHashCode();
             hashCode ^= SaveSelectedItems.Transparency.GetHashCode();
             hashCode ^= SaveSelectedItems.Priority.GetHashCode();
@@ -370,6 +372,7 @@ namespace SmartSystemMenu.Settings
             var saveSelectedItemsElement = document.XPathSelectElement("/smartSystemMenu/saveSelectedItems");
             settings.SaveSelectedItems.AeroGlass = saveSelectedItemsElement.Attribute("aeroGlass") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("aeroGlass").Value) ? saveSelectedItemsElement.Attribute("aeroGlass").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.AlwaysOnTop = saveSelectedItemsElement.Attribute("alwaysOnTop") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("alwaysOnTop").Value) ? saveSelectedItemsElement.Attribute("alwaysOnTop").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.HideForAltTab = saveSelectedItemsElement.Attribute("hideForAltTab") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("hideForAltTab").Value) ? saveSelectedItemsElement.Attribute("hideForAltTab").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Alignment = saveSelectedItemsElement.Attribute("alignment") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("alignment").Value) ? saveSelectedItemsElement.Attribute("alignment").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Transparency = saveSelectedItemsElement.Attribute("transparency") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("transparency").Value) ? saveSelectedItemsElement.Attribute("transparency").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Priority = saveSelectedItemsElement.Attribute("priority") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("priority").Value) ? saveSelectedItemsElement.Attribute("priority").Value.ToLower() == "true" : true;
@@ -518,6 +521,7 @@ namespace SmartSystemMenu.Settings
                                  new XElement("saveSelectedItems",
                                      new XAttribute("aeroGlass", settings.SaveSelectedItems.AeroGlass.ToString().ToLower()),
                                      new XAttribute("alwaysOnTop", settings.SaveSelectedItems.AlwaysOnTop.ToString().ToLower()),
+                                     new XAttribute("hideForAltTab", settings.SaveSelectedItems.HideForAltTab.ToString().ToLower()),
                                      new XAttribute("alignment", settings.SaveSelectedItems.Alignment.ToString().ToLower()),
                                      new XAttribute("transparency", settings.SaveSelectedItems.Transparency.ToString().ToLower()),
                                      new XAttribute("priority", settings.SaveSelectedItems.Priority.ToString().ToLower()),
