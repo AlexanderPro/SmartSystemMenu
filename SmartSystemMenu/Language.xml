@@ -1130,7 +1130,7 @@
       <item name="copy_full_process_path" value="전체 프로세스 경로 복사" />
       <item name="clear_clipboard" value="지우기" />
       <item name="drag_by_mouse" value="마우스로 드래그" />
-      <item name="hide_for_alt_tab" value="Alt+Tab에서 숨기기" />
+      <item name="hide_for_alt_tab" value="Alt+Tab으로 숨기기" />
       <item name="size" value="크기 변경" />
       <item name="size_default" value="기본" />
       <item name="size_custom" value="사용자 정의..." />
@@ -1270,11 +1270,11 @@
       <item name="lbl_window_size_title" value="제목:" />
       <item name="lbl_window_size_width" value="너비:" />
       <item name="lbl_window_size_height" value="높이:" />
+      <item name="lbl_window_size_top" value="위:" />
+      <item name="lbl_window_size_left" value="왼쪽:" />
       <item name="lbl_window_size_key1" value="키 1:" />
       <item name="lbl_window_size_key2" value="키 2:" />
       <item name="lbl_window_size_key3" value="키 3:" />
-      <item name="lbl_window_size_top" value="위:" />
-      <item name="lbl_window_size_left" value="왼쪽:" />
       <item name="btn_window_size_up" value="위로 이동" />
       <item name="btn_window_size_down" value="아래로 이동" />
       <item name="btn_add_window_size" value="추가" />
@@ -1324,10 +1324,12 @@
       <item name="closer_lbl_key2" value="키 2" />
       <item name="closer_lbl_mouse_button" value="마우스 버튼" />
       <item name="closer_lbl_action" value="동작" />
+      <item name="closer_close_window" value="창 닫기" />
+      <item name="closer_kill_process" value="프로세스 종료" />
       <item name="closer_close_foreground_window" value="전경 창 닫기" />
       <item name="closer_close_window_under_cursor" value="커서 아래 창 닫기" />
-      <item name="closer_kill_process_with_foreground_window" value="전경 창으로 프로세스 종료" />
-      <item name="closer_kill_process_with_window_under_cursor" value="커서 아래 창으로 프로세스 종료" />
+      <item name="closer_kill_process_with_foreground_window" value="전경 창과 함께 프로세스 종료" />
+      <item name="closer_kill_process_with_window_under_cursor" value="커서 아래 창과 함께 프로세스 종료" />
       <item name="grpb_sizer" value="창 크기를 설정하는 방법" />
       <item name="grpb_display" value="표시" />
       <item name="chk_enable_high_dpi" value="높은 DPI 사용" />
