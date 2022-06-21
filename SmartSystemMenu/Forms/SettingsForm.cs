@@ -132,6 +132,7 @@ namespace SmartSystemMenu.Forms
                 new { Text = "", Value = "" },
                 new { Text = "English", Value = "en" },
                 new { Text = "Deutsch", Value = "de" },
+                new { Text = "Français", Value = "fr" },
                 new { Text = "Italiano", Value = "it" },
                 new { Text = "Português", Value = "pt" },
                 new { Text = "Русский", Value = "ru" },

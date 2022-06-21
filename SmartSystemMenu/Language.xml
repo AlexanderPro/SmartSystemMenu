@@ -2229,5 +2229,229 @@
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Parametro dell'input" />
     </it>
+    <fr>
+      <item name="separator" value="Séparateur" />
+      <item name="information" value="Information" />
+      <item name="roll_up" value="Enrouler" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="Toujours au premier plan" />
+      <item name="send_to_bottom" value="Réduire dans la barre des tâches" />
+      <item name="save_screenshot" value="Sauvegarder la capture d'écran" />
+      <item name="open_file_in_explorer" value="Ouvrir le fichier dans l'explorateur" />
+      <item name="clipboard" value="Presse-papiers" />
+      <item name="copy_window_text" value="Copier le texte de la fenêtre" />
+      <item name="copy_window_title" value="Copier le titre de la fenêtre" />
+      <item name="copy_full_process_path" value="Copier le chemin du programme" />
+      <item name="clear_clipboard" value="Effacer le presse-papiers" />
+      <item name="drag_by_mouse" value="Déplaçable" />
+      <item name="hide_for_alt_tab" value="Masqué pour Alt+Tab" />
+      <item name="size" value="Taille" />
+      <item name="size_default" value="Taille par défaut" />
+      <item name="size_custom" value="Personnaliser la taille" />
+      <item name="move_to" value="Déplacer dans" />
+      <item name="monitor" value="Ecran" />
+      <item name="alignment" value="Alignement" />
+      <item name="align_top_left" value="en haut à gauche" />
+      <item name="align_top_center" value="en haut au centre" />
+      <item name="align_top_right" value="en haut à droite" />
+      <item name="align_middle_left" value="au milieu à gauche" />
+      <item name="align_middle_center" value="au milieu au centre" />
+      <item name="align_middle_right" value="au milieu à droite" />
+      <item name="align_bottom_left" value="en bas à gauche" />
+      <item name="align_bottom_center" value="au centre en bas" />
+      <item name="align_bottom_right" value="en bas à droite" />
+      <item name="align_center_horizontally" value="Centrer horizontalement" />
+      <item name="align_center_vertically" value="Centrer verticalement" />
+      <item name="align_default" value="Par défaut" />
+      <item name="align_custom" value="Personnalisé..." />
+      <item name="transparency" value="Trasparence" />
+      <item name="trans_opaque" value=" (opaque)" />
+      <item name="trans_invisible" value=" (invisible)" />
+      <item name="trans_default" value="Prédéfini" />
+      <item name="trans_custom" value="Personnaliser..." />
+      <item name="priority" value="Priorité " />
+      <item name="priority_real_time" value="En temps réel: 24" />
+      <item name="priority_high" value="Alta: 13" />
+      <item name="priority_above_normal" value="Supérieur à la normale: 10" />
+      <item name="priority_normal" value="Normale: 8" />
+      <item name="priority_below_normal" value="Inférieur à la normale: 6" />
+      <item name="priority_idle" value="Basse: 4" />
+      <item name="system_tray" value="Barre de notification" />
+      <item name="minimize_to_systemtray" value="Réduire dans la barre de notification" />
+      <item name="minimize_always_to_systemtray" value="Toujours minimiser dans la barre de notification" />
+      <item name="suspend_to_systemtray" value="Suspendre et réduire dans la barre de notification" />
+      <item name="other_windows" value="Autre fenêtre: " />
+      <item name="minimize_other_windows" value="Minimiser les autres fenêtres" />
+      <item name="close_other_windows" value="Fermer les autres fenêtres" />
+      <item name="start_program" value="Démarrer programme" />
+      <item name="save_selected_items" value="Sauvegarder les élements sélectionnés" />
+      <item name="grp_window" value="Fenêtre" />
+      <item name="grp_process" value="Processus" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Nom de police:" />
+      <item name="lbl_window_handle" value="Instance fenêtre:" />
+      <item name="lbl_parent_window_handle" value="Instance fenêtre parent:" />
+      <item name="lbl_window_size" value="Dimension fenêtre:" />
+      <item name="lbl_window_position" value="Position fenêtre:" />
+      <item name="lbl_extended_frame_bounds" value="Limites de trame étendues:" />
+      <item name="lbl_instance" value="Instance:" />
+      <item name="lbl_process_id" value="ID processus:" />
+      <item name="lbl_thread_id" value="ID fil de discussion:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Chemin complet:" />
+      <item name="lbl_command_line" value="Ligne de commande:" />
+      <item name="lbl_started_at" value="Démarrer à:" />
+      <item name="lbl_owner" value="Propriétaire:" />
+      <item name="lbl_threads" value="Fils de discussion:" />
+      <item name="lbl_working_set_size" value="Ensemble de travail (mémoire):" />
+      <item name="lbl_parent" value="Parent:" />
+      <item name="lbl_priority" value="Priorité:" />
+      <item name="lbl_handles" value="Instance:" />
+      <item name="lbl_virtual_size" value="Dimension virtuelle:" />
+      <item name="lbl_product_name" value="Description:" />
+      <item name="lbl_copyright" value="Droits d'auteur:" />
+      <item name="lbl_file_version" value="Version fichier:" />
+      <item name="lbl_product_version" value="Version du produit:" />
+      <item name="information_btn_apply" value="Ok" />
+      <item name="save_screenshot_title" value="Sauvegarder la capture d'écran" />
+      <item name="save_screenshot_filename" value="Sauvegarder le nom" />
+      <item name="save_screenshot_default_ext" value="png" />
+      <item name="save_screenshot_filter" value="Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
+      <item name="size_form" value="Définir la taille" />
+      <item name="size_btn_apply" value="Appliquer" />
+      <item name="lbl_size_form_height" value="Hauteur:" />
+      <item name="lbl_size_form_width" value="Longueur:" />
+      <item name="lbl_size_form_top" value="En haut:" />
+      <item name="lbl_size_form_left" value="À gauche:" />
+      <item name="trans_form" value="Définir la transparence" />
+      <item name="trans_btn_apply" value="Appliquer" />
+      <item name="align_form" value="Définir la taille" />
+      <item name="align_btn_apply" value="Appliquer" />
+      <item name="lbl_top" value="En haut:" />
+      <item name="lbl_left" value="À gauche:" />
+      <item name="mi_restore" value="Réinitialiser" />
+      <item name="mi_close" value="Proche" />
+      <item name="mi_auto_start" value="Lancer au démarrage de Windows" />
+      <item name="mi_settings" value="Paramètres" />
+      <item name="mi_about" value="À propos" />
+      <item name="mi_exit" value="Quitter" />
+      <item name="about_form" value="À propos " />
+      <item name="about_btn_ok" value="Ok" />
+      <item name="settings_form" value="Paramètres" />
+      <item name="tab_settings_general" value="Général" />
+      <item name="grpb_process_exclusions" value="Processus exclus" />
+      <item name="clm_process_exclusion_name" value="Nom de fichier" />
+      <item name="clm_process_exclusion_edit" value="Modifier" />
+      <item name="clm_process_exclusion_delete" value="Annuler" />
+      <item name="btn_process_exclusion_up" value="Déplacer le processus vers le haut" />
+      <item name="btn_process_exclusion_down" value="Déplacer le processus vers le bas" />
+      <item name="btn_add_process_exclusion" value="Ajouter un nouveau processus" />
+      <item name="tab_settings_menu" value="Menu" />
+      <item name="grpb_start_program" value="Éléments du menu de démarrage du programme" />
+      <item name="clm_start_program_title" value="Titre" />
+      <item name="clm_start_program_path" value="Nom de fichier" />
+      <item name="clm_start_program_arguments" value="Arguments" />
+      <item name="clm_start_program_edit" value="Modifier" />
+      <item name="clm_start_program_delete" value="Annuler" />
+      <item name="btn_start_program_up" value="Déplacer le programme vers le haut" />
+      <item name="btn_start_program_down" value="Déplacer le programme vers le bas" />
+      <item name="btn_add_start_program" value="Ajouter un démarrage de programme" />
+      <item name="settings_btn_apply" value="Ok" />
+      <item name="settings_btn_cancel" value="Annuler" />
+      <item name="grpb_window_size" value="Taille des éléments de menu de la fenêtre" />
+      <item name="window_size_form" value="Taille de la fenêtre" />
+      <item name="window_size_btn_apply" value="Ok" />
+      <item name="window_size_btn_cancel" value="Annuler" />
+      <item name="clm_window_size_title" value="Titre" />
+      <item name="clm_window_size_width" value="Longueur" />
+      <item name="clm_window_size_height" value="Hauteur" />
+      <item name="clm_window_size_top" value="En haut" />
+      <item name="clm_window_size_left" value="Gauche" />
+      <item name="clm_window_size_edit" value="Modifier" />
+      <item name="clm_window_size_delete" value="Annuler" />
+      <item name="lbl_window_size_title" value="Titre:" />
+      <item name="lbl_window_size_width" value="Longueur:" />
+      <item name="lbl_window_size_height" value="Hauteur:" />
+      <item name="lbl_window_size_top" value="En haut:" />
+      <item name="lbl_window_size_left" value="Gauche:" />
+      <item name="lbl_window_size_key1" value="Clé 1:" />
+      <item name="lbl_window_size_key2" value="Clé 2:" />
+      <item name="lbl_window_size_key3" value="Clé 3:" />
+      <item name="btn_window_size_up" value="Augmenter" />
+      <item name="btn_window_size_down" value="Descendre" />
+      <item name="btn_add_window_size" value="Ajouter" />
+      <item name="btn_menu_item_up" value="Déplacer vers le haut" />
+      <item name="btn_menu_item_down" value="Déplacer vers le bas" />
+      <item name="process_name_form" value="Processus exclus" />
+      <item name="process_lbl_file_name" value="Nom de fichier:" />
+      <item name="process_btn_apply" value="Ok" />
+      <item name="process_btn_cancel" value="Annuler" />
+      <item name="process_browse_file_filter" value="Exécutables (*.exe)|*.exe|Tous les fichiers (*.*)|*.*" />
+      <item name="start_program_form" value="Démarrer le programme" />
+      <item name="start_program_lbl_title" value="Titre:" />
+      <item name="start_program_lbl_file_name" value="Nom de fichier:" />
+      <item name="start_program_lbl_arguments" value="Arguments:" />
+      <item name="start_program_lbl_runas" value="Ouvrir comme:" />
+      <item name="start_program_lbl_begin" value="Commencer:" />
+      <item name="start_program_lbl_end" value="Terminer:" />
+      <item name="start_program_show_window" value="Afficher la fenêtre" />
+      <item name="start_program_use_window_working_directory" value="Utiliser le classeur de fenêtre" />
+      <item name="start_program_parameter" value="Paramètre" />
+      <item name="start_program_normal" value="Normal" />
+      <item name="start_program_administrator" value="Administrateur" />
+      <item name="start_program_btn_apply" value="Ok" />
+      <item name="start_program_btn_cancel" value="Annuler" />
+      <item name="start_program_browse_file_filter" value="Exécutables (*.exe)|*.exe|Tous les fichiers (*.*)|*.*" />
+      <item name="grpb_language" value="Langue" />
+      <item name="message_box_attention_title" value="Attention" />
+      <item name="message_box_attention_content" value="Vous devez redémarrer l'application manuellement pour que les paramètres prennent effet." />
+      <item name="hotkeys_form" value="Raccourcis clavier" />
+      <item name="hotkeys_lbl_key1" value="Clé 1" />
+      <item name="hotkeys_lbl_key2" value="Clé 2" />
+      <item name="hotkeys_lbl_key3" value="Clé 3" />
+      <item name="hotkeys_btn_apply" value="Ok" />
+      <item name="hotkeys_btn_cancel" value="Annuler" />
+      <item name="tab_settings_hotkeys" value="Raccourcis clavier" />
+      <item name="clm_hotkeys_name" value="Nom" />
+      <item name="clm_hotkeys_show_tooltip" value="Afficher les info-bulles" />
+      <item name="tab_settings_menu_start" value="Menu (lancer le programme)" />
+      <item name="tab_settings_menu_size" value="Menu (redimensionner)" />
+      <item name="tab_settings_menu_save" value="Menu (enregistrer)" />
+      <item name="grpb_closer" value="Fermer la fenêtre avec le bouton de la souris" />
+      <item name="closer_button_name" value="Paramètres..." />
+      <item name="closer_form" value="Paramètres" />
+      <item name="closer_btn_apply" value="Ok" />
+      <item name="closer_btn_cancel" value="Annuler" />
+      <item name="closer_lbl_key1" value="Clé 1" />
+      <item name="closer_lbl_key2" value="Clé 2" />
+      <item name="closer_lbl_mouse_button" value="Bouton de la souris" />
+      <item name="closer_lbl_action" value="Action" />
+      <item name="closer_close_window" value="Fermer la fenêtre" />
+      <item name="closer_kill_process" value="Tuer le processus" />
+      <item name="closer_close_foreground_window" value="Fermer la fenêtre au premier plan" />
+      <item name="closer_close_window_under_cursor" value="Fermer la fenêtre sous le curseur" />
+      <item name="closer_kill_process_with_foreground_window" value="Terminer le processus de la fenêtre au premier plan" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Terminer le processus de la fenêtre sous le curseur" />
+      <item name="grpb_sizer" value="Comment définir la taille des fenêtres" />
+      <item name="grpb_display" value="Affichage" />
+      <item name="chk_enable_high_dpi" value="Activer le DPI élevé" />
+      <item name="sizer_window_with_margins" value="Fenêtre avec bordure" />
+      <item name="sizer_window_without_margins" value="Fenêtre sans bordure" />
+      <item name="sizer_window_client_area" value="Espace de travail de la fenêtre" />
+      <item name="parameter_btn_apply" value="Ok" />
+      <item name="parameter_form" value="Paramètre d'entrée" />
+    </fr>
   </items>
 </language>
