@@ -395,7 +395,7 @@ namespace SmartSystemMenu.Settings
 
             var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
             var languageName = "";
-            var languageNameList = new[] { "en", "ru", "zh_cn", "zh_tw", "ja", "ko", "de", "fr", "it", "sr", "pt" };
+            var languageNameList = new[] { "en", "ru", "zh_cn", "zh_tw", "ja", "ko", "de", "fr", "it", "hu", "sr", "pt" };
             if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
             {
                 languageName = languageElement.Attribute("name").Value.ToLower().Trim();
@@ -437,6 +437,11 @@ namespace SmartSystemMenu.Settings
                 languageName = "fr";
             }
 
+            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "hu-HU")
+            {
+                languageName = "hu";
+            }
+
             if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "it-IT" ||
                 Thread.CurrentThread.CurrentCulture.Name == "it-SM" ||
                 Thread.CurrentThread.CurrentCulture.Name == "it-CH" ||
@@ -444,7 +449,6 @@ namespace SmartSystemMenu.Settings
             {
                 languageName = "it";
             }
-
 
             if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "pt-BR" || Thread.CurrentThread.CurrentCulture.Name == "pt-PT"))
             {

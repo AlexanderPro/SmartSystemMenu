@@ -2453,5 +2453,229 @@
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Paramètre d'entrée" />
     </fr>
+    <hu>
+      <item name="separator" value="Elválasztó" />
+      <item name="information" value="Információ" />
+      <item name="roll_up" value="Fölfelé" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="Mindig fölül" />
+      <item name="send_to_bottom" value="Küldés alulra" />
+      <item name="save_screenshot" value="Képernyőkép mentése" />
+      <item name="open_file_in_explorer" value="Fájl megnyitása az Intézőben" />
+      <item name="clipboard" value="Vágólap" />
+      <item name="copy_window_text" value="Ablak szövegének másolása" />
+      <item name="copy_window_title" value="Ablak címének másolása" />
+      <item name="copy_full_process_path" value="Teljes folyamatútvonal másolása" />
+      <item name="clear_clipboard" value="Tiszta" />
+      <item name="drag_by_mouse" value="Húzás egérrel" />
+      <item name="hide_for_alt_tab" value="Alt+Tab elrejtése" />
+      <item name="size" value="Átméretezés" />
+      <item name="size_default" value="Alapértelmezett" />
+      <item name="size_custom" value="Egyéni..." />
+      <item name="move_to" value="Áthelyezés ide" />
+      <item name="monitor" value="Kijelző" />
+      <item name="alignment" value="Igazítás" />
+      <item name="align_top_left" value="bal felső sarok" />
+      <item name="align_top_center" value="felül középen" />
+      <item name="align_top_right" value="jobb felső sarok" />
+      <item name="align_middle_left" value="balközép" />
+      <item name="align_middle_center" value="abszolút középre" />
+      <item name="align_middle_right" value="jobbköüzép" />
+      <item name="align_bottom_left" value="bal alsó sarok" />
+      <item name="align_bottom_center" value="balközép" />
+      <item name="align_bottom_right" value="jobb alsó sarok" />
+      <item name="align_center_horizontally" value="Középre vízszintesen" />
+      <item name="align_center_vertically" value="Középre függőlegesen" />
+      <item name="align_default" value="Alapértelmezett" />
+      <item name="align_custom" value="Egyéni..." />
+      <item name="transparency" value="Átláthatóság" />
+      <item name="trans_opaque" value=" (áttetsző)" />
+      <item name="trans_invisible" value=" (láthatatlan)" />
+      <item name="trans_default" value="Alapértelmezett" />
+      <item name="trans_custom" value="Egyéni..." />
+      <item name="priority" value="Fontosság" />
+      <item name="priority_real_time" value="Valós idejű: 24" />
+      <item name="priority_high" value="Magas: 13" />
+      <item name="priority_above_normal" value="Normális felett: 10" />
+      <item name="priority_normal" value="Normális: 8" />
+      <item name="priority_below_normal" value="Normális alatt: 6" />
+      <item name="priority_idle" value="Tétlen: 4" />
+      <item name="system_tray" value="Rendszertálca" />
+      <item name="minimize_to_systemtray" value="Kicsinyítés a tálcára" />
+      <item name="minimize_always_to_systemtray" value="Kicsinyítés mindig a tálcára" />
+      <item name="suspend_to_systemtray" value="Felfüggesztés és kicsinyítés a tálcára" />
+      <item name="other_windows" value="Egyéb ablak" />
+      <item name="minimize_other_windows" value="Kicsinyítés" />
+      <item name="close_other_windows" value="Bezár" />
+      <item name="start_program" value="Programindítás" />
+      <item name="save_selected_items" value="Mentés" />
+      <item name="grp_window" value="Ablak" />
+      <item name="grp_process" value="Folyamat" />
+      <item name="lbl_get_window_text" value="Az ablak szövegének lekérése:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="Osztálynév lekérése:" />
+      <item name="lbl_real_get_window_class" value="Valódi ablakosztály:" />
+      <item name="lbl_font_name" value="Betűtípus:" />
+      <item name="lbl_window_handle" value="Ablak-fogantyú:" />
+      <item name="lbl_parent_window_handle" value="Szülőablak-fogantyú:" />
+      <item name="lbl_window_size" value="Ablakméret:" />
+      <item name="lbl_window_position" value="Ablak helyzete:" />
+      <item name="lbl_extended_frame_bounds" value="Kiterjesztett kerethatárok:" />
+      <item name="lbl_instance" value="Eset:" />
+      <item name="lbl_process_id" value="Folyamatazonosító:" />
+      <item name="lbl_thread_id" value="Szálazonosító:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Full Path:" />
+      <item name="lbl_command_line" value="Parancssor:" />
+      <item name="lbl_started_at" value="Kezdődött:" />
+      <item name="lbl_owner" value="Tulajdonos:" />
+      <item name="lbl_threads" value="Szálak:" />
+      <item name="lbl_working_set_size" value="Munkakészlet mérete:" />
+      <item name="lbl_parent" value="Szülő:" />
+      <item name="lbl_priority" value="Fontosság:" />
+      <item name="lbl_handles" value="Leírók:" />
+      <item name="lbl_virtual_size" value="Virtuális méret:" />
+      <item name="lbl_product_name" value="Termék neve:" />
+      <item name="lbl_copyright" value="Szerzői jog:" />
+      <item name="lbl_file_version" value="Fájlváltozat:" />
+      <item name="lbl_product_version" value="Termékváltozat:" />
+      <item name="information_btn_apply" value="OK" />
+      <item name="save_screenshot_title" value="Ablak képernyőkép mentése" />
+      <item name="save_screenshot_filename" value="Ablak képernyőképe" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="size_form" value="Méret beállítása" />
+      <item name="size_btn_apply" value="Alkalmaz" />
+      <item name="lbl_size_form_height" value="Magasság:" />
+      <item name="lbl_size_form_width" value="Szélesség:" />
+      <item name="lbl_size_form_top" value="Felső:" />
+      <item name="lbl_size_form_left" value="Bal:" />
+      <item name="trans_form" value="Átlátszóság beállítása" />
+      <item name="trans_btn_apply" value="Alkalmaz" />
+      <item name="align_form" value="Helyzet beállítása" />
+      <item name="align_btn_apply" value="Alkalmaz" />
+      <item name="lbl_top" value="Felső:" />
+      <item name="lbl_left" value="Bal:" />
+      <item name="mi_restore" value="Visszaállítás" />
+      <item name="mi_close" value="Bezár" />
+      <item name="mi_auto_start" value="Program automatikus indítása" />
+      <item name="mi_settings" value="Beállítások..." />
+      <item name="mi_about" value="Rólunk" />
+      <item name="mi_exit" value="Kilépés" />
+      <item name="about_form" value="Rólunk " />
+      <item name="about_btn_ok" value="OK" />
+      <item name="settings_form" value="Beállítások" />
+      <item name="tab_settings_general" value="Általános" />
+      <item name="grpb_process_exclusions" value="Folyamatkizárások" />
+      <item name="clm_process_exclusion_name" value="Fájlnév" />
+      <item name="clm_process_exclusion_edit" value="Szerkesztés" />
+      <item name="clm_process_exclusion_delete" value="Törlés" />
+      <item name="btn_process_exclusion_up" value="Folyamat felfelé mozgatása" />
+      <item name="btn_process_exclusion_down" value="Folyamat lefelé mozgatása" />
+      <item name="btn_add_process_exclusion" value="Folyamat nevének hozzáadása" />
+      <item name="tab_settings_menu" value="Menü" />
+      <item name="grpb_start_program" value="Programindítás hozzáadása" />
+      <item name="clm_start_program_title" value="Cím" />
+      <item name="clm_start_program_path" value="Fájlnév" />
+      <item name="clm_start_program_arguments" value="Paraméter(ek)" />
+      <item name="clm_start_program_edit" value="Szerkesztés" />
+      <item name="clm_start_program_delete" value="Törlés" />
+      <item name="btn_start_program_up" value="Program feljebb mozgatása" />
+      <item name="btn_start_program_down" value="Program lejjebb mozgatása" />
+      <item name="btn_add_start_program" value="Programindítás hozzáadása" />
+      <item name="settings_btn_apply" value="OK" />
+      <item name="settings_btn_cancel" value="Mégse" />
+      <item name="grpb_window_size" value="Ablakméret menüpontok" />
+      <item name="window_size_form" value="Ablakméret" />
+      <item name="window_size_btn_apply" value="OK" />
+      <item name="window_size_btn_cancel" value="Mégse" />
+      <item name="clm_window_size_title" value="Cím" />
+      <item name="clm_window_size_width" value="Szélesség" />
+      <item name="clm_window_size_height" value="Hosszúság" />
+      <item name="clm_window_size_top" value="Felül" />
+      <item name="clm_window_size_left" value="Bal" />
+      <item name="clm_window_size_edit" value="Szerkesztés" />
+      <item name="clm_window_size_delete" value="Törlés" />
+      <item name="lbl_window_size_title" value="Cím:" />
+      <item name="lbl_window_size_width" value="Szélesség:" />
+      <item name="lbl_window_size_height" value="Hosszúság:" />
+      <item name="lbl_window_size_top" value="Felül:" />
+      <item name="lbl_window_size_left" value="Bal:" />
+      <item name="lbl_window_size_key1" value="1. kulcs:" />
+      <item name="lbl_window_size_key2" value="2. kulcs:" />
+      <item name="lbl_window_size_key3" value="3. kulcs:" />
+      <item name="btn_window_size_up" value="Mozgás felfelé" />
+      <item name="btn_window_size_down" value="Move Down" />
+      <item name="btn_add_window_size" value="Add" />
+      <item name="btn_menu_item_up" value="Mozgás felfelé" />
+      <item name="btn_menu_item_down" value="Mozgás lefelé" />
+      <item name="process_name_form" value="Folyamatkizárása" />
+      <item name="process_lbl_file_name" value="Fájlnév:" />
+      <item name="process_btn_apply" value="OK" />
+      <item name="process_btn_cancel" value="Mégse" />
+      <item name="process_browse_file_filter" value="Végrehajtható fájlok (*.exe)|*.exe| Minden fájl (*.*)|*.*" />
+      <item name="start_program_form" value="Programindítás hozzáadása" />
+      <item name="start_program_lbl_title" value="Cím:" />
+      <item name="start_program_lbl_file_name" value="Fájlnév:" />
+      <item name="start_program_lbl_arguments" value="Paraméter:" />
+      <item name="start_program_lbl_runas" value="Futtatás mint:" />
+      <item name="start_program_lbl_begin" value="Kezdés:" />
+      <item name="start_program_lbl_end" value="Vége:" />
+      <item name="start_program_show_window" value="Az ablak megjelenítése" />
+      <item name="start_program_use_window_working_directory" value="Az ablak munkakönyvtárának használata" />
+      <item name="start_program_parameter" value="Paraméter" />
+      <item name="start_program_normal" value="Futtatás normál fiókként" />
+      <item name="start_program_administrator" value="Adminisztrátor" />
+      <item name="start_program_btn_apply" value="OK" />
+      <item name="start_program_btn_cancel" value="Mégse" />
+      <item name="start_program_browse_file_filter" value="Futtatható fájlok (*.exe)|*.exe|Minden fájl (*.*)|*.*" />
+      <item name="grpb_language" value="Nyelv" />
+      <item name="message_box_attention_title" value="Figyelem" />
+      <item name="message_box_attention_content" value="A beállítások alkalmazásához manuálisan kell újraindítania az alkalmazást." />
+      <item name="hotkeys_form" value="Gyorsbillentyűk" />
+      <item name="hotkeys_lbl_key1" value="1. kulcs" />
+      <item name="hotkeys_lbl_key2" value="2. kulcs" />
+      <item name="hotkeys_lbl_key3" value="3. kulcs" />
+      <item name="hotkeys_btn_apply" value="OK" />
+      <item name="hotkeys_btn_cancel" value="Mégse" />
+      <item name="tab_settings_hotkeys" value="Gyorsbillentyűk" />
+      <item name="clm_hotkeys_name" value="Név" />
+      <item name="clm_hotkeys_show_tooltip" value="Menüpont megjelenítése" />
+      <item name="tab_settings_menu_start" value="Menü (programindítás hozzáadása)" />
+      <item name="tab_settings_menu_size" value="Menü (átméretezés)" />
+      <item name="tab_settings_menu_save" value="Menü (mentés)" />
+      <item name="grpb_closer" value="Ablak bezárása egérkattintással" />
+      <item name="closer_button_name" value="Beállítások..." />
+      <item name="closer_form" value="Beállítások" />
+      <item name="closer_btn_apply" value="OK" />
+      <item name="closer_btn_cancel" value="Mégse" />
+      <item name="closer_lbl_key1" value="1. kulcs" />
+      <item name="closer_lbl_key2" value="2. kulcs" />
+      <item name="closer_lbl_mouse_button" value="Egérgomb" />
+      <item name="closer_lbl_action" value="Akció" />
+      <item name="closer_close_window" value="Ablak bezárása" />
+      <item name="closer_kill_process" value="Folyamat leállítása" />
+      <item name="closer_close_foreground_window" value="Elől lévő ablak bezázárása" />
+      <item name="closer_close_window_under_cursor" value="Hátul lévő nablak bezárása" />
+      <item name="closer_kill_process_with_foreground_window" value="Fejezze be a folyamatot az elől lévő ablakban" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Fejezze be a folyamatot a kurzor alatti ablakban" />
+      <item name="grpb_sizer" value="Hogyan állítsuk be az ablak méretét" />
+      <item name="grpb_display" value="Kijelző" />
+      <item name="chk_enable_high_dpi" value="Magas DPI engedélyezése" />
+      <item name="sizer_window_with_margins" value="Ablak margókkal" />
+      <item name="sizer_window_without_margins" value="Ablak margók nélkül" />
+      <item name="sizer_window_client_area" value="Ablak ügyfélterület" />
+      <item name="parameter_btn_apply" value="OK" />
+      <item name="parameter_form" value="Bemeneti paraméter" />
+    </hu>
   </items>
 </language>
