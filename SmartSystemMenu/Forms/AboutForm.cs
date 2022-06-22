@@ -10,6 +10,8 @@ namespace SmartSystemMenu.Forms
         private const string URL_LIGHT_APIS = "https://github.com/LightAPIs";
         private const string URL_WENGH = "https://github.com/wengh";
         private const string URL_JAEHYUNG_LEE = "http://www.kolanp.com";
+        private const string URL_MAROCCO2 = "https://github.com/Marocco2";
+        private const string URL_SAIYAJINK = "https://github.com/SaiyajinK";
 
         public AboutForm(LanguageSettings settings)
         {
@@ -31,11 +33,13 @@ namespace SmartSystemMenu.Forms
             try
             {
                 var controlName = ((LinkLabel)sender).Name;
-                SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(),
-                    controlName == "linkLightAPIs" ? URL_LIGHT_APIS :
+                var url = controlName == "linkLightAPIs" ? URL_LIGHT_APIS :
                     controlName == "linkWengh" ? URL_WENGH :
                     controlName == "linkJaehyungLee" ? URL_JAEHYUNG_LEE :
-                    URL_SMART_SYSTEM_MENU, true, UserType.Normal);
+                    controlName == "linkMarocco2" ? URL_MAROCCO2 :
+                    controlName == "linkSaiyajinK" ? URL_SAIYAJINK :
+                    URL_SMART_SYSTEM_MENU;
+                SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(), url, true, UserType.Normal);
             }
             catch
             {
