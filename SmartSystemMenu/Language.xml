@@ -684,7 +684,7 @@
       <item name="copy_full_process_path" value="複製完整的處理程序路徑" />
       <item name="clear_clipboard" value="清除" />
       <item name="drag_by_mouse" value="透過滑鼠拖曳" />
-      <item name="hide_for_alt_tab" value="隱藏 Alt+Tab" />
+      <item name="hide_for_alt_tab" value="在 Alt+Tab 中隱藏" />
       <item name="size" value="調整視窗大小" />
       <item name="size_default" value="預設" />
       <item name="size_custom" value="自訂..." />
