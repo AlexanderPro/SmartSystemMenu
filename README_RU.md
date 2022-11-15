@@ -90,6 +90,7 @@ SmartSystemMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysonto
 
 * Скачайте последнюю версию [SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu/releases) в zip файле
 * [Chocolatey](https://chocolatey.org/): `choco install smartsystemmenu`
+* [Scoop](https://scoop.sh/): `scoop install smartsystemmenu`
 
 Требования к системе
 --------------------
