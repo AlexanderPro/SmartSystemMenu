@@ -69,10 +69,10 @@ namespace SmartSystemMenu.Settings
             return settings;
         }
 
-        public static void Save(string fileName, WindowSettings settings)
+        public static void Save(string fileName, WindowSettings windowSettings, SmartSystemMenuSettings settings)
         {
             var document = new XDocument();
-            document.Add(new XElement("windows", settings.Items.Select(x => new XElement("window",
+            document.Add(new XElement("windows", windowSettings.Items.Select(x => new XElement("window",
                                          new XAttribute("className", x.ClassName),
                                          new XAttribute("processName", x.ProcessName),
                                          new XElement("position",
@@ -81,13 +81,13 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("width", x.Width),
                                          new XAttribute("height", x.Height)),
                                          new XElement("systemMenu",
-                                         x.AeroGlass.HasValue ? new XAttribute("aeroGlass", x.AeroGlass.Value.ToString().ToLower()) : null,
-                                         x.AlwaysOnTop.HasValue ? new XAttribute("alwaysOnTop", x.AlwaysOnTop.Value.ToString().ToLower()) : null,
-                                         x.HideForAltTab.HasValue ? new XAttribute("hideForAltTab", x.HideForAltTab.Value.ToString().ToLower()) : null,
-                                         x.Alignment.HasValue ? new XAttribute("alignment", (int)x.Alignment.Value) : null,
-                                         x.Transparency.HasValue ? new XAttribute("transparency", x.Transparency.Value.ToString().ToLower()) : null,
-                                         x.Priority.HasValue ? new XAttribute("priority", (int)x.Priority) : null,
-                                         x.MinimizeToTrayAlways.HasValue ? new XAttribute("minimizeToTrayAlways", x.MinimizeToTrayAlways.Value.ToString().ToLower()) : null)))));
+                                         settings.SaveSelectedItems.AeroGlass && x.AeroGlass.HasValue ? new XAttribute("aeroGlass", x.AeroGlass.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.AlwaysOnTop && x.AlwaysOnTop.HasValue ? new XAttribute("alwaysOnTop", x.AlwaysOnTop.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.HideForAltTab && x.HideForAltTab.HasValue ? new XAttribute("hideForAltTab", x.HideForAltTab.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.Alignment && x.Alignment.HasValue ? new XAttribute("alignment", (int)x.Alignment.Value) : null,
+                                         settings.SaveSelectedItems.Transparency && x.Transparency.HasValue ? new XAttribute("transparency", x.Transparency.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.Priority && x.Priority.HasValue ? new XAttribute("priority", (int)x.Priority) : null,
+                                         settings.SaveSelectedItems.MinimizeToTrayAlways && x.MinimizeToTrayAlways.HasValue ? new XAttribute("minimizeToTrayAlways", x.MinimizeToTrayAlways.Value.ToString().ToLower()) : null)))));
             FileUtils.Save(fileName, document);
         }
     }

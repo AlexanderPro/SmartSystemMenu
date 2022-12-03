@@ -832,7 +832,7 @@ namespace SmartSystemMenu.Forms
 #else
                             var fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window64.xml");
 #endif
-                            WindowSettings.Save(fileName, _windowSettings);
+                            WindowSettings.Save(fileName, _windowSettings, _settings);
                         }
                     }
                     else if (isSaveItemChecked &&
@@ -860,7 +860,7 @@ namespace SmartSystemMenu.Forms
 #else
                             var fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window64.xml");
 #endif
-                            WindowSettings.Save(fileName, _windowSettings);
+                            WindowSettings.Save(fileName, _windowSettings, _settings);
                         }
                     }
                 }
