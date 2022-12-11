@@ -118,5 +118,7 @@
         public const int STARTF_USESHOWWINDOW = 0x00000001;
 
         public const int STATE_SYSTEM_INVISIBLE = 0x00008000;
+
+        public const int SE_PRIVILEGE_ENABLED = 0x02;
     }
 }

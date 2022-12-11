@@ -5,6 +5,9 @@ using System.Threading;
 using System.Linq;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Security.AccessControl;
+using System.Security.Principal;
+using System.Diagnostics;
 using SmartSystemMenu.Forms;
 using SmartSystemMenu.Utils;
 using SmartSystemMenu.Native;
@@ -24,6 +27,9 @@ namespace SmartSystemMenu
         [STAThread]
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
+            Application.ThreadException += OnThreadException;
+
             var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
             var languageFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Language.xml");
 #if WIN32
@@ -52,10 +58,50 @@ namespace SmartSystemMenu
                 return;
             }
 
+            string hookFileName = null;
+            string hook64FileName = null;
+            FileSecurity hookSecurity = null;
+            FileSecurity hook64Security = null;
+            IdentityReference hookOwner = null;
+            IdentityReference hook64Owner = null;
+
+            if (toggleParser.HasToggle("trustedinstaller"))
+            {
+                SystemUtils.SetProcessTokenPrivileges(Process.GetCurrentProcess().Handle, "SeTakeOwnershipPrivilege");
+                hookFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenuHook.dll");
+                hook64FileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenuHook64.dll");
+                hookFileName = SystemUtils.GetUniversalName(hookFileName);
+                hook64FileName = SystemUtils.GetUniversalName(hook64FileName);
+                hookSecurity = File.GetAccessControl(hookFileName);
+                hook64Security = File.GetAccessControl(hook64FileName);
+                hookOwner = hookSecurity.GetOwner(typeof(NTAccount));
+                hook64Owner = hook64Security.GetOwner(typeof(NTAccount));
+                var trustedInstallerAccount = new NTAccount("NT SERVICE\\TrustedInstaller");
+                hookSecurity.SetOwner(trustedInstallerAccount);
+                File.SetAccessControl(hookFileName, hookSecurity);
+                hook64Security.SetOwner(trustedInstallerAccount);
+                File.SetAccessControl(hook64FileName, hook64Security);
+            }
+
             ProcessCommandLine(toggleParser, settings);
 
             if (toggleParser.HasToggle("n") || toggleParser.HasToggle("nogui"))
             {
+                if (toggleParser.HasToggle("trustedinstaller"))
+                {
+                    if (hookFileName != null && hookSecurity != null && hookOwner != null)
+                    {
+                        hookSecurity.SetOwner(hookOwner);
+                        File.SetAccessControl(hookFileName, hookSecurity);
+                    }
+
+                    if (hook64FileName != null && hook64Security != null && hook64Owner != null)
+                    {
+                        hook64Security.SetOwner(hook64Owner);
+                        File.SetAccessControl(hook64FileName, hook64Security);
+                    }
+                }
+
                 return;
             }
 
@@ -73,6 +119,21 @@ namespace SmartSystemMenu
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm(settings, windowSettings));
+
+            if (toggleParser.HasToggle("trustedinstaller"))
+            {
+                if (hookFileName != null && hookSecurity != null && hookOwner != null)
+                {
+                    hookSecurity.SetOwner(hookOwner);
+                    File.SetAccessControl(hookFileName, hookSecurity);
+                }
+
+                if (hook64FileName != null && hook64Security != null && hook64Owner != null)
+                {
+                    hook64Security.SetOwner(hook64Owner);
+                    File.SetAccessControl(hook64FileName, hook64Security);
+                }
+            }
         }
 
         static void ProcessCommandLine(ToggleParser toggleParser, SmartSystemMenuSettings settings)
@@ -324,9 +385,17 @@ namespace SmartSystemMenu
             }
         }
 
-        static string BuildHelpString()
+        static void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            var help =
+            var ex = e.ExceptionObject as Exception;
+            ex = ex ?? new Exception("OnCurrentDomainUnhandledException");
+            OnThreadException(sender, new ThreadExceptionEventArgs(ex));
+        }
+
+        static void OnThreadException(object sender, ThreadExceptionEventArgs e) =>
+            MessageBox.Show(e.Exception.ToString(), AssemblyUtils.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        static string BuildHelpString() =>
                 @"   --help             The help
    --title            Title
    --titleBegins      Title begins 
@@ -366,11 +435,10 @@ namespace SmartSystemMenu
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
    --clearclipboard   No params
+   --trustedinstaller Sets TrustedInstaller owner for SmartSystemMenuHook.dll and SmartSystemMenuHook64.dll
 -n --nogui            No GUI
 
 Example:
 SmartSystemMenu.exe --title ""Untitled - Notepad"" -a topleft -p high --alwaysontop on --nogui";
-            return help;
-        }
     }
 }

@@ -155,6 +155,7 @@
     <Compile Include="Native\Enums\SECURITY_IMPERSONATION_LEVEL.cs" />
     <Compile Include="Native\Enums\SendMessageTimeoutFlags.cs" />
     <Compile Include="Native\Enums\ThreadAccess.cs" />
+    <Compile Include="Native\Enums\TokenAccess.cs" />
     <Compile Include="Native\Enums\TOKEN_TYPE.cs" />
     <Compile Include="Native\Enums\WindowCompositionAttribute.cs" />
     <Compile Include="Native\Enums\WindowShowStyle.cs" />

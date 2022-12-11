@@ -8,7 +8,7 @@ namespace SmartSystemMenu.Native
     static class Advapi32
     {
         [DllImport("advapi32.dll")]
-        public static extern bool OpenProcessToken(IntPtr h, int acc, ref IntPtr phtok);
+        public static extern bool OpenProcessToken(IntPtr h, uint acc, ref IntPtr phtok);
 
         [DllImport("advapi32.dll")]
         public static extern bool LookupPrivilegeValue(string host, string name, ref LUID pluid);

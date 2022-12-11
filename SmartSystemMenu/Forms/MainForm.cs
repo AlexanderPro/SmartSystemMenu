@@ -43,8 +43,6 @@ namespace SmartSystemMenu.Forms
 
             _settings = settings;
             _windowSettings = windowSettings;
-            AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
-            Application.ThreadException += OnThreadException;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -935,18 +933,6 @@ namespace SmartSystemMenu.Forms
             window.Menu.UncheckTransparencyMenu();
             window.Menu.CheckMenuItem(itemId, true);
             window.SetTransparency(EnumUtils.GetTransparency(itemId));
-        }
-
-        private void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            var ex = e.ExceptionObject as Exception;
-            ex = ex ?? new Exception("OnCurrentDomainUnhandledException");
-            OnThreadException(sender, new ThreadExceptionEventArgs(ex));
-        }
-
-        private void OnThreadException(object sender, ThreadExceptionEventArgs e)
-        {
-            MessageBox.Show(e.Exception.ToString(), AssemblyUtils.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

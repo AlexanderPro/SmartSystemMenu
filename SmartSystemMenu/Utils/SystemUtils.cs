@@ -4,6 +4,8 @@ using System.Linq;
 using System.Diagnostics;
 using System.IO;
 using System.Management;
+using System.Runtime.InteropServices;
+using System.ComponentModel;
 using Microsoft.Win32;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Native.Enums;
@@ -138,7 +140,7 @@ namespace SmartSystemMenu
             try
             {
                 var process = GetCurrentProcess();
-                if (!OpenProcessToken(process, 0x0020, ref hProcessToken))
+                if (!OpenProcessToken(process, (uint)TokenAccess.TOKEN_ADJUST_PRIVILEGES, ref hProcessToken))
                 {
                     return;
                 }
@@ -196,7 +198,7 @@ namespace SmartSystemMenu
                 }
 
                 // Get the process token of the desktop shell.
-                if (!OpenProcessToken(hShellProcess, 0x0002, ref hShellProcessToken))
+                if (!OpenProcessToken(hShellProcess, (uint)TokenAccess.TOKEN_DUPLICATE, ref hShellProcessToken))
                 {
                     return;
                 }
@@ -333,6 +335,50 @@ namespace SmartSystemMenu
             {
                 SetProcessDPIAware();
             }
+        }
+
+        public static void SetProcessTokenPrivileges(IntPtr processHandle, string tokenPrivilege)
+        {
+            var hToken = IntPtr.Zero;
+            try
+            {
+                if (!OpenProcessToken(processHandle, (uint)(TokenAccess.TOKEN_ADJUST_PRIVILEGES | TokenAccess.TOKEN_QUERY), ref hToken))
+                {
+                    var error = Marshal.GetLastWin32Error();
+                    throw new Win32Exception(error);
+                }
+
+                var tokenPrivileges = new TOKEN_PRIVILEGES
+                {
+                    PrivilegeCount = 1,
+                    Privileges = new LUID_AND_ATTRIBUTES[1]
+                };
+                if (!LookupPrivilegeValue(string.Empty, tokenPrivilege, ref tokenPrivileges.Privileges[0].Luid))
+                {
+                    var error = Marshal.GetLastWin32Error();
+                    throw new Win32Exception(error);
+                }
+
+                tokenPrivileges.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+                if (!AdjustTokenPrivileges(hToken, false, ref tokenPrivileges, 0, IntPtr.Zero, IntPtr.Zero))
+                {
+                    var error = Marshal.GetLastWin32Error();
+                    throw new Win32Exception(error);
+                }
+            }
+            finally
+            {
+                if (hToken != IntPtr.Zero)
+                {
+                    CloseHandle(hToken);
+                }
+            }
+        }
+
+        public static string GetUniversalName(string localPath)
+        {
+            var root = Path.GetPathRoot(localPath);
+            return $"\\\\{Environment.MachineName}\\{localPath.Replace(root, root.Replace(":", "$"))}";
         }
     }
 }
