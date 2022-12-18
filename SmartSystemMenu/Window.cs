@@ -197,24 +197,8 @@ namespace SmartSystemMenu
             State.ProcessName = Process?.GetMainModuleFileName() ?? string.Empty;
         }
 
-        public Window(IntPtr windowHandle, MenuItems menuItems, LanguageSettings languageSettings)
+        public Window(IntPtr windowHandle, MenuItems menuItems, LanguageSettings languageSettings) : this(windowHandle)
         {
-            Handle = windowHandle;
-            _isManaged = true;
-            var size = Size;
-            _defaultWidth = size.Width;
-            _defaultHeight = size.Height;
-            _defaultLeft = size.Left;
-            _defaultTop = size.Top;
-            _beforeRollupHeight = size.Height;
-            _defaultTransparency = Transparency;
-            State = new WindowState();
-            State.Left = size.Left;
-            State.Top = size.Top;
-            State.Width = size.Width;
-            State.Height = size.Height;
-            State.ClassName = GetClassName();
-            State.ProcessName = Process?.GetMainModuleFileName() ?? string.Empty;
             _menuItemRestore = new ToolStripMenuItem();
             _menuItemRestore.Size = new Size(175, 22);
             _menuItemRestore.Name = $"miRestore_{Handle}";

@@ -322,6 +322,22 @@ namespace SmartSystemMenu
                     }
                 }
 
+                // Hide For Alt+Tab
+                if (toggleParser.HasToggle("hidealttab"))
+                {
+                    var hideAltTabString = toggleParser.GetToggleValueOrDefault("hidealttab", string.Empty).ToLower();
+
+                    if (hideAltTabString == "on")
+                    {
+                        window.HideForAltTab(true);
+                    }
+
+                    if (hideAltTabString == "off")
+                    {
+                        window.HideForAltTab(false);
+                    }
+                }
+
                 // Send To Bottom Window
                 if (toggleParser.HasToggle("sendtobottom"))
                 {
@@ -431,6 +447,7 @@ namespace SmartSystemMenu
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
+   --hidealttab       [on, off]
    --sendtobottom     No params
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
