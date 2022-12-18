@@ -188,6 +188,13 @@ namespace SmartSystemMenu
             _defaultTop = size.Top;
             _beforeRollupHeight = size.Height;
             _defaultTransparency = Transparency;
+            State = new WindowState();
+            State.Left = size.Left;
+            State.Top = size.Top;
+            State.Width = size.Width;
+            State.Height = size.Height;
+            State.ClassName = GetClassName();
+            State.ProcessName = Process?.GetMainModuleFileName() ?? string.Empty;
         }
 
         public Window(IntPtr windowHandle, MenuItems menuItems, LanguageSettings languageSettings)
