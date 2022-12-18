@@ -75,10 +75,12 @@ Command Line Interface
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
+   --hidealttab       [on, off]
    --sendtobottom     No params
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
    --clearclipboard   No params
+   --trustedinstaller Sets TrustedInstaller owner for SmartSystemMenuHook.dll and SmartSystemMenuHook64.dll
 -n --nogui            No GUI
 
 Example:

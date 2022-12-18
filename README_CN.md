@@ -76,10 +76,12 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
+   --hidealttab       [on, off]
    --sendtobottom     No params
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
    --clearclipboard   No params
+   --trustedinstaller Sets TrustedInstaller owner for SmartSystemMenuHook.dll and SmartSystemMenuHook64.dll
 -n --nogui            No GUI
 
 Example:
