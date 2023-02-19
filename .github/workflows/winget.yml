@@ -10,5 +10,5 @@ jobs:
       - uses: vedantmgoyal2009/winget-releaser@v2
         with:
           identifier: AlexanderPro.SmartSystemMenu
-          installers-regex: 'SmartSystemMenu\w+\.zip$'
+          installers-regex: 'SmartSystemMenu_v[0-9.]+\.zip$'
           token: ${{ secrets.WINGET_TOKEN }}
