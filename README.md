@@ -24,6 +24,7 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Transparency.** Allows to change the transparency of the current window.
 * **Priority.** Allows to change the current window's program priority.
 * **Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard and clear clipboard.
+* **Buttons.** Allows to disable "Minimize", "Maximize" and "Close" button.
 * **System Tray.** Allows to minimize or suspend the current window to the system tray.
 * **Other Windows.** Allows to close and minimize all windows in the system except the current.
 * **Start Program.** Allows to start programs which is in the settings.
@@ -76,6 +77,8 @@ Command Line Interface
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
    --hidealttab       [on, off]
+   --minimizebutton   [on, off]
+   --maximizebutton   [on, off]
    --sendtobottom     No params
 -o --openinexplorer   No params
 -c --copytoclipboard  No params
