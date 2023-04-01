@@ -86,6 +86,7 @@ namespace SmartSystemMenu.Forms
             this.clmStartProgramDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabpMenuSaveSelectedItems = new System.Windows.Forms.TabPage();
             this.grpbSaveSelectedItems = new System.Windows.Forms.GroupBox();
+            this.chkHideForAltTab = new System.Windows.Forms.CheckBox();
             this.chkMinimizeToTrayAlways = new System.Windows.Forms.CheckBox();
             this.chkPriority = new System.Windows.Forms.CheckBox();
             this.chkTransparency = new System.Windows.Forms.CheckBox();
@@ -95,7 +96,7 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
-            this.chkHideForAltTab = new System.Windows.Forms.CheckBox();
+            this.chkButtons = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -696,6 +697,7 @@ namespace SmartSystemMenu.Forms
             // 
             // grpbSaveSelectedItems
             // 
+            this.grpbSaveSelectedItems.Controls.Add(this.chkButtons);
             this.grpbSaveSelectedItems.Controls.Add(this.chkHideForAltTab);
             this.grpbSaveSelectedItems.Controls.Add(this.chkMinimizeToTrayAlways);
             this.grpbSaveSelectedItems.Controls.Add(this.chkPriority);
@@ -708,6 +710,16 @@ namespace SmartSystemMenu.Forms
             this.grpbSaveSelectedItems.Size = new System.Drawing.Size(497, 368);
             this.grpbSaveSelectedItems.TabIndex = 0;
             this.grpbSaveSelectedItems.TabStop = false;
+            // 
+            // chkHideForAltTab
+            // 
+            this.chkHideForAltTab.AutoSize = true;
+            this.chkHideForAltTab.Location = new System.Drawing.Point(6, 88);
+            this.chkHideForAltTab.Name = "chkHideForAltTab";
+            this.chkHideForAltTab.Size = new System.Drawing.Size(103, 17);
+            this.chkHideForAltTab.TabIndex = 2;
+            this.chkHideForAltTab.Text = "Hide For Alt Tab";
+            this.chkHideForAltTab.UseVisualStyleBackColor = true;
             // 
             // chkMinimizeToTrayAlways
             // 
@@ -787,15 +799,15 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
-            // chkHideForAltTab
+            // chkButtons
             // 
-            this.chkHideForAltTab.AutoSize = true;
-            this.chkHideForAltTab.Location = new System.Drawing.Point(6, 88);
-            this.chkHideForAltTab.Name = "chkHideForAltTab";
-            this.chkHideForAltTab.Size = new System.Drawing.Size(103, 17);
-            this.chkHideForAltTab.TabIndex = 2;
-            this.chkHideForAltTab.Text = "Hide For Alt Tab";
-            this.chkHideForAltTab.UseVisualStyleBackColor = true;
+            this.chkButtons.AutoSize = true;
+            this.chkButtons.Location = new System.Drawing.Point(6, 238);
+            this.chkButtons.Name = "chkButtons";
+            this.chkButtons.Size = new System.Drawing.Size(62, 17);
+            this.chkButtons.TabIndex = 7;
+            this.chkButtons.Text = "Buttons";
+            this.chkButtons.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -903,5 +915,6 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.CheckBox chkPriority;
         private System.Windows.Forms.CheckBox chkMinimizeToTrayAlways;
         private System.Windows.Forms.CheckBox chkHideForAltTab;
+        private System.Windows.Forms.CheckBox chkButtons;
     }
 }

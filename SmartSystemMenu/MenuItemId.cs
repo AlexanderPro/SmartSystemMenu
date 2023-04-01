@@ -77,6 +77,10 @@ namespace SmartSystemMenu
         public const int SC_MOVE_TO = 0x5000;
         public const int SC_SIZE_DEFINED = 0x5100;
         public const int SC_SAVE_SELECTED_ITEMS = 0x4816;
+        public const int SC_BUTTONS = 0x4817;
+        public const int SC_DISABLE_MINIMIZE_BUTTON = 0x4818;
+        public const int SC_DISABLE_MAXIMIZE_BUTTON = 0x4819;
+        public const int SC_DISABLE_CLOSE_BUTTON = 0x4820;
 
         private static readonly Dictionary<string, int> NameToId = new Dictionary<string, int>();
         private static readonly Dictionary<int, string> IdToName = new Dictionary<int, string>();
@@ -145,6 +149,10 @@ namespace SmartSystemMenu
             NameToId["other_windows"] = SC_OTHER_WINDOWS;
             NameToId["start_program"] = SC_START;
             NameToId["save_selected_items"] = SC_SAVE_SELECTED_ITEMS;
+            NameToId["buttons"] = SC_BUTTONS;
+            NameToId["disable_minimize_button"] = SC_DISABLE_MINIMIZE_BUTTON;
+            NameToId["disable_maximize_button"] = SC_DISABLE_MAXIMIZE_BUTTON;
+            NameToId["disable_close_button"] = SC_DISABLE_CLOSE_BUTTON;
 
             foreach (var pair in NameToId)
             {

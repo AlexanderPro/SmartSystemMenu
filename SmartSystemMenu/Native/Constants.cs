@@ -5,6 +5,7 @@
         // Menus
         public const int MF_UNCHECKED = 0x00000000;
         public const int MF_STRING = 0x00000000;
+        public const int MF_ENABLED = 0x00000000;
         public const int MF_GRAYED = 0x00000001;
         public const int MF_DISABLED = 0x00000002;
         public const int MF_CHECKED = 0x00000008;
@@ -38,6 +39,8 @@
         public const int DWL_USER = 8;
 
         // WindowStyle
+        public const int WS_MAXIMIZEBOX = 0x00010000;
+        public const int WS_MINIMIZEBOX = 0x00020000;
         public const int WS_EX_LAYERED = 0x00080000;
         public const int WS_EX_TOPMOST = 0x00000008;
         public const int WS_EX_TOOLWINDOW = 0x00000080;

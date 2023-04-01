@@ -92,30 +92,11 @@ namespace SmartSystemMenu
             }
         }
 
-        public Process Process
-        {
-            get
-            {
-                return SystemUtils.GetProcessByIdSafely(ProcessId);
-            }
-        }
+        public Process Process => SystemUtils.GetProcessByIdSafely(ProcessId);
 
-        public Priority ProcessPriority
-        {
-            get
-            {
-                return Process.GetPriority();
-            }
-        }
+        public Priority ProcessPriority => Process.GetPriority();
 
-        public bool IsVisible
-        {
-            get
-            {
-                bool isVisible = IsWindowVisible(Handle);
-                return isVisible;
-            }
-        }
+        public bool IsVisible => IsWindowVisible(Handle);
 
         public int Transparency
         {
@@ -133,49 +114,28 @@ namespace SmartSystemMenu
             }
         }
 
-        public bool AlwaysOnTop
+        public bool AlwaysOnTop => WindowUtils.IsAlwaysOnTop(Handle);
+
+        public bool IsDisabledMinimizeButton => WindowUtils.IsDisabledMinimizeButton(Handle);
+
+        public bool IsDisabledMaximizeButton => WindowUtils.IsDisabledMaximizeButton(Handle);
+
+        public bool IsDisabledCloseButton
         {
             get
             {
-                bool isAlwaysOnTop = WindowUtils.IsAlwaysOnTop(Handle);
-                return isAlwaysOnTop;
+                var flags = GetMenuState(Menu.MenuHandle, MenuItemId.SC_CLOSE, MF_BYCOMMAND);
+                return flags != -1 && (flags & MF_DISABLED) != 0 && (flags & MF_GRAYED) != 0;
             }
         }
 
-        public bool IsExToolWindow
-        {
-            get
-            {
-                bool isExToolWindow = WindowUtils.IsExToolWindow(Handle);
-                return isExToolWindow;
-            }
-        }
+        public bool IsExToolWindow => WindowUtils.IsExToolWindow(Handle);
 
-        public IntPtr Owner
-        {
-            get
-            {
-                IntPtr owner = GetWindow(Handle, GW_OWNER);
-                return owner;
-            }
-        }
+        public IntPtr Owner => GetWindow(Handle, GW_OWNER);
+        
+        public bool ExistSystemTrayIcon => _systemTrayIcon != null && _systemTrayIcon.Visible;
 
-        public bool ExistSystemTrayIcon
-        {
-            get
-            {
-                bool exist = _systemTrayIcon != null && _systemTrayIcon.Visible;
-                return exist;
-            }
-        }
-
-        public IWin32Window Win32Window
-        {
-            get
-            {
-                return new Win32WindowWrapper(Handle);
-            }
-        }
+        public IWin32Window Win32Window => new Win32WindowWrapper(Handle);
 
         public Window(IntPtr windowHandle)
         {
@@ -563,6 +523,25 @@ namespace SmartSystemMenu
             State.AlwaysOnTop = topMost;
         }
 
+        public void DisableMinimizeButton(bool disable)
+        {
+            WindowUtils.DisableMinimizeButton(Handle, disable);
+            State.IsDisabledMinimizeButton = disable;
+        }
+
+        public void DisableMaximizeButton(bool disable)
+        {
+            WindowUtils.DisableMaximizeButton(Handle, disable);
+            State.IsDisabledMaximizeButton = disable;
+        }
+
+        public void DisableCloseButton(bool disable)
+        {
+            var systemMenuHandle = GetSystemMenu(Handle, false);
+            EnableMenuItem(systemMenuHandle, MenuItemId.SC_CLOSE, disable ? MF_BYCOMMAND | MF_DISABLED | MF_GRAYED : MF_BYCOMMAND | MF_ENABLED);
+            State.IsDisabledCloseButton = disable;
+        }
+
         public void HideForAltTab(bool enable)
         {
             if (enable)
@@ -739,6 +718,27 @@ namespace SmartSystemMenu
                 SetStateMinimizeToTrayAlways(state.MinimizeToTrayAlways.Value);
                 Menu.CheckMenuItem(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY, state.MinimizeToTrayAlways.Value);
             }
+
+            if (settings.Buttons)
+            {
+                if (state.IsDisabledMinimizeButton.HasValue)
+                {
+                    DisableMinimizeButton(state.IsDisabledMinimizeButton.Value);
+                    Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON, state.IsDisabledMinimizeButton.Value);
+                }
+
+                if (state.IsDisabledMaximizeButton.HasValue)
+                {
+                    DisableMaximizeButton(state.IsDisabledMaximizeButton.Value);
+                    Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON, state.IsDisabledMaximizeButton.Value);
+                }
+
+                if (state.IsDisabledCloseButton.HasValue)
+                {
+                    DisableCloseButton(state.IsDisabledCloseButton.Value);
+                    Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, state.IsDisabledCloseButton.Value);
+                }
+            }
         }
 
         public void RefreshState()
@@ -759,6 +759,24 @@ namespace SmartSystemMenu
             if (isExToolWindow)
             {
                 State.HideForAltTab = isExToolWindow;
+            }
+
+            var isDisabledMinimizeButton = IsDisabledMinimizeButton;
+            if (isDisabledMinimizeButton)
+            {
+                State.IsDisabledMinimizeButton = isDisabledMinimizeButton;
+            }
+
+            var isDisabledMaximizeButton = IsDisabledMaximizeButton;
+            if (isDisabledMaximizeButton)
+            {
+                State.IsDisabledMaximizeButton = isDisabledMaximizeButton;
+            }
+
+            var isDisabledCloseButton = IsDisabledCloseButton;
+            if (isDisabledCloseButton)
+            {
+                State.IsDisabledCloseButton = isDisabledCloseButton;
             }
         }
 

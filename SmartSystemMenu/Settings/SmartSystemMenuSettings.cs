@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using System.Text;
 using System.Threading;
 using SmartSystemMenu.HotKeys;
 using SmartSystemMenu.Utils;
@@ -220,7 +218,8 @@ namespace SmartSystemMenu.Settings
                 SaveSelectedItems.Alignment != other.SaveSelectedItems.Alignment ||
                 SaveSelectedItems.Transparency != other.SaveSelectedItems.Transparency ||
                 SaveSelectedItems.Priority != other.SaveSelectedItems.Priority ||
-                SaveSelectedItems.MinimizeToTrayAlways != other.SaveSelectedItems.MinimizeToTrayAlways)
+                SaveSelectedItems.MinimizeToTrayAlways != other.SaveSelectedItems.MinimizeToTrayAlways ||
+                SaveSelectedItems.Buttons != other.SaveSelectedItems.Buttons)
             {
                 return false;
             }
@@ -287,6 +286,7 @@ namespace SmartSystemMenu.Settings
             hashCode ^= SaveSelectedItems.Transparency.GetHashCode();
             hashCode ^= SaveSelectedItems.Priority.GetHashCode();
             hashCode ^= SaveSelectedItems.MinimizeToTrayAlways.GetHashCode();
+            hashCode ^= SaveSelectedItems.Buttons.GetHashCode();
             hashCode ^= Sizer.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
             hashCode ^= ShowSystemTrayIcon.GetHashCode();
@@ -377,6 +377,7 @@ namespace SmartSystemMenu.Settings
             settings.SaveSelectedItems.Transparency = saveSelectedItemsElement.Attribute("transparency") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("transparency").Value) ? saveSelectedItemsElement.Attribute("transparency").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Priority = saveSelectedItemsElement.Attribute("priority") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("priority").Value) ? saveSelectedItemsElement.Attribute("priority").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.MinimizeToTrayAlways = saveSelectedItemsElement.Attribute("minimizeToTrayAlways") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value) ? saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.Buttons = saveSelectedItemsElement.Attribute("buttons") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("buttons").Value) ? saveSelectedItemsElement.Attribute("buttons").Value.ToLower() == "true" : true;
 
             var sizerElement = document.XPathSelectElement("/smartSystemMenu/sizer");
             settings.Sizer = sizerElement.Attribute("type") != null && !string.IsNullOrEmpty(sizerElement.Attribute("type").Value) ? (WindowSizerType)int.Parse(sizerElement.Attribute("type").Value) : WindowSizerType.WindowWithMargins;
@@ -534,7 +535,8 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("alignment", settings.SaveSelectedItems.Alignment.ToString().ToLower()),
                                      new XAttribute("transparency", settings.SaveSelectedItems.Transparency.ToString().ToLower()),
                                      new XAttribute("priority", settings.SaveSelectedItems.Priority.ToString().ToLower()),
-                                     new XAttribute("minimizeToTrayAlways", settings.SaveSelectedItems.MinimizeToTrayAlways.ToString().ToLower())
+                                     new XAttribute("minimizeToTrayAlways", settings.SaveSelectedItems.MinimizeToTrayAlways.ToString().ToLower()),
+                                     new XAttribute("buttons", settings.SaveSelectedItems.Buttons.ToString().ToLower())
                                  ),
                                  new XElement("sizer",
                                      new XAttribute("type", ((int)settings.Sizer).ToString())

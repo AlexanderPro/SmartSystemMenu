@@ -21,6 +21,14 @@ namespace SmartSystemMenu
 
         public IDictionary<int, IntPtr> MoveToMenuItems { get; private set; }
 
+        public IntPtr MenuHandle
+        {
+            get
+            {
+                return GetSystemMenu(WindowHandle, false);
+            }
+        }
+
         public bool Exists
         {
             get

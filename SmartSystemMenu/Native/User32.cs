@@ -89,6 +89,9 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern int GetMenuItemID(IntPtr hMenu, int uPosition);
 
+        [DllImport("User32.dll")]
+        public static extern uint EnableMenuItem(IntPtr hMenu, int itemId, int uEnable);
+
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(int key);
 

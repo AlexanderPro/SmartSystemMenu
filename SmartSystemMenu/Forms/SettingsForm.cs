@@ -83,6 +83,7 @@ namespace SmartSystemMenu.Forms
             chkTransparency.Text = settings.Language.GetValue("transparency");
             chkPriority.Text = settings.Language.GetValue("priority");
             chkMinimizeToTrayAlways.Text = settings.Language.GetValue("minimize_always_to_systemtray");
+            chkButtons.Text = settings.Language.GetValue("buttons");
             btnCloser.Text = settings.Language.GetValue("closer_button_name");
             btnApply.Text = settings.Language.GetValue("settings_btn_apply");
             btnCancel.Text = settings.Language.GetValue("settings_btn_cancel");
@@ -159,6 +160,7 @@ namespace SmartSystemMenu.Forms
             chkTransparency.Checked = settings.SaveSelectedItems.Transparency;
             chkPriority.Checked = settings.SaveSelectedItems.Priority;
             chkMinimizeToTrayAlways.Checked = settings.SaveSelectedItems.MinimizeToTrayAlways;
+            chkButtons.Checked = settings.SaveSelectedItems.Buttons;
 
             var items = new List<Settings.MenuItem>();
             foreach(var item in settings.MenuItems.Items)
@@ -542,6 +544,7 @@ namespace SmartSystemMenu.Forms
             settings.SaveSelectedItems.Transparency = chkTransparency.Checked;
             settings.SaveSelectedItems.Priority = chkPriority.Checked;
             settings.SaveSelectedItems.MinimizeToTrayAlways = chkMinimizeToTrayAlways.Checked;
+            settings.SaveSelectedItems.Buttons = chkButtons.Checked;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();

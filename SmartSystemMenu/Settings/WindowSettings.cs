@@ -61,7 +61,10 @@ namespace SmartSystemMenu.Settings
                         Alignment = systemMenuElement.Attribute("alignment") == null ? (WindowAlignment?)null : (WindowAlignment)int.Parse(systemMenuElement.Attribute("alignment").Value),
                         Transparency = systemMenuElement.Attribute("transparency") == null ? (int?)null : int.Parse(systemMenuElement.Attribute("transparency").Value),
                         Priority = systemMenuElement.Attribute("priority") == null ? (Priority?)null : (Priority)int.Parse(systemMenuElement.Attribute("priority").Value),
-                        MinimizeToTrayAlways = systemMenuElement.Attribute("minimizeToTrayAlways") == null ? (bool?)null : systemMenuElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true"
+                        MinimizeToTrayAlways = systemMenuElement.Attribute("minimizeToTrayAlways") == null ? (bool?)null : systemMenuElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true",
+                        IsDisabledMinimizeButton = systemMenuElement.Attribute("disableMinimizeButton") == null ? (bool?)null : systemMenuElement.Attribute("disableMinimizeButton").Value.ToLower() == "true",
+                        IsDisabledMaximizeButton = systemMenuElement.Attribute("disableMaximizeButton") == null ? (bool?)null : systemMenuElement.Attribute("disableMaximizeButton").Value.ToLower() == "true",
+                        IsDisabledCloseButton = systemMenuElement.Attribute("disableCloseButton") == null ? (bool?)null : systemMenuElement.Attribute("disableCloseButton").Value.ToLower() == "true"
                     };
                 })
                 .ToList();
@@ -87,7 +90,10 @@ namespace SmartSystemMenu.Settings
                                          settings.SaveSelectedItems.Alignment && x.Alignment.HasValue ? new XAttribute("alignment", (int)x.Alignment.Value) : null,
                                          settings.SaveSelectedItems.Transparency && x.Transparency.HasValue ? new XAttribute("transparency", x.Transparency.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.Priority && x.Priority.HasValue ? new XAttribute("priority", (int)x.Priority) : null,
-                                         settings.SaveSelectedItems.MinimizeToTrayAlways && x.MinimizeToTrayAlways.HasValue ? new XAttribute("minimizeToTrayAlways", x.MinimizeToTrayAlways.Value.ToString().ToLower()) : null)))));
+                                         settings.SaveSelectedItems.MinimizeToTrayAlways && x.MinimizeToTrayAlways.HasValue ? new XAttribute("minimizeToTrayAlways", x.MinimizeToTrayAlways.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.Buttons && x.IsDisabledMinimizeButton.HasValue ? new XAttribute("disableMinimizeButton", x.IsDisabledMinimizeButton.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.Buttons && x.IsDisabledMaximizeButton.HasValue ? new XAttribute("disableMaximizeButton", x.IsDisabledMaximizeButton.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.Buttons && x.IsDisabledCloseButton.HasValue ? new XAttribute("disableCloseButton", x.IsDisabledCloseButton.Value.ToString().ToLower()) : null)))));
             FileUtils.Save(fileName, document);
         }
     }

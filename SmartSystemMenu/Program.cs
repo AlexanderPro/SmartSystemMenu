@@ -398,6 +398,38 @@ namespace SmartSystemMenu
                         bitmap.Save(dialog.FileName, imageFormat);
                     }
                 }
+
+                // Disable "Minimize" Button 
+                if (toggleParser.HasToggle("minimizebutton"))
+                {
+                    var minimizebuttonString = toggleParser.GetToggleValueOrDefault("minimizebutton", string.Empty).ToLower();
+
+                    if (minimizebuttonString == "on")
+                    {
+                        window.DisableMinimizeButton(false);
+                    }
+
+                    if (minimizebuttonString == "off")
+                    {
+                        window.DisableMinimizeButton(true);
+                    }
+                }
+
+                // Disable "Maximize" Button 
+                if (toggleParser.HasToggle("maximizebutton"))
+                {
+                    var maximizebuttonString = toggleParser.GetToggleValueOrDefault("maximizebutton", string.Empty).ToLower();
+
+                    if (maximizebuttonString == "on")
+                    {
+                        window.DisableMaximizeButton(false);
+                    }
+
+                    if (maximizebuttonString == "off")
+                    {
+                        window.DisableMaximizeButton(true);
+                    }
+                }
             }
         }
 
@@ -448,6 +480,8 @@ namespace SmartSystemMenu
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
    --hidealttab       [on, off]
+   --minimizebutton   [on, off]
+   --maximizebutton   [on, off]
    --sendtobottom     No params
 -o --openinexplorer   No params
 -c --copytoclipboard  No params

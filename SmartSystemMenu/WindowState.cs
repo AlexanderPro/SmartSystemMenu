@@ -31,6 +31,12 @@ namespace SmartSystemMenu
 
         public bool? MinimizeToTrayAlways { get; set; }
 
+        public bool? IsDisabledMinimizeButton { get; set; }
+
+        public bool? IsDisabledMaximizeButton { get; set; }
+
+        public bool? IsDisabledCloseButton { get; set; }
+
         public object Clone()
         {
             return MemberwiseClone();

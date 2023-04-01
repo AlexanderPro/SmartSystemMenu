@@ -126,6 +126,21 @@ namespace SmartSystemMenu.Forms
                         window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, true);
                     }
 
+                    if (window.IsDisabledMinimizeButton)
+                    {
+                        window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON, true);
+                    }
+
+                    if (window.IsDisabledMaximizeButton)
+                    {
+                        window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON, true);
+                    }
+
+                    if (window.IsDisabledCloseButton)
+                    {
+                        window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, true);
+                    }
+
                     var windowClassName = window.GetClassName();
                     var states = _windowSettings.Find(windowClassName, processPath);
                     if (states.Any())
@@ -342,6 +357,21 @@ namespace SmartSystemMenu.Forms
                         if (window.IsExToolWindow)
                         {
                             window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, true);
+                        }
+
+                        if (window.IsDisabledMinimizeButton)
+                        {
+                            window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON, true);
+                        }
+
+                        if (window.IsDisabledMaximizeButton)
+                        {
+                            window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON, true);
+                        }
+
+                        if (window.IsDisabledCloseButton)
+                        {
+                            window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, true);
                         }
 
                         _windows.Add(window);
@@ -691,6 +721,30 @@ namespace SmartSystemMenu.Forms
                                     window.Menu.UncheckAlignmentMenu();
                                     window.Menu.CheckMenuItem(MenuItemId.SC_ALIGN_CUSTOM, true);
                                 }
+                            }
+                            break;
+
+                        case MenuItemId.SC_DISABLE_MINIMIZE_BUTTON:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON, !isChecked);
+                                window.DisableMinimizeButton(!isChecked);
+                            }
+                            break;
+
+                        case MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON, !isChecked);
+                                window.DisableMaximizeButton(!isChecked);
+                            }
+                            break;
+
+                        case MenuItemId.SC_DISABLE_CLOSE_BUTTON:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DISABLE_CLOSE_BUTTON);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, !isChecked);
+                                window.DisableCloseButton(!isChecked);
                             }
                             break;
 

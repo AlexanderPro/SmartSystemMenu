@@ -171,6 +171,24 @@ namespace SmartSystemMenu.Utils
 
         public static bool IsExToolWindow(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_EXSTYLE) & WS_EX_TOOLWINDOW) != 0;
 
+        public static bool IsDisabledMinimizeButton(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_STYLE) & WS_MINIMIZEBOX) == 0;
+
+        public static bool IsDisabledMaximizeButton(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_STYLE) & WS_MAXIMIZEBOX) == 0;
+
+        public static void DisableMinimizeButton(IntPtr hWnd, bool disable)
+        {
+            var exStyle = GetWindowLong(hWnd, GWL_STYLE);
+            exStyle = disable ? exStyle & ~WS_MINIMIZEBOX : exStyle | WS_MINIMIZEBOX;
+            SetWindowLong(hWnd, GWL_STYLE, exStyle);
+        }
+
+        public static void DisableMaximizeButton(IntPtr hWnd, bool disable)
+        {
+            var exStyle = GetWindowLong(hWnd, GWL_STYLE);
+            exStyle = disable ? exStyle & ~WS_MAXIMIZEBOX : exStyle | WS_MAXIMIZEBOX;
+            SetWindowLong(hWnd, GWL_STYLE, exStyle);
+        }
+
         public static void SetExToolWindow(IntPtr hWnd)
         {
             var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);

@@ -18,6 +18,8 @@ namespace SmartSystemMenu.Settings
 
         public bool MinimizeToTrayAlways { get; set; }
 
+        public bool Buttons { get; set; }
+
         public SaveSelectedItemsSettings()
         {
             AeroGlass = true;
@@ -27,6 +29,7 @@ namespace SmartSystemMenu.Settings
             Transparency = true;
             Priority = true;
             MinimizeToTrayAlways = true;
+            Buttons = true;
         }
 
         public object Clone()

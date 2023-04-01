@@ -57,6 +57,10 @@
       <item name="close_other_windows" value="Close" />
       <item name="start_program" value="Start Program" />
       <item name="save_selected_items" value="Save" />
+      <item name="buttons" value="Buttons" />
+      <item name="disable_minimize_button" value="Disable &quot;Minimize&quot; Button" />
+      <item name="disable_maximize_button" value="Disable &quot;Maximize&quot; Button" />
+      <item name="disable_close_button" value="Disable &quot;Close&quot; Button" />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -281,6 +285,10 @@
       <item name="close_other_windows" value="Schlieβen" />
       <item name="start_program" value="Programm ausführen" />
       <item name="save_selected_items" value="Speichern" />
+      <item name="buttons" value="Tasten" />
+      <item name="disable_minimize_button" value="Deaktivieren &quot;Minimieren&quot;" />
+      <item name="disable_maximize_button" value="Deaktivieren &quot;Maximieren&quot;" />
+      <item name="disable_close_button" value="Deaktivieren &quot;Schlieβen&quot;" />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -503,6 +511,10 @@
       <item name="close_other_windows" value="关闭" />
       <item name="start_program" value="启动程序" />
       <item name="save_selected_items" value="保存" />
+      <item name="buttons" value="纽扣" />
+      <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按钮" />
+      <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按钮" />
+      <item name="disable_close_button" value="禁用&quot;关闭&quot;按钮" />
       <item name="grp_window" value="窗口" />
       <item name="grp_process" value="进程" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -725,6 +737,10 @@
       <item name="close_other_windows" value="關閉" />
       <item name="start_program" value="啟動程式" />
       <item name="save_selected_items" value="儲存" />
+      <item name="buttons" value="鈕扣" />
+      <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按鈕" />
+      <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按鈕" />
+      <item name="disable_close_button" value="禁用&quot;關閉&quot;按鈕" />
       <item name="grp_window" value="視窗" />
       <item name="grp_process" value="處理程序" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -949,6 +965,10 @@
       <item name="close_other_windows" value="閉じる" />
       <item name="start_program" value="起動プログラム" />
       <item name="save_selected_items" value="保存" />
+      <item name="buttons" value="ボタン" />
+      <item name="disable_minimize_button" value="「最小化」ボタンを無効にする" />
+      <item name="disable_maximize_button" value="「最大化」ボタンを無効にする" />
+      <item name="disable_close_button" value="「閉じる」ボタンを無効にする" />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1171,6 +1191,10 @@
       <item name="close_other_windows" value="다른 창 닫기" />
       <item name="start_program" value="프로그램 실행" />
       <item name="save_selected_items" value="저장" />
+      <item name="buttons" value="버튼" />
+      <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 비활성화" />
+      <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 비활성화" />
+      <item name="disable_close_button" value="&quot;닫기&quot; 버튼 비활성화" />
       <item name="grp_window" value="창" />
       <item name="grp_process" value="프로세스" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1395,6 +1419,10 @@
       <item name="close_other_windows" value="Закрыть" />
       <item name="start_program" value="Пуск" />
       <item name="save_selected_items" value="Сохранить" />
+      <item name="buttons" value="Кнопки" />
+      <item name="disable_minimize_button" value="Отключить кнопку минимизации окна" />
+      <item name="disable_maximize_button" value="Отключить кнопку развертывания окна" />
+      <item name="disable_close_button" value="Отключить кнопку закрытия окна" />
       <item name="grp_window" value="Окно" />
       <item name="grp_process" value="Процесс" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1617,6 +1645,10 @@
       <item name="close_other_windows" value="Затвори" />
       <item name="start_program" value="Покренути програм" />
       <item name="save_selected_items" value="Сачувати" />
+      <item name="buttons" value="Дугмад" />
+      <item name="disable_minimize_button" value="Онемогућите дугме &quot;Минимизирај&quot;" />
+      <item name="disable_maximize_button" value="Онемогућите дугме &quot;Максимирај&quot;" />
+      <item name="disable_close_button" value="Онемогућите дугме &quot;Затвори&quot;" />
       <item name="grp_window" value="Прозор" />
       <item name="grp_process" value="Процес" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1839,6 +1871,10 @@
       <item name="close_other_windows" value="Fechar" />
       <item name="start_program" value="Executar programa" />
       <item name="save_selected_items" value="Salvar" />
+      <item name="buttons" value="Botões" />
+      <item name="disable_minimize_button" value="Desativar o botão &quot;Minimizar&quot;" />
+      <item name="disable_maximize_button" value="Desativar o botão &quot;Maximizar&quot;" />
+      <item name="disable_close_button" value="Desativar o botão &quot;Fechar&quot;" />
       <item name="grp_window" value="Janela" />
       <item name="grp_process" value="Executável" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -2061,6 +2097,10 @@
       <item name="close_other_windows" value="Chiudile" />
       <item name="start_program" value="Start Program" />
       <item name="save_selected_items" value="Salva impostazioni" />
+      <item name="buttons" value="Bottoni" />
+      <item name="disable_minimize_button" value="Disabilita il pulsante &quot;Riduci a icona&quot;" />
+      <item name="disable_maximize_button" value="Disabilita il pulsante &quot;Ingrandisci&quot;" />
+      <item name="disable_close_button" value="Disabilita il pulsante &quot;Chiudi&quot;" />
       <item name="grp_window" value="Finestra" />
       <item name="grp_process" value="Processo" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -2285,6 +2325,10 @@
       <item name="close_other_windows" value="Fermer les autres fenêtres" />
       <item name="start_program" value="Démarrer programme" />
       <item name="save_selected_items" value="Sauvegarder les élements sélectionnés" />
+      <item name="buttons" value="Boutons" />
+      <item name="disable_minimize_button" value="Désactiver le bouton &quot;Réduire&quot;" />
+      <item name="disable_maximize_button" value="Désactiver le bouton &quot;Agrandir&quot;" />
+      <item name="disable_close_button" value="Désactiver le bouton &quot;Fermer&quot;" />
       <item name="grp_window" value="Fenêtre" />
       <item name="grp_process" value="Processus" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -2509,6 +2553,10 @@
       <item name="close_other_windows" value="Bezár" />
       <item name="start_program" value="Programindítás" />
       <item name="save_selected_items" value="Mentés" />
+      <item name="buttons" value="Gombok" />
+      <item name="disable_minimize_button" value="Tiltsa le a &quot;Kis méret&quot; gombot" />
+      <item name="disable_maximize_button" value="Tiltsa le a &quot;Maximálás&quot; gombot" />
+      <item name="disable_close_button" value="Tiltsa le a &quot;Bezárás&quot; gombot" />
       <item name="grp_window" value="Ablak" />
       <item name="grp_process" value="Folyamat" />
       <item name="lbl_get_window_text" value="Az ablak szövegének lekérése:" />
