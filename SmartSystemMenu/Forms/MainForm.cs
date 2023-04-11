@@ -518,6 +518,13 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_COPY_SCREEN_SHOT:
+                            {
+                                var bitmap = WindowUtils.PrintWindow(window.Handle);
+                                Clipboard.SetImage(bitmap);
+                            }
+                            break;
+
                         case MenuItemId.SC_COPY_WINDOW_TEXT:
                             {
                                 var text = window.ExtractText();

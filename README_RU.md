@@ -79,10 +79,11 @@ SmartSystemMenu добавляет дополнительные пункты с�
    --hidealttab       [on, off]
    --minimizebutton   [on, off]
    --maximizebutton   [on, off]
-   --sendtobottom     No params
--o --openinexplorer   No params
--c --copytoclipboard  No params
-   --clearclipboard   No params
+   --sendtobottom     Send To Bottom
+-o --openinexplorer   Open File In Explorer
+-c --copytoclipboard  Copy Window Text To Clipboard
+   --copyscreenshot   Copy Screenshot To Clipboard
+   --clearclipboard   Clear Clipboard
    --trustedinstaller Sets TrustedInstaller owner for SmartSystemMenuHook.dll and SmartSystemMenuHook64.dll
 -n --nogui            No GUI
 

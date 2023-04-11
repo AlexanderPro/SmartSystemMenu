@@ -11,6 +11,7 @@
       <item name="save_screenshot" value="Save Screenshot" />
       <item name="open_file_in_explorer" value="Open File In Explorer" />
       <item name="clipboard" value="Clipboard" />
+      <item name="copy_screenshot" value="Copy Screenshot" />
       <item name="copy_window_text" value="Copy Window Text" />
       <item name="copy_window_title" value="Copy Window Title" />
       <item name="copy_full_process_path" value="Copy Full Process Path" />
@@ -239,6 +240,7 @@
       <item name="save_screenshot" value="Screenshot speichern…" />
       <item name="open_file_in_explorer" value="Im Windows Explorer anzeigen" />
       <item name="clipboard" value="Zwischenablage" />
+      <item name="copy_screenshot" value="Screenshot kopieren" />
       <item name="copy_window_text" value="Fenstertext kopieren" />
       <item name="copy_window_title" value="Fenstertitel kopieren" />
       <item name="copy_full_process_path" value="Vollständigen Prozesspfad kopieren" />
@@ -465,6 +467,7 @@
       <item name="save_screenshot" value="保存窗口截图" />
       <item name="open_file_in_explorer" value="在资源管理器中打开文件" />
       <item name="clipboard" value="剪贴板" />
+      <item name="copy_screenshot" value="复制窗口截图" />
       <item name="copy_window_text" value="复制窗口文本" />
       <item name="copy_window_title" value="复制窗口标题" />
       <item name="copy_full_process_path" value="复制完整的进程路径" />
@@ -691,6 +694,7 @@
       <item name="save_screenshot" value="儲存視窗擷圖" />
       <item name="open_file_in_explorer" value="在檔案總管中開啟檔案" />
       <item name="clipboard" value="剪貼簿" />
+      <item name="copy_screenshot" value="複製窗口截圖" />
       <item name="copy_window_text" value="複製視窗文字" />
       <item name="copy_window_title" value="複製視窗標題" />
       <item name="copy_full_process_path" value="複製完整的處理程序路徑" />
@@ -919,6 +923,7 @@
       <item name="save_screenshot" value="スクリーンショットを撮る" />
       <item name="open_file_in_explorer" value="エクスプローラーで開く" />
       <item name="clipboard" value="クリップボード" />
+      <item name="copy_screenshot" value="スクリーンショットをコピー" />
       <item name="copy_window_text" value="ウィンドウテキストのコピー" />
       <item name="copy_window_title" value="ウィンドウタイトルのコピー" />
       <item name="copy_full_process_path" value="フルプロセスパスをコピー" />
@@ -1145,6 +1150,7 @@
       <item name="save_screenshot" value="스크린샷 저장" />
       <item name="open_file_in_explorer" value="탐색기에서 파일 열기" />
       <item name="clipboard" value="클립보드" />
+      <item name="copy_screenshot" value="스크린샷 복사" />
       <item name="copy_window_text" value="창 텍스트 복사" />
       <item name="copy_window_title" value="창 제목 복사" />
       <item name="copy_full_process_path" value="전체 프로세스 경로 복사" />
@@ -1373,6 +1379,7 @@
       <item name="save_screenshot" value="Сохранить снимок окна" />
       <item name="open_file_in_explorer" value="Открыть в проводнике" />
       <item name="clipboard" value="Буфер обмена" />
+      <item name="copy_screenshot" value="Скопировать снимок окна" />
       <item name="copy_window_text" value="Скопировать текст окна" />
       <item name="copy_window_title" value="Скопировать заголовок окна" />
       <item name="copy_full_process_path" value="Скопировать полный путь к процессу" />
@@ -1599,6 +1606,7 @@
       <item name="save_screenshot" value="Сачувај прозор програма" />
       <item name="open_file_in_explorer" value="Отвори датотеку у Explorer" />
       <item name="clipboard" value="Клипборд" />
+      <item name="copy_screenshot" value="Копирај снимак прозора" />
       <item name="copy_window_text" value="Копирај текст прозора" />
       <item name="copy_window_title" value="Копирај наслов прозора" />
       <item name="copy_full_process_path" value="Копирај пуну путању процеса" />
@@ -1825,6 +1833,7 @@
       <item name="save_screenshot" value="Fazer captura de tela" />
       <item name="open_file_in_explorer" value="Abrir a pasta do executável no Explorer" />
       <item name="clipboard" value="Área de Transferência" />
+      <item name="copy_screenshot" value="Copiar captura de tela da janela" />
       <item name="copy_window_text" value="Copiar texto da janela" />
       <item name="copy_window_title" value="Copiar título da janela" />
       <item name="copy_full_process_path" value="Copiar caminho completo do processo" />
@@ -2051,6 +2060,7 @@
       <item name="save_screenshot" value="Salva schermata" />
       <item name="open_file_in_explorer" value="Apri file in Esplora risorse" />
       <item name="clipboard" value="Appunti" />
+      <item name="copy_screenshot" value="Copia schermata della finestra" />
       <item name="copy_window_text" value="Copia testo nella finestra" />
       <item name="copy_window_title" value="Copia titolo finestra" />
       <item name="copy_full_process_path" value="Copia intero percorso del programma" />
@@ -2279,6 +2289,7 @@
       <item name="save_screenshot" value="Sauvegarder la capture d'écran" />
       <item name="open_file_in_explorer" value="Ouvrir le fichier dans l'explorateur" />
       <item name="clipboard" value="Presse-papiers" />
+      <item name="copy_screenshot" value="Copier la capture d'écran de la fenêtre" />
       <item name="copy_window_text" value="Copier le texte de la fenêtre" />
       <item name="copy_window_title" value="Copier le titre de la fenêtre" />
       <item name="copy_full_process_path" value="Copier le chemin du programme" />
@@ -2507,6 +2518,7 @@
       <item name="save_screenshot" value="Képernyőkép mentése" />
       <item name="open_file_in_explorer" value="Fájl megnyitása az Intézőben" />
       <item name="clipboard" value="Vágólap" />
+      <item name="copy_screenshot" value="Ablak képernyőképének másolása" />
       <item name="copy_window_text" value="Ablak szövegének másolása" />
       <item name="copy_window_title" value="Ablak címének másolása" />
       <item name="copy_full_process_path" value="Teljes folyamatútvonal másolása" />

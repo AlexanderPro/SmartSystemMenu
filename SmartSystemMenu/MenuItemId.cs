@@ -68,6 +68,7 @@ namespace SmartSystemMenu
         public const int SC_SYSTEMTRAY = 0x4810;
         public const int SC_SUSPEND_TO_SYSTEMTRAY = 0x481F;
         public const int SC_CLIPBOARD = 0x482F;
+        public const int SC_COPY_SCREEN_SHOT = 0x4821;
         public const int SC_COPY_WINDOW_TEXT = 0x4811;
         public const int SC_COPY_WINDOW_TITLE = 0x4812;
         public const int SC_COPY_FULL_PROCESS_PATH = 0x4813;
@@ -136,6 +137,7 @@ namespace SmartSystemMenu
             NameToId["priority_below_normal"] = SC_PRIORITY_BELOW_NORMAL;
             NameToId["priority_idle"] = SC_PRIORITY_IDLE;
             NameToId["clipboard"] = SC_CLIPBOARD;
+            NameToId["copy_screenshot"] = SC_COPY_SCREEN_SHOT;
             NameToId["copy_window_text"] = SC_COPY_WINDOW_TEXT;
             NameToId["copy_window_title"] = SC_COPY_WINDOW_TITLE;
             NameToId["copy_full_process_path"] = SC_COPY_FULL_PROCESS_PATH;
