@@ -78,6 +78,7 @@ SmartSystemMenu добавляет дополнительные пункты с�
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
    --hidealttab       [on, off]
+   --clickthrough     [on, off]
    --minimizebutton   [on, off]
    --maximizebutton   [on, off]
    --sendtobottom     Send To Bottom
