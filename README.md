@@ -17,6 +17,7 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
 * **Drag By Mouse.** Allows to drag by mouse the current window.
+* **Click Through.** Allows to click through the current window.
 * **Hide For Alt+Tab.** Allows to hide the current window for the Taskbar and Alt+Tab switch.
 * **Resize.** Allows to change the size of the current window.
 * **Move To.** Allows to move the current window to another monitor.
