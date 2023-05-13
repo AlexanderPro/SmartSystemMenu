@@ -175,6 +175,18 @@ namespace SmartSystemMenu.Utils
 
         public static bool IsDisabledMaximizeButton(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_STYLE) & WS_MAXIMIZEBOX) == 0;
 
+        public static bool IsClickThrough(IntPtr hWnd)
+        {
+            var style = GetWindowLong(hWnd, GWL_EXSTYLE);
+            return (style & WS_EX_LAYERED) != 0 && (style & WS_EX_TRANSPARENT) != 0;
+        }
+
+        public static bool IsLayered(IntPtr hWnd)
+        {
+            var style = GetWindowLong(hWnd, GWL_EXSTYLE);
+            return (style & WS_EX_LAYERED) != 0;
+        }
+
         public static void DisableMinimizeButton(IntPtr hWnd, bool disable)
         {
             var exStyle = GetWindowLong(hWnd, GWL_STYLE);
@@ -200,6 +212,29 @@ namespace SmartSystemMenu.Utils
         {
             var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
             exStyle &= ~WS_EX_TOOLWINDOW;
+            SetWindowLong(hWnd, GWL_EXSTYLE, exStyle);
+        }
+
+        public static void SetClickThrough(IntPtr hWnd)
+        {
+            var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+            exStyle |= WS_EX_LAYERED;
+            exStyle |= WS_EX_TRANSPARENT;
+            SetWindowLong(hWnd, GWL_EXSTYLE, exStyle);
+        }
+
+        public static void UnsetClickThrough(IntPtr hWnd)
+        {
+            var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+            exStyle &= ~WS_EX_LAYERED;
+            exStyle &= ~WS_EX_TRANSPARENT;
+            SetWindowLong(hWnd, GWL_EXSTYLE, exStyle);
+        }
+
+        public static void UnsetTransparent(IntPtr hWnd)
+        {
+            var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+            exStyle &= ~WS_EX_TRANSPARENT;
             SetWindowLong(hWnd, GWL_EXSTYLE, exStyle);
         }
 

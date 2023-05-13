@@ -16,25 +16,12 @@ namespace SmartSystemMenu
                     .ToDictionary(pair => RemovePrefix(pair.first).ToLowerInvariant(), g => IsToggle(g.second) ? string.Empty : g.second);
         }
 
-        private static string RemovePrefix(string toggle)
-        {
-            return new string(toggle.SkipWhile(c => c == '-').ToArray());
-        }
+        private static string RemovePrefix(string toggle) => new string(toggle.SkipWhile(c => c == '-').ToArray());
 
-        private static bool IsToggle(string arg)
-        {
-            return arg.StartsWith("-", StringComparison.InvariantCulture);
-        }
+        private static bool IsToggle(string arg) => arg.StartsWith("-", StringComparison.InvariantCulture);
 
-        public bool HasToggle(string toggle)
-        {
-            return toggles.ContainsKey(toggle.ToLowerInvariant());
-        }
+        public bool HasToggle(string toggle) => toggles.ContainsKey(toggle.ToLowerInvariant());
 
-        public string GetToggleValueOrDefault(string toggle, string defaultValue)
-        {
-            string value;
-            return toggles.TryGetValue(toggle.ToLowerInvariant(), out value) ? value : defaultValue;
-        }
+        public string GetToggleValueOrDefault(string toggle, string defaultValue) => toggles.TryGetValue(toggle.ToLowerInvariant(), out var value) ? value : defaultValue;
     }
 }

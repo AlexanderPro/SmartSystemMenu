@@ -105,6 +105,8 @@ namespace SmartSystemMenu
                 return;
             }
 
+            var parentHandle = toggleParser.HasToggle("parentHandle") && long.TryParse(toggleParser.GetToggleValueOrDefault("parentHandle", string.Empty), out var parentHandleValue) ? parentHandleValue : (long?)null;
+
 #if WIN32
             var mutexName = "SmartSystemMenuMutex";
 #else
@@ -118,7 +120,8 @@ namespace SmartSystemMenu
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(settings, windowSettings));
+            var mainForm = new MainForm(settings, windowSettings, parentHandle.HasValue ? new IntPtr(parentHandle.Value) : IntPtr.Zero);
+            Application.Run(mainForm);
 
             if (toggleParser.HasToggle("trustedinstaller"))
             {
@@ -338,6 +341,22 @@ namespace SmartSystemMenu
                     }
                 }
 
+                // Click Through
+                if (toggleParser.HasToggle("clickthrough"))
+                {
+                    var clickthroughString = toggleParser.GetToggleValueOrDefault("clickthrough", string.Empty).ToLower();
+
+                    if (clickthroughString == "on")
+                    {
+                        window.ClickThrough(true);
+                    }
+
+                    if (clickthroughString == "off")
+                    {
+                        window.ClickThrough(false);
+                    }
+                }
+
                 // Send To Bottom Window
                 if (toggleParser.HasToggle("sendtobottom"))
                 {
@@ -487,6 +506,7 @@ namespace SmartSystemMenu
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
    --hidealttab       [on, off]
+   --clickthrough     [on, off]
    --minimizebutton   [on, off]
    --maximizebutton   [on, off]
    --sendtobottom     Send To Bottom

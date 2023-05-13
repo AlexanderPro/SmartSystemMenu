@@ -4,9 +4,9 @@ namespace SmartSystemMenu.Hooks
 {
     class BasicHookEventArgs : EventArgs
     {
-        public IntPtr WParam { get; private set; }
+        public IntPtr WParam { get; }
 
-        public IntPtr LParam { get; private set; }
+        public IntPtr LParam { get; }
 
         public BasicHookEventArgs(IntPtr wParam, IntPtr lParam)
         {

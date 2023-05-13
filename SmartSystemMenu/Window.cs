@@ -29,6 +29,7 @@ namespace SmartSystemMenu
         private int _defaultTop;
         private int _beforeRollupHeight;
         private bool _suspended;
+        private bool _isLayered;
         private NotifyIcon _systemTrayIcon;
         private ToolStripMenuItem _menuItemRestore;
         private ToolStripMenuItem _menuItemClose;
@@ -36,11 +37,11 @@ namespace SmartSystemMenu
 
         public const string ConsoleClassName = "ConsoleWindowClass";
 
-        public IntPtr Handle { get; private set; }
+        public IntPtr Handle { get; }
 
-        public SystemMenu Menu { get; private set; }
+        public SystemMenu Menu { get; }
 
-        public WindowState State { get; private set; }
+        public WindowState State { get; }
 
         public Rect Size
         {
@@ -131,6 +132,8 @@ namespace SmartSystemMenu
 
         public bool IsExToolWindow => WindowUtils.IsExToolWindow(Handle);
 
+        public bool IsClickThrough => WindowUtils.IsClickThrough(Handle);
+
         public IntPtr Owner => GetWindow(Handle, GW_OWNER);
         
         public bool ExistSystemTrayIcon => _systemTrayIcon != null && _systemTrayIcon.Visible;
@@ -148,6 +151,7 @@ namespace SmartSystemMenu
             _defaultTop = size.Top;
             _beforeRollupHeight = size.Height;
             _defaultTransparency = Transparency;
+            _isLayered = false;
             State = new WindowState();
             State.Left = size.Left;
             State.Top = size.Top;
@@ -553,6 +557,26 @@ namespace SmartSystemMenu
                 WindowUtils.UnsetExToolWindow(Handle);
             }
             State.HideForAltTab = enable;
+        }
+
+        public void ClickThrough(bool enable)
+        {
+            if (enable)
+            {
+                _isLayered = WindowUtils.IsLayered(Handle);
+                WindowUtils.SetClickThrough(Handle);
+            }
+            else
+            {
+                if (_isLayered)
+                {
+                    WindowUtils.UnsetTransparent(Handle);
+                }
+                else
+                {
+                    WindowUtils.UnsetClickThrough(Handle);
+                }
+            }
         }
 
         public void SendToBottom()

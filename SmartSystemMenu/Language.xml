@@ -18,6 +18,7 @@
       <item name="clear_clipboard" value="Clear" />
       <item name="drag_by_mouse" value="Drag By Mouse" />
       <item name="hide_for_alt_tab" value="Hide For Alt+Tab" />
+      <item name="click_through" value="Click Through" />
       <item name="size" value="Resize" />
       <item name="size_default" value="Default" />
       <item name="size_custom" value="Custom..." />
@@ -119,6 +120,7 @@
       <item name="lbl_top" value="Top:" />
       <item name="lbl_left" value="Left:" />
       <item name="mi_restore" value="Restore" />
+      <item name="mi_restore_windows" value="Restore" />
       <item name="mi_close" value="Close" />
       <item name="mi_auto_start" value="Auto start program" />
       <item name="mi_settings" value="Settings..." />
@@ -247,6 +249,7 @@
       <item name="clear_clipboard" value="Löschen" />
       <item name="drag_by_mouse" value="Ziehen mit der Maus" />
       <item name="hide_for_alt_tab" value="Ausblenden für Alt+Tab" />
+      <item name="click_through" value="Durchklicken" />
       <item name="size" value="Fenstergröβe ändern" />
       <item name="size_default" value="Standardmäβig" />
       <item name="size_custom" value="Benutzerdefinierter Wert…" />
@@ -348,6 +351,7 @@
       <item name="lbl_top" value="Oben:" />
       <item name="lbl_left" value="Links:" />
       <item name="mi_restore" value="Wiederherstellen" />
+      <item name="mi_restore_windows" value="Wiederherstellen" />
       <item name="mi_close" value="Schlieβen" />
       <item name="mi_auto_start" value="Auto-Start" />
       <item name="mi_settings" value="Einstellungen..." />
@@ -474,6 +478,7 @@
       <item name="clear_clipboard" value="清除" />
       <item name="drag_by_mouse" value="通过鼠标拖动" />
       <item name="hide_for_alt_tab" value="在 Alt+Tab 中隐藏" />
+      <item name="click_through" value="点击窗口" />
       <item name="size" value="调整窗口大小" />
       <item name="size_default" value="默认" />
       <item name="size_custom" value="自定义..." />
@@ -575,6 +580,7 @@
       <item name="lbl_top" value="顶部:" />
       <item name="lbl_left" value="左侧:" />
       <item name="mi_restore" value="恢复" />
+      <item name="mi_restore_windows" value="恢复" />
       <item name="mi_close" value="关闭" />
       <item name="mi_auto_start" value="自动启动程序" />
       <item name="mi_settings" value="设置..." />
@@ -701,6 +707,7 @@
       <item name="clear_clipboard" value="清除" />
       <item name="drag_by_mouse" value="透過滑鼠拖曳" />
       <item name="hide_for_alt_tab" value="在 Alt+Tab 中隱藏" />
+      <item name="click_through" value="點擊窗口" />
       <item name="size" value="調整視窗大小" />
       <item name="size_default" value="預設" />
       <item name="size_custom" value="自訂..." />
@@ -802,6 +809,7 @@
       <item name="lbl_top" value="頂部:" />
       <item name="lbl_left" value="左側:" />
       <item name="mi_restore" value="復原" />
+      <item name="mi_restore_windows" value="復原" />
       <item name="mi_close" value="關閉" />
       <item name="mi_auto_start" value="自動啟動程式" />
       <item name="mi_settings" value="設定..." />
@@ -930,6 +938,7 @@
       <item name="clear_clipboard" value="クリア" />
       <item name="drag_by_mouse" value="マウスでドラッグする" />
       <item name="hide_for_alt_tab" value="Alt+Tabで非表示" />
+      <item name="click_through" value="クリックスルーウィンドウ" />
       <item name="size" value="サイズ変更" />
       <item name="size_default" value="デフォルト" />
       <item name="size_custom" value="カストム" />
@@ -1031,6 +1040,7 @@
       <item name="lbl_top" value="上:" />
       <item name="lbl_left" value="左:" />
       <item name="mi_restore" value="戻す" />
+      <item name="mi_restore_windows" value="戻す" />
       <item name="mi_close" value="閉じる" />
       <item name="mi_auto_start" value="自動起動" />
       <item name="mi_settings" value="設定..." />
@@ -1157,6 +1167,7 @@
       <item name="clear_clipboard" value="지우기" />
       <item name="drag_by_mouse" value="마우스로 드래그" />
       <item name="hide_for_alt_tab" value="Alt+Tab으로 숨기기" />
+      <item name="click_through" value="창을 통해 클릭" />
       <item name="size" value="크기 변경" />
       <item name="size_default" value="기본" />
       <item name="size_custom" value="사용자 정의..." />
@@ -1258,6 +1269,7 @@
       <item name="lbl_top" value="위:" />
       <item name="lbl_left" value="왼쪽:" />
       <item name="mi_restore" value="복원" />
+      <item name="mi_restore_windows" value="복원" />
       <item name="mi_close" value="닫기" />
       <item name="mi_auto_start" value="프로그램 자동 시작" />
       <item name="mi_settings" value="설정..." />
@@ -1386,6 +1398,7 @@
       <item name="clear_clipboard" value="Очистить" />
       <item name="drag_by_mouse" value="Перетащить мышкой" />
       <item name="hide_for_alt_tab" value="Скрыть для Alt+Tab" />
+      <item name="click_through" value="Клик сквозь окно" />
       <item name="size" value="Изменить размер" />
       <item name="size_default" value="По умолчанию" />
       <item name="size_custom" value="Настроить..." />
@@ -1487,6 +1500,7 @@
       <item name="lbl_top" value="Верх:" />
       <item name="lbl_left" value="Лево:" />
       <item name="mi_restore" value="Восстановить" />
+      <item name="mi_restore_windows" value="Восстановить" />
       <item name="mi_close" value="Закрыть" />
       <item name="mi_auto_start" value="Автозапуск" />
       <item name="mi_settings" value="Настройки..." />
@@ -1613,6 +1627,7 @@
       <item name="clear_clipboard" value="Обриши" />
       <item name="drag_by_mouse" value="Премести са мишем" />
       <item name="hide_for_alt_tab" value="Сакриј за Alt+Tab" />
+      <item name="click_through" value="Кликните кроз прозор" />
       <item name="size" value="Промени величину" />
       <item name="size_default" value="Подразумевано" />
       <item name="size_custom" value="Прилагоди..." />
@@ -1714,6 +1729,7 @@
       <item name="lbl_top" value="Горе:" />
       <item name="lbl_left" value="Лево:" />
       <item name="mi_restore" value="Врати" />
+      <item name="mi_restore_windows" value="Врати" />
       <item name="mi_close" value="Затвори" />
       <item name="mi_auto_start" value="Ауто-покрени програм" />
       <item name="mi_settings" value="Подешавања..." />
@@ -1840,6 +1856,7 @@
       <item name="clear_clipboard" value="Limpar" />
       <item name="drag_by_mouse" value="Arrastar com o mouse" />
       <item name="hide_for_alt_tab" value="Ocultar para Alt+Tab" />
+      <item name="click_through" value="Clique na janela" />
       <item name="size" value="Redimensionar" />
       <item name="size_default" value="Padrão" />
       <item name="size_custom" value="Personalizar..." />
@@ -1941,6 +1958,7 @@
       <item name="lbl_top" value="Em cima:" />
       <item name="lbl_left" value="À esquerda:" />
       <item name="mi_restore" value="Restaurar" />
+      <item name="mi_restore_windows" value="Restaurar" />
       <item name="mi_close" value="Fechar" />
       <item name="mi_auto_start" value="Abrir com o Windows" />
       <item name="mi_settings" value="Configuração..." />
@@ -2067,6 +2085,7 @@
       <item name="clear_clipboard" value="Pulisci" />
       <item name="drag_by_mouse" value="Trascinabile" />
       <item name="hide_for_alt_tab" value="Nascondi per Alt+Tab" />
+      <item name="click_through" value="Fare clic attraverso la finestra" />
       <item name="size" value="Ridimensiona" />
       <item name="size_default" value="Predefinito" />
       <item name="size_custom" value="Personalizza..." />
@@ -2168,6 +2187,7 @@
       <item name="lbl_top" value="In alto:" />
       <item name="lbl_left" value="Sinistra:" />
       <item name="mi_restore" value="Ripristina" />
+      <item name="mi_restore_windows" value="Ripristina" />
       <item name="mi_close" value="Chiudi" />
       <item name="mi_auto_start" value="Avvia programma all'accesso" />
       <item name="mi_settings" value="Impostazioni..." />
@@ -2296,6 +2316,7 @@
       <item name="clear_clipboard" value="Effacer le presse-papiers" />
       <item name="drag_by_mouse" value="Déplaçable" />
       <item name="hide_for_alt_tab" value="Masqué pour Alt+Tab" />
+      <item name="click_through" value="Cliquer à travers la fenêtre" />
       <item name="size" value="Taille" />
       <item name="size_default" value="Taille par défaut" />
       <item name="size_custom" value="Personnaliser la taille" />
@@ -2397,6 +2418,7 @@
       <item name="lbl_top" value="En haut:" />
       <item name="lbl_left" value="À gauche:" />
       <item name="mi_restore" value="Réinitialiser" />
+      <item name="mi_restore_windows" value="Réinitialiser" />
       <item name="mi_close" value="Proche" />
       <item name="mi_auto_start" value="Lancer au démarrage de Windows" />
       <item name="mi_settings" value="Paramètres" />
@@ -2525,6 +2547,7 @@
       <item name="clear_clipboard" value="Tiszta" />
       <item name="drag_by_mouse" value="Húzás egérrel" />
       <item name="hide_for_alt_tab" value="Alt+Tab elrejtése" />
+      <item name="click_through" value="Átkattintás" />
       <item name="size" value="Átméretezés" />
       <item name="size_default" value="Alapértelmezett" />
       <item name="size_custom" value="Egyéni..." />
@@ -2626,6 +2649,7 @@
       <item name="lbl_top" value="Felső:" />
       <item name="lbl_left" value="Bal:" />
       <item name="mi_restore" value="Visszaállítás" />
+      <item name="mi_restore_windows" value="Visszaállítás" />
       <item name="mi_close" value="Bezár" />
       <item name="mi_auto_start" value="Program automatikus indítása" />
       <item name="mi_settings" value="Beállítások..." />

@@ -15,7 +15,7 @@ namespace SmartSystemMenu.HotKeys
         private VirtualKeyModifier _key2;
         private MouseButton _mouseButton;
 
-        public event EventHandler<MouseEventArgs> Hooked;
+        public event EventHandler<EventArgs<Point>> Hooked;
 
         public bool Start(string moduleName, VirtualKeyModifier key1, VirtualKeyModifier key2, MouseButton mouseButton)
         {
@@ -88,7 +88,7 @@ namespace SmartSystemMenu.HotKeys
                         if (handler != null)
                         {
                             var mouseHookStruct = (MouseLLHookStruct)Marshal.PtrToStructure(lParam, typeof(MouseLLHookStruct));
-                            var eventArgs = new MouseEventArgs(mouseHookStruct.pt);
+                            var eventArgs = new EventArgs<Point>(mouseHookStruct.pt);
                             handler.BeginInvoke(this, eventArgs, null, null);
                             return 1;
                         }

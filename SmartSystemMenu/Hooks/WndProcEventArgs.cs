@@ -4,13 +4,13 @@ namespace SmartSystemMenu.Hooks
 {
     class WndProcEventArgs : EventArgs
     {
-        public IntPtr Handle { get; private set; }
+        public IntPtr Handle { get; }
 
-        public IntPtr Message { get; private set; }
+        public IntPtr Message { get; }
 
-        public IntPtr WParam { get; private set; }
+        public IntPtr WParam { get; }
 
-        public IntPtr LParam { get; private set; }
+        public IntPtr LParam { get; }
 
         public WndProcEventArgs(IntPtr handle, IntPtr message, IntPtr wParam, IntPtr lParam)
         {

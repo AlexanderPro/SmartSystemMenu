@@ -21,9 +21,6 @@ namespace SmartSystemMenu.Settings
             MouseButton = MouseButton.None;
         }
 
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        public object Clone() => MemberwiseClone();
     }
 }

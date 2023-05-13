@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using SmartSystemMenu.Settings;
+using SmartSystemMenu.Extensions;
 
 namespace SmartSystemMenu
 {
@@ -10,24 +12,26 @@ namespace SmartSystemMenu
     {
         private ContextMenuStrip _systemTrayMenu;
         private ToolStripMenuItem _menuItemAutoStart;
+        private ToolStripMenuItem _menuItemRestore;
         private ToolStripMenuItem _menuItemSettings;
         private ToolStripMenuItem _menuItemAbout;
         private ToolStripMenuItem _menuItemExit;
         private ToolStripSeparator _menuItemSeparator1;
         private ToolStripSeparator _menuItemSeparator2;
         private NotifyIcon _icon;
-        private LanguageSettings _languageSettings;
+        private SmartSystemMenuSettings _settings;
         private bool _created;
 
         public event EventHandler MenuItemAutoStartClick;
         public event EventHandler MenuItemSettingsClick;
         public event EventHandler MenuItemAboutClick;
         public event EventHandler MenuItemExitClick;
+        public event EventHandler<EventArgs<long>> MenuItemRestoreClick;
 
-
-        public SystemTrayMenu(LanguageSettings languageSettings)
+        public SystemTrayMenu(SmartSystemMenuSettings settings)
         {
             _menuItemAutoStart = new ToolStripMenuItem();
+            _menuItemRestore = new ToolStripMenuItem();
             _menuItemSettings = new ToolStripMenuItem();
             _menuItemAbout = new ToolStripMenuItem();
             _menuItemSeparator1 = new ToolStripSeparator();
@@ -38,7 +42,7 @@ namespace SmartSystemMenu
             _systemTrayMenu = new ContextMenuStrip(components);
             _icon = new NotifyIcon(components);
 
-            _languageSettings = languageSettings;
+            _settings = settings;
             _created = false;
         }
 
@@ -48,18 +52,18 @@ namespace SmartSystemMenu
             {
                 _menuItemAutoStart.Name = "miAutoStart";
                 _menuItemAutoStart.Size = new Size(175, 22);
-                _menuItemAutoStart.Text = _languageSettings.GetValue("mi_auto_start");
+                _menuItemAutoStart.Text = _settings.Language.GetValue("mi_auto_start");
                 _menuItemAutoStart.Click += _menuItemAutoStart_Click;
 
                 _menuItemSettings.Name = "miSettings";
                 _menuItemSettings.Size = new Size(175, 22);
                 _menuItemSettings.Font = new Font(_menuItemSettings.Font.Name, _menuItemSettings.Font.Size, FontStyle.Bold);
-                _menuItemSettings.Text = _languageSettings.GetValue("mi_settings");
+                _menuItemSettings.Text = _settings.Language.GetValue("mi_settings");
                 _menuItemSettings.Click += _menuItemSettings_Click;
 
                 _menuItemAbout.Name = "miAbout";
                 _menuItemAbout.Size = new Size(175, 22);
-                _menuItemAbout.Text = _languageSettings.GetValue("mi_about");
+                _menuItemAbout.Text = _settings.Language.GetValue("mi_about");
                 _menuItemAbout.Click += _menuItemAbout_Click;
 
                 _menuItemSeparator1.Name = "miSeparator1";
@@ -70,10 +74,48 @@ namespace SmartSystemMenu
 
                 _menuItemExit.Name = "miExit";
                 _menuItemExit.Size = new Size(175, 22);
-                _menuItemExit.Text = _languageSettings.GetValue("mi_exit");
+                _menuItemExit.Text = _settings.Language.GetValue("mi_exit");
                 _menuItemExit.Click += _menuItemExit_Click;
 
-                _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemAutoStart, _menuItemSeparator1, _menuItemSettings, _menuItemAbout, _menuItemSeparator2, _menuItemExit });
+                var clickThroughItemName = MenuItemId.GetName(MenuItemId.SC_CLICK_THROUGH);
+                var transparencyItemName = MenuItemId.GetName(MenuItemId.SC_TRANS);
+                var menuItems = _settings.MenuItems.Items.Flatten(x => x.Items);
+                var clickThroughAny = menuItems.Any(x => x.Type == MenuItemType.Item && x.Name == clickThroughItemName && x.Show);
+                var transparencyAny = menuItems.Any(x => x.Type == MenuItemType.Group && x.Name == transparencyItemName && x.Show);
+
+                if (clickThroughAny || transparencyAny)
+                {
+                    _menuItemRestore.Name = "miRestore";
+                    _menuItemRestore.Size = new Size(175, 22);
+                    _menuItemRestore.Text = _settings.Language.GetValue("mi_restore_windows");
+                    
+                    if (clickThroughAny)
+                    {
+                        var subMenuItem = new ToolStripMenuItem();
+                        subMenuItem.Name = "miClickThrough";
+                        subMenuItem.Size = new Size(175, 22);
+                        subMenuItem.Text = _settings.Language.GetValue("click_through");
+                        subMenuItem.Click += _menuItemRestore_Click;
+                        _menuItemRestore.DropDownItems.Add(subMenuItem);
+                    }
+
+                    if (transparencyAny)
+                    {
+                        var subMenuItem = new ToolStripMenuItem();
+                        subMenuItem.Name = "miTransparency";
+                        subMenuItem.Size = new Size(175, 22);
+                        subMenuItem.Text = _settings.Language.GetValue("transparency");
+                        subMenuItem.Click += _menuItemRestore_Click;
+                        _menuItemRestore.DropDownItems.Add(subMenuItem);
+                    }
+
+                    _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemAutoStart, _menuItemSeparator1, _menuItemRestore, _menuItemSettings, _menuItemAbout, _menuItemSeparator2, _menuItemExit });
+                }
+                else
+                {
+                    _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemAutoStart, _menuItemSeparator1, _menuItemSettings, _menuItemAbout, _menuItemSeparator2, _menuItemExit });
+                }
+
                 _systemTrayMenu.Name = "systemTrayMenu";
                 _systemTrayMenu.Size = new Size(176, 80);
 
@@ -102,6 +144,7 @@ namespace SmartSystemMenu
             if (disposing)
             {
                 _menuItemAutoStart?.Dispose();
+                _menuItemRestore?.Dispose();
                 _menuItemSettings?.Dispose();
                 _menuItemAbout?.Dispose();
                 _menuItemExit?.Dispose();
@@ -121,37 +164,35 @@ namespace SmartSystemMenu
         private void _menuItemAutoStart_Click(object sender, EventArgs e)
         {
             var handler = MenuItemAutoStartClick;
-            if (handler != null)
+            handler?.Invoke(sender, e);
+        }
+
+        private void _menuItemRestore_Click(object sender, EventArgs e)
+        {
+            var handler = MenuItemRestoreClick;
+            if (handler != null && sender is ToolStripMenuItem menuItem)
             {
-                handler.Invoke(sender, e);
+                var menuItemId = menuItem.Name == "miClickThrough" ? MenuItemId.SC_CLICK_THROUGH : MenuItemId.SC_TRANS_DEFAULT;
+                handler.Invoke(sender, new EventArgs<long>(menuItemId));
             }
         }
 
         private void _menuItemSettings_Click(object sender, EventArgs e)
         {
             var handler = MenuItemSettingsClick;
-            if (handler != null)
-            {
-                handler.Invoke(sender, e);
-            }
+            handler?.Invoke(sender, e);
         }
 
         private void _menuItemAbout_Click(object sender, EventArgs e)
         {
             var handler = MenuItemAboutClick;
-            if (handler != null)
-            {
-                handler.Invoke(sender, e);
-            }
+            handler?.Invoke(sender, e);
         }
 
         private void _menuItemExit_Click(object sender, EventArgs e)
         {
             var handler = MenuItemExitClick;
-            if (handler != null)
-            {
-                handler.Invoke(sender, e);
-            }
+            handler?.Invoke(sender, e);
         }
     }
 }

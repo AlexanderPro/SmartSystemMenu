@@ -18,6 +18,7 @@
       <item type="item" name="save_screenshot" key1="" key2="" key3="" />
       <item type="item" name="open_file_in_explorer" key1="" key2="" key3="" />
       <item type="item" name="drag_by_mouse" key1="" key2="" key3="" />
+      <item type="item" name="click_through" key1="" key2="" key3="" />
       <item type="item" name="hide_for_alt_tab" key1="" key2="" key3="" />
       <item type="group" name="size">
         <items>

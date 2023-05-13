@@ -35,7 +35,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(677, 707);
+            this.btnOk.Location = new System.Drawing.Point(677, 737);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(115, 30);
             this.btnOk.TabIndex = 0;
@@ -54,7 +54,7 @@
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ReadOnly = true;
-            this.txtMessage.Size = new System.Drawing.Size(780, 677);
+            this.txtMessage.Size = new System.Drawing.Size(780, 707);
             this.txtMessage.TabIndex = 1;
             this.txtMessage.TabStop = false;
             // 
@@ -63,7 +63,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(804, 771);
+            this.ClientSize = new System.Drawing.Size(804, 801);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

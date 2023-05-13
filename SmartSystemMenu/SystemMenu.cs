@@ -17,9 +17,9 @@ namespace SmartSystemMenu
         private readonly MenuItems _menuItems;
         private readonly LanguageSettings _languageSettings;
 
-        public IntPtr WindowHandle { get; private set; }
+        public IntPtr WindowHandle { get; }
 
-        public IDictionary<int, IntPtr> MoveToMenuItems { get; private set; }
+        public IDictionary<int, IntPtr> MoveToMenuItems { get; }
 
         public IntPtr MenuHandle
         {

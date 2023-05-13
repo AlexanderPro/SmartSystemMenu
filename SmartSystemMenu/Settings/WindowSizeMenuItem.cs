@@ -37,10 +37,7 @@ namespace SmartSystemMenu.Settings
             Key3 = VirtualKey.None;
         }
 
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        public object Clone() => MemberwiseClone();
 
         public override string ToString()
         {

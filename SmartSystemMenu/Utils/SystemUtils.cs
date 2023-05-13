@@ -380,5 +380,32 @@ namespace SmartSystemMenu
             var root = Path.GetPathRoot(localPath);
             return $"\\\\{Environment.MachineName}\\{localPath.Replace(root, root.Replace(":", "$"))}";
         }
+
+        public static IntPtr BuildWmCopyDataPointer(long identifier, string data = null)
+        {
+            try
+            {
+                var copyData = new CopyDataStruct();
+                copyData.dwData = new IntPtr(identifier);
+                if (string.IsNullOrEmpty(data))
+                {
+                    copyData.cbData = 0;
+                    copyData.lpData = IntPtr.Zero;
+                }
+                else
+                {
+                    copyData.cbData = data.Length + 1;
+                    copyData.lpData = Marshal.StringToHGlobalAnsi(data);
+                }
+
+                var ptrCopyData = Marshal.AllocCoTaskMem(Marshal.SizeOf(copyData));
+                Marshal.StructureToPtr(copyData, ptrCopyData, false);
+                return ptrCopyData;
+            }
+            catch
+            {
+                return IntPtr.Zero;
+            }
+        }
     }
 }

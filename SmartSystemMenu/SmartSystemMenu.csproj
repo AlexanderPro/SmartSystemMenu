@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Controls\DataGridViewDisableButtonCell.cs" />
     <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
+    <Compile Include="EventArgs.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\PriorityClassExtensions.cs" />
@@ -132,7 +133,6 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HotKeys\MouseEventArgs.cs" />
     <Compile Include="HotKeys\MouseHook.cs" />
     <Compile Include="HotKeys\HotKeyHook.cs" />
     <Compile Include="HotKeys\HotKeyEventArgs.cs" />
@@ -165,6 +165,7 @@
     <Compile Include="Native\Structs\AccentPolicy.cs" />
     <Compile Include="Native\Structs\ConsoleScreenBufferInfo.cs" />
     <Compile Include="Native\Structs\Coord.cs" />
+    <Compile Include="Native\Structs\CopyDataStruct.cs" />
     <Compile Include="Native\Structs\DWM_BLURBEHIND.cs" />
     <Compile Include="Native\Structs\KeyboardLLHookStruct.cs" />
     <Compile Include="Native\Structs\LUID.cs" />

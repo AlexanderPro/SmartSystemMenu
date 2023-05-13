@@ -13,7 +13,7 @@ namespace SmartSystemMenu.Forms
         private SmartSystemMenuSettings _settings;
         private CloserSettings _closerSettings;
 
-        public event EventHandler<SmartSystemMenuSettingsEventArgs> OkClick;
+        public event EventHandler<EventArgs<SmartSystemMenuSettings>> OkClick;
 
         public SettingsForm(SmartSystemMenuSettings settings)
         {            
@@ -561,7 +561,7 @@ namespace SmartSystemMenu.Forms
                     SmartSystemMenuSettings.Save(settingsFileName, settings);
                     if (OkClick != null)
                     {
-                        OkClick.Invoke(this, new SmartSystemMenuSettingsEventArgs(settings));
+                        OkClick.Invoke(this, new EventArgs<SmartSystemMenuSettings>(settings));
                     }
                 }
                 catch (Exception ex)
@@ -718,16 +718,6 @@ namespace SmartSystemMenu.Forms
                 }
             }
             return null;
-        }
-    }
-
-    public class SmartSystemMenuSettingsEventArgs : EventArgs
-    {
-        public SmartSystemMenuSettings Settings { get; private set; }
-
-        public SmartSystemMenuSettingsEventArgs(SmartSystemMenuSettings settings)
-        {
-            Settings = settings;
         }
     }
 }

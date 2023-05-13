@@ -37,9 +37,6 @@ namespace SmartSystemMenu
 
         public bool? IsDisabledCloseButton { get; set; }
 
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        public object Clone() => MemberwiseClone();
     }
 }

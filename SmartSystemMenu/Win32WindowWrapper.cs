@@ -5,10 +5,7 @@ namespace SmartSystemMenu
 {
     class Win32WindowWrapper : IWin32Window
     {
-        public IntPtr Handle
-        {
-            get; private set;
-        }
+        public IntPtr Handle { get; }
 
         public Win32WindowWrapper(IntPtr handle)
         {

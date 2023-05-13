@@ -82,6 +82,7 @@ namespace SmartSystemMenu
         public const int SC_DISABLE_MINIMIZE_BUTTON = 0x4818;
         public const int SC_DISABLE_MAXIMIZE_BUTTON = 0x4819;
         public const int SC_DISABLE_CLOSE_BUTTON = 0x4820;
+        public const int SC_CLICK_THROUGH = 0x4822;
 
         private static readonly Dictionary<string, int> NameToId = new Dictionary<string, int>();
         private static readonly Dictionary<int, string> IdToName = new Dictionary<int, string>();
@@ -155,6 +156,7 @@ namespace SmartSystemMenu
             NameToId["disable_minimize_button"] = SC_DISABLE_MINIMIZE_BUTTON;
             NameToId["disable_maximize_button"] = SC_DISABLE_MAXIMIZE_BUTTON;
             NameToId["disable_close_button"] = SC_DISABLE_CLOSE_BUTTON;
+            NameToId["click_through"] = SC_CLICK_THROUGH;
 
             foreach (var pair in NameToId)
             {

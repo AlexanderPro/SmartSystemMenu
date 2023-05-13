@@ -6,11 +6,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Threading;
+using System.Runtime.InteropServices;
 using SmartSystemMenu.Extensions;
 using SmartSystemMenu.Utils;
 using SmartSystemMenu.Hooks;
 using SmartSystemMenu.HotKeys;
 using SmartSystemMenu.Settings;
+using SmartSystemMenu.Native.Structs;
 using static SmartSystemMenu.Native.User32;
 using static SmartSystemMenu.Native.Constants;
 
@@ -29,6 +31,8 @@ namespace SmartSystemMenu.Forms
         private SettingsForm _settingsForm;
         private SmartSystemMenuSettings _settings;
         private WindowSettings _windowSettings;
+        private IntPtr _parentHandle;
+        private IntPtr _childHandle;
 
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
@@ -37,12 +41,14 @@ namespace SmartSystemMenu.Forms
         private Process _64BitProcess;
 #endif
 
-        public MainForm(SmartSystemMenuSettings settings, WindowSettings windowSettings)
+        public MainForm(SmartSystemMenuSettings settings, WindowSettings windowSettings, IntPtr parentHandle)
         {
             InitializeComponent();
 
             _settings = settings;
             _windowSettings = windowSettings;
+            _parentHandle = parentHandle;
+            _childHandle = IntPtr.Zero;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -62,7 +68,7 @@ namespace SmartSystemMenu.Forms
                     {
                         AssemblyUtils.ExtractFileFromAssembly(resourceName, filePath);
                     }
-                    _64BitProcess = Process.Start(filePath);
+                    _64BitProcess = Process.Start(filePath, $"--parentHandle {Handle.ToInt64()}");
                 }
                 catch
                 {
@@ -75,11 +81,12 @@ namespace SmartSystemMenu.Forms
 
             if (_settings.ShowSystemTrayIcon)
             {
-                _systemTrayMenu = new SystemTrayMenu(_settings.Language);
+                _systemTrayMenu = new SystemTrayMenu(_settings);
                 _systemTrayMenu.MenuItemAutoStartClick += MenuItemAutoStartClick;
                 _systemTrayMenu.MenuItemSettingsClick += MenuItemSettingsClick;
                 _systemTrayMenu.MenuItemAboutClick += MenuItemAboutClick;
                 _systemTrayMenu.MenuItemExitClick += MenuItemExitClick;
+                _systemTrayMenu.MenuItemRestoreClick += MenuItemRestoreClick;
                 _systemTrayMenu.Create();
                 _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
             }
@@ -101,6 +108,15 @@ namespace SmartSystemMenu.Forms
             }
 
 #endif
+            if (_parentHandle != IntPtr.Zero)
+            {
+                var ptrCopyData = SystemUtils.BuildWmCopyDataPointer(SEND_CHILD_HANDLE, Handle.ToInt64().ToString());
+                if (ptrCopyData != IntPtr.Zero)
+                {
+                    SendMessage(_parentHandle, WM_COPYDATA, IntPtr.Zero, ptrCopyData);
+                }
+            }
+
             _windows = EnumWindows.EnumAllWindows(_settings, _windowSettings, new string[] { SHELL_WINDOW_NAME }).ToList();
 
             foreach (var window in _windows)
@@ -182,7 +198,7 @@ namespace SmartSystemMenu.Forms
             Hide();
         }
 
-        private void HotKeyMouseHooked(object sender, HotKeys.MouseEventArgs e)
+        private void HotKeyMouseHooked(object sender, EventArgs<Point> e)
         {
             if (_settings.Closer.Type == WindowCloserType.CloseForegroundWindow)
             {
@@ -191,7 +207,7 @@ namespace SmartSystemMenu.Forms
             }
             else if (_settings.Closer.Type == WindowCloserType.CloseWindowUnderCursor)
             {
-                var handle = WindowFromPoint(e.Point);
+                var handle = WindowFromPoint(e.Entity);
                 handle = WindowUtils.GetParentWindow(handle);
                 PostMessage(handle, WM_CLOSE, 0, 0);
             }
@@ -203,7 +219,7 @@ namespace SmartSystemMenu.Forms
             }
             else if (_settings.Closer.Type == WindowCloserType.KillProcessWithWindowUnderCursor)
             {
-                var handle = WindowFromPoint(e.Point);
+                var handle = WindowFromPoint(e.Entity);
                 handle = WindowUtils.GetParentWindow(handle);
                 var processId = WindowUtils.GetProcessId(handle);
                 SystemUtils.TerminateProcess(processId, 0);
@@ -266,7 +282,23 @@ namespace SmartSystemMenu.Forms
             _cbtHook?.ProcessWindowMessage(ref m);
             _callWndProcHook?.ProcessWindowMessage(ref m);
             _getMsgHook?.ProcessWindowMessage(ref m);
-            
+
+            if (m.Msg == WM_COPYDATA)
+            {
+                var copyData = (CopyDataStruct)Marshal.PtrToStructure(m.LParam, typeof(CopyDataStruct));
+                var identifier = copyData.dwData.ToInt64();
+                if (identifier == SEND_CHILD_HANDLE)
+                {
+                    var handleString = Marshal.PtrToStringAnsi(copyData.lpData);
+                    _childHandle = long.TryParse(handleString, out var handleValue) ? new IntPtr(handleValue) : IntPtr.Zero;
+                }
+
+                if (identifier == MenuItemId.SC_TRANS_DEFAULT || identifier == MenuItemId.SC_CLICK_THROUGH)
+                {
+                    MenuItemRestoreClick(this, new EventArgs<long>(identifier));
+                }
+            }
+
             base.WndProc(ref m);
         }
 
@@ -309,16 +341,56 @@ namespace SmartSystemMenu.Forms
             if (_settingsForm == null || _settingsForm.IsDisposed || !_settingsForm.IsHandleCreated)
             {
                 _settingsForm = new SettingsForm(_settings);
-                _settingsForm.OkClick += (object s, SmartSystemMenuSettingsEventArgs ea) => { _settings = ea.Settings; };
+                _settingsForm.OkClick += (object s, EventArgs<SmartSystemMenuSettings> ea) => { _settings = ea.Entity; };
             }
 
             _settingsForm.Show();
             _settingsForm.Activate();
         }
 
-        private void MenuItemExitClick(object sender, EventArgs e)
+        private void MenuItemExitClick(object sender, EventArgs e) => Close();
+
+        private void MenuItemRestoreClick(object sender, EventArgs<long> e)
         {
-            Close();
+            switch (e.Entity)
+            {
+                case MenuItemId.SC_TRANS_DEFAULT:
+                    {
+                        foreach (var window in _windows)
+                        {
+                            window.Menu.UncheckTransparencyMenu();
+                            window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_DEFAULT, true);
+                            window.RestoreTransparency();
+                        }
+                    }
+                    break;
+
+                case MenuItemId.SC_CLICK_THROUGH:
+                    {
+                        foreach (var window in _windows)
+                        {
+                            if (window.IsClickThrough)
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_CLICK_THROUGH);
+                                if (isChecked)
+                                {
+                                    window.Menu.CheckMenuItem(MenuItemId.SC_CLICK_THROUGH, !isChecked);
+                                    window.ClickThrough(!isChecked);
+                                }
+                            }
+                        }
+                    }
+                    break;
+            }
+
+            if ((e.Entity == MenuItemId.SC_TRANS_DEFAULT || e.Entity == MenuItemId.SC_CLICK_THROUGH) && _childHandle != IntPtr.Zero)
+            {
+                var ptrCopyData = SystemUtils.BuildWmCopyDataPointer(e.Entity);
+                if (ptrCopyData != IntPtr.Zero)
+                {
+                    SendMessage(_childHandle, WM_COPYDATA, IntPtr.Zero, ptrCopyData);
+                }
+            }
         }
 
         private void WindowCreated(object sender, WindowEventArgs e)
@@ -614,6 +686,14 @@ namespace SmartSystemMenu.Forms
                                 var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_HIDE_FOR_ALT_TAB);
                                 window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, !isChecked);
                                 window.HideForAltTab(!isChecked);
+                            }
+                            break;
+
+                        case MenuItemId.SC_CLICK_THROUGH:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_CLICK_THROUGH);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_CLICK_THROUGH, !isChecked);
+                                window.ClickThrough(!isChecked);
                             }
                             break;
 
