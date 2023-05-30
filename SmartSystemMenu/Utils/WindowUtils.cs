@@ -22,12 +22,10 @@ namespace SmartSystemMenu.Utils
             Rect rect;
             GetWindowRect(hWnd, out rect);
             var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
-            using (var graphics = Graphics.FromImage(bitmap))
-            {
-                var hdc = graphics.GetHdc();
-                User32.PrintWindow(hWnd, hdc, 0);
-                graphics.ReleaseHdc(hdc);
-            }
+            using var graphics = Graphics.FromImage(bitmap);
+            var hdc = graphics.GetHdc();
+            User32.PrintWindow(hWnd, hdc, 0);
+            graphics.ReleaseHdc(hdc);
             return bitmap;
         }
 

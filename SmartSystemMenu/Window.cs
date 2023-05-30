@@ -626,7 +626,7 @@ namespace SmartSystemMenu
         public string ExtractText()
         {
             var text = WindowUtils.ExtractTextFromConsoleWindow(ProcessId);
-            text = text ?? WindowUtils.ExtractTextFromWindow(Handle);
+            text ??= WindowUtils.ExtractTextFromWindow(Handle);
             return text;
         }
 
@@ -839,8 +839,8 @@ namespace SmartSystemMenu
 
         private void CreateIconInSystemTray()
         {
-            _systemTrayMenu = _systemTrayMenu ?? CreateSystemTrayMenu();
-            _systemTrayIcon = _systemTrayIcon ?? CreateNotifyIcon(_systemTrayMenu);
+            _systemTrayMenu ??= CreateSystemTrayMenu();
+            _systemTrayIcon ??= CreateNotifyIcon(_systemTrayMenu);
             _systemTrayIcon.Icon = WindowUtils.GetIcon(Handle);
             var windowText = GetWindowText();
             _systemTrayIcon.Text = windowText.Length > 63 ? windowText.Substring(0, 60).PadRight(63, '.') : windowText;

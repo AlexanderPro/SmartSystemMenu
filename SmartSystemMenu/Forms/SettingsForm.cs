@@ -684,24 +684,21 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private string GetTransparencyTitle(int id, LanguageSettings languageSettings)
+        private string GetTransparencyTitle(int id, LanguageSettings languageSettings) => id switch
         {
-            switch (id)
-            {
-                case MenuItemId.SC_TRANS_00: return "0%" + languageSettings.GetValue("trans_opaque");
-                case MenuItemId.SC_TRANS_10: return "10%";
-                case MenuItemId.SC_TRANS_20: return "20%";
-                case MenuItemId.SC_TRANS_30: return "30%";
-                case MenuItemId.SC_TRANS_40: return "40%";
-                case MenuItemId.SC_TRANS_50: return "50%";
-                case MenuItemId.SC_TRANS_60: return "60%";
-                case MenuItemId.SC_TRANS_70: return "70%";
-                case MenuItemId.SC_TRANS_80: return "80%";
-                case MenuItemId.SC_TRANS_90: return "90%";
-                case MenuItemId.SC_TRANS_100: return "100%" + languageSettings.GetValue("trans_invisible");
-                default: return null;
-            }
-        }
+            MenuItemId.SC_TRANS_00 => "0%" + languageSettings.GetValue("trans_opaque"),
+            MenuItemId.SC_TRANS_10 => "10%",
+            MenuItemId.SC_TRANS_20 => "20%",
+            MenuItemId.SC_TRANS_30 => "30%",
+            MenuItemId.SC_TRANS_40 => "40%",
+            MenuItemId.SC_TRANS_50 => "50%",
+            MenuItemId.SC_TRANS_60 => "60%",
+            MenuItemId.SC_TRANS_70 => "70%",
+            MenuItemId.SC_TRANS_80 => "80%",
+            MenuItemId.SC_TRANS_90 => "90%",
+            MenuItemId.SC_TRANS_100 => "100%" + languageSettings.GetValue("trans_invisible"),
+            _ => null
+        };
 
         private IList<Settings.MenuItem> FindList(IList<Settings.MenuItem> list, Settings.MenuItem element)
         {

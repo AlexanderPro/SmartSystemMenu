@@ -18,8 +18,8 @@ namespace SmartSystemMenu.Forms
             InitializeComponent();
             btnOk.Text = settings.GetValue("about_btn_ok");
             Text = settings.GetValue("about_form") + AssemblyUtils.AssemblyProductName;
-            lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyProductVersion);
-            lblCopyright.Text = string.Format("{0}-{1} {2}", AssemblyUtils.AssemblyCopyright, DateTime.Now.Year, AssemblyUtils.AssemblyCompany);
+            lblProductName.Text = $"{AssemblyUtils.AssemblyProductName} v{AssemblyUtils.AssemblyProductVersion}";
+            lblCopyright.Text = $"{AssemblyUtils.AssemblyCopyright}-{DateTime.Now.Year} {AssemblyUtils.AssemblyCompany}";
             linkUrl.Text = URL_SMART_SYSTEM_MENU;
         }
 

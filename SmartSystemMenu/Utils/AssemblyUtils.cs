@@ -41,7 +41,7 @@ namespace SmartSystemMenu
             get
             {
                 var version = Assembly.GetExecutingAssembly().GetName().Version;
-                return string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
+                return $"{version.Major}.{version.Minor}.{version.Build}";
             }
         }
 

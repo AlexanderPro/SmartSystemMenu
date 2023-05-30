@@ -9,18 +9,14 @@ namespace SmartSystemMenu
 
         public static void SetAutoStartByRegister(string keyName, string assemblyLocation)
         {
-            using (var key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION))
-            {
-                key.SetValue(keyName, assemblyLocation);
-            }
+            using var key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
+            key.SetValue(keyName, assemblyLocation);
         }
 
         public static void UnsetAutoStartByRegister(string keyName)
         {
-            using (var key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION))
-            {
-                key.DeleteValue(keyName);
-            }
+            using var key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
+            key.DeleteValue(keyName);
         }
 
         public static void SetAutoStartByScheduler(string keyName, string assemblyLocation)
@@ -59,14 +55,12 @@ namespace SmartSystemMenu
 
         public static bool IsAutoStartByRegisterEnabled(string keyName, string assemblyLocation)
         {
-            using (var key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION))
-            {
-                if (key == null) return false;
-                var value = (string)key.GetValue(keyName);
-                if (string.IsNullOrEmpty(value)) return false;
-                var result = (value == assemblyLocation);
-                return result;
-            }
+            using var key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION);
+            if (key == null) return false;
+            var value = (string)key.GetValue(keyName);
+            if (string.IsNullOrEmpty(value)) return false;
+            var result = (value == assemblyLocation);
+            return result;
         }
     }
 }

@@ -8,11 +8,9 @@ namespace SmartSystemMenu.Utils
     {
         public static void Save(string fileName, XDocument document)
         {
-            using (TextWriter writer = new Utf8StringWriter())
-            {
-                document.Save(writer, SaveOptions.None);
-                File.WriteAllText(fileName, writer.ToString());
-            }
+            using var writer = new Utf8StringWriter();
+            document.Save(writer, SaveOptions.None);
+            File.WriteAllText(fileName, writer.ToString());
         }
 
         private class Utf8StringWriter : StringWriter

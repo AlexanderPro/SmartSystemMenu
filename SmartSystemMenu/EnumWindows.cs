@@ -15,7 +15,7 @@ namespace SmartSystemMenu
 
         public static IList<Window> EnumAllWindows(SmartSystemMenuSettings settings, WindowSettings windowSettings, params string[] filterTitles)
         {
-            _filterTitles = filterTitles ?? new string[0];
+            _filterTitles ??= new string[0];
             _windows = new List<Window>();
             _settings = settings;
             _windowSettings = windowSettings;

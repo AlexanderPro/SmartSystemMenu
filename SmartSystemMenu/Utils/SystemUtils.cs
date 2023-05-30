@@ -41,34 +41,32 @@ namespace SmartSystemMenu
 
         public static WmiProcessInfo GetWmiProcessInfo(int processId)
         {
-            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Process WHERE ProcessId = " + processId))
-            using (var objects = searcher.Get())
+            using var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Process WHERE ProcessId = " + processId);
+            using var objects = searcher.Get();
+            var processInfo = new WmiProcessInfo();
+            foreach (ManagementObject obj in objects)
             {
-                var processInfo = new WmiProcessInfo();
-                foreach (ManagementObject obj in objects)
+                var argList = new string[] { string.Empty, string.Empty };
+                var returnVal = Convert.ToInt32(obj.InvokeMethod("GetOwner", argList));
+                if (returnVal == 0)
                 {
-                    var argList = new string[] { string.Empty, string.Empty };
-                    var returnVal = Convert.ToInt32(obj.InvokeMethod("GetOwner", argList));
-                    if (returnVal == 0)
-                    {
-                        // return DOMAIN\user
-                        processInfo.Owner = argList[1] + "\\" + argList[0];
-                        break;
-                    }
+                    // return DOMAIN\user
+                    processInfo.Owner = argList[1] + "\\" + argList[0];
+                    break;
                 }
-
-                var baseObject = objects.Cast<ManagementBaseObject>().FirstOrDefault();
-                if (baseObject != null)
-                {
-                    processInfo.CommandLine = baseObject["CommandLine"] != null ? baseObject["CommandLine"].ToString() : "";
-                    processInfo.HandleCount = baseObject["HandleCount"] != null ? (uint)baseObject["HandleCount"] : 0;
-                    processInfo.ThreadCount = baseObject["ThreadCount"] != null ? (uint)baseObject["ThreadCount"] : 0;
-                    processInfo.VirtualSize = baseObject["VirtualSize"] != null ? (ulong)baseObject["VirtualSize"] : 0;
-                    processInfo.WorkingSetSize = baseObject["WorkingSetSize"] != null ? (ulong)baseObject["WorkingSetSize"] : 0;
-                }
-
-                return processInfo;
             }
+
+            var baseObject = objects.Cast<ManagementBaseObject>().FirstOrDefault();
+            if (baseObject != null)
+            {
+                processInfo.CommandLine = baseObject["CommandLine"] != null ? baseObject["CommandLine"].ToString() : "";
+                processInfo.HandleCount = baseObject["HandleCount"] != null ? (uint)baseObject["HandleCount"] : 0;
+                processInfo.ThreadCount = baseObject["ThreadCount"] != null ? (uint)baseObject["ThreadCount"] : 0;
+                processInfo.VirtualSize = baseObject["VirtualSize"] != null ? (ulong)baseObject["VirtualSize"] : 0;
+                processInfo.WorkingSetSize = baseObject["WorkingSetSize"] != null ? (ulong)baseObject["WorkingSetSize"] : 0;
+            }
+
+            return processInfo;
         }
 
         public static IList<IntPtr> GetMonitors()
@@ -241,43 +239,39 @@ namespace SmartSystemMenu
         public static string GetDefaultBrowserModuleName()
         {
             var browserName = "iexplore.exe";
-            using (var userChoiceKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice"))
+            using var userChoiceKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\http\\UserChoice");
+            if (userChoiceKey == null)
             {
-                if (userChoiceKey == null)
-                {
-                    return browserName;
-                }
+                return browserName;
+            }
 
-                var progIdValue = userChoiceKey.GetValue("Progid");
-                if (progIdValue == null)
-                {
-                    return browserName;
-                }
+            var progIdValue = userChoiceKey.GetValue("Progid");
+            if (progIdValue == null)
+            {
+                return browserName;
+            }
 
-                var progId = progIdValue.ToString();
-                var path = progId + "\\shell\\open\\command";
-                using (var pathKey = Registry.ClassesRoot.OpenSubKey(path))
-                {
-                    if (pathKey == null)
-                    {
-                        return browserName;
-                    }
+            var progId = progIdValue.ToString();
+            var path = progId + "\\shell\\open\\command";
+            using var pathKey = Registry.ClassesRoot.OpenSubKey(path);
+            if (pathKey == null)
+            {
+                return browserName;
+            }
 
-                    try
-                    {
-                        path = pathKey.GetValue(null).ToString().ToLower().Replace("\"", "");
-                        const string exeSuffix = ".exe";
-                        if (!path.EndsWith(exeSuffix))
-                        {
-                            path = path.Substring(0, path.LastIndexOf(exeSuffix, StringComparison.Ordinal) + exeSuffix.Length);
-                        }
-                        return path;
-                    }
-                    catch
-                    {
-                        return browserName;
-                    }
+            try
+            {
+                path = pathKey.GetValue(null).ToString().ToLower().Replace("\"", "");
+                const string exeSuffix = ".exe";
+                if (!path.EndsWith(exeSuffix))
+                {
+                    path = path.Substring(0, path.LastIndexOf(exeSuffix, StringComparison.Ordinal) + exeSuffix.Length);
                 }
+                return path;
+            }
+            catch
+            {
+                return browserName;
             }
         }
 

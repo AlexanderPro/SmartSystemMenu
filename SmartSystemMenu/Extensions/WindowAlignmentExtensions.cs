@@ -4,23 +4,20 @@ namespace SmartSystemMenu.Extensions
 {
     static class WindowAlignmentExtensions
     {
-        public static int GetMenuItemId(this WindowAlignment alignment)
+        public static int GetMenuItemId(this WindowAlignment alignment) => alignment switch
         {
-            switch (alignment)
-            {
-                case WindowAlignment.TopLeft: return MenuItemId.SC_ALIGN_TOP_LEFT;
-                case WindowAlignment.TopCenter: return MenuItemId.SC_ALIGN_TOP_CENTER;
-                case WindowAlignment.TopRight: return MenuItemId.SC_ALIGN_TOP_RIGHT;
-                case WindowAlignment.MiddleLeft: return MenuItemId.SC_ALIGN_MIDDLE_LEFT;
-                case WindowAlignment.MiddleCenter: return MenuItemId.SC_ALIGN_MIDDLE_CENTER;
-                case WindowAlignment.MiddleRight: return MenuItemId.SC_ALIGN_MIDDLE_RIGHT;
-                case WindowAlignment.BottomLeft: return MenuItemId.SC_ALIGN_BOTTOM_LEFT;
-                case WindowAlignment.BottomCenter: return MenuItemId.SC_ALIGN_BOTTOM_CENTER;
-                case WindowAlignment.BottomRight: return MenuItemId.SC_ALIGN_BOTTOM_RIGHT;
-                case WindowAlignment.CenterHorizontally: return MenuItemId.SC_ALIGN_CENTER_HORIZONTALLY;
-                case WindowAlignment.CenterVertically: return MenuItemId.SC_ALIGN_CENTER_VERTICALLY;
-                default: throw new ArgumentException(nameof(alignment));
-            }
-        }
+            WindowAlignment.TopLeft => MenuItemId.SC_ALIGN_TOP_LEFT,
+            WindowAlignment.TopCenter => MenuItemId.SC_ALIGN_TOP_CENTER,
+            WindowAlignment.TopRight => MenuItemId.SC_ALIGN_TOP_RIGHT,
+            WindowAlignment.MiddleLeft => MenuItemId.SC_ALIGN_MIDDLE_LEFT,
+            WindowAlignment.MiddleCenter => MenuItemId.SC_ALIGN_MIDDLE_CENTER,
+            WindowAlignment.MiddleRight => MenuItemId.SC_ALIGN_MIDDLE_RIGHT,
+            WindowAlignment.BottomLeft => MenuItemId.SC_ALIGN_BOTTOM_LEFT,
+            WindowAlignment.BottomCenter => MenuItemId.SC_ALIGN_BOTTOM_CENTER,
+            WindowAlignment.BottomRight => MenuItemId.SC_ALIGN_BOTTOM_RIGHT,
+            WindowAlignment.CenterHorizontally => MenuItemId.SC_ALIGN_CENTER_HORIZONTALLY,
+            WindowAlignment.CenterVertically => MenuItemId.SC_ALIGN_CENTER_VERTICALLY,
+            _ => throw new ArgumentException(nameof(alignment))
+        };
     }
 }

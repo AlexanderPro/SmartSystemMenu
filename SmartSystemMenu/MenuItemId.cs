@@ -84,8 +84,8 @@ namespace SmartSystemMenu
         public const int SC_DISABLE_CLOSE_BUTTON = 0x4820;
         public const int SC_CLICK_THROUGH = 0x4822;
 
-        private static readonly Dictionary<string, int> NameToId = new Dictionary<string, int>();
-        private static readonly Dictionary<int, string> IdToName = new Dictionary<int, string>();
+        private static readonly Dictionary<string, int> NameToId = new ();
+        private static readonly Dictionary<int, string> IdToName = new ();
 
         static MenuItemId()
         {
