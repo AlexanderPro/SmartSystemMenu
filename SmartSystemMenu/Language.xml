@@ -59,6 +59,9 @@
       <item name="close_other_windows" value="Close" />
       <item name="start_program" value="Start Program" />
       <item name="save_selected_items" value="Save" />
+      <item name="dimmer" value="Dimmer" />
+      <item name="dimmer_on" value="On" />
+      <item name="dimmer_off" value="Off" />
       <item name="buttons" value="Buttons" />
       <item name="disable_minimize_button" value="Disable &quot;Minimize&quot; Button" />
       <item name="disable_maximize_button" value="Disable &quot;Maximize&quot; Button" />
@@ -208,6 +211,9 @@
       <item name="tab_settings_menu_start" value="Menu (Start Program)" />
       <item name="tab_settings_menu_size" value="Menu (Resize)" />
       <item name="tab_settings_menu_save" value="Menu (Save)" />
+      <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
+      <item name="grpb_dimmer_color" value="Color" />
+      <item name="grpb_dimmer_transparency" value="Transparency" />
       <item name="grpb_closer" value="Close Window By Mouse Click" />
       <item name="closer_button_name" value="Settings..." />
       <item name="closer_form" value="Settings" />
@@ -290,6 +296,9 @@
       <item name="close_other_windows" value="Schlieβen" />
       <item name="start_program" value="Programm ausführen" />
       <item name="save_selected_items" value="Speichern" />
+      <item name="dimmer" value="Dimmer" />
+      <item name="dimmer_on" value="Ein" />
+      <item name="dimmer_off" value="Aus" />
       <item name="buttons" value="Tasten" />
       <item name="disable_minimize_button" value="Deaktivieren &quot;Minimieren&quot;" />
       <item name="disable_maximize_button" value="Deaktivieren &quot;Maximieren&quot;" />
@@ -439,6 +448,10 @@
       <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
       <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
       <item name="tab_settings_menu_save" value="Menü (Speichern)" />
+      <item name="tab_settings_menu_dimmer" value="Menü (Dimmer)" />
+      <item name="grpb_dimmer_color" value="Farbe" />
+      <item name="grpb_dimmer_transparency" value="Transparenz" />
+      <item name="grpb_closer" value="Close Window By Mouse Click" />
       <item name="grpb_closer" value="Fenster per Mausklick schließen" />
       <item name="closer_button_name" value="Einstellungen..." />
       <item name="closer_form" value="Einstellungen" />
@@ -519,6 +532,9 @@
       <item name="close_other_windows" value="关闭" />
       <item name="start_program" value="启动程序" />
       <item name="save_selected_items" value="保存" />
+      <item name="dimmer" value="窗户调光器" />
+      <item name="dimmer_on" value="在" />
+      <item name="dimmer_off" value="离开" />
       <item name="buttons" value="纽扣" />
       <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按钮" />
       <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按钮" />
@@ -668,6 +684,9 @@
       <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
       <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
       <item name="tab_settings_menu_save" value="菜单 (保存)" />
+      <item name="tab_settings_menu_dimmer" value="菜单 (窗户调光器)" />
+      <item name="grpb_dimmer_color" value="颜色" />
+      <item name="grpb_dimmer_transparency" value="透明度" />
       <item name="grpb_closer" value="通过鼠标单击关闭窗口" />
       <item name="closer_button_name" value="设置..." />
       <item name="closer_form" value="设置." />
@@ -748,6 +767,9 @@
       <item name="close_other_windows" value="關閉" />
       <item name="start_program" value="啟動程式" />
       <item name="save_selected_items" value="儲存" />
+      <item name="dimmer" value="窗戶調光器" />
+      <item name="dimmer_on" value="在" />
+      <item name="dimmer_off" value="離開" />
       <item name="buttons" value="鈕扣" />
       <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按鈕" />
       <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按鈕" />
@@ -897,6 +919,9 @@
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
       <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
       <item name="tab_settings_menu_save" value="選單 (儲存)" />
+      <item name="tab_settings_menu_dimmer" value="選單 (窗戶調光器)" />
+      <item name="grpb_dimmer_color" value="顏色" />
+      <item name="grpb_dimmer_transparency" value="透明度" />
       <item name="grpb_closer" value="透過滑鼠按一下關閉視窗" />
       <item name="closer_button_name" value="設定..." />
       <item name="closer_form" value="設定." />
@@ -979,6 +1004,9 @@
       <item name="close_other_windows" value="閉じる" />
       <item name="start_program" value="起動プログラム" />
       <item name="save_selected_items" value="保存" />
+      <item name="dimmer" value="窓の調光器" />
+      <item name="dimmer_on" value="の上" />
+      <item name="dimmer_off" value="オフ" />
       <item name="buttons" value="ボタン" />
       <item name="disable_minimize_button" value="「最小化」ボタンを無効にする" />
       <item name="disable_maximize_button" value="「最大化」ボタンを無効にする" />
@@ -1128,6 +1156,9 @@
       <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
       <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
       <item name="tab_settings_menu_save" value="メニュー (保存)" />
+      <item name="tab_settings_menu_dimmer" value="メニュー (窓の調光器)" />
+      <item name="grpb_dimmer_color" value="色" />
+      <item name="grpb_dimmer_transparency" value="透明度" />
       <item name="grpb_closer" value="マウスクリックでウィンドウを閉じる" />
       <item name="closer_button_name" value="設定..." />
       <item name="closer_form" value="設定" />
@@ -1208,6 +1239,9 @@
       <item name="close_other_windows" value="다른 창 닫기" />
       <item name="start_program" value="프로그램 실행" />
       <item name="save_selected_items" value="저장" />
+      <item name="dimmer" value="창 조광기" />
+      <item name="dimmer_on" value="~에" />
+      <item name="dimmer_off" value="끄다" />
       <item name="buttons" value="버튼" />
       <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 비활성화" />
       <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 비활성화" />
@@ -1357,6 +1391,9 @@
       <item name="tab_settings_menu_start" value="메뉴 (프로그램 실행)" />
       <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
       <item name="tab_settings_menu_save" value="메뉴 (저장)" />
+      <item name="tab_settings_menu_dimmer" value="메뉴 (창 조광기)" />
+      <item name="grpb_dimmer_color" value="색상" />
+      <item name="grpb_dimmer_transparency" value="투명도" />
       <item name="grpb_closer" value="마우스 클릭으로 창 닫기" />
       <item name="closer_button_name" value="설정..." />
       <item name="closer_form" value="설정" />
@@ -1439,6 +1476,9 @@
       <item name="close_other_windows" value="Закрыть" />
       <item name="start_program" value="Пуск" />
       <item name="save_selected_items" value="Сохранить" />
+      <item name="dimmer" value="Затемнение" />
+      <item name="dimmer_on" value="Включить" />
+      <item name="dimmer_off" value="Выключить" />
       <item name="buttons" value="Кнопки" />
       <item name="disable_minimize_button" value="Отключить кнопку минимизации окна" />
       <item name="disable_maximize_button" value="Отключить кнопку развертывания окна" />
@@ -1588,6 +1628,9 @@
       <item name="tab_settings_menu_start" value="Меню (Пуск)" />
       <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
       <item name="tab_settings_menu_save" value="Меню (Сохранить)" />
+      <item name="tab_settings_menu_dimmer" value="Меню (Затемнение)" />
+      <item name="grpb_dimmer_color" value="Цвет" />
+      <item name="grpb_dimmer_transparency" value="Прозрачность" />
       <item name="grpb_closer" value="Закрытие окна кнопкой мышки" />
       <item name="closer_button_name" value="Настройки..." />
       <item name="closer_form" value="Настройки" />
@@ -1668,6 +1711,9 @@
       <item name="close_other_windows" value="Затвори" />
       <item name="start_program" value="Покренути програм" />
       <item name="save_selected_items" value="Сачувати" />
+      <item name="dimmer" value="Затамњивач прозора" />
+      <item name="dimmer_on" value="Укључити" />
+      <item name="dimmer_off" value="Искључити" />
       <item name="buttons" value="Дугмад" />
       <item name="disable_minimize_button" value="Онемогућите дугме &quot;Минимизирај&quot;" />
       <item name="disable_maximize_button" value="Онемогућите дугме &quot;Максимирај&quot;" />
@@ -1817,6 +1863,9 @@
       <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
       <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
       <item name="tab_settings_menu_save" value="Мени (Сачувати)" />
+      <item name="tab_settings_menu_dimmer" value="Мени (Затамњивач прозора)" />
+      <item name="grpb_dimmer_color" value="Боја" />
+      <item name="grpb_dimmer_transparency" value="Провидност" />
       <item name="grpb_closer" value="Затворите прозор кликом миша" />
       <item name="closer_button_name" value="Подешавања..." />
       <item name="closer_form" value="Подешавања" />
@@ -1897,6 +1946,9 @@
       <item name="close_other_windows" value="Fechar" />
       <item name="start_program" value="Executar programa" />
       <item name="save_selected_items" value="Salvar" />
+      <item name="dimmer" value="Dimmer" />
+      <item name="dimmer_on" value="On" />
+      <item name="dimmer_off" value="Off" />
       <item name="buttons" value="Botões" />
       <item name="disable_minimize_button" value="Desativar o botão &quot;Minimizar&quot;" />
       <item name="disable_maximize_button" value="Desativar o botão &quot;Maximizar&quot;" />
@@ -2046,6 +2098,9 @@
       <item name="tab_settings_menu_start" value="Menu (Executar programa)" />
       <item name="tab_settings_menu_size" value="Menu (Redimensionar)" />
       <item name="tab_settings_menu_save" value="Menu (Salvar)" />
+      <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
+      <item name="grpb_dimmer_color" value="Cor" />
+      <item name="grpb_dimmer_transparency" value="Transparência" />
       <item name="grpb_closer" value="Fechar janela com clique do mouse" />
       <item name="closer_button_name" value="Configuração..." />
       <item name="closer_form" value="Configuração" />
@@ -2126,6 +2181,9 @@
       <item name="close_other_windows" value="Chiudile" />
       <item name="start_program" value="Start Program" />
       <item name="save_selected_items" value="Salva impostazioni" />
+      <item name="dimmer" value="Dimmer" />
+      <item name="dimmer_on" value="Acceso" />
+      <item name="dimmer_off" value="Spento" />
       <item name="buttons" value="Bottoni" />
       <item name="disable_minimize_button" value="Disabilita il pulsante &quot;Riduci a icona&quot;" />
       <item name="disable_maximize_button" value="Disabilita il pulsante &quot;Ingrandisci&quot;" />
@@ -2275,6 +2333,9 @@
       <item name="tab_settings_menu_start" value="Menu (avvia programma)" />
       <item name="tab_settings_menu_size" value="Menu (ridimensiona)" />
       <item name="tab_settings_menu_save" value="Menu (salva)" />
+      <item name="tab_settings_menu_dimmer" value="Menu (dimmer)" />
+      <item name="grpb_dimmer_color" value="Colore" />
+      <item name="grpb_dimmer_transparency" value="Trasparenza" />
       <item name="grpb_closer" value="Chiudi finestra con il pulsante del mouse" />
       <item name="closer_button_name" value="Impostazioni..." />
       <item name="closer_form" value="Impostazioni" />
@@ -2357,6 +2418,9 @@
       <item name="close_other_windows" value="Fermer les autres fenêtres" />
       <item name="start_program" value="Démarrer programme" />
       <item name="save_selected_items" value="Sauvegarder les élements sélectionnés" />
+      <item name="dimmer" value="Dimmer" />
+      <item name="dimmer_on" value="Sur" />
+      <item name="dimmer_off" value="Désactivé" />
       <item name="buttons" value="Boutons" />
       <item name="disable_minimize_button" value="Désactiver le bouton &quot;Réduire&quot;" />
       <item name="disable_maximize_button" value="Désactiver le bouton &quot;Agrandir&quot;" />
@@ -2506,6 +2570,9 @@
       <item name="tab_settings_menu_start" value="Menu (lancer le programme)" />
       <item name="tab_settings_menu_size" value="Menu (redimensionner)" />
       <item name="tab_settings_menu_save" value="Menu (enregistrer)" />
+      <item name="tab_settings_menu_dimmer" value="Menu (dimmer)" />
+      <item name="grpb_dimmer_color" value="Couleur" />
+      <item name="grpb_dimmer_transparency" value="Trasparence" />
       <item name="grpb_closer" value="Fermer la fenêtre avec le bouton de la souris" />
       <item name="closer_button_name" value="Paramètres..." />
       <item name="closer_form" value="Paramètres" />
@@ -2588,6 +2655,9 @@
       <item name="close_other_windows" value="Bezár" />
       <item name="start_program" value="Programindítás" />
       <item name="save_selected_items" value="Mentés" />
+      <item name="dimmer" value="Dimmer" />
+      <item name="dimmer_on" value="Be" />
+      <item name="dimmer_off" value="Ki" />
       <item name="buttons" value="Gombok" />
       <item name="disable_minimize_button" value="Tiltsa le a &quot;Kis méret&quot; gombot" />
       <item name="disable_maximize_button" value="Tiltsa le a &quot;Maximálás&quot; gombot" />
@@ -2737,6 +2807,9 @@
       <item name="tab_settings_menu_start" value="Menü (programindítás hozzáadása)" />
       <item name="tab_settings_menu_size" value="Menü (átméretezés)" />
       <item name="tab_settings_menu_save" value="Menü (mentés)" />
+      <item name="tab_settings_menu_dimmer" value="Menü (dimmer)" />
+      <item name="grpb_dimmer_color" value="Szín" />
+      <item name="grpb_dimmer_transparency" value="Átláthatóság" />
       <item name="grpb_closer" value="Ablak bezárása egérkattintással" />
       <item name="closer_button_name" value="Beállítások..." />
       <item name="closer_form" value="Beállítások" />

@@ -17,6 +17,8 @@ namespace SmartSystemMenu.Settings
 
         public CloserSettings Closer { get; private set; }
 
+        public DimmerSettings Dimmer { get; private set; }
+
         public SaveSelectedItemsSettings SaveSelectedItems { get; set; }
 
         public bool ShowSystemTrayIcon { get; private set; }
@@ -35,6 +37,7 @@ namespace SmartSystemMenu.Settings
             ProcessExclusions = new List<string>();
             MenuItems = new MenuItems();
             Closer = new CloserSettings();
+            Dimmer = new DimmerSettings();
             SaveSelectedItems = new SaveSelectedItemsSettings();
             Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
@@ -73,6 +76,7 @@ namespace SmartSystemMenu.Settings
             }
 
             settings.Closer= (CloserSettings)Closer.Clone();
+            settings.Dimmer = (DimmerSettings)Dimmer.Clone();
             settings.SaveSelectedItems = (SaveSelectedItemsSettings)SaveSelectedItems.Clone();
             settings.Sizer = Sizer;
             settings.ShowSystemTrayIcon = ShowSystemTrayIcon;
@@ -212,6 +216,11 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
+            if (string.Compare(Dimmer.Color, other.Dimmer.Color, StringComparison.CurrentCultureIgnoreCase) != 0 || Dimmer.Transparency != other.Dimmer.Transparency)
+            {
+                return false;
+            }
+
             if (SaveSelectedItems.AeroGlass != other.SaveSelectedItems.AeroGlass ||
                 SaveSelectedItems.AlwaysOnTop != other.SaveSelectedItems.AlwaysOnTop ||
                 SaveSelectedItems.HideForAltTab != other.SaveSelectedItems.HideForAltTab ||
@@ -279,6 +288,8 @@ namespace SmartSystemMenu.Settings
             hashCode ^= Closer.Key1.GetHashCode();
             hashCode ^= Closer.Key2.GetHashCode();
             hashCode ^= Closer.MouseButton.GetHashCode();
+            hashCode ^= Dimmer.Color.GetHashCode();
+            hashCode ^= Dimmer.Transparency.GetHashCode();
             hashCode ^= SaveSelectedItems.AeroGlass.GetHashCode();
             hashCode ^= SaveSelectedItems.AlwaysOnTop.GetHashCode();
             hashCode ^= SaveSelectedItems.HideForAltTab.GetHashCode();
@@ -368,6 +379,10 @@ namespace SmartSystemMenu.Settings
             settings.Closer.Key1 = closerElement.Attribute("key1") != null && !string.IsNullOrEmpty(closerElement.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(closerElement.Attribute("key1").Value) : VirtualKeyModifier.None;
             settings.Closer.Key2 = closerElement.Attribute("key2") != null && !string.IsNullOrEmpty(closerElement.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(closerElement.Attribute("key2").Value) : VirtualKeyModifier.None;
             settings.Closer.MouseButton = closerElement.Attribute("mouseButton") != null && !string.IsNullOrEmpty(closerElement.Attribute("mouseButton").Value) ? (MouseButton)int.Parse(closerElement.Attribute("mouseButton").Value) : MouseButton.None;
+
+            var dimmerElement = document.XPathSelectElement("/smartSystemMenu/dimmer");
+            settings.Dimmer.Color = dimmerElement.Attribute("color") != null ? dimmerElement.Attribute("color").Value : string.Empty;
+            settings.Dimmer.Transparency = dimmerElement.Attribute("transparency") != null ? int.Parse(dimmerElement.Attribute("transparency").Value) : 0;
 
             var saveSelectedItemsElement = document.XPathSelectElement("/smartSystemMenu/saveSelectedItems");
             settings.SaveSelectedItems.AeroGlass = saveSelectedItemsElement.Attribute("aeroGlass") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("aeroGlass").Value) ? saveSelectedItemsElement.Attribute("aeroGlass").Value.ToLower() == "true" : true;
@@ -527,6 +542,10 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("key1", settings.Closer.Key1 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key1).ToString()),
                                      new XAttribute("key2", settings.Closer.Key2 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key2).ToString()),
                                      new XAttribute("mouseButton", settings.Closer.MouseButton == MouseButton.None ? "" : ((int)settings.Closer.MouseButton).ToString())
+                                 ),
+                                 new XElement("dimmer",
+                                     new XAttribute("color", settings.Dimmer.Color),
+                                     new XAttribute("transparency", settings.Dimmer.Transparency.ToString())
                                  ),
                                  new XElement("saveSelectedItems",
                                      new XAttribute("aeroGlass", settings.SaveSelectedItems.AeroGlass.ToString().ToLower()),

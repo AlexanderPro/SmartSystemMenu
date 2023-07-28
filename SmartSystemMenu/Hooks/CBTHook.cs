@@ -10,11 +10,13 @@ namespace SmartSystemMenu.Hooks
         private int _msgIdCbtDestroyWnd;
         private int _msgIdCbtMinMax;
         private int _msgIdCbtMoveSize;
+        private int _msgIdCbtActivate;
 
         public event EventHandler<WindowEventArgs> WindowCreated;
         public event EventHandler<WindowEventArgs> WindowDestroyed;
         public event EventHandler<SysCommandEventArgs> MinMax;
         public event EventHandler<WindowEventArgs> MoveSize;
+        public event EventHandler<WindowEventArgs> Activate;
 
         public CBTHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
         {
@@ -26,6 +28,7 @@ namespace SmartSystemMenu.Hooks
             _msgIdCbtDestroyWnd = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
             _msgIdCbtMinMax = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
             _msgIdCbtMoveSize = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
+            _msgIdCbtActivate = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HCBT_ACTIVATE");
 
             if (Environment.OSVersion.Version.Major >= 6)
             {
@@ -33,6 +36,7 @@ namespace SmartSystemMenu.Hooks
                 ChangeWindowMessageFilter(_msgIdCbtDestroyWnd, Constants.MSGFLT_ADD);
                 ChangeWindowMessageFilter(_msgIdCbtMinMax, Constants.MSGFLT_ADD);
                 ChangeWindowMessageFilter(_msgIdCbtMoveSize, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(_msgIdCbtActivate, Constants.MSGFLT_ADD);
             }
             NativeHookMethods.InitializeCbtHook(0, _handle, _dragByMouseMenuItem);
         }
@@ -59,6 +63,10 @@ namespace SmartSystemMenu.Hooks
             else if (m.Msg == _msgIdCbtMoveSize)
             {
                 RaiseEvent(MoveSize, new WindowEventArgs(m.WParam));
+            }
+            else if (m.Msg == _msgIdCbtActivate)
+            {
+                RaiseEvent(Activate, new WindowEventArgs(m.WParam));
             }
         }
     }

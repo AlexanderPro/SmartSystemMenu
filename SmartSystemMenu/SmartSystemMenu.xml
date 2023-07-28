@@ -87,6 +87,12 @@
           <item type="item" name="clear_clipboard" key1="" key2="" key3="" />
         </items>
       </item>
+      <item type="group" name="dimmer">
+        <items>
+          <item type="item" name="dimmer_on" key1="" key2="" key3="" />
+          <item type="item" name="dimmer_off" key1="" key2="" key3="" />
+        </items>
+      </item>
       <item type="group" name="buttons">
         <items>
           <item type="item" name="disable_minimize_button" key1="" key2="" key3="" />
@@ -140,6 +146,7 @@
     </startProgramItems>
   </menuItems>
   <closer type="" key1="" key2="" mouseButton="" />
+  <dimmer color="#000000" transparency="50" />
   <saveSelectedItems aeroGlass="true" alwaysOnTop="true" hideForAltTab="true" alignment="true" transparency="true" priority="true" minimizeToTrayAlways="true" buttons="true" />
   <sizer type="" />
   <systemTrayIcon show="true" />

@@ -86,6 +86,12 @@
     <Compile Include="Extensions\PriorityClassExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WindowAlignmentExtensions.cs" />
+    <Compile Include="Forms\DimForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DimForm.Designer.cs">
+      <DependentUpon>DimForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MessageBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings\CloserSettings.cs" />
+    <Compile Include="Settings\DimmerSettings.cs" />
     <Compile Include="Settings\SaveSelectedItemsSettings.cs" />
     <Compile Include="Settings\WindowSettings.cs" />
     <Compile Include="Settings\MenuItemType.cs" />
@@ -277,6 +284,9 @@
     <Compile Include="WmiProcessInfo.cs" />
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DimForm.resx">
+      <DependentUpon>DimForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MessageBoxForm.resx">
       <DependentUpon>MessageBoxForm.cs</DependentUpon>

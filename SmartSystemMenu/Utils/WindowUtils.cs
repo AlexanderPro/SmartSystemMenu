@@ -426,6 +426,8 @@ namespace SmartSystemMenu.Utils
             }
         }
 
+        public static Func<int, double> TransparencyToOpacity = t => 1 - (t / 100.0);
+
         public static void ForceAllMessageLoopsToWakeUp() => SendMessageTimeout((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG | SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG, 1000, out var result);
     }
 }

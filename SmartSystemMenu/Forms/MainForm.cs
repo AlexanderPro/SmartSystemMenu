@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
 using System.Runtime.InteropServices;
@@ -29,10 +30,12 @@ namespace SmartSystemMenu.Forms
         private Hooks.MouseHook _mouseHook;
         private AboutForm _aboutForm;
         private SettingsForm _settingsForm;
+        private List<DimForm> _dimForms;
         private SmartSystemMenuSettings _settings;
         private WindowSettings _windowSettings;
         private IntPtr _parentHandle;
         private IntPtr _childHandle;
+        private IntPtr _dimHandle;
 
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
@@ -49,6 +52,8 @@ namespace SmartSystemMenu.Forms
             _windowSettings = windowSettings;
             _parentHandle = parentHandle;
             _childHandle = IntPtr.Zero;
+            _dimHandle = IntPtr.Zero;
+            _dimForms = new List<DimForm>();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -185,6 +190,7 @@ namespace SmartSystemMenu.Forms
             _cbtHook.WindowDestroyed += WindowDestroyed;
             _cbtHook.MoveSize += WindowMoveSize;
             _cbtHook.MinMax += WindowMinMax;
+            _cbtHook.Activate += WindowActivate;
             _cbtHook.Start();
 
 
@@ -198,7 +204,7 @@ namespace SmartSystemMenu.Forms
             Hide();
         }
 
-        private void HotKeyMouseHooked(object sender, EventArgs<Point> e)
+        private void HotKeyMouseHooked(object sender, EventArgs<SmartSystemMenu.Native.Structs.Point> e)
         {
             if (_settings.Closer.Type == WindowCloserType.CloseForegroundWindow)
             {
@@ -236,6 +242,8 @@ namespace SmartSystemMenu.Forms
             SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             _cbtHook?.Stop();
             SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
+
+            HideDimWindows();
 
             if (_windows != null)
             {
@@ -293,9 +301,14 @@ namespace SmartSystemMenu.Forms
                     _childHandle = long.TryParse(handleString, out var handleValue) ? new IntPtr(handleValue) : IntPtr.Zero;
                 }
 
-                if (identifier == MenuItemId.SC_TRANS_DEFAULT || identifier == MenuItemId.SC_CLICK_THROUGH)
+                if (identifier == MenuItemId.SC_TRANS_DEFAULT || identifier == MenuItemId.SC_CLICK_THROUGH || identifier == MenuItemId.SC_DIMMER_OFF)
                 {
                     MenuItemRestoreClick(this, new EventArgs<long>(identifier));
+                }
+
+                if (identifier == MenuItemId.SC_DIMMER_ON || identifier == MenuItemId.SC_DIMMER_OFF)
+                {
+                    HideDimWindows();
                 }
             }
 
@@ -381,9 +394,16 @@ namespace SmartSystemMenu.Forms
                         }
                     }
                     break;
+
+                case MenuItemId.SC_DIMMER_ON:
+                case MenuItemId.SC_DIMMER_OFF:
+                    {
+                        HideDimWindows();
+                    }
+                    break;
             }
 
-            if ((e.Entity == MenuItemId.SC_TRANS_DEFAULT || e.Entity == MenuItemId.SC_CLICK_THROUGH) && _childHandle != IntPtr.Zero)
+            if ((e.Entity == MenuItemId.SC_TRANS_DEFAULT || e.Entity == MenuItemId.SC_CLICK_THROUGH || e.Entity == MenuItemId.SC_DIMMER_OFF || e.Entity == MenuItemId.SC_DIMMER_ON) && _childHandle != IntPtr.Zero)
             {
                 var ptrCopyData = SystemUtils.BuildWmCopyDataPointer(e.Entity);
                 if (ptrCopyData != IntPtr.Zero)
@@ -463,11 +483,19 @@ namespace SmartSystemMenu.Forms
 
         private void WindowDestroyed(object sender, WindowEventArgs e)
         {
-            int windowIndex = _windows.FindIndex(w => w.Handle == e.Handle);
-            if (windowIndex != -1 && !_windows[windowIndex].ExistSystemTrayIcon)
+            var window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
+            if (window != null)
             {
-                _windows[windowIndex].Dispose();
-                _windows.RemoveAt(windowIndex);
+                if (window.Handle == _dimHandle)
+                {
+                    HideDimWindows();
+                }
+
+                if (!window.ExistSystemTrayIcon)
+                {
+                    window.Dispose();
+                    _windows.Remove(window);
+                }
             }
         }
 
@@ -480,9 +508,21 @@ namespace SmartSystemMenu.Forms
                 {
                     window.Menu.UncheckSizeMenu();
                 }
-                if (e.LParam.ToInt64() == SW_MINIMIZE && window.Menu.IsMenuItemChecked(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
+                
+                if (e.LParam.ToInt64() == SW_MINIMIZE)
                 {
-                    window.MoveToSystemTray();
+                    if (window.Handle == _dimHandle)
+                    {
+                        foreach (var dimForm in _dimForms)
+                        {
+                            dimForm.Hide();
+                        }
+                    }
+
+                    if (window.Menu.IsMenuItemChecked(MenuItemId.SC_MINIMIZE_ALWAYS_TO_SYSTEMTRAY))
+                    {
+                        window.MoveToSystemTray();
+                    }
                 }
             }
         }
@@ -516,13 +556,19 @@ namespace SmartSystemMenu.Forms
             WindowGetMsg(sender, new WndProcEventArgs(e.Handle, e.Message, e.WParam, e.LParam));
         }
 
+        private void WindowActivate(object sender, WindowEventArgs e)
+        {
+            if (_dimHandle == e.Handle)
+            {
+                UpdateDimming(_dimHandle);
+            }
+        }
+
         private void WindowGetMsg(object sender, WndProcEventArgs e)
         {
             var message = e.Message.ToInt64();
             if (message == WM_SYSCOMMAND)
             {
-                //string dbgMessage = string.Format("WM_SYSCOMMAND, Form, Handle = {0}, WParam = {1}", e.Handle, e.WParam);
-                //System.Diagnostics.Trace.WriteLine(dbgMessage);
                 var window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
                 if (window != null)
                 {
@@ -811,6 +857,50 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_DIMMER_ON:
+                            {
+                                _dimHandle = e.Handle;
+                                ShowDimWindows();
+                                UpdateDimming(e.Handle);
+
+                                var ptrCopyData = SystemUtils.BuildWmCopyDataPointer(MenuItemId.SC_DIMMER_ON);
+                                if (ptrCopyData != IntPtr.Zero)
+                                {
+                                    if (_childHandle != IntPtr.Zero)
+                                    {
+                                        SendMessage(_childHandle, WM_COPYDATA, IntPtr.Zero, ptrCopyData);
+                                    }
+
+                                    if (_parentHandle != IntPtr.Zero)
+                                    {
+                                        SendMessage(_parentHandle, WM_COPYDATA, IntPtr.Zero, ptrCopyData);
+                                    }
+                                }
+                            }
+                            break;
+
+                        case MenuItemId.SC_DIMMER_OFF:
+                            {
+                                HideDimWindows();
+
+                                var ptrCopyData = SystemUtils.BuildWmCopyDataPointer(MenuItemId.SC_DIMMER_OFF);
+                                if (ptrCopyData != IntPtr.Zero)
+                                {
+                                    if (_childHandle != IntPtr.Zero)
+                                    {
+                                        SendMessage(_childHandle, WM_COPYDATA, IntPtr.Zero, ptrCopyData);
+                                    }
+
+                                    if (_parentHandle != IntPtr.Zero)
+                                    {
+                                        SendMessage(_parentHandle, WM_COPYDATA, IntPtr.Zero, ptrCopyData);
+                                    }
+                                }
+
+                                SetForegroundWindow(e.Handle);
+                            }
+                            break;
+
                         case MenuItemId.SC_DISABLE_MINIMIZE_BUTTON:
                             {
                                 var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON);
@@ -1017,7 +1107,7 @@ namespace SmartSystemMenu.Forms
 
                 try
                 {
-                    GetWindowThreadProcessId(handle, out var processId);
+                    GetWindowThreadProcessId(handle, out int processId);
                     var process = SystemUtils.GetProcessByIdSafely(processId);
                     processName = Path.GetFileName(process.GetMainModuleFileName());
                 }
@@ -1074,6 +1164,55 @@ namespace SmartSystemMenu.Forms
             window.Menu.UncheckTransparencyMenu();
             window.Menu.CheckMenuItem(itemId, true);
             window.SetTransparency(EnumUtils.GetTransparency(itemId));
+        }
+
+        private void ShowDimWindows()
+        {
+            if (!_dimForms.Any())
+            {
+                var opacity = WindowUtils.TransparencyToOpacity(_settings.Dimmer.Transparency);
+                var color = ColorTranslator.FromHtml(_settings.Dimmer.Color);
+                foreach (var screen in Screen.AllScreens)
+                {
+                    var dimForm = new DimForm(color, opacity)
+                    {
+                        Left = screen.Bounds.Left,
+                        Top = screen.Bounds.Top
+                    };
+                    dimForm.Click += DimForm_Click;
+                    dimForm.DoubleClick += DimForm_Click;
+                    dimForm.MouseClick += DimForm_Click;
+                    dimForm.MouseDoubleClick += DimForm_Click;
+                    dimForm.Show();
+                    _dimForms.Add(dimForm);
+                }
+            }
+        }
+
+        private void DimForm_Click(object sender, EventArgs e)
+        {
+            if (_dimHandle != IntPtr.Zero)
+            {
+                UpdateDimming(_dimHandle);
+            }
+        }
+
+        private void HideDimWindows()
+        {
+            _dimForms.ForEach(w => w.Close());
+            _dimForms.Clear();
+            _dimHandle = IntPtr.Zero;
+        }
+
+        private void UpdateDimming(IntPtr hwnd)
+        {
+            foreach (var dimForm in _dimForms)
+            {
+                dimForm.Show();
+                PostMessage(dimForm.Handle, WM_SYSCOMMAND, MenuItemId.SC_MAXIMIZE, 0);
+                SetWindowPos(dimForm.Handle, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+                SetWindowPos(dimForm.Handle, hwnd, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+            }
         }
     }
 }

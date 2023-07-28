@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using System.Drawing;
 using SmartSystemMenu.Settings;
 using SmartSystemMenu.Controls;
 
@@ -38,6 +39,7 @@ namespace SmartSystemMenu.Forms
             tabpGeneral.Text = settings.Language.GetValue("tab_settings_general");
             tabpMenuStart.Text = settings.Language.GetValue("tab_settings_menu_start");
             tabpMenuSize.Text = settings.Language.GetValue("tab_settings_menu_size");
+            tabpMenuDimmer.Text = settings.Language.GetValue("tab_settings_menu_dimmer");
             tabpMenu.Text = settings.Language.GetValue("tab_settings_menu");
             tabpMenuSaveSelectedItems.Text = settings.Language.GetValue("tab_settings_menu_save");
             grpbLanguage.Text = settings.Language.GetValue("grpb_language");
@@ -47,6 +49,8 @@ namespace SmartSystemMenu.Forms
             grpbCloser.Text = settings.Language.GetValue("grpb_closer");
             grpbSizer.Text = settings.Language.GetValue("grpb_sizer");
             grpbDisplay.Text = settings.Language.GetValue("grpb_display");
+            grpbDimmerColor.Text = settings.Language.GetValue("grpb_dimmer_color");
+            grpbDimmerTransparency.Text = settings.Language.GetValue("grpb_dimmer_transparency");
             chkEnableHighDPI.Text = settings.Language.GetValue("chk_enable_high_dpi");
             clmProcessExclusionName.HeaderText = settings.Language.GetValue("clm_process_exclusion_name");
             clmProcessExclusionEdit.ToolTipText = settings.Language.GetValue("clm_process_exclusion_edit");
@@ -84,6 +88,9 @@ namespace SmartSystemMenu.Forms
             chkPriority.Text = settings.Language.GetValue("priority");
             chkMinimizeToTrayAlways.Text = settings.Language.GetValue("minimize_always_to_systemtray");
             chkButtons.Text = settings.Language.GetValue("buttons");
+            txtDimmerColor.Text = settings.Dimmer.Color;
+            trackbDimmerTransparency.Value = settings.Dimmer.Transparency;
+            lblTransparencyValue.Text = $"{settings.Dimmer.Transparency}%";
             btnCloser.Text = settings.Language.GetValue("closer_button_name");
             btnApply.Text = settings.Language.GetValue("settings_btn_apply");
             btnCancel.Text = settings.Language.GetValue("settings_btn_cancel");
@@ -500,6 +507,36 @@ namespace SmartSystemMenu.Forms
             }
         }
 
+        private void TrackbDimmerTransparencyValueChanged(object sender, EventArgs e)
+        {
+            lblTransparencyValue.Text = $"{trackbDimmerTransparency.Value}%";
+        }
+
+        private void ButtonChooseDimmerColorClick(object sender, EventArgs e)
+        {
+            var color = Color.Black;
+            try
+            {
+                color = ColorTranslator.FromHtml(txtDimmerColor.Text);
+            }
+            catch
+            {
+            }
+
+            var dialog = new ColorDialog
+            {
+                AllowFullOpen = true,
+                AnyColor = true,
+                FullOpen = true,
+                Color = color
+            };
+
+            if (dialog.ShowDialog() != DialogResult.Cancel)
+            {
+                txtDimmerColor.Text = ColorTranslator.ToHtml(dialog.Color);
+            }
+        }
+
         private void ButtonApplyClick(object sender, EventArgs e)
         {
             var settings = new SmartSystemMenuSettings();
@@ -545,6 +582,8 @@ namespace SmartSystemMenu.Forms
             settings.SaveSelectedItems.Priority = chkPriority.Checked;
             settings.SaveSelectedItems.MinimizeToTrayAlways = chkMinimizeToTrayAlways.Checked;
             settings.SaveSelectedItems.Buttons = chkButtons.Checked;
+            settings.Dimmer.Color = txtDimmerColor.Text;
+            settings.Dimmer.Transparency = trackbDimmerTransparency.Value;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();

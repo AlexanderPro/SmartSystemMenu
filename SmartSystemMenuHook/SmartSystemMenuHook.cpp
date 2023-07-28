@@ -83,6 +83,8 @@ static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
         else if (code == HCBT_MOVESIZE)
             msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
+        else if (code == HCBT_ACTIVATE)
+            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_ACTIVATE");
 
         if (msg != 0)
         {

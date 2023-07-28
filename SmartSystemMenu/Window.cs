@@ -521,9 +521,7 @@ namespace SmartSystemMenu
 
         public void MakeTopMost(bool topMost)
         {
-            var handleTopMost = (IntPtr)(-1);
-            var handleNotTopMost = (IntPtr)(-2);
-            SetWindowPos(Handle, topMost ? handleTopMost : handleNotTopMost, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+            SetWindowPos(Handle, topMost ? HWND_TOPMOST : HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
             State.AlwaysOnTop = topMost;
         }
 

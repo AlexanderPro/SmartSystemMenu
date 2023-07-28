@@ -84,8 +84,18 @@ namespace SmartSystemMenu.Forms
             this.clmStartProgramArguments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStartProgramEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.clmStartProgramDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabpMenuDimmer = new System.Windows.Forms.TabPage();
+            this.grpbDimmerTransparency = new System.Windows.Forms.GroupBox();
+            this.lblTransparencyValue = new System.Windows.Forms.Label();
+            this.lblTransparencyToValue = new System.Windows.Forms.Label();
+            this.lblTransparencyFromValue = new System.Windows.Forms.Label();
+            this.trackbDimmerTransparency = new System.Windows.Forms.TrackBar();
+            this.grpbDimmerColor = new System.Windows.Forms.GroupBox();
+            this.btnChooseDimmerColor = new System.Windows.Forms.Button();
+            this.txtDimmerColor = new System.Windows.Forms.TextBox();
             this.tabpMenuSaveSelectedItems = new System.Windows.Forms.TabPage();
             this.grpbSaveSelectedItems = new System.Windows.Forms.GroupBox();
+            this.chkButtons = new System.Windows.Forms.CheckBox();
             this.chkHideForAltTab = new System.Windows.Forms.CheckBox();
             this.chkMinimizeToTrayAlways = new System.Windows.Forms.CheckBox();
             this.chkPriority = new System.Windows.Forms.CheckBox();
@@ -96,7 +106,6 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
-            this.chkButtons = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -114,6 +123,10 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
+            this.tabpMenuDimmer.SuspendLayout();
+            this.grpbDimmerTransparency.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).BeginInit();
+            this.grpbDimmerColor.SuspendLayout();
             this.tabpMenuSaveSelectedItems.SuspendLayout();
             this.grpbSaveSelectedItems.SuspendLayout();
             this.SuspendLayout();
@@ -124,12 +137,13 @@ namespace SmartSystemMenu.Forms
             this.tabMain.Controls.Add(this.tabpMenu);
             this.tabMain.Controls.Add(this.tabpMenuSize);
             this.tabMain.Controls.Add(this.tabpMenuStart);
+            this.tabMain.Controls.Add(this.tabpMenuDimmer);
             this.tabMain.Controls.Add(this.tabpMenuSaveSelectedItems);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabMain.Location = new System.Drawing.Point(0, 0);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(521, 416);
+            this.tabMain.Size = new System.Drawing.Size(565, 416);
             this.tabMain.TabIndex = 0;
             // 
             // tabpGeneral
@@ -141,14 +155,14 @@ namespace SmartSystemMenu.Forms
             this.tabpGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabpGeneral.Name = "tabpGeneral";
             this.tabpGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpGeneral.Size = new System.Drawing.Size(513, 390);
+            this.tabpGeneral.Size = new System.Drawing.Size(557, 390);
             this.tabpGeneral.TabIndex = 0;
             this.tabpGeneral.UseVisualStyleBackColor = true;
             // 
             // grpbDisplay
             // 
             this.grpbDisplay.Controls.Add(this.chkEnableHighDPI);
-            this.grpbDisplay.Location = new System.Drawing.Point(265, 87);
+            this.grpbDisplay.Location = new System.Drawing.Point(309, 87);
             this.grpbDisplay.Name = "grpbDisplay";
             this.grpbDisplay.Size = new System.Drawing.Size(240, 69);
             this.grpbDisplay.TabIndex = 2;
@@ -168,7 +182,7 @@ namespace SmartSystemMenu.Forms
             this.grpbCloser.Controls.Add(this.btnCloser);
             this.grpbCloser.Location = new System.Drawing.Point(8, 87);
             this.grpbCloser.Name = "grpbCloser";
-            this.grpbCloser.Size = new System.Drawing.Size(240, 69);
+            this.grpbCloser.Size = new System.Drawing.Size(295, 69);
             this.grpbCloser.TabIndex = 1;
             this.grpbCloser.TabStop = false;
             // 
@@ -186,7 +200,7 @@ namespace SmartSystemMenu.Forms
             this.grpbLanguage.Controls.Add(this.cmbLanguage);
             this.grpbLanguage.Location = new System.Drawing.Point(8, 16);
             this.grpbLanguage.Name = "grpbLanguage";
-            this.grpbLanguage.Size = new System.Drawing.Size(497, 68);
+            this.grpbLanguage.Size = new System.Drawing.Size(541, 68);
             this.grpbLanguage.TabIndex = 0;
             this.grpbLanguage.TabStop = false;
             // 
@@ -207,14 +221,14 @@ namespace SmartSystemMenu.Forms
             this.grpbProcessExclusions.Controls.Add(this.gvProcessExclusions);
             this.grpbProcessExclusions.Location = new System.Drawing.Point(8, 160);
             this.grpbProcessExclusions.Name = "grpbProcessExclusions";
-            this.grpbProcessExclusions.Size = new System.Drawing.Size(497, 224);
+            this.grpbProcessExclusions.Size = new System.Drawing.Size(541, 224);
             this.grpbProcessExclusions.TabIndex = 3;
             this.grpbProcessExclusions.TabStop = false;
             // 
             // btnProcessExclusionDown
             // 
             this.btnProcessExclusionDown.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessExclusionDown.Image")));
-            this.btnProcessExclusionDown.Location = new System.Drawing.Point(406, 195);
+            this.btnProcessExclusionDown.Location = new System.Drawing.Point(450, 195);
             this.btnProcessExclusionDown.Name = "btnProcessExclusionDown";
             this.btnProcessExclusionDown.Size = new System.Drawing.Size(31, 23);
             this.btnProcessExclusionDown.TabIndex = 2;
@@ -224,7 +238,7 @@ namespace SmartSystemMenu.Forms
             // btnProcessExclusionUp
             // 
             this.btnProcessExclusionUp.Image = ((System.Drawing.Image)(resources.GetObject("btnProcessExclusionUp.Image")));
-            this.btnProcessExclusionUp.Location = new System.Drawing.Point(369, 195);
+            this.btnProcessExclusionUp.Location = new System.Drawing.Point(413, 195);
             this.btnProcessExclusionUp.Name = "btnProcessExclusionUp";
             this.btnProcessExclusionUp.Size = new System.Drawing.Size(31, 23);
             this.btnProcessExclusionUp.TabIndex = 1;
@@ -233,7 +247,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnAddProcessExclusion
             // 
-            this.btnAddProcessExclusion.Location = new System.Drawing.Point(460, 195);
+            this.btnAddProcessExclusion.Location = new System.Drawing.Point(504, 195);
             this.btnAddProcessExclusion.Name = "btnAddProcessExclusion";
             this.btnAddProcessExclusion.Size = new System.Drawing.Size(31, 23);
             this.btnAddProcessExclusion.TabIndex = 3;
@@ -262,7 +276,7 @@ namespace SmartSystemMenu.Forms
             this.gvProcessExclusions.RowHeadersVisible = false;
             this.gvProcessExclusions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvProcessExclusions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvProcessExclusions.Size = new System.Drawing.Size(485, 170);
+            this.gvProcessExclusions.Size = new System.Drawing.Size(529, 170);
             this.gvProcessExclusions.TabIndex = 0;
             this.gvProcessExclusions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellContentClick);
             this.gvProcessExclusions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewProcessExclusionsCellDoubleClick);
@@ -299,7 +313,7 @@ namespace SmartSystemMenu.Forms
             this.tabpMenu.Location = new System.Drawing.Point(4, 22);
             this.tabpMenu.Name = "tabpMenu";
             this.tabpMenu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpMenu.Size = new System.Drawing.Size(513, 390);
+            this.tabpMenu.Size = new System.Drawing.Size(557, 390);
             this.tabpMenu.TabIndex = 2;
             this.tabpMenu.UseVisualStyleBackColor = true;
             // 
@@ -310,14 +324,14 @@ namespace SmartSystemMenu.Forms
             this.grpbHotkeys.Controls.Add(this.gvHotkeys);
             this.grpbHotkeys.Location = new System.Drawing.Point(8, 16);
             this.grpbHotkeys.Name = "grpbHotkeys";
-            this.grpbHotkeys.Size = new System.Drawing.Size(497, 368);
+            this.grpbHotkeys.Size = new System.Drawing.Size(541, 368);
             this.grpbHotkeys.TabIndex = 3;
             this.grpbHotkeys.TabStop = false;
             // 
             // btnMenuItemDown
             // 
             this.btnMenuItemDown.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemDown.Image")));
-            this.btnMenuItemDown.Location = new System.Drawing.Point(460, 339);
+            this.btnMenuItemDown.Location = new System.Drawing.Point(504, 339);
             this.btnMenuItemDown.Name = "btnMenuItemDown";
             this.btnMenuItemDown.Size = new System.Drawing.Size(31, 23);
             this.btnMenuItemDown.TabIndex = 4;
@@ -327,7 +341,7 @@ namespace SmartSystemMenu.Forms
             // btnMenuItemUp
             // 
             this.btnMenuItemUp.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuItemUp.Image")));
-            this.btnMenuItemUp.Location = new System.Drawing.Point(423, 339);
+            this.btnMenuItemUp.Location = new System.Drawing.Point(467, 339);
             this.btnMenuItemUp.Name = "btnMenuItemUp";
             this.btnMenuItemUp.Size = new System.Drawing.Size(31, 23);
             this.btnMenuItemUp.TabIndex = 3;
@@ -357,7 +371,7 @@ namespace SmartSystemMenu.Forms
             this.gvHotkeys.RowHeadersVisible = false;
             this.gvHotkeys.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvHotkeys.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvHotkeys.Size = new System.Drawing.Size(485, 314);
+            this.gvHotkeys.Size = new System.Drawing.Size(529, 314);
             this.gvHotkeys.TabIndex = 0;
             this.gvHotkeys.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewHotkeysCellContentClick);
             this.gvHotkeys.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewHotkeysCellDoubleClick);
@@ -402,7 +416,7 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuSize.Location = new System.Drawing.Point(4, 22);
             this.tabpMenuSize.Name = "tabpMenuSize";
             this.tabpMenuSize.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpMenuSize.Size = new System.Drawing.Size(513, 390);
+            this.tabpMenuSize.Size = new System.Drawing.Size(557, 390);
             this.tabpMenuSize.TabIndex = 3;
             this.tabpMenuSize.UseVisualStyleBackColor = true;
             // 
@@ -411,7 +425,7 @@ namespace SmartSystemMenu.Forms
             this.grpbSizer.Controls.Add(this.cmbSizer);
             this.grpbSizer.Location = new System.Drawing.Point(8, 16);
             this.grpbSizer.Name = "grpbSizer";
-            this.grpbSizer.Size = new System.Drawing.Size(497, 68);
+            this.grpbSizer.Size = new System.Drawing.Size(541, 68);
             this.grpbSizer.TabIndex = 0;
             this.grpbSizer.TabStop = false;
             // 
@@ -432,14 +446,14 @@ namespace SmartSystemMenu.Forms
             this.grpbWindowSize.Controls.Add(this.gvWindowSize);
             this.grpbWindowSize.Location = new System.Drawing.Point(8, 87);
             this.grpbWindowSize.Name = "grpbWindowSize";
-            this.grpbWindowSize.Size = new System.Drawing.Size(497, 297);
+            this.grpbWindowSize.Size = new System.Drawing.Size(541, 297);
             this.grpbWindowSize.TabIndex = 1;
             this.grpbWindowSize.TabStop = false;
             // 
             // btnWindowSizeDown
             // 
             this.btnWindowSizeDown.Image = ((System.Drawing.Image)(resources.GetObject("btnWindowSizeDown.Image")));
-            this.btnWindowSizeDown.Location = new System.Drawing.Point(406, 268);
+            this.btnWindowSizeDown.Location = new System.Drawing.Point(450, 268);
             this.btnWindowSizeDown.Name = "btnWindowSizeDown";
             this.btnWindowSizeDown.Size = new System.Drawing.Size(31, 23);
             this.btnWindowSizeDown.TabIndex = 2;
@@ -449,7 +463,7 @@ namespace SmartSystemMenu.Forms
             // btnWindowSizeUp
             // 
             this.btnWindowSizeUp.Image = ((System.Drawing.Image)(resources.GetObject("btnWindowSizeUp.Image")));
-            this.btnWindowSizeUp.Location = new System.Drawing.Point(369, 268);
+            this.btnWindowSizeUp.Location = new System.Drawing.Point(413, 268);
             this.btnWindowSizeUp.Name = "btnWindowSizeUp";
             this.btnWindowSizeUp.Size = new System.Drawing.Size(31, 23);
             this.btnWindowSizeUp.TabIndex = 1;
@@ -458,7 +472,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnAddWindowSize
             // 
-            this.btnAddWindowSize.Location = new System.Drawing.Point(460, 268);
+            this.btnAddWindowSize.Location = new System.Drawing.Point(504, 268);
             this.btnAddWindowSize.Name = "btnAddWindowSize";
             this.btnAddWindowSize.Size = new System.Drawing.Size(31, 23);
             this.btnAddWindowSize.TabIndex = 3;
@@ -492,7 +506,7 @@ namespace SmartSystemMenu.Forms
             this.gvWindowSize.RowHeadersVisible = false;
             this.gvWindowSize.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvWindowSize.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvWindowSize.Size = new System.Drawing.Size(485, 243);
+            this.gvWindowSize.Size = new System.Drawing.Size(529, 243);
             this.gvWindowSize.TabIndex = 0;
             this.gvWindowSize.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewWindowSizeCellContentClick);
             this.gvWindowSize.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewWindowSizeCellDoubleClick);
@@ -570,7 +584,7 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.Location = new System.Drawing.Point(4, 22);
             this.tabpMenuStart.Name = "tabpMenuStart";
             this.tabpMenuStart.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpMenuStart.Size = new System.Drawing.Size(513, 390);
+            this.tabpMenuStart.Size = new System.Drawing.Size(557, 390);
             this.tabpMenuStart.TabIndex = 1;
             this.tabpMenuStart.UseVisualStyleBackColor = true;
             // 
@@ -582,14 +596,14 @@ namespace SmartSystemMenu.Forms
             this.grpbStartProgram.Controls.Add(this.gvStartProgram);
             this.grpbStartProgram.Location = new System.Drawing.Point(8, 16);
             this.grpbStartProgram.Name = "grpbStartProgram";
-            this.grpbStartProgram.Size = new System.Drawing.Size(497, 368);
+            this.grpbStartProgram.Size = new System.Drawing.Size(541, 368);
             this.grpbStartProgram.TabIndex = 0;
             this.grpbStartProgram.TabStop = false;
             // 
             // btnStartProgramDown
             // 
             this.btnStartProgramDown.Image = ((System.Drawing.Image)(resources.GetObject("btnStartProgramDown.Image")));
-            this.btnStartProgramDown.Location = new System.Drawing.Point(406, 339);
+            this.btnStartProgramDown.Location = new System.Drawing.Point(450, 339);
             this.btnStartProgramDown.Name = "btnStartProgramDown";
             this.btnStartProgramDown.Size = new System.Drawing.Size(31, 23);
             this.btnStartProgramDown.TabIndex = 2;
@@ -599,7 +613,7 @@ namespace SmartSystemMenu.Forms
             // btnStartProgramUp
             // 
             this.btnStartProgramUp.Image = ((System.Drawing.Image)(resources.GetObject("btnStartProgramUp.Image")));
-            this.btnStartProgramUp.Location = new System.Drawing.Point(369, 339);
+            this.btnStartProgramUp.Location = new System.Drawing.Point(413, 339);
             this.btnStartProgramUp.Name = "btnStartProgramUp";
             this.btnStartProgramUp.Size = new System.Drawing.Size(31, 23);
             this.btnStartProgramUp.TabIndex = 1;
@@ -608,7 +622,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnAddStartProgram
             // 
-            this.btnAddStartProgram.Location = new System.Drawing.Point(460, 339);
+            this.btnAddStartProgram.Location = new System.Drawing.Point(504, 339);
             this.btnAddStartProgram.Name = "btnAddStartProgram";
             this.btnAddStartProgram.Size = new System.Drawing.Size(31, 23);
             this.btnAddStartProgram.TabIndex = 3;
@@ -639,7 +653,7 @@ namespace SmartSystemMenu.Forms
             this.gvStartProgram.RowHeadersVisible = false;
             this.gvStartProgram.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvStartProgram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvStartProgram.Size = new System.Drawing.Size(485, 314);
+            this.gvStartProgram.Size = new System.Drawing.Size(529, 314);
             this.gvStartProgram.TabIndex = 0;
             this.gvStartProgram.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewStartProgramCellContentClick);
             this.gvStartProgram.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewStartProgramCellDoubleClick);
@@ -685,13 +699,98 @@ namespace SmartSystemMenu.Forms
             this.clmStartProgramDelete.UseColumnTextForButtonValue = true;
             this.clmStartProgramDelete.Width = 30;
             // 
+            // tabpMenuDimmer
+            // 
+            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerTransparency);
+            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerColor);
+            this.tabpMenuDimmer.Location = new System.Drawing.Point(4, 22);
+            this.tabpMenuDimmer.Name = "tabpMenuDimmer";
+            this.tabpMenuDimmer.Size = new System.Drawing.Size(557, 390);
+            this.tabpMenuDimmer.TabIndex = 5;
+            this.tabpMenuDimmer.UseVisualStyleBackColor = true;
+            // 
+            // grpbDimmerTransparency
+            // 
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyValue);
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyToValue);
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyFromValue);
+            this.grpbDimmerTransparency.Controls.Add(this.trackbDimmerTransparency);
+            this.grpbDimmerTransparency.Location = new System.Drawing.Point(8, 90);
+            this.grpbDimmerTransparency.Name = "grpbDimmerTransparency";
+            this.grpbDimmerTransparency.Size = new System.Drawing.Size(541, 100);
+            this.grpbDimmerTransparency.TabIndex = 1;
+            this.grpbDimmerTransparency.TabStop = false;
+            // 
+            // lblTransparencyValue
+            // 
+            this.lblTransparencyValue.AutoSize = true;
+            this.lblTransparencyValue.Location = new System.Drawing.Point(259, 23);
+            this.lblTransparencyValue.Name = "lblTransparencyValue";
+            this.lblTransparencyValue.Size = new System.Drawing.Size(0, 13);
+            this.lblTransparencyValue.TabIndex = 1;
+            // 
+            // lblTransparencyToValue
+            // 
+            this.lblTransparencyToValue.AutoSize = true;
+            this.lblTransparencyToValue.Location = new System.Drawing.Point(502, 23);
+            this.lblTransparencyToValue.Name = "lblTransparencyToValue";
+            this.lblTransparencyToValue.Size = new System.Drawing.Size(33, 13);
+            this.lblTransparencyToValue.TabIndex = 2;
+            this.lblTransparencyToValue.Text = "100%";
+            // 
+            // lblTransparencyFromValue
+            // 
+            this.lblTransparencyFromValue.AutoSize = true;
+            this.lblTransparencyFromValue.Location = new System.Drawing.Point(6, 23);
+            this.lblTransparencyFromValue.Name = "lblTransparencyFromValue";
+            this.lblTransparencyFromValue.Size = new System.Drawing.Size(21, 13);
+            this.lblTransparencyFromValue.TabIndex = 0;
+            this.lblTransparencyFromValue.Text = "0%";
+            // 
+            // trackbDimmerTransparency
+            // 
+            this.trackbDimmerTransparency.Location = new System.Drawing.Point(6, 39);
+            this.trackbDimmerTransparency.Maximum = 100;
+            this.trackbDimmerTransparency.Name = "trackbDimmerTransparency";
+            this.trackbDimmerTransparency.Size = new System.Drawing.Size(529, 45);
+            this.trackbDimmerTransparency.TabIndex = 3;
+            this.trackbDimmerTransparency.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackbDimmerTransparency.ValueChanged += new System.EventHandler(this.TrackbDimmerTransparencyValueChanged);
+            // 
+            // grpbDimmerColor
+            // 
+            this.grpbDimmerColor.Controls.Add(this.btnChooseDimmerColor);
+            this.grpbDimmerColor.Controls.Add(this.txtDimmerColor);
+            this.grpbDimmerColor.Location = new System.Drawing.Point(8, 16);
+            this.grpbDimmerColor.Name = "grpbDimmerColor";
+            this.grpbDimmerColor.Size = new System.Drawing.Size(541, 68);
+            this.grpbDimmerColor.TabIndex = 0;
+            this.grpbDimmerColor.TabStop = false;
+            // 
+            // btnChooseDimmerColor
+            // 
+            this.btnChooseDimmerColor.Location = new System.Drawing.Point(155, 26);
+            this.btnChooseDimmerColor.Name = "btnChooseDimmerColor";
+            this.btnChooseDimmerColor.Size = new System.Drawing.Size(54, 23);
+            this.btnChooseDimmerColor.TabIndex = 1;
+            this.btnChooseDimmerColor.Text = "...";
+            this.btnChooseDimmerColor.UseVisualStyleBackColor = true;
+            this.btnChooseDimmerColor.Click += new System.EventHandler(this.ButtonChooseDimmerColorClick);
+            // 
+            // txtDimmerColor
+            // 
+            this.txtDimmerColor.Location = new System.Drawing.Point(6, 28);
+            this.txtDimmerColor.Name = "txtDimmerColor";
+            this.txtDimmerColor.Size = new System.Drawing.Size(143, 20);
+            this.txtDimmerColor.TabIndex = 0;
+            // 
             // tabpMenuSaveSelectedItems
             // 
             this.tabpMenuSaveSelectedItems.Controls.Add(this.grpbSaveSelectedItems);
             this.tabpMenuSaveSelectedItems.Location = new System.Drawing.Point(4, 22);
             this.tabpMenuSaveSelectedItems.Name = "tabpMenuSaveSelectedItems";
             this.tabpMenuSaveSelectedItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpMenuSaveSelectedItems.Size = new System.Drawing.Size(513, 390);
+            this.tabpMenuSaveSelectedItems.Size = new System.Drawing.Size(557, 390);
             this.tabpMenuSaveSelectedItems.TabIndex = 4;
             this.tabpMenuSaveSelectedItems.UseVisualStyleBackColor = true;
             // 
@@ -707,9 +806,19 @@ namespace SmartSystemMenu.Forms
             this.grpbSaveSelectedItems.Controls.Add(this.chkAeroGlass);
             this.grpbSaveSelectedItems.Location = new System.Drawing.Point(8, 16);
             this.grpbSaveSelectedItems.Name = "grpbSaveSelectedItems";
-            this.grpbSaveSelectedItems.Size = new System.Drawing.Size(497, 368);
+            this.grpbSaveSelectedItems.Size = new System.Drawing.Size(541, 368);
             this.grpbSaveSelectedItems.TabIndex = 0;
             this.grpbSaveSelectedItems.TabStop = false;
+            // 
+            // chkButtons
+            // 
+            this.chkButtons.AutoSize = true;
+            this.chkButtons.Location = new System.Drawing.Point(6, 238);
+            this.chkButtons.Name = "chkButtons";
+            this.chkButtons.Size = new System.Drawing.Size(62, 17);
+            this.chkButtons.TabIndex = 7;
+            this.chkButtons.Text = "Buttons";
+            this.chkButtons.UseVisualStyleBackColor = true;
             // 
             // chkHideForAltTab
             // 
@@ -783,7 +892,7 @@ namespace SmartSystemMenu.Forms
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(340, 422);
+            this.btnApply.Location = new System.Drawing.Point(384, 432);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(81, 35);
             this.btnApply.TabIndex = 1;
@@ -792,28 +901,18 @@ namespace SmartSystemMenu.Forms
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(429, 422);
+            this.btnCancel.Location = new System.Drawing.Point(473, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 35);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
-            // chkButtons
-            // 
-            this.chkButtons.AutoSize = true;
-            this.chkButtons.Location = new System.Drawing.Point(6, 238);
-            this.chkButtons.Name = "chkButtons";
-            this.chkButtons.Size = new System.Drawing.Size(62, 17);
-            this.chkButtons.TabIndex = 7;
-            this.chkButtons.Text = "Buttons";
-            this.chkButtons.UseVisualStyleBackColor = true;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 492);
+            this.ClientSize = new System.Drawing.Size(565, 492);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tabMain);
@@ -842,6 +941,12 @@ namespace SmartSystemMenu.Forms
             this.tabpMenuStart.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
+            this.tabpMenuDimmer.ResumeLayout(false);
+            this.grpbDimmerTransparency.ResumeLayout(false);
+            this.grpbDimmerTransparency.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).EndInit();
+            this.grpbDimmerColor.ResumeLayout(false);
+            this.grpbDimmerColor.PerformLayout();
             this.tabpMenuSaveSelectedItems.ResumeLayout(false);
             this.grpbSaveSelectedItems.ResumeLayout(false);
             this.grpbSaveSelectedItems.PerformLayout();
@@ -916,5 +1021,14 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.CheckBox chkMinimizeToTrayAlways;
         private System.Windows.Forms.CheckBox chkHideForAltTab;
         private System.Windows.Forms.CheckBox chkButtons;
+        private System.Windows.Forms.TabPage tabpMenuDimmer;
+        private System.Windows.Forms.GroupBox grpbDimmerTransparency;
+        private System.Windows.Forms.TrackBar trackbDimmerTransparency;
+        private System.Windows.Forms.GroupBox grpbDimmerColor;
+        private System.Windows.Forms.Button btnChooseDimmerColor;
+        private System.Windows.Forms.TextBox txtDimmerColor;
+        private System.Windows.Forms.Label lblTransparencyFromValue;
+        private System.Windows.Forms.Label lblTransparencyValue;
+        private System.Windows.Forms.Label lblTransparencyToValue;
     }
 }

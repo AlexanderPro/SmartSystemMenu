@@ -45,6 +45,7 @@
         public const int WS_EX_TOPMOST = 0x00000008;
         public const int WS_EX_TOOLWINDOW = 0x00000080;
         public const int WS_EX_TRANSPARENT = 0x20;
+        public const int WS_EX_NOACTIVATE = 0x08000000;
 
         // Window Messages
         public const int WM_CREATE = 0x0001;
