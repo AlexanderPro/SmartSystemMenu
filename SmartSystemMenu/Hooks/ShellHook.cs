@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Windows.Forms;
 using SmartSystemMenu.Native;
+using static SmartSystemMenu.Native.Constants;
 using static SmartSystemMenu.Native.User32;
 
 namespace SmartSystemMenu.Hooks
 {
     class ShellHook : Hook
     {
-        private int _msgIdShellWindowCreated;
-        private int _msgIdShellWindowDestroyed;
-
         public event EventHandler<WindowEventArgs> WindowCreated;
         public event EventHandler<WindowEventArgs> WindowDestroyed;
 
@@ -18,14 +17,12 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdShellWindowCreated = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWCREATED");
-            _msgIdShellWindowDestroyed = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWDESTROYED");
-
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                ChangeWindowMessageFilter(_msgIdShellWindowCreated, Constants.MSGFLT_ADD);
-                ChangeWindowMessageFilter(_msgIdShellWindowDestroyed, Constants.MSGFLT_ADD);
+                ChangeWindowMessageFilter(WM_SSM_HOOK_HSHELL_WINDOWCREATED, MSGFLT_ADD);
+                ChangeWindowMessageFilter(WM_SSM_HOOK_HSHELL_WINDOWDESTROYED, MSGFLT_ADD);
             }
+
             NativeHookMethods.InitializeShellHook(0, _handle, _dragByMouseMenuItem);
         }
 
@@ -34,15 +31,21 @@ namespace SmartSystemMenu.Hooks
             NativeHookMethods.UninitializeShellHook();
         }
 
-        public override void ProcessWindowMessage(ref System.Windows.Forms.Message m)
+        public override void ProcessWindowMessage(ref Message m)
         {
-            if (m.Msg == _msgIdShellWindowCreated)
+            switch (m.Msg)
             {
-                RaiseEvent(WindowCreated, new WindowEventArgs(m.WParam));
-            }
-            else if (m.Msg == _msgIdShellWindowDestroyed)
-            {
-                RaiseEvent(WindowDestroyed, new WindowEventArgs(m.WParam));
+                case WM_SSM_HOOK_HSHELL_WINDOWCREATED:
+                    {
+                        RaiseEvent(WindowCreated, new WindowEventArgs(m.WParam));
+                    }
+                    break;
+
+                case WM_SSM_HOOK_HSHELL_WINDOWDESTROYED:
+                    {
+                        RaiseEvent(WindowDestroyed, new WindowEventArgs(m.WParam));
+                    }
+                    break;
             }
         }
     }

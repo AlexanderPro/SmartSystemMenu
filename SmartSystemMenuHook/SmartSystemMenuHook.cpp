@@ -76,15 +76,15 @@ static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam)
         UINT msg = 0;
 
         if (code == HCBT_CREATEWND)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_CREATEWND");
+            msg = WM_SSM_HOOK_HCBT_CREATEWND;
         else if (code == HCBT_DESTROYWND)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_DESTROYWND");
+            msg = WM_SSM_HOOK_HCBT_DESTROYWND;
         else if (code == HCBT_MINMAX)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MINMAX");
+            msg = WM_SSM_HOOK_HCBT_MINMAX;
         else if (code == HCBT_MOVESIZE)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_MOVESIZE");
+            msg = WM_SSM_HOOK_HCBT_MOVESIZE;
         else if (code == HCBT_ACTIVATE)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HCBT_ACTIVATE");
+            msg = WM_SSM_HOOK_HCBT_ACTIVATE;
 
         if (msg != 0)
         {
@@ -124,9 +124,9 @@ static LRESULT CALLBACK ShellHookCallback(int code, WPARAM wparam, LPARAM lparam
         UINT msg = 0;
 
         if (code == HSHELL_WINDOWCREATED)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWCREATED");
+            msg = WM_SSM_HOOK_HSHELL_WINDOWCREATED;
         else if (code == HSHELL_WINDOWDESTROYED)
-            msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_HSHELL_WINDOWDESTROYED");
+            msg = WM_SSM_HOOK_HSHELL_WINDOWDESTROYED;
 
         if (msg != 0)
         {
@@ -163,13 +163,9 @@ static LRESULT CALLBACK KeyboardHookCallback(int code, WPARAM wparam, LPARAM lpa
 {
     if (code == HC_ACTION)
     {
-        if((DWORD)lparam & 0x40000000)
+        if ((DWORD)lparam & 0x40000000)
         {
-            UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARD");
-            if (msg != 0)
-            {
-                SendNotifyMessage(hwndMain, msg, wparam, lparam);
-            }
+            SendNotifyMessage(hwndMain, WM_SSM_HOOK_KEYBOARD, wparam, lparam);
         }
     }
     return CallNextHookEx(hookKeyboard, code, wparam, lparam);
@@ -201,12 +197,6 @@ static LRESULT CALLBACK MouseHookCallback(int code, WPARAM wparam, LPARAM lparam
 {
     if (code >= 0)
     {
-        //UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSE");
-        //if (msg != 0)
-        //{
-        //    SendNotifyMessage(hwndMain, msg, wparam, lparam);
-        //}
-
 		if ((wparam == WM_LBUTTONUP || wparam == WM_NCLBUTTONUP) && cursorWnd != NULL)
 		{
 			RECT rect;
@@ -281,11 +271,7 @@ static LRESULT CALLBACK KeyboardLLHookCallback(int code, WPARAM wparam, LPARAM l
     if (code == HC_ACTION)
     {
         KBDLLHOOKSTRUCT* pKb = (KBDLLHOOKSTRUCT*)lparam;
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_KEYBOARDLL");
-        if (msg != 0)
-        {
-            SendNotifyMessage(hwndMain, msg, wparam, pKb->vkCode);
-        }
+        SendNotifyMessage(hwndMain, WM_SSM_HOOK_KEYBOARDLL, wparam, pKb->vkCode);
     }
 
     return CallNextHookEx(hookKeyboardLL, code, wparam, lparam);
@@ -317,11 +303,7 @@ static LRESULT CALLBACK MouseLLHookCallback(int code, WPARAM wparam, LPARAM lpar
 {
     if (code >= 0)
     {
-        UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_MOUSELL");
-        if (msg != 0)
-        {
-            SendNotifyMessage(hwndMain, msg, wparam, lparam);
-        }
+        SendNotifyMessage(hwndMain, WM_SSM_HOOK_MOUSELL, wparam, lparam);
     }
 
     return CallNextHookEx(hookMouseLL, code, wparam, lparam);
@@ -354,17 +336,11 @@ static LRESULT CALLBACK CallWndProcHookCallback(int code, WPARAM wparam, LPARAM 
     if (code >= 0)
     {
 		CWPSTRUCT* pCwpStruct = (CWPSTRUCT*)lparam;
-		if (pCwpStruct->message == WM_SYSCOMMAND)
-		{
-			UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC");
-			UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_CALLWNDPROC_PARAMS");
-
-			if (msg != 0 && pCwpStruct->message != msg && pCwpStruct->message != msg2)
-			{
-				SendNotifyMessage(hwndMain, msg, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
-				SendNotifyMessage(hwndMain, msg2, pCwpStruct->wParam, pCwpStruct->lParam);
-			}
-		}
+        if (pCwpStruct->message == WM_SYSCOMMAND)
+        {
+            SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
+            SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC_PARAMS, pCwpStruct->wParam, pCwpStruct->lParam);
+        }
     }
 
     return CallNextHookEx(hookCallWndProc, code, wparam, lparam);
@@ -399,18 +375,12 @@ static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lpara
         MSG* pMsg = (MSG*)lparam;
         if (pMsg->message == WM_SYSCOMMAND && wparam == PM_REMOVE)
         {
-			UINT msg = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG");
-			UINT msg2 = RegisterWindowMessage(L"SMART_SYSTEM_MENU_HOOK_GETMSG_PARAMS");
-
-			if (msg != 0 && pMsg->message != msg && pMsg->message != msg2)
-			{
-				//TCHAR buf[256];
-				//int error = GetLastError();
-				//wsprintf(buf, L"WM_SYSCOMMAND, Hook, WParam = %d", pMsg->wParam);
-				//OutputDebugString(buf);
-				SendNotifyMessage(hwndMain, msg, (WPARAM)pMsg->hwnd, pMsg->message);
-				SendNotifyMessage(hwndMain, msg2, pMsg->wParam, pMsg->lParam);
-			}
+            //TCHAR buf[256];
+            //int error = GetLastError();
+            //wsprintf(buf, L"WM_SYSCOMMAND, Hook, WParam = %d", pMsg->wParam);
+            //OutputDebugString(buf);
+            SendNotifyMessage(hwndMain, WM_SSM_HOOK_GETMSG, (WPARAM)pMsg->hwnd, pMsg->message);
+            SendNotifyMessage(hwndMain, WM_SSM_HOOK_GETMSG_PARAMS, pMsg->wParam, pMsg->lParam);
         }
     }
 

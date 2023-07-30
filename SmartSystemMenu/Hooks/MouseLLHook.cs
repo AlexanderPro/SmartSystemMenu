@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using static SmartSystemMenu.Native.User32;
 using static SmartSystemMenu.Native.Constants;
+using static SmartSystemMenu.Native.User32;
 
 namespace SmartSystemMenu.Hooks
 {
     class MouseLLHook : Hook
     {
-        private int _msgIdMouseLL;
-        private int _msgIdMouseLLHookReplaced;
-
         public event EventHandler<EventArgs> HookReplaced;
         public event EventHandler<BasicHookEventArgs> MouseLLEvent;
         public event EventHandler<MouseEventArgs> MouseDown;
@@ -36,14 +33,12 @@ namespace SmartSystemMenu.Hooks
 
         protected override void OnStart()
         {
-            _msgIdMouseLL = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL");
-            _msgIdMouseLLHookReplaced = RegisterWindowMessage("SMART_SYSTEM_MENU_HOOK_MOUSELL_REPLACED");
-
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                ChangeWindowMessageFilter(_msgIdMouseLL, MSGFLT_ADD);
-                ChangeWindowMessageFilter(_msgIdMouseLLHookReplaced, MSGFLT_ADD);
+                ChangeWindowMessageFilter(WM_SSM_HOOK_MOUSELL, MSGFLT_ADD);
+                ChangeWindowMessageFilter(WM_SSM_HOOK_MOUSELL_REPLACED, MSGFLT_ADD);
             }
+
             NativeHookMethods.InitializeMouseLLHook(0, _handle, _dragByMouseMenuItem);
         }
 
@@ -54,7 +49,7 @@ namespace SmartSystemMenu.Hooks
 
         public override void ProcessWindowMessage(ref Message m)
         {
-            if (m.Msg == _msgIdMouseLL)
+            if (m.Msg == WM_SSM_HOOK_MOUSELL)
             {
                 RaiseEvent(MouseLLEvent, new BasicHookEventArgs(m.WParam, m.LParam));
 
@@ -80,7 +75,7 @@ namespace SmartSystemMenu.Hooks
                     RaiseEvent(MouseUp, new MouseEventArgs(MouseButtons.Right, 0, msl.pt.X, msl.pt.Y, 0));
                 }
             }
-            else if (m.Msg == _msgIdMouseLLHookReplaced)
+            else if (m.Msg == WM_SSM_HOOK_MOUSELL_REPLACED)
             {
                 RaiseEvent(HookReplaced, EventArgs.Empty);
             }

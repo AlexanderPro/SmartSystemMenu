@@ -42,9 +42,6 @@ namespace SmartSystemMenu.Native
         public static extern bool IsWindowVisible(IntPtr handle);
 
         [DllImport("user32.dll")]
-        public static extern int RegisterWindowMessage(string lpString);
-
-        [DllImport("user32.dll")]
         public static extern IntPtr GetSystemMenu(IntPtr handle, bool revert);
 
         [DllImport("user32.dll")]
