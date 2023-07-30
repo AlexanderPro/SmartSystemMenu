@@ -235,13 +235,10 @@ namespace SmartSystemMenu.Forms
         protected override void OnClosed(EventArgs e)
         {
             _callWndProcHook?.Stop();
-            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             _getMsgHook?.Stop();
-            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             _shellHook?.Stop();
-            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             _cbtHook?.Stop();
-            SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
+            _mouseHook?.Stop();
 
             HideDimWindows();
 
@@ -252,8 +249,6 @@ namespace SmartSystemMenu.Forms
                     window.Dispose();
                 }
             }
-
-            WindowUtils.ForceAllMessageLoopsToWakeUp();
 
 #if WIN32
             _systemTrayMenu?.Dispose();
@@ -281,6 +276,7 @@ namespace SmartSystemMenu.Forms
             }
 #endif
             base.OnClosed(e);
+            PostMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
             SendNotifyMessage((IntPtr)HWND_BROADCAST, WM_NULL, 0, 0);
         }
 
