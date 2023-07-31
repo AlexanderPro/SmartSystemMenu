@@ -96,7 +96,7 @@ SmartSystemMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysonto
 
 - 下载 [SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu/releases) zip 压缩包文件
 - [Chocolatey](https://chocolatey.org/): `choco install smartsystemmenu`
-- [Scoop](https://scoop.sh/): `scoop install smartsystemmenu`
+- [Scoop](https://scoop.sh/): `scoop bucket add extras` and `scoop install extras/smartsystemmenu`
 
 要求
 --------------------
