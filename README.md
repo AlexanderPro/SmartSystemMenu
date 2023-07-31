@@ -99,7 +99,7 @@ Install
 
 * Download the [SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu/releases) in the zip file
 * [Chocolatey](https://chocolatey.org/): `choco install smartsystemmenu`
-* [Scoop](https://scoop.sh/): `scoop install smartsystemmenu`
+* [Scoop](https://scoop.sh/): `scoop bucket add extras` and `scoop install extras/smartsystemmenu`
 
 Requirements
 --------------------
