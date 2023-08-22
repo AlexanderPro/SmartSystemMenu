@@ -1,13 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <smartSystemMenu>
   <processExclusions>
-    <processName>discord.exe</processName>
     <processName>slack.exe</processName>
     <processName>dllhost.exe</processName>
     <processName>sihost.exe</processName>
     <processName>code.exe</processName>
     <processName>smartscreen.exe</processName>
   </processExclusions>
+  <createMenuOnInitEvent>
+    <processName>discord.exe</processName>
+    <processName>chrome.exe</processName>
+    <processName>msedge.exe</processName>
+    <processName>WindowsTerminal.exe</processName>
+  </createMenuOnInitEvent>
+  <noRestoreMenuOnExit>
+    <processName>discord.exe</processName>
+  </noRestoreMenuOnExit>
   <menuItems>
     <items>
       <item type="item" name="information" key1="" key2="" key3="" />

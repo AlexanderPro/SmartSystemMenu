@@ -96,7 +96,7 @@ namespace SmartSystemMenu.Forms
             btnCancel.Text = settings.Language.GetValue("settings_btn_cancel");
             Text = settings.Language.GetValue("settings_form");
 
-            foreach (var processExclusion in settings.ProcessExclusions)
+            foreach (var processExclusion in settings.ExcludedProcessNames)
             {
                 var index = gvProcessExclusions.Rows.Add();
                 var row = gvProcessExclusions.Rows[index];
@@ -543,7 +543,7 @@ namespace SmartSystemMenu.Forms
 
             foreach (DataGridViewRow row in gvProcessExclusions.Rows)
             {
-                settings.ProcessExclusions.Add(row.Cells[0].Value.ToString());
+                settings.ExcludedProcessNames.Add(row.Cells[0].Value.ToString());
             }
 
             foreach (DataGridViewRow row in gvWindowSize.Rows)
@@ -567,6 +567,16 @@ namespace SmartSystemMenu.Forms
             foreach (DataGridViewRow row in gvStartProgram.Rows)
             {
                 settings.MenuItems.StartProgramItems.Add((StartProgramMenuItem)row.Tag);
+            }
+
+            foreach (var processName in _settings.InitEventProcessNames)
+            {
+                settings.InitEventProcessNames.Add(processName);
+            }
+
+            foreach (var processName in _settings.NoRestoreMenuProcessNames)
+            {
+                settings.NoRestoreMenuProcessNames.Add(processName);
             }
 
             settings.MenuItems.Items = (IList<Settings.MenuItem>)gvHotkeys.Tag;

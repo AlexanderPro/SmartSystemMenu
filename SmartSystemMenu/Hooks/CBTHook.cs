@@ -55,7 +55,7 @@ namespace SmartSystemMenu.Hooks
 
                 case WM_SSM_HOOK_HCBT_MINMAX:
                     {
-                        RaiseEvent(MinMax, new SysCommandEventArgs(m.WParam, m.LParam));
+                        RaiseEvent(MinMax, new SysCommandEventArgs(IntPtr.Zero, IntPtr.Zero, m.WParam, m.LParam));
                     }
                     break;
 

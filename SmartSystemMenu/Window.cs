@@ -140,6 +140,8 @@ namespace SmartSystemMenu
 
         public IWin32Window Win32Window => new Win32WindowWrapper(Handle);
 
+        public bool NoRestoreMenu { get; set; }
+
         public Window(IntPtr windowHandle)
         {
             Handle = windowHandle;
@@ -188,7 +190,7 @@ namespace SmartSystemMenu
             if (_isManaged)
             {
                 RestoreFromSystemTray();
-                Menu?.Destroy();
+                Menu?.Destroy(!NoRestoreMenu);
                 _menuItemRestore?.Dispose();
                 _menuItemClose?.Dispose();
                 _systemTrayMenu?.Dispose();
@@ -679,6 +681,36 @@ namespace SmartSystemMenu
         public void SetStateMinimizeToTrayAlways(bool minimizeAlways)
         {
             State.MinimizeToTrayAlways = minimizeAlways;
+        }
+
+        public void CheckDefaultMenuItems()
+        {
+            var menuItemId = ProcessPriority.GetMenuItemId();
+            Menu.CheckMenuItem(menuItemId, true);
+            if (AlwaysOnTop)
+            {
+                Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
+            }
+
+            if (IsExToolWindow)
+            {
+                Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, true);
+            }
+
+            if (IsDisabledMinimizeButton)
+            {
+                Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON, true);
+            }
+
+            if (IsDisabledMaximizeButton)
+            {
+                Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON, true);
+            }
+
+            if (IsDisabledCloseButton)
+            {
+                Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, true);
+            }
         }
 
         public void ApplyState(WindowState state, SaveSelectedItemsSettings settings, IList<WindowSizeMenuItem> sizeItems)

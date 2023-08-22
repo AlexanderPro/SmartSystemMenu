@@ -253,10 +253,9 @@
     <Compile Include="Hooks\MouseHook.cs" />
     <Compile Include="Hooks\MouseLLHook.cs" />
     <Compile Include="Hooks\ShellHook.cs" />
-    <Compile Include="Hooks\SysCommandEventArgs.cs" />
     <Compile Include="Hooks\NativeHookMethods.cs" />
     <Compile Include="Hooks\WindowEventArgs.cs" />
-    <Compile Include="Hooks\WndProcEventArgs.cs" />
+    <Compile Include="Hooks\SysCommandEventArgs.cs" />
     <Compile Include="Forms\TransparencyForm.cs">
       <SubType>Form</SubType>
     </Compile>

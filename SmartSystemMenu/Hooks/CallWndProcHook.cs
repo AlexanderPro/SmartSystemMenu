@@ -10,7 +10,8 @@ namespace SmartSystemMenu.Hooks
         private IntPtr _cacheHandle;
         private IntPtr _cacheMessage;
 
-        public event EventHandler<WndProcEventArgs> CallWndProc;
+        public event EventHandler<SysCommandEventArgs> SysCommand;
+        public event EventHandler<SysCommandEventArgs> InitMenu;
 
         public CallWndProcHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
         {
@@ -20,8 +21,9 @@ namespace SmartSystemMenu.Hooks
         {
             if (Environment.OSVersion.Version.Major >= 6)
             {
-                ChangeWindowMessageFilter(WM_SSM_HOOK_CALLWNDPROC, MSGFLT_ADD);
-                ChangeWindowMessageFilter(WM_SSM_HOOK_CALLWNDPROC_PARAMS, MSGFLT_ADD);
+                ChangeWindowMessageFilter(WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND, MSGFLT_ADD);
+                ChangeWindowMessageFilter(WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND_PARAMS, MSGFLT_ADD);
+                ChangeWindowMessageFilter(WM_SSM_HOOK_CALLWNDPROC_INITMENU, MSGFLT_ADD);
             }
 
             NativeHookMethods.InitializeCallWndProcHook(0, _handle, _dragByMouseMenuItem);
@@ -34,19 +36,23 @@ namespace SmartSystemMenu.Hooks
 
         public override void ProcessWindowMessage(ref Message m)
         {
-            if (m.Msg == WM_SSM_HOOK_CALLWNDPROC)
+            if (m.Msg == WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND)
             {
                 _cacheHandle = m.WParam;
                 _cacheMessage = m.LParam;
             }
-            else if (m.Msg == WM_SSM_HOOK_CALLWNDPROC_PARAMS)
+            else if (m.Msg == WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND_PARAMS)
             {
-                if (CallWndProc != null && _cacheHandle != IntPtr.Zero && _cacheMessage != IntPtr.Zero)
+                if (SysCommand != null && _cacheHandle != IntPtr.Zero && _cacheMessage != IntPtr.Zero)
                 {
-                    RaiseEvent(CallWndProc, new WndProcEventArgs(_cacheHandle, _cacheMessage, m.WParam, m.LParam));
+                    RaiseEvent(SysCommand, new SysCommandEventArgs(_cacheHandle, _cacheMessage, m.WParam, m.LParam));
                 }
                 _cacheHandle = IntPtr.Zero;
                 _cacheMessage = IntPtr.Zero;
+            }
+            else if (m.Msg == WM_SSM_HOOK_CALLWNDPROC_INITMENU)
+            {
+                RaiseEvent(InitMenu, new SysCommandEventArgs(IntPtr.Zero, IntPtr.Zero, m.WParam, m.LParam));
             }
         }
     }

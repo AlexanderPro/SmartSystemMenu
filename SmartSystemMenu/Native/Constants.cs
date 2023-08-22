@@ -82,20 +82,22 @@
         public const int WM_SSM_HOOK_HCBT_MINMAX = WM_APP + 0x0203;
         public const int WM_SSM_HOOK_HCBT_MOVESIZE = WM_APP + 0x0204;
         public const int WM_SSM_HOOK_HCBT_ACTIVATE = WM_APP + 0x0205;
-        public const int WM_SSM_HOOK_CALLWNDPROC = WM_APP + 0x0206;
-        public const int WM_SSM_HOOK_CALLWNDPROC_PARAMS = WM_APP + 0x0207;
-        public const int WM_SSM_HOOK_GETMSG = WM_APP + 0x0208;
-        public const int WM_SSM_HOOK_GETMSG_PARAMS = WM_APP + 0x0209;
-        public const int WM_SSM_HOOK_KEYBOARD = WM_APP + 0x020A;
-        public const int WM_SSM_HOOK_KEYBOARD_REPLACED = WM_APP + 0x020B;
-        public const int WM_SSM_HOOK_KEYBOARDLL = WM_APP + 0x020C;
-        public const int WM_SSM_HOOK_KEYBOARDLL_REPLACED = WM_APP + 0x020D;
-        public const int WM_SSM_HOOK_MOUSE = WM_APP + 0x020E;
-        public const int WM_SSM_HOOK_MOUSE_REPLACED = WM_APP + 0x020F;
-        public const int WM_SSM_HOOK_MOUSELL = WM_APP + 0x0210;
-        public const int WM_SSM_HOOK_MOUSELL_REPLACED = WM_APP + 0x0211;
-        public const int WM_SSM_HOOK_HSHELL_WINDOWCREATED = WM_APP + 0x0212;
-        public const int WM_SSM_HOOK_HSHELL_WINDOWDESTROYED = WM_APP + 0x0213;
+        public const int WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND = WM_APP + 0x0206;
+        public const int WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND_PARAMS = WM_APP + 0x0207;
+        public const int WM_SSM_HOOK_CALLWNDPROC_INITMENU = WM_APP + 0x0208;
+        public const int WM_SSM_HOOK_GETMSG_SYSCOMMAND = WM_APP + 0x0209;
+        public const int WM_SSM_HOOK_GETMSG_SYSCOMMAND_PARAMS = WM_APP + 0x020A;
+        public const int WM_SSM_HOOK_GETMSG_INITMENU = WM_APP + 0x020B;
+        public const int WM_SSM_HOOK_KEYBOARD = WM_APP + 0x020C;
+        public const int WM_SSM_HOOK_KEYBOARD_REPLACED = WM_APP + 0x020D;
+        public const int WM_SSM_HOOK_KEYBOARDLL = WM_APP + 0x020E;
+        public const int WM_SSM_HOOK_KEYBOARDLL_REPLACED = WM_APP + 0x020F;
+        public const int WM_SSM_HOOK_MOUSE = WM_APP + 0x0210;
+        public const int WM_SSM_HOOK_MOUSE_REPLACED = WM_APP + 0x0211;
+        public const int WM_SSM_HOOK_MOUSELL = WM_APP + 0x0212;
+        public const int WM_SSM_HOOK_MOUSELL_REPLACED = WM_APP + 0x0213;
+        public const int WM_SSM_HOOK_HSHELL_WINDOWCREATED = WM_APP + 0x0214;
+        public const int WM_SSM_HOOK_HSHELL_WINDOWDESTROYED = WM_APP + 0x0215;
 
         // SetWindowPos
         public const uint SWP_NOSIZE = 0x0001;

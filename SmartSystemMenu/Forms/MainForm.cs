@@ -128,7 +128,7 @@ namespace SmartSystemMenu.Forms
             {
                 var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
                 var fileName = Path.GetFileName(processPath);
-                if (!string.IsNullOrEmpty(fileName) && _settings.ProcessExclusions.Contains(fileName.ToLower()))
+                if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessNames.Contains(fileName.ToLower()) || _settings.InitEventProcessNames.Contains(fileName.ToLower()))
                 {
                     continue;
                 }
@@ -136,31 +136,8 @@ namespace SmartSystemMenu.Forms
                 var isAdded = window.Menu.Create();
                 if (isAdded)
                 {
-                    window.Menu.CheckMenuItem(window.ProcessPriority.GetMenuItemId(), true);
-                    if (window.AlwaysOnTop)
-                    {
-                        window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
-                    }
-
-                    if (window.IsExToolWindow)
-                    {
-                        window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, true);
-                    }
-
-                    if (window.IsDisabledMinimizeButton)
-                    {
-                        window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON, true);
-                    }
-
-                    if (window.IsDisabledMaximizeButton)
-                    {
-                        window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON, true);
-                    }
-
-                    if (window.IsDisabledCloseButton)
-                    {
-                        window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, true);
-                    }
+                    window.CheckDefaultMenuItems();
+                    window.NoRestoreMenu = !string.IsNullOrEmpty(fileName) && _settings.NoRestoreMenuProcessNames.Contains(fileName.ToLower());
 
                     var windowClassName = window.GetClassName();
                     var states = _windowSettings.Find(windowClassName, processPath);
@@ -173,11 +150,13 @@ namespace SmartSystemMenu.Forms
             }
 
             _callWndProcHook = new CallWndProcHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
-            _callWndProcHook.CallWndProc += WindowProc;
+            _callWndProcHook.SysCommand += SysCommand;
+            _callWndProcHook.InitMenu += InitMenu;
             _callWndProcHook.Start();
 
             _getMsgHook = new GetMsgHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
-            _getMsgHook.GetMsg += WindowGetMsg;
+            _getMsgHook.SysCommand += SysCommand;
+            _getMsgHook.InitMenu += InitMenu;
             _getMsgHook.Start();
 
             _shellHook = new ShellHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
@@ -414,64 +393,79 @@ namespace SmartSystemMenu.Forms
             if (e.Handle != IntPtr.Zero && !_windows.Any(w => w.Handle == e.Handle))
             {
                 GetWindowThreadProcessId(e.Handle, out int processId);
-                var window = new Window(e.Handle, _settings.MenuItems, _settings.Language);
-                var filterTitles = new string[] { SHELL_WINDOW_NAME };
-                bool isWriteProcess;
-#if WIN32
-                isWriteProcess = !Environment.Is64BitOperatingSystem || SystemUtils.IsWow64Process(processId);
-#else
-                isWriteProcess = Environment.Is64BitOperatingSystem && !SystemUtils.IsWow64Process(processId);
-#endif
-
-                if (isWriteProcess && !filterTitles.Any(s => window.GetWindowText() == s))
+                var process = SystemUtils.GetProcessByIdSafely(processId);
+                var processPath = process?.GetMainModuleFileName() ?? string.Empty;
+                var fileName = Path.GetFileName(processPath);
+                if (!string.IsNullOrEmpty(fileName) &&
+                    _settings.ExcludedProcessNames.Contains(fileName.ToLower()) || _settings.InitEventProcessNames.Contains(fileName.ToLower()))
                 {
-                    var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
-                    var fileName = Path.GetFileName(processPath);
-                    if (!string.IsNullOrEmpty(fileName) && _settings.ProcessExclusions.Contains(fileName.ToLower()))
+                    return;
+                }
+
+                var window = new Window(e.Handle, _settings.MenuItems, _settings.Language);
+                CreateMenu(window, processId, processPath);
+            }
+        }
+
+        private void InitMenu(object sender, SysCommandEventArgs e)
+        {
+            if (e.WParam != IntPtr.Zero && IsWindowVisible(e.WParam))
+            {
+                GetWindowThreadProcessId(e.WParam, out int processId);
+                var process = SystemUtils.GetProcessByIdSafely(processId);
+                var processPath = process?.GetMainModuleFileName() ?? string.Empty;
+                var fileName = Path.GetFileName(processPath);
+                if (!string.IsNullOrEmpty(fileName) &&
+                    _settings.ExcludedProcessNames.Contains(fileName.ToLower()) || !_settings.InitEventProcessNames.Contains(fileName.ToLower()))
+                {
+                    return;
+                }
+
+                var window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
+                if (window == null)
+                {
+                    window = new Window(e.WParam, _settings.MenuItems, _settings.Language);
+                    CreateMenu(window, processId, processPath);
+                }
+                else
+                {
+                    var systemMenuHandle = window.Menu.MenuHandle;
+                    if (systemMenuHandle != IntPtr.Zero && !window.Menu.IsMenuItem(systemMenuHandle, MenuItemId.SC_SEPARATOR_BOTTOM))
                     {
-                        return;
+                        CreateMenu(window, processId, processPath);
                     }
+                }
+            }
+        }
 
-                    var isAdded = window.Menu.Create();
-                    if (isAdded)
+        private void CreateMenu(Window window, int processId, string processPath)
+        {
+            bool isWriteProcess;
+#if WIN32
+            isWriteProcess = !Environment.Is64BitOperatingSystem || SystemUtils.IsWow64Process(processId);
+#else
+            isWriteProcess = Environment.Is64BitOperatingSystem && !SystemUtils.IsWow64Process(processId);
+#endif
+            var filterTitles = new string[] { SHELL_WINDOW_NAME };
+            if (isWriteProcess && !filterTitles.Any(s => window.GetWindowText() == s))
+            {
+                var isAdded = window.Menu.Create();
+                if (isAdded)
+                {
+                    window.CheckDefaultMenuItems();
+                    
+                    var fileName = Path.GetFileName(processPath);
+                    window.NoRestoreMenu = !string.IsNullOrEmpty(fileName) && _settings.NoRestoreMenuProcessNames.Contains(fileName.ToLower());
+                    
+                    _windows.Add(window);
+
+                    var windowClassName = window.GetClassName();
+                    var isConsoleClassName = string.Compare(windowClassName, Window.ConsoleClassName, StringComparison.CurrentCulture) == 0;
+                    var states = isConsoleClassName ? _windowSettings.Find(windowClassName) : _windowSettings.Find(windowClassName, processPath);
+                    if (states.Any())
                     {
-                        var menuItemId = window.ProcessPriority.GetMenuItemId();
-                        window.Menu.CheckMenuItem(menuItemId, true);
-                        if (window.AlwaysOnTop)
-                        {
-                            window.Menu.CheckMenuItem(MenuItemId.SC_TOPMOST, true);
-                        }
-
-                        if (window.IsExToolWindow)
-                        {
-                            window.Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, true);
-                        }
-
-                        if (window.IsDisabledMinimizeButton)
-                        {
-                            window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MINIMIZE_BUTTON, true);
-                        }
-
-                        if (window.IsDisabledMaximizeButton)
-                        {
-                            window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_MAXIMIZE_BUTTON, true);
-                        }
-
-                        if (window.IsDisabledCloseButton)
-                        {
-                            window.Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, true);
-                        }
-
-                        _windows.Add(window);
-
-                        var windowClassName = window.GetClassName();
-                        var isConsoleClassName = string.Compare(windowClassName, Window.ConsoleClassName, StringComparison.CurrentCulture) == 0;
-                        var states = isConsoleClassName ? _windowSettings.Find(windowClassName) : _windowSettings.Find(windowClassName, processPath);
-                        if (states.Any())
-                        {
-                            window.ApplyState(states[0], _settings.SaveSelectedItems, _settings.MenuItems.WindowSizeItems);
-                            window.Menu.CheckMenuItem(MenuItemId.SC_SAVE_SELECTED_ITEMS, true);
-                        }
+                        window.ApplyState(states[0], _settings.SaveSelectedItems, _settings.MenuItems.WindowSizeItems);
+                        window.Menu.CheckMenuItem(MenuItemId.SC_SAVE_SELECTED_ITEMS, true);
                     }
                 }
             }
@@ -547,11 +541,6 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void WindowProc(object sender, WndProcEventArgs e)
-        {
-            WindowGetMsg(sender, new WndProcEventArgs(e.Handle, e.Message, e.WParam, e.LParam));
-        }
-
         private void WindowActivate(object sender, WindowEventArgs e)
         {
             if (_dimHandle == e.Handle)
@@ -560,7 +549,7 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void WindowGetMsg(object sender, WndProcEventArgs e)
+        private void SysCommand(object sender, SysCommandEventArgs e)
         {
             var message = e.Message.ToInt64();
             if (message == WM_SYSCOMMAND)
@@ -1111,7 +1100,7 @@ namespace SmartSystemMenu.Forms
                 {
                 }
 
-                if (!_settings.ProcessExclusions.Contains(processName.ToLower()))
+                if (!_settings.ExcludedProcessNames.Contains(processName.ToLower()))
                 {
                     PostMessage(handle, WM_SYSCOMMAND, (uint)e.MenuItemId, 0);
                     e.Succeeded = true;

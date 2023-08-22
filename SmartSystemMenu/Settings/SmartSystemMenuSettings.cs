@@ -11,7 +11,11 @@ namespace SmartSystemMenu.Settings
 {
     public class SmartSystemMenuSettings : ICloneable
     {
-        public IList<string> ProcessExclusions { get; private set; }
+        public IList<string> ExcludedProcessNames { get; private set; }
+
+        public IList<string> InitEventProcessNames { get; private set; }
+
+        public IList<string> NoRestoreMenuProcessNames { get; private set; }
 
         public MenuItems MenuItems { get; private set; }
 
@@ -34,7 +38,9 @@ namespace SmartSystemMenu.Settings
 
         public SmartSystemMenuSettings()
         {
-            ProcessExclusions = new List<string>();
+            ExcludedProcessNames = new List<string>();
+            InitEventProcessNames = new List<string>();
+            NoRestoreMenuProcessNames = new List<string>();
             MenuItems = new MenuItems();
             Closer = new CloserSettings();
             Dimmer = new DimmerSettings();
@@ -50,9 +56,19 @@ namespace SmartSystemMenu.Settings
         {
             var settings = new SmartSystemMenuSettings();
 
-            foreach (var processExclusion in ProcessExclusions)
+            foreach (var processName in ExcludedProcessNames)
             {
-                settings.ProcessExclusions.Add(processExclusion);
+                settings.ExcludedProcessNames.Add(processName);
+            }
+
+            foreach (var processName in InitEventProcessNames)
+            {
+                settings.InitEventProcessNames.Add(processName);
+            }
+
+            foreach (var processName in NoRestoreMenuProcessNames)
+            {
+                settings.NoRestoreMenuProcessNames.Add(processName);
             }
 
             foreach (var menuItem in MenuItems.WindowSizeItems)
@@ -122,7 +138,17 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
-            if (ProcessExclusions.Count != other.ProcessExclusions.Count)
+            if (ExcludedProcessNames.Count != other.ExcludedProcessNames.Count)
+            {
+                return false;
+            }
+
+            if (InitEventProcessNames.Count != other.InitEventProcessNames.Count)
+            {
+                return false;
+            }
+
+            if (NoRestoreMenuProcessNames.Count != other.NoRestoreMenuProcessNames.Count)
             {
                 return false;
             }
@@ -142,9 +168,25 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
-            for (var i = 0; i < ProcessExclusions.Count; i++)
+            for (var i = 0; i < ExcludedProcessNames.Count; i++)
             {
-                if (string.Compare(ProcessExclusions[i], other.ProcessExclusions[i], StringComparison.CurrentCultureIgnoreCase) != 0)
+                if (string.Compare(ExcludedProcessNames[i], other.ExcludedProcessNames[i], StringComparison.CurrentCultureIgnoreCase) != 0)
+                {
+                    return false;
+                }
+            }
+
+            for (var i = 0; i < InitEventProcessNames.Count; i++)
+            {
+                if (string.Compare(InitEventProcessNames[i], other.InitEventProcessNames[i], StringComparison.CurrentCultureIgnoreCase) != 0)
+                {
+                    return false;
+                }
+            }
+
+            for (var i = 0; i < NoRestoreMenuProcessNames.Count; i++)
+            {
+                if (string.Compare(NoRestoreMenuProcessNames[i], other.NoRestoreMenuProcessNames[i], StringComparison.CurrentCultureIgnoreCase) != 0)
                 {
                     return false;
                 }
@@ -260,9 +302,19 @@ namespace SmartSystemMenu.Settings
         {
             var hashCode = 0;
 
-            foreach (var processExclusion in ProcessExclusions)
+            foreach (var processName in ExcludedProcessNames)
             {
-                hashCode ^= processExclusion.GetHashCode();
+                hashCode ^= processName.GetHashCode();
+            }
+
+            foreach (var processName in InitEventProcessNames)
+            {
+                hashCode ^= processName.GetHashCode();
+            }
+
+            foreach (var processName in NoRestoreMenuProcessNames)
+            {
+                hashCode ^= processName.GetHashCode();
             }
 
             foreach (var item in MenuItems.WindowSizeItems)
@@ -311,8 +363,20 @@ namespace SmartSystemMenu.Settings
             var document = XDocument.Load(fileName);
             var languageDocument = XDocument.Load(languageFileName);
 
-            settings.ProcessExclusions = document
+            settings.ExcludedProcessNames = document
                 .XPathSelectElements("/smartSystemMenu/processExclusions/processName")
+                .Where(x => !string.IsNullOrWhiteSpace(x.Value))
+                .Select(x => x.Value.ToLower())
+                .ToList();
+
+            settings.InitEventProcessNames = document
+                .XPathSelectElements("/smartSystemMenu/createMenuOnInitEvent/processName")
+                .Where(x => !string.IsNullOrWhiteSpace(x.Value))
+                .Select(x => x.Value.ToLower())
+                .ToList();
+
+            settings.NoRestoreMenuProcessNames = document
+                .XPathSelectElements("/smartSystemMenu/noRestoreMenuOnExit/processName")
                 .Where(x => !string.IsNullOrWhiteSpace(x.Value))
                 .Select(x => x.Value.ToLower())
                 .ToList();
@@ -502,7 +566,9 @@ namespace SmartSystemMenu.Settings
         {
             var document = new XDocument();
             document.Add(new XElement("smartSystemMenu",
-                                 new XElement("processExclusions", settings.ProcessExclusions.Select(x => new XElement("processName", x))),
+                                 new XElement("processExclusions", settings.ExcludedProcessNames.Select(x => new XElement("processName", x))),
+                                 new XElement("createMenuOnInitEvent", settings.InitEventProcessNames.Select(x => new XElement("processName", x))),
+                                 new XElement("noRestoreMenuOnExit", settings.NoRestoreMenuProcessNames.Select(x => new XElement("processName", x))),
                                  new XElement("menuItems",
                                      new XElement("items", settings.MenuItems.Items.Select(x => new XElement("item",
                                          new XAttribute("type", x.Type.ToString()),

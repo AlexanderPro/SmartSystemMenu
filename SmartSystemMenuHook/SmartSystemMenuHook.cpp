@@ -336,10 +336,18 @@ static LRESULT CALLBACK CallWndProcHookCallback(int code, WPARAM wparam, LPARAM 
     if (code >= 0)
     {
 		CWPSTRUCT* pCwpStruct = (CWPSTRUCT*)lparam;
-        if (pCwpStruct->message == WM_SYSCOMMAND)
+        switch (pCwpStruct->message)
         {
-            SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
-            SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC_PARAMS, pCwpStruct->wParam, pCwpStruct->lParam);
+            case WM_SYSCOMMAND:
+            {
+                SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
+                SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC_SYSCOMMAND_PARAMS, pCwpStruct->wParam, pCwpStruct->lParam);
+            } break;
+
+            case WM_INITMENUPOPUP:
+            {
+                SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC_INITMENU, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
+            } break;
         }
     }
 
@@ -370,17 +378,21 @@ DLLEXPORT void __stdcall UninitializeGetMsgHook()
 
 static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lparam)
 {
-    if (code >= 0)
+    if (code >= 0 && wparam == PM_REMOVE)
     {
         MSG* pMsg = (MSG*)lparam;
-        if (pMsg->message == WM_SYSCOMMAND && wparam == PM_REMOVE)
+        switch (pMsg->message)
         {
-            //TCHAR buf[256];
-            //int error = GetLastError();
-            //wsprintf(buf, L"WM_SYSCOMMAND, Hook, WParam = %d", pMsg->wParam);
-            //OutputDebugString(buf);
-            SendNotifyMessage(hwndMain, WM_SSM_HOOK_GETMSG, (WPARAM)pMsg->hwnd, pMsg->message);
-            SendNotifyMessage(hwndMain, WM_SSM_HOOK_GETMSG_PARAMS, pMsg->wParam, pMsg->lParam);
+            case WM_SYSCOMMAND:
+            {
+                SendNotifyMessage(hwndMain, WM_SSM_HOOK_GETMSG_SYSCOMMAND, (WPARAM)pMsg->hwnd, pMsg->message);
+                SendNotifyMessage(hwndMain, WM_SSM_HOOK_GETMSG_SYSCOMMAND_PARAMS, pMsg->wParam, pMsg->lParam);
+            } break;
+
+            case WM_INITMENUPOPUP:
+            {
+                SendNotifyMessage(hwndMain, WM_SSM_HOOK_GETMSG_INITMENU, (WPARAM)pMsg->hwnd, pMsg->message);
+            } break;
         }
     }
 

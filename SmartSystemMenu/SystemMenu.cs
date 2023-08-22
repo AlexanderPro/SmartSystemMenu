@@ -142,9 +142,13 @@ namespace SmartSystemMenu
             return true;
         }
 
-        public void Destroy()
+        public void Destroy(bool restoreMenu = true)
         {
             var menuHandle = GetSystemMenu(WindowHandle, false);
+            if (menuHandle == IntPtr.Zero)
+            {
+                return;
+            }
 
             foreach (var item in _menuItems.Items.Where(x => x.Show))
             {
@@ -157,10 +161,13 @@ namespace SmartSystemMenu
 
             DeleteMenu(menuHandle, MenuItemId.SC_SEPARATOR_BOTTOM, Constants.MF_BYCOMMAND);
 
-            var numberItems = GetMenuItemCount(menuHandle);
-            if (numberItems == DEFAULT_SYSTEM_MENU_NUMBER_ITEMS)
+            if (restoreMenu)
             {
-                GetSystemMenu(WindowHandle, true);
+                var numberItems = GetMenuItemCount(menuHandle);
+                if (numberItems == DEFAULT_SYSTEM_MENU_NUMBER_ITEMS)
+                {
+                    GetSystemMenu(WindowHandle, true);
+                }
             }
         }
 
@@ -239,6 +246,14 @@ namespace SmartSystemMenu
             CheckMenuItem(MenuItemId.SC_TRANS_DEFAULT, false);
         }
 
+        public bool IsMenuItem(IntPtr menuHandle, int item)
+        {
+            var mmi = new MenuItemInfo();
+            mmi.cbSize = (uint)Marshal.SizeOf(mmi);
+            mmi.fMask = MIIM.ID;
+            return GetMenuItemInfo(menuHandle, item, false, ref mmi);
+        }
+
         private string GetTransparencyTitle(int id) => id switch
         {
             MenuItemId.SC_TRANS_00 => "0%" + GetTitle("trans_opaque", null, false),
@@ -287,14 +302,6 @@ namespace SmartSystemMenu
             }
 
             return true;
-        }
-
-        private bool IsMenuItem(IntPtr menuHandle, int item)
-        {
-            var mmi = new MenuItemInfo();
-            mmi.cbSize = (uint)Marshal.SizeOf(mmi);
-            mmi.fMask = MIIM.ID;
-            return GetMenuItemInfo(menuHandle, item, false, ref mmi);
         }
     }
 }
