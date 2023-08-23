@@ -476,36 +476,36 @@
     </de>
     <zh_cn>
       <item name="separator" value="分隔线" />
-      <item name="information" value="信息" />
-      <item name="roll_up" value="卷起" />
+      <item name="information" value="详细信息" />
+      <item name="roll_up" value="卷起窗口" />
       <item name="aero_glass" value="毛玻璃效果" />
-      <item name="always_on_top" value="窗口置顶" />
-      <item name="send_to_bottom" value="移至最底层" />
+      <item name="always_on_top" value="窗口始终置顶" />
+      <item name="send_to_bottom" value="窗口置底" />
       <item name="save_screenshot" value="保存窗口截图" />
-      <item name="open_file_in_explorer" value="在资源管理器中打开文件" />
-      <item name="clipboard" value="剪贴板" />
+      <item name="open_file_in_explorer" value="在资源管理器中进入程序路径" />
+      <item name="clipboard" value="剪贴板操作" />
       <item name="copy_screenshot" value="复制窗口截图" />
       <item name="copy_window_text" value="复制窗口文本" />
       <item name="copy_window_title" value="复制窗口标题" />
-      <item name="copy_full_process_path" value="复制完整的进程路径" />
-      <item name="clear_clipboard" value="清除" />
+      <item name="copy_full_process_path" value="复制完整程序路径" />
+      <item name="clear_clipboard" value="清除剪贴板" />
       <item name="drag_by_mouse" value="通过鼠标拖动" />
-      <item name="hide_for_alt_tab" value="在 Alt+Tab 中隐藏" />
-      <item name="click_through" value="点击窗口" />
-      <item name="size" value="调整窗口大小" />
+      <item name="hide_for_alt_tab" value="在 Alt+Tab 列表中隐藏" />
+      <item name="click_through" value="点击时透过窗口" />
+      <item name="size" value="调整窗口大小为" />
       <item name="size_default" value="默认" />
       <item name="size_custom" value="自定义..." />
       <item name="move_to" value="移动到" />
       <item name="monitor" value="显示器" />
-      <item name="alignment" value="对齐" />
+      <item name="alignment" value="对齐窗口到" />
       <item name="align_top_left" value="左上角" />
-      <item name="align_top_center" value="顶部中心" />
+      <item name="align_top_center" value="中间上侧" />
       <item name="align_top_right" value="右上角" />
       <item name="align_middle_left" value="中间左侧" />
       <item name="align_middle_center" value="正中央" />
       <item name="align_middle_right" value="中间右侧" />
       <item name="align_bottom_left" value="左下角" />
-      <item name="align_bottom_center" value="底部中心" />
+      <item name="align_bottom_center" value="中间下侧" />
       <item name="align_bottom_right" value="右下角" />
       <item name="align_center_horizontally" value="水平居中" />
       <item name="align_center_vertically" value="垂直居中" />
@@ -527,30 +527,30 @@
       <item name="minimize_to_systemtray" value="最小化到托盘" />
       <item name="minimize_always_to_systemtray" value="始终最小化到托盘" />
       <item name="suspend_to_systemtray" value="挂起并最小化到托盘" />
-      <item name="other_windows" value="其他窗口" />
+      <item name="other_windows" value="其他窗口操作" />
       <item name="minimize_other_windows" value="最小化" />
       <item name="close_other_windows" value="关闭" />
-      <item name="start_program" value="启动程序" />
-      <item name="save_selected_items" value="保存" />
-      <item name="dimmer" value="窗户调光器" />
-      <item name="dimmer_on" value="在" />
-      <item name="dimmer_off" value="离开" />
-      <item name="buttons" value="纽扣" />
+      <item name="start_program" value="启动" />
+      <item name="save_selected_items" value="保存设置" />
+      <item name="dimmer" value="突出窗口操作" />
+      <item name="dimmer_on" value="开" />
+      <item name="dimmer_off" value="关" />
+      <item name="buttons" value="按钮操作" />
       <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按钮" />
       <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按钮" />
       <item name="disable_close_button" value="禁用&quot;关闭&quot;按钮" />
       <item name="grp_window" value="窗口" />
       <item name="grp_process" value="进程" />
-      <item name="lbl_get_window_text" value="GetWindowText:" />
-      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
-      <item name="lbl_get_class_name" value="GetClassName:" />
-      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_get_window_text" value="窗口标题:" />
+      <item name="lbl_wm_gettext" value="窗口文本:" />
+      <item name="lbl_get_class_name" value="窗口类名:" />
+      <item name="lbl_real_get_window_class" value="窗口真类名:" />
       <item name="lbl_font_name" value="字体名称:" />
       <item name="lbl_window_handle" value="窗口句柄:" />
       <item name="lbl_parent_window_handle" value="父窗口句柄:" />
       <item name="lbl_window_size" value="窗口大小:" />
       <item name="lbl_window_position" value="窗口位置:" />
-      <item name="lbl_extended_frame_bounds" value="Extended Frame Bounds:" />
+      <item name="lbl_extended_frame_bounds" value="扩展帧界:" />
       <item name="lbl_instance" value="实例:" />
       <item name="lbl_process_id" value="进程ID:" />
       <item name="lbl_thread_id" value="线程ID:" />
