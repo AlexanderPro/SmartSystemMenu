@@ -11,6 +11,7 @@
     <processName>discord.exe</processName>
     <processName>chrome.exe</processName>
     <processName>msedge.exe</processName>
+    <processName>firefox.exe</processName>
     <processName>WindowsTerminal.exe</processName>
   </createMenuOnInitEvent>
   <noRestoreMenuOnExit>
