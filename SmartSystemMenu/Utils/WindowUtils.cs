@@ -19,8 +19,7 @@ namespace SmartSystemMenu.Utils
     {
         public static Bitmap PrintWindow(IntPtr hWnd)
         {
-            Rect rect;
-            GetWindowRect(hWnd, out rect);
+            GetWindowRect(hWnd, out var rect);
             var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             using var graphics = Graphics.FromImage(bitmap);
             var hdc = graphics.GetHdc();
@@ -31,8 +30,8 @@ namespace SmartSystemMenu.Utils
 
         public static IntPtr GetParentWindow(IntPtr hWnd)
         {
+            IntPtr parentHwnd;
             var resultHwnd = hWnd;
-            var parentHwnd = IntPtr.Zero;
             while ((parentHwnd = GetParent(resultHwnd)) != IntPtr.Zero)
             {
                 resultHwnd = parentHwnd;
@@ -42,7 +41,7 @@ namespace SmartSystemMenu.Utils
 
         public static uint GetThreadId(IntPtr hWnd)
         {
-            uint threadId = GetWindowThreadProcessId(hWnd, out var processId);
+            uint threadId = GetWindowThreadProcessId(hWnd, out _);
             return threadId;
         }
 
@@ -69,8 +68,7 @@ namespace SmartSystemMenu.Utils
                     var error = Marshal.GetLastWin32Error();
                     throw new Win32Exception(error);
                 }
-                ConsoleScreenBufferInfo binfo;
-                result = GetConsoleScreenBufferInfo(handle, out binfo);
+                result = GetConsoleScreenBufferInfo(handle, out var binfo);
                 if (!result)
                 {
                     var error = Marshal.GetLastWin32Error();
@@ -81,8 +79,7 @@ namespace SmartSystemMenu.Utils
                 var textBuilder = new StringBuilder();
                 for (var i = 0; i < binfo.dwSize.Y; i++)
                 {
-                    uint numberOfCharsRead;
-                    if (ReadConsoleOutputCharacter(handle, buffer, (uint)buffer.Length, new Coord(0, (short)i), out numberOfCharsRead))
+                    if (ReadConsoleOutputCharacter(handle, buffer, (uint)buffer.Length, new Coord(0, (short)i), out var numberOfCharsRead))
                     {
                         textBuilder.AppendLine(new string(buffer));
                     }
@@ -241,8 +238,7 @@ namespace SmartSystemMenu.Utils
             IntPtr icon;
             try
             {
-                uint result;
-                SendMessageTimeout(hWnd, WM_GETICON, ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out result);
+                SendMessageTimeout(hWnd, WM_GETICON, ICON_SMALL2, 0, SendMessageTimeoutFlags.SMTO_ABORTIFHUNG, 100, out var result);
                 icon = new IntPtr(result);
 
                 if (icon == IntPtr.Zero)
@@ -349,10 +345,9 @@ namespace SmartSystemMenu.Utils
                         {
                             builder.AppendLine(window.Current.Name).AppendLine();
 
-                            object pattern;
-                            if (!string.IsNullOrEmpty(window.Current.ClassName) && window.TryGetCurrentPattern(TextPattern.Pattern, out pattern) && pattern is TextPattern)
+                            if (!string.IsNullOrEmpty(window.Current.ClassName) && window.TryGetCurrentPattern(TextPattern.Pattern, out var pattern) && pattern is TextPattern textPattern)
                             {
-                                var text = ((TextPattern)pattern).DocumentRange.GetText(-1);
+                                var text = textPattern.DocumentRange.GetText(-1);
                                 if (!string.IsNullOrEmpty(text))
                                 {
                                     builder.AppendLine(text).AppendLine();
@@ -414,10 +409,12 @@ namespace SmartSystemMenu.Utils
             try
             {
                 Marshal.StructureToPtr(accent, accentPtr, false);
-                var data = new WindowCompositionAttributeData();
-                data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
-                data.SizeOfData = accentStructSize;
-                data.Data = accentPtr;
+                var data = new WindowCompositionAttributeData
+                {
+                    Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,
+                    SizeOfData = accentStructSize,
+                    Data = accentPtr
+                };
                 SetWindowCompositionAttribute(hWnd, ref data);
             }
             finally

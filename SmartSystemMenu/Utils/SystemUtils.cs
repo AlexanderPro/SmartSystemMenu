@@ -28,8 +28,7 @@ namespace SmartSystemMenu
                 var process = GetProcessByIdSafely(processId);
                 if (process != null)
                 {
-                    bool retVal;
-                    if (!Kernel32.IsWow64Process(process.GetHandle(), out retVal))
+                    if (!Kernel32.IsWow64Process(process.GetHandle(), out var retVal))
                     {
                         return false;
                     }
@@ -182,8 +181,7 @@ namespace SmartSystemMenu
             try
             {
                 // Get the PID of the desktop shell process.
-                int dwPID;
-                if (GetWindowThreadProcessId(hwnd, out dwPID) == 0)
+                if (GetWindowThreadProcessId(hwnd, out var dwPID) == 0)
                 {
                     return;
                 }
