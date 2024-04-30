@@ -4,6 +4,7 @@
     <en>
       <item name="separator" value="Separator" />
       <item name="information" value="Information" />
+      <item name="hide" value="Hide" />
       <item name="roll_up" value="Roll Up" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Always On Top" />
@@ -241,6 +242,7 @@
     <de>
       <item name="separator" value="Separator" />
       <item name="information" value="Information" />
+      <item name="hide" value="Verstecken" />
       <item name="roll_up" value="Verkleinern nach oben" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Immer im Vordergrund" />
@@ -477,6 +479,7 @@
     <zh_cn>
       <item name="separator" value="分隔线" />
       <item name="information" value="详细信息" />
+      <item name="hide" value="隐藏" />
       <item name="roll_up" value="卷起窗口" />
       <item name="aero_glass" value="毛玻璃效果" />
       <item name="always_on_top" value="窗口始终置顶" />
@@ -712,6 +715,7 @@
     <zh_tw>
       <item name="separator" value="分隔線" />
       <item name="information" value="資訊" />
+      <item name="hide" value="隱藏" />
       <item name="roll_up" value="縮合" />
       <item name="aero_glass" value="Aero 半透明效果" />
       <item name="always_on_top" value="視窗置頂" />
@@ -949,6 +953,7 @@
     <ja>
       <item name="separator" value="セパレーター" />
       <item name="information" value="情報" />
+      <item name="hide" value="隠れる" />
       <item name="roll_up" value="ロールアップ" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="常に手前に表示" />
@@ -1184,6 +1189,7 @@
     <ko>
       <item name="separator" value="분리 기호" />
       <item name="information" value="정보" />
+      <item name="hide" value="숨다" />
       <item name="roll_up" value="접기" />
       <item name="aero_glass" value="에어로 글래스" />
       <item name="always_on_top" value="항상 위에 표시" />
@@ -1421,6 +1427,7 @@
     <ru>
       <item name="separator" value="Разделитель" />
       <item name="information" value="Информация" />
+      <item name="hide" value="Скрыть" />
       <item name="roll_up" value="Свернуть вверх" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Поверх остальных" />
@@ -1656,6 +1663,7 @@
     <sr>
       <item name="separator" value="Сепаратор" />
       <item name="information" value="Информација програма" />
+      <item name="hide" value="Сакрити" />
       <item name="roll_up" value="Замотај" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Увек испред" />
@@ -1891,6 +1899,7 @@
     <pt>
       <item name="separator" value="Separador" />
       <item name="information" value="Informações do executável atual" />
+      <item name="hide" value="Esconder" />
       <item name="roll_up" value="Enrolar" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Manter esta janela sempre na frente" />
@@ -2126,6 +2135,7 @@
     <it>
       <item name="separator" value="Separatore" />
       <item name="information" value="Informazioni" />
+      <item name="hide" value="Nascondere" />
       <item name="roll_up" value="Roll up" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Sempre in primo piano" />
@@ -2363,6 +2373,7 @@
     <fr>
       <item name="separator" value="Séparateur" />
       <item name="information" value="Information" />
+      <item name="hide" value="Cacher" />
       <item name="roll_up" value="Enrouler" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Toujours au premier plan" />
@@ -2600,6 +2611,7 @@
     <hu>
       <item name="separator" value="Elválasztó" />
       <item name="information" value="Információ" />
+      <item name="hide" value="Elrejt" />
       <item name="roll_up" value="Fölfelé" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Mindig fölül" />

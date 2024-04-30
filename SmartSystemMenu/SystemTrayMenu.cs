@@ -77,20 +77,32 @@ namespace SmartSystemMenu
                 _menuItemExit.Text = _settings.Language.GetValue("mi_exit");
                 _menuItemExit.Click += _menuItemExit_Click;
 
+                var hideItemName = MenuItemId.GetName(MenuItemId.SC_HIDE);
                 var clickThroughItemName = MenuItemId.GetName(MenuItemId.SC_CLICK_THROUGH);
                 var transparencyItemName = MenuItemId.GetName(MenuItemId.SC_TRANS);
                 var dimmerItemName = MenuItemId.GetName(MenuItemId.SC_DIMMER);
                 var menuItems = _settings.MenuItems.Items.Flatten(x => x.Items);
+                var hideAny = menuItems.Any(x => x.Type == MenuItemType.Item && x.Name == hideItemName && x.Show);
                 var clickThroughAny = menuItems.Any(x => x.Type == MenuItemType.Item && x.Name == clickThroughItemName && x.Show);
                 var transparencyAny = menuItems.Any(x => x.Type == MenuItemType.Group && x.Name == transparencyItemName && x.Show);
                 var dimmerAny = menuItems.Any(x => x.Type == MenuItemType.Group && x.Name == dimmerItemName && x.Show);
 
-                if (clickThroughAny || transparencyAny || dimmerAny)
+                if (hideAny || clickThroughAny || transparencyAny || dimmerAny)
                 {
                     _menuItemRestore.Name = "miRestore";
                     _menuItemRestore.Size = new Size(175, 22);
                     _menuItemRestore.Text = _settings.Language.GetValue("mi_restore_windows");
-                    
+
+                    if (hideAny)
+                    {
+                        var subMenuItem = new ToolStripMenuItem();
+                        subMenuItem.Name = "miHide";
+                        subMenuItem.Size = new Size(175, 22);
+                        subMenuItem.Text = _settings.Language.GetValue("hide");
+                        subMenuItem.Click += _menuItemRestore_Click;
+                        _menuItemRestore.DropDownItems.Add(subMenuItem);
+                    }
+
                     if (clickThroughAny)
                     {
                         var subMenuItem = new ToolStripMenuItem();
@@ -184,7 +196,7 @@ namespace SmartSystemMenu
             var handler = MenuItemRestoreClick;
             if (handler != null && sender is ToolStripMenuItem menuItem)
             {
-                var menuItemId = menuItem.Name == "miClickThrough" ? MenuItemId.SC_CLICK_THROUGH : menuItem.Name == "miTransparency" ? MenuItemId.SC_TRANS_DEFAULT : MenuItemId.SC_DIMMER_OFF;
+                var menuItemId = menuItem.Name == "miHide" ? MenuItemId.SC_HIDE : menuItem.Name == "miClickThrough" ? MenuItemId.SC_CLICK_THROUGH : menuItem.Name == "miTransparency" ? MenuItemId.SC_TRANS_DEFAULT : MenuItemId.SC_DIMMER_OFF;
                 handler.Invoke(sender, new EventArgs<long>(menuItemId));
             }
         }

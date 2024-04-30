@@ -20,6 +20,7 @@
   <menuItems>
     <items>
       <item type="item" name="information" key1="" key2="" key3="" />
+      <item type="item" name="hide" key1="" key2="" key3="" />
       <item type="item" name="roll_up" key1="" key2="" key3="" />
       <item type="item" name="aero_glass" key1="" key2="" key3="" />
       <item type="item" name="always_on_top" key1="" key2="" key3="" />

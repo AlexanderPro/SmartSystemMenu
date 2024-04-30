@@ -276,7 +276,7 @@ namespace SmartSystemMenu.Forms
                     _childHandle = long.TryParse(handleString, out var handleValue) ? new IntPtr(handleValue) : IntPtr.Zero;
                 }
 
-                if (identifier == MenuItemId.SC_TRANS_DEFAULT || identifier == MenuItemId.SC_CLICK_THROUGH || identifier == MenuItemId.SC_DIMMER_OFF)
+                if (identifier == MenuItemId.SC_HIDE || identifier == MenuItemId.SC_TRANS_DEFAULT || identifier == MenuItemId.SC_CLICK_THROUGH || identifier == MenuItemId.SC_DIMMER_OFF)
                 {
                     MenuItemRestoreClick(this, new EventArgs<long>(identifier));
                 }
@@ -342,6 +342,18 @@ namespace SmartSystemMenu.Forms
         {
             switch (e.Entity)
             {
+                case MenuItemId.SC_HIDE:
+                    {
+                        foreach (var window in _windows)
+                        {
+                            if (window.IsHidden)
+                            {
+                                window.Show();
+                            }
+                        }
+                    }
+                    break;
+
                 case MenuItemId.SC_TRANS_DEFAULT:
                     {
                         foreach (var window in _windows)
@@ -378,7 +390,7 @@ namespace SmartSystemMenu.Forms
                     break;
             }
 
-            if ((e.Entity == MenuItemId.SC_TRANS_DEFAULT || e.Entity == MenuItemId.SC_CLICK_THROUGH || e.Entity == MenuItemId.SC_DIMMER_OFF || e.Entity == MenuItemId.SC_DIMMER_ON) && _childHandle != IntPtr.Zero)
+            if ((e.Entity == MenuItemId.SC_HIDE || e.Entity == MenuItemId.SC_TRANS_DEFAULT || e.Entity == MenuItemId.SC_CLICK_THROUGH || e.Entity == MenuItemId.SC_DIMMER_OFF || e.Entity == MenuItemId.SC_DIMMER_ON) && _childHandle != IntPtr.Zero)
             {
                 var ptrCopyData = SystemUtils.BuildWmCopyDataPointer(e.Entity);
                 if (ptrCopyData != IntPtr.Zero)
@@ -473,7 +485,7 @@ namespace SmartSystemMenu.Forms
 
         private void WindowDestroyed(object sender, WindowEventArgs e)
         {
-            var window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
+            var window = _windows.FirstOrDefault(w => w.Handle == e.Handle && !w.IsHidden);
             if (window != null)
             {
                 if (window.Handle == _dimHandle)
@@ -758,6 +770,11 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_HIDE:
+                            {
+                                window.Hide();
+                            }
+                            break;
 
                         case MenuItemId.SC_SIZE_DEFAULT:
                             {

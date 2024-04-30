@@ -86,6 +86,7 @@ namespace SmartSystemMenu
         public const int SC_DIMMER = 0x4823;
         public const int SC_DIMMER_ON = 0x4824;
         public const int SC_DIMMER_OFF = 0x4825;
+        public const int SC_HIDE = 0x4826;
 
         private static readonly Dictionary<string, int> NameToId = new ();
         private static readonly Dictionary<int, string> IdToName = new ();
@@ -93,6 +94,7 @@ namespace SmartSystemMenu
         static MenuItemId()
         {
             NameToId["information"] = SC_INFORMATION;
+            NameToId["hide"] = SC_HIDE;
             NameToId["roll_up"] = SC_ROLLUP;
             NameToId["aero_glass"] = SC_AERO_GLASS;
             NameToId["always_on_top"] = SC_TOPMOST;

@@ -99,6 +99,8 @@ namespace SmartSystemMenu
 
         public bool IsVisible => IsWindowVisible(Handle);
 
+        public bool IsHidden { get; private set; }
+
         public int Transparency
         {
             get
@@ -519,6 +521,18 @@ namespace SmartSystemMenu
                     break;
             }
             SetPosition(x, y);
+        }
+
+        public void Show()
+        {
+            IsHidden = false;
+            ShowWindow(Handle, (int)WindowShowStyle.Show);
+        }
+
+        public void Hide()
+        {
+            IsHidden = true;
+            ShowWindow(Handle, (int)WindowShowStyle.Hide);
         }
 
         public void MakeTopMost(bool topMost)
