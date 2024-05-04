@@ -15,7 +15,7 @@ namespace SmartSystemMenu.Forms
 
         public int WindowHeight { get; private set; }
 
-        public SizeForm(Window window, SmartSystemMenuSettings settings)
+        public SizeForm(Window window, ApplicationSettings settings)
         {
             InitializeComponent();
             InitializeControls(window, settings.Language);

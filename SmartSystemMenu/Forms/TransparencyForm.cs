@@ -8,14 +8,14 @@ namespace SmartSystemMenu.Forms
     {
         public int WindowTransparency { get; set; }
 
-        public TransparencyForm(Window window, SmartSystemMenuSettings settings)
+        public TransparencyForm(Window window, ApplicationSettings settings)
         {
             InitializeComponent();
             InitializeControls(window, settings);
 
         }
 
-        private void InitializeControls(Window window, SmartSystemMenuSettings settings)
+        private void InitializeControls(Window window, ApplicationSettings settings)
         {
             btnApply.Text = settings.Language.GetValue("trans_btn_apply");
             Text = settings.Language.GetValue("trans_form");

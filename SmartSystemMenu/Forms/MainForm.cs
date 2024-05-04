@@ -30,10 +30,10 @@ namespace SmartSystemMenu.Forms
         private Hooks.MouseHook _mouseHook;
         private AboutForm _aboutForm;
         private SettingsForm _settingsForm;
-        private List<DimForm> _dimForms;
-        private SmartSystemMenuSettings _settings;
-        private WindowSettings _windowSettings;
-        private IntPtr _parentHandle;
+        private readonly List<DimForm> _dimForms;
+        private ApplicationSettings _settings;
+        private readonly WindowSettings _windowSettings;
+        private readonly IntPtr _parentHandle;
         private IntPtr _childHandle;
         private IntPtr _dimHandle;
 
@@ -44,7 +44,7 @@ namespace SmartSystemMenu.Forms
         private Process _64BitProcess;
 #endif
 
-        public MainForm(SmartSystemMenuSettings settings, WindowSettings windowSettings, IntPtr parentHandle)
+        public MainForm(ApplicationSettings settings, WindowSettings windowSettings, IntPtr parentHandle)
         {
             InitializeComponent();
 
@@ -77,7 +77,7 @@ namespace SmartSystemMenu.Forms
                 }
                 catch
                 {
-                    string message = string.Format("Failed to load {0} process!", fileName);
+                    string message = $"Failed to load {fileName} process!";
                     MessageBox.Show(message, AssemblyUtils.AssemblyTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Close();
                     return;
@@ -329,7 +329,7 @@ namespace SmartSystemMenu.Forms
             if (_settingsForm == null || _settingsForm.IsDisposed || !_settingsForm.IsHandleCreated)
             {
                 _settingsForm = new SettingsForm(_settings);
-                _settingsForm.OkClick += (object s, EventArgs<SmartSystemMenuSettings> ea) => { _settings = ea.Entity; };
+                _settingsForm.OkClick += (object s, EventArgs<ApplicationSettings> ea) => { _settings = ea.Entity; };
             }
 
             _settingsForm.Show();
@@ -602,7 +602,7 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_INFORMATION:
                             {
-                                var infoForm = new InfoForm(window.GetWindowInfo(), _settings.Language);
+                                var infoForm = new InformationForm(window.GetWindowInfo(), _settings.Language);
                                 infoForm.Show(window.Win32Window);
                             }
                             break;

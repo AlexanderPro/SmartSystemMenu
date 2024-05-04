@@ -67,6 +67,11 @@ namespace SmartSystemMenu.HotKeys
                 {
                     foreach (var item in _menuItems.Items.Flatten(x => x.Items).Where(x => x.Type == MenuItemType.Item))
                     {
+                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        {
+                            continue;
+                        }
+
                         var key1 = true;
                         var key2 = true;
 
@@ -100,6 +105,11 @@ namespace SmartSystemMenu.HotKeys
 
                     foreach (var item in _menuItems.WindowSizeItems)
                     {
+                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        {
+                            continue;
+                        }
+
                         var key1 = true;
                         var key2 = true;
 

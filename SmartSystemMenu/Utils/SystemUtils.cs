@@ -99,8 +99,10 @@ namespace SmartSystemMenu
             }
             else
             {
-                foreach (var fullFileName in GetFullPaths(fileName))
+                var fullFileNames = GetFullPaths(fileName);
+                if (fullFileNames.Any())
                 {
+                    var fullFileName = fullFileNames[0];
                     var process = new Process();
                     process.StartInfo.FileName = fullFileName;
                     process.StartInfo.Arguments = arguments;

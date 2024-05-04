@@ -252,8 +252,8 @@ namespace SmartSystemMenu.Native
 
         public static IntPtr GetClassLongPtr(IntPtr hWnd, int nIndex) => IntPtr.Size > 4 ? GetClassLongPtr64(hWnd, nIndex) : new IntPtr(GetClassLongPtr32(hWnd, nIndex));
 
-        public static readonly IntPtr HWND_TOP = new IntPtr(0);
-        public static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
-        public static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2);
+        public static readonly IntPtr HWND_TOP = new (0);
+        public static readonly IntPtr HWND_TOPMOST = new (-1);
+        public static readonly IntPtr HWND_NOTOPMOST = new (-2);
     }
 }

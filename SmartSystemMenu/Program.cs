@@ -19,8 +19,6 @@ namespace SmartSystemMenu
 {
     static class Program
     {
-        private static Mutex _mutex;
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -38,7 +36,7 @@ namespace SmartSystemMenu
             var windowFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "Window64.xml");
 #endif
 
-            var settings = File.Exists(settingsFileName) && File.Exists(languageFileName) ? SmartSystemMenuSettings.Read(settingsFileName, languageFileName) : new SmartSystemMenuSettings();
+            var settings = File.Exists(settingsFileName) && File.Exists(languageFileName) ? ApplicationSettingsFile.Read(settingsFileName, languageFileName) : new ApplicationSettings();
             var windowSettings = File.Exists(windowFileName) ? WindowSettings.Read(windowFileName) : new WindowSettings();
 
             // Enable High DPI Support
@@ -51,9 +49,11 @@ namespace SmartSystemMenu
             var toggleParser = new ToggleParser(args);
             if (toggleParser.HasToggle("help"))
             {
-                var dialog = new MessageBoxForm();
-                dialog.Message = BuildHelpString();
-                dialog.Text = "Help";
+                var dialog = new MessageBoxForm
+                {
+                    Message = BuildHelpString(),
+                    Text = "Help"
+                };
                 dialog.ShowDialog();
                 return;
             }
@@ -112,7 +112,7 @@ namespace SmartSystemMenu
 #else
             var mutexName = "SmartSystemMenuMutex64";
 #endif
-            _mutex = new Mutex(false, mutexName, out var createNew);
+            var mutex = new Mutex(false, mutexName, out var createNew);
             if (!createNew)
             {
                 return;
@@ -139,7 +139,7 @@ namespace SmartSystemMenu
             }
         }
 
-        static void ProcessCommandLine(ToggleParser toggleParser, SmartSystemMenuSettings settings)
+        static void ProcessCommandLine(ToggleParser toggleParser, ApplicationSettings settings)
         {
             // Delay
             if (toggleParser.HasToggle("d") || toggleParser.HasToggle("delay"))
@@ -395,7 +395,7 @@ namespace SmartSystemMenu
                 //Information dialog
                 if (toggleParser.HasToggle("i") || toggleParser.HasToggle("information"))
                 {
-                    var dialog = new InfoForm(window.GetWindowInfo(), settings.Language);
+                    var dialog = new InformationForm(window.GetWindowInfo(), settings.Language);
                     dialog.ShowDialog();
                 }
 
@@ -462,7 +462,7 @@ namespace SmartSystemMenu
         static void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var ex = e.ExceptionObject as Exception;
-            ex = ex ?? new Exception("OnCurrentDomainUnhandledException");
+            ex ??= new Exception("OnCurrentDomainUnhandledException");
             OnThreadException(sender, new ThreadExceptionEventArgs(ex));
         }
 

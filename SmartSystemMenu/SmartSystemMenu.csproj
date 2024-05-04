@@ -196,6 +196,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Settings\ApplicationSettingsFile.cs" />
     <Compile Include="Settings\CloserSettings.cs" />
     <Compile Include="Settings\DimmerSettings.cs" />
     <Compile Include="Settings\SaveSelectedItemsSettings.cs" />
@@ -212,7 +213,7 @@
     <Compile Include="Settings\MenuItems.cs" />
     <Compile Include="Settings\LanguageItem.cs" />
     <Compile Include="Settings\StartProgramMenuItem.cs" />
-    <Compile Include="Settings\SmartSystemMenuSettings.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\WindowSizeMenuItem.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="AutoStarter.cs" />
@@ -223,7 +224,7 @@
     <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="SystemMenu.cs" />
     <Compile Include="SystemTrayMenu.cs" />
-    <Compile Include="Win32WindowWrapper.cs" />
+    <Compile Include="Win32Window.cs" />
     <Compile Include="WindowAlignment.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
@@ -237,11 +238,11 @@
     <Compile Include="Forms\PositionForm.Designer.cs">
       <DependentUpon>PositionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InfoForm.cs">
+    <Compile Include="Forms\InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InfoForm.Designer.cs">
-      <DependentUpon>InfoForm.cs</DependentUpon>
+    <Compile Include="Forms\InformationForm.Designer.cs">
+      <DependentUpon>InformationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Hooks\BasicHookEventArgs.cs" />
     <Compile Include="Hooks\CallWndProcHook.cs" />
@@ -277,7 +278,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Window.cs" />
-    <Compile Include="WindowInfo.cs" />
+    <Compile Include="WindowDetails.cs" />
     <Compile Include="WindowSizerType.cs" />
     <Compile Include="WindowState.cs" />
     <Compile Include="WmiProcessInfo.cs" />
@@ -311,8 +312,8 @@
     <EmbeddedResource Include="Forms\PositionForm.resx">
       <DependentUpon>PositionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InfoForm.resx">
-      <DependentUpon>InfoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\InformationForm.resx">
+      <DependentUpon>InformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

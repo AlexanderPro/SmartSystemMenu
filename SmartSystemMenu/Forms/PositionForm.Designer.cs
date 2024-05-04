@@ -29,6 +29,7 @@
         /// <param name="menuLanguage">Contains language strings.</param>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PositionForm));
             this.lblLeft = new System.Windows.Forms.Label();
             this.lblTop = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Button();
@@ -86,6 +87,7 @@
             this.Controls.Add(this.lblTop);
             this.Controls.Add(this.lblLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

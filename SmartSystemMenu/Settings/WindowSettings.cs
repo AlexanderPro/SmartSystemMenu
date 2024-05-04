@@ -72,7 +72,7 @@ namespace SmartSystemMenu.Settings
             return settings;
         }
 
-        public static void Save(string fileName, WindowSettings windowSettings, SmartSystemMenuSettings settings)
+        public static void Save(string fileName, WindowSettings windowSettings, ApplicationSettings settings)
         {
             var document = new XDocument();
             document.Add(new XElement("windows", windowSettings.Items.Select(x => new XElement("window",

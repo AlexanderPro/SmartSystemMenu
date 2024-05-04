@@ -10,16 +10,16 @@ namespace SmartSystemMenu
 {
     class SystemTrayMenu : IDisposable
     {
-        private ContextMenuStrip _systemTrayMenu;
-        private ToolStripMenuItem _menuItemAutoStart;
-        private ToolStripMenuItem _menuItemRestore;
-        private ToolStripMenuItem _menuItemSettings;
-        private ToolStripMenuItem _menuItemAbout;
-        private ToolStripMenuItem _menuItemExit;
-        private ToolStripSeparator _menuItemSeparator1;
-        private ToolStripSeparator _menuItemSeparator2;
-        private NotifyIcon _icon;
-        private SmartSystemMenuSettings _settings;
+        private readonly ContextMenuStrip _systemTrayMenu;
+        private readonly ToolStripMenuItem _menuItemAutoStart;
+        private readonly ToolStripMenuItem _menuItemRestore;
+        private readonly ToolStripMenuItem _menuItemSettings;
+        private readonly ToolStripMenuItem _menuItemAbout;
+        private readonly ToolStripMenuItem _menuItemExit;
+        private readonly ToolStripSeparator _menuItemSeparator1;
+        private readonly ToolStripSeparator _menuItemSeparator2;
+        private readonly NotifyIcon _icon;
+        private readonly ApplicationSettings _settings;
         private bool _created;
 
         public event EventHandler MenuItemAutoStartClick;
@@ -28,7 +28,7 @@ namespace SmartSystemMenu
         public event EventHandler MenuItemExitClick;
         public event EventHandler<EventArgs<long>> MenuItemRestoreClick;
 
-        public SystemTrayMenu(SmartSystemMenuSettings settings)
+        public SystemTrayMenu(ApplicationSettings settings)
         {
             _menuItemAutoStart = new ToolStripMenuItem();
             _menuItemRestore = new ToolStripMenuItem();
@@ -53,18 +53,18 @@ namespace SmartSystemMenu
                 _menuItemAutoStart.Name = "miAutoStart";
                 _menuItemAutoStart.Size = new Size(175, 22);
                 _menuItemAutoStart.Text = _settings.Language.GetValue("mi_auto_start");
-                _menuItemAutoStart.Click += _menuItemAutoStart_Click;
+                _menuItemAutoStart.Click += ItemAutoStartClick;
 
                 _menuItemSettings.Name = "miSettings";
                 _menuItemSettings.Size = new Size(175, 22);
                 _menuItemSettings.Font = new Font(_menuItemSettings.Font.Name, _menuItemSettings.Font.Size, FontStyle.Bold);
                 _menuItemSettings.Text = _settings.Language.GetValue("mi_settings");
-                _menuItemSettings.Click += _menuItemSettings_Click;
+                _menuItemSettings.Click += ItemSettingsClick;
 
                 _menuItemAbout.Name = "miAbout";
                 _menuItemAbout.Size = new Size(175, 22);
                 _menuItemAbout.Text = _settings.Language.GetValue("mi_about");
-                _menuItemAbout.Click += _menuItemAbout_Click;
+                _menuItemAbout.Click += ItemAboutClick;
 
                 _menuItemSeparator1.Name = "miSeparator1";
                 _menuItemSeparator1.Size = new Size(172, 6);
@@ -75,7 +75,7 @@ namespace SmartSystemMenu
                 _menuItemExit.Name = "miExit";
                 _menuItemExit.Size = new Size(175, 22);
                 _menuItemExit.Text = _settings.Language.GetValue("mi_exit");
-                _menuItemExit.Click += _menuItemExit_Click;
+                _menuItemExit.Click += ItemExitClick;
 
                 var hideItemName = MenuItemId.GetName(MenuItemId.SC_HIDE);
                 var clickThroughItemName = MenuItemId.GetName(MenuItemId.SC_CLICK_THROUGH);
@@ -99,7 +99,7 @@ namespace SmartSystemMenu
                         subMenuItem.Name = "miHide";
                         subMenuItem.Size = new Size(175, 22);
                         subMenuItem.Text = _settings.Language.GetValue("hide");
-                        subMenuItem.Click += _menuItemRestore_Click;
+                        subMenuItem.Click += ItemRestoreClick;
                         _menuItemRestore.DropDownItems.Add(subMenuItem);
                     }
 
@@ -109,7 +109,7 @@ namespace SmartSystemMenu
                         subMenuItem.Name = "miClickThrough";
                         subMenuItem.Size = new Size(175, 22);
                         subMenuItem.Text = _settings.Language.GetValue("click_through");
-                        subMenuItem.Click += _menuItemRestore_Click;
+                        subMenuItem.Click += ItemRestoreClick;
                         _menuItemRestore.DropDownItems.Add(subMenuItem);
                     }
 
@@ -119,7 +119,7 @@ namespace SmartSystemMenu
                         subMenuItem.Name = "miTransparency";
                         subMenuItem.Size = new Size(175, 22);
                         subMenuItem.Text = _settings.Language.GetValue("transparency");
-                        subMenuItem.Click += _menuItemRestore_Click;
+                        subMenuItem.Click += ItemRestoreClick;
                         _menuItemRestore.DropDownItems.Add(subMenuItem);
                     }
 
@@ -129,7 +129,7 @@ namespace SmartSystemMenu
                         subMenuItem.Name = "miDimmer";
                         subMenuItem.Size = new Size(175, 22);
                         subMenuItem.Text = _settings.Language.GetValue("dimmer");
-                        subMenuItem.Click += _menuItemRestore_Click;
+                        subMenuItem.Click += ItemRestoreClick;
                         _menuItemRestore.DropDownItems.Add(subMenuItem);
                     }
 
@@ -185,13 +185,13 @@ namespace SmartSystemMenu
             Dispose(false);
         }
 
-        private void _menuItemAutoStart_Click(object sender, EventArgs e)
+        private void ItemAutoStartClick(object sender, EventArgs e)
         {
             var handler = MenuItemAutoStartClick;
             handler?.Invoke(sender, e);
         }
 
-        private void _menuItemRestore_Click(object sender, EventArgs e)
+        private void ItemRestoreClick(object sender, EventArgs e)
         {
             var handler = MenuItemRestoreClick;
             if (handler != null && sender is ToolStripMenuItem menuItem)
@@ -201,19 +201,19 @@ namespace SmartSystemMenu
             }
         }
 
-        private void _menuItemSettings_Click(object sender, EventArgs e)
+        private void ItemSettingsClick(object sender, EventArgs e)
         {
             var handler = MenuItemSettingsClick;
             handler?.Invoke(sender, e);
         }
 
-        private void _menuItemAbout_Click(object sender, EventArgs e)
+        private void ItemAboutClick(object sender, EventArgs e)
         {
             var handler = MenuItemAboutClick;
             handler?.Invoke(sender, e);
         }
 
-        private void _menuItemExit_Click(object sender, EventArgs e)
+        private void ItemExitClick(object sender, EventArgs e)
         {
             var handler = MenuItemExitClick;
             handler?.Invoke(sender, e);

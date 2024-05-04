@@ -10,10 +10,10 @@ namespace SmartSystemMenu
     {
         private static string[] _filterTitles;
         private static IList<Window> _windows;
-        private static SmartSystemMenuSettings _settings;
+        private static ApplicationSettings _settings;
         private static WindowSettings _windowSettings;
 
-        public static IList<Window> EnumAllWindows(SmartSystemMenuSettings settings, WindowSettings windowSettings, params string[] filterTitles)
+        public static IList<Window> EnumAllWindows(ApplicationSettings settings, WindowSettings windowSettings, params string[] filterTitles)
         {
             _filterTitles ??= new string[0];
             _windows = new List<Window>();

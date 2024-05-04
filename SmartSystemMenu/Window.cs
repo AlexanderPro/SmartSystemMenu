@@ -47,8 +47,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                Rect size;
-                GetWindowRect(Handle, out size);
+                GetWindowRect(Handle, out var size);
                 return size;
             }
         }
@@ -57,8 +56,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                Rect size;
-                GetClientRect(Handle, out size);
+                GetClientRect(Handle, out var size);
                 return size;
             }
         }
@@ -87,8 +85,7 @@ namespace SmartSystemMenu
         {
             get
             {
-                int processId;
-                GetWindowThreadProcessId(Handle, out processId);
+                GetWindowThreadProcessId(Handle, out var processId);
                 return processId;
             }
         }
@@ -108,10 +105,7 @@ namespace SmartSystemMenu
                 int style = GetWindowLong(Handle, GWL_EXSTYLE);
                 bool isLayeredWindow = (style & WS_EX_LAYERED) == WS_EX_LAYERED;
                 if (!isLayeredWindow) return 0;
-                uint key;
-                Byte alpha;
-                uint flags;
-                GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                GetLayeredWindowAttributes(Handle, out var _, out var alpha, out var _);
                 int transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
                 return transparency;
             }
@@ -140,7 +134,7 @@ namespace SmartSystemMenu
         
         public bool ExistSystemTrayIcon => _systemTrayIcon != null && _systemTrayIcon.Visible;
 
-        public IWin32Window Win32Window => new Win32WindowWrapper(Handle);
+        public IWin32Window Win32Window => new Win32Window(Handle);
 
         public bool NoRestoreMenu { get; set; }
 
@@ -171,12 +165,12 @@ namespace SmartSystemMenu
             _menuItemRestore.Size = new Size(175, 22);
             _menuItemRestore.Name = $"miRestore_{Handle}";
             _menuItemRestore.Text = languageSettings.GetValue("mi_restore");
-            _menuItemRestore.Click += _menuItemRestore_Click;
+            _menuItemRestore.Click += MenuItemRestoreClick;
             _menuItemClose = new ToolStripMenuItem();
             _menuItemClose.Size = new Size(175, 22);
             _menuItemClose.Name = $"miClose_{Handle}";
             _menuItemClose.Text = languageSettings.GetValue("mi_close");
-            _menuItemClose.Click += _menuItemClose_Click;
+            _menuItemClose.Click += MenuItemCloseClick;
             Menu = new SystemMenu(windowHandle, menuItems, languageSettings);
 
             //Menu.Create();
@@ -191,6 +185,11 @@ namespace SmartSystemMenu
         {
             if (_isManaged)
             {
+                if (IsHidden)
+                {
+                    Show();
+                }
+
                 RestoreFromSystemTray();
                 Menu?.Destroy(!NoRestoreMenu);
                 _menuItemRestore?.Dispose();
@@ -208,10 +207,10 @@ namespace SmartSystemMenu
 
         private string RealGetWindowClass() => WindowUtils.RealGetWindowClass(Handle);
 
-        public WindowInfo GetWindowInfo()
+        public WindowDetails GetWindowInfo()
         {
             var process = Process;
-            var info = new WindowInfo();
+            var info = new WindowDetails();
             info.GetWindowText = GetWindowText();
             info.WM_GETTEXT = WindowUtils.GetWmGettext(Handle);
             info.GetClassName = GetClassName();
@@ -231,9 +230,16 @@ namespace SmartSystemMenu
             info.GCL_WNDPROC = GetClassLong(Handle, GCL_WNDPROC);
             info.DWL_DLGPROC = GetClassLong(Handle, DWL_DLGPROC);
             info.DWL_USER = GetClassLong(Handle, DWL_USER);
-            info.FullPath = process?.GetMainModuleFileName() ?? "";
             info.Priority = ProcessPriority;
-            info.StartTime = process == null ? (DateTime?)null : process.StartTime;
+
+            try
+            {
+                info.FullPath = process?.GetMainModuleFileName() ?? string.Empty;
+                info.StartTime = process?.StartTime;
+            }
+            catch
+            {
+            }
 
             try
             {
@@ -272,10 +278,7 @@ namespace SmartSystemMenu
 
             try
             {
-                uint key;
-                Byte alpha;
-                uint flags;
-                var result = GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                var result = GetLayeredWindowAttributes(Handle, out var _, out var _, out var flags);
                 var layeredWindow = (LayeredWindow)flags;
                 info.LWA_ALPHA = layeredWindow.HasFlag(LayeredWindow.LWA_ALPHA);
                 info.LWA_COLORKEY = layeredWindow.HasFlag(LayeredWindow.LWA_COLORKEY);
@@ -848,12 +851,12 @@ namespace SmartSystemMenu
             }
         }
 
-        private void _menuItemRestore_Click(object sender, EventArgs e)
+        private void MenuItemRestoreClick(object sender, EventArgs e)
         {
             RestoreFromSystemTray();
         }
 
-        private void _menuItemClose_Click(object sender, EventArgs e)
+        private void MenuItemCloseClick(object sender, EventArgs e)
         {
             RestoreFromSystemTray();
             PostMessage(Handle, WM_CLOSE, 0, 0);

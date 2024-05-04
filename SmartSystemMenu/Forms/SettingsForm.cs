@@ -11,12 +11,12 @@ namespace SmartSystemMenu.Forms
 {
     public partial class SettingsForm : Form
     {
-        private SmartSystemMenuSettings _settings;
-        private CloserSettings _closerSettings;
+        private readonly ApplicationSettings _settings;
+        private readonly CloserSettings _closerSettings;
 
-        public event EventHandler<EventArgs<SmartSystemMenuSettings>> OkClick;
+        public event EventHandler<EventArgs<ApplicationSettings>> OkClick;
 
-        public SettingsForm(SmartSystemMenuSettings settings)
+        public SettingsForm(ApplicationSettings settings)
         {            
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void InitializeControls(SmartSystemMenuSettings settings)
+        private void InitializeControls(ApplicationSettings settings)
         {
             tabpGeneral.Text = settings.Language.GetValue("tab_settings_general");
             tabpMenuStart.Text = settings.Language.GetValue("tab_settings_menu_start");
@@ -539,7 +539,7 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
-            var settings = new SmartSystemMenuSettings();
+            var settings = new ApplicationSettings();
 
             foreach (DataGridViewRow row in gvProcessExclusions.Rows)
             {
@@ -607,10 +607,10 @@ namespace SmartSystemMenu.Forms
                     settings.Language = _settings.Language;
 
                     var settingsFileName = Path.Combine(AssemblyUtils.AssemblyDirectory, "SmartSystemMenu.xml");
-                    SmartSystemMenuSettings.Save(settingsFileName, settings);
+                    ApplicationSettingsFile.Save(settingsFileName, settings);
                     if (OkClick != null)
                     {
-                        OkClick.Invoke(this, new EventArgs<SmartSystemMenuSettings>(settings));
+                        OkClick.Invoke(this, new EventArgs<ApplicationSettings>(settings));
                     }
                 }
                 catch (Exception ex)
@@ -666,7 +666,7 @@ namespace SmartSystemMenu.Forms
                     var row = gridView.Rows[index];
                     var id = MenuItemId.GetId(item.Name);
                     var title = GetTransparencyTitle(id, languageSettings);
-                    title = title != null ? title : languageSettings.GetValue(item.Name);
+                    title ??= languageSettings.GetValue(item.Name);
                     row.Tag = item;
                     row.Cells[0].Value = title;
                     row.Cells[1].Value = item == null ? "" : item.ToString();
@@ -705,7 +705,7 @@ namespace SmartSystemMenu.Forms
                             var subItemRow = gridView.Rows[subItemIndex];
                             var id = MenuItemId.GetId(subItem.Name);
                             var title = GetTransparencyTitle(id, languageSettings);
-                            title = title != null ? title : languageSettings.GetValue(subItem.Name);
+                            title ??= languageSettings.GetValue(subItem.Name);
                             subItemRow.Tag = subItem;
                             subItemRow.Cells[0].Value = title;
                             subItemRow.Cells[1].Value = subItem == null ? "" : subItem.ToString();
