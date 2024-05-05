@@ -53,10 +53,6 @@ namespace SmartSystemMenu.Forms
             this.btnMenuItemDown = new System.Windows.Forms.Button();
             this.btnMenuItemUp = new System.Windows.Forms.Button();
             this.gvHotkeys = new System.Windows.Forms.DataGridView();
-            this.clmnMenuItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnHotkeys = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnShow = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmnChangeHotkey = new SmartSystemMenu.Controls.DataGridViewDisableButtonColumn();
             this.tabpMenuSize = new System.Windows.Forms.TabPage();
             this.grpbSizer = new System.Windows.Forms.GroupBox();
             this.cmbSizer = new System.Windows.Forms.ComboBox();
@@ -106,6 +102,10 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
+            this.clmnMenuItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnHotkeys = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnShow = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmnChangeHotkey = new SmartSystemMenu.Controls.DataGridViewDisableButtonColumn();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -375,39 +375,6 @@ namespace SmartSystemMenu.Forms
             this.gvHotkeys.TabIndex = 0;
             this.gvHotkeys.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewHotkeysCellContentClick);
             this.gvHotkeys.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewHotkeysCellDoubleClick);
-            // 
-            // clmnMenuItemName
-            // 
-            this.clmnMenuItemName.HeaderText = "clmnMenuItemName";
-            this.clmnMenuItemName.MinimumWidth = 200;
-            this.clmnMenuItemName.Name = "clmnMenuItemName";
-            this.clmnMenuItemName.ReadOnly = true;
-            this.clmnMenuItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmnMenuItemName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnMenuItemName.Width = 200;
-            // 
-            // clmnHotkeys
-            // 
-            this.clmnHotkeys.HeaderText = "clmnHotkeys";
-            this.clmnHotkeys.MinimumWidth = 200;
-            this.clmnHotkeys.Name = "clmnHotkeys";
-            this.clmnHotkeys.Width = 200;
-            // 
-            // clmnShow
-            // 
-            this.clmnShow.HeaderText = "";
-            this.clmnShow.Name = "clmnShow";
-            this.clmnShow.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmnShow.Width = 30;
-            // 
-            // clmnChangeHotkey
-            // 
-            this.clmnChangeHotkey.HeaderText = "";
-            this.clmnChangeHotkey.Name = "clmnChangeHotkey";
-            this.clmnChangeHotkey.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmnChangeHotkey.Text = "...";
-            this.clmnChangeHotkey.UseColumnTextForButtonValue = true;
-            this.clmnChangeHotkey.Width = 30;
             // 
             // tabpMenuSize
             // 
@@ -908,6 +875,39 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
+            // clmnMenuItemName
+            // 
+            this.clmnMenuItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmnMenuItemName.HeaderText = "clmnMenuItemName";
+            this.clmnMenuItemName.MinimumWidth = 200;
+            this.clmnMenuItemName.Name = "clmnMenuItemName";
+            this.clmnMenuItemName.ReadOnly = true;
+            this.clmnMenuItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmnMenuItemName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmnHotkeys
+            // 
+            this.clmnHotkeys.HeaderText = "clmnHotkeys";
+            this.clmnHotkeys.MinimumWidth = 200;
+            this.clmnHotkeys.Name = "clmnHotkeys";
+            this.clmnHotkeys.Width = 200;
+            // 
+            // clmnShow
+            // 
+            this.clmnShow.HeaderText = "";
+            this.clmnShow.Name = "clmnShow";
+            this.clmnShow.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmnShow.Width = 30;
+            // 
+            // clmnChangeHotkey
+            // 
+            this.clmnChangeHotkey.HeaderText = "";
+            this.clmnChangeHotkey.Name = "clmnChangeHotkey";
+            this.clmnChangeHotkey.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmnChangeHotkey.Text = "...";
+            this.clmnChangeHotkey.UseColumnTextForButtonValue = true;
+            this.clmnChangeHotkey.Width = 30;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -917,11 +917,11 @@ namespace SmartSystemMenu.Forms
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tabMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.tabMain.ResumeLayout(false);
@@ -985,10 +985,6 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.TabPage tabpMenu;
         private System.Windows.Forms.GroupBox grpbHotkeys;
         private System.Windows.Forms.DataGridView gvHotkeys;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnMenuItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHotkeys;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmnShow;
-        private DataGridViewDisableButtonColumn clmnChangeHotkey;
         private System.Windows.Forms.TabPage tabpMenuSize;
         private System.Windows.Forms.GroupBox grpbWindowSize;
         private System.Windows.Forms.Button btnWindowSizeDown;
@@ -1031,5 +1027,9 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.Label lblTransparencyFromValue;
         private System.Windows.Forms.Label lblTransparencyValue;
         private System.Windows.Forms.Label lblTransparencyToValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnMenuItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHotkeys;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clmnShow;
+        private DataGridViewDisableButtonColumn clmnChangeHotkey;
     }
 }
