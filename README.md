@@ -10,6 +10,7 @@
 SmartSystemMenu extends system menu of all windows in the system. It appends next custom items to menu:
 
 * **Information.** Shows a dialog with information of the current window and process: the window handle, the window caption, the window style, the window class, the process name, the process id, the path to the process.
+* **Hide.** Allows to hide the current window.
 * **Roll Up.** Allows to roll up and down the current window.
 * **Aero Glass.** Allows to add the "Aero Glass" blur to the current window. (Windows Vista and higher. Mostly for console windows.)
 * **Always On Top.** Allows the current window to stay on top of all other windows.
