@@ -147,6 +147,7 @@ namespace SmartSystemMenu
                 _icon.Icon = Properties.Resources.SmartSystemMenu;
                 _icon.Text = AssemblyUtils.AssemblyTitle;
                 _icon.Visible = true;
+                _icon.DoubleClick += ItemSettingsClick;
 
                 _created = true;
             }
