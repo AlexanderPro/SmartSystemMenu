@@ -201,6 +201,8 @@ namespace SmartSystemMenu
 
         public override string ToString() => WindowUtils.GetWindowText(Handle);
 
+        public void SetWindowText(string text) => WindowUtils.SetWindowText(Handle, text);
+
         public string GetWindowText() => WindowUtils.GetWindowText(Handle);
 
         public string GetClassName() => WindowUtils.GetClassName(Handle);

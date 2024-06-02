@@ -104,6 +104,12 @@
     <Compile Include="Forms\ParameterForm.Designer.cs">
       <DependentUpon>ParameterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TitleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TitleForm.Designer.cs">
+      <DependentUpon>TitleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SettingsCloserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ParameterForm.resx">
       <DependentUpon>ParameterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TitleForm.resx">
+      <DependentUpon>TitleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingsCloserForm.resx">
       <DependentUpon>SettingsCloserForm.cs</DependentUpon>

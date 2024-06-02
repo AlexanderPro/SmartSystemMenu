@@ -30,6 +30,9 @@ namespace SmartSystemMenu.Native
         public static extern IntPtr GetParent(IntPtr handle);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern bool SetWindowText(IntPtr handle, string lpString);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int GetWindowText(IntPtr handle, StringBuilder title, int size);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]

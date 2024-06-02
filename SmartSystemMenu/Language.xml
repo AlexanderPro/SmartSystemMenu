@@ -8,6 +8,7 @@
       <item name="roll_up" value="Roll Up" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Always On Top" />
+      <item name="change_title" value="Change Title" />
       <item name="send_to_bottom" value="Send To Bottom" />
       <item name="save_screenshot" value="Save Screenshot" />
       <item name="open_file_in_explorer" value="Open File In Explorer" />
@@ -238,6 +239,9 @@
       <item name="sizer_window_client_area" value="Window client area" />
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Input Parameter" />
+      <item name="change_title_btn_apply" value="Ok" />
+      <item name="change_title_btn_cancel" value="Cancel" />
+      <item name="change_title_form" value="Change Title" />
     </en>
     <de>
       <item name="separator" value="Separator" />
@@ -246,6 +250,7 @@
       <item name="roll_up" value="Verkleinern nach oben" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Immer im Vordergrund" />
+      <item name="change_title" value="Ändere den Titel" />
       <item name="send_to_bottom" value="In den Hintergrund" />
       <item name="save_screenshot" value="Screenshot speichern…" />
       <item name="open_file_in_explorer" value="Im Windows Explorer anzeigen" />
@@ -475,6 +480,9 @@
       <item name="sizer_window_client_area" value="Fensterkundenbereich" />
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Eingabeparameter" />
+      <item name="change_title_btn_apply" value="Ok" />
+      <item name="change_title_btn_cancel" value="Abbrechen" />
+      <item name="change_title_form" value="Ändere den Titel" />
     </de>
     <zh_cn>
       <item name="separator" value="分隔线" />
@@ -483,6 +491,7 @@
       <item name="roll_up" value="卷起窗口" />
       <item name="aero_glass" value="毛玻璃效果" />
       <item name="always_on_top" value="窗口始终置顶" />
+      <item name="change_title" value="更改标题" />
       <item name="send_to_bottom" value="窗口置底" />
       <item name="save_screenshot" value="保存窗口截图" />
       <item name="open_file_in_explorer" value="在资源管理器中进入程序路径" />
@@ -711,6 +720,9 @@
       <item name="sizer_window_client_area" value="窗口工作区" />
       <item name="parameter_btn_apply" value="确定" />
       <item name="parameter_form" value="输入参数" />
+      <item name="change_title_btn_apply" value="确定" />
+      <item name="change_title_btn_cancel" value="取消" />
+      <item name="change_title_form" value="更改标题" />
     </zh_cn>
     <zh_tw>
       <item name="separator" value="分隔線" />
@@ -719,6 +731,7 @@
       <item name="roll_up" value="縮合" />
       <item name="aero_glass" value="Aero 半透明效果" />
       <item name="always_on_top" value="視窗置頂" />
+      <item name="change_title" value="更改標題" />
       <item name="send_to_bottom" value="移至最底層" />
       <item name="save_screenshot" value="儲存視窗擷圖" />
       <item name="open_file_in_explorer" value="在檔案總管中開啟檔案" />
@@ -949,6 +962,9 @@
       <item name="sizer_window_client_area" value="視窗工作區" />
       <item name="parameter_btn_apply" value="確定" />
       <item name="parameter_form" value="輸入參數" />
+      <item name="change_title_btn_apply" value="確定" />
+      <item name="change_title_btn_cancel" value="取消" />
+      <item name="change_title_form" value="更改標題" />
     </zh_tw>
     <ja>
       <item name="separator" value="セパレーター" />
@@ -957,6 +973,7 @@
       <item name="roll_up" value="ロールアップ" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="常に手前に表示" />
+      <item name="change_title" value="タイトルを変更" />
       <item name="send_to_bottom" value="背面へ送る" />
       <item name="save_screenshot" value="スクリーンショットを撮る" />
       <item name="open_file_in_explorer" value="エクスプローラーで開く" />
@@ -1185,6 +1202,9 @@
       <item name="sizer_window_client_area" value="ウィンドウクライアントエリア" />
       <item name="parameter_btn_apply" value="OK" />
       <item name="parameter_form" value="入力パラメータ" />
+      <item name="change_title_btn_apply" value="OK" />
+      <item name="change_title_btn_cancel" value="キャンセル" />
+      <item name="change_title_form" value="タイトルを変更" />
     </ja>
     <ko>
       <item name="separator" value="분리 기호" />
@@ -1193,6 +1213,7 @@
       <item name="roll_up" value="접기" />
       <item name="aero_glass" value="에어로 글래스" />
       <item name="always_on_top" value="항상 위에 표시" />
+      <item name="change_title" value="제목 변경" />
       <item name="send_to_bottom" value="맨 아래로 보내기" />
       <item name="save_screenshot" value="스크린샷 저장" />
       <item name="open_file_in_explorer" value="탐색기에서 파일 열기" />
@@ -1423,6 +1444,9 @@
       <item name="sizer_window_client_area" value="창 클라이언트 영역" />
       <item name="parameter_btn_apply" value="확인" />
       <item name="parameter_form" value="입력 매개 변수" />
+      <item name="change_title_btn_apply" value="확인" />
+      <item name="change_title_btn_cancel" value="취소" />
+      <item name="change_title_form" value="제목 변경" />
     </ko>
     <ru>
       <item name="separator" value="Разделитель" />
@@ -1431,6 +1455,7 @@
       <item name="roll_up" value="Свернуть вверх" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Поверх остальных" />
+      <item name="change_title" value="Изменить заголовок" />
       <item name="send_to_bottom" value="Переместить вниз" />
       <item name="save_screenshot" value="Сохранить снимок окна" />
       <item name="open_file_in_explorer" value="Открыть в проводнике" />
@@ -1659,6 +1684,9 @@
       <item name="sizer_window_client_area" value="Клиентская область окна" />
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Введите параметр" />
+      <item name="change_title_btn_apply" value="Ok" />
+      <item name="change_title_btn_cancel" value="Cancel" />
+      <item name="change_title_form" value="Изменить заголовок" />
     </ru>
     <sr>
       <item name="separator" value="Сепаратор" />
@@ -1667,6 +1695,7 @@
       <item name="roll_up" value="Замотај" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Увек испред" />
+      <item name="change_title" value="Промените наслов" />
       <item name="send_to_bottom" value="Попаљи на дно" />
       <item name="save_screenshot" value="Сачувај прозор програма" />
       <item name="open_file_in_explorer" value="Отвори датотеку у Explorer" />
@@ -1895,6 +1924,9 @@
       <item name="sizer_window_client_area" value="Подручје клијента прозора" />
       <item name="parameter_btn_apply" value="У реду" />
       <item name="parameter_form" value="Улазни параметар" />
+      <item name="change_title_btn_apply" value="У реду" />
+      <item name="change_title_btn_cancel" value="Откажи" />
+      <item name="change_title_form" value="Промените наслов" />
     </sr>
     <pt>
       <item name="separator" value="Separador" />
@@ -1903,6 +1935,7 @@
       <item name="roll_up" value="Enrolar" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Manter esta janela sempre na frente" />
+      <item name="change_title" value="Alterar título" />
       <item name="send_to_bottom" value="Enviar para o fundo" />
       <item name="save_screenshot" value="Fazer captura de tela" />
       <item name="open_file_in_explorer" value="Abrir a pasta do executável no Explorer" />
@@ -2131,6 +2164,9 @@
       <item name="sizer_window_client_area" value="Área do cliente da janela" />
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Parâmetro de entrada" />
+      <item name="change_title_btn_apply" value="Ok" />
+      <item name="change_title_btn_cancel" value="Cancelar" />
+      <item name="change_title_form" value="Alterar título" />
     </pt>
     <it>
       <item name="separator" value="Separatore" />
@@ -2139,6 +2175,7 @@
       <item name="roll_up" value="Riavvolgi" />
       <item name="aero_glass" value="Aero glass" />
       <item name="always_on_top" value="Sempre davanti" />
+      <item name="change_title" value="Cambia titolo" />
       <item name="send_to_bottom" value="Metti dietro" />
       <item name="save_screenshot" value="Salva schermata" />
       <item name="open_file_in_explorer" value="Apri file in Esplora risorse" />
@@ -2369,6 +2406,9 @@
       <item name="sizer_window_client_area" value="Area della finestra" />
       <item name="parameter_btn_apply" value="OK" />
       <item name="parameter_form" value="Inserisci parametro" />
+      <item name="change_title_btn_apply" value="OK" />
+      <item name="change_title_btn_cancel" value="Annulla" />
+      <item name="change_title_form" value="Cambia titolo" />
     </it>
     <fr>
       <item name="separator" value="Séparateur" />
@@ -2377,6 +2417,7 @@
       <item name="roll_up" value="Enrouler" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Toujours au premier plan" />
+      <item name="change_title" value="Changer le titre" />
       <item name="send_to_bottom" value="Réduire dans la barre des tâches" />
       <item name="save_screenshot" value="Sauvegarder la capture d'écran" />
       <item name="open_file_in_explorer" value="Ouvrir le fichier dans l'explorateur" />
@@ -2607,6 +2648,9 @@
       <item name="sizer_window_client_area" value="Espace de travail de la fenêtre" />
       <item name="parameter_btn_apply" value="Ok" />
       <item name="parameter_form" value="Paramètre d'entrée" />
+      <item name="change_title_btn_apply" value="Ok" />
+      <item name="change_title_btn_cancel" value="Annuler" />
+      <item name="change_title_form" value="Changer le titre" />
     </fr>
     <hu>
       <item name="separator" value="Elválasztó" />
@@ -2615,6 +2659,7 @@
       <item name="roll_up" value="Fölfelé" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Mindig fölül" />
+      <item name="change_title" value="Cím módosítása" />
       <item name="send_to_bottom" value="Küldés alulra" />
       <item name="save_screenshot" value="Képernyőkép mentése" />
       <item name="open_file_in_explorer" value="Fájl megnyitása az Intézőben" />
@@ -2845,6 +2890,9 @@
       <item name="sizer_window_client_area" value="Ablak ügyfélterület" />
       <item name="parameter_btn_apply" value="OK" />
       <item name="parameter_form" value="Bemeneti paraméter" />
+      <item name="change_title_btn_apply" value="OK" />
+      <item name="change_title_btn_cancel" value="Mégse" />
+      <item name="change_title_form" value="Cím módosítása" />
     </hu>
   </items>
 </language>

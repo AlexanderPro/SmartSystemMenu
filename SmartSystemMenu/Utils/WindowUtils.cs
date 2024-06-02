@@ -307,6 +307,11 @@ namespace SmartSystemMenu.Utils
             SetLayeredWindowAttributes(hWnd, 0, opacity, LWA_ALPHA);
         }
 
+        public static void SetWindowText(IntPtr hWnd, string text)
+        {
+            User32.SetWindowText(hWnd, text);
+        }
+
         public static string GetWindowText(IntPtr hWnd)
         {
             var length = GetWindowTextLength(hWnd);

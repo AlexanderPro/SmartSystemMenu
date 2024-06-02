@@ -859,6 +859,19 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_CHANGE_TITLE:
+                            {
+                                var titleForm = new TitleForm(_settings.Language);
+                                titleForm.Title = window.GetWindowText();
+                                var result = titleForm.ShowDialog(window.Win32Window);
+
+                                if (result == DialogResult.OK)
+                                {
+                                    window.SetWindowText(titleForm.Title);
+                                }
+                            }
+                            break;
+
                         case MenuItemId.SC_DIMMER_ON:
                             {
                                 _dimHandle = e.Handle;
