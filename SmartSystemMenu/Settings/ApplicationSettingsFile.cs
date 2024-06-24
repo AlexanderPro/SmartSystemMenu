@@ -40,10 +40,10 @@ namespace SmartSystemMenu.Settings
                 .Select(x => new WindowSizeMenuItem
                 {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
-                    Left = !string.IsNullOrEmpty(x.Attribute("left").Value) ? int.Parse(x.Attribute("left").Value) : (int?)null,
-                    Top = !string.IsNullOrEmpty(x.Attribute("top").Value) ? int.Parse(x.Attribute("top").Value) : (int?)null,
-                    Width = int.Parse(x.Attribute("width").Value),
-                    Height = int.Parse(x.Attribute("height").Value),
+                    Left = !string.IsNullOrEmpty(x.Attribute("left").Value) ? int.Parse(x.Attribute("left").Value) : null,
+                    Top = !string.IsNullOrEmpty(x.Attribute("top").Value) ? int.Parse(x.Attribute("top").Value) : null,
+                    Width = !string.IsNullOrEmpty(x.Attribute("width").Value) ? int.Parse(x.Attribute("width").Value) : null,
+                    Height = !string.IsNullOrEmpty(x.Attribute("height").Value) ? int.Parse(x.Attribute("height").Value) : null,
                     Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
                     Key2 = x.Attribute("key2") != null && !string.IsNullOrEmpty(x.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key2").Value) : VirtualKeyModifier.None,
                     Key3 = x.Attribute("key3") != null && !string.IsNullOrEmpty(x.Attribute("key3").Value) ? (VirtualKey)int.Parse(x.Attribute("key3").Value) : VirtualKey.None
@@ -243,8 +243,8 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("title", x.Title),
                                          new XAttribute("left", x.Left == null ? "" : x.Left.Value.ToString()),
                                          new XAttribute("top", x.Top == null ? "" : x.Top.Value.ToString()),
-                                         new XAttribute("width", x.Width),
-                                         new XAttribute("height", x.Height),
+                                         new XAttribute("width", x.Width == null ? "" : x.Width.ToString()),
+                                         new XAttribute("height", x.Height == null ? "" : x.Height.ToString()),
                                          new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
                                          new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
                                          new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),

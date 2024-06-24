@@ -14,9 +14,9 @@ namespace SmartSystemMenu.Settings
         
         public int? Top { get; set; }
 
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
-        public int Height { get; set; }
+        public int? Height { get; set; }
 
         public VirtualKeyModifier Key1 { get; set; }
 
@@ -30,8 +30,8 @@ namespace SmartSystemMenu.Settings
             Title = "";
             Left = null;
             Top = null;
-            Width = 0;
-            Height = 0;
+            Width = null;
+            Height = null;
             Key1 = VirtualKeyModifier.None;
             Key2 = VirtualKeyModifier.None;
             Key3 = VirtualKey.None;

@@ -370,16 +370,18 @@ namespace SmartSystemMenu
             MoveWindow(Handle, size.Left, size.Top, size.Width, height, true);
         }
 
-        public void SetSize(int width, int height, int? left = null, int? top = null)
+        public void SetSize(int? width, int? height, int? left = null, int? top = null)
         {
             var size = Size;
             var sizeLeft = left == null ? size.Left : left.Value;
-            var sizeTop = top == null ? Size.Top : top.Value;
+            var sizeTop = top == null ? size.Top : top.Value;
+            var sizeWidth = width == null ? size.Width : width.Value;
+            var sizeHeight = height == null ? size.Height : height.Value;
             State.Left = sizeLeft;
             State.Top = sizeTop;
-            State.Width = width;
-            State.Height = height;
-            MoveWindow(Handle, sizeLeft, sizeTop, width, height, true);
+            State.Width = sizeWidth;
+            State.Height = sizeHeight;
+            MoveWindow(Handle, sizeLeft, sizeTop, sizeWidth, sizeHeight, true);
         }
 
         public void RestoreSize()

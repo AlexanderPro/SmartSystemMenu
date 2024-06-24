@@ -35,8 +35,8 @@ namespace SmartSystemMenu.Forms
             txtTitle.Text = menuItem.Title;
             txtLeft.Text = menuItem.Left == null ? "" : menuItem.Left.Value.ToString();
             txtTop.Text = menuItem.Top == null ? "" : menuItem.Top.Value.ToString();
-            txtWidth.Text = menuItem.Width.ToString();
-            txtHeight.Text = menuItem.Height.ToString();
+            txtWidth.Text = menuItem.Width == null ? "" : menuItem.Width.ToString();
+            txtHeight.Text = menuItem.Height == null ? "" : menuItem.Height.ToString();
 
             cmbKey1.ValueMember = "Id";
             cmbKey1.DisplayMember = "Text";
@@ -77,37 +77,10 @@ namespace SmartSystemMenu.Forms
             menuItem.Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;
             menuItem.Key3 = (VirtualKey)cmbKey3.SelectedValue;
 
-            if (int.TryParse(txtWidth.Text, out var width))
-            {
-                menuItem.Width = width;
-            }
-            else
-            {
-                txtWidth.SelectAll();
-                txtWidth.Focus();
-                return;
-            }
-
-            if (int.TryParse(txtHeight.Text, out var height))
-            {
-                menuItem.Height = height;
-            }
-            else
-            {
-                txtHeight.SelectAll();
-                txtHeight.Focus();
-                return;
-            }
-
-            if (int.TryParse(txtLeft.Text, out var left))
-            {
-                menuItem.Left = left;
-            }
-
-            if (int.TryParse(txtTop.Text, out var top))
-            {
-                menuItem.Top = top;
-            }
+            menuItem.Width = int.TryParse(txtWidth.Text, out var width) ? width : null;
+            menuItem.Height = int.TryParse(txtHeight.Text, out var height) ? height : null;
+            menuItem.Left = int.TryParse(txtLeft.Text, out var left) ? left : null;
+            menuItem.Top = int.TryParse(txtTop.Text, out var top) ? top : null;
 
             MenuItem = menuItem;
             DialogResult = DialogResult.OK;

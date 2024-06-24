@@ -801,11 +801,17 @@ namespace SmartSystemMenu.Forms
                                     else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
                                     {
                                         var margins = window.GetSystemMargins();
-                                        window.SetSize(sizeForm.WindowWidth + margins.Left + margins.Right, sizeForm.WindowHeight + margins.Top + margins.Bottom, sizeForm.WindowLeft, sizeForm.WindowTop);
+                                        window.SetSize(sizeForm.WindowWidth == null ? null : (sizeForm.WindowWidth + margins.Left + margins.Right),
+                                                       sizeForm.WindowHeight == null ? null : (sizeForm.WindowHeight + margins.Top + margins.Bottom),
+                                                       sizeForm.WindowLeft,
+                                                       sizeForm.WindowTop);
                                     }
                                     else
                                     {
-                                        window.SetSize(sizeForm.WindowWidth + (window.Size.Width - window.ClientSize.Width), sizeForm.WindowHeight + (window.Size.Height - window.ClientSize.Height), sizeForm.WindowLeft, sizeForm.WindowTop);
+                                        window.SetSize(sizeForm.WindowWidth == null ? null : (sizeForm.WindowWidth + (window.Size.Width - window.ClientSize.Width)),
+                                                       sizeForm.WindowHeight == null ? null : (sizeForm.WindowHeight + (window.Size.Height - window.ClientSize.Height)),
+                                                       sizeForm.WindowLeft,
+                                                       sizeForm.WindowTop);
                                     }
 
                                     window.Menu.UncheckSizeMenu();
@@ -1165,11 +1171,17 @@ namespace SmartSystemMenu.Forms
             else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
             {
                 var margins = window.GetSystemMargins();
-                window.SetSize(item.Width + margins.Left + margins.Right, item.Height + margins.Top + margins.Bottom, item.Left, item.Top);
+                window.SetSize(item.Width == null ? null : (item.Width + margins.Left + margins.Right),
+                               item.Height == null ? null : (item.Height + margins.Top + margins.Bottom), 
+                               item.Left, 
+                               item.Top);
             }
             else
             {
-                window.SetSize(item.Width + (window.Size.Width - window.ClientSize.Width), item.Height + (window.Size.Height - window.ClientSize.Height), item.Left, item.Top);
+                window.SetSize(item.Width == null ? null : (item.Width + (window.Size.Width - window.ClientSize.Width)),
+                               item.Height == null ? null : (item.Height + (window.Size.Height - window.ClientSize.Height)), 
+                               item.Left,
+                               item.Top);
             }
             window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
         }

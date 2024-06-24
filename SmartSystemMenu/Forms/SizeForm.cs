@@ -7,13 +7,13 @@ namespace SmartSystemMenu.Forms
 {
     partial class SizeForm : Form
     {
-        public int WindowLeft { get; private set; }
+        public int? WindowLeft { get; private set; }
 
-        public int WindowTop { get; private set; }
+        public int? WindowTop { get; private set; }
 
-        public int WindowWidth { get; private set; }
+        public int? WindowWidth { get; private set; }
 
-        public int WindowHeight { get; private set; }
+        public int? WindowHeight { get; private set; }
 
         public SizeForm(Window window, ApplicationSettings settings)
         {
@@ -30,59 +30,27 @@ namespace SmartSystemMenu.Forms
             btnApply.Text = settings.GetValue("size_btn_apply");
             Text = settings.GetValue("size_form");
 
-            var left = window.Size.Left;
-            var top = window.Size.Top;
-            var width = window.Size.Width;
-            var height = window.Size.Height;
+            var size = window.Size;
 
-            WindowLeft = left;
-            WindowTop = top;
-            WindowWidth = width;
-            WindowHeight = height;
+            WindowLeft = size.Left;
+            WindowTop = size.Top;
+            WindowWidth = size.Width;
+            WindowHeight = size.Height;
 
-            txtLeft.Text = left.ToString();
-            txtTop.Text = top.ToString();
-            txtWidth.Text = width.ToString();
-            txtHeight.Text = height.ToString();
+            txtLeft.Text = size.Left.ToString();
+            txtTop.Text = size.Top.ToString();
+            txtWidth.Text = size.Width.ToString();
+            txtHeight.Text = size.Height.ToString();
 
             DialogResult = DialogResult.Cancel;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtLeft.Text, out var left))
-            {
-                txtLeft.SelectAll();
-                txtLeft.Focus();
-                return;
-            }
-
-            if (!int.TryParse(txtTop.Text, out var top))
-            {
-                txtTop.SelectAll();
-                txtTop.Focus();
-                return;
-            }
-
-            if (!int.TryParse(txtWidth.Text, out var width))
-            {
-                txtWidth.SelectAll();
-                txtWidth.Focus();
-                return;
-            }
-
-            if (!int.TryParse(txtHeight.Text, out var height))
-            {
-                txtHeight.SelectAll();
-                txtHeight.Focus();
-                return;
-            }
-
-            WindowLeft = left;
-            WindowTop = top;
-            WindowWidth = width;
-            WindowHeight = height;
-
+            WindowLeft = int.TryParse(txtLeft.Text, out var left) ? left : null;
+            WindowTop = int.TryParse(txtTop.Text, out var top) ? top : null;
+            WindowWidth = int.TryParse(txtWidth.Text, out var width) ? width : null;
+            WindowHeight = int.TryParse(txtHeight.Text, out var height) ? height : null;
             DialogResult = DialogResult.OK;
             Close();
         }
