@@ -14,6 +14,7 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Roll Up.** Allows to roll up and down the current window.
 * **Aero Glass.** Allows to add the "Aero Glass" blur to the current window. (Windows Vista and higher. Mostly for console windows.)
 * **Always On Top.** Allows the current window to stay on top of all other windows.
+* **Change Title.** Allows to change the text in the title bar.
 * **Send To Bottom.** Allows to send to bottom the current window.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
