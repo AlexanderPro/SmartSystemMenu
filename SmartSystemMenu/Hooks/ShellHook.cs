@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using SmartSystemMenu.Native;
 using static SmartSystemMenu.Native.Constants;
 using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Hooks;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -11,7 +11,7 @@ namespace SmartSystemMenu.Hooks
         public event EventHandler<WindowEventArgs> WindowCreated;
         public event EventHandler<WindowEventArgs> WindowDestroyed;
 
-        public ShellHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
+        public ShellHook(IntPtr handle) : base(handle)
         {
         }
 
@@ -23,12 +23,12 @@ namespace SmartSystemMenu.Hooks
                 ChangeWindowMessageFilter(WM_SSM_HOOK_HSHELL_WINDOWDESTROYED, MSGFLT_ADD);
             }
 
-            NativeHookMethods.InitializeShellHook(0, _handle, _dragByMouseMenuItem);
+            InitializeShellHook(0, _handle);
         }
 
         protected override void OnStop()
         {
-            NativeHookMethods.UninitializeShellHook();
+            UninitializeShellHook();
         }
 
         public override void ProcessWindowMessage(ref Message m)

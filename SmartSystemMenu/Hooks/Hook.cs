@@ -6,17 +6,15 @@ namespace SmartSystemMenu.Hooks
     {
         protected bool _isActive = false;
         protected IntPtr _handle;
-        protected int _dragByMouseMenuItem;
 
         public bool IsActive
         {
             get { return _isActive; }
         }
 
-        public Hook(IntPtr windowHandle, int dragByMouseMenuItem)
+        public Hook(IntPtr windowHandle)
         {
             _handle = windowHandle;
-            _dragByMouseMenuItem = dragByMouseMenuItem;
         }
 
         public void Start()

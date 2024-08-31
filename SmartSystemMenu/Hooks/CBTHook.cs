@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using static SmartSystemMenu.Native.Constants;
 using static SmartSystemMenu.Native.User32;
-
+using static SmartSystemMenu.Native.Hooks;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -14,7 +14,7 @@ namespace SmartSystemMenu.Hooks
         public event EventHandler<WindowEventArgs> MoveSize;
         public event EventHandler<WindowEventArgs> Activate;
 
-        public CBTHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
+        public CBTHook(IntPtr handle) : base(handle)
         {
         }
 
@@ -29,12 +29,12 @@ namespace SmartSystemMenu.Hooks
                 ChangeWindowMessageFilter(WM_SSM_HOOK_HCBT_ACTIVATE, MSGFLT_ADD);
             }
 
-            NativeHookMethods.InitializeCbtHook(0, _handle, _dragByMouseMenuItem);
+            InitializeCbtHook(0, _handle);
         }
 
         protected override void OnStop()
         {
-            NativeHookMethods.UninitializeCbtHook();
+            UninitializeCbtHook();
         }
 
         public override void ProcessWindowMessage(ref Message m)

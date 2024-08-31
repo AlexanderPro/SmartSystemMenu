@@ -172,6 +172,7 @@
     <Compile Include="Native\Enums\TOKEN_TYPE.cs" />
     <Compile Include="Native\Enums\WindowCompositionAttribute.cs" />
     <Compile Include="Native\Enums\WindowShowStyle.cs" />
+    <Compile Include="Native\Hooks.cs" />
     <Compile Include="Native\Kernel32.cs" />
     <Compile Include="Native\Ntdll.cs" />
     <Compile Include="Native\SHCore.cs" />
@@ -255,12 +256,7 @@
     <Compile Include="Hooks\CBTHook.cs" />
     <Compile Include="Hooks\GetMsgHook.cs" />
     <Compile Include="Hooks\Hook.cs" />
-    <Compile Include="Hooks\KeyboardHook.cs" />
-    <Compile Include="Hooks\KeyboardLLHook.cs" />
-    <Compile Include="Hooks\MouseHook.cs" />
-    <Compile Include="Hooks\MouseLLHook.cs" />
     <Compile Include="Hooks\ShellHook.cs" />
-    <Compile Include="Hooks\NativeHookMethods.cs" />
     <Compile Include="Hooks\WindowEventArgs.cs" />
     <Compile Include="Hooks\SysCommandEventArgs.cs" />
     <Compile Include="Forms\TransparencyForm.cs">

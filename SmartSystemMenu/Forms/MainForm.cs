@@ -27,7 +27,6 @@ namespace SmartSystemMenu.Forms
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
         private CBTHook _cbtHook;
-        private Hooks.MouseHook _mouseHook;
         private AboutForm _aboutForm;
         private SettingsForm _settingsForm;
         private readonly List<DimForm> _dimForms;
@@ -40,7 +39,7 @@ namespace SmartSystemMenu.Forms
 #if WIN32
         private SystemTrayMenu _systemTrayMenu;
         private HotKeyHook _hotKeyHook;
-        private HotKeys.MouseHook _hotKeyMouseHook;
+        private MouseHook _hotKeyMouseHook;
         private Process _64BitProcess;
 #endif
 
@@ -105,7 +104,7 @@ namespace SmartSystemMenu.Forms
                 _hotKeyHook.Start(moduleName, _settings.MenuItems);
             }
 
-            _hotKeyMouseHook = new HotKeys.MouseHook();
+            _hotKeyMouseHook = new MouseHook();
             _hotKeyMouseHook.Hooked += HotKeyMouseHooked;
             if (_settings.Closer.MouseButton != MouseButton.None)
             {
@@ -149,7 +148,7 @@ namespace SmartSystemMenu.Forms
                 }
             }
 
-            _callWndProcHook = new CallWndProcHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
+            _callWndProcHook = new CallWndProcHook(Handle);
             _callWndProcHook.SysCommand += SysCommand;
             _callWndProcHook.InitMenu += InitMenu;
             _callWndProcHook.Start();
@@ -159,26 +158,18 @@ namespace SmartSystemMenu.Forms
             _getMsgHook.InitMenu += InitMenu;
             _getMsgHook.Start();
 
-            _shellHook = new ShellHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
+            _shellHook = new ShellHook(Handle);
             _shellHook.WindowCreated += WindowCreated;
             _shellHook.WindowDestroyed += WindowDestroyed;
             _shellHook.Start();
 
-            _cbtHook = new CBTHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
+            _cbtHook = new CBTHook(Handle);
             _cbtHook.WindowCreated += WindowCreated;
             _cbtHook.WindowDestroyed += WindowDestroyed;
             _cbtHook.MoveSize += WindowMoveSize;
             _cbtHook.MinMax += WindowMinMax;
             _cbtHook.Activate += WindowActivate;
             _cbtHook.Start();
-
-
-            _mouseHook = new Hooks.MouseHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
-            var dragByMouseItemName = MenuItemId.GetName(MenuItemId.SC_DRAG_BY_MOUSE);
-            if (_settings.MenuItems.Items.Flatten(x => x.Items).Any(x => x.Type == MenuItemType.Item && x.Name == dragByMouseItemName && x.Show))
-            {
-                _mouseHook.Start();
-            }
 
             Hide();
         }
@@ -217,7 +208,6 @@ namespace SmartSystemMenu.Forms
             _getMsgHook?.Stop();
             _shellHook?.Stop();
             _cbtHook?.Stop();
-            _mouseHook?.Stop();
 
             HideDimWindows();
 

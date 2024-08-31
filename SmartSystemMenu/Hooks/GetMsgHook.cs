@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using static SmartSystemMenu.Native.Constants;
 using static SmartSystemMenu.Native.User32;
+using static SmartSystemMenu.Native.Hooks;
 
 namespace SmartSystemMenu.Hooks
 {
@@ -9,12 +10,14 @@ namespace SmartSystemMenu.Hooks
     {
         private IntPtr _cacheHandle;
         private IntPtr _cacheMessage;
+        private int _dragByMouseMenuItem;
 
         public event EventHandler<SysCommandEventArgs> SysCommand;
         public event EventHandler<SysCommandEventArgs> InitMenu;
 
-        public GetMsgHook(IntPtr handle, int dragByMouseMenuItem) : base(handle, dragByMouseMenuItem)
+        public GetMsgHook(IntPtr handle, int dragByMouseMenuItem) : base(handle)
         {
+            _dragByMouseMenuItem = dragByMouseMenuItem;
         }
 
         protected override void OnStart()
@@ -26,12 +29,12 @@ namespace SmartSystemMenu.Hooks
                 ChangeWindowMessageFilter(WM_SSM_HOOK_GETMSG_INITMENU, MSGFLT_ADD);
             }
 
-            NativeHookMethods.InitializeGetMsgHook(0, _handle, _dragByMouseMenuItem);
+            InitializeGetMsgHook(0, _handle, _dragByMouseMenuItem);
         }
 
         protected override void OnStop()
         {
-            NativeHookMethods.UninitializeGetMsgHook();
+            UninitializeGetMsgHook();
         }
 
         public override void ProcessWindowMessage(ref Message m)
