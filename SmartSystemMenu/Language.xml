@@ -708,6 +708,8 @@
       <item name="closer_lbl_key2" value="键 2" />
       <item name="closer_lbl_mouse_button" value="鼠标按钮" />
       <item name="closer_lbl_action" value="动作" />
+      <item name="closer_close_window" value="关闭窗口" />
+      <item name="closer_kill_process" value="结束进程" />
       <item name="closer_close_foreground_window" value="关闭前台窗口" />
       <item name="closer_close_window_under_cursor" value="关闭光标下的窗口" />
       <item name="closer_kill_process_with_foreground_window" value="终止带有前台窗口的进程" />
