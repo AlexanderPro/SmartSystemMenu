@@ -1209,7 +1209,7 @@
     <ko>
       <item name="separator" value="분리 기호" />
       <item name="information" value="정보" />
-      <item name="hide" value="숨다" />
+      <item name="hide" value="숨기기" />
       <item name="roll_up" value="접기" />
       <item name="aero_glass" value="에어로 글래스" />
       <item name="always_on_top" value="항상 위에 표시" />
@@ -1228,7 +1228,7 @@
       <item name="click_through" value="창을 통해 클릭" />
       <item name="size" value="크기 변경" />
       <item name="size_default" value="기본" />
-      <item name="size_custom" value="사용자 정의..." />
+      <item name="size_custom" value="사용자 지정..." />
       <item name="move_to" value="이동" />
       <item name="monitor" value="모니터링 " />
       <item name="alignment" value="정렬" />
@@ -1244,35 +1244,35 @@
       <item name="align_center_horizontally" value="가로 가운데" />
       <item name="align_center_vertically" value="세로 가운데" />
       <item name="align_default" value="기본" />
-      <item name="align_custom" value="사용자 정의..." />
+      <item name="align_custom" value="사용자 지정..." />
       <item name="transparency" value="투명도" />
       <item name="trans_opaque" value=" (불투명)" />
       <item name="trans_invisible" value=" (투명)" />
       <item name="trans_default" value="기본" />
-      <item name="trans_custom" value="사용자 정의..." />
+      <item name="trans_custom" value="사용자 지정..." />
       <item name="priority" value="우선 순위" />
       <item name="priority_real_time" value="실시간: 24" />
       <item name="priority_high" value="높음: 13" />
-      <item name="priority_above_normal" value="보통 초과: 10" />
+      <item name="priority_above_normal" value="보통 이상: 10" />
       <item name="priority_normal" value="보통: 8" />
-      <item name="priority_below_normal" value="보통 미만: 6" />
+      <item name="priority_below_normal" value="보통 이하: 6" />
       <item name="priority_idle" value="유휴: 4" />
       <item name="system_tray" value="시스템 트레이" />
       <item name="minimize_to_systemtray" value="트레이로 최소화" />
       <item name="minimize_always_to_systemtray" value="항상 트레이로 최소화" />
-      <item name="suspend_to_systemtray" value="일시 중단 및 트레이 최소화" />
+      <item name="suspend_to_systemtray" value="일시 중단하고 트레이로 최소화" />
       <item name="other_windows" value="다른 창" />
       <item name="minimize_other_windows" value="다른 창 최소화" />
       <item name="close_other_windows" value="다른 창 닫기" />
       <item name="start_program" value="프로그램 실행" />
       <item name="save_selected_items" value="저장" />
       <item name="dimmer" value="창 조광기" />
-      <item name="dimmer_on" value="~에" />
-      <item name="dimmer_off" value="끄다" />
+      <item name="dimmer_on" value="~켜기" />
+      <item name="dimmer_off" value="끄기" />
       <item name="buttons" value="버튼" />
-      <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 비활성화" />
-      <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 비활성화" />
-      <item name="disable_close_button" value="&quot;닫기&quot; 버튼 비활성화" />
+      <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 사용 안 함" />
+      <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 사용 안 함" />
+      <item name="disable_close_button" value="&quot;닫기&quot; 버튼 사용 안 함" />
       <item name="grp_window" value="창" />
       <item name="grp_process" value="프로세스" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
