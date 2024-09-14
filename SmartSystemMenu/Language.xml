@@ -62,8 +62,8 @@
       <item name="start_program" value="Start Program" />
       <item name="save_selected_items" value="Save" />
       <item name="dimmer" value="Dimmer" />
-      <item name="dimmer_on" value="On" />
-      <item name="dimmer_off" value="Off" />
+      <item name="dimmer_on" value="Turn On" />
+      <item name="dimmer_off" value="Turn Off" />
       <item name="buttons" value="Buttons" />
       <item name="disable_minimize_button" value="Disable &quot;Minimize&quot; Button" />
       <item name="disable_maximize_button" value="Disable &quot;Maximize&quot; Button" />
