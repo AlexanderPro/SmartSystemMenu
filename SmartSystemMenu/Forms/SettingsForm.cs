@@ -315,12 +315,12 @@ namespace SmartSystemMenu.Forms
         private void GridViewStartProgramCellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
-            var row = grid.Rows[e.RowIndex];
-            if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && row.Tag is StartProgramMenuItem menuItem)
+            if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && grid.Rows[e.RowIndex].Tag is StartProgramMenuItem menuItem)
             {
                 var dialog = new StartProgramForm(menuItem, _settings.Language);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
+                    var row = grid.Rows[e.RowIndex];
                     row.Cells[0].Value = dialog.MenuItem.Title;
                     row.Cells[1].Value = dialog.MenuItem.FileName;
                     row.Cells[2].Value = dialog.MenuItem.Arguments;
