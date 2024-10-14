@@ -10,14 +10,12 @@ namespace SmartSystemMenu.Hooks
     {
         private IntPtr _cacheHandle;
         private IntPtr _cacheMessage;
-        private int _dragByMouseMenuItem;
 
         public event EventHandler<SysCommandEventArgs> SysCommand;
         public event EventHandler<SysCommandEventArgs> InitMenu;
 
-        public GetMsgHook(IntPtr handle, int dragByMouseMenuItem) : base(handle)
+        public GetMsgHook(IntPtr handle) : base(handle)
         {
-            _dragByMouseMenuItem = dragByMouseMenuItem;
         }
 
         protected override void OnStart()
@@ -29,7 +27,7 @@ namespace SmartSystemMenu.Hooks
                 ChangeWindowMessageFilter(WM_SSM_HOOK_GETMSG_INITMENU, MSGFLT_ADD);
             }
 
-            InitializeGetMsgHook(0, _handle, _dragByMouseMenuItem);
+            InitializeGetMsgHook(0, _handle);
         }
 
         protected override void OnStop()

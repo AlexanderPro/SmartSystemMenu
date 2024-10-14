@@ -10,9 +10,6 @@ HHOOK hookCbt = NULL;
 HHOOK hookShell = NULL;
 HHOOK hookCallWndProc = NULL;
 HHOOK hookGetMsg = NULL;
-HWND cursorWnd = NULL;
-RECT cursorWndPrevRect;
-int scDragByMouseMenuItem = 0;
 #pragma data_seg()
 #pragma comment(linker, "/section:.Shared,rws")
 
@@ -28,6 +25,7 @@ static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam);
 static LRESULT CALLBACK ShellHookCallback(int code, WPARAM wparam, LPARAM lparam);
 static LRESULT CALLBACK CallWndProcHookCallback(int code, WPARAM wparam, LPARAM lparam);
 static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lparam);
+static LRESULT CALLBACK WndProcMinMax(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 HWND GetTopLevelWindow(HWND hwnd)
 {
@@ -165,13 +163,30 @@ static LRESULT CALLBACK CallWndProcHookCallback(int code, WPARAM wparam, LPARAM 
             {
                 SendNotifyMessage(hwndMain, WM_SSM_HOOK_CALLWNDPROC_INITMENU, (WPARAM)pCwpStruct->hwnd, pCwpStruct->message);
             } break;
+
+            case WM_GETMINMAXINFO:
+            {
+                HMENU systemMenu = GetSystemMenu(pCwpStruct->hwnd, false);
+                if (systemMenu)
+                {
+                    UINT menuItemRollUpState = GetMenuState(systemMenu, SC_ROLLUP, MF_BYCOMMAND);
+                    UINT menuItemResizableState = GetMenuState(systemMenu, SC_RESIZABLE, MF_BYCOMMAND);
+                    bool isMenuItemRollUpChecked = menuItemRollUpState != -1 && (menuItemRollUpState & MF_CHECKED) != 0;
+                    bool isMenuItemResizableChecked = menuItemResizableState != -1 && (menuItemResizableState & MF_CHECKED) != 0;
+                    if (isMenuItemRollUpChecked || isMenuItemResizableChecked)
+                    {
+                        LONG_PTR proc = SetWindowLongPtr(pCwpStruct->hwnd, GWLP_WNDPROC, (LONG_PTR)WndProcMinMax);
+                        SetProp(pCwpStruct->hwnd, L"_ssm_old_wnd_proc_", (HANDLE)(proc));
+                    }
+                }
+            } break;
         }
     }
 
     return CallNextHookEx(hookCallWndProc, code, wparam, lparam);
 }
 
-DLLEXPORT bool __stdcall InitializeGetMsgHook(int threadID, HWND destination, int dragByMouseMenuItem)
+DLLEXPORT bool __stdcall InitializeGetMsgHook(int threadID, HWND destination)
 {
     if (g_appInstance == NULL)
     {
@@ -179,7 +194,6 @@ DLLEXPORT bool __stdcall InitializeGetMsgHook(int threadID, HWND destination, in
     }
 
     hwndMain = destination;
-    scDragByMouseMenuItem = dragByMouseMenuItem;
     hookGetMsg = SetWindowsHookEx(WH_GETMESSAGE, (HOOKPROC)GetMsgHookCallback, g_appInstance, threadID);
     return hookGetMsg != NULL;
 }
@@ -214,14 +228,12 @@ static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lpara
             case WM_LBUTTONDOWN:
             {
                 HWND hwnd = GetTopLevelWindow(pMsg->hwnd);
-                HMENU menu = GetSystemMenu(hwnd, false);
-                if (menu)
+                HMENU systemMenu = GetSystemMenu(hwnd, false);
+                if (systemMenu)
                 {
-                    LPWSTR szCaption = new WCHAR[MAX_PATH];
-                    GetMenuString(menu, scDragByMouseMenuItem, szCaption, MAX_PATH, MF_BYCOMMAND);
-                    UINT flags = GetMenuState(menu, scDragByMouseMenuItem, MF_BYCOMMAND);
-                    bool isChecked = flags != -1 && (flags & MF_CHECKED) != 0;
-                    if (isChecked && szCaption != NULL && szCaption[0] != 0)
+                    UINT menuItemDragByMouseState = GetMenuState(systemMenu, SC_DRAG_BY_MOUSE, MF_BYCOMMAND);
+                    bool isMenuItemDragByMouseChecked = menuItemDragByMouseState != -1 && (menuItemDragByMouseState & MF_CHECKED) != 0;
+                    if (isMenuItemDragByMouseChecked)
                     {
                         ReleaseCapture();
                         SendMessage(hwnd, WM_SYSCOMMAND, 61458, 0);
@@ -232,4 +244,39 @@ static LRESULT CALLBACK GetMsgHookCallback(int code, WPARAM wparam, LPARAM lpara
     }
 
     return CallNextHookEx(hookGetMsg, code, wparam, lparam);
+}
+
+static LRESULT CALLBACK WndProcMinMax(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HANDLE hdl = GetProp(hwnd, L"_ssm_old_wnd_proc_");
+    RemoveProp(hwnd, L"_ssm_old_wnd_proc_");
+    SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)(hdl));
+
+    switch (uMsg)
+    {
+        case WM_GETMINMAXINFO:
+        {
+            MINMAXINFO* minmax = (MINMAXINFO*)(lParam);
+            minmax->ptMinTrackSize.x = 0;
+            minmax->ptMinTrackSize.y = 0;
+            minmax->ptMaxTrackSize.x = LONG_MAX;
+            minmax->ptMaxTrackSize.y = LONG_MAX;
+            /*TCHAR buf[255];
+            wsprintf(buf, L"MINMAXINFO Hwnd = %p, x = %ld, y = %ld", hwnd, minmax->ptMinTrackSize.x, minmax->ptMinTrackSize.y);
+            OutputDebugString(buf);*/
+        } break;
+
+        case WM_WINDOWPOSCHANGING:
+        {
+            WINDOWPOS* wpos = (WINDOWPOS*)(lParam);
+            wpos->cx = 0;
+            wpos->cy = 0;
+        } break;
+
+        case WM_WINDOWPOSCHANGED:
+            break;
+
+        default:
+            return CallWindowProc((WNDPROC)(hdl), hwnd, uMsg, wParam, lParam);
+    }
 }

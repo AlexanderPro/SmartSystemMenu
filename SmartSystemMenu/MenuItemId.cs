@@ -88,6 +88,7 @@ namespace SmartSystemMenu
         public const int SC_DIMMER_OFF = 0x4825;
         public const int SC_HIDE = 0x4826;
         public const int SC_CHANGE_TITLE = 0x4827;
+        public const int SC_RESIZABLE = 0x4828;
 
         private static readonly Dictionary<string, int> NameToId = new ();
         private static readonly Dictionary<int, string> IdToName = new ();
@@ -108,6 +109,7 @@ namespace SmartSystemMenu
             NameToId["size"] = SC_SIZE;
             NameToId["size_default"] = SC_SIZE_DEFAULT;
             NameToId["size_custom"] = SC_SIZE_CUSTOM;
+            NameToId["size_resizable"] = SC_RESIZABLE;
             NameToId["move_to"] = SC_MOVE_TO;
             NameToId["alignment"] = SC_ALIGN;
             NameToId["align_top_left"] = SC_ALIGN_TOP_LEFT;

@@ -26,7 +26,7 @@ namespace SmartSystemMenu.Native
         public static extern void UninitializeCallWndProcHook();
 
         [DllImport("SmartSystemMenuHook.dll")]
-        public static extern bool InitializeGetMsgHook(int threadID, IntPtr destWindow, int dragByMouseMenuItem);
+        public static extern bool InitializeGetMsgHook(int threadID, IntPtr destWindow);
 
         [DllImport("SmartSystemMenuHook.dll")]
         public static extern void UninitializeGetMsgHook();
@@ -52,7 +52,7 @@ namespace SmartSystemMenu.Native
         public static extern void UninitializeCallWndProcHook();
 
         [DllImport("SmartSystemMenuHook64.dll")]
-        public static extern bool InitializeGetMsgHook(int threadID, IntPtr destWindow, int dragByMouseMenuItem);
+        public static extern bool InitializeGetMsgHook(int threadID, IntPtr destWindow);
 
         [DllImport("SmartSystemMenuHook64.dll")]
         public static extern void UninitializeGetMsgHook();

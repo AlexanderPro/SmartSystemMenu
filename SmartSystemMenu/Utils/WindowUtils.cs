@@ -170,30 +170,32 @@ namespace SmartSystemMenu.Utils
 
         public static bool IsDisabledMaximizeButton(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_STYLE) & WS_MAXIMIZEBOX) == 0;
 
+        public static bool HasThickFrame(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_STYLE) & WS_THICKFRAME) != 0;
+
         public static bool IsClickThrough(IntPtr hWnd)
         {
-            var style = GetWindowLong(hWnd, GWL_EXSTYLE);
-            return (style & WS_EX_LAYERED) != 0 && (style & WS_EX_TRANSPARENT) != 0;
+            var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+            return (exStyle & WS_EX_LAYERED) != 0 && (exStyle & WS_EX_TRANSPARENT) != 0;
         }
 
         public static bool IsLayered(IntPtr hWnd)
         {
-            var style = GetWindowLong(hWnd, GWL_EXSTYLE);
-            return (style & WS_EX_LAYERED) != 0;
+            var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+            return (exStyle & WS_EX_LAYERED) != 0;
         }
 
         public static void DisableMinimizeButton(IntPtr hWnd, bool disable)
         {
-            var exStyle = GetWindowLong(hWnd, GWL_STYLE);
-            exStyle = disable ? exStyle & ~WS_MINIMIZEBOX : exStyle | WS_MINIMIZEBOX;
-            SetWindowLong(hWnd, GWL_STYLE, exStyle);
+            var style = GetWindowLong(hWnd, GWL_STYLE);
+            style = disable ? style & ~WS_MINIMIZEBOX : style | WS_MINIMIZEBOX;
+            SetWindowLong(hWnd, GWL_STYLE, style);
         }
 
         public static void DisableMaximizeButton(IntPtr hWnd, bool disable)
         {
-            var exStyle = GetWindowLong(hWnd, GWL_STYLE);
-            exStyle = disable ? exStyle & ~WS_MAXIMIZEBOX : exStyle | WS_MAXIMIZEBOX;
-            SetWindowLong(hWnd, GWL_STYLE, exStyle);
+            var style = GetWindowLong(hWnd, GWL_STYLE);
+            style = disable ? style & ~WS_MAXIMIZEBOX : style | WS_MAXIMIZEBOX;
+            SetWindowLong(hWnd, GWL_STYLE, style);
         }
 
         public static void SetExToolWindow(IntPtr hWnd)
@@ -231,6 +233,20 @@ namespace SmartSystemMenu.Utils
             var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
             exStyle &= ~WS_EX_TRANSPARENT;
             SetWindowLong(hWnd, GWL_EXSTYLE, exStyle);
+        }
+
+        public static void SetThickFrame(IntPtr hWnd)
+        {
+            var style = GetWindowLong(hWnd, GWL_STYLE);
+            style |= WS_THICKFRAME;
+            SetWindowLong(hWnd, GWL_STYLE, style);
+        }
+
+        public static void UnsetThickFrame(IntPtr hWnd)
+        {
+            var style = GetWindowLong(hWnd, GWL_STYLE);
+            style &= ~WS_THICKFRAME;
+            SetWindowLong(hWnd, GWL_STYLE, style);
         }
 
         public static Icon GetIcon(IntPtr hWnd)

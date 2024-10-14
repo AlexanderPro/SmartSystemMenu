@@ -153,7 +153,7 @@ namespace SmartSystemMenu.Forms
             _callWndProcHook.InitMenu += InitMenu;
             _callWndProcHook.Start();
 
-            _getMsgHook = new GetMsgHook(Handle, MenuItemId.SC_DRAG_BY_MOUSE);
+            _getMsgHook = new GetMsgHook(Handle);
             _getMsgHook.SysCommand += SysCommand;
             _getMsgHook.InitMenu += InitMenu;
             _getMsgHook.Start();
@@ -757,6 +757,7 @@ namespace SmartSystemMenu.Forms
                                 {
                                     window.UnRollUp();
                                 }
+                                InvalidateRect(window.Handle, IntPtr.Zero, true);
                             }
                             break;
 
@@ -808,6 +809,17 @@ namespace SmartSystemMenu.Forms
                                     window.Menu.CheckMenuItem(MenuItemId.SC_SIZE_CUSTOM, true);
                                     window.Menu.UncheckMenuItems(MenuItemId.SC_ROLLUP);
                                 }
+                            }
+                            break;
+
+                        case MenuItemId.SC_RESIZABLE:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_RESIZABLE);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_RESIZABLE, !isChecked);
+                                window.MakeThickFrame(!isChecked);
+                                var size = window.Size;
+                                MoveWindow(window.Handle, size.Left, size.Top, size.Width, size.Height, true);
+                                InvalidateRect(window.Handle, IntPtr.Zero, true);
                             }
                             break;
 

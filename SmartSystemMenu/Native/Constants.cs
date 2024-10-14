@@ -41,6 +41,7 @@
         // WindowStyle
         public const int WS_MAXIMIZEBOX = 0x00010000;
         public const int WS_MINIMIZEBOX = 0x00020000;
+        public const int WS_THICKFRAME = 0x00040000;
         public const int WS_EX_LAYERED = 0x00080000;
         public const int WS_EX_TOPMOST = 0x00000008;
         public const int WS_EX_TOOLWINDOW = 0x00000080;
@@ -65,7 +66,7 @@
         public const int WM_GETTEXT = 0x000D;
         public const int WM_GETTEXTLENGTH = 0x000E;
         public const int WM_GETFONT = 0x0031;
-        public const int WM_COPYDATA = 0x004A;       
+        public const int WM_COPYDATA = 0x004A;
 
         public const int WM_MOUSEMOVE = 0x0200;
         public const int WM_LBUTTONDOWN = 0x0201;

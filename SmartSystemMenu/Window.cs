@@ -30,6 +30,7 @@ namespace SmartSystemMenu
         private int _beforeRollupHeight;
         private bool _suspended;
         private bool _isLayered;
+        private bool _hasThickFrame;
         private NotifyIcon _systemTrayIcon;
         private ToolStripMenuItem _menuItemRestore;
         private ToolStripMenuItem _menuItemClose;
@@ -150,6 +151,7 @@ namespace SmartSystemMenu
             _beforeRollupHeight = size.Height;
             _defaultTransparency = Transparency;
             _isLayered = false;
+            _hasThickFrame = false;
             State = new WindowState();
             State.Left = size.Left;
             State.Top = size.Top;
@@ -596,6 +598,25 @@ namespace SmartSystemMenu
                 else
                 {
                     WindowUtils.UnsetClickThrough(Handle);
+                }
+            }
+        }
+
+        public void MakeThickFrame(bool enable)
+        {
+            if (enable)
+            {
+                _hasThickFrame = WindowUtils.HasThickFrame(Handle);
+                if (!_hasThickFrame)
+                {
+                    WindowUtils.SetThickFrame(Handle);
+                }
+            }
+            else
+            {
+                if (!_hasThickFrame)
+                {
+                    WindowUtils.UnsetThickFrame(Handle);
                 }
             }
         }

@@ -17,6 +17,9 @@
 #define WM_SSM_HOOK_HSHELL_WINDOWCREATED          WM_APP + 0x020C
 #define WM_SSM_HOOK_HSHELL_WINDOWDESTROYED        WM_APP + 0x020D
 
+#define SC_DRAG_BY_MOUSE                          0x4809
+#define SC_ROLLUP                                 0x4783
+#define SC_RESIZABLE                              0x4828
 
 #define DLLEXPORT extern "C" __declspec(dllexport)
 
@@ -26,7 +29,7 @@ DLLEXPORT bool __stdcall InitializeShellHook(int threadID, HWND destination);
 DLLEXPORT void __stdcall UninitializeShellHook();
 DLLEXPORT bool __stdcall InitializeCallWndProcHook(int threadID, HWND destination);
 DLLEXPORT void __stdcall UninitializeCallWndProcHook();
-DLLEXPORT bool __stdcall InitializeGetMsgHook(int threadID, HWND destination, int dragByMouseMenuItem);
+DLLEXPORT bool __stdcall InitializeGetMsgHook(int threadID, HWND destination);
 DLLEXPORT void __stdcall UninitializeGetMsgHook();
 
 #endif

@@ -22,6 +22,7 @@
       <item name="hide_for_alt_tab" value="Hide For Alt+Tab" />
       <item name="click_through" value="Click Through" />
       <item name="size" value="Resize" />
+      <item name="size_resizable" value="Resizable" />
       <item name="size_default" value="Default" />
       <item name="size_custom" value="Custom..." />
       <item name="move_to" value="Move To" />
@@ -264,6 +265,7 @@
       <item name="hide_for_alt_tab" value="Ausblenden für Alt+Tab" />
       <item name="click_through" value="Durchklicken" />
       <item name="size" value="Fenstergröβe ändern" />
+      <item name="size_resizable" value="Größenveränderbar" />
       <item name="size_default" value="Standardmäβig" />
       <item name="size_custom" value="Benutzerdefinierter Wert…" />
       <item name="move_to" value="Verschieben zu" />
@@ -505,6 +507,7 @@
       <item name="hide_for_alt_tab" value="在 Alt+Tab 列表中隐藏" />
       <item name="click_through" value="点击时透过窗口" />
       <item name="size" value="调整窗口大小为" />
+      <item name="size_resizable" value="可调整大小" />
       <item name="size_default" value="默认" />
       <item name="size_custom" value="自定义..." />
       <item name="move_to" value="移动到" />
@@ -747,6 +750,7 @@
       <item name="hide_for_alt_tab" value="在 Alt+Tab 中隱藏" />
       <item name="click_through" value="點擊窗口" />
       <item name="size" value="調整視窗大小" />
+      <item name="size_resizable" value="可調整大小" />
       <item name="size_default" value="預設" />
       <item name="size_custom" value="自訂..." />
       <item name="move_to" value="移動到" />
@@ -989,6 +993,7 @@
       <item name="hide_for_alt_tab" value="Alt+Tabで非表示" />
       <item name="click_through" value="クリックスルーウィンドウ" />
       <item name="size" value="サイズ変更" />
+      <item name="size_resizable" value="サイズ変更可能" />
       <item name="size_default" value="デフォルト" />
       <item name="size_custom" value="カストム" />
       <item name="move_to" value="移動" />
@@ -1229,6 +1234,7 @@
       <item name="hide_for_alt_tab" value="Alt+Tab으로 숨기기" />
       <item name="click_through" value="창을 통해 클릭" />
       <item name="size" value="크기 변경" />
+      <item name="size_resizable" value="크기 조절 가능" />
       <item name="size_default" value="기본" />
       <item name="size_custom" value="사용자 지정..." />
       <item name="move_to" value="이동" />
@@ -1471,6 +1477,7 @@
       <item name="hide_for_alt_tab" value="Скрыть для Alt+Tab" />
       <item name="click_through" value="Клик сквозь окно" />
       <item name="size" value="Изменить размер" />
+      <item name="size_resizable" value="Изменяемый размер" />
       <item name="size_default" value="По умолчанию" />
       <item name="size_custom" value="Настроить..." />
       <item name="move_to" value="Переместить" />
@@ -1711,6 +1718,7 @@
       <item name="hide_for_alt_tab" value="Сакриј за Alt+Tab" />
       <item name="click_through" value="Кликните кроз прозор" />
       <item name="size" value="Промени величину" />
+      <item name="size_resizable" value="Промена величине" />
       <item name="size_default" value="Подразумевано" />
       <item name="size_custom" value="Прилагоди..." />
       <item name="move_to" value="Премести на" />
@@ -1951,6 +1959,7 @@
       <item name="hide_for_alt_tab" value="Ocultar para Alt+Tab" />
       <item name="click_through" value="Clique na janela" />
       <item name="size" value="Redimensionar" />
+      <item name="size_resizable" value="Redimensionável" />
       <item name="size_default" value="Padrão" />
       <item name="size_custom" value="Personalizar..." />
       <item name="move_to" value="Mover para" />
@@ -2191,6 +2200,7 @@
       <item name="hide_for_alt_tab" value="Nascondi con Alt+Tab" />
       <item name="click_through" value="Fare clic attraverso" />
       <item name="size" value="Ridimensiona" />
+      <item name="size_resizable" value="Ridimensionabile" />
       <item name="size_default" value="Predefinito" />
       <item name="size_custom" value="Personalizza..." />
       <item name="move_to" value="Sposta in" />
@@ -2433,6 +2443,7 @@
       <item name="hide_for_alt_tab" value="Masqué pour Alt+Tab" />
       <item name="click_through" value="Cliquer à travers la fenêtre" />
       <item name="size" value="Taille" />
+      <item name="size_resizable" value="Redimensionnable" />
       <item name="size_default" value="Taille par défaut" />
       <item name="size_custom" value="Personnaliser la taille" />
       <item name="move_to" value="Déplacer dans" />
@@ -2675,6 +2686,7 @@
       <item name="hide_for_alt_tab" value="Alt+Tab elrejtése" />
       <item name="click_through" value="Átkattintás" />
       <item name="size" value="Átméretezés" />
+	  <item name="size_resizable" value="Átméretezhető" />
       <item name="size_default" value="Alapértelmezett" />
       <item name="size_custom" value="Egyéni..." />
       <item name="move_to" value="Áthelyezés ide" />

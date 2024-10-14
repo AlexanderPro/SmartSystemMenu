@@ -34,6 +34,8 @@
       <item type="group" name="size">
         <items>
           <item type="separator" />
+          <item type="item" name="size_resizable" key1="" key2="" key3="" />
+          <item type="separator" />
           <item type="item" name="size_default" key1="" key2="" key3="" />
           <item type="separator" />
           <item type="item" name="size_custom" key1="" key2="" key3="" />
