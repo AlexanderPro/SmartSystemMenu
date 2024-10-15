@@ -56,27 +56,30 @@
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(114, 30);
+            this.lblProductName.Location = new System.Drawing.Point(152, 37);
+            this.lblProductName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(75, 13);
+            this.lblProductName.Size = new System.Drawing.Size(98, 17);
             this.lblProductName.TabIndex = 0;
             this.lblProductName.Text = "Product Name";
             // 
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(114, 52);
+            this.lblCopyright.Location = new System.Drawing.Point(152, 64);
+            this.lblCopyright.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(51, 13);
+            this.lblCopyright.Size = new System.Drawing.Size(68, 17);
             this.lblCopyright.TabIndex = 1;
             this.lblCopyright.Text = "Copyright";
             // 
             // linkUrl
             // 
             this.linkUrl.AutoSize = true;
-            this.linkUrl.Location = new System.Drawing.Point(114, 75);
+            this.linkUrl.Location = new System.Drawing.Point(152, 92);
+            this.linkUrl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkUrl.Name = "linkUrl";
-            this.linkUrl.Size = new System.Drawing.Size(29, 13);
+            this.linkUrl.Size = new System.Drawing.Size(36, 17);
             this.linkUrl.TabIndex = 2;
             this.linkUrl.TabStop = true;
             this.linkUrl.Text = "URL";
@@ -84,9 +87,10 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(358, 30);
+            this.btnOk.Location = new System.Drawing.Point(578, 37);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(86, 30);
+            this.btnOk.Size = new System.Drawing.Size(115, 37);
             this.btnOk.TabIndex = 18;
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.CloseClick);
@@ -95,27 +99,30 @@
             // 
             this.pbImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbImage.BackgroundImage")));
             this.pbImage.InitialImage = null;
-            this.pbImage.Location = new System.Drawing.Point(4, 21);
+            this.pbImage.Location = new System.Drawing.Point(5, 26);
+            this.pbImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(104, 101);
+            this.pbImage.Size = new System.Drawing.Size(139, 124);
             this.pbImage.TabIndex = 4;
             this.pbImage.TabStop = false;
             // 
             // lblSpecialThanks
             // 
             this.lblSpecialThanks.AutoSize = true;
-            this.lblSpecialThanks.Location = new System.Drawing.Point(114, 109);
+            this.lblSpecialThanks.Location = new System.Drawing.Point(152, 134);
+            this.lblSpecialThanks.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpecialThanks.Name = "lblSpecialThanks";
-            this.lblSpecialThanks.Size = new System.Drawing.Size(92, 13);
+            this.lblSpecialThanks.Size = new System.Drawing.Size(120, 17);
             this.lblSpecialThanks.TabIndex = 3;
             this.lblSpecialThanks.Text = "Special thanks to:";
             // 
             // linkLightAPIs
             // 
             this.linkLightAPIs.AutoSize = true;
-            this.linkLightAPIs.Location = new System.Drawing.Point(116, 131);
+            this.linkLightAPIs.Location = new System.Drawing.Point(155, 161);
+            this.linkLightAPIs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLightAPIs.Name = "linkLightAPIs";
-            this.linkLightAPIs.Size = new System.Drawing.Size(52, 13);
+            this.linkLightAPIs.Size = new System.Drawing.Size(67, 17);
             this.linkLightAPIs.TabIndex = 4;
             this.linkLightAPIs.TabStop = true;
             this.linkLightAPIs.Text = "LightAPIs";
@@ -124,9 +131,10 @@
             // linkJaehyungLee
             // 
             this.linkJaehyungLee.AutoSize = true;
-            this.linkJaehyungLee.Location = new System.Drawing.Point(116, 175);
+            this.linkJaehyungLee.Location = new System.Drawing.Point(155, 215);
+            this.linkJaehyungLee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkJaehyungLee.Name = "linkJaehyungLee";
-            this.linkJaehyungLee.Size = new System.Drawing.Size(74, 13);
+            this.linkJaehyungLee.Size = new System.Drawing.Size(98, 17);
             this.linkJaehyungLee.TabIndex = 8;
             this.linkJaehyungLee.TabStop = true;
             this.linkJaehyungLee.Text = "Jaehyung Lee";
@@ -135,54 +143,60 @@
             // lblJaehyungLee
             // 
             this.lblJaehyungLee.AutoSize = true;
-            this.lblJaehyungLee.Location = new System.Drawing.Point(215, 175);
+            this.lblJaehyungLee.Location = new System.Drawing.Point(287, 215);
+            this.lblJaehyungLee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblJaehyungLee.Name = "lblJaehyungLee";
-            this.lblJaehyungLee.Size = new System.Drawing.Size(92, 13);
+            this.lblJaehyungLee.Size = new System.Drawing.Size(124, 17);
             this.lblJaehyungLee.TabIndex = 9;
             this.lblJaehyungLee.Text = "Korean translation";
             // 
             // lblLightAPIs
             // 
             this.lblLightAPIs.AutoSize = true;
-            this.lblLightAPIs.Location = new System.Drawing.Point(215, 130);
+            this.lblLightAPIs.Location = new System.Drawing.Point(287, 160);
+            this.lblLightAPIs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLightAPIs.Name = "lblLightAPIs";
-            this.lblLightAPIs.Size = new System.Drawing.Size(114, 13);
+            this.lblLightAPIs.Size = new System.Drawing.Size(152, 17);
             this.lblLightAPIs.TabIndex = 5;
             this.lblLightAPIs.Text = "Multi language support";
             // 
             // lblOzzii
             // 
             this.lblOzzii.AutoSize = true;
-            this.lblOzzii.Location = new System.Drawing.Point(116, 197);
+            this.lblOzzii.Location = new System.Drawing.Point(155, 242);
+            this.lblOzzii.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOzzii.Name = "lblOzzii";
-            this.lblOzzii.Size = new System.Drawing.Size(27, 13);
+            this.lblOzzii.Size = new System.Drawing.Size(36, 17);
             this.lblOzzii.TabIndex = 10;
             this.lblOzzii.Text = "ozzii";
             // 
             // lblOzziiAction
             // 
             this.lblOzziiAction.AutoSize = true;
-            this.lblOzziiAction.Location = new System.Drawing.Point(215, 197);
+            this.lblOzziiAction.Location = new System.Drawing.Point(287, 242);
+            this.lblOzziiAction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOzziiAction.Name = "lblOzziiAction";
-            this.lblOzziiAction.Size = new System.Drawing.Size(94, 13);
+            this.lblOzziiAction.Size = new System.Drawing.Size(127, 17);
             this.lblOzziiAction.TabIndex = 11;
             this.lblOzziiAction.Text = "Serbian translation";
             // 
             // lblWengh
             // 
             this.lblWengh.AutoSize = true;
-            this.lblWengh.Location = new System.Drawing.Point(215, 152);
+            this.lblWengh.Location = new System.Drawing.Point(287, 187);
+            this.lblWengh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWengh.Name = "lblWengh";
-            this.lblWengh.Size = new System.Drawing.Size(226, 13);
+            this.lblWengh.Size = new System.Drawing.Size(300, 17);
             this.lblWengh.TabIndex = 7;
             this.lblWengh.Text = "Menu item Suspend and Minimize, Refactoring";
             // 
             // linkWengh
             // 
             this.linkWengh.AutoSize = true;
-            this.linkWengh.Location = new System.Drawing.Point(116, 153);
+            this.linkWengh.Location = new System.Drawing.Point(155, 188);
+            this.linkWengh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkWengh.Name = "linkWengh";
-            this.linkWengh.Size = new System.Drawing.Size(70, 13);
+            this.linkWengh.Size = new System.Drawing.Size(90, 17);
             this.linkWengh.TabIndex = 6;
             this.linkWengh.TabStop = true;
             this.linkWengh.Text = "Weng Haoyu";
@@ -191,18 +205,20 @@
             // lblMarocco2
             // 
             this.lblMarocco2.AutoSize = true;
-            this.lblMarocco2.Location = new System.Drawing.Point(215, 219);
+            this.lblMarocco2.Location = new System.Drawing.Point(287, 270);
+            this.lblMarocco2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMarocco2.Name = "lblMarocco2";
-            this.lblMarocco2.Size = new System.Drawing.Size(86, 13);
+            this.lblMarocco2.Size = new System.Drawing.Size(115, 17);
             this.lblMarocco2.TabIndex = 13;
             this.lblMarocco2.Text = "Italian translation";
             // 
             // linkMarocco2
             // 
             this.linkMarocco2.AutoSize = true;
-            this.linkMarocco2.Location = new System.Drawing.Point(116, 219);
+            this.linkMarocco2.Location = new System.Drawing.Point(155, 270);
+            this.linkMarocco2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkMarocco2.Name = "linkMarocco2";
-            this.linkMarocco2.Size = new System.Drawing.Size(55, 13);
+            this.linkMarocco2.Size = new System.Drawing.Size(70, 17);
             this.linkMarocco2.TabIndex = 12;
             this.linkMarocco2.TabStop = true;
             this.linkMarocco2.Text = "Marocco2";
@@ -211,18 +227,20 @@
             // lblSaiyajinK
             // 
             this.lblSaiyajinK.AutoSize = true;
-            this.lblSaiyajinK.Location = new System.Drawing.Point(215, 241);
+            this.lblSaiyajinK.Location = new System.Drawing.Point(287, 297);
+            this.lblSaiyajinK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSaiyajinK.Name = "lblSaiyajinK";
-            this.lblSaiyajinK.Size = new System.Drawing.Size(91, 13);
+            this.lblSaiyajinK.Size = new System.Drawing.Size(122, 17);
             this.lblSaiyajinK.TabIndex = 15;
             this.lblSaiyajinK.Text = "French translation";
             // 
             // linkSaiyajinK
             // 
             this.linkSaiyajinK.AutoSize = true;
-            this.linkSaiyajinK.Location = new System.Drawing.Point(116, 241);
+            this.linkSaiyajinK.Location = new System.Drawing.Point(155, 297);
+            this.linkSaiyajinK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkSaiyajinK.Name = "linkSaiyajinK";
-            this.linkSaiyajinK.Size = new System.Drawing.Size(50, 13);
+            this.linkSaiyajinK.Size = new System.Drawing.Size(66, 17);
             this.linkSaiyajinK.TabIndex = 14;
             this.linkSaiyajinK.TabStop = true;
             this.linkSaiyajinK.Text = "SaiyajinK";
@@ -231,26 +249,28 @@
             // lblKissAction
             // 
             this.lblKissAction.AutoSize = true;
-            this.lblKissAction.Location = new System.Drawing.Point(215, 263);
+            this.lblKissAction.Location = new System.Drawing.Point(287, 324);
+            this.lblKissAction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKissAction.Name = "lblKissAction";
-            this.lblKissAction.Size = new System.Drawing.Size(107, 13);
+            this.lblKissAction.Size = new System.Drawing.Size(144, 17);
             this.lblKissAction.TabIndex = 17;
             this.lblKissAction.Text = "Hungarian translation";
             // 
             // lblKiss
             // 
             this.lblKiss.AutoSize = true;
-            this.lblKiss.Location = new System.Drawing.Point(116, 263);
+            this.lblKiss.Location = new System.Drawing.Point(155, 324);
+            this.lblKiss.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKiss.Name = "lblKiss";
-            this.lblKiss.Size = new System.Drawing.Size(93, 13);
+            this.lblKiss.Size = new System.Drawing.Size(124, 17);
             this.lblKiss.TabIndex = 16;
             this.lblKiss.Text = "Kiss Dénes László";
             // 
             // AboutForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 320);
+            this.ClientSize = new System.Drawing.Size(706, 394);
             this.Controls.Add(this.lblKiss);
             this.Controls.Add(this.lblKissAction);
             this.Controls.Add(this.lblSaiyajinK);
@@ -273,6 +293,7 @@
             this.Controls.Add(this.lblProductName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutForm";

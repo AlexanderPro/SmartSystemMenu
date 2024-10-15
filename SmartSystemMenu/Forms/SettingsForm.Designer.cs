@@ -287,7 +287,6 @@ namespace SmartSystemMenu.Forms
             this.clmProcessExclusionName.Name = "clmProcessExclusionName";
             this.clmProcessExclusionName.ReadOnly = true;
             this.clmProcessExclusionName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmProcessExclusionName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // clmProcessExclusionEdit
             // 
