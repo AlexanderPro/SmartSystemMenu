@@ -1,9 +1,12 @@
-![SmartSystemMenu](https://user-images.githubusercontent.com/8102586/68280906-8e86b800-0087-11ea-9762-f9eb028bb8fe.png) SmartSystemMenu
-=============
+<div align="center">
 
-- [English](/README.md)
-- [Русский](/README_RU.md)
-- 中文版
+<img src="https://github.com/user-attachments/assets/16f56f24-e84c-453d-bb01-03d73e063678" alt="logo" width="254">
+
+# SmartSystemMenu
+
+</div>
+
+🌏: [English](/) [Русский](README_RU.md) [**中文版**](/README_CN.md)
 
 ---
 
