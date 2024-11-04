@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/user-attachments/assets/16f56f24-e84c-453d-bb01-03d73e063678" alt="logo" width="254">
+<img src="./SmartSystemMenu/Images/SmartSystemMenuLogo.png" alt="logo" width="254">
 
 # SmartSystemMenu
 
