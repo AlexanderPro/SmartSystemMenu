@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [English](/) [Русский](README_RU.md) [**中文版**](/README_CN.md)
+🌏: [English](/) [Русский](/README_RU.md) [**中文版**](/README_CN.md)
 
 ---
 
@@ -39,13 +39,10 @@ SmartSystemMenu 扩展了系统中所有窗口的系统菜单。 它会将下面
 截图
 ------------------
 
-![Resize](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/20201229214044.png)
-
-![Alignment](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/20201229214127.png)
-
-![Transparency](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/20201229214204.png)
-
-![Infomation](https://cdn.jsdelivr.net/gh/LightAPIs/PicGoImg@master/img/202111162001625.jpg)
+![Resize](./SmartSystemMenu/Images/SmartSystemMenuCn1.png)
+![Alignment](./SmartSystemMenu/Images/SmartSystemMenuCn2.png)
+![Transparency](./SmartSystemMenu/Images/SmartSystemMenuCn3.png)
+![Information](./SmartSystemMenu/Images/SmartSystemMenuCn4.png)
 
 ## 命令行接口
 

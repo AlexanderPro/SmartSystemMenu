@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [English](/) [**Русский**](README_RU.md) [中文版](/README_CN.md)
+🌏: [English](/) [**Русский**](/README_RU.md) [中文版](/README_CN.md)
 
 ---
 
@@ -39,10 +39,10 @@ SmartSystemMenu добавляет дополнительные пункты с�
 Скриншоты
 ------------------
 
-![alt tag](https://user-images.githubusercontent.com/8102586/104854360-42840400-5917-11eb-8844-1528b72ee62c.jpg)
-![alt tag](https://user-images.githubusercontent.com/8102586/104854362-457ef480-5917-11eb-9ccf-21c6a8d50b53.jpg)
-![alt tag](https://user-images.githubusercontent.com/8102586/104854366-4879e500-5917-11eb-91d1-e2a7c555ce39.jpg)
-![alt tag](https://user-images.githubusercontent.com/8102586/104854373-4d3e9900-5917-11eb-9ab6-ec7e29b8f704.png)
+![Resize](./SmartSystemMenu/Images/SmartSystemMenuRu1.png)
+![Alignment](./SmartSystemMenu/Images/SmartSystemMenuRu2.png)
+![Transparency](./SmartSystemMenu/Images/SmartSystemMenuRu3.png)
+![Information](./SmartSystemMenu/Images/SmartSystemMenuRu4.png)
 
 Интерфейс командной строки
 --------------------
