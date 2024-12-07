@@ -129,71 +129,76 @@ namespace SmartSystemMenu.Settings
 
             var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
             var languageName = "";
-            var languageNameList = new[] { "en", "ru", "zh_cn", "zh_tw", "ja", "ko", "de", "fr", "it", "hu", "sr", "pt" };
+            var languageNameList = new[] { "en", "ru", "zh_cn", "zh_tw", "ja", "ko", "de", "fr", "it", "hu", "sr", "pt", "he" };
             if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
             {
                 languageName = languageElement.Attribute("name").Value.ToLower().Trim();
                 settings.LanguageName = languageName;
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN"))
+            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "zh-CN"))
             {
                 languageName = "zh_cn";
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "zh-TW"))
             {
                 languageName = "zh_tw";
             }
 
-            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ja-JP")
+            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "ja-JP")
             {
                 languageName = "ja";
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "ko-KR" || Thread.CurrentThread.CurrentCulture.Name == "ko-KP"))
+            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "ko-KR" || Thread.CurrentThread.CurrentUICulture.Name == "ko-KP"))
             {
                 languageName = "ko";
             }
 
-            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "ru-RU")
             {
                 languageName = "ru";
             }
 
-            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "de-DE")
+            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "de-DE")
             {
                 languageName = "de";
             }
 
-            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "fr-FR")
+            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "fr-FR")
             {
                 languageName = "fr";
             }
 
-            if (languageName == "" && Thread.CurrentThread.CurrentCulture.Name == "hu-HU")
+            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "hu-HU")
             {
                 languageName = "hu";
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "it-IT" ||
-                Thread.CurrentThread.CurrentCulture.Name == "it-SM" ||
-                Thread.CurrentThread.CurrentCulture.Name == "it-CH" ||
-                Thread.CurrentThread.CurrentCulture.Name == "it-VA"))
+            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "he-IL")
+            {
+                languageName = "he";
+            }
+
+            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "it-IT" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "it-SM" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "it-CH" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "it-VA"))
             {
                 languageName = "it";
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "pt-BR" || Thread.CurrentThread.CurrentCulture.Name == "pt-PT"))
+            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "pt-BR" || Thread.CurrentThread.CurrentUICulture.Name == "pt-PT"))
             {
                 languageName = "pt";
             }
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-BA" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-ME" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-RS" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-CS"))
+            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-BA" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-ME" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-RS" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-CS"))
             {
                 languageName = "sr";
             }

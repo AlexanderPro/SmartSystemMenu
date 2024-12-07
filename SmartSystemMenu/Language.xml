@@ -2686,7 +2686,7 @@
       <item name="hide_for_alt_tab" value="Alt+Tab elrejtése" />
       <item name="click_through" value="Átkattintás" />
       <item name="size" value="Átméretezés" />
-	  <item name="size_resizable" value="Átméretezhető" />
+	    <item name="size_resizable" value="Átméretezhető" />
       <item name="size_default" value="Alapértelmezett" />
       <item name="size_custom" value="Egyéni..." />
       <item name="move_to" value="Áthelyezés ide" />
