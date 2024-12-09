@@ -736,7 +736,7 @@
       <item name="roll_up" value="縮合" />
       <item name="aero_glass" value="Aero 半透明效果" />
       <item name="always_on_top" value="視窗置頂" />
-      <item name="change_title" value="更改標題" />
+      <item name="change_title" value="變更標題" />
       <item name="send_to_bottom" value="移至最底層" />
       <item name="save_screenshot" value="儲存視窗擷圖" />
       <item name="open_file_in_explorer" value="在檔案總管中開啟檔案" />
