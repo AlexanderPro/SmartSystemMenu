@@ -736,19 +736,19 @@
       <item name="roll_up" value="縮合" />
       <item name="aero_glass" value="Aero 半透明效果" />
       <item name="always_on_top" value="視窗置頂" />
-      <item name="change_title" value="更改標題" />
+      <item name="change_title" value="變更標題" />
       <item name="send_to_bottom" value="移至最底層" />
       <item name="save_screenshot" value="儲存視窗擷圖" />
       <item name="open_file_in_explorer" value="在檔案總管中開啟檔案" />
       <item name="clipboard" value="剪貼簿" />
-      <item name="copy_screenshot" value="複製窗口截圖" />
+      <item name="copy_screenshot" value="複製視窗擷圖" />
       <item name="copy_window_text" value="複製視窗文字" />
       <item name="copy_window_title" value="複製視窗標題" />
       <item name="copy_full_process_path" value="複製完整的處理程序路徑" />
       <item name="clear_clipboard" value="清除" />
       <item name="drag_by_mouse" value="透過滑鼠拖曳" />
       <item name="hide_for_alt_tab" value="在 Alt+Tab 中隱藏" />
-      <item name="click_through" value="點擊窗口" />
+      <item name="click_through" value="點擊視窗" />
       <item name="size" value="調整視窗大小" />
       <item name="size_resizable" value="可調整大小" />
       <item name="size_default" value="預設" />
@@ -790,25 +790,25 @@
       <item name="close_other_windows" value="關閉" />
       <item name="start_program" value="啟動程式" />
       <item name="save_selected_items" value="儲存" />
-      <item name="dimmer" value="窗戶調光器" />
-      <item name="dimmer_on" value="在" />
-      <item name="dimmer_off" value="離開" />
-      <item name="buttons" value="鈕扣" />
-      <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按鈕" />
-      <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按鈕" />
-      <item name="disable_close_button" value="禁用&quot;關閉&quot;按鈕" />
+      <item name="dimmer" value="突出視窗操作" />
+      <item name="dimmer_on" value="啟動" />
+      <item name="dimmer_off" value="關閉" />
+      <item name="buttons" value="按鈕操作" />
+      <item name="disable_minimize_button" value="停用&quot;最小化&quot;按鈕" />
+      <item name="disable_maximize_button" value="停用&quot;最大化&quot;按鈕" />
+      <item name="disable_close_button" value="停用&quot;關閉&quot;按鈕" />
       <item name="grp_window" value="視窗" />
       <item name="grp_process" value="處理程序" />
-      <item name="lbl_get_window_text" value="GetWindowText:" />
-      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
-      <item name="lbl_get_class_name" value="GetClassName:" />
-      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_get_window_text" value="視窗標題:" />
+      <item name="lbl_wm_gettext" value="視窗文字:" />
+      <item name="lbl_get_class_name" value="視窗類別名稱:" />
+      <item name="lbl_real_get_window_class" value="視窗真實類別名稱:" />
       <item name="lbl_font_name" value="字型名稱:" />
       <item name="lbl_window_handle" value="視窗控制代碼:" />
       <item name="lbl_parent_window_handle" value="父視窗控制代碼:" />
       <item name="lbl_window_size" value="視窗大小:" />
       <item name="lbl_window_position" value="視窗位置:" />
-      <item name="lbl_extended_frame_bounds" value="Extended Frame Bounds:" />
+      <item name="lbl_extended_frame_bounds" value="延伸框架邊界:" />
       <item name="lbl_instance" value="實例:" />
       <item name="lbl_process_id" value="處理程序 ID:" />
       <item name="lbl_thread_id" value="執行緒 ID:" />
@@ -922,7 +922,7 @@
       <item name="start_program_show_window" value="顯示視窗" />
       <item name="start_program_use_window_working_directory" value="使用視窗工作目錄" />
       <item name="start_program_parameter" value="參數" />
-      <item name="start_program_normal" value="以普通帳號執行" />
+      <item name="start_program_normal" value="以一般帳號執行" />
       <item name="start_program_administrator" value="以管理員帳號執行" />
       <item name="start_program_btn_apply" value="確定" />
       <item name="start_program_btn_cancel" value="取消" />
@@ -956,9 +956,9 @@
       <item name="closer_lbl_action" value="動作" />
       <item name="closer_close_window" value="關閉視窗" />
       <item name="closer_kill_process" value="終止處理程序" />
-      <item name="closer_close_foreground_window" value="關閉前台視窗" />
+      <item name="closer_close_foreground_window" value="關閉前景視窗" />
       <item name="closer_close_window_under_cursor" value="關閉游標下的視窗" />
-      <item name="closer_kill_process_with_foreground_window" value="終止帶有前台視窗的處理程序" />
+      <item name="closer_kill_process_with_foreground_window" value="終止帶有前景視窗的處理程序" />
       <item name="closer_kill_process_with_window_under_cursor" value="終止游標下視窗的處理程序" />
       <item name="grpb_sizer" value="如何設定視窗大小" />
       <item name="grpb_display" value="顯示" />
@@ -970,7 +970,7 @@
       <item name="parameter_form" value="輸入參數" />
       <item name="change_title_btn_apply" value="確定" />
       <item name="change_title_btn_cancel" value="取消" />
-      <item name="change_title_form" value="更改標題" />
+      <item name="change_title_form" value="變更標題" />
     </zh_tw>
     <ja>
       <item name="separator" value="セパレーター" />
