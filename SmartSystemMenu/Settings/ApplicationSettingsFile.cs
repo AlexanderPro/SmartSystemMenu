@@ -127,94 +127,34 @@ namespace SmartSystemMenu.Settings
                 settings.EnableHighDPI = true;
             }
 
+            var cultureName = Thread.CurrentThread.CurrentUICulture.Name;
             var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
-            var languageName = "";
-            var languageNameList = new[] { "en", "ru", "zh_cn", "zh_tw", "ja", "ko", "de", "fr", "it", "hu", "sr", "pt", "he" };
-            if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
-            {
-                languageName = languageElement.Attribute("name").Value.ToLower().Trim();
-                settings.LanguageName = languageName;
-            }
+            var languageName = languageElement != null && languageElement.Attribute("name") != null && !string.IsNullOrWhiteSpace(languageElement.Attribute("name").Value) ?
+                languageElement.Attribute("name").Value.ToLower().Trim() :
+                cultureName switch
+                {
+                    "zh-CN" => "zh_cn",
+                    "zh-TW" => "zh_tw",
+                    "ja-JP" => "ja",
+                    "ru-RU" => "ru",
+                    "de-DE" => "de",
+                    "fr-FR" => "fr",
+                    "hu-HU" => "hu",
+                    "he-IL" => "he",
+                    "ko-KR" or "ko-KP" => "ko",
+                    "pt-BR" or "pt-PT" => "pt",
+                    "it-IT" or "it-SM" or "it-CH" or "it-VA" => "it",
+                    "sr-Cyrl" or "sr-Cyrl-BA" or "sr-Cyrl-ME" or "sr-Cyrl-RS" or "sr-Cyrl-CS" => "sr",
+                    _ => "en"
+                };
 
-            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "zh-CN"))
-            {
-                languageName = "zh_cn";
-            }
-
-            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "zh-TW"))
-            {
-                languageName = "zh_tw";
-            }
-
-            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "ja-JP")
-            {
-                languageName = "ja";
-            }
-
-            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "ko-KR" || Thread.CurrentThread.CurrentUICulture.Name == "ko-KP"))
-            {
-                languageName = "ko";
-            }
-
-            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "ru-RU")
-            {
-                languageName = "ru";
-            }
-
-            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "de-DE")
-            {
-                languageName = "de";
-            }
-
-            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "fr-FR")
-            {
-                languageName = "fr";
-            }
-
-            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "hu-HU")
-            {
-                languageName = "hu";
-            }
-
-            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "he-IL")
-            {
-                languageName = "he";
-            }
-
-            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "it-IT" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "it-SM" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "it-CH" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "it-VA"))
-            {
-                languageName = "it";
-            }
-
-            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "pt-BR" || Thread.CurrentThread.CurrentUICulture.Name == "pt-PT"))
-            {
-                languageName = "pt";
-            }
-
-            if (languageName == "" && (Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-BA" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-ME" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-RS" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-CS"))
-            {
-                languageName = "sr";
-            }
-
-            if (languageName == "" || !languageNameList.Contains(languageName))
-            {
-                languageName = "en";
-            }
-
-            var languageItemPath = "/language/items/" + languageName + "/item";
+            settings.LanguageName = languageName;
             settings.Language.Items = languageDocument
-                .XPathSelectElements(languageItemPath)
+                .XPathSelectElements($"/language/items/{languageName}/item")
                 .Select(x => new LanguageItem
                 {
-                    Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
-                    Value = x.Attribute("value") != null ? x.Attribute("value").Value : "",
+                    Name = x.Attribute("name") != null ? x.Attribute("name").Value : string.Empty,
+                    Value = x.Attribute("value") != null ? x.Attribute("value").Value : string.Empty,
                 })
                 .ToList();
 
