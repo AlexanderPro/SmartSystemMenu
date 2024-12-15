@@ -460,7 +460,6 @@
       <item name="tab_settings_menu_dimmer" value="Menü (Dimmer)" />
       <item name="grpb_dimmer_color" value="Farbe" />
       <item name="grpb_dimmer_transparency" value="Transparenz" />
-      <item name="grpb_closer" value="Close Window By Mouse Click" />
       <item name="grpb_closer" value="Fenster per Mausklick schließen" />
       <item name="closer_button_name" value="Einstellungen..." />
       <item name="closer_form" value="Einstellungen" />
@@ -1084,7 +1083,7 @@
       <item name="save_screenshot_filename" value="ウィンドウスクリーンショット" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
-      <item name="save_screenshot_filter" value="サイズ" />
+      <item name="size_form" value="サイズ" />
       <item name="size_btn_apply" value="適用" />
       <item name="lbl_size_form_height" value="高さ：" />
       <item name="lbl_size_form_width" value="幅：" />
@@ -1140,11 +1139,11 @@
       <item name="lbl_window_size_title" value="タイトル:" />
       <item name="lbl_window_size_width" value="幅:" />
       <item name="lbl_window_size_height" value="高さ:" />
+      <item name="lbl_window_size_top" value="上:" />
+      <item name="lbl_window_size_left" value="左:" />
       <item name="lbl_window_size_key1" value="キー 1:" />
       <item name="lbl_window_size_key2" value="キー 2:" />
       <item name="lbl_window_size_key3" value="キー 3:" />
-      <item name="lbl_window_size_top" value="上:" />
-      <item name="lbl_window_size_left" value="左:" />
       <item name="btn_window_size_up" value="Move Up" />
       <item name="btn_window_size_down" value="Move Down" />
       <item name="btn_add_window_size" value="追加" />
@@ -1197,6 +1196,8 @@
       <item name="closer_lbl_key2" value="キー 2" />
       <item name="closer_lbl_mouse_button" value="マウスボタン" />
       <item name="closer_lbl_action" value="アクション" />
+      <item name="closer_close_window" value="ウィンドウを閉じる" />
+      <item name="closer_kill_process" value="プロセスを強制終了する" />
       <item name="closer_close_foreground_window" value="前景ウィンドウを閉じる" />
       <item name="closer_close_window_under_cursor" value="カーソルの下のウィンドウを閉じる" />
       <item name="closer_kill_process_with_foreground_window" value="フォアグラウンドウィンドウでプロセスを強制終了します" />

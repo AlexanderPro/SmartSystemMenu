@@ -80,9 +80,9 @@ namespace SmartSystemMenu.Settings
                 settings.MenuItems.Items.Add(new MenuItem { Name = menuItem.Name, Key1 = menuItem.Key1, Key2 = menuItem.Key2, Key3 = menuItem.Key3 });
             }
 
-            foreach (var languageItem in Language.Items)
+            foreach (var languageItemKey in Language.Items.Keys)
             {
-                settings.Language.Items.Add(new LanguageItem { Name = languageItem.Name, Value = languageItem.Value });
+                settings.Language.Items.Add(languageItemKey, Language.Items[languageItemKey]);
             }
 
             settings.Closer= (CloserSettings)Closer.Clone();

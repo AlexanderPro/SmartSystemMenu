@@ -151,12 +151,12 @@ namespace SmartSystemMenu.Settings
             settings.LanguageName = languageName;
             settings.Language.Items = languageDocument
                 .XPathSelectElements($"/language/items/{languageName}/item")
-                .Select(x => new LanguageItem
+                .Select(x => new
                 {
                     Name = x.Attribute("name") != null ? x.Attribute("name").Value : string.Empty,
                     Value = x.Attribute("value") != null ? x.Attribute("value").Value : string.Empty,
                 })
-                .ToList();
+                 .ToDictionary(x => x.Name, y => y.Value, StringComparer.OrdinalIgnoreCase);
 
             return settings;
         }

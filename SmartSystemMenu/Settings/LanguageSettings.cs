@@ -1,22 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace SmartSystemMenu.Settings
 {
     public class LanguageSettings
     {
-        public IList<LanguageItem> Items { get; set; }
+        public Dictionary<string, string> Items { get; set; } = new();
 
-        public LanguageSettings()
-        {
-            Items = new List<LanguageItem>();
-        }
-
-        public string GetValue(string name)
-        {
-            var item = Items.FirstOrDefault(x => x.Name == name);
-            var value = item?.Value ?? "";
-            return value;
-        }
+        public string GetValue(string name) => Items.TryGetValue(name, out var value) ? value : string.Empty;
     }
 }
