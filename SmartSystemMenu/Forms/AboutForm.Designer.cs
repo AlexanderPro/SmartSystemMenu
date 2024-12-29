@@ -93,7 +93,7 @@
             this.btnOk.Size = new System.Drawing.Size(115, 37);
             this.btnOk.TabIndex = 18;
             this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.CloseClick);
+            this.btnOk.Click += new System.EventHandler(this.ButtonOkClick);
             // 
             // pbImage
             // 

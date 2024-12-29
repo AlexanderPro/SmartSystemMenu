@@ -23,32 +23,26 @@ namespace SmartSystemMenu.Forms
             linkUrl.Text = URL_SMART_SYSTEM_MENU;
         }
 
-        private void CloseClick(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void ButtonOkClick(object sender, EventArgs e) => Close();
 
         private void LinkClick(object sender, EventArgs e)
         {
-            try
-            {
-                var controlName = ((LinkLabel)sender).Name;
-                var url = controlName == "linkLightAPIs" ? URL_LIGHT_APIS :
-                    controlName == "linkWengh" ? URL_WENGH :
-                    controlName == "linkJaehyungLee" ? URL_JAEHYUNG_LEE :
-                    controlName == "linkMarocco2" ? URL_MAROCCO2 :
-                    controlName == "linkSaiyajinK" ? URL_SAIYAJINK :
-                    URL_SMART_SYSTEM_MENU;
-                SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(), url, true, UserType.Normal);
-            }
-            catch
-            {
-            }
+            var controlName = ((LinkLabel)sender).Name;
+            var url = controlName == "linkLightAPIs" ? URL_LIGHT_APIS :
+                controlName == "linkWengh" ? URL_WENGH :
+                controlName == "linkJaehyungLee" ? URL_JAEHYUNG_LEE :
+                controlName == "linkMarocco2" ? URL_MAROCCO2 :
+                controlName == "linkSaiyajinK" ? URL_SAIYAJINK :
+                URL_SMART_SYSTEM_MENU;
+            SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(), url, true, UserType.Normal);
         }
 
         private void KeyDownClick(object sender, KeyEventArgs e)
         {
-            CloseClick(sender, e);
+            if (e.KeyValue == 13 || e.KeyValue == 27)
+            {
+                Close();
+            }
         }
     }
 }
