@@ -141,6 +141,7 @@ namespace SmartSystemMenu.Settings
                     "fr-FR" => "fr",
                     "hu-HU" => "hu",
                     "he-IL" => "he",
+                    "es-ES" => "es",
                     "ko-KR" or "ko-KP" => "ko",
                     "pt-BR" or "pt-PT" => "pt",
                     "it-IT" or "it-SM" or "it-CH" or "it-VA" => "it",
