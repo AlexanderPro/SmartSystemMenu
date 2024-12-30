@@ -3155,11 +3155,11 @@
     <es>
       <item name="separator" value="Separador" />
       <item name="information" value="Información" />
-      <item name="hide" value="Hide" />
+      <item name="hide" value="Esconder" />
       <item name="roll_up" value="Enrollar" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Siempre encima" />
-      <item name="change_title" value="Change Title" />
+      <item name="change_title" value="Cambiar titulo" />
       <item name="send_to_bottom" value="Enviar al fondo" />
       <item name="save_screenshot" value="Tomar captura de la ventana" />
       <item name="open_file_in_explorer" value="Abrir ruta del proceso" />
@@ -3173,7 +3173,7 @@
       <item name="hide_for_alt_tab" value="Ocultar para Alt+Tab" />
       <item name="click_through" value="Hacer clic a través" />
       <item name="size" value="Redimensionar" />
-      <item name="size_resizable" value="Resizable" />
+      <item name="size_resizable" value="Redimensionable" />
       <item name="size_default" value="Predeterminado" />
       <item name="size_custom" value="Personalizar..." />
       <item name="move_to" value="Mover a..." />
