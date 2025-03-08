@@ -876,6 +876,18 @@ namespace SmartSystemMenu
             }
         }
 
+        public void ChangeIcon(string fileName)
+        {
+            using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            using var bitmap = new Bitmap(fileStream);
+            var iconHandle = bitmap.GetHicon();
+            if (iconHandle != IntPtr.Zero)
+            {
+                SendMessage(Handle, WM_SETICON, new IntPtr(ICON_SMALL), iconHandle);
+                SendMessage(Handle, WM_SETICON, new IntPtr(ICON_BIG), iconHandle);
+            }
+        }
+
         private void MenuItemRestoreClick(object sender, EventArgs e)
         {
             RestoreFromSystemTray();

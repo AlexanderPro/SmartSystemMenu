@@ -89,6 +89,7 @@ namespace SmartSystemMenu
         public const int SC_HIDE = 0x4826;
         public const int SC_CHANGE_TITLE = 0x4827;
         public const int SC_RESIZABLE = 0x4828;
+        public const int SC_CHANGE_ICON = 0x4829;
 
         private static readonly Dictionary<string, int> NameToId = new ();
         private static readonly Dictionary<int, string> IdToName = new ();
@@ -101,6 +102,7 @@ namespace SmartSystemMenu
             NameToId["aero_glass"] = SC_AERO_GLASS;
             NameToId["always_on_top"] = SC_TOPMOST;
             NameToId["send_to_bottom"] = SC_SEND_TO_BOTTOM;
+            NameToId["change_icon"] = SC_CHANGE_ICON;
             NameToId["change_title"] = SC_CHANGE_TITLE;
             NameToId["save_screenshot"] = SC_SAVE_SCREEN_SHOT;
             NameToId["open_file_in_explorer"] = SC_OPEN_FILE_IN_EXPLORER;

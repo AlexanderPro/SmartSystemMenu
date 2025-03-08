@@ -8,6 +8,7 @@
       <item name="roll_up" value="Roll Up" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Always On Top" />
+      <item name="change_icon" value="Change Icon" />
       <item name="change_title" value="Change Title" />
       <item name="send_to_bottom" value="Send To Bottom" />
       <item name="save_screenshot" value="Save Screenshot" />
@@ -113,6 +114,8 @@
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="size_form" value="Set Size" />
       <item name="size_btn_apply" value="Apply" />
       <item name="lbl_size_form_height" value="Height:" />
@@ -251,6 +254,7 @@
       <item name="roll_up" value="Verkleinern nach oben" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Immer im Vordergrund" />
+      <item name="change_icon" value="Ändere den Symbol" />
       <item name="change_title" value="Ändere den Titel" />
       <item name="send_to_bottom" value="In den Hintergrund" />
       <item name="save_screenshot" value="Screenshot speichern…" />
@@ -356,6 +360,8 @@
       <item name="save_screenshot_filename" value="FensterScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Bild (*.bmp)|*.bmp|GIF Bild (*.gif)|*.gif|JPEG Bild (*.jpeg)|*.jpeg|PNG Bild (*.png)|*.png|TIFF Bild (*.tiff)|*.tiff|WMF Bild (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Bild (*.bmp)|*.bmp|GIF Bild (*.gif)|*.gif|JPEG Bild (*.jpeg)|*.jpeg|PNG Bild (*.png)|*.png|TIFF Bild (*.tiff)|*.tiff|WMF Bild (*.wmf)|*.wmf" />
       <item name="size_form" value="Gröβe" />
       <item name="size_btn_apply" value="Übernehmen" />
       <item name="lbl_size_form_height" value="Höhe:" />
@@ -492,6 +498,7 @@
       <item name="roll_up" value="卷起窗口" />
       <item name="aero_glass" value="毛玻璃效果" />
       <item name="always_on_top" value="窗口始终置顶" />
+      <item name="change_icon" value="更改图标" />
       <item name="change_title" value="更改标题" />
       <item name="send_to_bottom" value="窗口置底" />
       <item name="save_screenshot" value="保存窗口截图" />
@@ -597,6 +604,8 @@
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf" />
       <item name="size_form" value="设置尺寸" />
       <item name="size_btn_apply" value="应用" />
       <item name="lbl_size_form_height" value="高度:" />
@@ -735,6 +744,7 @@
       <item name="roll_up" value="縮合" />
       <item name="aero_glass" value="Aero 半透明效果" />
       <item name="always_on_top" value="視窗置頂" />
+      <item name="change_icon" value="更改圖示" />
       <item name="change_title" value="變更標題" />
       <item name="send_to_bottom" value="移至最底層" />
       <item name="save_screenshot" value="儲存視窗擷圖" />
@@ -840,6 +850,8 @@
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="點陣圖影像 (*.bmp)|*.bmp|GIF 影像 (*.gif)|*.gif|JPEG 影像(*.jpeg)|*.jpeg|PNG 影像(*.png)|*.png|TIFF 影像(*.tiff)|*.tiff|WMF 影像(*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|點陣圖影像 (*.bmp)|*.bmp|GIF 影像 (*.gif)|*.gif|JPEG 影像(*.jpeg)|*.jpeg|PNG 影像(*.png)|*.png|TIFF 影像(*.tiff)|*.tiff|WMF 影像(*.wmf)|*.wmf" />
       <item name="size_form" value="設定尺寸" />
       <item name="size_btn_apply" value="套用" />
       <item name="lbl_size_form_height" value="高度:" />
@@ -978,6 +990,7 @@
       <item name="roll_up" value="ロールアップ" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="常に手前に表示" />
+      <item name="change_icon" value="アイコンを変更" />
       <item name="change_title" value="タイトルを変更" />
       <item name="send_to_bottom" value="背面へ送る" />
       <item name="save_screenshot" value="スクリーンショットを撮る" />
@@ -1083,6 +1096,8 @@
       <item name="save_screenshot_filename" value="ウィンドウスクリーンショット" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
       <item name="size_form" value="サイズ" />
       <item name="size_btn_apply" value="適用" />
       <item name="lbl_size_form_height" value="高さ：" />
@@ -1221,6 +1236,7 @@
       <item name="roll_up" value="접기" />
       <item name="aero_glass" value="에어로 글래스" />
       <item name="always_on_top" value="항상 맨 위에 표시" />
+      <item name="change_icon" value="아이콘 변경" />
       <item name="change_title" value="제목 변경" />
       <item name="send_to_bottom" value="맨 아래로 보내기" />
       <item name="save_screenshot" value="스크린샷 저장" />
@@ -1326,6 +1342,8 @@
       <item name="save_screenshot_filename" value="창 스크린샷" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap 이미지 (*.bmp)|*.bmp|Gif 이미지 (*.gif)|*.gif|JPEG 이미지 (*.jpeg)|*.jpeg|Png 이미지 (*.png)|*.png|Tiff 이미지 (*.tiff)|*.tiff|Wmf 이미지 (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap 이미지 (*.bmp)|*.bmp|Gif 이미지 (*.gif)|*.gif|JPEG 이미지 (*.jpeg)|*.jpeg|Png 이미지 (*.png)|*.png|Tiff 이미지 (*.tiff)|*.tiff|Wmf 이미지 (*.wmf)|*.wmf" />
       <item name="size_form" value="크기 설정" />
       <item name="size_btn_apply" value="적용" />
       <item name="lbl_size_form_height" value="높이:" />
@@ -1464,6 +1482,7 @@
       <item name="roll_up" value="Свернуть вверх" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Поверх остальных" />
+      <item name="change_icon" value="Изменить иконку" />
       <item name="change_title" value="Изменить заголовок" />
       <item name="send_to_bottom" value="Переместить вниз" />
       <item name="save_screenshot" value="Сохранить снимок окна" />
@@ -1569,6 +1588,8 @@
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="size_form" value="Размер" />
       <item name="size_btn_apply" value="Применить" />
       <item name="lbl_size_form_height" value="Высота:" />
@@ -1705,6 +1726,7 @@
       <item name="roll_up" value="Замотај" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Увек испред" />
+      <item name="change_icon" value="Промените икону" />
       <item name="change_title" value="Промените наслов" />
       <item name="send_to_bottom" value="Попаљи на дно" />
       <item name="save_screenshot" value="Сачувај прозор програма" />
@@ -1810,6 +1832,8 @@
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap слика (*.bmp)|*.bmp|Gif слика (*.gif)|*.gif|JPEG слика (*.jpeg)|*.jpeg|Png слика (*.png)|*.png|Tiff слика (*.tiff)|*.tiff|Wmf слика (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap слика (*.bmp)|*.bmp|Gif слика (*.gif)|*.gif|JPEG слика (*.jpeg)|*.jpeg|Png слика (*.png)|*.png|Tiff слика (*.tiff)|*.tiff|Wmf слика (*.wmf)|*.wmf" />
       <item name="size_form" value="Постави величину" />
       <item name="size_btn_apply" value="Примени" />
       <item name="lbl_size_form_height" value="Висина:" />
@@ -1946,6 +1970,7 @@
       <item name="roll_up" value="Enrolar" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Manter esta janela sempre na frente" />
+      <item name="change_icon" value="Alterar ícone" />
       <item name="change_title" value="Alterar título" />
       <item name="send_to_bottom" value="Enviar para o fundo" />
       <item name="save_screenshot" value="Fazer captura de tela" />
@@ -2051,6 +2076,8 @@
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Imagem de Bitmap (*.bmp)|*.bmp|Imagem Gif (*.gif)|*.gif|Imagem JPEG (*.jpeg)|*.jpeg|Imagem Png (*.png)|*.png|Imagem Tiff (*.tiff)|*.tiff|Imagem Wmf (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Imagem de Bitmap (*.bmp)|*.bmp|Imagem Gif (*.gif)|*.gif|Imagem JPEG (*.jpeg)|*.jpeg|Imagem Png (*.png)|*.png|Imagem Tiff (*.tiff)|*.tiff|Imagem Wmf (*.wmf)|*.wmf" />
       <item name="size_form" value="Definir tamanho" />
       <item name="size_btn_apply" value="Aplicar" />
       <item name="lbl_size_form_height" value="Altura:" />
@@ -2187,6 +2214,7 @@
       <item name="roll_up" value="Riavvolgi" />
       <item name="aero_glass" value="Aero glass" />
       <item name="always_on_top" value="Sempre davanti" />
+      <item name="change_icon" value="Cambia icona" />
       <item name="change_title" value="Cambia titolo" />
       <item name="send_to_bottom" value="Metti dietro" />
       <item name="save_screenshot" value="Salva schermata" />
@@ -2292,6 +2320,8 @@
       <item name="save_screenshot_filename" value="Schermata finestra" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
       <item name="size_form" value="Imposta dimensioni" />
       <item name="size_btn_apply" value="Applica" />
       <item name="lbl_size_form_height" value="Altezza:" />
@@ -2430,6 +2460,7 @@
       <item name="roll_up" value="Enrouler" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Toujours au premier plan" />
+      <item name="change_icon" value="Changer d'icône" />
       <item name="change_title" value="Changer le titre" />
       <item name="send_to_bottom" value="Réduire dans la barre des tâches" />
       <item name="save_screenshot" value="Sauvegarder la capture d'écran" />
@@ -2535,6 +2566,8 @@
       <item name="save_screenshot_filename" value="Sauvegarder le nom" />
       <item name="save_screenshot_default_ext" value="png" />
       <item name="save_screenshot_filter" value="Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
       <item name="size_form" value="Définir la taille" />
       <item name="size_btn_apply" value="Appliquer" />
       <item name="lbl_size_form_height" value="Hauteur:" />
@@ -2673,6 +2706,7 @@
       <item name="roll_up" value="Fölfelé" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Mindig fölül" />
+      <item name="change_icon" value="Ikon módosítása" />
       <item name="change_title" value="Cím módosítása" />
       <item name="send_to_bottom" value="Küldés alulra" />
       <item name="save_screenshot" value="Képernyőkép mentése" />
@@ -2778,6 +2812,8 @@
       <item name="save_screenshot_filename" value="Ablak képernyőképe" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="size_form" value="Méret beállítása" />
       <item name="size_btn_apply" value="Alkalmaz" />
       <item name="lbl_size_form_height" value="Magasság:" />
@@ -2916,6 +2952,7 @@
       <item name="roll_up" value="Roll Up" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="תמיד עליון" />
+      <item name="change_icon" value="שנה סמל" />
       <item name="change_title" value="שנה שם חלון" />
       <item name="send_to_bottom" value="שלח ללמטה" />
       <item name="save_screenshot" value="שמור צילום מסך" />
@@ -3021,6 +3058,8 @@
       <item name="save_screenshot_filename" value="WindowScreenshot" />
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="size_form" value="הגדר גודל" />
       <item name="size_btn_apply" value="החל" />
       <item name="lbl_size_form_height" value=":גובה" />
@@ -3159,6 +3198,7 @@
       <item name="roll_up" value="Enrollar" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Siempre encima" />
+      <item name="change_icon" value="Cambiar icono" />
       <item name="change_title" value="Cambiar título" />
       <item name="send_to_bottom" value="Enviar al fondo" />
       <item name="save_screenshot" value="Tomar captura de la ventana" />
@@ -3264,6 +3304,8 @@
       <item name="save_screenshot_filename" value="Captura de ventana" />
       <item name="save_screenshot_default_ext" value="png" />
       <item name="save_screenshot_filter" value="Imagen Bitmap (*.bmp)|*.bmp|Imagen Gif (*.gif)|*.gif|Imagen JPEG (*.jpeg)|*.jpeg|Imagen Png (*.png)|*.png|Imagen Tiff (*.tiff)|*.tiff|Imagen Wmf (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Imagen Bitmap (*.bmp)|*.bmp|Imagen Gif (*.gif)|*.gif|Imagen JPEG (*.jpeg)|*.jpeg|Imagen Png (*.png)|*.png|Imagen Tiff (*.tiff)|*.tiff|Imagen Wmf (*.wmf)|*.wmf" />
       <item name="size_form" value="Establecer tamaño" />
       <item name="size_btn_apply" value="Aplicar" />
       <item name="lbl_size_form_height" value="Altura:" />

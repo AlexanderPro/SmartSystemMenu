@@ -867,6 +867,31 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_CHANGE_ICON:
+                            {
+                                try
+                                {
+                                    var dialog = new OpenFileDialog
+                                    {
+                                        ValidateNames = true,
+                                        DefaultExt = _settings.Language.GetValue("icon_default_ext"),
+                                        RestoreDirectory = false,
+                                        Filter = _settings.Language.GetValue("icon_filter")
+                                    };
+
+                                    if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
+                                    {
+                                        window.ChangeIcon(dialog.FileName);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                            }
+                            break;
+
+
                         case MenuItemId.SC_CHANGE_TITLE:
                             {
                                 var titleForm = new TitleForm(_settings.Language);
