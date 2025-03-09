@@ -314,6 +314,11 @@ namespace SmartSystemMenu
 
         public static void EnableHighDPISupport()
         {
+            if (Environment.OSVersion.Version.Major <= 5)
+            {
+                return;
+            }
+
             if (Environment.OSVersion.Version >= new Version(6, 3, 0)) // win 8.1 added support for per monitor dpi
             {
                 if (Environment.OSVersion.Version >= new Version(10, 0, 15063)) // win 10 creators update added support for per monitor v2

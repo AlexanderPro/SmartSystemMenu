@@ -164,6 +164,6 @@
   <saveSelectedItems aeroGlass="true" alwaysOnTop="true" hideForAltTab="true" alignment="true" transparency="true" priority="true" minimizeToTrayAlways="true" buttons="true" />
   <sizer type="" />
   <systemTrayIcon show="true" />
-  <display highDPI="false" />
+  <display highDPI="true" />
   <language name="" />
 </smartSystemMenu>

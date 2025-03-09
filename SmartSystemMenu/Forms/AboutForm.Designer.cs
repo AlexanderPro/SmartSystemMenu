@@ -88,7 +88,7 @@
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(578, 37);
-            this.btnOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(4);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(115, 37);
             this.btnOk.TabIndex = 18;
@@ -98,9 +98,10 @@
             // pbImage
             // 
             this.pbImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbImage.BackgroundImage")));
+            this.pbImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbImage.InitialImage = null;
             this.pbImage.Location = new System.Drawing.Point(5, 26);
-            this.pbImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbImage.Margin = new System.Windows.Forms.Padding(4);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(139, 124);
             this.pbImage.TabIndex = 4;
@@ -293,7 +294,7 @@
             this.Controls.Add(this.lblProductName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutForm";
