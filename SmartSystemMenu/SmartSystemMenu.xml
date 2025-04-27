@@ -4,7 +4,6 @@
     <processName>slack.exe</processName>
     <processName>dllhost.exe</processName>
     <processName>sihost.exe</processName>
-    <processName>code.exe</processName>
     <processName>smartscreen.exe</processName>
   </processExclusions>
   <createMenuOnInitEvent>
@@ -13,9 +12,11 @@
     <processName>msedge.exe</processName>
     <processName>firefox.exe</processName>
     <processName>WindowsTerminal.exe</processName>
+    <processName>code.exe</processName>
   </createMenuOnInitEvent>
   <noRestoreMenuOnExit>
     <processName>discord.exe</processName>
+    <processName>code.exe</processName>
   </noRestoreMenuOnExit>
   <menuItems>
     <items>
