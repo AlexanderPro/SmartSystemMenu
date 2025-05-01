@@ -50,6 +50,8 @@
             this.linkSaiyajinK = new System.Windows.Forms.LinkLabel();
             this.lblKissAction = new System.Windows.Forms.Label();
             this.lblKiss = new System.Windows.Forms.Label();
+            this.lblDeliond = new System.Windows.Forms.Label();
+            this.lblDeliondAction = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +122,7 @@
             // linkLightAPIs
             // 
             this.linkLightAPIs.AutoSize = true;
-            this.linkLightAPIs.Location = new System.Drawing.Point(155, 161);
+            this.linkLightAPIs.Location = new System.Drawing.Point(155, 160);
             this.linkLightAPIs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLightAPIs.Name = "linkLightAPIs";
             this.linkLightAPIs.Size = new System.Drawing.Size(67, 17);
@@ -132,7 +134,7 @@
             // linkJaehyungLee
             // 
             this.linkJaehyungLee.AutoSize = true;
-            this.linkJaehyungLee.Location = new System.Drawing.Point(155, 215);
+            this.linkJaehyungLee.Location = new System.Drawing.Point(155, 216);
             this.linkJaehyungLee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkJaehyungLee.Name = "linkJaehyungLee";
             this.linkJaehyungLee.Size = new System.Drawing.Size(98, 17);
@@ -144,7 +146,7 @@
             // lblJaehyungLee
             // 
             this.lblJaehyungLee.AutoSize = true;
-            this.lblJaehyungLee.Location = new System.Drawing.Point(287, 215);
+            this.lblJaehyungLee.Location = new System.Drawing.Point(287, 216);
             this.lblJaehyungLee.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblJaehyungLee.Name = "lblJaehyungLee";
             this.lblJaehyungLee.Size = new System.Drawing.Size(124, 17);
@@ -164,7 +166,7 @@
             // lblOzzii
             // 
             this.lblOzzii.AutoSize = true;
-            this.lblOzzii.Location = new System.Drawing.Point(155, 242);
+            this.lblOzzii.Location = new System.Drawing.Point(155, 244);
             this.lblOzzii.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOzzii.Name = "lblOzzii";
             this.lblOzzii.Size = new System.Drawing.Size(36, 17);
@@ -174,7 +176,7 @@
             // lblOzziiAction
             // 
             this.lblOzziiAction.AutoSize = true;
-            this.lblOzziiAction.Location = new System.Drawing.Point(287, 242);
+            this.lblOzziiAction.Location = new System.Drawing.Point(287, 244);
             this.lblOzziiAction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOzziiAction.Name = "lblOzziiAction";
             this.lblOzziiAction.Size = new System.Drawing.Size(127, 17);
@@ -184,7 +186,7 @@
             // lblWengh
             // 
             this.lblWengh.AutoSize = true;
-            this.lblWengh.Location = new System.Drawing.Point(287, 187);
+            this.lblWengh.Location = new System.Drawing.Point(287, 188);
             this.lblWengh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWengh.Name = "lblWengh";
             this.lblWengh.Size = new System.Drawing.Size(300, 17);
@@ -206,7 +208,7 @@
             // lblMarocco2
             // 
             this.lblMarocco2.AutoSize = true;
-            this.lblMarocco2.Location = new System.Drawing.Point(287, 270);
+            this.lblMarocco2.Location = new System.Drawing.Point(287, 272);
             this.lblMarocco2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMarocco2.Name = "lblMarocco2";
             this.lblMarocco2.Size = new System.Drawing.Size(115, 17);
@@ -216,7 +218,7 @@
             // linkMarocco2
             // 
             this.linkMarocco2.AutoSize = true;
-            this.linkMarocco2.Location = new System.Drawing.Point(155, 270);
+            this.linkMarocco2.Location = new System.Drawing.Point(155, 272);
             this.linkMarocco2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkMarocco2.Name = "linkMarocco2";
             this.linkMarocco2.Size = new System.Drawing.Size(70, 17);
@@ -228,7 +230,7 @@
             // lblSaiyajinK
             // 
             this.lblSaiyajinK.AutoSize = true;
-            this.lblSaiyajinK.Location = new System.Drawing.Point(287, 297);
+            this.lblSaiyajinK.Location = new System.Drawing.Point(287, 300);
             this.lblSaiyajinK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSaiyajinK.Name = "lblSaiyajinK";
             this.lblSaiyajinK.Size = new System.Drawing.Size(122, 17);
@@ -238,7 +240,7 @@
             // linkSaiyajinK
             // 
             this.linkSaiyajinK.AutoSize = true;
-            this.linkSaiyajinK.Location = new System.Drawing.Point(155, 297);
+            this.linkSaiyajinK.Location = new System.Drawing.Point(155, 300);
             this.linkSaiyajinK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkSaiyajinK.Name = "linkSaiyajinK";
             this.linkSaiyajinK.Size = new System.Drawing.Size(66, 17);
@@ -250,7 +252,7 @@
             // lblKissAction
             // 
             this.lblKissAction.AutoSize = true;
-            this.lblKissAction.Location = new System.Drawing.Point(287, 324);
+            this.lblKissAction.Location = new System.Drawing.Point(287, 328);
             this.lblKissAction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKissAction.Name = "lblKissAction";
             this.lblKissAction.Size = new System.Drawing.Size(144, 17);
@@ -260,18 +262,40 @@
             // lblKiss
             // 
             this.lblKiss.AutoSize = true;
-            this.lblKiss.Location = new System.Drawing.Point(155, 324);
+            this.lblKiss.Location = new System.Drawing.Point(155, 328);
             this.lblKiss.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKiss.Name = "lblKiss";
             this.lblKiss.Size = new System.Drawing.Size(124, 17);
             this.lblKiss.TabIndex = 16;
             this.lblKiss.Text = "Kiss Dénes László";
             // 
+            // lblDeliond
+            // 
+            this.lblDeliond.AutoSize = true;
+            this.lblDeliond.Location = new System.Drawing.Point(155, 356);
+            this.lblDeliond.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeliond.Name = "lblDeliond";
+            this.lblDeliond.Size = new System.Drawing.Size(56, 17);
+            this.lblDeliond.TabIndex = 19;
+            this.lblDeliond.Text = "Deliond";
+            // 
+            // lblDeliondAction
+            // 
+            this.lblDeliondAction.AutoSize = true;
+            this.lblDeliondAction.Location = new System.Drawing.Point(287, 356);
+            this.lblDeliondAction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeliondAction.Name = "lblDeliondAction";
+            this.lblDeliondAction.Size = new System.Drawing.Size(129, 17);
+            this.lblDeliondAction.TabIndex = 20;
+            this.lblDeliondAction.Text = "Spanish translation";
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 394);
+            this.ClientSize = new System.Drawing.Size(706, 413);
+            this.Controls.Add(this.lblDeliondAction);
+            this.Controls.Add(this.lblDeliond);
             this.Controls.Add(this.lblKiss);
             this.Controls.Add(this.lblKissAction);
             this.Controls.Add(this.lblSaiyajinK);
@@ -330,5 +354,7 @@
         private System.Windows.Forms.LinkLabel linkSaiyajinK;
         private System.Windows.Forms.Label lblKissAction;
         private System.Windows.Forms.Label lblKiss;
+        private System.Windows.Forms.Label lblDeliond;
+        private System.Windows.Forms.Label lblDeliondAction;
     }
 }
