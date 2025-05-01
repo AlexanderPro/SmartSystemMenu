@@ -156,6 +156,7 @@
     <Compile Include="Native\Advapi32.cs" />
     <Compile Include="Native\Dwmapi.cs" />
     <Compile Include="Native\Enums\AccentState.cs" />
+    <Compile Include="Native\Enums\CopyPixelOperations.cs" />
     <Compile Include="Native\Enums\DPI_AWARENESS_CONTEXT.cs" />
     <Compile Include="Native\Enums\DWM_BB.cs" />
     <Compile Include="Native\Enums\GetAncestorFlags.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Native\Enums\TOKEN_TYPE.cs" />
     <Compile Include="Native\Enums\WindowCompositionAttribute.cs" />
     <Compile Include="Native\Enums\WindowShowStyle.cs" />
+    <Compile Include="Native\Gdi32.cs" />
     <Compile Include="Native\Hooks.cs" />
     <Compile Include="Native\Kernel32.cs" />
     <Compile Include="Native\Ntdll.cs" />
@@ -180,7 +182,9 @@
     <Compile Include="Native\Structs\ConsoleScreenBufferInfo.cs" />
     <Compile Include="Native\Structs\Coord.cs" />
     <Compile Include="Native\Structs\CopyDataStruct.cs" />
+    <Compile Include="Native\Structs\CURSORINFO.cs" />
     <Compile Include="Native\Structs\DWM_BLURBEHIND.cs" />
+    <Compile Include="Native\Structs\ICONINFO.cs" />
     <Compile Include="Native\Structs\KeyboardLLHookStruct.cs" />
     <Compile Include="Native\Structs\LUID.cs" />
     <Compile Include="Native\Structs\LUID_AND_ATTRIBUTES.cs" />

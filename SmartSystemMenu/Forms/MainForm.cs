@@ -599,7 +599,13 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_SAVE_SCREEN_SHOT:
                             {
-                                var bitmap = WindowUtils.PrintWindow(window.Handle);
+                                var result = WindowUtils.PrintWindow(window.Handle, out var bitmap);
+                                if (!result || !WindowUtils.IsCorrectScreenshot(window.Handle, bitmap))
+                                {
+                                    Thread.Sleep(1000);
+                                    WindowUtils.CaptureWindow(window.Handle, false, out bitmap);
+                                }
+
                                 var dialog = new SaveFileDialog
                                 {
                                     OverwritePrompt = true,
@@ -625,7 +631,13 @@ namespace SmartSystemMenu.Forms
 
                         case MenuItemId.SC_COPY_SCREEN_SHOT:
                             {
-                                var bitmap = WindowUtils.PrintWindow(window.Handle);
+                                var result = WindowUtils.PrintWindow(window.Handle, out var bitmap);
+                                if (!result || !WindowUtils.IsCorrectScreenshot(window.Handle, bitmap))
+                                {
+                                    Thread.Sleep(1000);
+                                    WindowUtils.CaptureWindow(window.Handle, false, out bitmap);
+                                }
+
                                 Clipboard.SetImage(bitmap);
                             }
                             break;

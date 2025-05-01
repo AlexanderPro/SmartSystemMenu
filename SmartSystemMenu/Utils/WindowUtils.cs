@@ -9,6 +9,7 @@ using System.Windows.Automation;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Native.Enums;
 using SmartSystemMenu.Native.Structs;
+using static SmartSystemMenu.Native.Gdi32;
 using static SmartSystemMenu.Native.User32;
 using static SmartSystemMenu.Native.Kernel32;
 using static SmartSystemMenu.Native.Constants;
@@ -17,15 +18,98 @@ namespace SmartSystemMenu.Utils
 {
     static class WindowUtils
     {
-        public static Bitmap PrintWindow(IntPtr hWnd)
+        public static bool PrintWindow(IntPtr hWnd, out Bitmap bitmap)
         {
             GetWindowRect(hWnd, out var rect);
-            var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
+            bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             using var graphics = Graphics.FromImage(bitmap);
             var hdc = graphics.GetHdc();
-            User32.PrintWindow(hWnd, hdc, 0);
+            var result = User32.PrintWindow(hWnd, hdc, 0);
             graphics.ReleaseHdc(hdc);
-            return bitmap;
+            return result;
+        }
+
+        public static bool CaptureWindow(IntPtr hWnd, bool captureCursor, out Bitmap bitmap)
+        {
+            var rectangle = GetWindowRectWithoutMargins(hWnd);
+            var posX = rectangle.Left;
+            var posY = rectangle.Top;
+            var width = rectangle.Width;
+            var height = rectangle.Height;
+
+            var hDesk = GetDesktopWindow();
+            var hSrce = GetWindowDC(hDesk);
+            var hDest = CreateCompatibleDC(hSrce);
+            var hBmp = CreateCompatibleBitmap(hSrce, width, height);
+            var hOldBmp = SelectObject(hDest, hBmp);
+
+            var result = BitBlt(hDest, 0, 0, width, height, hSrce, posX, posY, CopyPixelOperations.SourceCopy | CopyPixelOperations.CaptureBlt);
+
+            try
+            {
+                if (result)
+                {
+                    bitmap = Image.FromHbitmap(hBmp);
+                    if (captureCursor)
+                    {
+                        CURSORINFO cursorInfo;
+                        cursorInfo.cbSize = Marshal.SizeOf(typeof(CURSORINFO));
+                        if (GetCursorInfo(out cursorInfo) && cursorInfo.flags == CURSOR_SHOWING && GetIconInfo(cursorInfo.hCursor, out var iconInfo))
+                        {
+                            using var graphics = Graphics.FromImage(bitmap);
+                            var x = cursorInfo.ptScreenPos.x - rectangle.Left - iconInfo.xHotspot;
+                            var y = cursorInfo.ptScreenPos.y - rectangle.Top - iconInfo.yHotspot;
+                            var hdc = graphics.GetHdc();
+                            DrawIconEx(hdc, x, y, cursorInfo.hCursor, 0, 0, 0, IntPtr.Zero, DI_NORMAL | DI_COMPAT);
+                            DestroyIcon(cursorInfo.hCursor);
+                            DeleteObject(iconInfo.hbmMask);
+                            DeleteObject(iconInfo.hbmColor);
+                            graphics.ReleaseHdc();
+                            DeleteDC(hdc);
+                        }
+                    }
+                }
+                else
+                {
+                    bitmap = null;
+                }
+
+                return result;
+            }
+            finally
+            {
+                SelectObject(hDest, hOldBmp);
+                DeleteObject(hBmp);
+                DeleteDC(hDest);
+                ReleaseDC(hDesk, hSrce);
+            }
+        }
+
+        public static bool IsCorrectScreenshot(IntPtr hWnd, Bitmap bitmap)
+        {
+            var margins = GetSystemMargins(hWnd);
+            if (bitmap == null || bitmap.Width <= 0 || bitmap.Height <= 0 ||
+                bitmap.Width <= (margins.Left + margins.Right + 2) || bitmap.Height <= (margins.Top + margins.Bottom + 2))
+            {
+                return false;
+            }
+
+            var x = margins.Left + 1;
+            var y = bitmap.Height / 2;
+            var startColor = bitmap.GetPixel(x, y);
+            for (; y < (bitmap.Height - margins.Bottom - 1); y++)
+            {
+                for (; x < (bitmap.Width - margins.Right - 1); x++)
+                {
+                    var color = bitmap.GetPixel(x, y);
+                    if (!(startColor.R == color.R && startColor.G == color.G && startColor.B == color.B))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public static IntPtr GetParentWindow(IntPtr hWnd)
@@ -448,6 +532,33 @@ namespace SmartSystemMenu.Utils
             {
                 Marshal.FreeHGlobal(accentPtr);
             }
+        }
+
+        public static Rect GetWindowRectWithoutMargins(IntPtr hWnd)
+        {
+            Rect size;
+            if (Environment.OSVersion.Version.Major < 6)
+            {
+                GetWindowRect(hWnd, out size);
+            }
+            else if (Dwmapi.DwmGetWindowAttribute(hWnd, DWMWA_EXTENDED_FRAME_BOUNDS, out size, Marshal.SizeOf(typeof(Rect))) != 0)
+            {
+                GetWindowRect(hWnd, out size);
+            }
+            return size;
+        }
+
+        public static Rect GetSystemMargins(IntPtr hWnd)
+        {
+            GetWindowRect(hWnd, out var rect);
+            var rectWithoutMargin = GetWindowRectWithoutMargins(hWnd);
+            return new Rect
+            {
+                Left = rectWithoutMargin.Left - rect.Left,
+                Top = rectWithoutMargin.Top - rect.Top,
+                Right = rect.Right - rectWithoutMargin.Right,
+                Bottom = rect.Bottom - rectWithoutMargin.Bottom
+            };
         }
 
         public static Func<int, double> TransparencyToOpacity = t => 1 - (t / 100.0);
