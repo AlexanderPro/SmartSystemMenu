@@ -71,7 +71,7 @@ namespace SmartSystemMenu.Utils
                 }
                 else
                 {
-                    bitmap = null;
+                    bitmap = new Bitmap(1, 1);
                 }
 
                 return result;
