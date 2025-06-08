@@ -106,6 +106,7 @@ SmartSystemMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysonto
 * Скачайте последнюю версию [SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu/releases) в zip файле
 * [Chocolatey](https://chocolatey.org/): `choco install smartsystemmenu`
 * [Scoop](https://scoop.sh/): `scoop bucket add extras` и `scoop install extras/smartsystemmenu`
+* [WinGet](https://github.com/microsoft/winget-cli): `winget install --id=AlexanderPro.SmartSystemMenu  -e`
 
 Требования к системе
 --------------------
