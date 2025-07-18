@@ -562,5 +562,9 @@ namespace SmartSystemMenu.Utils
         }
 
         public static Func<int, double> TransparencyToOpacity = t => 1 - (t / 100.0);
+
+        public static Func<int, byte> TransparencyToAlphaOpacity = t => (byte)Math.Round(255 * (100 - t) / 100f, MidpointRounding.AwayFromZero);
+
+        public static Func<byte, int> AlphaOpacityToTransparency = o => 100 - (int)Math.Round(100 * o / 255f, MidpointRounding.AwayFromZero);
     }
 }

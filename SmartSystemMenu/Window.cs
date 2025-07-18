@@ -107,8 +107,7 @@ namespace SmartSystemMenu
                 bool isLayeredWindow = (style & WS_EX_LAYERED) == WS_EX_LAYERED;
                 if (!isLayeredWindow) return 0;
                 GetLayeredWindowAttributes(Handle, out var _, out var alpha, out var _);
-                int transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
-                return transparency;
+                return WindowUtils.AlphaOpacityToTransparency(alpha);
             }
         }
 
@@ -349,7 +348,7 @@ namespace SmartSystemMenu
 
         public void SetTransparency(int percent)
         {
-            var opacity = (byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
+            var opacity = WindowUtils.TransparencyToAlphaOpacity(percent);
             WindowUtils.SetOpacity(Handle, opacity);
             State.Transparency = percent;
         }

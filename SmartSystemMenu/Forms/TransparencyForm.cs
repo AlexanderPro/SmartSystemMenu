@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SmartSystemMenu.Settings;
+using SmartSystemMenu.Utils;
 
 namespace SmartSystemMenu.Forms
 {
@@ -12,7 +13,6 @@ namespace SmartSystemMenu.Forms
         {
             InitializeComponent();
             InitializeControls(window, settings);
-
         }
 
         private void InitializeControls(Window window, ApplicationSettings settings)
@@ -21,7 +21,13 @@ namespace SmartSystemMenu.Forms
             Text = settings.Language.GetValue("trans_form");
             numericTransparency.Value = window.Transparency;
             DialogResult = DialogResult.Cancel;
+            numericTransparency.TextChanged += NumericTransparencyValueChanged;
+            ChangeTransparency();
         }
+
+        private void NumericTransparencyValueChanged(object sender, EventArgs e) => ChangeTransparency();
+
+        private void NumericTransparencyKeyDown(object sender, KeyEventArgs e) => ChangeTransparency();
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
@@ -41,6 +47,12 @@ namespace SmartSystemMenu.Forms
             {
                 Close();
             }
+        }
+
+        private void ChangeTransparency()
+        {
+            var opacity = WindowUtils.TransparencyToAlphaOpacity((int)numericTransparency.Value);
+            WindowUtils.SetOpacity(Handle, opacity);
         }
     }
 }
