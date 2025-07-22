@@ -11,6 +11,8 @@
     <processName>chrome.exe</processName>
     <processName>msedge.exe</processName>
     <processName>firefox.exe</processName>
+    <processName>QQ.exe</processName>
+    <processName>QQNT.exe</processName>
     <processName>WindowsTerminal.exe</processName>
     <processName>code.exe</processName>
   </createMenuOnInitEvent>
