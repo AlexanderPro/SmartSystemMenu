@@ -18,6 +18,8 @@
   </createMenuOnInitEvent>
   <noRestoreMenuOnExit>
     <processName>discord.exe</processName>
+    <processName>QQ.exe</processName>
+    <processName>QQNT.exe</processName>
     <processName>code.exe</processName>
   </noRestoreMenuOnExit>
   <menuItems>
