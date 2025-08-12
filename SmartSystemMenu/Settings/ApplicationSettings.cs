@@ -260,6 +260,7 @@ namespace SmartSystemMenu.Settings
             if (SaveSelectedItems.AeroGlass != other.SaveSelectedItems.AeroGlass ||
                 SaveSelectedItems.AlwaysOnTop != other.SaveSelectedItems.AlwaysOnTop ||
                 SaveSelectedItems.HideForAltTab != other.SaveSelectedItems.HideForAltTab ||
+                SaveSelectedItems.Resizable != other.SaveSelectedItems.Resizable ||
                 SaveSelectedItems.Alignment != other.SaveSelectedItems.Alignment ||
                 SaveSelectedItems.Transparency != other.SaveSelectedItems.Transparency ||
                 SaveSelectedItems.Priority != other.SaveSelectedItems.Priority ||
@@ -339,6 +340,7 @@ namespace SmartSystemMenu.Settings
             hashCode ^= SaveSelectedItems.AeroGlass.GetHashCode();
             hashCode ^= SaveSelectedItems.AlwaysOnTop.GetHashCode();
             hashCode ^= SaveSelectedItems.HideForAltTab.GetHashCode();
+            hashCode ^= SaveSelectedItems.Resizable.GetHashCode();
             hashCode ^= SaveSelectedItems.Alignment.GetHashCode();
             hashCode ^= SaveSelectedItems.Transparency.GetHashCode();
             hashCode ^= SaveSelectedItems.Priority.GetHashCode();

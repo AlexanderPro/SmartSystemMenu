@@ -601,7 +601,7 @@ namespace SmartSystemMenu
             }
         }
 
-        public void MakeThickFrame(bool enable)
+        public void MakeResizable(bool enable)
         {
             if (enable)
             {
@@ -618,6 +618,7 @@ namespace SmartSystemMenu
                     WindowUtils.UnsetThickFrame(Handle);
                 }
             }
+            State.Resizable = enable;
         }
 
         public void SendToBottom()
@@ -783,6 +784,12 @@ namespace SmartSystemMenu
             {
                 HideForAltTab(state.HideForAltTab.Value);
                 Menu.CheckMenuItem(MenuItemId.SC_HIDE_FOR_ALT_TAB, state.HideForAltTab.Value);
+            }
+
+            if (settings.Resizable && state.Resizable.HasValue)
+            {
+                MakeResizable(state.Resizable.Value);
+                Menu.CheckMenuItem(MenuItemId.SC_RESIZABLE, state.Resizable.Value);
             }
 
             if (settings.Alignment && state.Alignment.HasValue)

@@ -828,7 +828,7 @@ namespace SmartSystemMenu.Forms
                             {
                                 var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_RESIZABLE);
                                 window.Menu.CheckMenuItem(MenuItemId.SC_RESIZABLE, !isChecked);
-                                window.MakeThickFrame(!isChecked);
+                                window.MakeResizable(!isChecked);
                                 var size = window.Size;
                                 MoveWindow(window.Handle, size.Left, size.Top, size.Width, size.Height, true);
                                 InvalidateRect(window.Handle, IntPtr.Zero, true);

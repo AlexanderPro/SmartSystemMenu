@@ -55,16 +55,17 @@ namespace SmartSystemMenu.Settings
                         Top = int.Parse(positionElement.Attribute("top").Value),
                         Width = int.Parse(positionElement.Attribute("width").Value),
                         Height = int.Parse(positionElement.Attribute("height").Value),
-                        AeroGlass = systemMenuElement.Attribute("aeroGlass") == null ? (bool?)null : systemMenuElement.Attribute("aeroGlass").Value.ToLower() == "true",
-                        AlwaysOnTop = systemMenuElement.Attribute("alwaysOnTop") == null ? (bool?)null : systemMenuElement.Attribute("alwaysOnTop").Value.ToLower() == "true",
-                        HideForAltTab = systemMenuElement.Attribute("hideForAltTab") == null ? (bool?)null : systemMenuElement.Attribute("hideForAltTab").Value.ToLower() == "true",
-                        Alignment = systemMenuElement.Attribute("alignment") == null ? (WindowAlignment?)null : (WindowAlignment)int.Parse(systemMenuElement.Attribute("alignment").Value),
-                        Transparency = systemMenuElement.Attribute("transparency") == null ? (int?)null : int.Parse(systemMenuElement.Attribute("transparency").Value),
-                        Priority = systemMenuElement.Attribute("priority") == null ? (Priority?)null : (Priority)int.Parse(systemMenuElement.Attribute("priority").Value),
-                        MinimizeToTrayAlways = systemMenuElement.Attribute("minimizeToTrayAlways") == null ? (bool?)null : systemMenuElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true",
-                        IsDisabledMinimizeButton = systemMenuElement.Attribute("disableMinimizeButton") == null ? (bool?)null : systemMenuElement.Attribute("disableMinimizeButton").Value.ToLower() == "true",
-                        IsDisabledMaximizeButton = systemMenuElement.Attribute("disableMaximizeButton") == null ? (bool?)null : systemMenuElement.Attribute("disableMaximizeButton").Value.ToLower() == "true",
-                        IsDisabledCloseButton = systemMenuElement.Attribute("disableCloseButton") == null ? (bool?)null : systemMenuElement.Attribute("disableCloseButton").Value.ToLower() == "true"
+                        AeroGlass = systemMenuElement.Attribute("aeroGlass") == null ? null : systemMenuElement.Attribute("aeroGlass").Value.ToLower() == "true",
+                        AlwaysOnTop = systemMenuElement.Attribute("alwaysOnTop") == null ? null : systemMenuElement.Attribute("alwaysOnTop").Value.ToLower() == "true",
+                        HideForAltTab = systemMenuElement.Attribute("hideForAltTab") == null ? null : systemMenuElement.Attribute("hideForAltTab").Value.ToLower() == "true",
+                        Resizable = systemMenuElement.Attribute("resizable") == null ? null : systemMenuElement.Attribute("resizable").Value.ToLower() == "true",
+                        Alignment = systemMenuElement.Attribute("alignment") == null ? null : (WindowAlignment)int.Parse(systemMenuElement.Attribute("alignment").Value),
+                        Transparency = systemMenuElement.Attribute("transparency") == null ? null : int.Parse(systemMenuElement.Attribute("transparency").Value),
+                        Priority = systemMenuElement.Attribute("priority") == null ? null : (Priority)int.Parse(systemMenuElement.Attribute("priority").Value),
+                        MinimizeToTrayAlways = systemMenuElement.Attribute("minimizeToTrayAlways") == null ? null : systemMenuElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true",
+                        IsDisabledMinimizeButton = systemMenuElement.Attribute("disableMinimizeButton") == null ? null : systemMenuElement.Attribute("disableMinimizeButton").Value.ToLower() == "true",
+                        IsDisabledMaximizeButton = systemMenuElement.Attribute("disableMaximizeButton") == null ? null : systemMenuElement.Attribute("disableMaximizeButton").Value.ToLower() == "true",
+                        IsDisabledCloseButton = systemMenuElement.Attribute("disableCloseButton") == null ? null : systemMenuElement.Attribute("disableCloseButton").Value.ToLower() == "true"
                     };
                 })
                 .ToList();
@@ -87,6 +88,7 @@ namespace SmartSystemMenu.Settings
                                          settings.SaveSelectedItems.AeroGlass && x.AeroGlass.HasValue ? new XAttribute("aeroGlass", x.AeroGlass.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.AlwaysOnTop && x.AlwaysOnTop.HasValue ? new XAttribute("alwaysOnTop", x.AlwaysOnTop.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.HideForAltTab && x.HideForAltTab.HasValue ? new XAttribute("hideForAltTab", x.HideForAltTab.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.Resizable && x.Resizable.HasValue ? new XAttribute("resizable", x.Resizable.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.Alignment && x.Alignment.HasValue ? new XAttribute("alignment", (int)x.Alignment.Value) : null,
                                          settings.SaveSelectedItems.Transparency && x.Transparency.HasValue ? new XAttribute("transparency", x.Transparency.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.Priority && x.Priority.HasValue ? new XAttribute("priority", (int)x.Priority) : null,

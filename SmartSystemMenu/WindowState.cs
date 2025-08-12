@@ -23,6 +23,8 @@ namespace SmartSystemMenu
 
         public bool? HideForAltTab { get; set; }
 
+        public bool? Resizable { get; set; }
+
         public WindowAlignment? Alignment { get; set; }
 
         public int? Transparency { get; set; }

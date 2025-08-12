@@ -82,8 +82,9 @@ namespace SmartSystemMenu.Forms
             toolTipAddProcessName.SetToolTip(btnMenuItemUp, settings.Language.GetValue("btn_menu_item_up"));
             chkAeroGlass.Text = settings.Language.GetValue("aero_glass");
             chkAlwaysOnTop.Text = settings.Language.GetValue("always_on_top");
-            chkAlignment.Text = settings.Language.GetValue("alignment");
             chkHideForAltTab.Text = settings.Language.GetValue("hide_for_alt_tab");
+            chkResizable.Text = settings.Language.GetValue("size_resizable");
+            chkAlignment.Text = settings.Language.GetValue("alignment");
             chkTransparency.Text = settings.Language.GetValue("transparency");
             chkPriority.Text = settings.Language.GetValue("priority");
             chkMinimizeToTrayAlways.Text = settings.Language.GetValue("minimize_always_to_systemtray");
@@ -164,6 +165,7 @@ namespace SmartSystemMenu.Forms
             chkAeroGlass.Checked = settings.SaveSelectedItems.AeroGlass;
             chkAlwaysOnTop.Checked = settings.SaveSelectedItems.AlwaysOnTop;
             chkHideForAltTab.Checked = settings.SaveSelectedItems.HideForAltTab;
+            chkResizable.Checked = settings.SaveSelectedItems.Resizable;
             chkAlignment.Checked = settings.SaveSelectedItems.Alignment;
             chkTransparency.Checked = settings.SaveSelectedItems.Transparency;
             chkPriority.Checked = settings.SaveSelectedItems.Priority;
@@ -588,6 +590,7 @@ namespace SmartSystemMenu.Forms
             settings.SaveSelectedItems.AeroGlass = chkAeroGlass.Checked;
             settings.SaveSelectedItems.AlwaysOnTop = chkAlwaysOnTop.Checked;
             settings.SaveSelectedItems.HideForAltTab = chkHideForAltTab.Checked;
+            settings.SaveSelectedItems.Resizable = chkResizable.Checked;
             settings.SaveSelectedItems.Alignment = chkAlignment.Checked;
             settings.SaveSelectedItems.Transparency = chkTransparency.Checked;
             settings.SaveSelectedItems.Priority = chkPriority.Checked;

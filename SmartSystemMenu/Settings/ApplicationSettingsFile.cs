@@ -106,6 +106,7 @@ namespace SmartSystemMenu.Settings
             settings.SaveSelectedItems.AeroGlass = saveSelectedItemsElement.Attribute("aeroGlass") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("aeroGlass").Value) ? saveSelectedItemsElement.Attribute("aeroGlass").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.AlwaysOnTop = saveSelectedItemsElement.Attribute("alwaysOnTop") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("alwaysOnTop").Value) ? saveSelectedItemsElement.Attribute("alwaysOnTop").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.HideForAltTab = saveSelectedItemsElement.Attribute("hideForAltTab") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("hideForAltTab").Value) ? saveSelectedItemsElement.Attribute("hideForAltTab").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.Resizable = saveSelectedItemsElement.Attribute("resizable") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("resizable").Value) ? saveSelectedItemsElement.Attribute("resizable").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Alignment = saveSelectedItemsElement.Attribute("alignment") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("alignment").Value) ? saveSelectedItemsElement.Attribute("alignment").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Transparency = saveSelectedItemsElement.Attribute("transparency") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("transparency").Value) ? saveSelectedItemsElement.Attribute("transparency").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Priority = saveSelectedItemsElement.Attribute("priority") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("priority").Value) ? saveSelectedItemsElement.Attribute("priority").Value.ToLower() == "true" : true;
@@ -217,6 +218,7 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("aeroGlass", settings.SaveSelectedItems.AeroGlass.ToString().ToLower()),
                                      new XAttribute("alwaysOnTop", settings.SaveSelectedItems.AlwaysOnTop.ToString().ToLower()),
                                      new XAttribute("hideForAltTab", settings.SaveSelectedItems.HideForAltTab.ToString().ToLower()),
+                                     new XAttribute("resizable", settings.SaveSelectedItems.Resizable.ToString().ToLower()),
                                      new XAttribute("alignment", settings.SaveSelectedItems.Alignment.ToString().ToLower()),
                                      new XAttribute("transparency", settings.SaveSelectedItems.Transparency.ToString().ToLower()),
                                      new XAttribute("priority", settings.SaveSelectedItems.Priority.ToString().ToLower()),

@@ -10,6 +10,8 @@ namespace SmartSystemMenu.Settings
 
         public bool HideForAltTab { get; set; }
 
+        public bool Resizable { get; set; }
+
         public bool Alignment { get; set; }
 
         public bool Transparency { get; set; }
@@ -25,6 +27,7 @@ namespace SmartSystemMenu.Settings
             AeroGlass = true;
             AlwaysOnTop = true;
             HideForAltTab = true;
+            Resizable = true;
             Alignment = true;
             Transparency = true;
             Priority = true;
