@@ -160,7 +160,7 @@ namespace SmartSystemMenu.Forms
             cmbSizer.Items.Add(settings.Language.GetValue("sizer_window_with_margins"));
             cmbSizer.Items.Add(settings.Language.GetValue("sizer_window_without_margins"));
             cmbSizer.Items.Add(settings.Language.GetValue("sizer_window_client_area"));
-            cmbSizer.SelectedIndex = (int)settings.Sizer;
+            cmbSizer.SelectedIndex = (int)settings.Sizer.SizerType;
             chkEnableHighDPI.Checked = settings.EnableHighDPI;
             chkAeroGlass.Checked = settings.SaveSelectedItems.AeroGlass;
             chkAlwaysOnTop.Checked = settings.SaveSelectedItems.AlwaysOnTop;
@@ -598,7 +598,8 @@ namespace SmartSystemMenu.Forms
             settings.SaveSelectedItems.Buttons = chkButtons.Checked;
             settings.Dimmer.Color = txtDimmerColor.Text;
             settings.Dimmer.Transparency = trackbDimmerTransparency.Value;
-            settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
+            settings.Sizer.SizerType = (WindowSizerType)cmbSizer.SelectedIndex;
+            settings.Sizer.ResizableByDefault = _settings.Sizer.ResizableByDefault;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
             settings.LanguageName = cmbLanguage.SelectedValue == null ? "" : cmbLanguage.SelectedValue.ToString();
 

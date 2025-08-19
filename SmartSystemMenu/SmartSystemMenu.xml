@@ -166,8 +166,8 @@
   </menuItems>
   <closer type="" key1="" key2="" mouseButton="" />
   <dimmer color="#000000" transparency="50" />
+  <sizer type="" resizableByDefault="false" />
   <saveSelectedItems aeroGlass="true" alwaysOnTop="true" hideForAltTab="true" resizable="true" alignment="true" transparency="true" priority="true" minimizeToTrayAlways="true" buttons="true" />
-  <sizer type="" />
   <systemTrayIcon show="true" />
   <display highDPI="true" />
   <language name="" />

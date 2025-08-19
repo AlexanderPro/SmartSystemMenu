@@ -102,6 +102,10 @@ namespace SmartSystemMenu.Settings
             settings.Dimmer.Color = dimmerElement.Attribute("color") != null ? dimmerElement.Attribute("color").Value : string.Empty;
             settings.Dimmer.Transparency = dimmerElement.Attribute("transparency") != null ? int.Parse(dimmerElement.Attribute("transparency").Value) : 0;
 
+            var sizerElement = document.XPathSelectElement("/smartSystemMenu/sizer");
+            settings.Sizer.SizerType = sizerElement.Attribute("type") != null && !string.IsNullOrEmpty(sizerElement.Attribute("type").Value) ? (WindowSizerType)int.Parse(sizerElement.Attribute("type").Value) : WindowSizerType.WindowWithMargins;
+            settings.Sizer.ResizableByDefault = sizerElement.Attribute("resizableByDefault") != null && !string.IsNullOrEmpty(sizerElement.Attribute("resizableByDefault").Value) && sizerElement.Attribute("resizableByDefault").Value.ToLower() == "true";
+
             var saveSelectedItemsElement = document.XPathSelectElement("/smartSystemMenu/saveSelectedItems");
             settings.SaveSelectedItems.AeroGlass = saveSelectedItemsElement.Attribute("aeroGlass") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("aeroGlass").Value) ? saveSelectedItemsElement.Attribute("aeroGlass").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.AlwaysOnTop = saveSelectedItemsElement.Attribute("alwaysOnTop") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("alwaysOnTop").Value) ? saveSelectedItemsElement.Attribute("alwaysOnTop").Value.ToLower() == "true" : true;
@@ -112,9 +116,6 @@ namespace SmartSystemMenu.Settings
             settings.SaveSelectedItems.Priority = saveSelectedItemsElement.Attribute("priority") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("priority").Value) ? saveSelectedItemsElement.Attribute("priority").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.MinimizeToTrayAlways = saveSelectedItemsElement.Attribute("minimizeToTrayAlways") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value) ? saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Buttons = saveSelectedItemsElement.Attribute("buttons") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("buttons").Value) ? saveSelectedItemsElement.Attribute("buttons").Value.ToLower() == "true" : true;
-
-            var sizerElement = document.XPathSelectElement("/smartSystemMenu/sizer");
-            settings.Sizer = sizerElement.Attribute("type") != null && !string.IsNullOrEmpty(sizerElement.Attribute("type").Value) ? (WindowSizerType)int.Parse(sizerElement.Attribute("type").Value) : WindowSizerType.WindowWithMargins;
 
             var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
             if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
@@ -214,6 +215,10 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("color", settings.Dimmer.Color),
                                      new XAttribute("transparency", settings.Dimmer.Transparency.ToString())
                                  ),
+                                 new XElement("sizer",
+                                     new XAttribute("type", ((int)settings.Sizer.SizerType).ToString()),
+                                     new XAttribute("resizableByDefault", settings.Sizer.ResizableByDefault.ToString().ToLower())
+                                 ),
                                  new XElement("saveSelectedItems",
                                      new XAttribute("aeroGlass", settings.SaveSelectedItems.AeroGlass.ToString().ToLower()),
                                      new XAttribute("alwaysOnTop", settings.SaveSelectedItems.AlwaysOnTop.ToString().ToLower()),
@@ -224,9 +229,6 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("priority", settings.SaveSelectedItems.Priority.ToString().ToLower()),
                                      new XAttribute("minimizeToTrayAlways", settings.SaveSelectedItems.MinimizeToTrayAlways.ToString().ToLower()),
                                      new XAttribute("buttons", settings.SaveSelectedItems.Buttons.ToString().ToLower())
-                                 ),
-                                 new XElement("sizer",
-                                     new XAttribute("type", ((int)settings.Sizer).ToString())
                                  ),
                                  new XElement("systemTrayIcon",
                                      new XAttribute("show", settings.ShowSystemTrayIcon.ToString().ToLower())

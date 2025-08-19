@@ -135,6 +135,12 @@ namespace SmartSystemMenu.Forms
                 var isAdded = window.Menu.Create();
                 if (isAdded)
                 {
+                    if (_settings.Sizer.ResizableByDefault)
+                    {
+                        window.MakeResizable(true);
+                        window.Menu.CheckMenuItem(MenuItemId.SC_RESIZABLE, true);
+                    }
+
                     window.CheckDefaultMenuItems();
                     window.NoRestoreMenu = !string.IsNullOrEmpty(fileName) && _settings.NoRestoreMenuProcessNames.Contains(fileName.ToLower());
 
@@ -454,6 +460,12 @@ namespace SmartSystemMenu.Forms
                 var isAdded = window.Menu.Create();
                 if (isAdded)
                 {
+                    if (_settings.Sizer.ResizableByDefault)
+                    {
+                        window.MakeResizable(true);
+                        window.Menu.CheckMenuItem(MenuItemId.SC_RESIZABLE, true);
+                    }
+
                     window.CheckDefaultMenuItems();
                     
                     var fileName = Path.GetFileName(processPath);
@@ -797,11 +809,11 @@ namespace SmartSystemMenu.Forms
                                 {
                                     window.ShowNormal();
 
-                                    if (_settings.Sizer == WindowSizerType.WindowWithMargins)
+                                    if (_settings.Sizer.SizerType == WindowSizerType.WindowWithMargins)
                                     {
                                         window.SetSize(sizeForm.WindowWidth, sizeForm.WindowHeight, sizeForm.WindowLeft, sizeForm.WindowTop);
                                     }
-                                    else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
+                                    else if (_settings.Sizer.SizerType == WindowSizerType.WindowWithoutMargins)
                                     {
                                         var margins = window.GetSystemMargins();
                                         window.SetSize(sizeForm.WindowWidth == null ? null : (sizeForm.WindowWidth + margins.Left + margins.Right),
@@ -1203,11 +1215,11 @@ namespace SmartSystemMenu.Forms
             window.Menu.UncheckSizeMenu();
             window.Menu.CheckMenuItem(itemId, true);
             window.ShowNormal();
-            if (_settings.Sizer == WindowSizerType.WindowWithMargins)
+            if (_settings.Sizer.SizerType == WindowSizerType.WindowWithMargins)
             {
                 window.SetSize(item.Width, item.Height, item.Left, item.Top);
             }
-            else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
+            else if (_settings.Sizer.SizerType == WindowSizerType.WindowWithoutMargins)
             {
                 var margins = window.GetSystemMargins();
                 window.SetSize(item.Width == null ? null : (item.Width + margins.Left + margins.Right),

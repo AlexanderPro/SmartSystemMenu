@@ -211,6 +211,7 @@
     <Compile Include="Settings\CloserSettings.cs" />
     <Compile Include="Settings\DimmerSettings.cs" />
     <Compile Include="Settings\SaveSelectedItemsSettings.cs" />
+    <Compile Include="Settings\SizerSettings.cs" />
     <Compile Include="Settings\WindowSettings.cs" />
     <Compile Include="Settings\MenuItemType.cs" />
     <Compile Include="ToggleParser.cs" />

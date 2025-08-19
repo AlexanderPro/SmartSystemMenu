@@ -17,13 +17,13 @@ namespace SmartSystemMenu.Settings
 
         public DimmerSettings Dimmer { get; set; }
 
+        public SizerSettings Sizer { get; set; }
+
         public SaveSelectedItemsSettings SaveSelectedItems { get; set; }
 
         public bool ShowSystemTrayIcon { get; set; }
 
         public bool EnableHighDPI { get; set; }
-
-        public WindowSizerType Sizer { get; set; }
 
         public string LanguageName { get; set; }
 
@@ -38,8 +38,8 @@ namespace SmartSystemMenu.Settings
             MenuItems = new MenuItems();
             Closer = new CloserSettings();
             Dimmer = new DimmerSettings();
+            Sizer = new SizerSettings();
             SaveSelectedItems = new SaveSelectedItemsSettings();
-            Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
             EnableHighDPI = false;
             LanguageName = "";
@@ -87,8 +87,8 @@ namespace SmartSystemMenu.Settings
 
             settings.Closer= (CloserSettings)Closer.Clone();
             settings.Dimmer = (DimmerSettings)Dimmer.Clone();
+            settings.Sizer = (SizerSettings)Sizer.Clone();
             settings.SaveSelectedItems = (SaveSelectedItemsSettings)SaveSelectedItems.Clone();
-            settings.Sizer = Sizer;
             settings.ShowSystemTrayIcon = ShowSystemTrayIcon;
             settings.EnableHighDPI = EnableHighDPI;
             settings.LanguageName = LanguageName;
@@ -257,6 +257,11 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
+            if (Sizer.SizerType != other.Sizer.SizerType || Sizer.ResizableByDefault != other.Sizer.ResizableByDefault)
+            {
+                return false;
+            }
+
             if (SaveSelectedItems.AeroGlass != other.SaveSelectedItems.AeroGlass ||
                 SaveSelectedItems.AlwaysOnTop != other.SaveSelectedItems.AlwaysOnTop ||
                 SaveSelectedItems.HideForAltTab != other.SaveSelectedItems.HideForAltTab ||
@@ -266,11 +271,6 @@ namespace SmartSystemMenu.Settings
                 SaveSelectedItems.Priority != other.SaveSelectedItems.Priority ||
                 SaveSelectedItems.MinimizeToTrayAlways != other.SaveSelectedItems.MinimizeToTrayAlways ||
                 SaveSelectedItems.Buttons != other.SaveSelectedItems.Buttons)
-            {
-                return false;
-            }
-
-            if (Sizer != other.Sizer)
             {
                 return false;
             }
@@ -337,6 +337,8 @@ namespace SmartSystemMenu.Settings
             hashCode ^= Closer.MouseButton.GetHashCode();
             hashCode ^= Dimmer.Color.GetHashCode();
             hashCode ^= Dimmer.Transparency.GetHashCode();
+            hashCode ^= Sizer.SizerType.GetHashCode();
+            hashCode ^= Sizer.ResizableByDefault.GetHashCode();
             hashCode ^= SaveSelectedItems.AeroGlass.GetHashCode();
             hashCode ^= SaveSelectedItems.AlwaysOnTop.GetHashCode();
             hashCode ^= SaveSelectedItems.HideForAltTab.GetHashCode();
@@ -346,7 +348,6 @@ namespace SmartSystemMenu.Settings
             hashCode ^= SaveSelectedItems.Priority.GetHashCode();
             hashCode ^= SaveSelectedItems.MinimizeToTrayAlways.GetHashCode();
             hashCode ^= SaveSelectedItems.Buttons.GetHashCode();
-            hashCode ^= Sizer.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
             hashCode ^= ShowSystemTrayIcon.GetHashCode();
             hashCode ^= EnableHighDPI.GetHashCode();
