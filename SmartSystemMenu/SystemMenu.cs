@@ -33,8 +33,8 @@ namespace SmartSystemMenu
         {
             get
             {
-                var windowMenuHandle = GetSystemMenu(WindowHandle, false);
-                var existsWindowMenu = windowMenuHandle != IntPtr.Zero;
+                var menuHandle = GetSystemMenu(WindowHandle, false);
+                var existsWindowMenu = menuHandle != IntPtr.Zero;
                 return existsWindowMenu;
             }
         }
@@ -173,77 +173,81 @@ namespace SmartSystemMenu
 
         public void CheckMenuItem(int id, bool check)
         {
-            var windowMenuHandle = GetSystemMenu(WindowHandle, false);
-            User32.CheckMenuItem(windowMenuHandle, id, check ? Constants.MF_CHECKED : Constants.MF_UNCHECKED);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
+            User32.CheckMenuItem(menuHandle, id, check ? Constants.MF_CHECKED : Constants.MF_UNCHECKED);
         }
 
         public void UncheckMenuItems(params int[] ids)
         {
-            var windowMenuHandle = GetSystemMenu(WindowHandle, false);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
             foreach (var id in ids)
             {
-                User32.CheckMenuItem(windowMenuHandle, id, Constants.MF_UNCHECKED);
+                User32.CheckMenuItem(menuHandle, id, Constants.MF_UNCHECKED);
             }
         }
 
         public bool IsMenuItemChecked(int id)
         {
-            var windowMenuHandle = GetSystemMenu(WindowHandle, false);
-            var flags = GetMenuState(windowMenuHandle, id, Constants.MF_BYCOMMAND);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
+            var flags = GetMenuState(menuHandle, id, Constants.MF_BYCOMMAND);
             var isChecked = flags != -1 && (flags & Constants.MF_CHECKED) != 0;
             return isChecked;
         }
 
         public void UncheckPriorityMenu()
         {
-            CheckMenuItem(MenuItemId.SC_PRIORITY_REAL_TIME, false);
-            CheckMenuItem(MenuItemId.SC_PRIORITY_HIGH, false);
-            CheckMenuItem(MenuItemId.SC_PRIORITY_ABOVE_NORMAL, false);
-            CheckMenuItem(MenuItemId.SC_PRIORITY_NORMAL, false);
-            CheckMenuItem(MenuItemId.SC_PRIORITY_BELOW_NORMAL, false);
-            CheckMenuItem(MenuItemId.SC_PRIORITY_IDLE, false);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_PRIORITY_REAL_TIME, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_PRIORITY_HIGH, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_PRIORITY_ABOVE_NORMAL, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_PRIORITY_NORMAL, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_PRIORITY_BELOW_NORMAL, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_PRIORITY_IDLE, Constants.MF_UNCHECKED);
         }
 
         public void UncheckAlignmentMenu()
         {
-            CheckMenuItem(MenuItemId.SC_ALIGN_TOP_LEFT, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_TOP_CENTER, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_TOP_RIGHT, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_MIDDLE_LEFT, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_MIDDLE_CENTER, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_MIDDLE_RIGHT, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_BOTTOM_LEFT, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_BOTTOM_CENTER, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_BOTTOM_RIGHT, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_CENTER_HORIZONTALLY, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_CENTER_VERTICALLY, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_DEFAULT, false);
-            CheckMenuItem(MenuItemId.SC_ALIGN_CUSTOM, false);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_TOP_LEFT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_TOP_CENTER, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_TOP_RIGHT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_MIDDLE_LEFT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_MIDDLE_CENTER, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_MIDDLE_RIGHT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_BOTTOM_LEFT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_BOTTOM_CENTER, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_BOTTOM_RIGHT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_CENTER_HORIZONTALLY, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_CENTER_VERTICALLY, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_DEFAULT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_ALIGN_CUSTOM, Constants.MF_UNCHECKED);
         }
 
         public void UncheckSizeMenu()
         {
+            var menuHandle = GetSystemMenu(WindowHandle, false);
             var windowSizeMenuItemIds = _menuItems.WindowSizeItems.Select(x => x.Id).ToArray();
             UncheckMenuItems(windowSizeMenuItemIds);
-            CheckMenuItem(MenuItemId.SC_SIZE_DEFAULT, false);
-            CheckMenuItem(MenuItemId.SC_SIZE_CUSTOM, false);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_SIZE_DEFAULT, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_SIZE_CUSTOM, Constants.MF_UNCHECKED);
         }
 
         public void UncheckTransparencyMenu()
         {
-            CheckMenuItem(MenuItemId.SC_TRANS_100, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_90, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_80, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_70, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_60, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_50, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_40, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_30, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_20, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_10, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_00, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_CUSTOM, false);
-            CheckMenuItem(MenuItemId.SC_TRANS_DEFAULT, false);
+            var menuHandle = GetSystemMenu(WindowHandle, false);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_100, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_90, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_80, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_70, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_60, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_50, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_40, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_30, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_20, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_10, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_00, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_CUSTOM, Constants.MF_UNCHECKED);
+            User32.CheckMenuItem(menuHandle, MenuItemId.SC_TRANS_DEFAULT, Constants.MF_UNCHECKED);
         }
 
         public bool IsMenuItem(IntPtr menuHandle, int item)
