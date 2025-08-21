@@ -75,7 +75,7 @@ static LRESULT CALLBACK CbtHookCallback(int code, WPARAM wparam, LPARAM lparam)
         else if (code == HCBT_ACTIVATE)
             msg = WM_SSM_HOOK_HCBT_ACTIVATE;
 
-        if (msg != 0)
+        if (msg != 0 && GetSystemMenu((HWND)wparam, false) != NULL)
         {
             SendNotifyMessage(hwndMain, msg, wparam, lparam);
         }
@@ -116,7 +116,7 @@ static LRESULT CALLBACK ShellHookCallback(int code, WPARAM wparam, LPARAM lparam
         else if (code == HSHELL_WINDOWDESTROYED)
             msg = WM_SSM_HOOK_HSHELL_WINDOWDESTROYED;
 
-        if (msg != 0)
+        if (msg != 0 && GetSystemMenu((HWND)wparam, false) != NULL)
         {
             SendNotifyMessage(hwndMain, msg, wparam, lparam);
         }
