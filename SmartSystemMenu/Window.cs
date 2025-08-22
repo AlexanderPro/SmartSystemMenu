@@ -148,9 +148,14 @@ namespace SmartSystemMenu
             _defaultLeft = size.Left;
             _defaultTop = size.Top;
             _beforeRollupHeight = size.Height;
-            _defaultTransparency = Transparency;
             _isLayered = false;
             _hasThickFrame = false;
+            _defaultTransparency = Transparency;
+            if (_defaultTransparency == 100)
+            {
+                _defaultTransparency = 0;
+            }
+
             State = new WindowState();
             State.Left = size.Left;
             State.Top = size.Top;
