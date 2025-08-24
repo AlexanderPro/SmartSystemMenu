@@ -22,7 +22,7 @@ namespace SmartSystemMenu.Forms
     partial class MainForm : Form
     {
         private const string SHELL_WINDOW_NAME = "Program Manager";
-        private List<Window> _windows;
+        private Dictionary<IntPtr, Window> _windows;
         private CallWndProcHook _callWndProcHook;
         private GetMsgHook _getMsgHook;
         private ShellHook _shellHook;
@@ -121,9 +121,9 @@ namespace SmartSystemMenu.Forms
                 }
             }
 
-            _windows = EnumWindows.EnumAllWindows(_settings, _windowSettings, new string[] { SHELL_WINDOW_NAME }).ToList();
+            _windows = EnumWindows.EnumAllWindows(_settings, _windowSettings, new string[] { SHELL_WINDOW_NAME }).ToDictionary(x => x.Handle, y => y);
 
-            foreach (var window in _windows)
+            foreach (var window in _windows.Values)
             {
                 var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
                 var fileName = Path.GetFileName(processPath);
@@ -219,7 +219,7 @@ namespace SmartSystemMenu.Forms
 
             if (_windows != null)
             {
-                foreach (Window window in _windows)
+                foreach (Window window in _windows.Values)
                 {
                     window.Dispose();
                 }
@@ -340,7 +340,7 @@ namespace SmartSystemMenu.Forms
             {
                 case MenuItemId.SC_HIDE:
                     {
-                        foreach (var window in _windows)
+                        foreach (var window in _windows.Values)
                         {
                             if (window.IsHidden)
                             {
@@ -352,7 +352,7 @@ namespace SmartSystemMenu.Forms
 
                 case MenuItemId.SC_TRANS_DEFAULT:
                     {
-                        foreach (var window in _windows)
+                        foreach (var window in _windows.Values)
                         {
                             window.Menu.UncheckTransparencyMenu();
                             window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_DEFAULT, true);
@@ -363,7 +363,7 @@ namespace SmartSystemMenu.Forms
 
                 case MenuItemId.SC_CLICK_THROUGH:
                     {
-                        foreach (var window in _windows)
+                        foreach (var window in _windows.Values)
                         {
                             if (window.IsClickThrough)
                             {
@@ -398,7 +398,7 @@ namespace SmartSystemMenu.Forms
 
         private void WindowCreated(object sender, WindowEventArgs e)
         {
-            if (e.Handle != IntPtr.Zero && !_windows.Any(w => w.Handle == e.Handle))
+            if (e.Handle != IntPtr.Zero && !_windows.ContainsKey(e.Handle))
             {
                 GetWindowThreadProcessId(e.Handle, out int processId);
                 var process = SystemUtils.GetProcessByIdSafely(processId);
@@ -429,7 +429,7 @@ namespace SmartSystemMenu.Forms
                     return;
                 }
 
-                var window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
+                var window = _windows.TryGetValue(e.WParam, out var win) ? win : null;
                 if (window == null)
                 {
                     window = new Window(e.WParam, _settings.MenuItems, _settings.Language);
@@ -471,7 +471,7 @@ namespace SmartSystemMenu.Forms
                     var fileName = Path.GetFileName(processPath);
                     window.NoRestoreMenu = !string.IsNullOrEmpty(fileName) && _settings.NoRestoreMenuProcessNames.Contains(fileName.ToLower());
                     
-                    _windows.Add(window);
+                    _windows.Add(window.Handle, window);
 
                     var windowClassName = window.GetClassName();
                     var isConsoleClassName = string.Compare(windowClassName, Window.ConsoleClassName, StringComparison.CurrentCulture) == 0;
@@ -487,8 +487,8 @@ namespace SmartSystemMenu.Forms
 
         private void WindowDestroyed(object sender, WindowEventArgs e)
         {
-            var window = _windows.FirstOrDefault(w => w.Handle == e.Handle && !w.IsHidden);
-            if (window != null)
+            var window = _windows.TryGetValue(e.Handle, out var win) ? win : null;
+            if (window != null && !window.IsHidden)
             {
                 if (window.Handle == _dimHandle)
                 {
@@ -498,14 +498,14 @@ namespace SmartSystemMenu.Forms
                 if (!window.ExistSystemTrayIcon)
                 {
                     window.Dispose();
-                    _windows.Remove(window);
+                    _windows.Remove(window.Handle);
                 }
             }
         }
 
         private void WindowMinMax(object sender, SysCommandEventArgs e)
         {
-            var window = _windows.FirstOrDefault(w => w.Handle == e.WParam);
+            var window = _windows.TryGetValue(e.WParam, out var win) ? win : null;
             if (window != null)
             {
                 if (e.LParam.ToInt64() == SW_MAXIMIZE)
@@ -533,7 +533,7 @@ namespace SmartSystemMenu.Forms
 
         private void WindowMoveSize(object sender, WindowEventArgs e)
         {
-            var window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
+            var window = _windows.TryGetValue(e.Handle, out var win) ? win : null;
             window?.SaveDefaultSizePosition();
         }
 
@@ -548,8 +548,8 @@ namespace SmartSystemMenu.Forms
                 var shiftKey = Convert.ToBoolean(shiftState);
                 if (controlKey && shiftKey)
                 {
-                    IntPtr handle = GetForegroundWindow();
-                    Window window = _windows.FirstOrDefault(w => w.Handle == handle);
+                    var handle = GetForegroundWindow();
+                    var window = _windows.TryGetValue(handle, out var win) ? win : null;
                     window?.MinimizeToSystemTray();
                 }
             }
@@ -568,7 +568,7 @@ namespace SmartSystemMenu.Forms
             var message = e.Message.ToInt64();
             if (message == WM_SYSCOMMAND)
             {
-                var window = _windows.FirstOrDefault(w => w.Handle == e.Handle);
+                var window = _windows.TryGetValue(e.Handle, out var win) ? win : null;
                 if (window != null)
                 {
                     var lowOrder = e.WParam.ToInt64() & 0x0000FFFF;
@@ -1257,17 +1257,17 @@ namespace SmartSystemMenu.Forms
                         Left = screen.Bounds.Left,
                         Top = screen.Bounds.Top
                     };
-                    dimForm.Click += DimForm_Click;
-                    dimForm.DoubleClick += DimForm_Click;
-                    dimForm.MouseClick += DimForm_Click;
-                    dimForm.MouseDoubleClick += DimForm_Click;
+                    dimForm.Click += DimFormClick;
+                    dimForm.DoubleClick += DimFormClick;
+                    dimForm.MouseClick += DimFormClick;
+                    dimForm.MouseDoubleClick += DimFormClick;
                     dimForm.Show();
                     _dimForms.Add(dimForm);
                 }
             }
         }
 
-        private void DimForm_Click(object sender, EventArgs e)
+        private void DimFormClick(object sender, EventArgs e)
         {
             if (_dimHandle != IntPtr.Zero)
             {
