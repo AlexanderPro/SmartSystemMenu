@@ -5,6 +5,7 @@
     <processName>dllhost.exe</processName>
     <processName>sihost.exe</processName>
     <processName>smartscreen.exe</processName>
+    <!--<processName ignoreHook="true">explorer.exe</processName>-->
   </processExclusions>
   <createMenuOnInitEvent>
     <processName>discord.exe</processName>

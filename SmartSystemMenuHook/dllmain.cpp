@@ -11,11 +11,6 @@ extern HINSTANCE g_appInstance;
 using namespace tinyxml2;
 using namespace std;
 
-bool array_contains(const string &value, const vector<string> &array)
-{
-	return find(array.begin(), array.end(), value) != array.end();
-}
-
 string get_file_name(const string &path)
 {
 	size_t index = path.find_last_of("/\\");
@@ -43,16 +38,20 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 		try
 		{
 			WCHAR exePath[MAX_PATH], dllPath[MAX_PATH];
-			if (GetModuleFileName(NULL, exePath, sizeof(exePath)) != 0 && GetModuleFileName(hModule, dllPath, sizeof(dllPath)) != 0)
+			if (GetModuleFileName(NULL, exePath, MAX_PATH) != 0 && GetModuleFileName(hModule, dllPath, MAX_PATH) != 0)
 			{
 				wstring dllTempPath(&dllPath[0]);
 				string dllFileName(dllTempPath.begin(), dllTempPath.end());
 				string dllDirectoryName = get_directory_name(dllFileName);
-				string exclusionsFileName = dllDirectoryName + "\\SmartSystemMenu.xml";
 				
+				wstring exeTempPath(&exePath[0]);
+				string exeFileName(exeTempPath.begin(), exeTempPath.end());
+				exeFileName = get_file_name(exeFileName);
+				transform(exeFileName.begin(), exeFileName.end(), exeFileName.begin(), ::tolower);
+
 				XMLDocument doc;
+				string exclusionsFileName = dllDirectoryName + "\\SmartSystemMenu.xml";
 				doc.LoadFile(exclusionsFileName.c_str());
-				vector<string> processNames{};
 				XMLElement* element = doc.FirstChildElement("smartSystemMenu");
 				if (element)
 				{
@@ -63,21 +62,16 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 						while (element)
 						{
 							const char* value = element->GetText();
+							bool ignoreHook = element->BoolAttribute("ignoreHook", false);
 							string processName = value;
 							transform(processName.begin(), processName.end(), processName.begin(), ::tolower);
-							processNames.push_back(processName);
+							if (processName == exeFileName && ignoreHook == false)
+							{
+								return FALSE;
+							}
 							element = element->NextSiblingElement("processName");
 						}
 					}
-				}
-
-				wstring exeTempPath(&exePath[0]);
-				string exeFileName(exeTempPath.begin(), exeTempPath.end());
-				exeFileName = get_file_name(exeFileName);
-				transform(exeFileName.begin(), exeFileName.end(), exeFileName.begin(), ::tolower);
-				if (array_contains(exeFileName, processNames))
-				{
-					return FALSE;
 				}
 			}
 		}

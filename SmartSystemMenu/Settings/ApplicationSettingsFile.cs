@@ -17,10 +17,14 @@ namespace SmartSystemMenu.Settings
             var document = XDocument.Load(fileName);
             var languageDocument = XDocument.Load(languageFileName);
 
-            settings.ExcludedProcessNames = document
+            settings.ExcludedProcessItems = document
                 .XPathSelectElements("/smartSystemMenu/processExclusions/processName")
                 .Where(x => !string.IsNullOrWhiteSpace(x.Value))
-                .Select(x => x.Value.ToLower())
+                .Select(x => new ExcludedProcessItem
+                {
+                   Name = x.Value.ToLower(),
+                   IgnoreHook = x.Attribute("ignoreHook") != null && x.Attribute("ignoreHook").Value.ToLower() == "true",
+                })
                 .ToList();
 
             settings.InitEventProcessNames = document
@@ -39,7 +43,7 @@ namespace SmartSystemMenu.Settings
                 .XPathSelectElements("/smartSystemMenu/menuItems/windowSizeItems/item")
                 .Select(x => new WindowSizeMenuItem
                 {
-                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
+                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : string.Empty,
                     Left = !string.IsNullOrEmpty(x.Attribute("left").Value) ? int.Parse(x.Attribute("left").Value) : null,
                     Top = !string.IsNullOrEmpty(x.Attribute("top").Value) ? int.Parse(x.Attribute("top").Value) : null,
                     Width = !string.IsNullOrEmpty(x.Attribute("width").Value) ? int.Parse(x.Attribute("width").Value) : null,
@@ -54,11 +58,11 @@ namespace SmartSystemMenu.Settings
                 .XPathSelectElements("/smartSystemMenu/menuItems/startProgramItems/item")
                 .Select(x => new StartProgramMenuItem
                 {
-                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
-                    FileName = x.Attribute("fileName") != null ? x.Attribute("fileName").Value : "",
-                    Arguments = x.Attribute("arguments") != null ? x.Attribute("arguments").Value : "",
-                    BeginParameter = x.Attribute("beginParameter") != null ? x.Attribute("beginParameter").Value : "",
-                    EndParameter = x.Attribute("endParameter") != null ? x.Attribute("endParameter").Value : "",
+                    Title = x.Attribute("title") != null ? x.Attribute("title").Value : string.Empty,
+                    FileName = x.Attribute("fileName") != null ? x.Attribute("fileName").Value : string.Empty,
+                    Arguments = x.Attribute("arguments") != null ? x.Attribute("arguments").Value : string.Empty,
+                    BeginParameter = x.Attribute("beginParameter") != null ? x.Attribute("beginParameter").Value : string.Empty,
+                    EndParameter = x.Attribute("endParameter") != null ? x.Attribute("endParameter").Value : string.Empty,
                     RunAs = x.Attribute("runAs") != null && !string.IsNullOrEmpty(x.Attribute("runAs").Value) ? (UserType)Enum.Parse(typeof(UserType), x.Attribute("runAs").Value, true) : UserType.Normal,
                     ShowWindow = x.Attribute("showWindow") == null || string.IsNullOrEmpty(x.Attribute("showWindow").Value) || x.Attribute("showWindow").Value.ToLower() == "true",
                     UseWindowWorkingDirectory = x.Attribute("useWindowWorkingDirectory") != null && !string.IsNullOrEmpty(x.Attribute("useWindowWorkingDirectory").Value) && x.Attribute("useWindowWorkingDirectory").Value.ToLower() == "true"
@@ -70,7 +74,7 @@ namespace SmartSystemMenu.Settings
                 .Select(x => {
                     var menuItem = new MenuItem
                     {
-                        Name = x.Attribute("name") != null ? x.Attribute("name").Value : "",
+                        Name = x.Attribute("name") != null ? x.Attribute("name").Value : string.Empty,
                         Show = x.Attribute("show") != null ? x.Attribute("show").Value.ToLower() != "false" : true,
                         Type = x.Attribute("type") != null && !string.IsNullOrEmpty(x.Attribute("type").Value) ? (MenuItemType)Enum.Parse(typeof(MenuItemType), x.Attribute("type").Value, true) : MenuItemType.Item,
                         Key1 = x.Attribute("key1") != null && !string.IsNullOrEmpty(x.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(x.Attribute("key1").Value) : VirtualKeyModifier.None,
@@ -81,7 +85,7 @@ namespace SmartSystemMenu.Settings
                     x.XPathSelectElements("./items/item")
                     .Select(y => new MenuItem
                     {
-                        Name = y.Attribute("name") != null ? y.Attribute("name").Value : "",
+                        Name = y.Attribute("name") != null ? y.Attribute("name").Value : string.Empty,
                         Show = y.Attribute("show") != null ? y.Attribute("show").Value.ToLower() != "false" : true,
                         Type = y.Attribute("type") != null && !string.IsNullOrEmpty(y.Attribute("type").Value) ? (MenuItemType)Enum.Parse(typeof(MenuItemType), y.Attribute("type").Value, true) : MenuItemType.Item,
                         Key1 = y.Attribute("key1") != null && !string.IsNullOrEmpty(y.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(y.Attribute("key1").Value) : VirtualKeyModifier.None,
@@ -168,7 +172,8 @@ namespace SmartSystemMenu.Settings
         {
             var document = new XDocument();
             document.Add(new XElement("smartSystemMenu",
-                                 new XElement("processExclusions", settings.ExcludedProcessNames.Select(x => new XElement("processName", x))),
+                                 new XElement("processExclusions", settings.ExcludedProcessItems.Select(x => new XElement("processName",
+                                 x.IgnoreHook ? new XAttribute("ignoreHook", x.IgnoreHook.ToString().ToLower()) : null, x.Name))),
                                  new XElement("createMenuOnInitEvent", settings.InitEventProcessNames.Select(x => new XElement("processName", x))),
                                  new XElement("noRestoreMenuOnExit", settings.NoRestoreMenuProcessNames.Select(x => new XElement("processName", x))),
                                  new XElement("menuItems",
@@ -176,26 +181,26 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("type", x.Type.ToString()),
                                          x.Type == MenuItemType.Item || x.Type == MenuItemType.Group ? new XAttribute("name", x.Name) : null,
                                          x.Show == false ? new XAttribute("show", x.Show.ToString().ToLower()) : null,
-                                         x.Type == MenuItemType.Item ? new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()) : null,
-                                         x.Type == MenuItemType.Item ? new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()) : null,
-                                         x.Type == MenuItemType.Item ? new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString()) : null,
+                                         x.Type == MenuItemType.Item ? new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? string.Empty : ((int)x.Key1).ToString()) : null,
+                                         x.Type == MenuItemType.Item ? new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)x.Key2).ToString()) : null,
+                                         x.Type == MenuItemType.Item ? new XAttribute("key3", x.Key3 == VirtualKey.None ? string.Empty : ((int)x.Key3).ToString()) : null,
                                          x.Items.Any() ?
                                             new XElement("items", x.Items.Select(y => new XElement("item",
                                             new XAttribute("type", y.Type.ToString()),
                                             y.Type == MenuItemType.Item || y.Type == MenuItemType.Group ? new XAttribute("name", y.Name) : null,
                                             y.Show == false ? new XAttribute("show", y.Show.ToString().ToLower()) : null,
-                                            y.Type == MenuItemType.Item ? new XAttribute("key1", y.Key1 == VirtualKeyModifier.None ? "" : ((int)y.Key1).ToString()) : null,
-                                            y.Type == MenuItemType.Item ? new XAttribute("key2", y.Key2 == VirtualKeyModifier.None ? "" : ((int)y.Key2).ToString()) : null,
-                                            y.Type == MenuItemType.Item ? new XAttribute("key3", y.Key3 == VirtualKey.None ? "" : ((int)y.Key3).ToString()) : null))) : null))),
+                                            y.Type == MenuItemType.Item ? new XAttribute("key1", y.Key1 == VirtualKeyModifier.None ? string.Empty : ((int)y.Key1).ToString()) : null,
+                                            y.Type == MenuItemType.Item ? new XAttribute("key2", y.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)y.Key2).ToString()) : null,
+                                            y.Type == MenuItemType.Item ? new XAttribute("key3", y.Key3 == VirtualKey.None ? string.Empty : ((int)y.Key3).ToString()) : null))) : null))),
                                      new XElement("windowSizeItems", settings.MenuItems.WindowSizeItems.Select(x => new XElement("item",
                                          new XAttribute("title", x.Title),
-                                         new XAttribute("left", x.Left == null ? "" : x.Left.Value.ToString()),
-                                         new XAttribute("top", x.Top == null ? "" : x.Top.Value.ToString()),
-                                         new XAttribute("width", x.Width == null ? "" : x.Width.ToString()),
-                                         new XAttribute("height", x.Height == null ? "" : x.Height.ToString()),
-                                         new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? "" : ((int)x.Key1).ToString()),
-                                         new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? "" : ((int)x.Key2).ToString()),
-                                         new XAttribute("key3", x.Key3 == VirtualKey.None ? "" : ((int)x.Key3).ToString())))),
+                                         new XAttribute("left", x.Left == null ? string.Empty : x.Left.Value.ToString()),
+                                         new XAttribute("top", x.Top == null ? string.Empty : x.Top.Value.ToString()),
+                                         new XAttribute("width", x.Width == null ? string.Empty : x.Width.ToString()),
+                                         new XAttribute("height", x.Height == null ? string.Empty : x.Height.ToString()),
+                                         new XAttribute("key1", x.Key1 == VirtualKeyModifier.None ? string.Empty : ((int)x.Key1).ToString()),
+                                         new XAttribute("key2", x.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)x.Key2).ToString()),
+                                         new XAttribute("key3", x.Key3 == VirtualKey.None ? string.Empty : ((int)x.Key3).ToString())))),
                                      new XElement("startProgramItems", settings.MenuItems.StartProgramItems.Select(x => new XElement("item",
                                          new XAttribute("title", x.Title),
                                          new XAttribute("fileName", x.FileName),
@@ -207,9 +212,9 @@ namespace SmartSystemMenu.Settings
                                          new XAttribute("endParameter", x.EndParameter))))),
                                  new XElement("closer",
                                      new XAttribute("type", ((int)settings.Closer.Type).ToString()),
-                                     new XAttribute("key1", settings.Closer.Key1 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key1).ToString()),
-                                     new XAttribute("key2", settings.Closer.Key2 == VirtualKeyModifier.None ? "" : ((int)settings.Closer.Key2).ToString()),
-                                     new XAttribute("mouseButton", settings.Closer.MouseButton == MouseButton.None ? "" : ((int)settings.Closer.MouseButton).ToString())
+                                     new XAttribute("key1", settings.Closer.Key1 == VirtualKeyModifier.None ? string.Empty : ((int)settings.Closer.Key1).ToString()),
+                                     new XAttribute("key2", settings.Closer.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)settings.Closer.Key2).ToString()),
+                                     new XAttribute("mouseButton", settings.Closer.MouseButton == MouseButton.None ? string.Empty : ((int)settings.Closer.MouseButton).ToString())
                                  ),
                                  new XElement("dimmer",
                                      new XAttribute("color", settings.Dimmer.Color),

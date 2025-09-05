@@ -5,7 +5,7 @@ namespace SmartSystemMenu.Settings
 {
     public class ApplicationSettings : ICloneable
     {
-        public IList<string> ExcludedProcessNames { get; set; }
+        public IList<ExcludedProcessItem> ExcludedProcessItems { get; set; }
 
         public IList<string> InitEventProcessNames { get; set; }
 
@@ -32,7 +32,7 @@ namespace SmartSystemMenu.Settings
 
         public ApplicationSettings()
         {
-            ExcludedProcessNames = new List<string>();
+            ExcludedProcessItems = new List<ExcludedProcessItem>();
             InitEventProcessNames = new List<string>();
             NoRestoreMenuProcessNames = new List<string>();
             MenuItems = new MenuItems();
@@ -50,9 +50,9 @@ namespace SmartSystemMenu.Settings
         {
             var settings = new ApplicationSettings();
 
-            foreach (var processName in ExcludedProcessNames)
+            foreach (var processItem in ExcludedProcessItems)
             {
-                settings.ExcludedProcessNames.Add(processName);
+                settings.ExcludedProcessItems.Add((ExcludedProcessItem)processItem.Clone());
             }
 
             foreach (var processName in InitEventProcessNames)
@@ -132,7 +132,7 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
-            if (ExcludedProcessNames.Count != other.ExcludedProcessNames.Count)
+            if (ExcludedProcessItems.Count != other.ExcludedProcessItems.Count)
             {
                 return false;
             }
@@ -162,9 +162,10 @@ namespace SmartSystemMenu.Settings
                 return false;
             }
 
-            for (var i = 0; i < ExcludedProcessNames.Count; i++)
+            for (var i = 0; i < ExcludedProcessItems.Count; i++)
             {
-                if (string.Compare(ExcludedProcessNames[i], other.ExcludedProcessNames[i], StringComparison.CurrentCultureIgnoreCase) != 0)
+                if (string.Compare(ExcludedProcessItems[i].Name, other.ExcludedProcessItems[i].Name, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    ExcludedProcessItems[i].IgnoreHook != other.ExcludedProcessItems[i].IgnoreHook)
                 {
                     return false;
                 }
@@ -297,9 +298,9 @@ namespace SmartSystemMenu.Settings
         {
             var hashCode = 0;
 
-            foreach (var processName in ExcludedProcessNames)
+            foreach (var processItem in ExcludedProcessItems)
             {
-                hashCode ^= processName.GetHashCode();
+                hashCode ^= processItem.Name.GetHashCode() ^ processItem.IgnoreHook.GetHashCode();
             }
 
             foreach (var processName in InitEventProcessNames)

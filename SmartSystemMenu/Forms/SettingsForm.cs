@@ -97,11 +97,12 @@ namespace SmartSystemMenu.Forms
             btnCancel.Text = settings.Language.GetValue("settings_btn_cancel");
             Text = settings.Language.GetValue("settings_form");
 
-            foreach (var processExclusion in settings.ExcludedProcessNames)
+            foreach (var processItem in settings.ExcludedProcessItems)
             {
                 var index = gvProcessExclusions.Rows.Add();
                 var row = gvProcessExclusions.Rows[index];
-                row.Cells[0].Value = processExclusion;
+                row.Cells[0].Value = processItem.Name;
+                row.Cells[0].Tag = processItem.IgnoreHook;
                 row.Cells[1].ToolTipText = settings.Language.GetValue("clm_process_exclusion_edit");
                 row.Cells[2].ToolTipText = settings.Language.GetValue("clm_process_exclusion_delete");
             }
@@ -546,7 +547,13 @@ namespace SmartSystemMenu.Forms
 
             foreach (DataGridViewRow row in gvProcessExclusions.Rows)
             {
-                settings.ExcludedProcessNames.Add(row.Cells[0].Value.ToString());
+                var processItem = new ExcludedProcessItem
+                {
+                    Name = row.Cells[0].Value.ToString(),
+                    IgnoreHook = row.Cells[0].Tag != null && row.Cells[0].Tag.ToString().ToLower() == "true"
+                };
+
+                settings.ExcludedProcessItems.Add(processItem);
             }
 
             foreach (DataGridViewRow row in gvWindowSize.Rows)

@@ -127,7 +127,7 @@ namespace SmartSystemMenu.Forms
             {
                 var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
                 var fileName = Path.GetFileName(processPath);
-                if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessNames.Contains(fileName.ToLower()) || _settings.InitEventProcessNames.Contains(fileName.ToLower()))
+                if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessItems.Select(x => x.Name).Contains(fileName.ToLower()) || _settings.InitEventProcessNames.Contains(fileName.ToLower()))
                 {
                     continue;
                 }
@@ -405,7 +405,7 @@ namespace SmartSystemMenu.Forms
                 var processPath = process?.GetMainModuleFileName() ?? string.Empty;
                 var fileName = Path.GetFileName(processPath);
                 if (!string.IsNullOrEmpty(fileName) &&
-                    _settings.ExcludedProcessNames.Contains(fileName.ToLower()) || _settings.InitEventProcessNames.Contains(fileName.ToLower()))
+                    _settings.ExcludedProcessItems.Select(x => x.Name).Contains(fileName.ToLower()) || _settings.InitEventProcessNames.Contains(fileName.ToLower()))
                 {
                     return;
                 }
@@ -424,7 +424,7 @@ namespace SmartSystemMenu.Forms
                 var processPath = process?.GetMainModuleFileName() ?? string.Empty;
                 var fileName = Path.GetFileName(processPath);
                 if (!string.IsNullOrEmpty(fileName) &&
-                    _settings.ExcludedProcessNames.Contains(fileName.ToLower()) || !_settings.InitEventProcessNames.Contains(fileName.ToLower()))
+                    _settings.ExcludedProcessItems.Select(x => x.Name).Contains(fileName.ToLower()) || !_settings.InitEventProcessNames.Contains(fileName.ToLower()))
                 {
                     return;
                 }
@@ -1187,7 +1187,7 @@ namespace SmartSystemMenu.Forms
                 {
                 }
 
-                if (!_settings.ExcludedProcessNames.Contains(processName.ToLower()))
+                if (!_settings.ExcludedProcessItems.Select(x => x.Name).Contains(processName.ToLower()))
                 {
                     PostMessage(handle, WM_SYSCOMMAND, (uint)e.MenuItemId, 0);
                     e.Succeeded = true;
