@@ -1141,8 +1141,7 @@ namespace SmartSystemMenu.Forms
                              lowOrder != MenuItemId.SC_MINIMIZE &&
                              lowOrder != MenuItemId.SC_MAXIMIZE && 
                              lowOrder != MenuItemId.SC_RESTORE && 
-                             lowOrder != MenuItemId.SC_RESIZE && 
-                             lowOrder != MenuItemId.SC_CLOSE)
+                             lowOrder != MenuItemId.SC_RESIZE)
                     {
                         window.RefreshState();
                         var windowClassName = window.GetClassName();
