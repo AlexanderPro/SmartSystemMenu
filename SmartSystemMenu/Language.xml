@@ -1257,17 +1257,17 @@
       <item name="move_to" value="이동" />
       <item name="monitor" value="모니터링 " />
       <item name="alignment" value="정렬" />
-      <item name="align_top_left" value="상단 왼쪽" />
-      <item name="align_top_center" value="상단 가운데" />
-      <item name="align_top_right" value="상단 오른쪽" />
-      <item name="align_middle_left" value="중간 왼쪽" />
+      <item name="align_top_left" value="왼쪽 위" />
+      <item name="align_top_center" value="가운데 위" />
+      <item name="align_top_right" value="오른쪽 위" />
+      <item name="align_middle_left" value="왼쪽 중간" />
       <item name="align_middle_center" value="정중앙" />
-      <item name="align_middle_right" value="중간 오른쪽" />
-      <item name="align_bottom_left" value="하단 왼쪽" />
-      <item name="align_bottom_center" value="하단 가운데" />
-      <item name="align_bottom_right" value="하단 오른쪽" />
-      <item name="align_center_horizontally" value="가로 가운데" />
-      <item name="align_center_vertically" value="세로 가운데" />
+      <item name="align_middle_right" value="오른쪽 중간" />
+      <item name="align_bottom_left" value="왼쪽 아래" />
+      <item name="align_bottom_center" value="가운데 아래" />
+      <item name="align_bottom_right" value="오른쪽 아래" />
+      <item name="align_center_horizontally" value="가로 중심" />
+      <item name="align_center_vertically" value="세로 중심" />
       <item name="align_default" value="기본" />
       <item name="align_custom" value="사용자 지정..." />
       <item name="transparency" value="창 투명도" />
