@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [English](/) [**한국어**](/README_KO.md) [Русский](/README_RU.md) [中文版](/README_CN.md)
+🌏: [English](/) [Русский](/README_RU.md) [中文版](/README_CN.md) [**한국어**](/README_KO.md)
 
 ---
 
@@ -40,10 +40,10 @@ SmartSystemMenu는 시스템의 모든 창에 대한 시스템 메뉴를 확장�
 스크린샷
 ------------------
 
-![Resize](./SmartSystemMenu/Images/SmartSystemMenuEn1.png)
-![Alignment](./SmartSystemMenu/Images/SmartSystemMenuEn2.png)
-![Transparency](./SmartSystemMenu/Images/SmartSystemMenuEn3.png)
-![Information](./SmartSystemMenu/Images/SmartSystemMenuEn4.png)
+![Resize](./SmartSystemMenu/Images/SmartSystemMenuKo1.png)
+![Alignment](./SmartSystemMenu/Images/SmartSystemMenuKo2.png)
+![Transparency](./SmartSystemMenu/Images/SmartSystemMenuKo3.png)
+![Information](./SmartSystemMenu/Images/SmartSystemMenuKo4.png)
 
 명령줄 인터페이스
 --------------------
