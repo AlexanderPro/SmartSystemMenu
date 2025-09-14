@@ -49,7 +49,7 @@
             this.numericTransparency.Size = new System.Drawing.Size(72, 20);
             this.numericTransparency.TabIndex = 0;
             this.numericTransparency.ValueChanged += new System.EventHandler(this.NumericTransparencyValueChanged);
-            this.numericTransparency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NumericTransparencyKeyDown);
+            this.numericTransparency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             // 
             // TransparencyForm
             // 

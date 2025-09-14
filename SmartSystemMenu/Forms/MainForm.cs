@@ -861,7 +861,6 @@ namespace SmartSystemMenu.Forms
                                 var result = opacityForm.ShowDialog(window.Win32Window);
                                 if (result == DialogResult.OK)
                                 {
-                                    window.SetTransparency(opacityForm.WindowTransparency);
                                     window.Menu.UncheckTransparencyMenu();
                                     window.Menu.CheckMenuItem(MenuItemId.SC_TRANS_CUSTOM, true);
                                 }
