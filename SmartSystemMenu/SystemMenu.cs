@@ -157,6 +157,10 @@ namespace SmartSystemMenu
                 {
                     DeleteMenu(menuHandle, id, Constants.MF_BYCOMMAND);
                 }
+                else if (item.Type == MenuItemType.Separator)
+                {
+                    DeleteMenu(menuHandle, MenuItemId.SC_SEPARATOR, Constants.MF_SEPARATOR);
+                }
             }
 
             DeleteMenu(menuHandle, MenuItemId.SC_SEPARATOR_BOTTOM, Constants.MF_BYCOMMAND);

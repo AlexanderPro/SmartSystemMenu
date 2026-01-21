@@ -90,6 +90,7 @@ namespace SmartSystemMenu
         public const int SC_CHANGE_TITLE = 0x4827;
         public const int SC_RESIZABLE = 0x4828;
         public const int SC_CHANGE_ICON = 0x4829;
+        public const int SC_SETTINGS = 0x4830;
 
         private static readonly Dictionary<string, int> NameToId = new ();
         private static readonly Dictionary<int, string> IdToName = new ();
@@ -171,6 +172,7 @@ namespace SmartSystemMenu
             NameToId["dimmer"] = SC_DIMMER;
             NameToId["dimmer_on"] = SC_DIMMER_ON;
             NameToId["dimmer_off"] = SC_DIMMER_OFF;
+            NameToId["settings"] = SC_SETTINGS;
 
             foreach (var pair in NameToId)
             {

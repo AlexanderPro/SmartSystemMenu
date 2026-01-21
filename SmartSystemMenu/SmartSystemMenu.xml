@@ -135,6 +135,8 @@
       </item>
       <item type="group" name="start_program" />
       <item type="item" name="save_selected_items" key1="" key2="" key3="" />
+      <item type="separator" />
+      <item type="item" name="settings" key1="" key2="" key3="" />
     </items>
     <windowSizeItems>
       <item title="640x480" left="" top="" width="640" height="480" key1="" key2="" key3="" />

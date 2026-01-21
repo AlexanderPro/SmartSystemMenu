@@ -70,6 +70,7 @@
       <item name="disable_minimize_button" value="Disable &quot;Minimize&quot; Button" />
       <item name="disable_maximize_button" value="Disable &quot;Maximize&quot; Button" />
       <item name="disable_close_button" value="Disable &quot;Close&quot; Button" />
+      <item name="settings" value="Settings..." />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -316,6 +317,7 @@
       <item name="disable_minimize_button" value="Deaktivieren &quot;Minimieren&quot;" />
       <item name="disable_maximize_button" value="Deaktivieren &quot;Maximieren&quot;" />
       <item name="disable_close_button" value="Deaktivieren &quot;Schlieβen&quot;" />
+      <item name="settings" value="Einstellungen..." />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -560,6 +562,7 @@
       <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按钮" />
       <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按钮" />
       <item name="disable_close_button" value="禁用&quot;关闭&quot;按钮" />
+      <item name="settings" value="设置..." />
       <item name="grp_window" value="窗口" />
       <item name="grp_process" value="进程" />
       <item name="lbl_get_window_text" value="窗口标题:" />
@@ -806,6 +809,7 @@
       <item name="disable_minimize_button" value="停用&quot;最小化&quot;按鈕" />
       <item name="disable_maximize_button" value="停用&quot;最大化&quot;按鈕" />
       <item name="disable_close_button" value="停用&quot;關閉&quot;按鈕" />
+      <item name="settings" value="設定..." />
       <item name="grp_window" value="視窗" />
       <item name="grp_process" value="處理程序" />
       <item name="lbl_get_window_text" value="視窗標題:" />
@@ -1052,6 +1056,7 @@
       <item name="disable_minimize_button" value="「最小化」ボタンを無効にする" />
       <item name="disable_maximize_button" value="「最大化」ボタンを無効にする" />
       <item name="disable_close_button" value="「閉じる」ボタンを無効にする" />
+      <item name="settings" value="設定..." />
       <item name="grp_window" value="Window" />
       <item name="grp_process" value="Process" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1298,6 +1303,7 @@
       <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 사용 안 함" />
       <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 사용 안 함" />
       <item name="disable_close_button" value="&quot;닫기&quot; 버튼 사용 안 함" />
+      <item name="settings" value="설정..." />
       <item name="grp_window" value="창" />
       <item name="grp_process" value="프로세스" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1544,6 +1550,7 @@
       <item name="disable_minimize_button" value="Отключить кнопку минимизации окна" />
       <item name="disable_maximize_button" value="Отключить кнопку развертывания окна" />
       <item name="disable_close_button" value="Отключить кнопку закрытия окна" />
+      <item name="settings" value="Настройки..." />
       <item name="grp_window" value="Окно" />
       <item name="grp_process" value="Процесс" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1788,6 +1795,7 @@
       <item name="disable_minimize_button" value="Онемогућите дугме &quot;Минимизирај&quot;" />
       <item name="disable_maximize_button" value="Онемогућите дугме &quot;Максимирај&quot;" />
       <item name="disable_close_button" value="Онемогућите дугме &quot;Затвори&quot;" />
+      <item name="settings" value="Подешавања..." />
       <item name="grp_window" value="Прозор" />
       <item name="grp_process" value="Процес" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -2032,6 +2040,7 @@
       <item name="disable_minimize_button" value="Desativar o botão &quot;Minimizar&quot;" />
       <item name="disable_maximize_button" value="Desativar o botão &quot;Maximizar&quot;" />
       <item name="disable_close_button" value="Desativar o botão &quot;Fechar&quot;" />
+      <item name="settings" value="Configuração..." />
       <item name="grp_window" value="Janela" />
       <item name="grp_process" value="Executável" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -2276,6 +2285,7 @@
       <item name="disable_minimize_button" value="Disabilita il pulsante &quot;Minimizza&quot;" />
       <item name="disable_maximize_button" value="Disabilita il pulsante &quot;Massimizza&quot;" />
       <item name="disable_close_button" value="Disabilita il pulsante &quot;Chiudi&quot;" />
+      <item name="settings" value="Impostazioni..." />
       <item name="grp_window" value="Finestra" />
       <item name="grp_process" value="Processo" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -2522,6 +2532,7 @@
       <item name="disable_minimize_button" value="Désactiver le bouton &quot;Réduire&quot;" />
       <item name="disable_maximize_button" value="Désactiver le bouton &quot;Agrandir&quot;" />
       <item name="disable_close_button" value="Désactiver le bouton &quot;Fermer&quot;" />
+      <item name="settings" value="Paramètres..." />
       <item name="grp_window" value="Fenêtre" />
       <item name="grp_process" value="Processus" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -2584,7 +2595,7 @@
       <item name="mi_restore_windows" value="Réinitialiser" />
       <item name="mi_close" value="Proche" />
       <item name="mi_auto_start" value="Lancer au démarrage de Windows" />
-      <item name="mi_settings" value="Paramètres" />
+      <item name="mi_settings" value="Paramètres..." />
       <item name="mi_about" value="À propos" />
       <item name="mi_exit" value="Quitter" />
       <item name="about_form" value="À propos " />
@@ -2768,6 +2779,7 @@
       <item name="disable_minimize_button" value="Tiltsa le a &quot;Kis méret&quot; gombot" />
       <item name="disable_maximize_button" value="Tiltsa le a &quot;Maximálás&quot; gombot" />
       <item name="disable_close_button" value="Tiltsa le a &quot;Bezárás&quot; gombot" />
+      <item name="settings" value="Beállítások..." />
       <item name="grp_window" value="Ablak" />
       <item name="grp_process" value="Folyamat" />
       <item name="lbl_get_window_text" value="Az ablak szövegének lekérése:" />
@@ -3014,6 +3026,7 @@
       <item name="disable_minimize_button" value="'השבת לחצן 'מזער" />
       <item name="disable_maximize_button" value="'השבת לחצן 'הגדל" />
       <item name="disable_close_button" value="'השבת לחצן 'סגור" />
+      <item name="settings" value="...הגדרות" />
       <item name="grp_window" value="חלון" />
       <item name="grp_process" value="תהליך" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -3260,6 +3273,7 @@
       <item name="disable_minimize_button" value="Desactivar botón &quot;Minimizar&quot;" />
       <item name="disable_maximize_button" value="Desactivar botón &quot;Maximizar&quot;" />
       <item name="disable_close_button" value="Desactivar botón &quot;Cerrar&quot;" />
+      <item name="settings" value="Ajustes..." />
       <item name="grp_window" value="Ventana" />
       <item name="grp_process" value="Procesos" />
       <item name="lbl_get_window_text" value="GetWindowText:" />

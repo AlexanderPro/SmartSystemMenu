@@ -996,6 +996,12 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_SETTINGS:
+                            {
+                                MenuItemSettingsClick(this, EventArgs.Empty);
+                            }
+                            break;
+
                         case MenuItemId.SC_TRANS_100:
                         case MenuItemId.SC_TRANS_90:
                         case MenuItemId.SC_TRANS_80:
