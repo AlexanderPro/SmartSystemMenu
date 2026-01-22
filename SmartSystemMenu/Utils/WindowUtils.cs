@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Windows.Automation;
+using System.Text.RegularExpressions;
 using SmartSystemMenu.Native;
 using SmartSystemMenu.Native.Enums;
 using SmartSystemMenu.Native.Structs;
@@ -18,6 +19,27 @@ namespace SmartSystemMenu.Utils
 {
     static class WindowUtils
     {
+        private static readonly Regex HwndWrapperRegex =
+            new Regex(
+                @"^HwndWrapper\[(?<process>[^;]+);;[0-9a-fA-F\-]{36}\]$",
+                RegexOptions.Compiled);
+
+        public static string NormalizeClassName(string className)
+        {
+            if (string.IsNullOrEmpty(className))
+                return className;
+
+            if (className.StartsWith("Afx:", StringComparison.Ordinal))
+            {
+                return "Afx:*";
+            }
+            
+            var match = HwndWrapperRegex.Match(className);
+            if (!match.Success)
+                return className;
+
+            return $"HwndWrapper[{match.Groups["process"].Value};;*]";
+        }
         public static bool PrintWindow(IntPtr hWnd, out Bitmap bitmap)
         {
             GetWindowRect(hWnd, out var rect);

@@ -156,7 +156,7 @@ namespace SmartSystemMenu
             State.Top = size.Top;
             State.Width = size.Width;
             State.Height = size.Height;
-            State.ClassName = GetClassName();
+            State.ClassName = WindowUtils.NormalizeClassName(GetClassName());
             State.ProcessName = Process?.GetMainModuleFileName() ?? string.Empty;
         }
 
