@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 using SmartSystemMenu.Settings;
 
 namespace SmartSystemMenu.Forms
@@ -32,6 +33,7 @@ namespace SmartSystemMenu.Forms
 
         private void InitializeControls(LanguageSettings settings)
         {
+            MinimumSize = new Size(400, 250);
             btnApply.Text = settings.GetValue("change_title_btn_apply");
             btnCancel.Text = settings.GetValue("change_title_btn_cancel");
             Text = settings.GetValue("change_title_form");
