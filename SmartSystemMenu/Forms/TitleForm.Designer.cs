@@ -38,17 +38,19 @@
             // lblLeft
             // 
             this.lblLeft.AutoSize = true;
-            this.lblLeft.Location = new System.Drawing.Point(12, 14);
+            this.lblLeft.Location = new System.Drawing.Point(16, 17);
+            this.lblLeft.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLeft.Name = "lblLeft";
-            this.lblLeft.Size = new System.Drawing.Size(0, 13);
+            this.lblLeft.Size = new System.Drawing.Size(0, 17);
             this.lblLeft.TabIndex = 0;
             // 
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(284, 163);
+            this.btnApply.Location = new System.Drawing.Point(379, 201);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(91, 26);
+            this.btnApply.Size = new System.Drawing.Size(121, 32);
             this.btnApply.TabIndex = 1;
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.ButtonApplyClick);
@@ -58,32 +60,36 @@
             this.txtTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTitle.Location = new System.Drawing.Point(12, 14);
+            this.txtTitle.Location = new System.Drawing.Point(16, 17);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTitle.Multiline = true;
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(460, 134);
+            this.txtTitle.Size = new System.Drawing.Size(612, 164);
             this.txtTitle.TabIndex = 0;
+            this.txtTitle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxKeyDown);
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(381, 163);
+            this.btnCancel.Location = new System.Drawing.Point(508, 201);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(91, 26);
+            this.btnCancel.Size = new System.Drawing.Size(121, 32);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
             // TitleForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 211);
+            this.ClientSize = new System.Drawing.Size(645, 260);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.lblLeft);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TitleForm";

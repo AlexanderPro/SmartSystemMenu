@@ -56,5 +56,15 @@ namespace SmartSystemMenu.Forms
                 ButtonCancelClick(sender, e);
             }
         }
+
+        private void TextBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+                ButtonApplyClick(sender, e);
+            }
+        }
     }
 }
