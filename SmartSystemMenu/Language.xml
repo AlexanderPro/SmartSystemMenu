@@ -116,7 +116,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf|All files (*.*)|*.*" />
       <item name="size_form" value="Set Size" />
       <item name="size_btn_apply" value="Apply" />
       <item name="lbl_size_form_height" value="Height:" />
@@ -363,7 +363,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Bild (*.bmp)|*.bmp|GIF Bild (*.gif)|*.gif|JPEG Bild (*.jpeg)|*.jpeg|PNG Bild (*.png)|*.png|TIFF Bild (*.tiff)|*.tiff|WMF Bild (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Bild (*.bmp)|*.bmp|GIF Bild (*.gif)|*.gif|JPEG Bild (*.jpeg)|*.jpeg|PNG Bild (*.png)|*.png|TIFF Bild (*.tiff)|*.tiff|WMF Bild (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Bild (*.bmp)|*.bmp|GIF Bild (*.gif)|*.gif|JPEG Bild (*.jpeg)|*.jpeg|PNG Bild (*.png)|*.png|TIFF Bild (*.tiff)|*.tiff|WMF Bild (*.wmf)|*.wmf|Alle Dateien (*.*)|*.*" />
       <item name="size_form" value="Gröβe" />
       <item name="size_btn_apply" value="Übernehmen" />
       <item name="lbl_size_form_height" value="Höhe:" />
@@ -608,7 +608,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|位图图像 (*.bmp)|*.bmp|Gif 图像 (*.gif)|*.gif|JPEG 图像 (*.jpeg)|*.jpeg|Png 图像 (*.png)|*.png|Tiff 图像 (*.tiff)|*.tiff|Wmf 图像 (*.wmf)|*.wmf|所有文件 (*.*)|*.*" />
       <item name="size_form" value="设置尺寸" />
       <item name="size_btn_apply" value="应用" />
       <item name="lbl_size_form_height" value="高度:" />
@@ -855,7 +855,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="點陣圖影像 (*.bmp)|*.bmp|GIF 影像 (*.gif)|*.gif|JPEG 影像(*.jpeg)|*.jpeg|PNG 影像(*.png)|*.png|TIFF 影像(*.tiff)|*.tiff|WMF 影像(*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|點陣圖影像 (*.bmp)|*.bmp|GIF 影像 (*.gif)|*.gif|JPEG 影像(*.jpeg)|*.jpeg|PNG 影像(*.png)|*.png|TIFF 影像(*.tiff)|*.tiff|WMF 影像(*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|點陣圖影像 (*.bmp)|*.bmp|GIF 影像 (*.gif)|*.gif|JPEG 影像(*.jpeg)|*.jpeg|PNG 影像(*.png)|*.png|TIFF 影像(*.tiff)|*.tiff|WMF 影像(*.wmf)|*.wmf|所有檔案 (*.*)|*.*" />
       <item name="size_form" value="設定尺寸" />
       <item name="size_btn_apply" value="套用" />
       <item name="lbl_size_form_height" value="高度:" />
@@ -1102,7 +1102,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf|全てのファイル(*.*)|*.*" />
       <item name="size_form" value="サイズ" />
       <item name="size_btn_apply" value="適用" />
       <item name="lbl_size_form_height" value="高さ：" />
@@ -1349,7 +1349,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap 이미지 (*.bmp)|*.bmp|Gif 이미지 (*.gif)|*.gif|JPEG 이미지 (*.jpeg)|*.jpeg|Png 이미지 (*.png)|*.png|Tiff 이미지 (*.tiff)|*.tiff|Wmf 이미지 (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap 이미지 (*.bmp)|*.bmp|Gif 이미지 (*.gif)|*.gif|JPEG 이미지 (*.jpeg)|*.jpeg|Png 이미지 (*.png)|*.png|Tiff 이미지 (*.tiff)|*.tiff|Wmf 이미지 (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap 이미지 (*.bmp)|*.bmp|Gif 이미지 (*.gif)|*.gif|JPEG 이미지 (*.jpeg)|*.jpeg|Png 이미지 (*.png)|*.png|Tiff 이미지 (*.tiff)|*.tiff|Wmf 이미지 (*.wmf)|*.wmf|모든 파일 (*.*)|*.*" />
       <item name="size_form" value="크기 설정" />
       <item name="size_btn_apply" value="적용" />
       <item name="lbl_size_form_height" value="높이:" />
@@ -1596,7 +1596,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf|Все файлы (*.*)|*.*" />
       <item name="size_form" value="Размер" />
       <item name="size_btn_apply" value="Применить" />
       <item name="lbl_size_form_height" value="Высота:" />
@@ -1667,7 +1667,7 @@
       <item name="process_lbl_file_name" value="Имя файла:" />
       <item name="process_btn_apply" value="Ok" />
       <item name="process_btn_cancel" value="Cancel" />
-      <item name="process_browse_file_filter" value="Исполняемые (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="process_browse_file_filter" value="Исполняемые (*.exe)|*.exe|Все файлы (*.*)|*.*" />
       <item name="start_program_form" value="Программа" />
       <item name="start_program_lbl_title" value="Заголовок:" />
       <item name="start_program_lbl_file_name" value="Имя файла:" />
@@ -1682,7 +1682,7 @@
       <item name="start_program_administrator" value="Администратор" />
       <item name="start_program_btn_apply" value="Ok" />
       <item name="start_program_btn_cancel" value="Cancel" />
-      <item name="start_program_browse_file_filter" value="Исполняемые (*.exe)|*.exe|All files (*.*)|*.*" />
+      <item name="start_program_browse_file_filter" value="Исполняемые (*.exe)|*.exe|Все файлы (*.*)|*.*" />
       <item name="grpb_language" value="Язык" />
       <item name="message_box_attention_title" value="Внимание" />
       <item name="message_box_attention_content" value="Необходимо перезапустить приложение, чтобы применились настройки." />
@@ -1841,7 +1841,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap слика (*.bmp)|*.bmp|Gif слика (*.gif)|*.gif|JPEG слика (*.jpeg)|*.jpeg|Png слика (*.png)|*.png|Tiff слика (*.tiff)|*.tiff|Wmf слика (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap слика (*.bmp)|*.bmp|Gif слика (*.gif)|*.gif|JPEG слика (*.jpeg)|*.jpeg|Png слика (*.png)|*.png|Tiff слика (*.tiff)|*.tiff|Wmf слика (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap слика (*.bmp)|*.bmp|Gif слика (*.gif)|*.gif|JPEG слика (*.jpeg)|*.jpeg|Png слика (*.png)|*.png|Tiff слика (*.tiff)|*.tiff|Wmf слика (*.wmf)|*.wmf|Све (*.*)|*.*" />
       <item name="size_form" value="Постави величину" />
       <item name="size_btn_apply" value="Примени" />
       <item name="lbl_size_form_height" value="Висина:" />
@@ -2086,7 +2086,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Imagem de Bitmap (*.bmp)|*.bmp|Imagem Gif (*.gif)|*.gif|Imagem JPEG (*.jpeg)|*.jpeg|Imagem Png (*.png)|*.png|Imagem Tiff (*.tiff)|*.tiff|Imagem Wmf (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Imagem de Bitmap (*.bmp)|*.bmp|Imagem Gif (*.gif)|*.gif|Imagem JPEG (*.jpeg)|*.jpeg|Imagem Png (*.png)|*.png|Imagem Tiff (*.tiff)|*.tiff|Imagem Wmf (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Imagem de Bitmap (*.bmp)|*.bmp|Imagem Gif (*.gif)|*.gif|Imagem JPEG (*.jpeg)|*.jpeg|Imagem Png (*.png)|*.png|Imagem Tiff (*.tiff)|*.tiff|Imagem Wmf (*.wmf)|*.wmf|Todos os programas (*.*)|*.*" />
       <item name="size_form" value="Definir tamanho" />
       <item name="size_btn_apply" value="Aplicar" />
       <item name="lbl_size_form_height" value="Altura:" />
@@ -2331,7 +2331,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf|Tutti i file (*.*)|*.*" />
       <item name="size_form" value="Imposta dimensioni" />
       <item name="size_btn_apply" value="Applica" />
       <item name="lbl_size_form_height" value="Altezza:" />
@@ -2578,7 +2578,7 @@
       <item name="save_screenshot_default_ext" value="png" />
       <item name="save_screenshot_filter" value="Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Immagine Bitmap (*.bmp)|*.bmp|Immagine Gif (*.gif)|*.gif|Immagine JPEG (*.jpeg)|*.jpeg|Immagine Png (*.png)|*.png|Immagine Tiff (*.tiff)|*.tiff|Immagine Wmf (*.wmf)|*.wmf|Tous les fichiers (*.*)|*.*" />
       <item name="size_form" value="Définir la taille" />
       <item name="size_btn_apply" value="Appliquer" />
       <item name="lbl_size_form_height" value="Hauteur:" />
@@ -2825,7 +2825,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf|Minden fájl (*.*)|*.*" />
       <item name="size_form" value="Méret beállítása" />
       <item name="size_btn_apply" value="Alkalmaz" />
       <item name="lbl_size_form_height" value="Magasság:" />
@@ -2896,7 +2896,7 @@
       <item name="process_lbl_file_name" value="Fájlnév:" />
       <item name="process_btn_apply" value="OK" />
       <item name="process_btn_cancel" value="Mégse" />
-      <item name="process_browse_file_filter" value="Végrehajtható fájlok (*.exe)|*.exe| Minden fájl (*.*)|*.*" />
+      <item name="process_browse_file_filter" value="Végrehajtható fájlok (*.exe)|*.exe|Minden fájl (*.*)|*.*" />
       <item name="start_program_form" value="Programindítás hozzáadása" />
       <item name="start_program_lbl_title" value="Cím:" />
       <item name="start_program_lbl_file_name" value="Fájlnév:" />
@@ -3072,7 +3072,7 @@
       <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Bitmap Image (*.bmp)|*.bmp|Gif Image (*.gif)|*.gif|JPEG Image (*.jpeg)|*.jpeg|Png Image (*.png)|*.png|Tiff Image (*.tiff)|*.tiff|Wmf Image (*.wmf)|*.wmf|All files (*.*)|*.*" />
       <item name="size_form" value="הגדר גודל" />
       <item name="size_btn_apply" value="החל" />
       <item name="lbl_size_form_height" value=":גובה" />
@@ -3319,7 +3319,7 @@
       <item name="save_screenshot_default_ext" value="png" />
       <item name="save_screenshot_filter" value="Imagen Bitmap (*.bmp)|*.bmp|Imagen Gif (*.gif)|*.gif|Imagen JPEG (*.jpeg)|*.jpeg|Imagen Png (*.png)|*.png|Imagen Tiff (*.tiff)|*.tiff|Imagen Wmf (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
-      <item name="icon_filter" value="Icon (*.ico)|*.ico|Imagen Bitmap (*.bmp)|*.bmp|Imagen Gif (*.gif)|*.gif|Imagen JPEG (*.jpeg)|*.jpeg|Imagen Png (*.png)|*.png|Imagen Tiff (*.tiff)|*.tiff|Imagen Wmf (*.wmf)|*.wmf" />
+      <item name="icon_filter" value="Icon (*.ico)|*.ico|Imagen Bitmap (*.bmp)|*.bmp|Imagen Gif (*.gif)|*.gif|Imagen JPEG (*.jpeg)|*.jpeg|Imagen Png (*.png)|*.png|Imagen Tiff (*.tiff)|*.tiff|Imagen Wmf (*.wmf)|*.wmf|Todos los archivos (*.*)|*.*" />
       <item name="size_form" value="Establecer tamaño" />
       <item name="size_btn_apply" value="Aplicar" />
       <item name="lbl_size_form_height" value="Altura:" />
