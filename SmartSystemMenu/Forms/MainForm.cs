@@ -440,13 +440,13 @@ namespace SmartSystemMenu.Forms
                     var systemMenuHandle = window.Menu.MenuHandle;
                     if (systemMenuHandle != IntPtr.Zero && !window.Menu.IsMenuItem(systemMenuHandle, MenuItemId.SC_SEPARATOR_BOTTOM))
                     {
-                        CreateMenu(window, processId, processPath);
+                        CreateMenu(window, processId, processPath, false);
                     }
                 }
             }
         }
 
-        private void CreateMenu(Window window, int processId, string processPath)
+        private void CreateMenu(Window window, int processId, string processPath, bool add = true)
         {
             bool isWriteProcess;
 #if WIN32
@@ -470,8 +470,11 @@ namespace SmartSystemMenu.Forms
                     
                     var fileName = Path.GetFileName(processPath);
                     window.NoRestoreMenu = !string.IsNullOrEmpty(fileName) && _settings.NoRestoreMenuProcessNames.Contains(fileName.ToLower());
-                    
-                    _windows.Add(window.Handle, window);
+
+                    if (add)
+                    {
+                        _windows.Add(window.Handle, window);
+                    }
 
                     var windowClassName = window.GetClassName();
                     var isConsoleClassName = string.Compare(windowClassName, Window.ConsoleClassName, StringComparison.CurrentCulture) == 0;
