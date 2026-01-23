@@ -41,7 +41,7 @@
             this.Name = "MainForm";
             this.Opacity = 0D;
             this.ShowInTaskbar = false;
-            this.Text = "Smart System Menu";
+            this.Text = "SmartSystemMenu";
             this.ResumeLayout(false);
 
         }
