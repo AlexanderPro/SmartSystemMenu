@@ -81,11 +81,19 @@ namespace SmartSystemMenu
                     {
                         for (int i = 0; i < _menuItems.WindowSizeItems.Count; i++)
                         {
-                            var subItemId = MenuItemId.SC_SIZE_DEFINED + i;
-                            _menuItems.WindowSizeItems[i].Id = subItemId;
-                            if (!IsMenuItem(subMenuHandle, subItemId))
+                            var windowSizeItem = _menuItems.WindowSizeItems[i];
+                            if (windowSizeItem.Type == MenuItemType.Item)
                             {
-                                AppendMenu(subMenuHandle, Constants.MF_BYCOMMAND, subItemId, GetTitle(_menuItems.WindowSizeItems[i]));
+                                windowSizeItem.Id = MenuItemId.SC_SIZE_DEFINED + i;
+                                if (!IsMenuItem(subMenuHandle, windowSizeItem.Id))
+                                {
+                                    AppendMenu(subMenuHandle, Constants.MF_BYCOMMAND, windowSizeItem.Id, GetTitle(windowSizeItem));
+                                }
+                            }
+
+                            if (windowSizeItem.Type == MenuItemType.Separator)
+                            {
+                                InsertMenu(subMenuHandle, -1, Constants.MF_BYCOMMAND | Constants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
                             }
                         }
                     }
@@ -102,7 +110,16 @@ namespace SmartSystemMenu
                     {
                         for (int i = 0; i < _menuItems.StartProgramItems.Count; i++)
                         {
-                            AppendMenu(subMenuHandle, Constants.MF_BYCOMMAND, MenuItemId.SC_START_PROGRAM + i, _menuItems.StartProgramItems[i].Title);
+                            var startProgramItem = _menuItems.StartProgramItems[i];
+                            if (startProgramItem.Type == MenuItemType.Item)
+                            {
+                                AppendMenu(subMenuHandle, Constants.MF_BYCOMMAND, MenuItemId.SC_START_PROGRAM + i, startProgramItem.Title);
+                            }
+
+                            if (startProgramItem.Type == MenuItemType.Separator)
+                            {
+                                InsertMenu(subMenuHandle, -1, Constants.MF_BYCOMMAND | Constants.MF_SEPARATOR, MenuItemId.SC_SEPARATOR, null);
+                            }
                         }
                     }
 

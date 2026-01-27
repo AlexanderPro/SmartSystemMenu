@@ -12,8 +12,8 @@ namespace SmartSystemMenu.Controls
         // Override the Clone method so that the Enabled property is copied.
         public override object Clone()
         {
-            DataGridViewDisableButtonCell cell = (DataGridViewDisableButtonCell)base.Clone();
-            cell.Enabled = this.Enabled;
+            var cell = (DataGridViewDisableButtonCell)base.Clone();
+            cell.Enabled = Enabled;
             return cell;
         }
 
@@ -63,7 +63,7 @@ namespace SmartSystemMenu.Controls
                 // Draw the disabled button text.
                 if (FormattedValue is string)
                 {
-                    TextRenderer.DrawText(graphics, (string)FormattedValue, DataGridView.Font, buttonArea, SystemColors.GrayText);
+                    TextRenderer.DrawText(graphics, string.Empty, DataGridView.Font, buttonArea, SystemColors.GrayText);
                 }
             }
             else

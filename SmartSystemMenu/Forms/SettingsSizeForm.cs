@@ -71,7 +71,7 @@ namespace SmartSystemMenu.Forms
                 return;
             }
 
-            var menuItem = new Settings.WindowSizeMenuItem();
+            var menuItem = new WindowSizeMenuItem();
             menuItem.Title = txtTitle.Text;
             menuItem.Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
             menuItem.Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;

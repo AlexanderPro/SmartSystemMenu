@@ -6,6 +6,8 @@ namespace SmartSystemMenu.Settings
 {
     public class WindowSizeMenuItem : ICloneable
     {
+        public MenuItemType Type { get; set; }
+
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -26,8 +28,9 @@ namespace SmartSystemMenu.Settings
 
         public WindowSizeMenuItem()
         {
+            Type = MenuItemType.Item;
             Id = 0;
-            Title = "";
+            Title = string.Empty;
             Left = null;
             Top = null;
             Width = null;
@@ -41,7 +44,7 @@ namespace SmartSystemMenu.Settings
 
         public override string ToString()
         {
-            var combination = "";
+            var combination = string.Empty;
 
             if (Key1 != VirtualKeyModifier.None)
             {
@@ -59,7 +62,7 @@ namespace SmartSystemMenu.Settings
             }
             else
             {
-                combination = "";
+                combination = string.Empty;
             }
 
             return combination;

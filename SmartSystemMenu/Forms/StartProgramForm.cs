@@ -92,6 +92,13 @@ namespace SmartSystemMenu.Forms
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                txtTitle.SelectAll();
+                txtTitle.Focus();
+                return;
+            }
+
             MenuItem = new StartProgramMenuItem
             {
                 Title = txtTitle.Text,

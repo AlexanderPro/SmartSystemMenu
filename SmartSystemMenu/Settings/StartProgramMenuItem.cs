@@ -8,6 +8,8 @@ namespace SmartSystemMenu.Settings
         public const string PARAMETER_PROCESS_NAME = "process_name";
         public const string PARAMETER_WINDOW_TITLE = "window_title";
 
+        public MenuItemType Type { get; set; }
+
         public string Title { get; set; }
 
         public string FileName { get; set; }
@@ -26,6 +28,7 @@ namespace SmartSystemMenu.Settings
 
         public StartProgramMenuItem()
         {
+            Type = MenuItemType.Item;
             Title = string.Empty;
             FileName = string.Empty;
             Arguments = string.Empty;

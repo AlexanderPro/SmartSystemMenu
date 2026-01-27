@@ -107,34 +107,6 @@ namespace SmartSystemMenu.Forms
                 row.Cells[2].ToolTipText = settings.Language.GetValue("clm_process_exclusion_delete");
             }
 
-            foreach (var item in settings.MenuItems.WindowSizeItems)
-            {
-                var index = gvWindowSize.Rows.Add();
-                var row = gvWindowSize.Rows[index];
-                row.Tag = (WindowSizeMenuItem)item.Clone();
-                row.Cells[0].Value = item.Title;
-                row.Cells[1].Value = item.Left.HasValue ? item.Left.ToString() : string.Empty;
-                row.Cells[2].Value = item.Top.HasValue ? item.Top.ToString() : string.Empty;
-                row.Cells[3].Value = item.Width.ToString();
-                row.Cells[4].Value = item.Height.ToString();
-                row.Cells[5].Value = item.ToString();
-                row.Cells[6].ToolTipText = settings.Language.GetValue("clm_window_size_edit");
-                row.Cells[7].ToolTipText = settings.Language.GetValue("clm_window_size_delete");
-            }
-
-            foreach (var item in settings.MenuItems.StartProgramItems)
-            {
-                var cloneItem = (StartProgramMenuItem)item.Clone();
-                var index = gvStartProgram.Rows.Add();
-                var row = gvStartProgram.Rows[index];
-                row.Cells[0].Value = cloneItem.Title;
-                row.Cells[1].Value = cloneItem.FileName;
-                row.Cells[2].Value = cloneItem.Arguments;
-                row.Cells[3].ToolTipText = settings.Language.GetValue("clm_start_program_edit");
-                row.Cells[4].ToolTipText = settings.Language.GetValue("clm_start_program_delete");
-                row.Tag = cloneItem;
-            }
-
             cmbLanguage.DisplayMember = "Text";
             cmbLanguage.ValueMember = "Value";
 
@@ -178,7 +150,9 @@ namespace SmartSystemMenu.Forms
             {
                 items.Add((Settings.MenuItem)item.Clone());
             }
-            FillGridViewHotKeys(gvHotkeys, items, settings.Language);
+            FillGridViewByItems(gvHotkeys, items, settings.Language);
+            FillGridViewByWindowSizeItems(gvWindowSize, settings.MenuItems.WindowSizeItems);
+            FillGridViewByStartProgramItems(gvStartProgram, settings.MenuItems.StartProgramItems);
         }
 
         private void GridViewProcessExclusionsCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -211,7 +185,7 @@ namespace SmartSystemMenu.Forms
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
                 var row = grid.Rows[e.RowIndex];
-                if (e.ColumnIndex == 3 && row.Tag is StartProgramMenuItem menuItem)
+                if (e.ColumnIndex == 3 && !row.ReadOnly && row.Tag is StartProgramMenuItem menuItem)
                 {
                     var dialog = new StartProgramForm(menuItem, _settings.Language);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
@@ -236,12 +210,12 @@ namespace SmartSystemMenu.Forms
 
             if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                if (e.ColumnIndex == 6 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem menuItem)
+                var row = grid.Rows[e.RowIndex];
+                if (e.ColumnIndex == 6 && !row.ReadOnly && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem menuItem)
                 {
                     var dialog = new SettingsSizeForm(_settings.Language, menuItem);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
-                        var row = grid.Rows[e.RowIndex];
                         row.Cells[0].Value = dialog.MenuItem.Title;
                         row.Cells[1].Value = dialog.MenuItem.Left.HasValue ? dialog.MenuItem.Left.ToString() : string.Empty;
                         row.Cells[2].Value = dialog.MenuItem.Top.HasValue ? dialog.MenuItem.Top.ToString() : string.Empty;
@@ -321,14 +295,17 @@ namespace SmartSystemMenu.Forms
             var grid = (DataGridView)sender;
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && grid.Rows[e.RowIndex].Tag is StartProgramMenuItem menuItem)
             {
-                var dialog = new StartProgramForm(menuItem, _settings.Language);
-                if (dialog.ShowDialog(this) == DialogResult.OK)
+                var row = grid.Rows[e.RowIndex];
+                if (!row.ReadOnly)
                 {
-                    var row = grid.Rows[e.RowIndex];
-                    row.Cells[0].Value = dialog.MenuItem.Title;
-                    row.Cells[1].Value = dialog.MenuItem.FileName;
-                    row.Cells[2].Value = dialog.MenuItem.Arguments;
-                    row.Tag = dialog.MenuItem;
+                    var dialog = new StartProgramForm(menuItem, _settings.Language);
+                    if (dialog.ShowDialog(this) == DialogResult.OK)
+                    {
+                        row.Cells[0].Value = dialog.MenuItem.Title;
+                        row.Cells[1].Value = dialog.MenuItem.FileName;
+                        row.Cells[2].Value = dialog.MenuItem.Arguments;
+                        row.Tag = dialog.MenuItem;
+                    }
                 }
             }
         }
@@ -338,25 +315,28 @@ namespace SmartSystemMenu.Forms
             var grid = (DataGridView)sender;
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 5) && e.RowIndex >= 0 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem menuItem)
             {
-                var dialog = new SettingsSizeForm(_settings.Language, menuItem);
-                if (dialog.ShowDialog(this) == DialogResult.OK)
+                var row = grid.Rows[e.RowIndex];
+                if (!row.ReadOnly)
                 {
-                    var row = grid.Rows[e.RowIndex];
-                    row.Cells[0].Value = dialog.MenuItem.Title;
-                    row.Cells[1].Value = dialog.MenuItem.Left.HasValue ? dialog.MenuItem.Left.ToString() : string.Empty;
-                    row.Cells[2].Value = dialog.MenuItem.Top.HasValue ? dialog.MenuItem.Top.ToString() : string.Empty;
-                    row.Cells[3].Value = dialog.MenuItem.Width.ToString();
-                    row.Cells[4].Value = dialog.MenuItem.Height.ToString();
-                    row.Cells[5].Value = dialog.MenuItem.ToString();
+                    var dialog = new SettingsSizeForm(_settings.Language, menuItem);
+                    if (dialog.ShowDialog(this) == DialogResult.OK)
+                    {
+                        row.Cells[0].Value = dialog.MenuItem.Title;
+                        row.Cells[1].Value = dialog.MenuItem.Left.HasValue ? dialog.MenuItem.Left.ToString() : string.Empty;
+                        row.Cells[2].Value = dialog.MenuItem.Top.HasValue ? dialog.MenuItem.Top.ToString() : string.Empty;
+                        row.Cells[3].Value = dialog.MenuItem.Width.ToString();
+                        row.Cells[4].Value = dialog.MenuItem.Height.ToString();
+                        row.Cells[5].Value = dialog.MenuItem.ToString();
 
-                    menuItem.Title = dialog.MenuItem.Title;
-                    menuItem.Left = dialog.MenuItem.Left;
-                    menuItem.Top = dialog.MenuItem.Top;
-                    menuItem.Width = dialog.MenuItem.Width;
-                    menuItem.Height = dialog.MenuItem.Height;
-                    menuItem.Key1 = dialog.MenuItem.Key1;
-                    menuItem.Key2 = dialog.MenuItem.Key2;
-                    menuItem.Key3 = dialog.MenuItem.Key3;
+                        menuItem.Title = dialog.MenuItem.Title;
+                        menuItem.Left = dialog.MenuItem.Left;
+                        menuItem.Top = dialog.MenuItem.Top;
+                        menuItem.Width = dialog.MenuItem.Width;
+                        menuItem.Height = dialog.MenuItem.Height;
+                        menuItem.Key1 = dialog.MenuItem.Key1;
+                        menuItem.Key2 = dialog.MenuItem.Key2;
+                        menuItem.Key3 = dialog.MenuItem.Key3;
+                    }
                 }
             }
         }
@@ -467,7 +447,7 @@ namespace SmartSystemMenu.Forms
                     {
                         ((List<Settings.MenuItem>)list).Reverse(index - 1, 2);
                         gvHotkeys.Rows.Clear();
-                        FillGridViewHotKeys(gvHotkeys, items, _settings.Language);
+                        FillGridViewByItems(gvHotkeys, items, _settings.Language);
                         foreach (DataGridViewRow row in gvHotkeys.Rows)
                         {
                             if (row.Tag == item)
@@ -496,7 +476,7 @@ namespace SmartSystemMenu.Forms
                     {
                         ((List<Settings.MenuItem>)list).Reverse(index, 2);
                         gvHotkeys.Rows.Clear();
-                        FillGridViewHotKeys(gvHotkeys, items, _settings.Language);
+                        FillGridViewByItems(gvHotkeys, items, _settings.Language);
                         foreach (DataGridViewRow row in gvHotkeys.Rows)
                         {
                             if (row.Tag == item)
@@ -558,20 +538,7 @@ namespace SmartSystemMenu.Forms
 
             foreach (DataGridViewRow row in gvWindowSize.Rows)
             {
-                if (row.Tag is WindowSizeMenuItem item)
-                {
-                    settings.MenuItems.WindowSizeItems.Add(new WindowSizeMenuItem 
-                    { 
-                        Title = item.Title,
-                        Left = item.Left,
-                        Top = item.Top,
-                        Width = item.Width, 
-                        Height = item.Height,
-                        Key1 = item.Key1,
-                        Key2 = item.Key2,
-                        Key3 = item.Key3
-                    });
-                }
+                settings.MenuItems.WindowSizeItems.Add((WindowSizeMenuItem)row.Tag);
             }
 
             foreach (DataGridViewRow row in gvStartProgram.Rows)
@@ -667,7 +634,7 @@ namespace SmartSystemMenu.Forms
             }
         }
 
-        private void FillGridViewHotKeys(DataGridView gridView, IList<Settings.MenuItem> items, LanguageSettings languageSettings)
+        private void FillGridViewByItems(DataGridView gridView, IList<Settings.MenuItem> items, LanguageSettings languageSettings)
         {
             gridView.Tag = items;
             foreach (var item in items)
@@ -692,10 +659,12 @@ namespace SmartSystemMenu.Forms
                     var row = gridView.Rows[index];
                     var title = languageSettings.GetValue("separator");
                     row.Tag = item;
+                    row.ReadOnly = true;
                     row.Cells[0].Value = title;
                     row.Cells[1].Value = item == null ? "" : item.ToString();
                     ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
                     ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
+                    ((DataGridViewDisableButtonCell)row.Cells[3]).Enabled = false;
                 }
 
                 if (item.Type == MenuItemType.Group)
@@ -703,8 +672,8 @@ namespace SmartSystemMenu.Forms
                     var index = gridView.Rows.Add();
                     var row = gridView.Rows[index];
                     row.Tag = item;
-                    row.Cells[0].Value = languageSettings.GetValue(item.Name);
                     row.ReadOnly = true;
+                    row.Cells[0].Value = languageSettings.GetValue(item.Name);
                     ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
                     ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
                     ((DataGridViewDisableButtonCell)row.Cells[3]).Enabled = false;
@@ -733,14 +702,80 @@ namespace SmartSystemMenu.Forms
                             var subItemRow = gridView.Rows[subItemIndex];
                             var title = languageSettings.GetValue("separator");
                             subItemRow.Tag = subItem;
+                            subItemRow.ReadOnly = true;
                             subItemRow.Cells[0].Value = title;
                             subItemRow.Cells[1].Value = subItem == null ? "" : subItem.ToString();
                             ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).Value = subItem.Show;
                             ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = languageSettings.GetValue("clm_hotkeys_show_tooltip");
+                            ((DataGridViewDisableButtonCell)subItemRow.Cells[3]).Enabled = false;
                             var padding = subItemRow.Cells[0].Style.Padding;
                             subItemRow.Cells[0].Style.Padding = new Padding(20, padding.Top, padding.Right, padding.Bottom);
                         }
                     }
+                }
+            }
+        }
+
+        private void FillGridViewByWindowSizeItems(DataGridView gridView, IList<WindowSizeMenuItem> items)
+        {
+            foreach (var item in items)
+            {
+                if (item.Type == MenuItemType.Item)
+                {
+                    var index = gridView.Rows.Add();
+                    var row = gridView.Rows[index];
+                    row.Tag = (WindowSizeMenuItem)item.Clone();
+                    row.Cells[0].Value = item.Title;
+                    row.Cells[1].Value = item.Left.HasValue ? item.Left.ToString() : string.Empty;
+                    row.Cells[2].Value = item.Top.HasValue ? item.Top.ToString() : string.Empty;
+                    row.Cells[3].Value = item.Width.ToString();
+                    row.Cells[4].Value = item.Height.ToString();
+                    row.Cells[5].Value = item.ToString();
+                    row.Cells[6].ToolTipText = _settings.Language.GetValue("clm_window_size_edit");
+                    row.Cells[7].ToolTipText = _settings.Language.GetValue("clm_window_size_delete");
+                }
+
+                if (item.Type == MenuItemType.Separator)
+                {
+                    var index = gridView.Rows.Add();
+                    var row = gridView.Rows[index];
+                    row.Tag = (WindowSizeMenuItem)item.Clone();
+                    row.ReadOnly = true;
+                    row.Cells[0].Value = _settings.Language.GetValue("separator");
+                    row.Cells[6].ToolTipText = _settings.Language.GetValue("clm_window_size_edit");
+                    row.Cells[7].ToolTipText = _settings.Language.GetValue("clm_window_size_delete");
+                    ((DataGridViewDisableButtonCell)row.Cells[6]).Enabled = false;
+                }
+            }
+        }
+
+        private void FillGridViewByStartProgramItems(DataGridView gridView, IList<StartProgramMenuItem> items)
+        {
+            foreach (var item in items)
+            {
+                if (item.Type == MenuItemType.Item)
+                {
+                    var cloneItem = (StartProgramMenuItem)item.Clone();
+                    var index = gridView.Rows.Add();
+                    var row = gridView.Rows[index];
+                    row.Tag = cloneItem;
+                    row.Cells[0].Value = cloneItem.Title;
+                    row.Cells[1].Value = cloneItem.FileName;
+                    row.Cells[2].Value = cloneItem.Arguments;
+                    row.Cells[3].ToolTipText = _settings.Language.GetValue("clm_start_program_edit");
+                    row.Cells[4].ToolTipText = _settings.Language.GetValue("clm_start_program_delete");
+                }
+
+                if (item.Type == MenuItemType.Separator)
+                {
+                    var index = gridView.Rows.Add();
+                    var row = gridView.Rows[index];
+                    row.Tag = (StartProgramMenuItem)item.Clone();
+                    row.ReadOnly = true;
+                    row.Cells[0].Value = _settings.Language.GetValue("separator");
+                    row.Cells[3].ToolTipText = _settings.Language.GetValue("clm_start_program_edit");
+                    row.Cells[4].ToolTipText = _settings.Language.GetValue("clm_start_program_delete");
+                    ((DataGridViewDisableButtonCell)row.Cells[3]).Enabled = false;
                 }
             }
         }
