@@ -154,6 +154,7 @@ namespace SmartSystemMenu.Settings
                     "pt-BR" or "pt-PT" => "pt",
                     "it-IT" or "it-SM" or "it-CH" or "it-VA" => "it",
                     "sr-Cyrl" or "sr-Cyrl-BA" or "sr-Cyrl-ME" or "sr-Cyrl-RS" or "sr-Cyrl-CS" => "sr",
+                    "sl-SI" => "sl",
                     _ => "en"
                 };
 

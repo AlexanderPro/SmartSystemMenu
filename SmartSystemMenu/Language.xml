@@ -3451,252 +3451,252 @@
       <item name="change_title_btn_cancel" value="Cancelar" />
       <item name="change_title_form" value="Cambiar título" />
     </es>
-	<sl>
-	  <item name="separator" value="Ločilo" />
-  	  <item name="information" value="Informacije" />
-  	  <item name="hide" value="Skrij" />
-  	  <item name="roll_up" value="Zavij" />
-  	  <item name="aero_glass" value="Aero Glass" />
-  	  <item name="always_on_top" value="Vedno na vrhu" />
-  	  <item name="change_icon" value="Spremeni ikono" />
-  	  <item name="change_title" value="Spremeni naslov" />
-  	  <item name="send_to_bottom" value="Pošlji na dno" />
-  	  <item name="save_screenshot" value="Shrani posnetek zaslona" />
-  	  <item name="open_file_in_explorer" value="Odpri datoteko v Explorerju" />
-  	  <item name="clipboard" value="Odložišče" />
-  	  <item name="copy_screenshot" value="Kopiraj posnetek zaslona" />
-  	  <item name="copy_window_text" value="Kopiraj besedilo okna" />
-  	  <item name="copy_window_title" value="Kopiraj naslov okna" />
-  	  <item name="copy_full_process_path" value="Kopiraj celotno pot procesa" />
-  	  <item name="clear_clipboard" value="Počisti" />
-  	  <item name="drag_by_mouse" value="Vleči z miško" />
-  	  <item name="hide_for_alt_tab" value="Skrij za Alt+Tab" />
-  	  <item name="click_through" value="Klik skozi" />
-  	  <item name="size" value="Spremeni velikost" />
-  	  <item name="size_resizable" value="Spremenljiva velikost" />
-  	  <item name="size_default" value="Privzeto" />
-  	  <item name="size_custom" value="Po meri..." />
-  	  <item name="move_to" value="Premakni na" />
-  	  <item name="monitor" value="Monitor " />
-  	  <item name="alignment" value="Poravnava" />
-  	  <item name="align_top_left" value="zgoraj-levo" />
-  	  <item name="align_top_center" value="zgoraj-sredina" />
-  	  <item name="align_top_right" value="zgoraj-desno" />
-  	  <item name="align_middle_left" value="sredina-levo" />
-  	  <item name="align_middle_center" value="sredina-sredina" />
-  	  <item name="align_middle_right" value="sredina-desno" />
-  	  <item name="align_bottom_left" value="spodaj-levo" />
-  	  <item name="align_bottom_center" value="spodaj-sredina" />
-  	  <item name="align_bottom_right" value="spodaj-desno" />
-  	  <item name="align_center_horizontally" value="Centriraj vodoravno" />
-  	  <item name="align_center_vertically" value="Centriraj navpično" />
-  	  <item name="align_default" value="Privzeto" />
-  	  <item name="align_custom" value="Po meri..." />
-  	  <item name="transparency" value="Prosojnost" />
-  	  <item name="trans_opaque" value=" (neprosojno)" />
-  	  <item name="trans_invisible" value=" (nevidno)" />
-  	  <item name="trans_default" value="Privzeto" />
-  	  <item name="trans_custom" value="Po meri..." />
-  	  <item name="priority" value="Prioriteta" />
-  	  <item name="priority_real_time" value="Realni čas: 24" />
-  	  <item name="priority_high" value="Visoka: 13" />
-  	  <item name="priority_above_normal" value="Nad normalno: 10" />
-  	  <item name="priority_normal" value="Normalna: 8" />
-  	  <item name="priority_below_normal" value="Pod normalno: 6" />
-  	  <item name="priority_idle" value="Prosta: 4" />
-  	  <item name="system_tray" value="Sistemska vrstica" />
-  	  <item name="minimize_to_systemtray" value="Pomanjšaj v sistemsko vrstico" />
-  	  <item name="minimize_always_to_systemtray" value="Vedno pomanjšaj v sistemsko vrstico" />
-  	  <item name="suspend_to_systemtray" value="Začasno ustavi in pomanjšaj v sistemsko vrstico" />
-  	  <item name="other_windows" value="Druga okna" />
-  	  <item name="minimize_other_windows" value="Pomanjšaj" />
-  	  <item name="close_other_windows" value="Zapri" />
-  	  <item name="start_program" value="Zaženi program" />
-  	  <item name="save_selected_items" value="Shrani" />
-  	  <item name="dimmer" value="Zatemnitev" />
-  	  <item name="dimmer_on" value="Vklopi" />
-  	  <item name="dimmer_off" value="Izklopi" />
-  	  <item name="buttons" value="Gumbi" />
-  	  <item name="disable_minimize_button" value="Onemogoči gumb &quot;Pomanjšaj&quot;" />
-  	  <item name="disable_maximize_button" value="Onemogoči gumb &quot;Povečaj&quot;" />
-  	  <item name="disable_close_button" value="Onemogoči gumb &quot;Zapri&quot;" />
-  	  <item name="settings" value="Nastavitve..." />
-  	  <item name="grp_window" value="Okno" />
-  	  <item name="grp_process" value="Proces" />
-  	  <item name="lbl_get_window_text" value="GetWindowText:" />
-  	  <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
-  	  <item name="lbl_get_class_name" value="GetClassName:" />
-  	  <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
-  	  <item name="lbl_font_name" value="Ime pisave:" />
-  	  <item name="lbl_window_handle" value="Rokoj okna:" />
-  	  <item name="lbl_parent_window_handle" value="Rokoj starševskega okna:" />
-  	  <item name="lbl_window_size" value="Velikost okna:" />
-  	  <item name="lbl_window_position" value="Položaj okna:" />
-  	  <item name="lbl_extended_frame_bounds" value="Razširjene meje okvira:" />
-  	  <item name="lbl_instance" value="Primerek:" />
-  	  <item name="lbl_process_id" value="ID procesa:" />
-  	  <item name="lbl_thread_id" value="ID niti:" />
-  	  <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
-  	  <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
-  	  <item name="lbl_gwl_style" value="GWL_STYLE:" />
-  	  <item name="lbl_gcl_style" value="GCL_STYLE:" />
-  	  <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
-  	  <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
-  	  <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
-  	  <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
-  	  <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
-  	  <item name="lbl_dwl_user" value="DWL_USER:" />
-  	  <item name="lbl_full_path" value="Celotna pot:" />
-  	  <item name="lbl_command_line" value="Ukazna vrstica:" />
-  	  <item name="lbl_started_at" value="Začetek:" />
-  	  <item name="lbl_owner" value="Lastnik:" />
-  	  <item name="lbl_threads" value="Niti:" />
-  	  <item name="lbl_working_set_size" value="Velikost delovnega nabora:" />
-  	  <item name="lbl_parent" value="Starš:" />
-  	  <item name="lbl_priority" value="Prioriteta:" />
-  	  <item name="lbl_handles" value="Rokojniki:" />
-  	  <item name="lbl_virtual_size" value="Navidezna velikost:" />
-  	  <item name="lbl_product_name" value="Ime izdelka:" />
-  	  <item name="lbl_copyright" value="Avtorske pravice:" />
-  	  <item name="lbl_file_version" value="Različica datoteke:" />
-  	  <item name="lbl_product_version" value="Različica izdelka:" />
-  	  <item name="information_btn_apply" value="V redu" />
-  	  <item name="save_screenshot_title" value="Shrani posnetek okna" />
-  	  <item name="save_screenshot_filename" value="PosnetekOkna" />
-  	  <item name="save_screenshot_default_ext" value="bmp" />
-  	  <item name="save_screenshot_filter" value="Bitna slika (*.bmp)|*.bmp|Gif slika (*.gif)|*.gif|JPEG slika (*.jpeg)|*.jpeg|Png slika (*.png)|*.png|Tiff slika (*.tiff)|*.tiff|Wmf slika (*.wmf)|*.wmf" />
-  	  <item name="icon_default_ext" value="ico" />
-  	  <item name="icon_filter" value="Ikona (*.ico)|*.ico|Bitna slika (*.bmp)|*.bmp|Gif slika (*.gif)|*.gif|JPEG slika (*.jpeg)|*.jpeg|Png slika (*.png)|*.png|Tiff slika (*.tiff)|*.tiff|Wmf slika (*.wmf)|*.wmf|Vse datoteke (*.*)|*.*" />
-  	  <item name="size_form" value="Nastavi velikost" />
-  	  <item name="size_btn_apply" value="Uveljavi" />
-  	  <item name="lbl_size_form_height" value="Višina:" />
-  	  <item name="lbl_size_form_width" value="Širina:" />
-  	  <item name="lbl_size_form_top" value="Vrh:" />
-  	  <item name="lbl_size_form_left" value="Levo:" />
-  	  <item name="trans_form" value="Nastavi prosojnost" />
-  	  <item name="trans_btn_apply" value="Uveljavi" />
-  	  <item name="align_form" value="Nastavi položaj" />
-  	  <item name="align_btn_apply" value="Uveljavi" />
-  	  <item name="lbl_top" value="Vrh:" />
-  	  <item name="lbl_left" value="Levo:" />
-  	  <item name="mi_restore" value="Obnovi" />
-  	  <item name="mi_restore_windows" value="Obnovi" />
-  	  <item name="mi_close" value="Zapri" />
-  	  <item name="mi_auto_start" value="Samodejni zagon programa" />
-  	  <item name="mi_settings" value="Nastavitve..." />
-  	  <item name="mi_about" value="O programu" />
-  	  <item name="mi_exit" value="Izhod" />
-  	  <item name="about_form" value="O programu " />
-  	  <item name="about_btn_ok" value="V redu" />
-  	  <item name="settings_form" value="Nastavitve" />
-  	  <item name="tab_settings_general" value="Splošno" />
-  	  <item name="grpb_process_exclusions" value="Izključitve procesov" />
-  	  <item name="clm_process_exclusion_name" value="Ime datoteke" />
-  	  <item name="clm_process_exclusion_edit" value="Uredi" />
-  	  <item name="clm_process_exclusion_delete" value="Izbriši" />
-  	  <item name="btn_process_exclusion_up" value="Pomakni proces gor" />
-  	  <item name="btn_process_exclusion_down" value="Pomakni proces dol" />
-  	  <item name="btn_add_process_exclusion" value="Dodaj ime procesa" />
-  	  <item name="tab_settings_menu" value="Meni" />
-  	  <item name="grpb_start_program" value="Elementi menija Zaženi program" />
-  	  <item name="clm_start_program_title" value="Naslov" />
-  	  <item name="clm_start_program_path" value="Ime datoteke" />
-  	  <item name="clm_start_program_arguments" value="Argumenti" />
-  	  <item name="clm_start_program_edit" value="Uredi" />
-  	  <item name="clm_start_program_delete" value="Izbriši" />
-  	  <item name="btn_start_program_up" value="Pomakni program gor" />
-  	  <item name="btn_start_program_down" value="Pomakni program dol" />
-  	  <item name="btn_add_start_program" value="Dodaj Zaženi program" />
-  	  <item name="settings_btn_apply" value="V redu" />
-  	  <item name="settings_btn_cancel" value="Prekliči" />
-  	  <item name="grpb_window_size" value="Elementi menija Velikost okna" />
-  	  <item name="window_size_form" value="Velikost okna" />
-  	  <item name="window_size_btn_apply" value="V redu" />
-  	  <item name="window_size_btn_cancel" value="Prekliči" />
-  	  <item name="clm_window_size_title" value="Naslov" />
-  	  <item name="clm_window_size_width" value="Širina" />
-  	  <item name="clm_window_size_height" value="Višina" />
-  	  <item name="clm_window_size_top" value="Vrh" />
-  	  <item name="clm_window_size_left" value="Levo" />
-  	  <item name="clm_window_size_edit" value="Uredi" />
-  	  <item name="clm_window_size_delete" value="Izbriši" />
-  	  <item name="lbl_window_size_title" value="Naslov:" />
-  	  <item name="lbl_window_size_width" value="Širina:" />
-  	  <item name="lbl_window_size_height" value="Višina:" />
-  	  <item name="lbl_window_size_top" value="Vrh:" />
-  	  <item name="lbl_window_size_left" value="Levo:" />
-  	  <item name="lbl_window_size_key1" value="Tipka 1:" />
-  	  <item name="lbl_window_size_key2" value="Tipka 2:" />
-  	  <item name="lbl_window_size_key3" value="Tipka 3:" />
-  	  <item name="btn_window_size_up" value="Pomakni gor" />
-  	  <item name="btn_window_size_down" value="Pomakni dol" />
-  	  <item name="btn_add_window_size" value="Dodaj" />
-  	  <item name="btn_menu_item_up" value="Pomakni gor" />
-  	  <item name="btn_menu_item_down" value="Pomakni dol" />
-  	  <item name="process_name_form" value="Izključitve procesov" />
-  	  <item name="process_lbl_file_name" value="Ime datoteke:" />
-  	  <item name="process_btn_apply" value="V redu" />
-  	  <item name="process_btn_cancel" value="Prekliči" />
-  	  <item name="process_browse_file_filter" value="Izvedljive datoteke (*.exe)|*.exe|Vse datoteke (*.*)|*.*" />
-  	  <item name="start_program_form" value="Zaženi program" />
-  	  <item name="start_program_lbl_title" value="Naslov:" />
-  	  <item name="start_program_lbl_file_name" value="Ime datoteke:" />
-  	  <item name="start_program_lbl_arguments" value="Argumenti:" />
-  	  <item name="start_program_lbl_runas" value="Zaženi kot:" />
-  	  <item name="start_program_lbl_begin" value="Začetek:" />
-  	  <item name="start_program_lbl_end" value="Konec:" />
-  	  <item name="start_program_show_window" value="Prikaži okno" />
-  	  <item name="start_program_use_window_working_directory" value="Uporabi delovno mapo okna" />
-  	  <item name="start_program_parameter" value="Parameter" />
-  	  <item name="start_program_normal" value="Običajno" />
-  	  <item name="start_program_administrator" value="Skrbnik" />
-  	  <item name="start_program_btn_apply" value="V redu" />
-  	  <item name="start_program_btn_cancel" value="Prekliči" />
-  	  <item name="start_program_browse_file_filter" value="Izvedljive datoteke (*.exe)|*.exe|Vse datoteke (*.*)|*.*" />
-  	  <item name="grpb_language" value="Jezik" />
-  	  <item name="message_box_attention_title" value="Pozor" />
-  	  <item name="message_box_attention_content" value="Za uveljavitev nastavitev morate aplikacijo ročno ponovno zagnati." />
-  	  <item name="hotkeys_form" value="Bližnjice" />
-  	  <item name="hotkeys_lbl_key1" value="Tipka 1" />
-  	  <item name="hotkeys_lbl_key2" value="Tipka 2" />
-  	  <item name="hotkeys_lbl_key3" value="Tipka 3" />
-  	  <item name="hotkeys_btn_apply" value="V redu" />
-  	  <item name="hotkeys_btn_cancel" value="Prekliči" />
-  	  <item name="tab_settings_hotkeys" value="Bližnjice" />
-  	  <item name="clm_hotkeys_name" value="Ime" />
-  	  <item name="clm_hotkeys_show_tooltip" value="Prikaži element menija" />
-  	  <item name="tab_settings_menu_start" value="Meni (Zaženi program)" />
-  	  <item name="tab_settings_menu_size" value="Meni (Spremeni velikost)" />
-  	  <item name="tab_settings_menu_save" value="Meni (Shrani)" />
-  	  <item name="tab_settings_menu_dimmer" value="Meni (Zatemnitev)" />
-  	  <item name="grpb_dimmer_color" value="Barva" />
-  	  <item name="grpb_dimmer_transparency" value="Prosojnost" />
-  	  <item name="grpb_closer" value="Zapiranje okna s klikom miške" />
-  	  <item name="closer_button_name" value="Nastavitve..." />
-  	  <item name="closer_form" value="Nastavitve" />
-  	  <item name="closer_btn_apply" value="V redu" />
-  	  <item name="closer_btn_cancel" value="Prekliči" />
-  	  <item name="closer_lbl_key1" value="Tipka 1" />
-  	  <item name="closer_lbl_key2" value="Tipka 2" />
-  	  <item name="closer_lbl_mouse_button" value="Gumb miške" />
-  	  <item name="closer_lbl_action" value="Dejanje" />
-  	  <item name="closer_close_window" value="Zapri okno" />
-  	  <item name="closer_kill_process" value="Ustavi proces" />
-  	  <item name="closer_close_foreground_window" value="Zapri okno v ospredju" />
-  	  <item name="closer_close_window_under_cursor" value="Zapri okno pod kazalcem" />
-  	  <item name="closer_kill_process_with_foreground_window" value="Ustavi proces z oknom v ospredju" />
-  	  <item name="closer_kill_process_with_window_under_cursor" value="Ustavi proces z oknom pod kazalcem" />
-  	  <item name="grpb_sizer" value="Kako nastaviti velikost okna" />
-  	  <item name="grpb_display" value="Zaslon" />
-  	  <item name="chk_enable_high_dpi" value="Omogoči High DPI" />
-  	  <item name="sizer_window_with_margins" value="Okno z robovi" />
-  	  <item name="sizer_window_without_margins" value="Okno brez robov" />
-  	  <item name="sizer_window_client_area" value="Odjemalski prostor okna" />
-  	  <item name="parameter_btn_apply" value="V redu" />
-  	  <item name="parameter_form" value="Vnos parametra" />
-  	  <item name="change_title_btn_apply" value="V redu" />
-  	  <item name="change_title_btn_cancel" value="Prekliči" />
-  	  <item name="change_title_form" value="Spremeni naslov" />
+    <sl>
+      <item name="separator" value="Ločilo" />
+      <item name="information" value="Informacije" />
+      <item name="hide" value="Skrij" />
+      <item name="roll_up" value="Zavij" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="Vedno na vrhu" />
+      <item name="change_icon" value="Spremeni ikono" />
+      <item name="change_title" value="Spremeni naslov" />
+      <item name="send_to_bottom" value="Pošlji na dno" />
+      <item name="save_screenshot" value="Shrani posnetek zaslona" />
+      <item name="open_file_in_explorer" value="Odpri datoteko v Explorerju" />
+      <item name="clipboard" value="Odložišče" />
+      <item name="copy_screenshot" value="Kopiraj posnetek zaslona" />
+      <item name="copy_window_text" value="Kopiraj besedilo okna" />
+      <item name="copy_window_title" value="Kopiraj naslov okna" />
+      <item name="copy_full_process_path" value="Kopiraj celotno pot procesa" />
+      <item name="clear_clipboard" value="Počisti" />
+      <item name="drag_by_mouse" value="Vleči z miško" />
+      <item name="hide_for_alt_tab" value="Skrij za Alt+Tab" />
+      <item name="click_through" value="Klik skozi" />
+      <item name="size" value="Spremeni velikost" />
+      <item name="size_resizable" value="Spremenljiva velikost" />
+      <item name="size_default" value="Privzeto" />
+      <item name="size_custom" value="Po meri..." />
+      <item name="move_to" value="Premakni na" />
+      <item name="monitor" value="Monitor " />
+      <item name="alignment" value="Poravnava" />
+      <item name="align_top_left" value="zgoraj-levo" />
+      <item name="align_top_center" value="zgoraj-sredina" />
+      <item name="align_top_right" value="zgoraj-desno" />
+      <item name="align_middle_left" value="sredina-levo" />
+      <item name="align_middle_center" value="sredina-sredina" />
+      <item name="align_middle_right" value="sredina-desno" />
+      <item name="align_bottom_left" value="spodaj-levo" />
+      <item name="align_bottom_center" value="spodaj-sredina" />
+      <item name="align_bottom_right" value="spodaj-desno" />
+      <item name="align_center_horizontally" value="Centriraj vodoravno" />
+      <item name="align_center_vertically" value="Centriraj navpično" />
+      <item name="align_default" value="Privzeto" />
+      <item name="align_custom" value="Po meri..." />
+      <item name="transparency" value="Prosojnost" />
+      <item name="trans_opaque" value=" (neprosojno)" />
+      <item name="trans_invisible" value=" (nevidno)" />
+      <item name="trans_default" value="Privzeto" />
+      <item name="trans_custom" value="Po meri..." />
+      <item name="priority" value="Prioriteta" />
+      <item name="priority_real_time" value="Realni čas: 24" />
+      <item name="priority_high" value="Visoka: 13" />
+      <item name="priority_above_normal" value="Nad normalno: 10" />
+      <item name="priority_normal" value="Normalna: 8" />
+      <item name="priority_below_normal" value="Pod normalno: 6" />
+      <item name="priority_idle" value="Prosta: 4" />
+      <item name="system_tray" value="Sistemska vrstica" />
+      <item name="minimize_to_systemtray" value="Pomanjšaj v sistemsko vrstico" />
+      <item name="minimize_always_to_systemtray" value="Vedno pomanjšaj v sistemsko vrstico" />
+      <item name="suspend_to_systemtray" value="Začasno ustavi in pomanjšaj v sistemsko vrstico" />
+      <item name="other_windows" value="Druga okna" />
+      <item name="minimize_other_windows" value="Pomanjšaj" />
+      <item name="close_other_windows" value="Zapri" />
+      <item name="start_program" value="Zaženi program" />
+      <item name="save_selected_items" value="Shrani" />
+      <item name="dimmer" value="Zatemnitev" />
+      <item name="dimmer_on" value="Vklopi" />
+      <item name="dimmer_off" value="Izklopi" />
+      <item name="buttons" value="Gumbi" />
+      <item name="disable_minimize_button" value="Onemogoči gumb &quot;Pomanjšaj&quot;" />
+      <item name="disable_maximize_button" value="Onemogoči gumb &quot;Povečaj&quot;" />
+      <item name="disable_close_button" value="Onemogoči gumb &quot;Zapri&quot;" />
+      <item name="settings" value="Nastavitve..." />
+      <item name="grp_window" value="Okno" />
+      <item name="grp_process" value="Proces" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Ime pisave:" />
+      <item name="lbl_window_handle" value="Rokoj okna:" />
+      <item name="lbl_parent_window_handle" value="Rokoj starševskega okna:" />
+      <item name="lbl_window_size" value="Velikost okna:" />
+      <item name="lbl_window_position" value="Položaj okna:" />
+      <item name="lbl_extended_frame_bounds" value="Razširjene meje okvira:" />
+      <item name="lbl_instance" value="Primerek:" />
+      <item name="lbl_process_id" value="ID procesa:" />
+      <item name="lbl_thread_id" value="ID niti:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Celotna pot:" />
+      <item name="lbl_command_line" value="Ukazna vrstica:" />
+      <item name="lbl_started_at" value="Začetek:" />
+      <item name="lbl_owner" value="Lastnik:" />
+      <item name="lbl_threads" value="Niti:" />
+      <item name="lbl_working_set_size" value="Velikost delovnega nabora:" />
+      <item name="lbl_parent" value="Starš:" />
+      <item name="lbl_priority" value="Prioriteta:" />
+      <item name="lbl_handles" value="Rokojniki:" />
+      <item name="lbl_virtual_size" value="Navidezna velikost:" />
+      <item name="lbl_product_name" value="Ime izdelka:" />
+      <item name="lbl_copyright" value="Avtorske pravice:" />
+      <item name="lbl_file_version" value="Različica datoteke:" />
+      <item name="lbl_product_version" value="Različica izdelka:" />
+      <item name="information_btn_apply" value="V redu" />
+      <item name="save_screenshot_title" value="Shrani posnetek okna" />
+      <item name="save_screenshot_filename" value="PosnetekOkna" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Bitna slika (*.bmp)|*.bmp|Gif slika (*.gif)|*.gif|JPEG slika (*.jpeg)|*.jpeg|Png slika (*.png)|*.png|Tiff slika (*.tiff)|*.tiff|Wmf slika (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Ikona (*.ico)|*.ico|Bitna slika (*.bmp)|*.bmp|Gif slika (*.gif)|*.gif|JPEG slika (*.jpeg)|*.jpeg|Png slika (*.png)|*.png|Tiff slika (*.tiff)|*.tiff|Wmf slika (*.wmf)|*.wmf|Vse datoteke (*.*)|*.*" />
+      <item name="size_form" value="Nastavi velikost" />
+      <item name="size_btn_apply" value="Uveljavi" />
+      <item name="lbl_size_form_height" value="Višina:" />
+      <item name="lbl_size_form_width" value="Širina:" />
+      <item name="lbl_size_form_top" value="Vrh:" />
+      <item name="lbl_size_form_left" value="Levo:" />
+      <item name="trans_form" value="Nastavi prosojnost" />
+      <item name="trans_btn_apply" value="Uveljavi" />
+      <item name="align_form" value="Nastavi položaj" />
+      <item name="align_btn_apply" value="Uveljavi" />
+      <item name="lbl_top" value="Vrh:" />
+      <item name="lbl_left" value="Levo:" />
+      <item name="mi_restore" value="Obnovi" />
+      <item name="mi_restore_windows" value="Obnovi" />
+      <item name="mi_close" value="Zapri" />
+      <item name="mi_auto_start" value="Samodejni zagon programa" />
+      <item name="mi_settings" value="Nastavitve..." />
+      <item name="mi_about" value="O programu" />
+      <item name="mi_exit" value="Izhod" />
+      <item name="about_form" value="O programu " />
+      <item name="about_btn_ok" value="V redu" />
+      <item name="settings_form" value="Nastavitve" />
+      <item name="tab_settings_general" value="Splošno" />
+      <item name="grpb_process_exclusions" value="Izključitve procesov" />
+      <item name="clm_process_exclusion_name" value="Ime datoteke" />
+      <item name="clm_process_exclusion_edit" value="Uredi" />
+      <item name="clm_process_exclusion_delete" value="Izbriši" />
+      <item name="btn_process_exclusion_up" value="Pomakni proces gor" />
+      <item name="btn_process_exclusion_down" value="Pomakni proces dol" />
+      <item name="btn_add_process_exclusion" value="Dodaj ime procesa" />
+      <item name="tab_settings_menu" value="Meni" />
+      <item name="grpb_start_program" value="Elementi menija Zaženi program" />
+      <item name="clm_start_program_title" value="Naslov" />
+      <item name="clm_start_program_path" value="Ime datoteke" />
+      <item name="clm_start_program_arguments" value="Argumenti" />
+      <item name="clm_start_program_edit" value="Uredi" />
+      <item name="clm_start_program_delete" value="Izbriši" />
+      <item name="btn_start_program_up" value="Pomakni program gor" />
+      <item name="btn_start_program_down" value="Pomakni program dol" />
+      <item name="btn_add_start_program" value="Dodaj Zaženi program" />
+      <item name="settings_btn_apply" value="V redu" />
+      <item name="settings_btn_cancel" value="Prekliči" />
+      <item name="grpb_window_size" value="Elementi menija Velikost okna" />
+      <item name="window_size_form" value="Velikost okna" />
+      <item name="window_size_btn_apply" value="V redu" />
+      <item name="window_size_btn_cancel" value="Prekliči" />
+      <item name="clm_window_size_title" value="Naslov" />
+      <item name="clm_window_size_width" value="Širina" />
+      <item name="clm_window_size_height" value="Višina" />
+      <item name="clm_window_size_top" value="Vrh" />
+      <item name="clm_window_size_left" value="Levo" />
+      <item name="clm_window_size_edit" value="Uredi" />
+      <item name="clm_window_size_delete" value="Izbriši" />
+      <item name="lbl_window_size_title" value="Naslov:" />
+      <item name="lbl_window_size_width" value="Širina:" />
+      <item name="lbl_window_size_height" value="Višina:" />
+      <item name="lbl_window_size_top" value="Vrh:" />
+      <item name="lbl_window_size_left" value="Levo:" />
+      <item name="lbl_window_size_key1" value="Tipka 1:" />
+      <item name="lbl_window_size_key2" value="Tipka 2:" />
+      <item name="lbl_window_size_key3" value="Tipka 3:" />
+      <item name="btn_window_size_up" value="Pomakni gor" />
+      <item name="btn_window_size_down" value="Pomakni dol" />
+      <item name="btn_add_window_size" value="Dodaj" />
+      <item name="btn_menu_item_up" value="Pomakni gor" />
+      <item name="btn_menu_item_down" value="Pomakni dol" />
+      <item name="process_name_form" value="Izključitve procesov" />
+      <item name="process_lbl_file_name" value="Ime datoteke:" />
+      <item name="process_btn_apply" value="V redu" />
+      <item name="process_btn_cancel" value="Prekliči" />
+      <item name="process_browse_file_filter" value="Izvedljive datoteke (*.exe)|*.exe|Vse datoteke (*.*)|*.*" />
+      <item name="start_program_form" value="Zaženi program" />
+      <item name="start_program_lbl_title" value="Naslov:" />
+      <item name="start_program_lbl_file_name" value="Ime datoteke:" />
+      <item name="start_program_lbl_arguments" value="Argumenti:" />
+      <item name="start_program_lbl_runas" value="Zaženi kot:" />
+      <item name="start_program_lbl_begin" value="Začetek:" />
+      <item name="start_program_lbl_end" value="Konec:" />
+      <item name="start_program_show_window" value="Prikaži okno" />
+      <item name="start_program_use_window_working_directory" value="Uporabi delovno mapo okna" />
+      <item name="start_program_parameter" value="Parameter" />
+      <item name="start_program_normal" value="Običajno" />
+      <item name="start_program_administrator" value="Skrbnik" />
+      <item name="start_program_btn_apply" value="V redu" />
+      <item name="start_program_btn_cancel" value="Prekliči" />
+      <item name="start_program_browse_file_filter" value="Izvedljive datoteke (*.exe)|*.exe|Vse datoteke (*.*)|*.*" />
+      <item name="grpb_language" value="Jezik" />
+      <item name="message_box_attention_title" value="Pozor" />
+      <item name="message_box_attention_content" value="Za uveljavitev nastavitev morate aplikacijo ročno ponovno zagnati." />
+      <item name="hotkeys_form" value="Bližnjice" />
+      <item name="hotkeys_lbl_key1" value="Tipka 1" />
+      <item name="hotkeys_lbl_key2" value="Tipka 2" />
+      <item name="hotkeys_lbl_key3" value="Tipka 3" />
+      <item name="hotkeys_btn_apply" value="V redu" />
+      <item name="hotkeys_btn_cancel" value="Prekliči" />
+      <item name="tab_settings_hotkeys" value="Bližnjice" />
+      <item name="clm_hotkeys_name" value="Ime" />
+      <item name="clm_hotkeys_show_tooltip" value="Prikaži element menija" />
+      <item name="tab_settings_menu_start" value="Meni (Zaženi program)" />
+      <item name="tab_settings_menu_size" value="Meni (Spremeni velikost)" />
+      <item name="tab_settings_menu_save" value="Meni (Shrani)" />
+      <item name="tab_settings_menu_dimmer" value="Meni (Zatemnitev)" />
+      <item name="grpb_dimmer_color" value="Barva" />
+      <item name="grpb_dimmer_transparency" value="Prosojnost" />
+      <item name="grpb_closer" value="Zapiranje okna s klikom miške" />
+      <item name="closer_button_name" value="Nastavitve..." />
+      <item name="closer_form" value="Nastavitve" />
+      <item name="closer_btn_apply" value="V redu" />
+      <item name="closer_btn_cancel" value="Prekliči" />
+      <item name="closer_lbl_key1" value="Tipka 1" />
+      <item name="closer_lbl_key2" value="Tipka 2" />
+      <item name="closer_lbl_mouse_button" value="Gumb miške" />
+      <item name="closer_lbl_action" value="Dejanje" />
+      <item name="closer_close_window" value="Zapri okno" />
+      <item name="closer_kill_process" value="Ustavi proces" />
+      <item name="closer_close_foreground_window" value="Zapri okno v ospredju" />
+      <item name="closer_close_window_under_cursor" value="Zapri okno pod kazalcem" />
+      <item name="closer_kill_process_with_foreground_window" value="Ustavi proces z oknom v ospredju" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Ustavi proces z oknom pod kazalcem" />
+      <item name="grpb_sizer" value="Kako nastaviti velikost okna" />
+      <item name="grpb_display" value="Zaslon" />
+      <item name="chk_enable_high_dpi" value="Omogoči High DPI" />
+      <item name="sizer_window_with_margins" value="Okno z robovi" />
+      <item name="sizer_window_without_margins" value="Okno brez robov" />
+      <item name="sizer_window_client_area" value="Odjemalski prostor okna" />
+      <item name="parameter_btn_apply" value="V redu" />
+      <item name="parameter_form" value="Vnos parametra" />
+      <item name="change_title_btn_apply" value="V redu" />
+      <item name="change_title_btn_cancel" value="Prekliči" />
+      <item name="change_title_form" value="Spremeni naslov" />
     </sl>
   </items>
 </language>
