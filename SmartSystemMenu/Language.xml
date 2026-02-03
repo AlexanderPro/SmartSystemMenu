@@ -3698,5 +3698,248 @@
       <item name="change_title_btn_cancel" value="Prekliči" />
       <item name="change_title_form" value="Spremeni naslov" />
     </sl>
+    <ta>
+      <item name="separator" value="பிரிப்பான்" />
+      <item name="information" value="தகவல்" />
+      <item name="hide" value="மறை" />
+      <item name="roll_up" value="சுருட்டு" />
+      <item name="aero_glass" value="ஏரோ கிளாஸ்" />
+      <item name="always_on_top" value="எப்போதும் மேலே" />
+      <item name="change_icon" value="ஐகானை மாற்று" />
+<item name="change_title" value="தலைப்பை மாற்று" />
+<item name="send_to_bottom" value="கீழே அனுப்பு" />
+<item name="save_screenshot" value="ஸ்கிரீன்ஷாட்டைச் சேமி" />
+<item name="open_file_in_explorer" value="எக்ஸ்ப்ளோரரில் கோப்பைத் திற" />
+<item name="clipboard" value="கிளிப்போர்டு" />
+<item name="copy_screenshot" value="ஸ்கிரீன்ஷாட்டை நகலெடு" />
+<item name="copy_window_text" value="சாளர உரையை நகலெடு" />
+<item name="copy_window_title" value="சாளரத் தலைப்பை நகலெடு" />
+<item name="copy_full_process_path" value="முழு செயல்முறைப் பாதையை நகலெடு" />
+<item name="clear_clipboard" value="அழி" />
+<item name="drag_by_mouse" value="மவுஸ் மூலம் இழு" />
+<item name="hide_for_alt_tab" value="Alt+Tab-க்கு மறை" />
+<item name="click_through" value="கிளிக் வழியாக" />
+<item name="size" value="அளவை மாற்று" />
+<item name="size_resizable" value="அளவை மாற்றக்கூடியது" />
+<item name="size_default" value="இயல்புநிலை" />
+<item name="size_custom" value="தனிப்பயன்..." />
+<item name="move_to" value="இதற்கு நகர்த்து" />
+<item name="monitor" value="மானிட்டர் " />
+<item name="alignment" value="சீரமைப்பு" />
+<item name="align_top_left" value="மேல்-இடது" />
+<item name="align_top_center" value="மேல்-மையம்" />
+<item name="align_top_right" value="மேல்-வலது" />
+<item name="align_middle_left" value="middle-left" />
+<item name="align_middle_center" value="நடு-மையம்" />
+<item name="align_middle_right" value="நடு-வலது" />
+<item name="align_bottom_left" value="கீழ்-இடது" />
+<item name="align_bottom_center" value="கீழ்-மையம்" />
+<item name="align_bottom_right" value="கீழ்-வலது" />
+<item name="align_center_horizontally" value="கிடைமட்டமாக மையப்படுத்து" />
+<item name="align_center_vertically" value="செங்குத்தாக மையப்படுத்து" />
+<item name="align_default" value="இயல்புநிலை" />
+<item name="align_custom" value="தனிப்பயன்..." />
+<item name="transparency" value="வெளிப்படைத்தன்மை" />
+<item name="trans_opaque" value=" (ஒளிபுகா)" />
+<item name="trans_invisible" value=" (கண்ணுக்குப் புலப்படாதது)" />
+<item name="trans_default" value="இயல்புநிலை" />
+<item name="trans_custom" value="தனிப்பயன்..." />
+<item name="priority" value="முன்னுரிமை" />
+<item name="priority_real_time" value="நிகழ்நேரம்: 24" />
+<item name="priority_high" value="உயர்: 13" />
+<item name="priority_above_normal" value="சாதாரணத்திற்கு மேல்: 10" />
+<item name="priority_normal" value="சாதாரண: 8" />
+<item name="priority_below_normal" value="சாதாரணத்திற்குக் கீழ்: 6" />
+<item name="priority_idle" value="செயலற்றது: 4" />
+<item name="system_tray" value="சிஸ்டம் ட்ரே" />
+<item name="minimize_to_systemtray" value="ட்ரேக்குச் சுருக்கு" />
+<item name="minimize_always_to_systemtray" value="எப்போதும் ட்ரேக்குச் சுருக்கு" />
+<item name="suspend_to_systemtray" value="நிறுத்தி ட்ரேக்குச் சுருக்கு" />
+<item name="other_windows" value="மற்ற சாளரங்கள்" />
+<item name="minimize_other_windows" value="சுருக்கு" />
+<item name="close_other_windows" value="மூடு" />
+<item <name="start_program" value="நிரலைத் தொடங்கு" />
+<item name="save_selected_items" value="சேமி" />
+<item name="dimmer" value="டிம்மர்" />
+<item name="dimmer_on" value="ஆன் செய்" />
+<item name="dimmer_off" value="ஆஃப் செய்" />
+<item name="buttons" value="பொத்தான்கள்" />
+<item name="disable_minimize_button" value="&quot;குறைத்தல்&quot; பொத்தானை முடக்கு" />
+<item name="disable_maximize_button" value="&quot;பெரிதாக்குதல்&quot; பொத்தானை முடக்கு" />
+<item name="disable_close_button" value="&quot;மூடு&quot; பொத்தானை முடக்கு" />
+<item name="settings" value="அமைப்புகள்..." />
+<item name="grp_window" value="சாளரம்" />
+<item name="grp_process" value="செயல்முறை" />
+<item name="lbl_get_window_text" value="GetWindowText:" />
+<item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+<item name="lbl_get_class_name" value="GetClassName:" />
+<item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+<item name="lbl_font_name" value="எழுத்துரு பெயர்:" />
+<item name="lbl_window_handle" value="சாளரக் கைப்பிடி:" />
+<item name="lbl_parent_window_handle" value="பெற்றோர் சாளரக் கைப்பிடி:" />
+<item name="lbl_window_size" value="சாளர அளவு:" />
+<item name="lbl_window_position" value="சாளர நிலை:" />
+<item name="lbl_extended_frame_bounds" value="விரிவாக்கப்பட்ட சட்டக வரம்புகள்:" />
+<item name="lbl_instance" value="நிகழ்வு:" />
+<item name="lbl_process_id" value="செயல்முறை ஐடி:" />
+<item name="lbl_thread_id" value="திரெட் ஐடி:" />
+<item na<item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+<item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+<item name="lbl_gwl_style" value="GWL_STYLE:" />
+<item name="lbl_gcl_style" value="GCL_STYLE:" />
+<item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+<item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+<item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+<item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+<item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+<item name="lbl_dwl_user" value="DWL_USER:" />
+<item name="lbl_full_path" value="முழுப் பாதை:" />
+<item name="lbl_command_line" value="கட்டளை வரி:" />
+<item name="lbl_started_at" value="தொடங்கிய நேரம்:" />
+<item name="lbl_owner" value="உரிமையாளர்:" />
+<item name="lbl_threads" value="செயல் இழைகள்:" />
+<item name="lbl_working_set_size" value="செயல்படும் தொகுப்பு அளவு:" />
+<item name="lbl_parent" value="பெற்றோர்:" />
+<item name="lbl_priority" value="முன்னுரிமை:" />
+<item name="lbl_handles" value="கையாளிகள்:" />
+<item name="lbl_virtual_size" value="மெய்நிகர் அளவு:" />
+<item name="lbl_product_name" value="தயாரிப்பு பெயர்:" />
+<item name="lbl_copyright" value="பதிப்புரிமை:" />
+<item name="lbl_file_version" value="கோப்புப் பதிப்பு:" />
+<item name="lbl_product_version" value="தயாரிப்புப் பதிப்பு:" />
+<item name="information_btn_apply" value="சரி" />
+<item name="save_screenshot_title" value="சாளரத் திரைக்காட்சியைச் சேமிக்கவும்" />
+<item name="save_screenshot_filename" value="சாளரத் திரைக்காட்சி" /> <item name="save_screenshot_default_ext" value="bmp" />
+<item name="save_screenshot_filter" value="பிட்மேப் படம் (*.bmp)|*.bmp|ஜிஃப் படம் (*.gif)|*.gif|JPEG படம் (*.jpeg)|*.jpeg|Png படம் (*.png)|*.png|Tiff படம் (*.tiff)|*.tiff|Wmf படம் (*.wmf)|*.wmf" />
+<item name="icon_default_ext" value="ico" />
+<item name="icon_filter" value="ஐகான் (*.ico)|*.ico|பிட்மேப் படம் (*.bmp)|*.bmp|ஜிஃப் படம் (*.gif)|*.gif|JPEG படம் (*.jpeg)|*.jpeg|Png படம் (*.png)|*.png|Tiff படம் (*.tiff)|*.tiff|Wmf படம் (*.wmf)|*.wmf|அனைத்து கோப்புகள் (*.*)|*.*" />
+<item name="size_form" value="அளவை அமைக்கவும்" />
+<item name="size_btn_apply" value="பயன்படுத்து" />
+<item name="lbl_size_form_height" value="உயரம்:" />
+<item name="lbl_size_form_width" value="அகலம்:" />
+<item name="lbl_size_form_top" value="மேல்:" />
+<item name="lbl_size_form_left" value="இடம்:" />
+<item name="trans_form" value="வெளிப்படைத்தன்மையை அமைக்கவும்" />
+<item name="trans_btn_apply" value="பயன்படுத்து" />
+<item name="align_form" value="நிலையை அமைக்கவும்" />
+<item name="align_btn_apply" value="பயன்படுத்து" />
+<item name="lbl_top" value="மேல்:" />
+<item name="lbl_left" value="இடம்:" />
+<item name="mi_restore" value="மீட்டமை" />
+<item name="mi_restore_windows" value="மீட்டமை" />
+<item name="mi_close" value="மூடு" />
+<item name="mi_auto_start" value="நிரலை தானாகத் தொடங்கு" />
+<item name="mi_settings" value="அமைப்புகள்..." />
+<item name="mi_about" value="பற்றி" />
+<item name="mi_exit" value="வெளியேறு" /> <item name="about_form" value="பற்றி" />
+<item name="about_btn_ok" value="சரி" />
+<item name="settings_form" value="அமைப்புகள்" />
+<item name="tab_settings_general" value="பொது" />
+<item name="grpb_process_exclusions" value="செயல்முறை விலக்குகள்" />
+<item name="clm_process_exclusion_name" value="கோப்புப் பெயர்" />
+<item name="clm_process_exclusion_edit" value="திருத்து" />
+<item name="clm_process_exclusion_delete" value="நீக்கு" />
+<item name="btn_process_exclusion_up" value="செயல்முறையை மேலே நகர்த்து" />
+<item name="btn_process_exclusion_down" value="செயல்முறையை கீழே நகர்த்து" />
+<item name="btn_add_process_exclusion" value="செயல்முறைப் பெயரைச் சேர்" />
+<item name="tab_settings_menu" value="பட்டி" />
+<item name="grpb_start_program" value="நிரலைத் தொடங்கு பட்டி உருப்படிகள்" />
+<item name="clm_start_program_title" value="தலைப்பு" />
+<item name="clm_start_program_path" value="கோப்புப் பெயர்" />
+<item name="clm_start_program_arguments" value="வாதங்கள்" />
+<item name="clm_start_program_edit" value="திருத்து" />
+<item name="clm_start_program_delete" value="நீக்கு" />
+<item name="btn_start_program_up" value="நிரலை மேலே நகர்த்து" />
+<item name="btn_start_program_down" value="நிரலை கீழே நகர்த்து" />
+<item name="btn_add_start_program" value="நிரலைத் தொடங்கு என்பதைச் சேர்" />
+<item name="settings_btn_apply" value="சரி" />
+<item name="settings_btn_cancel" value="ரத்துசெய்" />
+<item name="grpb_window_size" value="சாளர அளவு பட்டி உருப்படிகள்" />
+<item name="window_size_form" value="சாளர அளவு" />
+<item name="window_size_btn_apply" value="சரி" />
+<item name="window_size_btn_cancel" value="ரத்துசெய்" /> மதிப்பு="ரத்துசெய்" />
+<item name="clm_window_size_title" value="தலைப்பு" />
+<item name="clm_window_size_width" value="அகலம்" />
+<item name="clm_window_size_height" value="உயரம்" />
+<item name="clm_window_size_top" மதிப்பு="மேல்" />
+<item name="clm_window_size_left" மதிப்பு="இடம்" />
+<item name="clm_window_size_edit" மதிப்பு="திருத்து" />
+<item name="clm_window_size_delete" மதிப்பு="நீக்கு" />
+<item name="lbl_window_size_title" மதிப்பு="தலைப்பு:" />
+<item name="lbl_window_size_width" மதிப்பு="அகலம்:" />
+<item name="lbl_window_size_height" மதிப்பு="உயரம்:" />
+<item name="lbl_window_size_top" மதிப்பு="மேல்:" />
+<item name="lbl_window_size_left" மதிப்பு="இடம்:" />
+<item name="lbl_window_size_key1" மதிப்பு="விசை 1:" />
+<item name="lbl_window_size_key2" மதிப்பு="விசை 2:" />
+<item name="lbl_window_size_key3" மதிப்பு="விசை 3:" />
+<item name="btn_window_size_up" மதிப்பு="மேலே நகர்த்து" />
+<item name="btn_window_size_down" மதிப்பு="கீழே நகர்த்து" />
+<item name="btn_add_window_size" மதிப்பு="சேர்" />
+<item name="btn_menu_item_up" மதிப்பு="மேலே நகர்த்து" />
+<item name="btn_menu_item_down" மதிப்பு="கீழே நகர்த்து" />
+<item name="process_name_form" மதிப்பு="செயல்முறை விலக்குகள்" />
+<item name="process_lbl_file_name" மதிப்பு="கோப்புப் பெயர்:" />
+<item name="process_btn_apply" மதிப்பு="சரி" />
+<item name="process_btn_cancel" மதிப்பு="ரத்துசெய்" />
+<item name="process_browse_file_filter" மதிப்பு="செயல்படுத்தக்கூடிய கோப்புகள் (*.exe)|*.exe|அனைத்து கோப்புகள் (*.*)|*.*" />
+<item name="start_program_form" மதிப்பு="நிரலைத் தொடங்கு" />
+<item name="start_program_lbl_title" மதிப்பு="தலைப்பு:" />
+<item name="start_program_lbl_file_name" மதிப்பு="கோப்புப் பெயர்:" /> <item name="start_program_lbl_arguments" value="வாதங்கள்:" />
+<item name="start_program_lbl_runas" value="இதன் மூலம் இயக்கவும்:" />
+<item name="start_program_lbl_begin" value="தொடங்கு:" />
+<item name="start_program_lbl_end" value="முடிவு:" />
+<item name="start_program_show_window" value="சாளரத்தைக் காட்டு" />
+<item name="start_program_use_window_working_directory" value="ஒரு சாளரப் பணி அடைவைப் பயன்படுத்தவும்" />
+<item name="start_program_parameter" value="அளவுரு" />
+<item name="start_program_normal" value="சாதாரண" />
+<item name="start_program_administrator" value="நிர்வாகி" />
+<item name="start_program_btn_apply" value="சரி" />
+<item name="start_program_btn_cancel" value="ரத்துசெய்" />
+<item name="start_program_browse_file_filter" value="செயல்படுத்தக்கூடிய கோப்புகள் (*.exe)|*.exe|அனைத்து கோப்புகள் (*.*)|*.*" />
+<item name="grpb_language" value="மொழி" />
+<item name="message_box_attention_title" value="கவனம்" />
+<item name="message_box_attention_content" value="அமைப்புகளைப் பயன்படுத்த, நீங்கள் பயன்பாட்டை கைமுறையாக மறுதொடக்கம் செய்ய வேண்டும்." /> <item name="hotkeys_form" value="ஹாட்கீகள்" />
+<item name="hotkeys_lbl_key1" value="விசை 1" />
+<item name="hotkeys_lbl_key2" value="விசை 2" />
+<item name="hotkeys_lbl_key3" value="விசை 3" />
+<item name="hotkeys_btn_apply" value="சரி" />
+<item name="hotkeys_btn_cancel" value="ரத்துசெய்" />
+<item name="tab_settings_hotkeys" value="ஹாட்கீகள்" />
+<item name="clm_hotkeys_name" value="பெயர்" />
+<item name="clm_hotkeys_show_tooltip" value="பட்டி உருப்படியைக் காட்டு" />
+<item name="tab_settings_menu_start" value="பட்டி (நிரலைத் தொடங்கு)" />
+<item name="tab_settings_menu_size" value="பட்டி (அளவை மாற்று)" />
+<item name="tab_settings_menu_save" value="பட்டி (சேமி)" />
+<item name="tab_settings_menu_dimmer" value="பட்டி (டிம்மர்)" />
+<item name="grpb_dimmer_color" value="நிறம்" />
+<item name="grpb_dimmer_transparency" value="வெளிப்படைத்தன்மை" />
+<item name="grpb_closer" value="மவுஸ் கிளிக் மூலம் சாளரத்தை மூடு" />
+<item name="closer_button_name" value="அமைப்புகள்..." />
+<item name="closer_form" value="அமைப்புகள்" />
+<item name="closer_btn_apply" value="சரி" />
+<item name="closer_btn_cancel" value="ரத்துசெய்" />
+<item name="closer_lbl_key1" value="விசை 1" />
+<item name="closer_lbl_key2" value="விசை 2" />
+<item name="closer_lbl_mouse_button" value="மவுஸ் பொத்தான்" />
+<item name="closer_lbl_action" value="செயல்" />
+<item name="closer_close_window" value="சாளரத்தை மூடு" />
+<item name="closer_kill_process" value="செயல்முறையை நிறுத்து" />
+<item <item name="closer_close_foreground_window" value="முன்புற சாளரத்தை மூடு" />
+<item name="closer_close_window_under_cursor" value="சுட்டியின் கீழ் உள்ள சாளரத்தை மூடு" />
+<item name="closer_kill_process_with_foreground_window" value="முன்புற சாளரத்துடன் கூடிய செயல்முறையை நிறுத்து" />
+<item name="closer_kill_process_with_window_under_cursor" value="சுட்டியின் கீழ் உள்ள சாளரத்துடன் கூடிய செயல்முறையை நிறுத்து" />
+<item name="grpb_sizer" value="சாளர அளவை அமைப்பது எப்படி" />
+<item name="grpb_display" value="காட்சி" />
+<item name="chk_enable_high_dpi" value="உயர் DPI-ஐ இயக்கு" />
+<item name="sizer_window_with_margins" value="விளிம்புகளுடன் கூடிய சாளரம்" />
+<item name="sizer_window_without_margins" value="விளிம்புகள் இல்லாத சாளரம்" />
+<item name="sizer_window_client_area" value="சாளர கிளையன்ட் பகுதி" />
+<item name="parameter_btn_apply" value="சரி" />
+<item name="pa<item name="parameter_form" value="உள்ளீட்டு அளவுரு" />
+<item name="change_title_btn_apply" value="சரி" />
+<item name="change_title_btn_cancel" value="ரத்துசெய்" />
+<item name="change_title_form" value="தலைப்பை மாற்று" />
+    </ta>
   </items>
 </language>
