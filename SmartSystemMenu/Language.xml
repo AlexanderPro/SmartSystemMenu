@@ -3857,7 +3857,7 @@
       <item name="grpb_window_size" value="சாளர அளவு பட்டி உருப்படிகள்" />
       <item name="window_size_form" value="சாளர அளவு" />
       <item name="window_size_btn_apply" value="சரி" />
-      <item name="window_size_btn_cancel" value="ரத்துசெய்" /> மதிப்பு="ரத்துசெய்" />
+      <item name="window_size_btn_cancel" value="ரத்துசெய்" />
       <item name="clm_window_size_title" value="தலைப்பு" />
       <item name="clm_window_size_width" value="அகலம்" />
       <item name="clm_window_size_height" value="உயரம்" />
