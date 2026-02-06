@@ -3809,7 +3809,8 @@
       <item name="lbl_product_version" value="தயாரிப்புப் பதிப்பு:" />
       <item name="information_btn_apply" value="சரி" />
       <item name="save_screenshot_title" value="சாளரத் திரைக்காட்சியைச் சேமிக்கவும்" />
-      <item name="save_screenshot_filename" value="சாளரத் திரைக்காட்சி" /> <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filename" value="சாளரத் திரைக்காட்சி" />
+      <item name="save_screenshot_default_ext" value="bmp" />
       <item name="save_screenshot_filter" value="பிட்மேப் படம் (*.bmp)|*.bmp|ஜிஃப் படம் (*.gif)|*.gif|JPEG படம் (*.jpeg)|*.jpeg|Png படம் (*.png)|*.png|Tiff படம் (*.tiff)|*.tiff|Wmf படம் (*.wmf)|*.wmf" />
       <item name="icon_default_ext" value="ico" />
       <item name="icon_filter" value="ஐகான் (*.ico)|*.ico|பிட்மேப் படம் (*.bmp)|*.bmp|ஜிஃப் படம் (*.gif)|*.gif|JPEG படம் (*.jpeg)|*.jpeg|Png படம் (*.png)|*.png|Tiff படம் (*.tiff)|*.tiff|Wmf படம் (*.wmf)|*.wmf|அனைத்து கோப்புகள் (*.*)|*.*" />
@@ -3862,31 +3863,32 @@
       <item name="clm_window_size_title" value="தலைப்பு" />
       <item name="clm_window_size_width" value="அகலம்" />
       <item name="clm_window_size_height" value="உயரம்" />
-      <item name="clm_window_size_top" மதிப்பு="மேல்" />
-      <item name="clm_window_size_left" மதிப்பு="இடம்" />
-      <item name="clm_window_size_edit" மதிப்பு="திருத்து" />
-      <item name="clm_window_size_delete" மதிப்பு="நீக்கு" />
-      <item name="lbl_window_size_title" மதிப்பு="தலைப்பு:" />
-      <item name="lbl_window_size_width" மதிப்பு="அகலம்:" />
-      <item name="lbl_window_size_height" மதிப்பு="உயரம்:" />
-      <item name="lbl_window_size_top" மதிப்பு="மேல்:" />
-      <item name="lbl_window_size_left" மதிப்பு="இடம்:" />
-      <item name="lbl_window_size_key1" மதிப்பு="விசை 1:" />
-      <item name="lbl_window_size_key2" மதிப்பு="விசை 2:" />
-      <item name="lbl_window_size_key3" மதிப்பு="விசை 3:" />
-      <item name="btn_window_size_up" மதிப்பு="மேலே நகர்த்து" />
-      <item name="btn_window_size_down" மதிப்பு="கீழே நகர்த்து" />
-      <item name="btn_add_window_size" மதிப்பு="சேர்" />
-      <item name="btn_menu_item_up" மதிப்பு="மேலே நகர்த்து" />
-      <item name="btn_menu_item_down" மதிப்பு="கீழே நகர்த்து" />
-      <item name="process_name_form" மதிப்பு="செயல்முறை விலக்குகள்" />
-      <item name="process_lbl_file_name" மதிப்பு="கோப்புப் பெயர்:" />
-      <item name="process_btn_apply" மதிப்பு="சரி" />
-      <item name="process_btn_cancel" மதிப்பு="ரத்துசெய்" />
-      <item name="process_browse_file_filter" மதிப்பு="செயல்படுத்தக்கூடிய கோப்புகள் (*.exe)|*.exe|அனைத்து கோப்புகள் (*.*)|*.*" />
-      <item name="start_program_form" மதிப்பு="நிரலைத் தொடங்கு" />
-      <item name="start_program_lbl_title" மதிப்பு="தலைப்பு:" />
-      <item name="start_program_lbl_file_name" மதிப்பு="கோப்புப் பெயர்:" /> <item name="start_program_lbl_arguments" value="வாதங்கள்:" />
+      <item name="clm_window_size_top" value="மேல்" />
+      <item name="clm_window_size_left" value="இடம்" />
+      <item name="clm_window_size_edit" value="திருத்து" />
+      <item name="clm_window_size_delete" value="நீக்கு" />
+      <item name="lbl_window_size_title" value="தலைப்பு:" />
+      <item name="lbl_window_size_width" value="அகலம்:" />
+      <item name="lbl_window_size_height" value="உயரம்:" />
+      <item name="lbl_window_size_top" value="மேல்:" />
+      <item name="lbl_window_size_left" value="இடம்:" />
+      <item name="lbl_window_size_key1" value="விசை 1:" />
+      <item name="lbl_window_size_key2" value="விசை 2:" />
+      <item name="lbl_window_size_key3" value="விசை 3:" />
+      <item name="btn_window_size_up" value="மேலே நகர்த்து" />
+      <item name="btn_window_size_down" value="கீழே நகர்த்து" />
+      <item name="btn_add_window_size" value="சேர்" />
+      <item name="btn_menu_item_up" value="மேலே நகர்த்து" />
+      <item name="btn_menu_item_down" value="கீழே நகர்த்து" />
+      <item name="process_name_form" value="செயல்முறை விலக்குகள்" />
+      <item name="process_lbl_file_name" value="கோப்புப் பெயர்:" />
+      <item name="process_btn_apply" value="சரி" />
+      <item name="process_btn_cancel" value="ரத்துசெய்" />
+      <item name="process_browse_file_filter" value="செயல்படுத்தக்கூடிய கோப்புகள் (*.exe)|*.exe|அனைத்து கோப்புகள் (*.*)|*.*" />
+      <item name="start_program_form" value="நிரலைத் தொடங்கு" />
+      <item name="start_program_lbl_title" value="தலைப்பு:" />
+      <item name="start_program_lbl_file_name" value="கோப்புப் பெயர்:" />
+      <item name="start_program_lbl_arguments" value="வாதங்கள்:" />
       <item name="start_program_lbl_runas" value="இதன் மூலம் இயக்கவும்:" />
       <item name="start_program_lbl_begin" value="தொடங்கு:" />
       <item name="start_program_lbl_end" value="முடிவு:" />
@@ -3900,7 +3902,8 @@
       <item name="start_program_browse_file_filter" value="செயல்படுத்தக்கூடிய கோப்புகள் (*.exe)|*.exe|அனைத்து கோப்புகள் (*.*)|*.*" />
       <item name="grpb_language" value="மொழி" />
       <item name="message_box_attention_title" value="கவனம்" />
-      <item name="message_box_attention_content" value="அமைப்புகளைப் பயன்படுத்த, நீங்கள் பயன்பாட்டை கைமுறையாக மறுதொடக்கம் செய்ய வேண்டும்." /> <item name="hotkeys_form" value="ஹாட்கீகள்" />
+      <item name="message_box_attention_content" value="அமைப்புகளைப் பயன்படுத்த, நீங்கள் பயன்பாட்டை கைமுறையாக மறுதொடக்கம் செய்ய வேண்டும்." />
+      <item name="hotkeys_form" value="ஹாட்கீகள்" />
       <item name="hotkeys_lbl_key1" value="விசை 1" />
       <item name="hotkeys_lbl_key2" value="விசை 2" />
       <item name="hotkeys_lbl_key3" value="விசை 3" />
