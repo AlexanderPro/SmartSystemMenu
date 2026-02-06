@@ -3831,7 +3831,8 @@
       <item name="mi_auto_start" value="நிரலை தானாகத் தொடங்கு" />
       <item name="mi_settings" value="அமைப்புகள்..." />
       <item name="mi_about" value="பற்றி" />
-      <item name="mi_exit" value="வெளியேறு" /> <item name="about_form" value="பற்றி" />
+      <item name="mi_exit" value="வெளியேறு" />
+      <item name="about_form" value="பற்றி" />
       <item name="about_btn_ok" value="சரி" />
       <item name="settings_form" value="அமைப்புகள்" />
       <item name="tab_settings_general" value="பொது" />
