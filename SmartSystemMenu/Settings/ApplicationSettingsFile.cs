@@ -265,6 +265,11 @@ namespace SmartSystemMenu.Settings
         private static KeyboardShortcut ReadShortcut(XElement element)
         {
             var shortcut = new KeyboardShortcut();
+            if (element == null)
+            {
+                return shortcut;
+            }
+
             shortcut.Key1 = element.Attribute("key1") != null && !string.IsNullOrEmpty(element.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(element.Attribute("key1").Value) : VirtualKeyModifier.None;
             shortcut.Key2 = element.Attribute("key2") != null && !string.IsNullOrEmpty(element.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(element.Attribute("key2").Value) : VirtualKeyModifier.None;
             shortcut.Key3 = element.Attribute("key3") != null && !string.IsNullOrEmpty(element.Attribute("key3").Value) ? (VirtualKey)int.Parse(element.Attribute("key3").Value) : VirtualKey.None;
