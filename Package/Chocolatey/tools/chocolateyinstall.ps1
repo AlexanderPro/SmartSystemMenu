@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 $packageName= 'smartsystemmenu'
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://github.com/AlexanderPro/SmartSystemMenu/releases/download/v2.33.0/SmartSystemMenu_v2.33.0.zip'
+$url        = 'https://github.com/AlexanderPro/SmartSystemMenu/releases/download/v2.33.1/SmartSystemMenu_v2.33.1.zip'
 
 $packageArgs = @{
   packageName   = $packageName
@@ -9,7 +9,7 @@ $packageArgs = @{
   fileType      = 'zip'
   url           = $url
   softwareName  = 'SmartSystemMenu*'
-  checksum      = '859963ef19291111339801c0691538e4f8100e5851690419fe964845ae6575c9'
+  checksum      = 'fadb3f53e525f3f8b2570e0830a9f066288fb89a51cabd5f5346a56be15e5f74'
   checksumType  = 'sha256'
 }
 
