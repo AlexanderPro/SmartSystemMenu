@@ -136,6 +136,7 @@ namespace SmartSystemMenu.Forms
                 new { Text = "繁體中文", Value = "zh_tw"},
                 new { Text = "日本語", Value = "ja" },
                 new { Text = "한국어", Value = "ko" },
+                new { Text = "Bahasa Indonesia", Value = "id" },
             };
 
             cmbLanguage.DataSource = languageItems;

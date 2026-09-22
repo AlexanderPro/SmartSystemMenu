@@ -4243,5 +4243,255 @@
       <item name="change_title_btn_cancel" value="Hủy" />
       <item name="change_title_form" value="Thay đổi tiêu đề" />
     </vi>
+    <id>
+      <item name="separator" value="Pemisah" />
+      <item name="information" value="Informasi" />
+      <item name="hide" value="Sembunyikan" />
+      <item name="roll_up" value="Gulung ke Atas" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="always_on_top" value="Selalu di Atas" />
+      <item name="change_icon" value="Ubah Ikon" />
+      <item name="change_title" value="Ubah Judul" />
+      <item name="send_to_bottom" value="Kirim ke Belakang" />
+      <item name="save_screenshot" value="Simpan Tangkapan Layar" />
+      <item name="open_file_in_explorer" value="Buka File di Explorer" />
+      <item name="clipboard" value="Papan Klip" />
+      <item name="copy_screenshot" value="Salin Tangkapan Layar" />
+      <item name="copy_window_text" value="Salin Teks Jendela" />
+      <item name="copy_window_title" value="Salin Judul Jendela" />
+      <item name="copy_full_process_path" value="Salin Jalur Lengkap Proses" />
+      <item name="clear_clipboard" value="Bersihkan" />
+      <item name="drag_by_mouse" value="Seret dengan Mouse" />
+      <item name="hide_for_alt_tab" value="Sembunyikan dari Alt+Tab" />
+      <item name="click_through" value="Klik Tembus" />
+      <item name="size" value="Ubah Ukuran" />
+      <item name="size_resizable" value="Dapat Diubah Ukurannya" />
+      <item name="size_default" value="Bawaan" />
+      <item name="size_custom" value="Kustom..." />
+      <item name="move_to" value="Pindahkan ke" />
+      <item name="monitor" value="Monitor " />
+      <item name="alignment" value="Perataan" />
+      <item name="align_top_left" value="kiri atas" />
+      <item name="align_top_center" value="tengah atas" />
+      <item name="align_top_right" value="kanan atas" />
+      <item name="align_middle_left" value="kiri tengah" />
+      <item name="align_middle_center" value="tengah" />
+      <item name="align_middle_right" value="kanan tengah" />
+      <item name="align_bottom_left" value="kiri bawah" />
+      <item name="align_bottom_center" value="tengah bawah" />
+      <item name="align_bottom_right" value="kanan bawah" />
+      <item name="align_center_horizontally" value="Tengahkan secara horizontal" />
+      <item name="align_center_vertically" value="Tengahkan secara vertikal" />
+      <item name="align_default" value="Bawaan" />
+      <item name="align_custom" value="Kustom..." />
+      <item name="transparency" value="Transparansi" />
+      <item name="trans_opaque" value=" (opak)" />
+      <item name="trans_invisible" value=" (tidak terlihat)" />
+      <item name="trans_default" value="Bawaan" />
+      <item name="trans_custom" value="Kustom..." />
+      <item name="priority" value="Prioritas" />
+      <item name="priority_real_time" value="Waktu Nyata: 24" />
+      <item name="priority_high" value="Tinggi: 13" />
+      <item name="priority_above_normal" value="Di Atas Normal: 10" />
+      <item name="priority_normal" value="Normal: 8" />
+      <item name="priority_below_normal" value="Di Bawah Normal: 6" />
+      <item name="priority_idle" value="Rendah: 4" />
+      <item name="system_tray" value="Baki Sistem" />
+      <item name="minimize_to_systemtray" value="Minimalkan ke Baki" />
+      <item name="minimize_always_to_systemtray" value="Selalu Minimalkan ke Baki" />
+      <item name="suspend_to_systemtray" value="Tangguhkan dan Minimalkan ke Baki" />
+      <item name="other_windows" value="Jendela Lain" />
+      <item name="minimize_other_windows" value="Minimalkan" />
+      <item name="close_other_windows" value="Tutup" />
+      <item name="start_program" value="Jalankan Program" />
+      <item name="save_selected_items" value="Simpan" />
+      <item name="dimmer" value="Peredup" />
+      <item name="dimmer_on" value="Aktifkan" />
+      <item name="dimmer_off" value="Nonaktifkan" />
+      <item name="buttons" value="Tombol" />
+      <item name="disable_minimize_button" value="Nonaktifkan Tombol &quot;Minimalkan&quot;" />
+      <item name="disable_maximize_button" value="Nonaktifkan Tombol &quot;Maksimalkan&quot;" />
+      <item name="disable_close_button" value="Nonaktifkan Tombol &quot;Tutup&quot;" />
+      <item name="settings" value="Pengaturan..." />
+      <item name="grp_window" value="Jendela" />
+      <item name="grp_process" value="Proses" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Nama Font:" />
+      <item name="lbl_window_handle" value="Handle Jendela:" />
+      <item name="lbl_parent_window_handle" value="Handle Jendela Induk:" />
+      <item name="lbl_window_size" value="Ukuran Jendela:" />
+      <item name="lbl_window_position" value="Posisi Jendela:" />
+      <item name="lbl_extended_frame_bounds" value="Batas Bingkai Diperluas:" />
+      <item name="lbl_instance" value="Instans:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Jalur Lengkap:" />
+      <item name="lbl_command_line" value="Baris Perintah:" />
+      <item name="lbl_started_at" value="Dimulai pada:" />
+      <item name="lbl_owner" value="Pemilik:" />
+      <item name="lbl_threads" value="Thread:" />
+      <item name="lbl_working_set_size" value="Ukuran Working Set:" />
+      <item name="lbl_parent" value="Induk:" />
+      <item name="lbl_priority" value="Prioritas:" />
+      <item name="lbl_handles" value="Handle:" />
+      <item name="lbl_virtual_size" value="Ukuran Virtual:" />
+      <item name="lbl_product_name" value="Nama Produk:" />
+      <item name="lbl_copyright" value="Hak Cipta:" />
+      <item name="lbl_file_version" value="Versi File:" />
+      <item name="lbl_product_version" value="Versi Produk:" />
+      <item name="information_btn_apply" value="OK" />
+      <item name="save_screenshot_title" value="Simpan Tangkapan Layar Jendela" />
+      <item name="save_screenshot_filename" value="TangkapanLayarJendela" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Gambar Bitmap (*.bmp)|*.bmp|Gambar GIF (*.gif)|*.gif|Gambar JPEG (*.jpeg)|*.jpeg|Gambar PNG (*.png)|*.png|Gambar TIFF (*.tiff)|*.tiff|Gambar WMF (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Ikon (*.ico)|*.ico|Gambar Bitmap (*.bmp)|*.bmp|Gambar GIF (*.gif)|*.gif|Gambar JPEG (*.jpeg)|*.jpeg|Gambar PNG (*.png)|*.png|Gambar TIFF (*.tiff)|*.tiff|Gambar WMF (*.wmf)|*.wmf|Semua file (*.*)|*.*" />
+      <item name="size_form" value="Atur Ukuran" />
+      <item name="size_btn_apply" value="Terapkan" />
+      <item name="lbl_size_form_height" value="Tinggi:" />
+      <item name="lbl_size_form_width" value="Lebar:" />
+      <item name="lbl_size_form_top" value="Atas:" />
+      <item name="lbl_size_form_left" value="Kiri:" />
+      <item name="trans_form" value="Atur Transparansi" />
+      <item name="trans_btn_apply" value="Terapkan" />
+      <item name="align_form" value="Atur Posisi" />
+      <item name="align_btn_apply" value="Terapkan" />
+      <item name="lbl_top" value="Atas:" />
+      <item name="lbl_left" value="Kiri:" />
+      <item name="mi_restore" value="Pulihkan" />
+      <item name="mi_restore_windows" value="Pulihkan" />
+      <item name="mi_close" value="Tutup" />
+      <item name="mi_auto_start" value="Jalankan program otomatis" />
+      <item name="mi_settings" value="Pengaturan..." />
+      <item name="mi_about" value="Tentang" />
+      <item name="mi_exit" value="Keluar" />
+      <item name="about_form" value="Tentang " />
+      <item name="about_btn_ok" value="OK" />
+      <item name="settings_form" value="Pengaturan" />
+      <item name="tab_settings_general" value="Umum" />
+      <item name="grpb_process_exclusions" value="Pengecualian Proses" />
+      <item name="clm_process_exclusion_name" value="Nama File" />
+      <item name="clm_process_exclusion_edit" value="Edit" />
+      <item name="clm_process_exclusion_delete" value="Hapus" />
+      <item name="btn_process_exclusion_up" value="Pindahkan Proses ke Atas" />
+      <item name="btn_process_exclusion_down" value="Pindahkan Proses ke Bawah" />
+      <item name="btn_add_process_exclusion" value="Tambah Nama Proses" />
+      <item name="tab_settings_menu" value="Menu" />
+      <item name="grpb_start_program" value="Item Menu Jalankan Program" />
+      <item name="clm_start_program_title" value="Judul" />
+      <item name="clm_start_program_path" value="Nama File" />
+      <item name="clm_start_program_arguments" value="Argumen" />
+      <item name="clm_start_program_edit" value="Edit" />
+      <item name="clm_start_program_delete" value="Hapus" />
+      <item name="btn_start_program_up" value="Pindahkan Program ke Atas" />
+      <item name="btn_start_program_down" value="Pindahkan Program ke Bawah" />
+      <item name="btn_add_start_program" value="Tambah Program" />
+      <item name="settings_btn_apply" value="OK" />
+      <item name="settings_btn_cancel" value="Batal" />
+      <item name="grpb_window_size" value="Item Menu Ukuran Jendela" />
+      <item name="window_size_form" value="Ukuran Jendela" />
+      <item name="window_size_btn_apply" value="OK" />
+      <item name="window_size_btn_cancel" value="Batal" />
+      <item name="clm_window_size_title" value="Judul" />
+      <item name="clm_window_size_width" value="Lebar" />
+      <item name="clm_window_size_height" value="Tinggi" />
+      <item name="clm_window_size_top" value="Atas" />
+      <item name="clm_window_size_left" value="Kiri" />
+      <item name="clm_window_size_edit" value="Edit" />
+      <item name="clm_window_size_delete" value="Hapus" />
+      <item name="lbl_window_size_title" value="Judul:" />
+      <item name="lbl_window_size_width" value="Lebar:" />
+      <item name="lbl_window_size_height" value="Tinggi:" />
+      <item name="lbl_window_size_top" value="Atas:" />
+      <item name="lbl_window_size_left" value="Kiri:" />
+      <item name="lbl_window_size_key1" value="Tombol 1:" />
+      <item name="lbl_window_size_key2" value="Tombol 2:" />
+      <item name="lbl_window_size_key3" value="Tombol 3:" />
+      <item name="btn_window_size_up" value="Pindahkan ke Atas" />
+      <item name="btn_window_size_down" value="Pindahkan ke Bawah" />
+      <item name="btn_add_window_size" value="Tambah" />
+      <item name="btn_menu_item_up" value="Pindahkan ke Atas" />
+      <item name="btn_menu_item_down" value="Pindahkan ke Bawah" />
+      <item name="process_name_form" value="Pengecualian Proses" />
+      <item name="process_lbl_file_name" value="Nama File:" />
+      <item name="process_btn_apply" value="OK" />
+      <item name="process_btn_cancel" value="Batal" />
+      <item name="process_browse_file_filter" value="File eksekusi (*.exe)|*.exe|Semua file (*.*)|*.*" />
+      <item name="start_program_form" value="Jalankan Program" />
+      <item name="start_program_lbl_title" value="Judul:" />
+      <item name="start_program_lbl_file_name" value="Nama File:" />
+      <item name="start_program_lbl_arguments" value="Argumen:" />
+      <item name="start_program_lbl_runas" value="RunAs:" />
+      <item name="start_program_lbl_begin" value="Awal:" />
+      <item name="start_program_lbl_end" value="Akhir:" />
+      <item name="start_program_show_window" value="Tampilkan Jendela" />
+      <item name="start_program_use_window_working_directory" value="Gunakan direktori kerja jendela" />
+      <item name="start_program_parameter" value="Parameter" />
+      <item name="start_program_normal" value="Normal" />
+      <item name="start_program_administrator" value="Administrator" />
+      <item name="start_program_btn_apply" value="OK" />
+      <item name="start_program_btn_cancel" value="Batal" />
+      <item name="start_program_browse_file_filter" value="File eksekusi (*.exe)|*.exe|Semua file (*.*)|*.*" />
+      <item name="grpb_language" value="Bahasa" />
+      <item name="message_box_attention_title" value="Perhatian" />
+      <item name="message_box_attention_content" value="Mulai ulang aplikasi secara manual untuk menerapkan pengaturan." />
+      <item name="hotkeys_form" value="Tombol Pintas" />
+      <item name="hotkeys_lbl_key1" value="Tombol 1" />
+      <item name="hotkeys_lbl_key2" value="Tombol 2" />
+      <item name="hotkeys_lbl_key3" value="Tombol 3" />
+      <item name="hotkeys_btn_apply" value="OK" />
+      <item name="hotkeys_btn_cancel" value="Batal" />
+      <item name="tab_settings_hotkeys" value="Tombol Pintas" />
+      <item name="clm_hotkeys_name" value="Nama" />
+      <item name="clm_hotkeys_show_tooltip" value="Tampilkan item menu" />
+      <item name="tab_settings_menu_start" value="Menu (Jalankan Program)" />
+      <item name="tab_settings_menu_size" value="Menu (Ubah Ukuran)" />
+      <item name="tab_settings_menu_move_to" value="Menu (Pindahkan ke)" />
+      <item name="tab_settings_menu_save" value="Menu (Simpan)" />
+      <item name="tab_settings_menu_dimmer" value="Menu (Peredup)" />
+      <item name="grpb_dimmer_color" value="Warna" />
+      <item name="grpb_dimmer_transparency" value="Transparansi" />
+      <item name="grpb_closer" value="Tutup Jendela dengan Klik Mouse" />
+      <item name="closer_button_name" value="Pengaturan..." />
+      <item name="closer_form" value="Pengaturan" />
+      <item name="closer_btn_apply" value="OK" />
+      <item name="closer_btn_cancel" value="Batal" />
+      <item name="closer_lbl_key1" value="Tombol 1" />
+      <item name="closer_lbl_key2" value="Tombol 2" />
+      <item name="closer_lbl_mouse_button" value="Tombol Mouse" />
+      <item name="closer_lbl_action" value="Tindakan" />
+      <item name="closer_close_window" value="Tutup jendela" />
+      <item name="closer_kill_process" value="Hentikan proses" />
+      <item name="closer_close_foreground_window" value="Tutup jendela latar depan" />
+      <item name="closer_close_window_under_cursor" value="Tutup jendela di bawah kursor" />
+      <item name="closer_kill_process_with_foreground_window" value="Hentikan proses dari jendela latar depan" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Hentikan proses dari jendela di bawah kursor" />
+      <item name="grpb_sizer" value="Cara mengatur ukuran jendela" />
+      <item name="grpb_display" value="Tampilan" />
+      <item name="grpb_next_hotkeys" value="Tombol Pintas →" />
+      <item name="grpb_previous_hotkeys" value="Tombol Pintas ←" />
+      <item name="chk_enable_high_dpi" value="Aktifkan High DPI" />
+      <item name="sizer_window_with_margins" value="Jendela dengan margin" />
+      <item name="sizer_window_without_margins" value="Jendela tanpa margin" />
+      <item name="sizer_window_client_area" value="Area klien jendela" />
+      <item name="parameter_btn_apply" value="OK" />
+      <item name="parameter_form" value="Masukkan Parameter" />
+      <item name="change_title_btn_apply" value="OK" />
+      <item name="change_title_btn_cancel" value="Batal" />
+      <item name="change_title_form" value="Ubah Judul" />
+    </id>
   </items>
 </language>
