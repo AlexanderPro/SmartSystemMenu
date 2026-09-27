@@ -130,13 +130,13 @@ namespace SmartSystemMenu.Forms
                 new { Text = "Српски", Value = "sr" },
                 new { Text = "Slovenščina", Value = "sl" },
                 new { Text = "Tiếng Việt", Value = "vi" },
+                new { Text = "Bahasa Indonesia", Value = "id" },
                 new { Text = "עִברִית", Value = "he" },
                 new { Text = "தமிழ்", Value = "ta" },
                 new { Text = "简体中文", Value = "zh_cn" },
                 new { Text = "繁體中文", Value = "zh_tw"},
                 new { Text = "日本語", Value = "ja" },
                 new { Text = "한국어", Value = "ko" },
-                new { Text = "Bahasa Indonesia", Value = "id" },
             };
 
             cmbLanguage.DataSource = languageItems;

@@ -40,10 +40,10 @@ SmartSystemMenu memperluas menu sistem pada semua jendela di sistem. Program ini
 Tangkapan Layar
 ------------------
 
-![Resize](./SmartSystemMenu/Images/SmartSystemMenuEn1.png)
-![Alignment](./SmartSystemMenu/Images/SmartSystemMenuEn2.png)
-![Transparency](./SmartSystemMenu/Images/SmartSystemMenuEn3.png)
-![Information](./SmartSystemMenu/Images/SmartSystemMenuEn4.png)
+![Resize](./SmartSystemMenu/Images/SmartSystemMenuId1.png)
+![Alignment](./SmartSystemMenu/Images/SmartSystemMenuId2.png)
+![Transparency](./SmartSystemMenu/Images/SmartSystemMenuId3.png)
+![Information](./SmartSystemMenu/Images/SmartSystemMenuId4.png)
 
 Antarmuka Baris Perintah
 --------------------
