@@ -114,6 +114,7 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
+            this.chkDarkMode = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -944,6 +945,7 @@ namespace SmartSystemMenu.Forms
             // 
             // grpbSaveSelectedItems
             // 
+            this.grpbSaveSelectedItems.Controls.Add(this.chkDarkMode);
             this.grpbSaveSelectedItems.Controls.Add(this.chkResizable);
             this.grpbSaveSelectedItems.Controls.Add(this.chkButtons);
             this.grpbSaveSelectedItems.Controls.Add(this.chkHideForAltTab);
@@ -975,11 +977,11 @@ namespace SmartSystemMenu.Forms
             // chkButtons
             // 
             this.chkButtons.AutoSize = true;
-            this.chkButtons.Location = new System.Drawing.Point(8, 330);
+            this.chkButtons.Location = new System.Drawing.Point(8, 367);
             this.chkButtons.Margin = new System.Windows.Forms.Padding(4);
             this.chkButtons.Name = "chkButtons";
             this.chkButtons.Size = new System.Drawing.Size(78, 21);
-            this.chkButtons.TabIndex = 8;
+            this.chkButtons.TabIndex = 9;
             this.chkButtons.Text = "Buttons";
             this.chkButtons.UseVisualStyleBackColor = true;
             // 
@@ -1079,6 +1081,17 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.TabIndex = 2;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
+            // 
+            // chkDarkMode
+            // 
+            this.chkDarkMode.AutoSize = true;
+            this.chkDarkMode.Location = new System.Drawing.Point(8, 330);
+            this.chkDarkMode.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDarkMode.Name = "chkDarkMode";
+            this.chkDarkMode.Size = new System.Drawing.Size(99, 21);
+            this.chkDarkMode.TabIndex = 8;
+            this.chkDarkMode.Text = "Dark Mode";
+            this.chkDarkMode.UseVisualStyleBackColor = true;
             // 
             // ApplicationSettingsForm
             // 
@@ -1217,5 +1230,6 @@ namespace SmartSystemMenu.Forms
         private System.Windows.Forms.GroupBox grpbPreviousHotkeys;
         private System.Windows.Forms.Button btnPreviousHotkeys;
         private System.Windows.Forms.TextBox txtPreviousHotkeys;
+        private System.Windows.Forms.CheckBox chkDarkMode;
     }
 }

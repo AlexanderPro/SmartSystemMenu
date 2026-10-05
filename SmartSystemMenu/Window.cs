@@ -113,6 +113,8 @@ namespace SmartSystemMenu
 
         public bool AlwaysOnTop => WindowUtils.IsAlwaysOnTop(Handle);
 
+        public bool IsDarkMode => WindowUtils.IsDarkMode(Handle);
+
         public bool IsDisabledMinimizeButton => WindowUtils.IsDisabledMinimizeButton(Handle);
 
         public bool IsDisabledMaximizeButton => WindowUtils.IsDisabledMaximizeButton(Handle);
@@ -672,19 +674,25 @@ namespace SmartSystemMenu
             return text;
         }
 
-        public void AeroGlass(bool enable)
+        public void AeroGlass(bool enabled)
         {
             var version = Environment.OSVersion.Version;
             if (version.Major == 6 && (version.Minor == 0 || version.Minor == 1))
             {
-                WindowUtils.AeroGlassForVistaAndSeven(Handle, enable);
-                State.AeroGlass = enable;
+                WindowUtils.AeroGlassForVistaAndSeven(Handle, enabled);
+                State.AeroGlass = enabled;
             }
             else if (version.Major >= 6 || (version.Major == 6 && version.Minor > 1))
             {
-                WindowUtils.AeroGlassForEightAndHigher(Handle, enable);
-                State.AeroGlass = enable;
+                WindowUtils.AeroGlassForEightAndHigher(Handle, enabled);
+                State.AeroGlass = enabled;
             }
+        }
+
+        public void DarkMode(bool enabled)
+        {
+            WindowUtils.UseDarkMode(Handle, enabled);
+            State.DarkMode = enabled;
         }
 
         public void MoveToMonitor(IntPtr monitorHandle)
@@ -752,6 +760,11 @@ namespace SmartSystemMenu
             if (IsDisabledCloseButton)
             {
                 Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, true);
+            }
+
+            if (IsDarkMode)
+            {
+                Menu.CheckMenuItem(MenuItemId.SC_DARK_MODE, true);
             }
         }
 
@@ -841,6 +854,12 @@ namespace SmartSystemMenu
                     Menu.CheckMenuItem(MenuItemId.SC_DISABLE_CLOSE_BUTTON, state.IsDisabledCloseButton.Value);
                 }
             }
+
+            if (settings.DarkMode && state.DarkMode.HasValue)
+            {
+                DarkMode(state.DarkMode.Value);
+                Menu.CheckMenuItem(MenuItemId.SC_DARK_MODE, state.DarkMode.Value);
+            }
         }
 
         public void RefreshState()
@@ -879,6 +898,12 @@ namespace SmartSystemMenu
             if (isDisabledCloseButton)
             {
                 State.IsDisabledCloseButton = isDisabledCloseButton;
+            }
+
+            var isDarkMode = IsDarkMode;
+            if (isDarkMode)
+            {
+                State.DarkMode = isDarkMode;
             }
         }
 

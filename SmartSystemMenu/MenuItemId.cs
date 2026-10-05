@@ -78,7 +78,7 @@ namespace SmartSystemMenu
         public const int SC_MOVE_TO = 0x5000;
         public const int SC_SIZE_DEFINED = 0x5100;
         public const int SC_SAVE_SELECTED_ITEMS = 0x4816;
-        public const int SC_BUTTONS = 0x4817;
+        public const int SC_TITLE_BAR = 0x4817;
         public const int SC_DISABLE_MINIMIZE_BUTTON = 0x4818;
         public const int SC_DISABLE_MAXIMIZE_BUTTON = 0x4819;
         public const int SC_DISABLE_CLOSE_BUTTON = 0x4820;
@@ -87,10 +87,11 @@ namespace SmartSystemMenu
         public const int SC_DIMMER_ON = 0x4824;
         public const int SC_DIMMER_OFF = 0x4825;
         public const int SC_HIDE = 0x4826;
-        public const int SC_CHANGE_TITLE = 0x4827;
-        public const int SC_RESIZABLE = 0x4828;
-        public const int SC_CHANGE_ICON = 0x4829;
-        public const int SC_SETTINGS = 0x4830;
+        public const int SC_RESIZABLE = 0x4827;
+        public const int SC_DARK_MODE = 0x4828;
+        public const int SC_CHANGE_TITLE = 0x4829;
+        public const int SC_CHANGE_ICON = 0x4830;
+        public const int SC_SETTINGS = 0x4831;
 
         private static readonly Dictionary<string, int> NameToId = new ();
         private static readonly Dictionary<int, string> IdToName = new ();
@@ -103,8 +104,6 @@ namespace SmartSystemMenu
             NameToId["aero_glass"] = SC_AERO_GLASS;
             NameToId["always_on_top"] = SC_TOPMOST;
             NameToId["send_to_bottom"] = SC_SEND_TO_BOTTOM;
-            NameToId["change_icon"] = SC_CHANGE_ICON;
-            NameToId["change_title"] = SC_CHANGE_TITLE;
             NameToId["save_screenshot"] = SC_SAVE_SCREEN_SHOT;
             NameToId["open_file_in_explorer"] = SC_OPEN_FILE_IN_EXPLORER;
             NameToId["drag_by_mouse"] = SC_DRAG_BY_MOUSE;
@@ -164,7 +163,10 @@ namespace SmartSystemMenu
             NameToId["other_windows"] = SC_OTHER_WINDOWS;
             NameToId["start_program"] = SC_START;
             NameToId["save_selected_items"] = SC_SAVE_SELECTED_ITEMS;
-            NameToId["buttons"] = SC_BUTTONS;
+            NameToId["title_bar"] = SC_TITLE_BAR;
+            NameToId["dark_mode"] = SC_DARK_MODE;
+            NameToId["change_icon"] = SC_CHANGE_ICON;
+            NameToId["change_title"] = SC_CHANGE_TITLE;
             NameToId["disable_minimize_button"] = SC_DISABLE_MINIMIZE_BUTTON;
             NameToId["disable_maximize_button"] = SC_DISABLE_MAXIMIZE_BUTTON;
             NameToId["disable_close_button"] = SC_DISABLE_CLOSE_BUTTON;

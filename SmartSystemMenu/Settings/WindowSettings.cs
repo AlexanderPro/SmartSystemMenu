@@ -58,10 +58,7 @@ namespace SmartSystemMenu.Settings
                     return new WindowState
                     {
                         ProcessName = x.Attribute("processName").Value,
-                        // ==================== OPTIONAL ====================
-                        ClassName = WindowUtils.NormalizeClassName(
-                            x.Attribute("className").Value),
-                        // ==================================================
+                        ClassName = WindowUtils.NormalizeClassName(x.Attribute("className").Value),
                         Left = int.Parse(positionElement.Attribute("left").Value),
                         Top = int.Parse(positionElement.Attribute("top").Value),
                         Width = int.Parse(positionElement.Attribute("width").Value),
@@ -74,6 +71,7 @@ namespace SmartSystemMenu.Settings
                         Transparency = systemMenuElement.Attribute("transparency") == null ? null : int.Parse(systemMenuElement.Attribute("transparency").Value),
                         Priority = systemMenuElement.Attribute("priority") == null ? null : (Priority)int.Parse(systemMenuElement.Attribute("priority").Value),
                         MinimizeToTrayAlways = systemMenuElement.Attribute("minimizeToTrayAlways") == null ? null : systemMenuElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true",
+                        DarkMode = systemMenuElement.Attribute("darkMode") == null ? null : systemMenuElement.Attribute("darkMode").Value.ToLower() == "true",
                         IsDisabledMinimizeButton = systemMenuElement.Attribute("disableMinimizeButton") == null ? null : systemMenuElement.Attribute("disableMinimizeButton").Value.ToLower() == "true",
                         IsDisabledMaximizeButton = systemMenuElement.Attribute("disableMaximizeButton") == null ? null : systemMenuElement.Attribute("disableMaximizeButton").Value.ToLower() == "true",
                         IsDisabledCloseButton = systemMenuElement.Attribute("disableCloseButton") == null ? null : systemMenuElement.Attribute("disableCloseButton").Value.ToLower() == "true"
@@ -104,6 +102,7 @@ namespace SmartSystemMenu.Settings
                                          settings.SaveSelectedItems.Transparency && x.Transparency.HasValue ? new XAttribute("transparency", x.Transparency.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.Priority && x.Priority.HasValue ? new XAttribute("priority", (int)x.Priority) : null,
                                          settings.SaveSelectedItems.MinimizeToTrayAlways && x.MinimizeToTrayAlways.HasValue ? new XAttribute("minimizeToTrayAlways", x.MinimizeToTrayAlways.Value.ToString().ToLower()) : null,
+                                         settings.SaveSelectedItems.DarkMode && x.DarkMode.HasValue ? new XAttribute("darkMode", x.DarkMode.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.Buttons && x.IsDisabledMinimizeButton.HasValue ? new XAttribute("disableMinimizeButton", x.IsDisabledMinimizeButton.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.Buttons && x.IsDisabledMaximizeButton.HasValue ? new XAttribute("disableMaximizeButton", x.IsDisabledMaximizeButton.Value.ToString().ToLower()) : null,
                                          settings.SaveSelectedItems.Buttons && x.IsDisabledCloseButton.HasValue ? new XAttribute("disableCloseButton", x.IsDisabledCloseButton.Value.ToString().ToLower()) : null)))));

@@ -30,8 +30,6 @@
       <item type="item" name="roll_up" key1="" key2="" key3="" />
       <item type="item" name="aero_glass" key1="" key2="" key3="" />
       <item type="item" name="always_on_top" key1="" key2="" key3="" />
-      <item type="item" name="change_icon" key1="" key2="" key3="" />
-      <item type="item" name="change_title" key1="" key2="" key3="" />
       <item type="item" name="send_to_bottom" key1="" key2="" key3="" />
       <item type="item" name="save_screenshot" key1="" key2="" key3="" />
       <item type="item" name="open_file_in_explorer" key1="" key2="" key3="" />
@@ -113,8 +111,11 @@
           <item type="item" name="dimmer_off" key1="" key2="" key3="" />
         </items>
       </item>
-      <item type="group" name="buttons">
+      <item type="group" name="title_bar">
         <items>
+          <item type="item" name="dark_mode" key1="" key2="" key3="" />
+          <item type="item" name="change_icon" key1="" key2="" key3="" />
+          <item type="item" name="change_title" key1="" key2="" key3="" />
           <item type="item" name="disable_minimize_button" key1="" key2="" key3="" />
           <item type="item" name="disable_maximize_button" key1="" key2="" key3="" />
           <item type="item" name="disable_close_button" key1="" key2="" key3="" />
@@ -174,7 +175,7 @@
   <closer type="" key1="" key2="" mouseButton="" />
   <dimmer color="#000000" transparency="50" />
   <sizer type="" resizableByDefault="false" />
-  <saveSelectedItems aeroGlass="true" alwaysOnTop="true" hideForAltTab="true" resizable="true" alignment="true" transparency="true" priority="true" minimizeToTrayAlways="true" buttons="true" />
+  <saveSelectedItems aeroGlass="true" alwaysOnTop="true" hideForAltTab="true" resizable="true" alignment="true" transparency="true" priority="true" minimizeToTrayAlways="true" darkMode="true" buttons="true" />
   <systemTrayIcon show="true" />
   <display highDPI="true" />
   <language name="" />

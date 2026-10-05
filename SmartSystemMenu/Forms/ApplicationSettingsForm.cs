@@ -91,6 +91,7 @@ namespace SmartSystemMenu.Forms
             chkTransparency.Text = settings.Language.GetValue("transparency");
             chkPriority.Text = settings.Language.GetValue("priority");
             chkMinimizeToTrayAlways.Text = settings.Language.GetValue("minimize_always_to_systemtray");
+            chkDarkMode.Text = settings.Language.GetValue("dark_mode");
             chkButtons.Text = settings.Language.GetValue("buttons");
             txtDimmerColor.Text = settings.Dimmer.Color;
             trackbDimmerTransparency.Value = settings.Dimmer.Transparency;
@@ -155,6 +156,7 @@ namespace SmartSystemMenu.Forms
             chkTransparency.Checked = settings.SaveSelectedItems.Transparency;
             chkPriority.Checked = settings.SaveSelectedItems.Priority;
             chkMinimizeToTrayAlways.Checked = settings.SaveSelectedItems.MinimizeToTrayAlways;
+            chkDarkMode.Checked = settings.SaveSelectedItems.DarkMode;
             chkButtons.Checked = settings.SaveSelectedItems.Buttons;
 
             var items = new List<Settings.MenuItem>();
@@ -611,6 +613,7 @@ namespace SmartSystemMenu.Forms
             settings.SaveSelectedItems.Transparency = chkTransparency.Checked;
             settings.SaveSelectedItems.Priority = chkPriority.Checked;
             settings.SaveSelectedItems.MinimizeToTrayAlways = chkMinimizeToTrayAlways.Checked;
+            settings.SaveSelectedItems.DarkMode = chkDarkMode.Checked;
             settings.SaveSelectedItems.Buttons = chkButtons.Checked;
             settings.Dimmer.Color = txtDimmerColor.Text;
             settings.Dimmer.Transparency = trackbDimmerTransparency.Value;

@@ -770,6 +770,14 @@ namespace SmartSystemMenu.Forms
                             }
                             break;
 
+                        case MenuItemId.SC_DARK_MODE:
+                            {
+                                var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DARK_MODE);
+                                window.DarkMode(!isChecked);
+                                window.Menu.CheckMenuItem(MenuItemId.SC_DARK_MODE, !isChecked);
+                            }
+                            break;
+
                         case MenuItemId.SC_ROLLUP:
                             {
                                 var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_ROLLUP);

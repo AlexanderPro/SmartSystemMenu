@@ -21,6 +21,8 @@ namespace SmartSystemMenu
 
         public bool? AlwaysOnTop { get; set; }
 
+        public bool? DarkMode { get; set; }
+
         public bool? HideForAltTab { get; set; }
 
         public bool? Resizable { get; set; }

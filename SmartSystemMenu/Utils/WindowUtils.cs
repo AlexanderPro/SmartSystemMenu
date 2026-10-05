@@ -13,6 +13,7 @@ using SmartSystemMenu.Native.Structs;
 using static SmartSystemMenu.Native.Gdi32;
 using static SmartSystemMenu.Native.User32;
 using static SmartSystemMenu.Native.Kernel32;
+using static SmartSystemMenu.Native.Dwmapi;
 using static SmartSystemMenu.Native.Constants;
 
 namespace SmartSystemMenu.Utils
@@ -23,6 +24,8 @@ namespace SmartSystemMenu.Utils
             new Regex(
                 @"^HwndWrapper\[(?<process>[^;]+);;[0-9a-fA-F\-]{36}\]$",
                 RegexOptions.Compiled);
+
+        private static bool IsWindows10OrGreater(int build = -1) => Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= build;
 
         public static string NormalizeClassName(string className)
         {
@@ -45,6 +48,7 @@ namespace SmartSystemMenu.Utils
 
             return $"HwndWrapper[{match.Groups["process"].Value};;*]";
         }
+
         public static bool PrintWindow(IntPtr hWnd, out Bitmap bitmap)
         {
             GetWindowRect(hWnd, out var rect);
@@ -597,6 +601,44 @@ namespace SmartSystemMenu.Utils
                 Right = rect.Right - rectWithoutMargin.Right,
                 Bottom = rect.Bottom - rectWithoutMargin.Bottom
             };
+        }
+
+        public static bool UseDarkMode(IntPtr hWnd, bool enabled)
+        {
+            if (IsWindows10OrGreater(17763))
+            {
+                var attribute = DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1;
+                if (IsWindows10OrGreater(18985))
+                {
+                    attribute = DWMWA_USE_IMMERSIVE_DARK_MODE;
+                }
+
+                int useImmersiveDarkMode = enabled ? 1 : 0;
+                if (DwmSetWindowAttribute(hWnd, attribute, ref useImmersiveDarkMode, sizeof(int)) == 0)
+                {
+                    PostMessage(hWnd, WM_NCACTIVATE, 0, 0);
+                    PostMessage(hWnd, WM_NCACTIVATE, 1, 0);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool IsDarkMode(IntPtr hWnd)
+        {
+            if (IsWindows10OrGreater(17763))
+            {
+                var attribute = DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1;
+                if (IsWindows10OrGreater(18985))
+                {
+                    attribute = DWMWA_USE_IMMERSIVE_DARK_MODE;
+                }
+
+                return DwmGetWindowAttribute(hWnd, attribute, out int attributeValue, sizeof(int)) == 0 && attributeValue != 0;
+            }
+
+            return false;
         }
 
         public static Func<int, double> TransparencyToOpacity = t => 1 - (t / 100.0);

@@ -20,6 +20,8 @@ namespace SmartSystemMenu.Settings
 
         public bool MinimizeToTrayAlways { get; set; }
 
+        public bool DarkMode { get; set; }
+
         public bool Buttons { get; set; }
 
         public SaveSelectedItemsSettings()
@@ -32,6 +34,7 @@ namespace SmartSystemMenu.Settings
             Transparency = true;
             Priority = true;
             MinimizeToTrayAlways = true;
+            DarkMode = true;
             Buttons = true;
         }
 

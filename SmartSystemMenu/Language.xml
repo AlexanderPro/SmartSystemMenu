@@ -8,8 +8,6 @@
       <item name="roll_up" value="Roll Up" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Always On Top" />
-      <item name="change_icon" value="Change Icon" />
-      <item name="change_title" value="Change Title" />
       <item name="send_to_bottom" value="Send To Bottom" />
       <item name="save_screenshot" value="Save Screenshot" />
       <item name="open_file_in_explorer" value="Open File In Explorer" />
@@ -66,6 +64,10 @@
       <item name="dimmer" value="Dimmer" />
       <item name="dimmer_on" value="Turn On" />
       <item name="dimmer_off" value="Turn Off" />
+      <item name="title_bar" value="Title Bar" />
+      <item name="dark_mode" value="Dark Mode" />
+      <item name="change_icon" value="Change Icon" />
+      <item name="change_title" value="Change Title" />
       <item name="buttons" value="Buttons" />
       <item name="disable_minimize_button" value="Disable &quot;Minimize&quot; Button" />
       <item name="disable_maximize_button" value="Disable &quot;Maximize&quot; Button" />
@@ -258,8 +260,6 @@
       <item name="roll_up" value="Verkleinern nach oben" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Immer im Vordergrund" />
-      <item name="change_icon" value="Ändere den Symbol" />
-      <item name="change_title" value="Ändere den Titel" />
       <item name="send_to_bottom" value="In den Hintergrund" />
       <item name="save_screenshot" value="Screenshot speichern…" />
       <item name="open_file_in_explorer" value="Im Windows Explorer anzeigen" />
@@ -316,6 +316,10 @@
       <item name="dimmer" value="Dimmer" />
       <item name="dimmer_on" value="Ein" />
       <item name="dimmer_off" value="Aus" />
+      <item name="title_bar" value="Titelleiste" />
+      <item name="dark_mode" value="Dunkelmodus" />
+      <item name="change_icon" value="Ändere den Symbol" />
+      <item name="change_title" value="Ändere den Titel" />
       <item name="buttons" value="Tasten" />
       <item name="disable_minimize_button" value="Deaktivieren &quot;Minimieren&quot;" />
       <item name="disable_maximize_button" value="Deaktivieren &quot;Maximieren&quot;" />
@@ -506,8 +510,6 @@
       <item name="roll_up" value="卷起窗口" />
       <item name="aero_glass" value="毛玻璃效果" />
       <item name="always_on_top" value="窗口始终置顶" />
-      <item name="change_icon" value="更改图标" />
-      <item name="change_title" value="更改标题" />
       <item name="send_to_bottom" value="窗口置底" />
       <item name="save_screenshot" value="保存窗口截图" />
       <item name="open_file_in_explorer" value="在资源管理器中进入程序路径" />
@@ -564,6 +566,10 @@
       <item name="dimmer" value="突出窗口操作" />
       <item name="dimmer_on" value="开" />
       <item name="dimmer_off" value="关" />
+      <item name="title_bar" value="窗口标题栏" />
+      <item name="dark_mode" value="深色模式" />
+      <item name="change_icon" value="更改图标" />
+      <item name="change_title" value="更改标题" />
       <item name="buttons" value="按钮操作" />
       <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按钮" />
       <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按钮" />
@@ -756,8 +762,6 @@
       <item name="roll_up" value="縮合" />
       <item name="aero_glass" value="Aero 半透明效果" />
       <item name="always_on_top" value="視窗置頂" />
-      <item name="change_icon" value="更改圖示" />
-      <item name="change_title" value="變更標題" />
       <item name="send_to_bottom" value="移至最底層" />
       <item name="save_screenshot" value="儲存視窗擷圖" />
       <item name="open_file_in_explorer" value="在檔案總管中開啟檔案" />
@@ -814,6 +818,10 @@
       <item name="dimmer" value="突出視窗操作" />
       <item name="dimmer_on" value="啟動" />
       <item name="dimmer_off" value="關閉" />
+      <item name="title_bar" value="視窗標題列" />
+      <item name="dark_mode" value="深色模式" />
+      <item name="change_icon" value="更改圖示" />
+      <item name="change_title" value="變更標題" />
       <item name="buttons" value="按鈕操作" />
       <item name="disable_minimize_button" value="停用&quot;最小化&quot;按鈕" />
       <item name="disable_maximize_button" value="停用&quot;最大化&quot;按鈕" />
@@ -1006,8 +1014,6 @@
       <item name="roll_up" value="ロールアップ" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="常に手前に表示" />
-      <item name="change_icon" value="アイコンを変更" />
-      <item name="change_title" value="タイトルを変更" />
       <item name="send_to_bottom" value="背面へ移動" />
       <item name="save_screenshot" value="スクリーンショットを撮る" />
       <item name="open_file_in_explorer" value="エクスプローラーで開く" />
@@ -1064,6 +1070,10 @@
       <item name="dimmer" value="ウィンドウの色" />
       <item name="dimmer_on" value="オン" />
       <item name="dimmer_off" value="オフ" />
+      <item name="title_bar" value="タイトルバー" />
+      <item name="dark_mode" value="ダークモード" />
+      <item name="change_icon" value="アイコンを変更" />
+      <item name="change_title" value="タイトルを変更" />
       <item name="buttons" value="ボタン" />
       <item name="disable_minimize_button" value="「最小化」ボタンを無効化" />
       <item name="disable_maximize_button" value="「最大化」ボタンを無効化" />
@@ -1256,8 +1266,6 @@
       <item name="roll_up" value="접기" />
       <item name="aero_glass" value="에어로 글래스" />
       <item name="always_on_top" value="항상 맨 위에 표시" />
-      <item name="change_icon" value="아이콘 변경" />
-      <item name="change_title" value="제목 변경" />
       <item name="send_to_bottom" value="맨 아래로 보내기" />
       <item name="save_screenshot" value="스크린샷 저장" />
       <item name="open_file_in_explorer" value="탐색기에서 파일 열기" />
@@ -1314,6 +1322,10 @@
       <item name="dimmer" value="디머" />
       <item name="dimmer_on" value="켜기" />
       <item name="dimmer_off" value="끄기" />
+      <item name="title_bar" value="제목 표시줄" />
+      <item name="dark_mode" value="다크 모드" />
+      <item name="change_icon" value="아이콘 변경" />
+      <item name="change_title" value="제목 변경" />
       <item name="buttons" value="버튼" />
       <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 사용 안 함" />
       <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 사용 안 함" />
@@ -1506,8 +1518,6 @@
       <item name="roll_up" value="Свернуть вверх" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Поверх остальных" />
-      <item name="change_icon" value="Изменить иконку" />
-      <item name="change_title" value="Изменить заголовок" />
       <item name="send_to_bottom" value="Переместить вниз" />
       <item name="save_screenshot" value="Сохранить снимок окна" />
       <item name="open_file_in_explorer" value="Открыть в проводнике" />
@@ -1564,6 +1574,10 @@
       <item name="dimmer" value="Затемнение" />
       <item name="dimmer_on" value="Включить" />
       <item name="dimmer_off" value="Выключить" />
+      <item name="title_bar" value="Строка заголовка" />
+      <item name="dark_mode" value="Темный режим" />
+      <item name="change_icon" value="Изменить иконку" />
+      <item name="change_title" value="Изменить заголовок" />
       <item name="buttons" value="Кнопки" />
       <item name="disable_minimize_button" value="Отключить кнопку минимизации окна" />
       <item name="disable_maximize_button" value="Отключить кнопку развертывания окна" />
@@ -1754,8 +1768,6 @@
       <item name="roll_up" value="Замотај" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Увек испред" />
-      <item name="change_icon" value="Промените икону" />
-      <item name="change_title" value="Промените наслов" />
       <item name="send_to_bottom" value="Попаљи на дно" />
       <item name="save_screenshot" value="Сачувај прозор програма" />
       <item name="open_file_in_explorer" value="Отвори датотеку у Explorer" />
@@ -1812,6 +1824,10 @@
       <item name="dimmer" value="Затамњивач прозора" />
       <item name="dimmer_on" value="Укључити" />
       <item name="dimmer_off" value="Искључити" />
+      <item name="title_bar" value="Трака наслова" />
+      <item name="dark_mode" value="Тамни режим" />
+      <item name="change_icon" value="Промените икону" />
+      <item name="change_title" value="Промените наслов" />
       <item name="buttons" value="Дугмад" />
       <item name="disable_minimize_button" value="Онемогућите дугме &quot;Минимизирај&quot;" />
       <item name="disable_maximize_button" value="Онемогућите дугме &quot;Максимирај&quot;" />
@@ -2002,8 +2018,6 @@
       <item name="roll_up" value="Enrolar" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Manter esta janela sempre na frente" />
-      <item name="change_icon" value="Alterar ícone" />
-      <item name="change_title" value="Alterar título" />
       <item name="send_to_bottom" value="Enviar para o fundo" />
       <item name="save_screenshot" value="Fazer captura de tela" />
       <item name="open_file_in_explorer" value="Abrir a pasta do executável no Explorer" />
@@ -2060,6 +2074,10 @@
       <item name="dimmer" value="Dimmer" />
       <item name="dimmer_on" value="On" />
       <item name="dimmer_off" value="Off" />
+      <item name="title_bar" value="Barra de título" />
+      <item name="dark_mode" value="Modo escuro" />
+      <item name="change_icon" value="Alterar ícone" />
+      <item name="change_title" value="Alterar título" />
       <item name="buttons" value="Botões" />
       <item name="disable_minimize_button" value="Desativar o botão &quot;Minimizar&quot;" />
       <item name="disable_maximize_button" value="Desativar o botão &quot;Maximizar&quot;" />
@@ -2250,8 +2268,6 @@
       <item name="roll_up" value="Riavvolgi" />
       <item name="aero_glass" value="Aero glass" />
       <item name="always_on_top" value="Sempre davanti" />
-      <item name="change_icon" value="Cambia icona" />
-      <item name="change_title" value="Cambia titolo" />
       <item name="send_to_bottom" value="Metti dietro" />
       <item name="save_screenshot" value="Salva schermata" />
       <item name="open_file_in_explorer" value="Apri file in Esplora risorse" />
@@ -2308,6 +2324,10 @@
       <item name="dimmer" value="Oscuramento" />
       <item name="dimmer_on" value="Sì" />
       <item name="dimmer_off" value="No" />
+      <item name="title_bar" value="Barra del titolo" />
+      <item name="dark_mode" value="Modalità scura" />
+      <item name="change_icon" value="Cambia icona" />
+      <item name="change_title" value="Cambia titolo" />
       <item name="buttons" value="Pulsanti" />
       <item name="disable_minimize_button" value="Disabilita il pulsante &quot;Minimizza&quot;" />
       <item name="disable_maximize_button" value="Disabilita il pulsante &quot;Massimizza&quot;" />
@@ -2500,8 +2520,6 @@
       <item name="roll_up" value="Enrouler" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Toujours au premier plan" />
-      <item name="change_icon" value="Changer d'icône" />
-      <item name="change_title" value="Changer le titre" />
       <item name="send_to_bottom" value="Réduire dans la barre des tâches" />
       <item name="save_screenshot" value="Sauvegarder la capture d'écran" />
       <item name="open_file_in_explorer" value="Ouvrir le fichier dans l'explorateur" />
@@ -2558,6 +2576,10 @@
       <item name="dimmer" value="Dimmer" />
       <item name="dimmer_on" value="Sur" />
       <item name="dimmer_off" value="Désactivé" />
+      <item name="title_bar" value="Barre de titre" />
+      <item name="dark_mode" value="Mode sombre" />
+      <item name="change_icon" value="Changer d'icône" />
+      <item name="change_title" value="Changer le titre" />
       <item name="buttons" value="Boutons" />
       <item name="disable_minimize_button" value="Désactiver le bouton &quot;Réduire&quot;" />
       <item name="disable_maximize_button" value="Désactiver le bouton &quot;Agrandir&quot;" />
@@ -2750,8 +2772,6 @@
       <item name="roll_up" value="Fölfelé" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Mindig fölül" />
-      <item name="change_icon" value="Ikon módosítása" />
-      <item name="change_title" value="Cím módosítása" />
       <item name="send_to_bottom" value="Küldés alulra" />
       <item name="save_screenshot" value="Képernyőkép mentése" />
       <item name="open_file_in_explorer" value="Fájl megnyitása az Intézőben" />
@@ -2808,6 +2828,10 @@
       <item name="dimmer" value="Dimmer" />
       <item name="dimmer_on" value="Be" />
       <item name="dimmer_off" value="Ki" />
+      <item name="title_bar" value="Ablak címsora" />
+      <item name="dark_mode" value="Sötét mód" />
+      <item name="change_icon" value="Ikon módosítása" />
+      <item name="change_title" value="Cím módosítása" />
       <item name="buttons" value="Gombok" />
       <item name="disable_minimize_button" value="Tiltsa le a &quot;Kis méret&quot; gombot" />
       <item name="disable_maximize_button" value="Tiltsa le a &quot;Maximálás&quot; gombot" />
@@ -3000,8 +3024,6 @@
       <item name="roll_up" value="Roll Up" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="תמיד עליון" />
-      <item name="change_icon" value="שנה סמל" />
-      <item name="change_title" value="שנה שם חלון" />
       <item name="send_to_bottom" value="שלח ללמטה" />
       <item name="save_screenshot" value="שמור צילום מסך" />
       <item name="open_file_in_explorer" value="פתח קובץ בסייר הקבצים" />
@@ -3058,6 +3080,10 @@
       <item name="dimmer" value="עמום" />
       <item name="dimmer_on" value="Turn On" />
       <item name="dimmer_off" value="Turn Off" />
+      <item name="title_bar" value="שורת הכותרת של החלון" />
+      <item name="dark_mode" value="מצב כהה" />
+      <item name="change_icon" value="שנה סמל" />
+      <item name="change_title" value="שנה שם חלון" />
       <item name="buttons" value="מקשים" />
       <item name="disable_minimize_button" value="'השבת לחצן 'מזער" />
       <item name="disable_maximize_button" value="'השבת לחצן 'הגדל" />
@@ -3250,8 +3276,6 @@
       <item name="roll_up" value="Enrollar" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Siempre encima" />
-      <item name="change_icon" value="Cambiar icono" />
-      <item name="change_title" value="Cambiar título" />
       <item name="send_to_bottom" value="Enviar al fondo" />
       <item name="save_screenshot" value="Tomar captura de la ventana" />
       <item name="open_file_in_explorer" value="Abrir ruta del proceso" />
@@ -3308,6 +3332,10 @@
       <item name="dimmer" value="Atenuar fondo" />
       <item name="dimmer_on" value="Encendido" />
       <item name="dimmer_off" value="Apagado" />
+      <item name="title_bar" value="Barra de título" />
+      <item name="dark_mode" value="Modo oscuro" />
+      <item name="change_icon" value="Cambiar icono" />
+      <item name="change_title" value="Cambiar título" />
       <item name="buttons" value="Botones" />
       <item name="disable_minimize_button" value="Desactivar botón &quot;Minimizar&quot;" />
       <item name="disable_maximize_button" value="Desactivar botón &quot;Maximizar&quot;" />
@@ -3500,8 +3528,6 @@
       <item name="roll_up" value="Zavij" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Vedno na vrhu" />
-      <item name="change_icon" value="Spremeni ikono" />
-      <item name="change_title" value="Spremeni naslov" />
       <item name="send_to_bottom" value="Pošlji na dno" />
       <item name="save_screenshot" value="Shrani posnetek zaslona" />
       <item name="open_file_in_explorer" value="Odpri datoteko v Explorerju" />
@@ -3558,6 +3584,10 @@
       <item name="dimmer" value="Zatemnitev" />
       <item name="dimmer_on" value="Vklopi" />
       <item name="dimmer_off" value="Izklopi" />
+      <item name="title_bar" value="Naslovna vrstica" />
+      <item name="dark_mode" value="Temni način" />
+      <item name="change_icon" value="Spremeni ikono" />
+      <item name="change_title" value="Spremeni naslov" />
       <item name="buttons" value="Gumbi" />
       <item name="disable_minimize_button" value="Onemogoči gumb &quot;Pomanjšaj&quot;" />
       <item name="disable_maximize_button" value="Onemogoči gumb &quot;Povečaj&quot;" />
@@ -3750,8 +3780,6 @@
       <item name="roll_up" value="சுருட்டு" />
       <item name="aero_glass" value="ஏரோ கிளாஸ்" />
       <item name="always_on_top" value="எப்போதும் மேலே" />
-      <item name="change_icon" value="ஐகானை மாற்று" />
-      <item name="change_title" value="தலைப்பை மாற்று" />
       <item name="send_to_bottom" value="கீழே அனுப்பு" />
       <item name="save_screenshot" value="ஸ்கிரீன்ஷாட்டைச் சேமி" />
       <item name="open_file_in_explorer" value="எக்ஸ்ப்ளோரரில் கோப்பைத் திற" />
@@ -3808,6 +3836,10 @@
       <item name="dimmer" value="டிம்மர்" />
       <item name="dimmer_on" value="ஆன் செய்" />
       <item name="dimmer_off" value="ஆஃப் செய்" />
+      <item name="title_bar" value="தலைப்புப் பட்டை" />
+      <item name="dark_mode" value="இருள் பயன்முறை" />
+      <item name="change_icon" value="ஐகானை மாற்று" />
+      <item name="change_title" value="தலைப்பை மாற்று" />
       <item name="buttons" value="பொத்தான்கள்" />
       <item name="disable_minimize_button" value="&quot;குறைத்தல்&quot; பொத்தானை முடக்கு" />
       <item name="disable_maximize_button" value="&quot;பெரிதாக்குதல்&quot; பொத்தானை முடக்கு" />
@@ -4000,8 +4032,6 @@
       <item name="roll_up" value="Cuộn lên" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Luôn trên cùng" />
-      <item name="change_icon" value="Thay đổi biểu tượng" />
-      <item name="change_title" value="Thay đổi tiêu đề" />
       <item name="send_to_bottom" value="Đưa xuống dưới cùng" />
       <item name="save_screenshot" value="Lưu ảnh chụp màn hình" />
       <item name="open_file_in_explorer" value="Mở tệp trong Explorer" />
@@ -4058,6 +4088,10 @@
       <item name="dimmer" value="Làm mờ" />
       <item name="dimmer_on" value="Bật" />
       <item name="dimmer_off" value="Tắt" />
+      <item name="title_bar" value="Thanh tiêu đề" />
+      <item name="dark_mode" value="Chế độ tối" />
+      <item name="change_icon" value="Thay đổi biểu tượng" />
+      <item name="change_title" value="Thay đổi tiêu đề" />
       <item name="buttons" value="Nút" />
       <item name="disable_minimize_button" value="Vô hiệu hóa nút &quot;Thu nhỏ&quot;" />
       <item name="disable_maximize_button" value="Vô hiệu hóa nút &quot;Phóng to&quot;" />
@@ -4250,8 +4284,6 @@
       <item name="roll_up" value="Gulung ke Atas" />
       <item name="aero_glass" value="Aero Glass" />
       <item name="always_on_top" value="Selalu di Atas" />
-      <item name="change_icon" value="Ubah Ikon" />
-      <item name="change_title" value="Ubah Judul" />
       <item name="send_to_bottom" value="Kirim ke Belakang" />
       <item name="save_screenshot" value="Simpan Tangkapan Layar" />
       <item name="open_file_in_explorer" value="Buka File di Explorer" />
@@ -4308,6 +4340,10 @@
       <item name="dimmer" value="Peredup" />
       <item name="dimmer_on" value="Aktifkan" />
       <item name="dimmer_off" value="Nonaktifkan" />
+      <item name="title_bar" value="Bilah judul" />
+      <item name="dark_mode" value="Mode gelap" />
+      <item name="change_icon" value="Ubah Ikon" />
+      <item name="change_title" value="Ubah Judul" />
       <item name="buttons" value="Tombol" />
       <item name="disable_minimize_button" value="Nonaktifkan Tombol &quot;Minimalkan&quot;" />
       <item name="disable_maximize_button" value="Nonaktifkan Tombol &quot;Maksimalkan&quot;" />

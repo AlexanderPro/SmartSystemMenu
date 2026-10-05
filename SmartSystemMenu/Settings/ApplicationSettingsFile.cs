@@ -121,6 +121,7 @@ namespace SmartSystemMenu.Settings
             settings.SaveSelectedItems.Transparency = saveSelectedItemsElement.Attribute("transparency") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("transparency").Value) ? saveSelectedItemsElement.Attribute("transparency").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Priority = saveSelectedItemsElement.Attribute("priority") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("priority").Value) ? saveSelectedItemsElement.Attribute("priority").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.MinimizeToTrayAlways = saveSelectedItemsElement.Attribute("minimizeToTrayAlways") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value) ? saveSelectedItemsElement.Attribute("minimizeToTrayAlways").Value.ToLower() == "true" : true;
+            settings.SaveSelectedItems.DarkMode = saveSelectedItemsElement.Attribute("darkMode") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("darkMode").Value) ? saveSelectedItemsElement.Attribute("darkMode").Value.ToLower() == "true" : true;
             settings.SaveSelectedItems.Buttons = saveSelectedItemsElement.Attribute("buttons") != null && !string.IsNullOrEmpty(saveSelectedItemsElement.Attribute("buttons").Value) ? saveSelectedItemsElement.Attribute("buttons").Value.ToLower() == "true" : true;
 
             var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
@@ -251,6 +252,7 @@ namespace SmartSystemMenu.Settings
                                      new XAttribute("transparency", settings.SaveSelectedItems.Transparency.ToString().ToLower()),
                                      new XAttribute("priority", settings.SaveSelectedItems.Priority.ToString().ToLower()),
                                      new XAttribute("minimizeToTrayAlways", settings.SaveSelectedItems.MinimizeToTrayAlways.ToString().ToLower()),
+                                     new XAttribute("darkMode", settings.SaveSelectedItems.DarkMode.ToString().ToLower()),
                                      new XAttribute("buttons", settings.SaveSelectedItems.Buttons.ToString().ToLower())
                                  ),
                                  new XElement("systemTrayIcon",

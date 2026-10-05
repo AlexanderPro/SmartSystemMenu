@@ -71,7 +71,7 @@
         public const int WM_GETTEXTLENGTH = 0x000E;
         public const int WM_GETFONT = 0x0031;
         public const int WM_COPYDATA = 0x004A;
-
+        public const int WM_NCACTIVATE = 0x0086;
         public const int WM_MOUSEMOVE = 0x0200;
         public const int WM_LBUTTONDOWN = 0x0201;
         public const int WM_LBUTTONUP = 0x0202;
@@ -141,6 +141,9 @@
         public const uint HC_ACTION = 0;
 
         public const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;
+        public const int DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19;
+        public const int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
+
         public const int CREATE_NO_WINDOW = 0x08000000;
         public const int STARTF_USESHOWWINDOW = 0x00000001;
 

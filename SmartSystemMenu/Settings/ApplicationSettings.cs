@@ -294,6 +294,7 @@ namespace SmartSystemMenu.Settings
                 SaveSelectedItems.Transparency != other.SaveSelectedItems.Transparency ||
                 SaveSelectedItems.Priority != other.SaveSelectedItems.Priority ||
                 SaveSelectedItems.MinimizeToTrayAlways != other.SaveSelectedItems.MinimizeToTrayAlways ||
+                SaveSelectedItems.DarkMode != other.SaveSelectedItems.DarkMode ||
                 SaveSelectedItems.Buttons != other.SaveSelectedItems.Buttons)
             {
                 return false;
@@ -371,6 +372,7 @@ namespace SmartSystemMenu.Settings
             hashCode ^= SaveSelectedItems.Transparency.GetHashCode();
             hashCode ^= SaveSelectedItems.Priority.GetHashCode();
             hashCode ^= SaveSelectedItems.MinimizeToTrayAlways.GetHashCode();
+            hashCode ^= SaveSelectedItems.DarkMode.GetHashCode();
             hashCode ^= SaveSelectedItems.Buttons.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
             hashCode ^= ShowSystemTrayIcon.GetHashCode();
