@@ -106,6 +106,12 @@ namespace SmartSystemMenu.HotKeys
                         return 1;
                     }
                 }
+
+                stopWatch.Stop();
+                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                {
+                    InitializeHook();
+                }
             }
 
             return CallNextHookEx(_hookHandle, nCode, wParam, lParam);

@@ -100,14 +100,15 @@ namespace SmartSystemMenu.HotKeys
                                 var eventArgs = new KeyboardEventArgs();
                                 eventArgs.NextMonitor = true;
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -139,14 +140,15 @@ namespace SmartSystemMenu.HotKeys
                                 var eventArgs = new KeyboardEventArgs();
                                 eventArgs.PreviousMonitor = true;
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -183,14 +185,15 @@ namespace SmartSystemMenu.HotKeys
                                 var menuItemId = MenuItemId.GetId(item.Name);
                                 var eventArgs = new KeyboardEventArgs(menuItemId);
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -226,14 +229,15 @@ namespace SmartSystemMenu.HotKeys
                             {
                                 var eventArgs = new KeyboardEventArgs(item.Id);
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
