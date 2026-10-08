@@ -280,6 +280,9 @@ namespace SmartSystemMenu.Native
         [DllImport("user32.dll")]
         public static extern bool InvalidateRect(IntPtr hWnd, IntPtr lpRect, bool bErase);
 
+        [DllImport("user32.dll")]
+        public static extern bool RedrawWindow(IntPtr hWnd, IntPtr lprcUpdate, IntPtr hrgnUpdate, uint flags);
+
         public static IntPtr GetClassLongPtr(IntPtr hWnd, int nIndex) => IntPtr.Size > 4 ? GetClassLongPtr64(hWnd, nIndex) : new IntPtr(GetClassLongPtr32(hWnd, nIndex));
 
         public static readonly IntPtr HWND_TOP = new (0);

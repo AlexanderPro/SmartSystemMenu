@@ -25,8 +25,6 @@ namespace SmartSystemMenu.Utils
                 @"^HwndWrapper\[(?<process>[^;]+);;[0-9a-fA-F\-]{36}\]$",
                 RegexOptions.Compiled);
 
-        private static bool IsWindows10OrGreater(int build = -1) => Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= build;
-
         public static string NormalizeClassName(string className)
         {
             if (string.IsNullOrEmpty(className))
@@ -616,8 +614,9 @@ namespace SmartSystemMenu.Utils
                 int useImmersiveDarkMode = enabled ? 1 : 0;
                 if (DwmSetWindowAttribute(hWnd, attribute, ref useImmersiveDarkMode, sizeof(int)) == 0)
                 {
-                    PostMessage(hWnd, WM_NCACTIVATE, 0, 0);
-                    PostMessage(hWnd, WM_NCACTIVATE, 1, 0);
+                    SendMessage(hWnd, WM_NCACTIVATE, 0, 0);
+                    SendMessage(hWnd, WM_NCACTIVATE, 1, 0);
+                    ForceRedrawNonClientArea(hWnd);
                     return true;
                 }
             }
@@ -646,5 +645,20 @@ namespace SmartSystemMenu.Utils
         public static Func<int, byte> TransparencyToAlphaOpacity = t => (byte)Math.Round(255 * (100 - t) / 100f, MidpointRounding.AwayFromZero);
 
         public static Func<byte, int> AlphaOpacityToTransparency = o => 100 - (int)Math.Round(100 * o / 255f, MidpointRounding.AwayFromZero);
+
+        private static void ForceRedrawNonClientArea(IntPtr hWnd)
+        {
+            if (!GetWindowRect(hWnd, out var rect) || rect.Width <= 0 || rect.Height <= 0)
+            {
+                return;
+            }
+
+            var flags = SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOREDRAW;
+            SetWindowPos(hWnd, IntPtr.Zero, rect.Left, rect.Top, rect.Width + 1, rect.Height, flags);
+            SetWindowPos(hWnd, IntPtr.Zero, rect.Left, rect.Top, rect.Width, rect.Height, flags);
+            RedrawWindow(hWnd, IntPtr.Zero, IntPtr.Zero, RDW_FRAME | RDW_INVALIDATE | RDW_UPDATENOW);
+        }
+
+        private static bool IsWindows10OrGreater(int build = -1) => Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= build;
     }
 }

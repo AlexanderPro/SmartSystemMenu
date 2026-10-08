@@ -19,7 +19,7 @@
 
 #define SC_DRAG_BY_MOUSE                          0x4809
 #define SC_ROLLUP                                 0x4783
-#define SC_RESIZABLE                              0x4828
+#define SC_RESIZABLE                              0x4827
 
 #define DLLEXPORT extern "C" __declspec(dllexport)
 
