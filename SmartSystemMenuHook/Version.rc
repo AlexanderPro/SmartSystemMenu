@@ -2,8 +2,8 @@
 #include "winres.h"
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION     2,33,1,0
-PRODUCTVERSION  2,33,1,0
+FILEVERSION     2,34,0,0
+PRODUCTVERSION  2,34,0,0
 FILEFLAGSMASK   0x3fL
 FILEFLAGS       0x0L
 FILEOS          VOS_NT_WINDOWS32
@@ -16,9 +16,9 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Alexander Illarionov\0"
             VALUE "FileDescription", "SmartSystemMenu\0"
-            VALUE "FileVersion", "2.33.1.0\0"
+            VALUE "FileVersion", "2.34.0.0\0"
             VALUE "ProductName", "SmartSystemMenu\0"
-            VALUE "ProductVersion", "2.33.1\0"
+            VALUE "ProductVersion", "2.34.0\0"
             VALUE "LegalCopyright", "Copyright © 2005\0"
         END
     END
