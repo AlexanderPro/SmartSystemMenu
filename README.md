@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [**English**](/) [Русский](/README_RU.md) [中文版](/README_CN.md) [한국어](/README_KO.md) [Bahasa Indonesia](/README_ID.md)
+🌏: [**English**](/) [Русский](/README_RU.md) [中文](/README_CN.md) [한국어](/README_KO.md) [Bahasa Indonesia](/README_ID.md)
 
 ---
 
@@ -17,8 +17,6 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Roll Up.** Allows to roll up and down the current window.
 * **Aero Glass.** Allows to add the "Aero Glass" blur to the current window. (Windows Vista and higher. Mostly for console windows.)
 * **Always On Top.** Allows the current window to stay on top of all other windows.
-* **Change Icon.** Allows to change the icon of the current window.
-* **Change Title.** Allows to change the text in the title bar.
 * **Send To Bottom.** Allows to send to bottom the current window.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
@@ -32,7 +30,7 @@ SmartSystemMenu extends system menu of all windows in the system. It appends nex
 * **Priority.** Allows to change the current window's program priority.
 * **Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard and clear clipboard.
 * **Dimmer.** Dims all but the currently focused window.
-* **Buttons.** Allows to disable "Minimize", "Maximize" and "Close" button.
+* **Title Bar.** Allows to change the icon of the current window. Allows to change the text in the title bar. Allows to disable "Minimize", "Maximize" and "Close" button.
 * **System Tray.** Allows to minimize or suspend the current window to the system tray.
 * **Other Windows.** Allows to close and minimize all windows in the system except the current.
 * **Start Program.** Allows to start programs which is in the settings.

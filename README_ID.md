@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [English](/) [Русский](/README_RU.md) [中文版](/README_CN.md) [한국어](/README_KO.md) [**Bahasa Indonesia**](/README_ID.md)
+🌏: [English](/) [Русский](/README_RU.md) [中文](/README_CN.md) [한국어](/README_KO.md) [**Bahasa Indonesia**](/README_ID.md)
 
 ---
 
@@ -17,8 +17,6 @@ SmartSystemMenu memperluas menu sistem pada semua jendela di sistem. Program ini
 * **Gulung ke Atas.** Memungkinkan jendela saat ini digulung ke atas dan dikembalikan.
 * **Aero Glass.** Memungkinkan efek buram (blur) "Aero Glass" ditambahkan ke jendela saat ini. (Windows Vista atau yang lebih baru. Terutama digunakan untuk jendela konsol.)
 * **Selalu di Atas.** Memungkinkan jendela saat ini tetap berada di atas semua jendela lain.
-* **Ubah Ikon.** Memungkinkan ikon jendela saat ini diubah.
-* **Ubah Judul.** Memungkinkan teks pada bilah judul diubah.
 * **Kirim ke Belakang.** Memungkinkan jendela saat ini dikirim ke belakang.
 * **Simpan Tangkapan Layar.** Memungkinkan tangkapan layar jendela saat ini disimpan ke file.
 * **Buka File di Explorer.** Memungkinkan file proses dibuka di File Explorer.
@@ -32,7 +30,7 @@ SmartSystemMenu memperluas menu sistem pada semua jendela di sistem. Program ini
 * **Prioritas.** Memungkinkan prioritas program dari jendela saat ini diubah.
 * **Papan Klip.** Memungkinkan semua teks jendela (termasuk konsol, produk MS Office, dan lainnya) disalin ke papan klip serta mengosongkan papan klip.
 * **Peredup.** Meredupkan semua jendela kecuali jendela yang sedang mendapat fokus.
-* **Tombol.** Memungkinkan tombol "Minimalkan", "Maksimalkan", dan "Tutup" dinonaktifkan.
+* **Bilah judul.** Memungkinkan ikon jendela saat ini diubah. Memungkinkan teks pada bilah judul diubah. Memungkinkan tombol "Minimalkan", "Maksimalkan", dan "Tutup" dinonaktifkan.
 * **Baki Sistem.** Memungkinkan jendela saat ini diminimalkan atau ditangguhkan ke baki sistem.
 * **Jendela Lain.** Memungkinkan semua jendela di sistem selain jendela saat ini ditutup atau diminimalkan.
 * **Jalankan Program.** Memungkinkan program yang ada di pengaturan dijalankan.
