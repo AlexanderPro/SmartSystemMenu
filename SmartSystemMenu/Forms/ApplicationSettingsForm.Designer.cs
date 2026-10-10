@@ -102,6 +102,7 @@ namespace SmartSystemMenu.Forms
             this.txtDimmerColor = new System.Windows.Forms.TextBox();
             this.tabpMenuSaveSelectedItems = new System.Windows.Forms.TabPage();
             this.grpbSaveSelectedItems = new System.Windows.Forms.GroupBox();
+            this.chkDarkMode = new System.Windows.Forms.CheckBox();
             this.chkResizable = new System.Windows.Forms.CheckBox();
             this.chkButtons = new System.Windows.Forms.CheckBox();
             this.chkHideForAltTab = new System.Windows.Forms.CheckBox();
@@ -114,7 +115,6 @@ namespace SmartSystemMenu.Forms
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
-            this.chkDarkMode = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -864,7 +864,7 @@ namespace SmartSystemMenu.Forms
             // lblTransparencyValue
             // 
             this.lblTransparencyValue.AutoSize = true;
-            this.lblTransparencyValue.Location = new System.Drawing.Point(345, 28);
+            this.lblTransparencyValue.Location = new System.Drawing.Point(385, 28);
             this.lblTransparencyValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTransparencyValue.Name = "lblTransparencyValue";
             this.lblTransparencyValue.Size = new System.Drawing.Size(0, 17);
@@ -873,7 +873,7 @@ namespace SmartSystemMenu.Forms
             // lblTransparencyToValue
             // 
             this.lblTransparencyToValue.AutoSize = true;
-            this.lblTransparencyToValue.Location = new System.Drawing.Point(669, 28);
+            this.lblTransparencyToValue.Location = new System.Drawing.Point(741, 27);
             this.lblTransparencyToValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTransparencyToValue.Name = "lblTransparencyToValue";
             this.lblTransparencyToValue.Size = new System.Drawing.Size(44, 17);
@@ -962,6 +962,17 @@ namespace SmartSystemMenu.Forms
             this.grpbSaveSelectedItems.Size = new System.Drawing.Size(793, 453);
             this.grpbSaveSelectedItems.TabIndex = 0;
             this.grpbSaveSelectedItems.TabStop = false;
+            // 
+            // chkDarkMode
+            // 
+            this.chkDarkMode.AutoSize = true;
+            this.chkDarkMode.Location = new System.Drawing.Point(8, 330);
+            this.chkDarkMode.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDarkMode.Name = "chkDarkMode";
+            this.chkDarkMode.Size = new System.Drawing.Size(99, 21);
+            this.chkDarkMode.TabIndex = 8;
+            this.chkDarkMode.Text = "Dark Mode";
+            this.chkDarkMode.UseVisualStyleBackColor = true;
             // 
             // chkResizable
             // 
@@ -1081,17 +1092,6 @@ namespace SmartSystemMenu.Forms
             this.btnCancel.TabIndex = 2;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
-            // 
-            // chkDarkMode
-            // 
-            this.chkDarkMode.AutoSize = true;
-            this.chkDarkMode.Location = new System.Drawing.Point(8, 330);
-            this.chkDarkMode.Margin = new System.Windows.Forms.Padding(4);
-            this.chkDarkMode.Name = "chkDarkMode";
-            this.chkDarkMode.Size = new System.Drawing.Size(99, 21);
-            this.chkDarkMode.TabIndex = 8;
-            this.chkDarkMode.Text = "Dark Mode";
-            this.chkDarkMode.UseVisualStyleBackColor = true;
             // 
             // ApplicationSettingsForm
             // 
