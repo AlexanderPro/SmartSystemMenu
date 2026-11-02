@@ -3278,21 +3278,21 @@
       <item name="always_on_top" value="Siempre encima" />
       <item name="send_to_bottom" value="Enviar al fondo" />
       <item name="save_screenshot" value="Tomar captura de la ventana" />
-      <item name="open_file_in_explorer" value="Abrir ruta del proceso" />
+      <item name="open_file_in_explorer" value="Abrir ubicación del archivo en el Explorador" />
       <item name="clipboard" value="Portapapeles" />
       <item name="copy_screenshot" value="Copiar captura" />
       <item name="copy_window_text" value="Copiar texto de ventana" />
       <item name="copy_window_title" value="Copiar título de ventana" />
       <item name="copy_full_process_path" value="Copiar ruta completa del proceso" />
       <item name="clear_clipboard" value="Limpiar" />
-      <item name="drag_by_mouse" value="Mover al agarrar" />
+      <item name="drag_by_mouse" value="Arrastrar con el mouse" />
       <item name="hide_for_alt_tab" value="Ocultar para Alt+Tab" />
-      <item name="click_through" value="Hacer clic a través" />
+      <item name="click_through" value="Clic a través" />
       <item name="size" value="Redimensionar" />
       <item name="size_resizable" value="Redimensionable" />
       <item name="size_default" value="Predeterminado" />
       <item name="size_custom" value="Personalizar..." />
-      <item name="move_to" value="Mover a..." />
+      <item name="move_to" value="Mover a" />
       <item name="monitor" value="Pantalla " />
       <item name="alignment" value="Alineación" />
       <item name="align_top_left" value="arriba-izquierda" />
@@ -3300,7 +3300,7 @@
       <item name="align_top_right" value="arriba-derecha" />
       <item name="align_middle_left" value="medio-izquierda" />
       <item name="align_middle_center" value="medio-centro" />
-      <item name="align_middle_right" value="medio-derecho" />
+      <item name="align_middle_right" value="medio-derecha" />
       <item name="align_bottom_left" value="abajo-izquierda" />
       <item name="align_bottom_center" value="abajo-centro" />
       <item name="align_bottom_right" value="abajo-derecha" />
@@ -3314,11 +3314,11 @@
       <item name="trans_default" value="Predeterminado" />
       <item name="trans_custom" value="Personalizar..." />
       <item name="priority" value="Prioridad" />
-      <item name="priority_real_time" value="Tiempo Real: 24" />
+      <item name="priority_real_time" value="Tiempo real: 24" />
       <item name="priority_high" value="Alto: 13" />
-      <item name="priority_above_normal" value="Arriba de lo Normal: 10" />
+      <item name="priority_above_normal" value="Por encima de lo normal: 10" />
       <item name="priority_normal" value="Normal: 8" />
-      <item name="priority_below_normal" value="Debajo de lo Normal: 6" />
+      <item name="priority_below_normal" value="Por debajo de lo normal: 6" />
       <item name="priority_idle" value="Inactivo: 4" />
       <item name="system_tray" value="Bandeja del sistema" />
       <item name="minimize_to_systemtray" value="Minimizar a la bandeja" />
@@ -3330,8 +3330,8 @@
       <item name="start_program" value="Iniciar programa" />
       <item name="save_selected_items" value="Guardar" />
       <item name="dimmer" value="Atenuar fondo" />
-      <item name="dimmer_on" value="Encendido" />
-      <item name="dimmer_off" value="Apagado" />
+      <item name="dimmer_on" value="Activar" />
+      <item name="dimmer_off" value="Desactivar" />
       <item name="title_bar" value="Barra de título" />
       <item name="dark_mode" value="Modo oscuro" />
       <item name="change_icon" value="Cambiar icono" />
@@ -3342,20 +3342,20 @@
       <item name="disable_close_button" value="Desactivar botón &quot;Cerrar&quot;" />
       <item name="settings" value="Ajustes..." />
       <item name="grp_window" value="Ventana" />
-      <item name="grp_process" value="Procesos" />
+      <item name="grp_process" value="Proceso" />
       <item name="lbl_get_window_text" value="GetWindowText:" />
       <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
       <item name="lbl_get_class_name" value="GetClassName:" />
       <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
       <item name="lbl_font_name" value="Nombre de la fuente:" />
       <item name="lbl_window_handle" value="Identificador de la ventana:" />
-      <item name="lbl_parent_window_handle" value="Identificador padre de la ventana:" />
+      <item name="lbl_parent_window_handle" value="Identificador de la ventana principal:" />
       <item name="lbl_window_size" value="Tamaño de la ventana:" />
       <item name="lbl_window_position" value="Posición de la ventana:" />
       <item name="lbl_extended_frame_bounds" value="Límites de marco extendidos:" />
       <item name="lbl_instance" value="Instancia:" />
-      <item name="lbl_process_id" value="ID del Proceso:" />
-      <item name="lbl_thread_id" value="ID del Hilo:" />
+      <item name="lbl_process_id" value="ID del proceso:" />
+      <item name="lbl_thread_id" value="ID del hilo:" />
       <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
       <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
       <item name="lbl_gwl_style" value="GWL_STYLE:" />
@@ -3366,20 +3366,20 @@
       <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
       <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
       <item name="lbl_dwl_user" value="DWL_USER:" />
-      <item name="lbl_full_path" value="Ruta Completa:" />
-      <item name="lbl_command_line" value="Línea de Comandos:" />
+      <item name="lbl_full_path" value="Ruta completa:" />
+      <item name="lbl_command_line" value="Línea de comandos:" />
       <item name="lbl_started_at" value="Iniciado:" />
       <item name="lbl_owner" value="Propietario:" />
       <item name="lbl_threads" value="Hilos:" />
-      <item name="lbl_working_set_size" value="Tamaño del Conjunto de Trabajo:" />
+      <item name="lbl_working_set_size" value="Tamaño del conjunto de trabajo:" />
       <item name="lbl_parent" value="Padre:" />
       <item name="lbl_priority" value="Prioridad:" />
       <item name="lbl_handles" value="Identificadores:" />
-      <item name="lbl_virtual_size" value="Tamaño Virtual:" />
-      <item name="lbl_product_name" value="Nombre del Producto:" />
-      <item name="lbl_copyright" value="Derechos de Autor:" />
-      <item name="lbl_file_version" value="Versión del Archivo:" />
-      <item name="lbl_product_version" value="Versión del Producto:" />
+      <item name="lbl_virtual_size" value="Tamaño virtual:" />
+      <item name="lbl_product_name" value="Nombre del producto:" />
+      <item name="lbl_copyright" value="Derechos de autor:" />
+      <item name="lbl_file_version" value="Versión del archivo:" />
+      <item name="lbl_product_version" value="Versión del producto:" />
       <item name="information_btn_apply" value="Aceptar" />
       <item name="save_screenshot_title" value="Guardar captura..." />
       <item name="save_screenshot_filename" value="Captura de ventana" />
@@ -3389,8 +3389,8 @@
       <item name="icon_filter" value="Icon (*.ico)|*.ico|Imagen Bitmap (*.bmp)|*.bmp|Imagen Gif (*.gif)|*.gif|Imagen JPEG (*.jpeg)|*.jpeg|Imagen Png (*.png)|*.png|Imagen Tiff (*.tiff)|*.tiff|Imagen Wmf (*.wmf)|*.wmf|Todos los archivos (*.*)|*.*" />
       <item name="size_form" value="Establecer tamaño" />
       <item name="size_btn_apply" value="Aplicar" />
-      <item name="lbl_size_form_height" value="Altura:" />
-      <item name="lbl_size_form_width" value="Anchura:" />
+      <item name="lbl_size_form_height" value="Alto:" />
+      <item name="lbl_size_form_width" value="Ancho:" />
       <item name="lbl_size_form_top" value="Arriba:" />
       <item name="lbl_size_form_left" value="Izquierda:" />
       <item name="trans_form" value="Establecer transparencia" />
@@ -3398,7 +3398,7 @@
       <item name="align_form" value="Establecer posición" />
       <item name="align_btn_apply" value="Aplicar" />
       <item name="lbl_top" value="Arriba:" />
-      <item name="lbl_left" value="Derecha:" />
+      <item name="lbl_left" value="Izquierda:" />
       <item name="mi_restore" value="Restaurar" />
       <item name="mi_restore_windows" value="Restaurar" />
       <item name="mi_close" value="Cerrar" />
@@ -3418,7 +3418,7 @@
       <item name="btn_process_exclusion_down" value="Bajar proceso" />
       <item name="btn_add_process_exclusion" value="Añadir proceso" />
       <item name="tab_settings_menu" value="Menú" />
-      <item name="grpb_start_program" value="Elementos del menú Inciar programa" />
+      <item name="grpb_start_program" value="Elementos del menú Iniciar programa" />
       <item name="clm_start_program_title" value="Título" />
       <item name="clm_start_program_path" value="Nombre del archivo" />
       <item name="clm_start_program_arguments" value="Argumentos" />
@@ -3442,9 +3442,9 @@
       <item name="clm_window_size_delete" value="Eliminar" />
       <item name="lbl_window_size_title" value="Título:" />
       <item name="lbl_window_size_width" value="Ancho:" />
-      <item name="lbl_window_size_height" value="Altura:" />
+      <item name="lbl_window_size_height" value="Alto:" />
       <item name="lbl_window_size_top" value="Arriba:" />
-      <item name="lbl_window_size_left" value="Derecha:" />
+      <item name="lbl_window_size_left" value="Izquierda:" />
       <item name="lbl_window_size_key1" value="Tecla 1:" />
       <item name="lbl_window_size_key2" value="Tecla 2:" />
       <item name="lbl_window_size_key3" value="Tecla 3:" />
@@ -3485,7 +3485,7 @@
       <item name="tab_settings_hotkeys" value="Teclas de acceso rápido" />
       <item name="clm_hotkeys_name" value="Nombre" />
       <item name="clm_hotkeys_show_tooltip" value="Mostrar elemento de menú" />
-      <item name="tab_settings_menu_start" value="Menú (Inciar programa)" />
+      <item name="tab_settings_menu_start" value="Menú (Iniciar programa)" />
       <item name="tab_settings_menu_size" value="Menú (Redimensionar)" />
       <item name="tab_settings_menu_move_to" value="Menú (Mover a)" />
       <item name="tab_settings_menu_save" value="Menú (Guardar)" />
@@ -3502,22 +3502,22 @@
       <item name="closer_lbl_mouse_button" value="Botón del mouse" />
       <item name="closer_lbl_action" value="Acción" />
       <item name="closer_close_window" value="Cerrar ventana" />
-      <item name="closer_kill_process" value="Matar proceso" />
+      <item name="closer_kill_process" value="Finalizar proceso" />
       <item name="closer_close_foreground_window" value="Cerrar ventana en primer plano" />
       <item name="closer_close_window_under_cursor" value="Cerrar ventana debajo del cursor" />
-      <item name="closer_kill_process_with_foreground_window" value="Matar proceso de ventana en primer plano" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Matar proceso de ventana debajo del cursor" />
+      <item name="closer_kill_process_with_foreground_window" value="Finalizar proceso de ventana en primer plano" />
+      <item name="closer_kill_process_with_window_under_cursor" value="Finalizar proceso de ventana debajo del cursor" />
       <item name="grpb_sizer" value="Cómo configurar el tamaño de la ventana" />
       <item name="grpb_display" value="Pantalla" />
       <item name="grpb_next_hotkeys" value="Teclas de acceso rápido →" />
       <item name="grpb_previous_hotkeys" value="Teclas de acceso rápido ←" />
-      <item name="chk_enable_high_dpi" value="Habilitar DPI Alto" />
+      <item name="chk_enable_high_dpi" value="Habilitar DPI alto" />
       <item name="sizer_window_with_margins" value="Ventana con márgenes" />
       <item name="sizer_window_without_margins" value="Ventana sin márgenes" />
       <item name="sizer_window_client_area" value="Área del cliente de la ventana" />
       <item name="parameter_btn_apply" value="Aceptar" />
       <item name="parameter_form" value="Introducir parámetros" />
-      <item name="change_title_btn_apply" value="Ok" />
+      <item name="change_title_btn_apply" value="Aceptar" />
       <item name="change_title_btn_cancel" value="Cancelar" />
       <item name="change_title_form" value="Cambiar título" />
     </es>
