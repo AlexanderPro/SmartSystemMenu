@@ -773,7 +773,7 @@ namespace SmartSystemMenu.Forms
                         case MenuItemId.SC_DARK_MODE:
                             {
                                 var isChecked = window.Menu.IsMenuItemChecked(MenuItemId.SC_DARK_MODE);
-                                window.DarkMode(!isChecked);
+                                window.UseDarkMode(!isChecked);
                                 window.Menu.CheckMenuItem(MenuItemId.SC_DARK_MODE, !isChecked);
                             }
                             break;

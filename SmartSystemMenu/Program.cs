@@ -316,6 +316,22 @@ namespace SmartSystemMenu
                     }
                 }
 
+                // Use Dark Mode
+                if (toggleParser.HasToggle("darkmode"))
+                {
+                    var darkmodeString = toggleParser.GetToggleValueOrDefault("darkmode", string.Empty).ToLower();
+
+                    if (darkmodeString == "on")
+                    {
+                        window.UseDarkMode(true);
+                    }
+
+                    if (darkmodeString == "off")
+                    {
+                        window.UseDarkMode(false);
+                    }
+                }
+
                 // Set a Window Aero Glass
                 if (toggleParser.HasToggle("g") || toggleParser.HasToggle("aeroglass"))
                 {
@@ -525,6 +541,7 @@ namespace SmartSystemMenu
                        idle]
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
+   --darkmode         [on, off]
 -g --aeroglass        [on, off]
    --hidealttab       [on, off]
    --clickthrough     [on, off]

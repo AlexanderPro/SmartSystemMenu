@@ -689,7 +689,7 @@ namespace SmartSystemMenu
             }
         }
 
-        public void DarkMode(bool enabled)
+        public void UseDarkMode(bool enabled)
         {
             WindowUtils.UseDarkMode(Handle, enabled);
             State.DarkMode = enabled;
@@ -857,7 +857,7 @@ namespace SmartSystemMenu
 
             if (settings.DarkMode && state.DarkMode.HasValue)
             {
-                DarkMode(state.DarkMode.Value);
+                UseDarkMode(state.DarkMode.Value);
                 Menu.CheckMenuItem(MenuItemId.SC_DARK_MODE, state.DarkMode.Value);
             }
         }
