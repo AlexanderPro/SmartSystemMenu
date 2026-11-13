@@ -159,6 +159,7 @@ namespace SmartSystemMenu.Settings
                     "ta-IN" => "ta",
                     "vi-VN" => "vi",
                     "id-ID" => "id",
+                    _ when cultureName.StartsWith("ar", StringComparison.OrdinalIgnoreCase) => "ar",
                     _ => "en"
                 };
 
