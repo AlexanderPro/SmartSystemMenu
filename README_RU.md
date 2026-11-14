@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [English](/README.md) [**Русский**](/README_RU.md) [中文](/README_CN.md) [한국어](/README_KO.md) [Bahasa Indonesia](/README_ID.md)
+🌏: [العربية](/README_AR.md) [English](/README.md) [**Русский**](/README_RU.md) [中文](/README_CN.md) [한국어](/README_KO.md) [Bahasa Indonesia](/README_ID.md)
 
 ---
 

@@ -4529,5 +4529,257 @@
       <item name="change_title_btn_cancel" value="Batal" />
       <item name="change_title_form" value="Ubah Judul" />
     </id>
+    <ar>
+      <item name="separator" value="فاصل" />
+      <item name="information" value="معلومات النافذة" />
+      <item name="hide" value="إخفاء" />
+      <item name="roll_up" value="طي للأعلى" />
+      <item name="aero_glass" value="تأثير شفاف (Aero Glass)" />
+      <item name="always_on_top" value="دائمًا في المقدمة" />
+      <item name="send_to_bottom" value="إرسال إلى الخلف" />
+      <item name="save_screenshot" value="حفظ لقطة الشاشة..." />
+      <item name="open_file_in_explorer" value="فتح موقع الملف في المستكشف" />
+      <item name="clipboard" value="الحافظة" />
+      <item name="copy_screenshot" value="نسخ لقطة الشاشة" />
+      <item name="copy_window_text" value="نسخ نص النافذة" />
+      <item name="copy_window_title" value="نسخ عنوان النافذة" />
+      <item name="copy_full_process_path" value="نسخ مسار العملية بالكامل" />
+      <item name="clear_clipboard" value="مسح الحافظة" />
+      <item name="drag_by_mouse" value="سحب بواسطة الماوس" />
+      <item name="hide_for_alt_tab" value="إخفاء من قائمة Alt+Tab" />
+      <item name="click_through" value="النقر عبر النافذة" />
+      <item name="size" value="تغيير الحجم" />
+      <item name="size_resizable" value="قابل لتغيير الحجم" />
+      <item name="size_default" value="الافتراضي" />
+      <item name="size_custom" value="مخصص..." />
+      <item name="move_to" value="نقل إلى" />
+      <item name="monitor" value="الشاشة " />
+      <item name="alignment" value="محاذاة" />
+      <item name="align_top_left" value="أعلى اليسار" />
+      <item name="align_top_center" value="أعلى الوسط" />
+      <item name="align_top_right" value="أعلى اليمين" />
+      <item name="align_middle_left" value="وسط اليسار" />
+      <item name="align_middle_center" value="الوسط تمامًا" />
+      <item name="align_middle_right" value="وسط اليمين" />
+      <item name="align_bottom_left" value="أسفل اليسار" />
+      <item name="align_bottom_center" value="أسفل الوسط" />
+      <item name="align_bottom_right" value="أسفل اليمين" />
+      <item name="align_center_horizontally" value="توسيط أفقيًا" />
+      <item name="align_center_vertically" value="توسيط رأسيًا" />
+      <item name="align_default" value="الافتراضي" />
+      <item name="align_custom" value="مخصص..." />
+      <item name="transparency" value="الشفافية" />
+      <item name="trans_opaque" value=" (معتم)" />
+      <item name="trans_invisible" value=" (غير مرئي)" />
+      <item name="trans_default" value="الافتراضي" />
+      <item name="trans_custom" value="مخصص..." />
+      <item name="priority" value="الأولوية" />
+      <item name="priority_real_time" value="الوقت الحقيقي: 24" />
+      <item name="priority_high" value="عالية: 13" />
+      <item name="priority_above_normal" value="أعلى من العادية: 10" />
+      <item name="priority_normal" value="عادية: 8" />
+      <item name="priority_below_normal" value="أقل من العادية: 6" />
+      <item name="priority_idle" value="منخفضة (خاملة): 4" />
+      <item name="system_tray" value="علبة النظام" />
+      <item name="minimize_to_systemtray" value="تصغير إلى علبة النظام" />
+      <item name="minimize_always_to_systemtray" value="تصغير دائمًا إلى علبة النظام" />
+      <item name="suspend_to_systemtray" value="تعليق وتصغير إلى علبة النظام" />
+      <item name="other_windows" value="النوافذ الأخرى" />
+      <item name="minimize_other_windows" value="تصغير" />
+      <item name="close_other_windows" value="إغلاق" />
+      <item name="start_program" value="تشغيل برنامج" />
+      <item name="save_selected_items" value="حفظ" />
+      <item name="dimmer" value="تعتيم" />
+      <item name="dimmer_on" value="تشغيل" />
+      <item name="dimmer_off" value="إيقاف التشغيل" />
+      <item name="title_bar" value="شريط العنوان" />
+      <item name="dark_mode" value="الوضع الداكن" />
+      <item name="change_icon" value="تغيير الأيقونة..." />
+      <item name="change_title" value="تغيير العنوان..." />
+      <item name="buttons" value="أزرار التحكم" />
+      <item name="disable_minimize_button" value="تعطيل زر &quot;التصغير&quot;" />
+      <item name="disable_maximize_button" value="تعطيل زر &quot;التكبير&quot;" />
+      <item name="disable_close_button" value="تعطيل زر &quot;الإغلاق&quot;" />
+      <item name="settings" value="الإعدادات..." />
+      <item name="grp_window" value="النافذة" />
+      <item name="grp_process" value="العملية" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="اسم الخط:" />
+      <item name="lbl_window_handle" value="مقبض النافذة (Handle):" />
+      <item name="lbl_parent_window_handle" value="مقبض النافذة الأصل:" />
+      <item name="lbl_window_size" value="حجم النافذة:" />
+      <item name="lbl_window_position" value="موضع النافذة:" />
+      <item name="lbl_extended_frame_bounds" value="حدود الإطار الممتد:" />
+      <item name="lbl_instance" value="نسخة التطبيق (Instance):" />
+      <item name="lbl_process_id" value="معرّف العملية (PID):" />
+      <item name="lbl_thread_id" value="معرّف الخيط (TID):" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="المسار الكامل:" />
+      <item name="lbl_command_line" value="سطر الأوامر:" />
+      <item name="lbl_started_at" value="بدأت في:" />
+      <item name="lbl_owner" value="المالك:" />
+      <item name="lbl_threads" value="الخيوط (Threads):" />
+      <item name="lbl_working_set_size" value="حجم الذاكرة العاملة (Working Set):" />
+      <item name="lbl_parent" value="العملية الأصل:" />
+      <item name="lbl_priority" value="الأولوية:" />
+      <item name="lbl_handles" value="المقابض (Handles):" />
+      <item name="lbl_virtual_size" value="الحجم الظاهري:" />
+      <item name="lbl_product_name" value="اسم المنتج:" />
+      <item name="lbl_copyright" value="حقوق النشر:" />
+      <item name="lbl_file_version" value="إصدار الملف:" />
+      <item name="lbl_product_version" value="إصدار المنتج:" />
+      <item name="information_btn_apply" value="موافق" />
+      <item name="save_screenshot_title" value="حفظ لقطة شاشة النافذة" />
+      <item name="save_screenshot_filename" value="لقطة_شاشة_النافذة" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="صورة نقطية (*.bmp)|*.bmp|صورة Gif (*.gif)|*.gif|صورة JPEG (*.jpeg)|*.jpeg|صورة Png (*.png)|*.png|صورة Tiff (*.tiff)|*.tiff|صورة Wmf (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="أيقونة (*.ico)|*.ico|صورة نقطية (*.bmp)|*.bmp|صورة Gif (*.gif)|*.gif|صورة JPEG (*.jpeg)|*.jpeg|صورة Png (*.png)|*.png|صورة Tiff (*.tiff)|*.tiff|صورة Wmf (*.wmf)|*.wmf|كافة الملفات (*.*)|*.*" />
+      <item name="size_form" value="تعيين الحجم" />
+      <item name="size_btn_apply" value="تطبيق" />
+      <item name="lbl_size_form_height" value="الارتفاع:" />
+      <item name="lbl_size_form_width" value="العرض:" />
+      <item name="lbl_size_form_top" value="من الأعلى:" />
+      <item name="lbl_size_form_left" value="من اليسار:" />
+      <item name="trans_form" value="تعيين الشفافية" />
+      <item name="trans_btn_apply" value="تطبيق" />
+      <item name="align_form" value="تعيين الموضع" />
+      <item name="align_btn_apply" value="تطبيق" />
+      <item name="lbl_top" value="أعلى:" />
+      <item name="lbl_left" value="يسار:" />
+      <item name="mi_restore" value="استعادة" />
+      <item name="mi_restore_windows" value="استعادة" />
+      <item name="mi_close" value="إغلاق" />
+      <item name="mi_auto_start" value="التشغيل تلقائيًا مع بدء النظام" />
+      <item name="mi_settings" value="الإعدادات..." />
+      <item name="mi_about" value="حول البرنامج" />
+      <item name="mi_exit" value="خروج" />
+      <item name="about_form" value="حول " />
+      <item name="about_btn_ok" value="موافق" />
+      <item name="settings_form" value="الإعدادات" />
+      <item name="tab_settings_general" value="عام" />
+      <item name="grpb_process_exclusions" value="استثناءات العمليات" />
+      <item name="clm_process_exclusion_name" value="اسم الملف" />
+      <item name="clm_process_exclusion_edit" value="تعديل" />
+      <item name="clm_process_exclusion_delete" value="حذف" />
+      <item name="btn_process_exclusion_up" value="تحريك العملية لأعلى" />
+      <item name="btn_process_exclusion_down" value="تحريك العملية لأسفل" />
+      <item name="btn_add_process_exclusion" value="إضافة اسم عملية" />
+      <item name="tab_settings_menu" value="القائمة" />
+      <item name="grpb_start_program" value="عناصر قائمة تشغيل البرامج" />
+      <item name="clm_start_program_title" value="العنوان" />
+      <item name="clm_start_program_path" value="اسم الملف" />
+      <item name="clm_start_program_arguments" value="المعاملات (Arguments)" />
+      <item name="clm_start_program_edit" value="تعديل" />
+      <item name="clm_start_program_delete" value="حذف" />
+      <item name="btn_start_program_up" value="تحريك البرنامج لأعلى" />
+      <item name="btn_start_program_down" value="تحريك البرنامج لأسفل" />
+      <item name="btn_add_start_program" value="إضافة برنامج للتشغيل" />
+      <item name="settings_btn_apply" value="موافق" />
+      <item name="settings_btn_cancel" value="إلغاء الأمر" />
+      <item name="grpb_window_size" value="عناصر قائمة أحجام النوافذ" />
+      <item name="window_size_form" value="حجم النافذة" />
+      <item name="window_size_btn_apply" value="موافق" />
+      <item name="window_size_btn_cancel" value="إلغاء الأمر" />
+      <item name="clm_window_size_title" value="العنوان" />
+      <item name="clm_window_size_width" value="العرض" />
+      <item name="clm_window_size_height" value="الارتفاع" />
+      <item name="clm_window_size_top" value="أعلى" />
+      <item name="clm_window_size_left" value="يسار" />
+      <item name="clm_window_size_edit" value="تعديل" />
+      <item name="clm_window_size_delete" value="حذف" />
+      <item name="lbl_window_size_title" value="العنوان:" />
+      <item name="lbl_window_size_width" value="العرض:" />
+      <item name="lbl_window_size_height" value="الارتفاع:" />
+      <item name="lbl_window_size_top" value="أعلى:" />
+      <item name="lbl_window_size_left" value="يسار:" />
+      <item name="lbl_window_size_key1" value="المفتاح 1:" />
+      <item name="lbl_window_size_key2" value="المفتاح 2:" />
+      <item name="lbl_window_size_key3" value="المفتاح 3:" />
+      <item name="btn_window_size_up" value="تحريك لأعلى" />
+      <item name="btn_window_size_down" value="تحريك لأسفل" />
+      <item name="btn_add_window_size" value="إضافة" />
+      <item name="btn_menu_item_up" value="تحريك لأعلى" />
+      <item name="btn_menu_item_down" value="تحريك لأسفل" />
+      <item name="process_name_form" value="استثناءات العمليات" />
+      <item name="process_lbl_file_name" value="اسم الملف:" />
+      <item name="process_btn_apply" value="موافق" />
+      <item name="process_btn_cancel" value="إلغاء الأمر" />
+      <item name="process_browse_file_filter" value="الملفات التنفيذية (*.exe)|*.exe|كافة الملفات (*.*)|*.*" />
+      <item name="start_program_form" value="تشغيل برنامج" />
+      <item name="start_program_lbl_title" value="العنوان:" />
+      <item name="start_program_lbl_file_name" value="اسم الملف:" />
+      <item name="start_program_lbl_arguments" value="المعاملات:" />
+      <item name="start_program_lbl_runas" value="التشغيل كـ:" />
+      <item name="start_program_lbl_begin" value="البداية:" />
+      <item name="start_program_lbl_end" value="النهاية:" />
+      <item name="start_program_show_window" value="إظهار النافذة" />
+      <item name="start_program_use_window_working_directory" value="استخدام مسار عمل النافذة" />
+      <item name="start_program_parameter" value="المعامل" />
+      <item name="start_program_normal" value="عادي" />
+      <item name="start_program_administrator" value="مسؤول (Administrator)" />
+      <item name="start_program_btn_apply" value="موافق" />
+      <item name="start_program_btn_cancel" value="إلغاء الأمر" />
+      <item name="start_program_browse_file_filter" value="الملفات التنفيذية (*.exe)|*.exe|كافة الملفات (*.*)|*.*" />
+      <item name="grpb_language" value="اللغة" />
+      <item name="message_box_attention_title" value="تنبيه" />
+      <item name="message_box_attention_content" value="يجب إعادة تشغيل التطبيق يدويًا لتطبيق الإعدادات." />
+      <item name="hotkeys_form" value="مفاتيح الاختصار" />
+      <item name="hotkeys_lbl_key1" value="المفتاح 1" />
+      <item name="hotkeys_lbl_key2" value="المفتاح 2" />
+      <item name="hotkeys_lbl_key3" value="المفتاح 3" />
+      <item name="hotkeys_btn_apply" value="موافق" />
+      <item name="hotkeys_btn_cancel" value="إلغاء الأمر" />
+      <item name="tab_settings_hotkeys" value="مفاتيح الاختصار" />
+      <item name="clm_hotkeys_name" value="الاسم" />
+      <item name="clm_hotkeys_show_tooltip" value="إظهار عنصر القائمة" />
+      <item name="tab_settings_menu_start" value="القائمة (تشغيل برنامج)" />
+      <item name="tab_settings_menu_size" value="القائمة (تغيير الحجم)" />
+      <item name="tab_settings_menu_move_to" value="القائمة (نقل إلى)" />
+      <item name="tab_settings_menu_save" value="القائمة (حفظ)" />
+      <item name="tab_settings_menu_dimmer" value="القائمة (التعتيم)" />
+      <item name="grpb_dimmer_color" value="اللون" />
+      <item name="grpb_dimmer_transparency" value="الشفافية" />
+      <item name="grpb_closer" value="إغلاق النافذة بنقرة الماوس" />
+      <item name="closer_button_name" value="الإعدادات..." />
+      <item name="closer_form" value="الإعدادات" />
+      <item name="closer_btn_apply" value="موافق" />
+      <item name="closer_btn_cancel" value="إلغاء الأمر" />
+      <item name="closer_lbl_key1" value="المفتاح 1" />
+      <item name="closer_lbl_key2" value="المفتاح 2" />
+      <item name="closer_lbl_mouse_button" value="زر الماوس" />
+      <item name="closer_lbl_action" value="الإجراء:" />
+      <item name="closer_close_window" value="إغلاق النافذة" />
+      <item name="closer_kill_process" value="إنهاء العملية" />
+      <item name="closer_close_foreground_window" value="إغلاق النافذة الأمامية" />
+      <item name="closer_close_window_under_cursor" value="إغلاق النافذة تحت المؤشر" />
+      <item name="closer_kill_process_with_foreground_window" value="إنهاء عملية النافذة الأمامية" />
+      <item name="closer_kill_process_with_window_under_cursor" value="إنهاء عملية النافذة تحت المؤشر" />
+      <item name="grpb_sizer" value="طريقة تحديد حجم النافذة" />
+      <item name="grpb_display" value="العرض" />
+      <item name="grpb_next_hotkeys" value="مفاتيح الاختصار →" />
+      <item name="grpb_previous_hotkeys" value="مفاتيح الاختصار ←" />
+      <item name="chk_enable_high_dpi" value="تمكين دقة الشاشة العالية (High DPI)" />
+      <item name="sizer_window_with_margins" value="نافذة مع الهوامش" />
+      <item name="sizer_window_without_margins" value="نافذة بدون هوامش" />
+      <item name="sizer_window_client_area" value="منطقة العميل للنافذة (Client Area)" />
+      <item name="parameter_btn_apply" value="موافق" />
+      <item name="parameter_form" value="إدخال المعامل" />
+      <item name="change_title_btn_apply" value="موافق" />
+      <item name="change_title_btn_cancel" value="إلغاء الأمر" />
+      <item name="change_title_form" value="تغيير العنوان" />
+    </ar>
   </items>
 </language>
