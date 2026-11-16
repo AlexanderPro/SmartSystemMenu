@@ -40,10 +40,10 @@
 
 ### لقطات شاشة (Screenshots)
 
-![Resize](./SmartSystemMenu/Images/SmartSystemMenuEn1.png)
-![Alignment](./SmartSystemMenu/Images/SmartSystemMenuEn2.png)
-![Transparency](./SmartSystemMenu/Images/SmartSystemMenuEn3.png)
-![Information](./SmartSystemMenu/Images/SmartSystemMenuEn4.png)
+![Resize](./SmartSystemMenu/Images/SmartSystemMenuAr1.png)
+![Alignment](./SmartSystemMenu/Images/SmartSystemMenuAr2.png)
+![Transparency](./SmartSystemMenu/Images/SmartSystemMenuAr3.png)
+![Information](./SmartSystemMenu/Images/SmartSystemMenuAr4.png)
 
 ---
 
